@@ -7,23 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CEED4B03B80165D5FAF8E393 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A70D8BAA4B5766D09D5F2FDE /* Pods.framework */; };
 		FD5BE9E21C5BB5CA00535A78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5BE9E11C5BB5CA00535A78 /* AppDelegate.swift */; };
-		FD5BE9E41C5BB5CA00535A78 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5BE9E31C5BB5CA00535A78 /* ViewController.swift */; };
+		FD5BE9E41C5BB5CA00535A78 /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5BE9E31C5BB5CA00535A78 /* BoardViewController.swift */; };
 		FD5BE9E71C5BB5CA00535A78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD5BE9E51C5BB5CA00535A78 /* Main.storyboard */; };
 		FD5BE9EA1C5BB5CA00535A78 /* Pomodoroban.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FD5BE9E81C5BB5CA00535A78 /* Pomodoroban.xcdatamodeld */; };
 		FD5BE9EC1C5BB5CA00535A78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD5BE9EB1C5BB5CA00535A78 /* Assets.xcassets */; };
 		FD5BE9EF1C5BB5CA00535A78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD5BE9ED1C5BB5CA00535A78 /* LaunchScreen.storyboard */; };
+		FD5BE9F71C5BD21100535A78 /* PomodoroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5BE9F61C5BD21100535A78 /* PomodoroViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E8D60214BBB2128FBE650CB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		A70D8BAA4B5766D09D5F2FDE /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD5BE9DE1C5BB5CA00535A78 /* Pomodoroban.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pomodoroban.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD5BE9E11C5BB5CA00535A78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FD5BE9E31C5BB5CA00535A78 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FD5BE9E31C5BB5CA00535A78 /* BoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewController.swift; sourceTree = "<group>"; };
 		FD5BE9E61C5BB5CA00535A78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FD5BE9E91C5BB5CA00535A78 /* Pomodoroban.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pomodoroban.xcdatamodel; sourceTree = "<group>"; };
 		FD5BE9EB1C5BB5CA00535A78 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD5BE9EE1C5BB5CA00535A78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FD5BE9F01C5BB5CA00535A78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FD5BE9F61C5BD21100535A78 /* PomodoroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PomodoroViewController.swift; sourceTree = "<group>"; };
+		FE71FCE00F43FC960F9FB28E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +37,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEED4B03B80165D5FAF8E393 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2EEBA23431972463A46873AE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A70D8BAA4B5766D09D5F2FDE /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		433E2D15170648381BBD71D2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5E8D60214BBB2128FBE650CB /* Pods.debug.xcconfig */,
+				FE71FCE00F43FC960F9FB28E /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		FD5BE9D51C5BB5CA00535A78 = {
 			isa = PBXGroup;
 			children = (
 				FD5BE9E01C5BB5CA00535A78 /* Pomodoroban */,
 				FD5BE9DF1C5BB5CA00535A78 /* Products */,
+				433E2D15170648381BBD71D2 /* Pods */,
+				2EEBA23431972463A46873AE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,12 +83,13 @@
 			isa = PBXGroup;
 			children = (
 				FD5BE9E11C5BB5CA00535A78 /* AppDelegate.swift */,
-				FD5BE9E31C5BB5CA00535A78 /* ViewController.swift */,
+				FD5BE9E31C5BB5CA00535A78 /* BoardViewController.swift */,
 				FD5BE9E51C5BB5CA00535A78 /* Main.storyboard */,
 				FD5BE9EB1C5BB5CA00535A78 /* Assets.xcassets */,
 				FD5BE9ED1C5BB5CA00535A78 /* LaunchScreen.storyboard */,
 				FD5BE9F01C5BB5CA00535A78 /* Info.plist */,
 				FD5BE9E81C5BB5CA00535A78 /* Pomodoroban.xcdatamodeld */,
+				FD5BE9F61C5BD21100535A78 /* PomodoroViewController.swift */,
 			);
 			path = Pomodoroban;
 			sourceTree = "<group>";
@@ -74,9 +101,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FD5BE9F31C5BB5CA00535A78 /* Build configuration list for PBXNativeTarget "Pomodoroban" */;
 			buildPhases = (
+				47965FA16FA6C2C352E5DF58 /* Check Pods Manifest.lock */,
 				FD5BE9DA1C5BB5CA00535A78 /* Sources */,
 				FD5BE9DB1C5BB5CA00535A78 /* Frameworks */,
 				FD5BE9DC1C5BB5CA00535A78 /* Resources */,
+				6BEA5FC937B9504B9056CDED /* Embed Pods Frameworks */,
+				36EDBE0BE225ABCE5FA561C6 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -133,13 +163,62 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		36EDBE0BE225ABCE5FA561C6 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		47965FA16FA6C2C352E5DF58 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6BEA5FC937B9504B9056CDED /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FD5BE9DA1C5BB5CA00535A78 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				FD5BE9EA1C5BB5CA00535A78 /* Pomodoroban.xcdatamodeld in Sources */,
-				FD5BE9E41C5BB5CA00535A78 /* ViewController.swift in Sources */,
+				FD5BE9F71C5BD21100535A78 /* PomodoroViewController.swift in Sources */,
+				FD5BE9E41C5BB5CA00535A78 /* BoardViewController.swift in Sources */,
 				FD5BE9E21C5BB5CA00535A78 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,6 +330,7 @@
 		};
 		FD5BE9F41C5BB5CA00535A78 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E8D60214BBB2128FBE650CB /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Pomodoroban/Info.plist;
@@ -262,6 +342,7 @@
 		};
 		FD5BE9F51C5BB5CA00535A78 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE71FCE00F43FC960F9FB28E /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Pomodoroban/Info.plist;
@@ -290,6 +371,7 @@
 				FD5BE9F51C5BB5CA00535A78 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

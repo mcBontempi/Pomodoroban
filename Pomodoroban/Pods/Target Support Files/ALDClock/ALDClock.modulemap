@@ -1,0 +1,6 @@
+framework module ALDClock {
+  umbrella header "ALDClock-umbrella.h"
+
+  export *
+  module * { export * }
+}
