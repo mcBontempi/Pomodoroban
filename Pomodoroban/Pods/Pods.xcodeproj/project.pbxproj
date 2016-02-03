@@ -7,83 +7,109 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		213A2AEEEF45662B314C05B26F38E180 /* ALDClock.h in Headers */ = {isa = PBXBuildFile; fileRef = 2758D2677BB3F75B646ABFC5A0B07979 /* ALDClock.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		38AA2ECBC65B18BB5FD59BD4CE2BDC67 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
-		753F6BC19D646A40B7E10CB46546B597 /* ALDClock.m in Sources */ = {isa = PBXBuildFile; fileRef = 51D3B1EECDC8232E018181576D08C307 /* ALDClock.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		772A45E7113B2A48A0E5D2FA9DE80491 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
-		96F11251E643EAF9736BF9BF7D6DD4CE /* ALDClock-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 13D1DE2249D618855CFDA406816C8A4F /* ALDClock-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CB38257BC38561FFC63ED729D8E58C68 /* Pods-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BCC458FDD5F692BBB2BFC64BB5701FC /* Pods-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CC4F908345EDE0F6E4C3DB38C914E5CF /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 894E5DA93A9F359521A89826BE6DA777 /* Pods-dummy.m */; };
-		E8FED0FA6703FAE2B2D0FF232D024997 /* ALDClock-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FABFB8669AC83D343199CE0CD63B74C2 /* ALDClock-dummy.m */; };
+		2DBD208D447FD0F65C685909F064E517 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		356427BC0E6709DC8BDF7DB781D08708 /* BEMAnalogClockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBF10B55E7EFEF66E8E0EC26B55525F /* BEMAnalogClockView.m */; };
+		3E67098491271E21FEC6F66B289A6F3E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		54A18B1B54CBABA9254243444436E994 /* BEMAnalogClockView.h in Headers */ = {isa = PBXBuildFile; fileRef = D6E4221761FC9A48B3E98E1286775D6E /* BEMAnalogClockView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DDC8CEB54BA34426AE34F0C0766FED6 /* KSMHand.m in Sources */ = {isa = PBXBuildFile; fileRef = 99612C965D803564B4038E82FFA834BE /* KSMHand.m */; };
+		9B15DC55AEDE29A054A97844F8040EAD /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 894E5DA93A9F359521A89826BE6DA777 /* Pods-dummy.m */; };
+		AA488F23F3B6C0DD8D8494716E65EA9E /* Pods-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BCC458FDD5F692BBB2BFC64BB5701FC /* Pods-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C6F8F2FFD37A9ECF96543CEA203FCD3E /* BEMAnalogClock-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 88BB63E3AC66B961BE7E90F809F3A7C8 /* BEMAnalogClock-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D10AA9DE01D3A4327BCAFA2817A091E1 /* BEMAnalogClock-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6711412B2FA52F2EF1F0442660030C3B /* BEMAnalogClock-dummy.m */; };
+		ECB031536465C8CED1D0F7F7FCBD3B29 /* KSMHand.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7DE421142DBABD13D41A07A662CD38 /* KSMHand.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B9618BFF24C4F091C70084AD9A537B6C /* PBXContainerItemProxy */ = {
+		9FEF3E3C96E7D589A0CCB413C6E11F09 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = CC0CE5D3D5F4B661B22F2ED167131E25;
-			remoteInfo = ALDClock;
+			remoteGlobalIDString = A93D40A73EF61F52D38BFE9A62E37398;
+			remoteInfo = BEMAnalogClock;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		13D1DE2249D618855CFDA406816C8A4F /* ALDClock-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ALDClock-umbrella.h"; sourceTree = "<group>"; };
-		2758D2677BB3F75B646ABFC5A0B07979 /* ALDClock.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ALDClock.h; sourceTree = "<group>"; };
+		027438630F811540FBE40289C4A0C3CC /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = iOS/Fabric.framework; sourceTree = "<group>"; };
+		149456EA5C5ECDB5C8D8842ED0819859 /* BEMAnalogClock.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BEMAnalogClock.xcconfig; sourceTree = "<group>"; };
+		1B21B6585B6ED91B62A0AE0911A4B0E5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27D471D4A4DD3553615B28C40DAE636F /* BEMAnalogClock.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = BEMAnalogClock.modulemap; sourceTree = "<group>"; };
 		2BCC458FDD5F692BBB2BFC64BB5701FC /* Pods-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-umbrella.h"; sourceTree = "<group>"; };
+		2BE3FDD64D076000C137FDB9A7393F1E /* BEMAnalogClock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BEMAnalogClock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2EBF10B55E7EFEF66E8E0EC26B55525F /* BEMAnalogClockView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BEMAnalogClockView.m; path = Classes/BEMAnalogClockView.m; sourceTree = "<group>"; };
 		3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		51D3B1EECDC8232E018181576D08C307 /* ALDClock.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ALDClock.m; sourceTree = "<group>"; };
-		5B07AC327E4F2B13C44931B251BB6F57 /* ALDClock.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = ALDClock.modulemap; sourceTree = "<group>"; };
-		67799AD504C5518B558B05ECF16CB8E9 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6FDF8C33B6F03B06109437FACA6F07AF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6711412B2FA52F2EF1F0442660030C3B /* BEMAnalogClock-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BEMAnalogClock-dummy.m"; sourceTree = "<group>"; };
 		79A9DEDC89FE8336BF5FEDAAF75BF7FC /* Pods.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Pods.modulemap; sourceTree = "<group>"; };
 		87B213035BAC5F75386F62D3C75D2342 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
+		88BB63E3AC66B961BE7E90F809F3A7C8 /* BEMAnalogClock-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BEMAnalogClock-umbrella.h"; sourceTree = "<group>"; };
 		894E5DA93A9F359521A89826BE6DA777 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
 		977577C045EDA9D9D1F46E2598D19FC7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
+		99612C965D803564B4038E82FFA834BE /* KSMHand.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KSMHand.m; path = Classes/KSMHand.m; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BF7DE421142DBABD13D41A07A662CD38 /* KSMHand.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KSMHand.h; path = Classes/KSMHand.h; sourceTree = "<group>"; };
+		CAC3FAB561B2DC78ACD6DA27A1012FD0 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = iOS/Crashlytics.framework; sourceTree = "<group>"; };
+		CB5E0439F9FA3108F94EC06B4283A9CD /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBC0F7C552B739C909B650A0F42F7F38 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
 		D0405803033A2A777B8E4DFA0C1800ED /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
+		D6E4221761FC9A48B3E98E1286775D6E /* BEMAnalogClockView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BEMAnalogClockView.h; path = Classes/BEMAnalogClockView.h; sourceTree = "<group>"; };
 		DA312349A49333542E6F4B36B329960E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
 		E7F21354943D9F42A70697D5A5EF72E9 /* Pods-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-frameworks.sh"; sourceTree = "<group>"; };
 		E8446514FBAD26C0E18F24A5715AEF67 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F00279F3AA0AE62544E21ACB1DA89069 /* ALDClock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ALDClock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F92B8D1E03F98501D370D759F7F98CC9 /* ALDClock.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ALDClock.xcconfig; sourceTree = "<group>"; };
-		FABFB8669AC83D343199CE0CD63B74C2 /* ALDClock-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ALDClock-dummy.m"; sourceTree = "<group>"; };
-		FAED625F7577E7B65C7A8A04B7E65522 /* ALDClock-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ALDClock-prefix.pch"; sourceTree = "<group>"; };
+		F0DFFDC4AB97A4280AF9AA79B26074D1 /* BEMAnalogClock-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BEMAnalogClock-prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		7CC7B484B6D1ADF8E9AB371960DA606A /* Frameworks */ = {
+		26D1125ADB63E55277989685FBDE5868 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38AA2ECBC65B18BB5FD59BD4CE2BDC67 /* Foundation.framework in Frameworks */,
+				3E67098491271E21FEC6F66B289A6F3E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C1424A1A35A813E1EDC998B4873EB869 /* Frameworks */ = {
+		54D6F35DD14DB9198782C1B6EB449150 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				772A45E7113B2A48A0E5D2FA9DE80491 /* Foundation.framework in Frameworks */,
+				2DBD208D447FD0F65C685909F064E517 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3AD4F7732C2B871921E3C52E91E60A6C /* Support Files */ = {
+		083E686E4078F764F83954E0578CCC66 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5B07AC327E4F2B13C44931B251BB6F57 /* ALDClock.modulemap */,
-				F92B8D1E03F98501D370D759F7F98CC9 /* ALDClock.xcconfig */,
-				FABFB8669AC83D343199CE0CD63B74C2 /* ALDClock-dummy.m */,
-				FAED625F7577E7B65C7A8A04B7E65522 /* ALDClock-prefix.pch */,
-				13D1DE2249D618855CFDA406816C8A4F /* ALDClock-umbrella.h */,
-				6FDF8C33B6F03B06109437FACA6F07AF /* Info.plist */,
+				CAC3FAB561B2DC78ACD6DA27A1012FD0 /* Crashlytics.framework */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/ALDClock";
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1F486E944FA679C95683368935234E19 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A1EDFEF0800CB9E4D8F0F21593905C5F /* BEMAnalogClock */,
+				A5A030CC457D7A8198C4F5786D9135A4 /* Crashlytics */,
+				2294A24C1A333176DC04C352E65BB4BE /* Fabric */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		2294A24C1A333176DC04C352E65BB4BE /* Fabric */ = {
+			isa = PBXGroup;
+			children = (
+				34C492D2FF3C32EFBFC7D811F7C47230 /* Frameworks */,
+			);
+			path = Fabric;
+			sourceTree = "<group>";
+		};
+		34C492D2FF3C32EFBFC7D811F7C47230 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				027438630F811540FBE40289C4A0C3CC /* Fabric.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		75D98FF52E597A11900E131B6C4E1ADA /* Pods */ = {
@@ -109,27 +135,30 @@
 			children = (
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				93A97587BBB1D1B6ADDBDA69345FF303 /* Pods */,
-				A8D2A95774E381525C3FE6FEBC43EA9D /* Products */,
+				1F486E944FA679C95683368935234E19 /* Pods */,
+				D4133304D90D29F8E398885E0C0BA9C8 /* Products */,
 				B7B80995527643776607AFFA75B91E24 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		93A97587BBB1D1B6ADDBDA69345FF303 /* Pods */ = {
+		A1EDFEF0800CB9E4D8F0F21593905C5F /* BEMAnalogClock */ = {
 			isa = PBXGroup;
 			children = (
-				E87667E73613D58A56EC4BDEA1BA2970 /* ALDClock */,
+				D6E4221761FC9A48B3E98E1286775D6E /* BEMAnalogClockView.h */,
+				2EBF10B55E7EFEF66E8E0EC26B55525F /* BEMAnalogClockView.m */,
+				BF7DE421142DBABD13D41A07A662CD38 /* KSMHand.h */,
+				99612C965D803564B4038E82FFA834BE /* KSMHand.m */,
+				B8B9BD1EDA243CAC5EF4BF2DA0ACAAC7 /* Support Files */,
 			);
-			name = Pods;
+			path = BEMAnalogClock;
 			sourceTree = "<group>";
 		};
-		A8D2A95774E381525C3FE6FEBC43EA9D /* Products */ = {
+		A5A030CC457D7A8198C4F5786D9135A4 /* Crashlytics */ = {
 			isa = PBXGroup;
 			children = (
-				F00279F3AA0AE62544E21ACB1DA89069 /* ALDClock.framework */,
-				67799AD504C5518B558B05ECF16CB8E9 /* Pods.framework */,
+				083E686E4078F764F83954E0578CCC66 /* Frameworks */,
 			);
-			name = Products;
+			path = Crashlytics;
 			sourceTree = "<group>";
 		};
 		B7B80995527643776607AFFA75B91E24 /* Targets Support Files */ = {
@@ -138,6 +167,20 @@
 				75D98FF52E597A11900E131B6C4E1ADA /* Pods */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		B8B9BD1EDA243CAC5EF4BF2DA0ACAAC7 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				27D471D4A4DD3553615B28C40DAE636F /* BEMAnalogClock.modulemap */,
+				149456EA5C5ECDB5C8D8842ED0819859 /* BEMAnalogClock.xcconfig */,
+				6711412B2FA52F2EF1F0442660030C3B /* BEMAnalogClock-dummy.m */,
+				F0DFFDC4AB97A4280AF9AA79B26074D1 /* BEMAnalogClock-prefix.pch */,
+				88BB63E3AC66B961BE7E90F809F3A7C8 /* BEMAnalogClock-umbrella.h */,
+				1B21B6585B6ED91B62A0AE0911A4B0E5 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/BEMAnalogClock";
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -156,72 +199,72 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		E87667E73613D58A56EC4BDEA1BA2970 /* ALDClock */ = {
+		D4133304D90D29F8E398885E0C0BA9C8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2758D2677BB3F75B646ABFC5A0B07979 /* ALDClock.h */,
-				51D3B1EECDC8232E018181576D08C307 /* ALDClock.m */,
-				3AD4F7732C2B871921E3C52E91E60A6C /* Support Files */,
+				2BE3FDD64D076000C137FDB9A7393F1E /* BEMAnalogClock.framework */,
+				CB5E0439F9FA3108F94EC06B4283A9CD /* Pods.framework */,
 			);
-			path = ALDClock;
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		6FF30D219D922DC79B8E705946D63FD1 /* Headers */ = {
+		070CBC8A79ACE8BCB3A143F46873C0B3 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96F11251E643EAF9736BF9BF7D6DD4CE /* ALDClock-umbrella.h in Headers */,
-				213A2AEEEF45662B314C05B26F38E180 /* ALDClock.h in Headers */,
+				C6F8F2FFD37A9ECF96543CEA203FCD3E /* BEMAnalogClock-umbrella.h in Headers */,
+				54A18B1B54CBABA9254243444436E994 /* BEMAnalogClockView.h in Headers */,
+				ECB031536465C8CED1D0F7F7FCBD3B29 /* KSMHand.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		789051CC66E9EAE4E489FDE902FB891D /* Headers */ = {
+		52417D9ECEA12DBC501DE51A42751B19 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB38257BC38561FFC63ED729D8E58C68 /* Pods-umbrella.h in Headers */,
+				AA488F23F3B6C0DD8D8494716E65EA9E /* Pods-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		1F1AB0116D2E432DDA9B4F4BC08BEF71 /* Pods */ = {
+		3969926D6757ADE97C89C2BADBE93D8A /* Pods */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DB988C4E8727073AEBD9EE99601F5317 /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildConfigurationList = E1B833E745E9CADB8AD1582998C210EE /* Build configuration list for PBXNativeTarget "Pods" */;
 			buildPhases = (
-				F9058A254E7E4EC33FE7637E199FD957 /* Sources */,
-				C1424A1A35A813E1EDC998B4873EB869 /* Frameworks */,
-				789051CC66E9EAE4E489FDE902FB891D /* Headers */,
+				B70DEFFDB7624A85340F9DD7C790B672 /* Sources */,
+				54D6F35DD14DB9198782C1B6EB449150 /* Frameworks */,
+				52417D9ECEA12DBC501DE51A42751B19 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				BD22B9656A9DC3CE79074E82A9A7FEB9 /* PBXTargetDependency */,
+				779BCD1F9E490D95EA6045EA44C51630 /* PBXTargetDependency */,
 			);
 			name = Pods;
 			productName = Pods;
-			productReference = 67799AD504C5518B558B05ECF16CB8E9 /* Pods.framework */;
+			productReference = CB5E0439F9FA3108F94EC06B4283A9CD /* Pods.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		CC0CE5D3D5F4B661B22F2ED167131E25 /* ALDClock */ = {
+		A93D40A73EF61F52D38BFE9A62E37398 /* BEMAnalogClock */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 595484BAD816C2A96A2181011CB322A5 /* Build configuration list for PBXNativeTarget "ALDClock" */;
+			buildConfigurationList = 827E2B8F98D601CE9F4138C015293449 /* Build configuration list for PBXNativeTarget "BEMAnalogClock" */;
 			buildPhases = (
-				EC7B2CD596B41BC844EF33902CC226AA /* Sources */,
-				7CC7B484B6D1ADF8E9AB371960DA606A /* Frameworks */,
-				6FF30D219D922DC79B8E705946D63FD1 /* Headers */,
+				31E22A7AA63D738CD69EC72FC21E5FEF /* Sources */,
+				26D1125ADB63E55277989685FBDE5868 /* Frameworks */,
+				070CBC8A79ACE8BCB3A143F46873C0B3 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = ALDClock;
-			productName = ALDClock;
-			productReference = F00279F3AA0AE62544E21ACB1DA89069 /* ALDClock.framework */;
+			name = BEMAnalogClock;
+			productName = BEMAnalogClock;
+			productReference = 2BE3FDD64D076000C137FDB9A7393F1E /* BEMAnalogClock.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -241,47 +284,75 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = A8D2A95774E381525C3FE6FEBC43EA9D /* Products */;
+			productRefGroup = D4133304D90D29F8E398885E0C0BA9C8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CC0CE5D3D5F4B661B22F2ED167131E25 /* ALDClock */,
-				1F1AB0116D2E432DDA9B4F4BC08BEF71 /* Pods */,
+				A93D40A73EF61F52D38BFE9A62E37398 /* BEMAnalogClock */,
+				3969926D6757ADE97C89C2BADBE93D8A /* Pods */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		EC7B2CD596B41BC844EF33902CC226AA /* Sources */ = {
+		31E22A7AA63D738CD69EC72FC21E5FEF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8FED0FA6703FAE2B2D0FF232D024997 /* ALDClock-dummy.m in Sources */,
-				753F6BC19D646A40B7E10CB46546B597 /* ALDClock.m in Sources */,
+				D10AA9DE01D3A4327BCAFA2817A091E1 /* BEMAnalogClock-dummy.m in Sources */,
+				356427BC0E6709DC8BDF7DB781D08708 /* BEMAnalogClockView.m in Sources */,
+				6DDC8CEB54BA34426AE34F0C0766FED6 /* KSMHand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F9058A254E7E4EC33FE7637E199FD957 /* Sources */ = {
+		B70DEFFDB7624A85340F9DD7C790B672 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC4F908345EDE0F6E4C3DB38C914E5CF /* Pods-dummy.m in Sources */,
+				9B15DC55AEDE29A054A97844F8040EAD /* Pods-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		BD22B9656A9DC3CE79074E82A9A7FEB9 /* PBXTargetDependency */ = {
+		779BCD1F9E490D95EA6045EA44C51630 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = ALDClock;
-			target = CC0CE5D3D5F4B661B22F2ED167131E25 /* ALDClock */;
-			targetProxy = B9618BFF24C4F091C70084AD9A537B6C /* PBXContainerItemProxy */;
+			name = BEMAnalogClock;
+			target = A93D40A73EF61F52D38BFE9A62E37398 /* BEMAnalogClock */;
+			targetProxy = 9FEF3E3C96E7D589A0CCB413C6E11F09 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		14B1442AAC7594D46C735C091666235F /* Debug */ = {
+		1F0AFBF303909E936357AAD9E331E631 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 149456EA5C5ECDB5C8D8842ED0819859 /* BEMAnalogClock.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/BEMAnalogClock/BEMAnalogClock-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BEMAnalogClock/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/BEMAnalogClock/BEMAnalogClock.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = BEMAnalogClock;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		7754681913C6E2582EB5E757980AF2AB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 977577C045EDA9D9D1F46E2598D19FC7 /* Pods.debug.xcconfig */;
 			buildSettings = {
@@ -310,60 +381,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
-		};
-		392EE5D3A7B4986BD20BDE50C9AC8F99 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F92B8D1E03F98501D370D759F7F98CC9 /* ALDClock.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/ALDClock/ALDClock-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ALDClock/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/ALDClock/ALDClock.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = ALDClock;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		637287FDB8D5122E8452939F5E849B13 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F92B8D1E03F98501D370D759F7F98CC9 /* ALDClock.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/ALDClock/ALDClock-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ALDClock/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/ALDClock/ALDClock.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = ALDClock;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 		8D1534490D941DCA47C62AC4314182AF /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -404,6 +421,33 @@
 			};
 			name = Debug;
 		};
+		9A1408560F573E90C25FFAB89E7840E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 149456EA5C5ECDB5C8D8842ED0819859 /* BEMAnalogClock.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/BEMAnalogClock/BEMAnalogClock-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BEMAnalogClock/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/BEMAnalogClock/BEMAnalogClock.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = BEMAnalogClock;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		C5A18280E9321A9268D1C80B7DA43967 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -438,7 +482,7 @@
 			};
 			name = Release;
 		};
-		E45BAAF47202FEA7105FBCCA380EA107 /* Release */ = {
+		E4727CD30798EB3EA65E0A9AB16F2D74 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DA312349A49333542E6F4B36B329960E /* Pods.release.xcconfig */;
 			buildSettings = {
@@ -480,20 +524,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		595484BAD816C2A96A2181011CB322A5 /* Build configuration list for PBXNativeTarget "ALDClock" */ = {
+		827E2B8F98D601CE9F4138C015293449 /* Build configuration list for PBXNativeTarget "BEMAnalogClock" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				392EE5D3A7B4986BD20BDE50C9AC8F99 /* Debug */,
-				637287FDB8D5122E8452939F5E849B13 /* Release */,
+				1F0AFBF303909E936357AAD9E331E631 /* Debug */,
+				9A1408560F573E90C25FFAB89E7840E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DB988C4E8727073AEBD9EE99601F5317 /* Build configuration list for PBXNativeTarget "Pods" */ = {
+		E1B833E745E9CADB8AD1582998C210EE /* Build configuration list for PBXNativeTarget "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				14B1442AAC7594D46C735C091666235F /* Debug */,
-				E45BAAF47202FEA7105FBCCA380EA107 /* Release */,
+				7754681913C6E2582EB5E757980AF2AB /* Debug */,
+				E4727CD30798EB3EA65E0A9AB16F2D74 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

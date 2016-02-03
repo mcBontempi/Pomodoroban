@@ -1,10 +1,17 @@
 PODS:
-  - ALDClock (2.0.1)
+  - BEMAnalogClock (1.4)
+  - Crashlytics (3.6.0):
+    - Fabric (~> 1.6.3)
+  - Fabric (1.6.4)
 
 DEPENDENCIES:
-  - ALDClock
+  - BEMAnalogClock
+  - Crashlytics
+  - Fabric
 
 SPEC CHECKSUMS:
-  ALDClock: f361e3c250279fd58cb1238201529cc33214a096
+  BEMAnalogClock: 88786eba7763d63abd5a9956c2d1106f30c7f251
+  Crashlytics: e4e8d02914f2608fbc7bf42b1a7af838b0db67a2
+  Fabric: ed41fd62173c6bdea24ab02c9d7707161eabb750
 
 COCOAPODS: 0.39.0

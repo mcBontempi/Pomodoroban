@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,26 +18,126 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-    // Override point for customization after application launch.
+    Fabric.with([Crashlytics.self])
+
+  self.createDummyData()
+    
     return true
   }
+  
+  
+  func createDummyData() {
+ 
+    Ticket.removeAllEntities(self.managedObjectContext)
+    
+    var ticket = Ticket.createInMoc(self.managedObjectContext)
+    ticket.name = "BACKLOG"
+    ticket.section = 0
+    ticket.row = 0
+    
+  ticket = Ticket.createInMoc(self.managedObjectContext)
+  ticket.name = "DEBT COLLECTOR APP"
+  ticket.section = 0
+    ticket.row = 1
+  
+    ticket = Ticket.createInMoc(self.managedObjectContext)
+    ticket.name = "dummy"
+    ticket.section = 0
+    ticket.row = 1000
 
-  func applicationWillResignActive(application: UIApplication) {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-  }
+  
+  ticket = Ticket.createInMoc(self.managedObjectContext)
+  ticket.name = "MONDAY"
+  ticket.section = 1
+    ticket.row = 0
+    
+  ticket = Ticket.createInMoc(self.managedObjectContext)
+  ticket.name = "BUDDI - CollectionView"
+  ticket.section = 1
+    ticket.row = 1
+    
+    ticket = Ticket.createInMoc(self.managedObjectContext)
+    ticket.name = "SPOTTA - Bug Fixes"
+    ticket.section = 1
+    ticket.row = 2
+    
+    ticket = Ticket.createInMoc(self.managedObjectContext)
+    ticket.name = "dummy"
+    ticket.section = 1
+    ticket.row = 1000
+  
+  
+  ticket = Ticket.createInMoc(self.managedObjectContext)
+  ticket.name = "TUESDAY"
+  ticket.section = 2
+    ticket.row = 0
 
-  func applicationDidEnterBackground(application: UIApplication) {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-  }
+    ticket = Ticket.createInMoc(self.managedObjectContext)
+    ticket.name = "dummy"
+    ticket.section = 2
+    ticket.row = 1000
 
-  func applicationWillEnterForeground(application: UIApplication) {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-  }
+    
+  ticket = Ticket.createInMoc(self.managedObjectContext)
+  ticket.name = "WEDNESDAY"
+  ticket.section = 3
+    ticket.row = 0
+    
+  ticket = Ticket.createInMoc(self.managedObjectContext)
+  ticket.name = "HUAWEI - Particles Test"
+  ticket.section = 3
+    ticket.row = 1
+    
+    ticket = Ticket.createInMoc(self.managedObjectContext)
+    ticket.name = "BUDDI - Rework add weight"
+    ticket.section = 3
+    ticket.row = 2
+  
+    ticket = Ticket.createInMoc(self.managedObjectContext)
+    ticket.name = "PB - CollectionView"
+    ticket.section = 3
+    ticket.row = 3
+   
+    ticket = Ticket.createInMoc(self.managedObjectContext)
+    ticket.name = "PB - Simple Details"
+    ticket.section = 3
+    ticket.row = 4
+    
+    ticket = Ticket.createInMoc(self.managedObjectContext)
+    ticket.name = "BUDDI - Migrate Device Code"
+    ticket.section = 3
+    ticket.row = 5
+    
+    ticket = Ticket.createInMoc(self.managedObjectContext)
+    ticket.name = "dummy"
+    ticket.section = 3
+    ticket.row = 1000
+    
+    
+    ticket = Ticket.createInMoc(self.managedObjectContext)
+    ticket.name = "THURSDAY"
+    ticket.section = 4
+    ticket.row = 0
+    
+    ticket = Ticket.createInMoc(self.managedObjectContext)
+    ticket.name = "dummy"
+    ticket.section = 4
+    ticket.row = 1000
+    
+    
+    ticket = Ticket.createInMoc(self.managedObjectContext)
+    ticket.name = "DONE"
+    ticket.section = 6
+    ticket.row = 0
+    
+    ticket = Ticket.createInMoc(self.managedObjectContext)
+    ticket.name = "dummy"
+    ticket.section = 6
+    ticket.row = 1
 
-  func applicationDidBecomeActive(application: UIApplication) {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+  try! self.managedObjectContext.save()
+
   }
 
   func applicationWillTerminate(application: UIApplication) {

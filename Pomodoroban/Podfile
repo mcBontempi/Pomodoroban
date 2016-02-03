@@ -1,2 +1,4 @@
 use_frameworks!
-pod 'ALDClock'
+pod 'BEMAnalogClock'
+pod 'Fabric'
+pod 'Crashlytics'
