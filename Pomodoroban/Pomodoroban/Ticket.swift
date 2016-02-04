@@ -77,26 +77,17 @@ class Ticket: NSManagedObject {
     
     var newRowIndex = 0
     
-    print(toIndexPath)
-    
-    print("---------------")
-    
     for iteratingTicket in tickets {
       
       
       if toIndexPath.row == newRowIndex {
         ticket.row = Int32(newRowIndex++)
         ticket.section = Int32(toIndexPath.section)
-    
-        print(ticket)
-        
         
         iteratingTicket.row = Int32(newRowIndex++)
-        print(iteratingTicket)
       }
       else {
         iteratingTicket.row = Int32(newRowIndex++)
-        print(iteratingTicket)
         
       }
     }

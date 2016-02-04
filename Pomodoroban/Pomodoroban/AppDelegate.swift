@@ -152,10 +152,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ticket.section = 5
     ticket.row = 0
     
+    var next = 0
+    
+    for (var x = 1 ; x < 50 ; x++) {
+    
+    ticket = Ticket.createInMoc(self.managedObjectContext)
+    ticket.name = "DONE"
+    ticket.section = 5
+    ticket.row = Int32(x)
+      
+      next = x
+    }
+    
     ticket = Ticket.createInMoc(self.managedObjectContext)
     ticket.name = "dummy"
     ticket.section = 5
-    ticket.row = 1
+    ticket.row = next+1
 
     
   try! self.managedObjectContext.save()

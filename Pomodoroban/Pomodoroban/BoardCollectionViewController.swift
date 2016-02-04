@@ -56,7 +56,7 @@ class BoardCollectionViewController: UICollectionViewController, RAReorderableLa
         self.selectedTicket.row = Int32(currentSection.numberOfObjects - 1)
        }
       
-      self.selectedTicket.name = "DDT"
+      self.selectedTicket.name = ""
       
       
     }
@@ -71,10 +71,10 @@ class BoardCollectionViewController: UICollectionViewController, RAReorderableLa
   func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
     
     if indexPath.row == 0 {
-      return CGSizeMake(200,60)
+      return CGSizeMake(200,36)
     }
     
-    return CGSizeMake(200, 100)
+    return CGSizeMake(200, 36)
   }
   
   func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
@@ -107,7 +107,6 @@ class BoardCollectionViewController: UICollectionViewController, RAReorderableLa
   
   func collectionView(collectionView: UICollectionView, atIndexPath: NSIndexPath, canMoveToIndexPath: NSIndexPath) -> Bool {
     
-    print("can move %@", canMoveToIndexPath)
     
     if canMoveToIndexPath.row == 1 {
       if let sections = self.fetchedResultsController.sections {
@@ -127,11 +126,12 @@ class BoardCollectionViewController: UICollectionViewController, RAReorderableLa
       let isDummy = ticket?.name == "dummy" || canMoveToIndexPath.row == 0
       
       
-      print(!isDummy)
       
       return !isDummy
     }
     else {
+      
+      if canMoveToIndexPath.row > 0 {
       
       let indexPathRowLessOne = NSIndexPath(forRow: canMoveToIndexPath.row-1, inSection: canMoveToIndexPath.section)
       
@@ -140,9 +140,12 @@ class BoardCollectionViewController: UICollectionViewController, RAReorderableLa
       let isDummy = ticket?.name == "dummy" || canMoveToIndexPath.row == 0
       
       
-      print(!isDummy)
       
       return !isDummy
+      }
+      else {
+        return false
+      }
     }
     
   }

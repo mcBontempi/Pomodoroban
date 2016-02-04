@@ -8,15 +8,21 @@
 
 import UIKit
 import BEMAnalogClock
+import CoreData
 
 class PomodoroViewController: UIViewController {
   
+  @IBOutlet weak var textField: UITextField!
+  
   var ticket:Ticket!
+  let moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
   
   @IBAction func closePressed(sender: AnyObject) {
-      self.dismissViewControllerAnimated(true) { () -> Void in
-        
-        
+    self.ticket.name = self.textField.text
+    
+    try! self.moc.save()
+    
+    self.dismissViewControllerAnimated(true) { () -> Void in
     }
   }
   
@@ -39,7 +45,8 @@ class PomodoroViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-     self.title = self.ticket.name 
+    self.title = self.ticket.name
+    self.textField.text = self.ticket.name
     
     self.timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("fire"), userInfo: nil, repeats: true)
     
@@ -74,6 +81,9 @@ class PomodoroViewController: UIViewController {
     self.actionButton.layer.borderColor = UIColor.whiteColor().CGColor
     self.actionButton.layer.borderWidth = 1
     
+    if self.textField.text == "" {
+      self.textField.becomeFirstResponder()
+    }
   }
   
   func fire() {
@@ -105,3 +115,22 @@ class PomodoroViewController: UIViewController {
   */
   
 }
+
+
+extension PomodoroViewController : UITextFieldDelegate
+{
+  func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    
+    let textFieldString = textField.text!
+    
+    let newString = (textFieldString as NSString).stringByReplacingCharactersInRange(range, withString: string)
+    
+    
+    self.title = newString
+    
+    self.ticket.name = newString
+    try! self.moc.save()
+    return true
+  }
+}
+
