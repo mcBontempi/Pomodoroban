@@ -51,20 +51,24 @@ class BoardCollectionViewController: UICollectionViewController, RAReorderableLa
   
   
   func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-
-    return CGSizeMake(200, 60)
+    
+    if indexPath.row == 0 {
+      return CGSizeMake(200,60)
+    }
+    
+    return CGSizeMake(200, 100)
   }
   
   func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-    return 20.0
+    return 10.0
   }
   
   func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-    return 20.0
+    return 10.0
   }
   
   func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-    return UIEdgeInsetsMake(0, 20.0, 20.0, 0)
+    return UIEdgeInsetsMake(0, 10.0, 10.0, 0)
   }
   
   override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -74,22 +78,55 @@ class BoardCollectionViewController: UICollectionViewController, RAReorderableLa
     return 0
   }
   
+  
+  
   func collectionView(collectionView: UICollectionView, allowMoveAtIndexPath indexPath: NSIndexPath) -> Bool
   {
     let ticket = fetchedResultsController.objectAtIndexPath(indexPath) as? Ticket
-    
     let isDummy = ticket?.name == "dummy" || indexPath.row == 0
-    
     return !isDummy
   }
   
   func collectionView(collectionView: UICollectionView, atIndexPath: NSIndexPath, canMoveToIndexPath: NSIndexPath) -> Bool {
     
-
+    print("can move %@", canMoveToIndexPath)
     
-    let disallow = canMoveToIndexPath.row == 0
+    if canMoveToIndexPath.row == 1 {
+      if let sections = self.fetchedResultsController.sections {
+        let currentSection = sections[canMoveToIndexPath.section]
+        if currentSection.numberOfObjects == 2 {
+          return true
+        }
+      }
+    }
     
-    return !disallow
+    if atIndexPath.section == canMoveToIndexPath.section {
+      
+      let indexPathRowLessOne = NSIndexPath(forRow: canMoveToIndexPath.row, inSection: canMoveToIndexPath.section)
+      
+      let ticket = fetchedResultsController.objectAtIndexPath(indexPathRowLessOne) as? Ticket
+      
+      let isDummy = ticket?.name == "dummy" || canMoveToIndexPath.row == 0
+      
+      
+      print(!isDummy)
+      
+      return !isDummy
+    }
+    else {
+      
+      let indexPathRowLessOne = NSIndexPath(forRow: canMoveToIndexPath.row-1, inSection: canMoveToIndexPath.section)
+      
+      let ticket = fetchedResultsController.objectAtIndexPath(indexPathRowLessOne) as? Ticket
+      
+      let isDummy = ticket?.name == "dummy" || canMoveToIndexPath.row == 0
+      
+      
+      print(!isDummy)
+      
+      return !isDummy
+    }
+    
   }
   
   

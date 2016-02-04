@@ -61,6 +61,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ticket.section = 1
     ticket.row = 2
     
+    
+    ticket = Ticket.createInMoc(self.managedObjectContext)
+    ticket.name = "BUDDI - Settings View"
+    ticket.section = 1
+    ticket.row = 3
+    
+    ticket = Ticket.createInMoc(self.managedObjectContext)
+    ticket.name = "SPOTTA - Clean up App Delegate"
+    ticket.section = 1
+    ticket.row = 4
+    
+    ticket = Ticket.createInMoc(self.managedObjectContext)
+    ticket.name = "BUDDI - More CollectionView"
+    ticket.section = 1
+    ticket.row = 5
+    
+    ticket = Ticket.createInMoc(self.managedObjectContext)
+    ticket.name = "SPOTTA - Account Creation"
+    ticket.section = 1
+    ticket.row = 6
+    
+    
     ticket = Ticket.createInMoc(self.managedObjectContext)
     ticket.name = "dummy"
     ticket.section = 1
@@ -127,12 +149,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     ticket = Ticket.createInMoc(self.managedObjectContext)
     ticket.name = "DONE"
-    ticket.section = 6
+    ticket.section = 5
     ticket.row = 0
     
     ticket = Ticket.createInMoc(self.managedObjectContext)
     ticket.name = "dummy"
-    ticket.section = 6
+    ticket.section = 5
     ticket.row = 1
 
     

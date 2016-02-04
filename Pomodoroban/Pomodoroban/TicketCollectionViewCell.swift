@@ -14,7 +14,25 @@ class TicketCollectionViewCell: UICollectionViewCell {
   var ticket: Ticket? {
     didSet {
       self.nameLabel.text = ticket!.name
+  
+      if ticket?.name != "dummy" {
+        
+      
+      self.layer.cornerRadius = 4
+      self.clipsToBounds = true
+      self.layer.borderColor = UIColor.lightGrayColor().CGColor
+      self.layer.borderWidth = 2
+      
+      
+      }
+      else {
+        self.layer.borderColor = UIColor.whiteColor().CGColor
+        
+      }
+    
+    
     }
+
   }
     
 }

@@ -112,11 +112,18 @@
                                 </view>
                                 <color key="backgroundColor" red="0.57121125890000002" green="0.83596061389999998" blue="0.67405924900000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="IWC-qc-ZdG" firstAttribute="centerX" secondItem="9Iz-3k-Tcm" secondAttribute="centerX" id="MZp-vd-wJM"/>
                                     <constraint firstItem="IWC-qc-ZdG" firstAttribute="leading" secondItem="9Iz-3k-Tcm" secondAttribute="leadingMargin" id="Mpe-bG-3TA"/>
                                     <constraint firstItem="IWC-qc-ZdG" firstAttribute="trailing" secondItem="9Iz-3k-Tcm" secondAttribute="trailingMargin" id="TQL-EZ-yND"/>
                                     <constraint firstItem="IWC-qc-ZdG" firstAttribute="top" secondItem="9Iz-3k-Tcm" secondAttribute="topMargin" id="f09-H3-fPA"/>
+                                    <constraint firstItem="IWC-qc-ZdG" firstAttribute="centerY" secondItem="9Iz-3k-Tcm" secondAttribute="centerY" id="tyf-XK-MOP"/>
                                 </constraints>
                                 <size key="customSize" width="134" height="36"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="f09-H3-fPA"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <outlet property="nameLabel" destination="IWC-qc-ZdG" id="zrC-iU-1qX"/>
                                 </connections>
