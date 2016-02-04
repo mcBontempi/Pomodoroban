@@ -9,9 +9,9 @@
 import UIKit
 import CoreData
 
-private let reuseIdentifier = "TicketCell"
-
 class BoardCollectionViewController: UICollectionViewController, RAReorderableLayoutDelegate, RAReorderableLayoutDataSource  {
+  
+  var selectedTicket: Ticket!
   
   let moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
   
@@ -37,17 +37,35 @@ class BoardCollectionViewController: UICollectionViewController, RAReorderableLa
     
   }
   
-  /*
-  // MARK: - Navigation
-  
-  // In a storyboard-based application, you will often want to do a little preparation before navigation
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-  // Get the new view controller using [segue destinationViewController].
-  // Pass the selected object to the new view controller.
+    
+    let detailTabBarController = segue.destinationViewController as! DetailTabBarController
+    
+    detailTabBarController.ticket = self.selectedTicket
+    
   }
-  */
   
-  // MARK: UICollectionViewDataSource
+  override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    
+    if indexPath.row == 0 {
+      self.selectedTicket = Ticket.createInMoc(self.moc)
+      self.selectedTicket.section = Int32(indexPath.section)
+      
+      if let sections = self.fetchedResultsController.sections {
+        let currentSection = sections[indexPath.section]
+        self.selectedTicket.row = Int32(currentSection.numberOfObjects - 1)
+       }
+      
+      self.selectedTicket.name = "DDT"
+      
+      
+    }
+    else {
+      self.selectedTicket = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Ticket
+    }
+    
+    self.performSegueWithIdentifier("UITabBarController", sender: self)
+  }
   
   
   func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
@@ -147,9 +165,21 @@ class BoardCollectionViewController: UICollectionViewController, RAReorderableLa
   }
   
   override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! TicketCollectionViewCell
     
     let ticket = fetchedResultsController.objectAtIndexPath(indexPath) as? Ticket
+    
+    if indexPath.row == 0 {
+      let cell = collectionView.dequeueReusableCellWithReuseIdentifier("HeaderTicketCell", forIndexPath: indexPath) as! HeaderCollectionViewCell
+      
+      cell.ticket = ticket
+      
+      return cell
+      
+    }
+    
+    
+    let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TicketCell", forIndexPath: indexPath) as! TicketCollectionViewCell
+    
     
     cell.ticket = ticket
     

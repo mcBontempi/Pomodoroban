@@ -11,6 +11,16 @@ import BEMAnalogClock
 
 class PomodoroViewController: UIViewController {
   
+  var ticket:Ticket!
+  
+  @IBAction func closePressed(sender: AnyObject) {
+      self.dismissViewControllerAnimated(true) { () -> Void in
+        
+        
+    }
+  }
+  
+  
   var timer:NSTimer?
   var startInterval:NSTimeInterval?
   
@@ -28,6 +38,8 @@ class PomodoroViewController: UIViewController {
   }
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+     self.title = self.ticket.name 
     
     self.timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("fire"), userInfo: nil, repeats: true)
     

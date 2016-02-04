@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="A4Z-yd-chB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ykL-nO-sBj">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -23,7 +23,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PZG-sK-6cR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1358" y="77"/>
+            <point key="canvasLocation" x="2170" y="77"/>
         </scene>
         <!--Pomodoro-->
         <scene sceneID="0ww-8i-p30">
@@ -72,7 +72,13 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="4WU-r2-Rs9"/>
+                    <navigationItem key="navigationItem" id="4WU-r2-Rs9">
+                        <barButtonItem key="rightBarButtonItem" title="Close" id="WW0-t6-MsV">
+                            <connections>
+                                <action selector="closePressed:" destination="R0u-Sl-X0A" id="RzW-T7-qUc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="actionButton" destination="MLw-ah-ldB" id="Slo-22-2RI"/>
                         <outlet property="clock" destination="YPf-2J-dZ7" id="Vb2-A5-Oxf"/>
@@ -82,7 +88,7 @@
             </objects>
             <point key="canvasLocation" x="1890" y="-584"/>
         </scene>
-        <!--Board Collection View Controller-->
+        <!--P O M O D O R O B A N-->
         <scene sceneID="bUa-kg-ddx">
             <objects>
                 <collectionViewController id="A4Z-yd-chB" customClass="BoardCollectionViewController" customModule="Pomodoroban" customModuleProvider="target" sceneMemberID="viewController">
@@ -92,7 +98,7 @@
                         <collectionViewLayout key="collectionViewLayout" id="pcZ-bG-b1z" customClass="RAReorderableLayout" customModule="Pomodoroban" customModuleProvider="target"/>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TicketCell" id="9Iz-3k-Tcm" customClass="TicketCollectionViewCell" customModule="Pomodoroban">
-                                <rect key="frame" x="0.0" y="0.0" width="134" height="36"/>
+                                <rect key="frame" x="0.0" y="64" width="134" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="134" height="36"/>
@@ -128,21 +134,72 @@
                                     <outlet property="nameLabel" destination="IWC-qc-ZdG" id="zrC-iU-1qX"/>
                                 </connections>
                             </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderTicketCell" id="lsj-YA-rxO" customClass="HeaderCollectionViewCell" customModule="Pomodoroban">
+                                <rect key="frame" x="155" y="64" width="134" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="134" height="36"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addicon" translatesAutoresizingMaskIntoConstraints="NO" id="TqV-KL-7eF">
+                                            <rect key="frame" x="94" y="1" width="35" height="35"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="35" id="bXL-BL-hOy"/>
+                                                <constraint firstAttribute="width" constant="35" id="n90-9W-tM6"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLc-OX-XeJ">
+                                            <rect key="frame" x="8" y="8" width="98" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="eNm-2g-knp"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="18"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.56000000000000005" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="SLc-OX-XeJ" firstAttribute="centerY" secondItem="lsj-YA-rxO" secondAttribute="centerY" id="CD6-EZ-VxC"/>
+                                    <constraint firstItem="SLc-OX-XeJ" firstAttribute="centerX" secondItem="lsj-YA-rxO" secondAttribute="centerX" id="Ft8-m2-Ns0"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="TqV-KL-7eF" secondAttribute="trailing" constant="-3" id="UUh-Yo-Vrh"/>
+                                    <constraint firstItem="SLc-OX-XeJ" firstAttribute="top" secondItem="lsj-YA-rxO" secondAttribute="topMargin" id="VvH-ZC-bM9"/>
+                                    <constraint firstItem="SLc-OX-XeJ" firstAttribute="trailing" secondItem="lsj-YA-rxO" secondAttribute="trailingMargin" constant="-20" id="loL-oY-95j"/>
+                                    <constraint firstItem="TqV-KL-7eF" firstAttribute="centerY" secondItem="lsj-YA-rxO" secondAttribute="centerY" id="pp7-B7-pKz"/>
+                                    <constraint firstItem="SLc-OX-XeJ" firstAttribute="leading" secondItem="lsj-YA-rxO" secondAttribute="leadingMargin" id="wG5-VQ-Rtt"/>
+                                </constraints>
+                                <size key="customSize" width="134" height="36"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Ft8-m2-Ns0"/>
+                                        <exclude reference="VvH-ZC-bM9"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="nameLabel" destination="SLc-OX-XeJ" id="vpQ-OM-tqb"/>
+                                </connections>
+                            </collectionViewCell>
                         </cells>
                         <connections>
                             <outlet property="dataSource" destination="A4Z-yd-chB" id="ofr-Lg-FEf"/>
                             <outlet property="delegate" destination="A4Z-yd-chB" id="Wu2-Ca-T89"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" title="P O M O D O R O B A N" id="ZKc-Tv-AIm"/>
+                    <connections>
+                        <segue destination="7pI-cE-VQL" kind="presentation" identifier="UITabBarController" modalPresentationStyle="formSheet" id="HXH-u2-Ihb"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9sh-4W-zyN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="30" y="154"/>
+            <point key="canvasLocation" x="842" y="154"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Detail Tab Bar Controller-->
         <scene sceneID="rmc-Kb-dVR">
             <objects>
-                <tabBarController id="7pI-cE-VQL" sceneMemberID="viewController">
+                <tabBarController id="7pI-cE-VQL" customClass="DetailTabBarController" customModule="Pomodoroban" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Yki-hh-k2I">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -156,7 +213,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pyO-6C-c5O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="905" y="310"/>
+            <point key="canvasLocation" x="1717" y="310"/>
         </scene>
         <!--Pomodoro-->
         <scene sceneID="1Fo-2q-cem">
@@ -177,5 +234,26 @@
             </objects>
             <point key="canvasLocation" x="1358" y="-584"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="abB-tr-T8y">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ykL-nO-sBj" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Wj-C9-TH9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="A4Z-yd-chB" kind="relationship" relationship="rootViewController" id="zXy-jU-Lsa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kvG-Vk-1ZK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="30" y="154"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="addicon" width="256" height="256"/>
+    </resources>
 </document>
