@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ykL-nO-sBj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ykL-nO-sBj">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -84,15 +84,21 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="4WU-r2-Rs9">
-                        <barButtonItem key="rightBarButtonItem" title="Close" id="WW0-t6-MsV">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="cTt-Qd-6bw">
                             <connections>
-                                <action selector="closePressed:" destination="R0u-Sl-X0A" id="RzW-T7-qUc"/>
+                                <action selector="cancelPressed:" destination="R0u-Sl-X0A" id="qUw-x6-e13"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="WW0-t6-MsV">
+                            <connections>
+                                <action selector="savePressed:" destination="R0u-Sl-X0A" id="fuY-N4-gh4"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="actionButton" destination="MLw-ah-ldB" id="Slo-22-2RI"/>
                         <outlet property="clock" destination="YPf-2J-dZ7" id="Vb2-A5-Oxf"/>
+                        <outlet property="saveButton" destination="WW0-t6-MsV" id="ejm-db-SgG"/>
                         <outlet property="textField" destination="Tzx-tm-laE" id="8bW-BM-rUf"/>
                     </connections>
                 </viewController>

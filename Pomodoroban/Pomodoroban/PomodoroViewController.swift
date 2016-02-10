@@ -11,13 +11,17 @@ import BEMAnalogClock
 import CoreData
 
 class PomodoroViewController: UIViewController {
+ 
+  var ticket:Ticket!
+  var ticketWhenViewCreated:Ticket!
+  
+  @IBOutlet weak var saveButton: UIBarButtonItem!
   
   @IBOutlet weak var textField: UITextField!
   
-  var ticket:Ticket!
   let moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
   
-  @IBAction func closePressed(sender: AnyObject) {
+  @IBAction func savePressed(sender: AnyObject) {
     self.ticket.name = self.textField.text
     
     try! self.moc.save()
@@ -26,6 +30,8 @@ class PomodoroViewController: UIViewController {
     }
   }
   
+  @IBAction func cancelPressed(sender: AnyObject) {
+  }
   
   var timer:NSTimer?
   var startInterval:NSTimeInterval?
@@ -86,6 +92,21 @@ class PomodoroViewController: UIViewController {
     }
   }
   
+  
+  func copyTicketToTicketWhenViewCreated() {
+    self.ticketWhenViewCreated = Ticket()
+   self.ticketWhenViewCreated.name = self.ticket.name
+  }
+  
+  func hasTicketBeenModified() -> Bool {
+    
+    if self.ticketWhenViewCreated.name != self.ticket.name {
+      return true
+    }
+    
+    return false
+  }
+  
   func fire() {
     
     if let startInterval = self.startInterval {
@@ -130,6 +151,14 @@ extension PomodoroViewController : UITextFieldDelegate
     
     self.ticket.name = newString
     try! self.moc.save()
+    return true
+  }
+  
+  func textFieldShouldReturn(textField: UITextField) -> Bool {
+    
+    self.dismissViewControllerAnimated(true) { () -> Void in
+    }
+    
     return true
   }
 }

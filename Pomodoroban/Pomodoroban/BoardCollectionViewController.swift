@@ -71,22 +71,22 @@ class BoardCollectionViewController: UICollectionViewController, RAReorderableLa
   func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
     
     if indexPath.row == 0 {
-      return CGSizeMake(200,36)
+      return CGSizeMake(111,36)
     }
     
-    return CGSizeMake(200, 36)
+    return CGSizeMake(111, 36)
   }
   
   func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-    return 10.0
+    return 2.0
   }
   
   func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-    return 10.0
+    return 2.0
   }
   
   func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-    return UIEdgeInsetsMake(0, 10.0, 10.0, 0)
+    return UIEdgeInsetsMake(0, 2.0, 2.0, 0)
   }
   
   override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {

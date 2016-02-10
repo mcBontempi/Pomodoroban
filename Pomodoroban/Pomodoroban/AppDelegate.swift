@@ -20,13 +20,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     Fabric.with([Crashlytics.self])
 
-  self.createDummyData()
+    if Ticket.count(self.managedObjectContext) == 0 {
+      self.createDayData()
+    }
     
     return true
   }
   
   
-  func createDummyData() {
+  func createDayData() {
  
     Ticket.removeAllEntities(self.managedObjectContext)
     
@@ -34,11 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ticket.name = "BACKLOG"
     ticket.section = 0
     ticket.row = 0
-    
-  ticket = Ticket.createInMoc(self.managedObjectContext)
-  ticket.name = "DEBT COLLECTOR APP"
-  ticket.section = 0
-    ticket.row = 1
   
     ticket = Ticket.createInMoc(self.managedObjectContext)
     ticket.name = "dummy"
@@ -50,38 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   ticket.name = "MONDAY"
   ticket.section = 1
     ticket.row = 0
-    
-  ticket = Ticket.createInMoc(self.managedObjectContext)
-  ticket.name = "BUDDI - CollectionView"
-  ticket.section = 1
-    ticket.row = 1
-    
-    ticket = Ticket.createInMoc(self.managedObjectContext)
-    ticket.name = "SPOTTA - Bug Fixes"
-    ticket.section = 1
-    ticket.row = 2
-    
-    
-    ticket = Ticket.createInMoc(self.managedObjectContext)
-    ticket.name = "BUDDI - Settings View"
-    ticket.section = 1
-    ticket.row = 3
-    
-    ticket = Ticket.createInMoc(self.managedObjectContext)
-    ticket.name = "SPOTTA - Clean up App Delegate"
-    ticket.section = 1
-    ticket.row = 4
-    
-    ticket = Ticket.createInMoc(self.managedObjectContext)
-    ticket.name = "BUDDI - More CollectionView"
-    ticket.section = 1
-    ticket.row = 5
-    
-    ticket = Ticket.createInMoc(self.managedObjectContext)
-    ticket.name = "SPOTTA - Account Creation"
-    ticket.section = 1
-    ticket.row = 6
-    
     
     ticket = Ticket.createInMoc(self.managedObjectContext)
     ticket.name = "dummy"
@@ -105,31 +70,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   ticket.section = 3
     ticket.row = 0
     
-  ticket = Ticket.createInMoc(self.managedObjectContext)
-  ticket.name = "HUAWEI - Particles Test"
-  ticket.section = 3
-    ticket.row = 1
-    
-    ticket = Ticket.createInMoc(self.managedObjectContext)
-    ticket.name = "BUDDI - Rework add weight"
-    ticket.section = 3
-    ticket.row = 2
-  
-    ticket = Ticket.createInMoc(self.managedObjectContext)
-    ticket.name = "PB - CollectionView"
-    ticket.section = 3
-    ticket.row = 3
-   
-    ticket = Ticket.createInMoc(self.managedObjectContext)
-    ticket.name = "PB - Simple Details"
-    ticket.section = 3
-    ticket.row = 4
-    
-    ticket = Ticket.createInMoc(self.managedObjectContext)
-    ticket.name = "BUDDI - Migrate Device Code"
-    ticket.section = 3
-    ticket.row = 5
-    
     ticket = Ticket.createInMoc(self.managedObjectContext)
     ticket.name = "dummy"
     ticket.section = 3
@@ -146,28 +86,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ticket.section = 4
     ticket.row = 1000
     
-    
     ticket = Ticket.createInMoc(self.managedObjectContext)
-    ticket.name = "DONE"
+    ticket.name = "FRIDAY"
     ticket.section = 5
     ticket.row = 0
-    
-    var next = 0
-    
-    for (var x = 1 ; x < 50 ; x++) {
-    
-    ticket = Ticket.createInMoc(self.managedObjectContext)
-    ticket.name = "DONE"
-    ticket.section = 5
-    ticket.row = Int32(x)
-      
-      next = x
-    }
     
     ticket = Ticket.createInMoc(self.managedObjectContext)
     ticket.name = "dummy"
     ticket.section = 5
-    ticket.row = next+1
+    ticket.row = 1000
+    
+    ticket = Ticket.createInMoc(self.managedObjectContext)
+    ticket.name = "SATURDAY"
+    ticket.section = 6
+    ticket.row = 0
+    
+    ticket = Ticket.createInMoc(self.managedObjectContext)
+    ticket.name = "dummy"
+    ticket.section = 6
+    ticket.row = 1000
+    
+    ticket = Ticket.createInMoc(self.managedObjectContext)
+    ticket.name = "SUNDAY"
+    ticket.section = 7
+    ticket.row = 0
+    
+    ticket = Ticket.createInMoc(self.managedObjectContext)
+    ticket.name = "dummy"
+    ticket.section = 7
+    ticket.row = 1000
+    
+    
+    ticket = Ticket.createInMoc(self.managedObjectContext)
+    ticket.name = "DONE"
+    ticket.section = 8
+    ticket.row = 0
+    
+    ticket = Ticket.createInMoc(self.managedObjectContext)
+    ticket.name = "dummy"
+    ticket.section = 8
+    ticket.row = 1000
 
     
   try! self.managedObjectContext.save()

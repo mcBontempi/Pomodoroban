@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 class Ticket: NSManagedObject {
   
   static let entityName = "Ticket"
@@ -19,7 +18,10 @@ class Ticket: NSManagedObject {
   static let attributeSection = "section"
   static let attributeRow = "row"
   
-  
+  class func count(moc:NSManagedObjectContext) -> Int {
+    let objects = try! moc.executeFetchRequest(Ticket.fetchRequestAll())
+    return objects.count
+  }
   
   class func createInMoc(moc:NSManagedObjectContext) -> Ticket {
     return NSEntityDescription.insertNewObjectForEntityForName(Ticket.entityName, inManagedObjectContext: moc) as! Ticket
