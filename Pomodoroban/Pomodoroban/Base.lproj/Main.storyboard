@@ -264,7 +264,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="POMODOROBAN" id="pd0-F2-yTn">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="dUH-bx-5Kj"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="dUH-bx-5Kj">
+                            <connections>
+                                <action selector="addPressed:" destination="lpa-3H-vWj" id="62q-7w-mzl"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="os8-I7-nLU" userLabel="First Responder" sceneMemberID="firstResponder"/>

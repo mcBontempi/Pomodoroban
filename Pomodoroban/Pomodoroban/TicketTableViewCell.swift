@@ -18,10 +18,8 @@ class TicketTableViewCell: UITableViewCell {
         didSet {
             self.titleLabel.text = ticket!.name
             
-                self.layer.cornerRadius = 4
-                self.clipsToBounds = true
-                self.layer.borderColor = UIColor.lightGrayColor().CGColor
-                self.layer.borderWidth = 2
+            
+            self.showsReorderControl = true
             
         }
         

@@ -14,9 +14,12 @@ class BoardTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         try! self.fetchedResultsController.performFetch()
+        
+        
+        self.tableView.editing = true
     }
-    
-    // MARK: - Table view data source
+    @IBAction func addPressed(sender: AnyObject) {
+    }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if let sections = self.fetchedResultsController.sections {
@@ -31,6 +34,38 @@ class BoardTableViewController: UITableViewController {
             return currentSection.numberOfObjects
         }
         return 0
+    }
+    
+    
+    override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+        
+        let ticket = fetchedResultsController.objectAtIndexPath(sourceIndexPath) as? Ticket
+        
+        Ticket.insertTicket(ticket!, toIndexPath: destinationIndexPath, moc:self.moc)
+    }
+    
+    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+
+  //  override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+  //      return .None
+  //  }
+    
+    
+   // override func tableView(tableView: UITableView, shouldIndentWhileEditingRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+   //     return false
+   // }
+    
+    override func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
+     
+     
+        return proposedDestinationIndexPath
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
