@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     for section in 0...8 {
         
         ticket = Ticket.createInMoc(self.managedObjectContext)
-        ticket.name = "Add a new ticket"
+        ticket.name = ""
         ticket.section = Int32(section)
         ticket.row = 0
         

@@ -5,6 +5,8 @@ class BoardTableViewController: UITableViewController {
     
     let moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
+    var childMoc:NSManagedObjectContext!
+    
     lazy var fetchedResultsController: NSFetchedResultsController = {
         let tempFetchedResultsController = NSFetchedResultsController( fetchRequest: Ticket.fetchRequestAll(), managedObjectContext: self.moc, sectionNameKeyPath: "section", cacheName: nil)
         tempFetchedResultsController.delegate = self
@@ -19,12 +21,7 @@ class BoardTableViewController: UITableViewController {
         self.tableView.editing = true
     }
     @IBAction func addPressed(sender: AnyObject) {
-        
-        
-        
         let vc = self.storyboard?.instantiateViewControllerWithIdentifier("PomodoroViewController") as! PomodoroViewController
-        
-        
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -49,13 +46,11 @@ class BoardTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        if let sections = self.fetchedResultsController.sections {
-            let currentSection = sections[indexPath.section]
-            return !(currentSection.numberOfObjects-1 == indexPath.row)
-        }
-        
-        return true
+       return !self.isAddAtIndexPath(indexPath)
     }
+    
+    
+
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 60
@@ -63,17 +58,27 @@ class BoardTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
         
-        if let sections = self.fetchedResultsController.sections {
-            let currentSection = sections[indexPath.section]
-            return currentSection.numberOfObjects-1 == indexPath.row ?  .Insert :  .Delete
-        }
-       return .None
+       return self.isAddAtIndexPath(indexPath) == true ?  .Insert :  .Delete
+        
     }
     
     
    // override func tableView(tableView: UITableView, shouldIndentWhileEditingRowAtIndexPath indexPath: NSIndexPath) -> Bool {
    //     return false
    // }
+    
+    
+    override func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
+        
+        var realProposed = proposedDestinationIndexPath
+        
+        if proposedDestinationIndexPath.section == sourceIndexPath.section {
+            realProposed = NSIndexPath(forRow: proposedDestinationIndexPath.row-1, inSection: proposedDestinationIndexPath.section)
+        }
+        
+        
+        return self.isAddAtIndexPath(proposedDestinationIndexPath) ? realProposed : sourceIndexPath
+    }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let ticket = fetchedResultsController.objectAtIndexPath(indexPath) as? Ticket
@@ -82,10 +87,31 @@ class BoardTableViewController: UITableViewController {
         return cell
     }
     
+    
+    func isAddAtIndexPath(indexPath:NSIndexPath) -> Bool {
+        
+        if let sections = self.fetchedResultsController.sections {
+            let currentSection = sections[indexPath.section]
+            return currentSection.numberOfObjects-1 == indexPath.row
+        }
+        return false
+        
+        
+    }
+    
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.sectionTitles()[section]
     }
     
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    
+        self.childMoc = 
+        
+        let ticket = Ticket.createInMoc(self.moc)
+        ticket.name = "DDT"
+        
+    }
     
     
     func sectionTitles() -> [String] {
