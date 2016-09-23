@@ -112,6 +112,19 @@ class Ticket: NSManagedObject {
         }
     }
     
+    
+    class func printAll(moc:NSManagedObjectContext) {
+        let request = NSFetchRequest(entityName: Ticket.entityName)
+        
+        let objects = try! moc.executeFetchRequest(request) as! [Ticket]
+        
+        for object in objects {
+     
+            print(object)
+        }
+        
+    }
+    
     class func createAllAddTickets(moc:NSManagedObjectContext) {
         var ticket: Ticket!
         

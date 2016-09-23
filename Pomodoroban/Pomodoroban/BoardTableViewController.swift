@@ -3,7 +3,7 @@ import CoreData
 
 class BoardTableViewController: UITableViewController {
     
-    let moc = AppDelegate.getMe().moc
+    let moc = CoreDataServices.sharedInstance.moc
     
     var childMoc:NSManagedObjectContext!
     
@@ -74,10 +74,10 @@ class BoardTableViewController: UITableViewController {
         self.tableView.allowsSelectionDuringEditing = true
         self.setWorkMode()
         
-       
+        
     }
     @IBAction func addPressed(sender: AnyObject) {
-        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("PomodoroViewController") as! PomodoroViewController
+        //   let vc = self.storyboard?.instantiateViewControllerWithIdentifier("PomodoroViewController") as! PomodoroViewController
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -103,14 +103,14 @@ class BoardTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return self.isAddAtIndexPath(indexPath)
+        return !self.isAddAtIndexPath(indexPath)
     }
     
     
     
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return self.isAddAtIndexPath(indexPath) ? ( self.tableView.editing ? 60 : 0 ) :  40
+        return self.isAddAtIndexPath(indexPath) ? ( self.tableView.editing ? 30 : 0 ) :  90
     }
     
     override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
@@ -159,40 +159,31 @@ class BoardTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Insert {
             
-            
-            
             let nc = self.storyboard?.instantiateViewControllerWithIdentifier("PomodoroNavigationViewController") as! UINavigationController
             let vc = nc.viewControllers[0] as! PomodoroViewController
             
-            self.childMoc = AppDelegate.getMe().childMoc()
+            self.childMoc = CoreDataServices.sharedInstance.childMoc()
             vc.ticket = Ticket.createInMoc(self.childMoc)
             vc.ticket.name = "DDT"
-            vc.ticket.row = Int32(indexPath.row+1)
+            vc.ticket.row = Int32(indexPath.row+3)
             vc.ticket.section = Int32(indexPath.section)
             
             vc.delegate = self
             
-            self.saveChildMoc()
-            
-            dispatch_async(dispatch_get_main_queue(), {
-                self.tableView.reloadData()
-            })
-            
-            
-        //    self.presentViewController(nc, animated: true) {}
+            self.presentViewController(nc, animated: true) {}
             
         }
     }
     
     func saveChildMoc() {
         if self.childMoc != nil {
-            self.moc.performBlock({
+            self.moc.performBlockAndWait({
                 try! self.childMoc.save()
                 self.childMoc = nil
-            
-                self.moc.performBlock({
+                
+                
+                self.moc.performBlockAndWait({ 
                     try! self.moc.save()
-            //try! self.moc.save()
                 })
             })
         }
@@ -219,27 +210,91 @@ class BoardTableViewController: UITableViewController {
 extension BoardTableViewController : PomodoroViewControllerDelegate {
     func pomodoroViewControllerDelegateSave(pomodoroViewController: PomodoroViewController) {
         self.dismissViewControllerAnimated(true) {
-        //           self.tableView.beginUpdates()
-     //       Ticket.removeAllAddTickets(self.moc)
+            //           self.tableView.beginUpdates()
+            //       Ticket.removeAllAddTickets(self.moc)
             
             
-       //     Ticket.createAllAddTickets(self.moc)
-        self.saveChildMoc()
-        //         self.tableView.endUpdates()
+            //     Ticket.createAllAddTickets(self.moc)
+            self.saveChildMoc()
+            //         self.tableView.endUpdates()
             
         }
         
     }
     
     func pomodoroViewControllerDelegateCancal(pomodoroViewController: PomodoroViewController) {
-        self.dismissViewControllerAnimated(true) { 
+        self.dismissViewControllerAnimated(true) {
             
         }
     }
 }
 
 extension BoardTableViewController : NSFetchedResultsControllerDelegate {
+    
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        self.tableView.beginUpdates()
+    }
+    
+    func controller(controller: NSFetchedResultsController,
+                    didChangeObject anObject: AnyObject,
+                                    atIndexPath indexPath: NSIndexPath?,
+                                                forChangeType type: NSFetchedResultsChangeType,
+                                                              newIndexPath: NSIndexPath?)
+    {
+        switch(type) {
+            
+        case .Insert:
+            if let newIndexPath = newIndexPath {
+                tableView.insertRowsAtIndexPaths([newIndexPath],
+                                                 withRowAnimation:UITableViewRowAnimation.Fade)
+            }
+            
+        case .Delete:
+            if let indexPath = indexPath {
+                tableView.deleteRowsAtIndexPaths([indexPath],
+                                                 withRowAnimation: UITableViewRowAnimation.Fade)
+            }
+            
+        case .Update:
+            if let indexPath = indexPath {
+                tableView.reloadRowsAtIndexPaths([indexPath],
+                                                 withRowAnimation: UITableViewRowAnimation.Fade)
+            }
+            
+        case .Move:
+            if let indexPath = indexPath {
+                if let newIndexPath = newIndexPath {
+                    tableView.deleteRowsAtIndexPaths([indexPath],
+                                                     withRowAnimation: UITableViewRowAnimation.Fade)
+                    tableView.insertRowsAtIndexPaths([newIndexPath],
+                                                     withRowAnimation: UITableViewRowAnimation.Fade)
+                }
+            }
+        }
+    }
+    
+    func controller(controller: NSFetchedResultsController,
+                    didChangeSection sectionInfo: NSFetchedResultsSectionInfo,
+                                     atIndex sectionIndex: Int,
+                                             forChangeType type: NSFetchedResultsChangeType)
+    {
+        switch(type) {
+            
+        case .Insert:
+            tableView.insertSections(NSIndexSet(index: sectionIndex),
+                                     withRowAnimation: UITableViewRowAnimation.Fade)
+            
+        case .Delete:
+            tableView.deleteSections(NSIndexSet(index: sectionIndex),
+                                     withRowAnimation: UITableViewRowAnimation.Fade)
+            
+        default:
+            break
+        }
+    }
+    
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        self.tableView?.reloadData()
+        tableView.endUpdates()
     }
 }
+
