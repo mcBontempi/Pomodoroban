@@ -54,7 +54,7 @@ class PomodoroViewController: UIViewController {
     self.title = self.ticket.name
     self.textField.text = self.ticket.name
     
-    self.timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("fire"), userInfo: nil, repeats: true)
+    self.timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(PomodoroViewController.fire), userInfo: nil, repeats: true)
     
     self.clock.stopRealTime()
     

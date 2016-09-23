@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ykL-nO-sBj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qvh-2M-BY9">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Item 2-->
@@ -15,9 +16,9 @@
                         <viewControllerLayoutGuide type="bottom" id="FWN-pd-rJw"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Dhe-cw-3P1">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="WUV-zh-xs4"/>
                 </viewController>
@@ -34,20 +35,20 @@
                         <viewControllerLayoutGuide type="bottom" id="aoW-us-oxe"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6kP-t3-mVl">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YPf-2J-dZ7" customClass="BEMAnalogClockView">
-                                <rect key="frame" x="40" y="120" width="240" height="240"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YPf-2J-dZ7" customClass="BEMAnalogClockView">
+                                <frame key="frameInset" minX="40" minY="120" width="240" height="240"/>
+                                <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="240" id="Bsr-oA-C1d"/>
                                     <constraint firstAttribute="width" constant="240" id="fiR-Zc-8iW"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MLw-ah-ldB">
-                                <rect key="frame" x="140" y="220" width="40" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MLw-ah-ldB">
+                                <frame key="frameInset" minX="140" minY="220" width="40" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="ERM-Mp-nHa"/>
                                     <constraint firstAttribute="height" constant="40" id="Fgu-Mi-is4"/>
@@ -57,8 +58,8 @@
                                     <action selector="actionButtonPressed:" destination="R0u-Sl-X0A" eventType="touchUpInside" id="Wbc-vR-rar"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tzx-tm-laE">
-                                <rect key="frame" x="36" y="60" width="248" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tzx-tm-laE">
+                                <frame key="frameInset" minX="36" minY="60" width="248" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -66,7 +67,7 @@
                                 </connections>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="MLw-ah-ldB" firstAttribute="centerX" secondItem="YPf-2J-dZ7" secondAttribute="centerX" id="387-xJ-lYE"/>
                             <constraint firstItem="YPf-2J-dZ7" firstAttribute="centerX" secondItem="6kP-t3-mVl" secondAttribute="centerX" id="5al-a3-x8e"/>
@@ -111,30 +112,28 @@
             <objects>
                 <collectionViewController id="A4Z-yd-chB" customClass="BoardCollectionViewController" customModule="Pomodoroban" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="fM7-DJ-Js5">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewLayout key="collectionViewLayout" id="pcZ-bG-b1z" customClass="RAReorderableLayout" customModule="Pomodoroban" customModuleProvider="target"/>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TicketCell" id="9Iz-3k-Tcm" customClass="TicketCollectionViewCell" customModule="Pomodoroban">
-                                <rect key="frame" x="0.0" y="64" width="134" height="36"/>
+                                <rect key="frame" x="0.0" y="0.0" width="134" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="134" height="36"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWC-qc-ZdG">
-                                            <rect key="frame" x="8" y="8" width="118" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="zk0-Gs-GLV"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <color key="backgroundColor" red="0.57121125890000002" green="0.83596061389999998" blue="0.67405924900000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.57121125890000002" green="0.83596061389999998" blue="0.67405924900000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="IWC-qc-ZdG" firstAttribute="centerX" secondItem="9Iz-3k-Tcm" secondAttribute="centerX" id="MZp-vd-wJM"/>
                                     <constraint firstItem="IWC-qc-ZdG" firstAttribute="leading" secondItem="9Iz-3k-Tcm" secondAttribute="leadingMargin" id="Mpe-bG-3TA"/>
@@ -153,32 +152,29 @@
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderTicketCell" id="lsj-YA-rxO" customClass="HeaderCollectionViewCell" customModule="Pomodoroban">
-                                <rect key="frame" x="155" y="64" width="134" height="36"/>
+                                <rect key="frame" x="241" y="0.0" width="134" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="134" height="36"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addicon" translatesAutoresizingMaskIntoConstraints="NO" id="TqV-KL-7eF">
-                                            <rect key="frame" x="94" y="1" width="35" height="35"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="35" id="bXL-BL-hOy"/>
                                                 <constraint firstAttribute="width" constant="35" id="n90-9W-tM6"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLc-OX-XeJ">
-                                            <rect key="frame" x="8" y="8" width="98" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="eNm-2g-knp"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="18"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.56000000000000005" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.56000000000000005" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="SLc-OX-XeJ" firstAttribute="centerY" secondItem="lsj-YA-rxO" secondAttribute="centerY" id="CD6-EZ-VxC"/>
                                     <constraint firstItem="SLc-OX-XeJ" firstAttribute="centerX" secondItem="lsj-YA-rxO" secondAttribute="centerX" id="Ft8-m2-Ns0"/>
@@ -218,11 +214,10 @@
         <scene sceneID="rmc-Kb-dVR">
             <objects>
                 <tabBarController id="7pI-cE-VQL" customClass="DetailTabBarController" customModule="Pomodoroban" customModuleProvider="target" sceneMemberID="viewController">
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Yki-hh-k2I">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="zXU-B0-fpX" kind="relationship" relationship="viewControllers" id="6pE-iD-PX3"/>
@@ -232,6 +227,65 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pyO-6C-c5O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1717" y="310"/>
+        </scene>
+        <!--POMODOROBAN-->
+        <scene sceneID="Uyy-x0-Vjj">
+            <objects>
+                <tableViewController id="lpa-3H-vWj" customClass="BoardTableViewController" customModule="Pomodoroban" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="XAM-3g-DbF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TicketTableViewCell" id="8QY-gx-r5u" customClass="TicketTableViewCell" customModule="Pomodoroban" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8QY-gx-r5u" id="snV-hf-C0U">
+                                    <frame key="frameInset" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qxx-Ys-h4t">
+                                            <frame key="frameInset" minX="8" minY="11" width="359" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="titleLabel" destination="Qxx-Ys-h4t" id="LIq-LS-azK"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="lpa-3H-vWj" id="YeG-7Y-ToK"/>
+                            <outlet property="delegate" destination="lpa-3H-vWj" id="0gk-3j-pNK"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="POMODOROBAN" id="pd0-F2-yTn">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="dUH-bx-5Kj"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="os8-I7-nLU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="208.80000000000001" y="-667.01649175412297"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="i9m-el-Ee5">
+            <objects>
+                <navigationController id="qvh-2M-BY9" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3jY-NP-dyk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="lpa-3H-vWj" kind="relationship" relationship="rootViewController" id="2EV-Op-Nrd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yme-44-pCC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-743" y="-667"/>
         </scene>
         <!--Pomodoro-->
         <scene sceneID="1Fo-2q-cem">
