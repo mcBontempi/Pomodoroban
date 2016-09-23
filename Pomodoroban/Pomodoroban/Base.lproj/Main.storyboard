@@ -244,14 +244,17 @@
                                     <frame key="frameInset" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qxx-Ys-h4t">
-                                            <frame key="frameInset" minX="8" minY="11" width="359" height="24"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qxx-Ys-h4t">
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Qxx-Ys-h4t" firstAttribute="trailing" secondItem="snV-hf-C0U" secondAttribute="trailingMargin" id="IMy-ne-GLc"/>
+                                        <constraint firstItem="Qxx-Ys-h4t" firstAttribute="centerY" secondItem="snV-hf-C0U" secondAttribute="centerY" id="Irs-km-1dT"/>
+                                        <constraint firstItem="Qxx-Ys-h4t" firstAttribute="leading" secondItem="snV-hf-C0U" secondAttribute="leadingMargin" id="N1n-by-6G0"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="titleLabel" destination="Qxx-Ys-h4t" id="LIq-LS-azK"/>

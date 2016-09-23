@@ -32,10 +32,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
  
     Ticket.removeAllEntities(self.managedObjectContext)
     
-    let ticket = Ticket.createInMoc(self.managedObjectContext)
+    var ticket = Ticket.createInMoc(self.managedObjectContext)
     ticket.name = "Create View For app"
     ticket.section = 0
-    ticket.row = 0
+    ticket.row = 1
+  
+    for section in 0...8 {
+        
+        ticket = Ticket.createInMoc(self.managedObjectContext)
+        ticket.name = "Add a new ticket"
+        ticket.section = Int32(section)
+        ticket.row = 0
+        
+    }
     
   try! self.managedObjectContext.save()
 

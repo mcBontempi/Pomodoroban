@@ -22,10 +22,8 @@ class BoardTableViewController: UITableViewController {
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if let sections = self.fetchedResultsController.sections {
-            return sections.count
-        }
-        return 0
+
+        return self.sectionTitles().count
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -45,29 +43,32 @@ class BoardTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if let sections = self.fetchedResultsController.sections {
+            let currentSection = sections[indexPath.section]
+            return !(currentSection.numberOfObjects-1 == indexPath.row)
+        }
+        
         return true
     }
     
-    
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 60
     }
 
-  //  override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-  //      return .None
-  //  }
+    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        
+        if let sections = self.fetchedResultsController.sections {
+            let currentSection = sections[indexPath.section]
+            return currentSection.numberOfObjects-1 == indexPath.row ?  .Insert :  .Delete
+        }
+       return .None
+    }
     
     
    // override func tableView(tableView: UITableView, shouldIndentWhileEditingRowAtIndexPath indexPath: NSIndexPath) -> Bool {
    //     return false
    // }
-    
-    override func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
-     
-     
-        return proposedDestinationIndexPath
-    }
-    
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let ticket = fetchedResultsController.objectAtIndexPath(indexPath) as? Ticket
         let cell = tableView.dequeueReusableCellWithIdentifier("TicketTableViewCell") as! TicketTableViewCell
@@ -76,7 +77,13 @@ class BoardTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return ["BACKLOG", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY", " DONE"][section]
+        return self.sectionTitles()[section]
+    }
+    
+    
+    
+    func sectionTitles() -> [String] {
+    return ["BACKLOG", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY", "DONE"]
     }
     
 }
