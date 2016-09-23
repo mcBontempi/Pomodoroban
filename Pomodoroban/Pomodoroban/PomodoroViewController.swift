@@ -1,165 +1,111 @@
-//
-//  PomodoroViewController.swift
-//  Pomodoroban
-//
-//  Created by Daren taylor on 29/01/2016.
-//  Copyright © 2016 LondonSwift. All rights reserved.
-//
-
 import UIKit
 import BEMAnalogClock
 import CoreData
 
-class PomodoroViewController: UIViewController {
- 
-  var ticket:Ticket!
-  var ticketWhenViewCreated:Ticket!
-  
-  @IBOutlet weak var saveButton: UIBarButtonItem!
-  
-  @IBOutlet weak var textField: UITextField!
-  
-  let moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-  
-  @IBAction func savePressed(sender: AnyObject) {
-    self.ticket.name = self.textField.text
-    
-    try! self.moc.save()
-    
-    self.dismissViewControllerAnimated(true) { () -> Void in
-    }
-  }
-  
-  @IBAction func cancelPressed(sender: AnyObject) {
-  }
-  
-  var timer:NSTimer?
-  var startInterval:NSTimeInterval?
-  
-  @IBOutlet weak var clock: BEMAnalogClockView!
-  
-  
-  @IBOutlet weak var actionButton: UIButton!
-  
-  @IBAction func actionButtonPressed(sender: AnyObject) {
-    self.actionButton.setTitle("Stop", forState: .Normal)
-    
-    self.startInterval = NSDate.timeIntervalSinceReferenceDate()
-    
-    
-  }
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    
-    self.title = self.ticket.name
-    self.textField.text = self.ticket.name
-    
-    self.timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(PomodoroViewController.fire), userInfo: nil, repeats: true)
-    
-    self.clock.stopRealTime()
-    
-    self.clock.hourHandAlpha = 0.0
-    self.clock.minuteHandWidth = 8
-    self.clock.secondHandWidth = 4
-    self.clock.secondHandColor = UIColor.whiteColor()
-    self.clock.minuteHandColor = UIColor.greenColor()
-    self.clock.faceBackgroundColor = UIColor.redColor()
-    
-    self.clock.enableDigit = true
-    self.clock.digitColor = UIColor.whiteColor()
-    
-    
-    
-    
-    
-    
-    self.clock.minutes = 0
-    self.clock.seconds = 0
-    
-    self.clock.updateTimeAnimated(true)
-    
-    
-    
-    
-    self.actionButton.layer.cornerRadius = self.actionButton.frame.size.width/2
-    self.actionButton.clipsToBounds = true
-    
-    self.actionButton.layer.borderColor = UIColor.whiteColor().CGColor
-    self.actionButton.layer.borderWidth = 1
-    
-    if self.textField.text == "" {
-      self.textField.becomeFirstResponder()
-    }
-  }
-  
-  
-  func copyTicketToTicketWhenViewCreated() {
-    self.ticketWhenViewCreated = Ticket()
-   self.ticketWhenViewCreated.name = self.ticket.name
-  }
-  
-  func hasTicketBeenModified() -> Bool {
-    
-    if self.ticketWhenViewCreated.name != self.ticket.name {
-      return true
-    }
-    
-    return false
-  }
-  
-  func fire() {
-    
-    if let startInterval = self.startInterval {
-      
-      let timeIntervalNow = NSDate.timeIntervalSinceReferenceDate()
-      
-      self.clock.seconds = Int(timeIntervalNow - startInterval)
-      
-      self.clock.updateTimeAnimated(true)
-    }
-  }
-  
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
-  }
-  
-  
-  /*
-  // MARK: - Navigation
-  
-  // In a storyboard-based application, you will often want to do a little preparation before navigation
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-  // Get the new view controller using segue.destinationViewController.
-  // Pass the selected object to the new view controller.
-  }
-  */
-  
+protocol PomodoroViewControllerDelegate {
+    func pomodoroViewControllerDelegateSave(pomodoroViewController:PomodoroViewController)
+    func pomodoroViewControllerDelegateCancal(pomodoroViewController:PomodoroViewController)
 }
 
-
-extension PomodoroViewController : UITextFieldDelegate
-{
-  func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+class PomodoroViewController: UIViewController {
     
-    let textFieldString = textField.text!
+    // vars
     
-    let newString = (textFieldString as NSString).stringByReplacingCharactersInRange(range, withString: string)
+    var delegate: PomodoroViewControllerDelegate!
+    var ticket:Ticket!
+    var timer:NSTimer?
+    var startInterval:NSTimeInterval?
     
+    // outlets
     
-    self.title = newString
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var clock: BEMAnalogClockView!
+    @IBOutlet weak var actionButton: UIButton!
     
-    self.ticket.name = newString
-    try! self.moc.save()
-    return true
-  }
-  
-  func textFieldShouldReturn(textField: UITextField) -> Bool {
+    // actions
     
-    self.dismissViewControllerAnimated(true) { () -> Void in
+    @IBAction func savePressed(sender: AnyObject) {
+        self.save()
     }
     
-    return true
-  }
+    @IBAction func cancelPressed(sender: AnyObject) {
+        self.delegate.pomodoroViewControllerDelegateCancal(self)
+    }
+    
+    @IBAction func actionButtonPressed(sender: AnyObject) {
+        self.actionButton.setTitle("Stop", forState: .Normal)
+        self.startInterval = NSDate.timeIntervalSinceReferenceDate()
+    }
+    
+    // overrides
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.textField.text = self.ticket.name
+        
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(PomodoroViewController.fire), userInfo: nil, repeats: true)
+        
+        self.clock.stopRealTime()
+        
+        self.clock.hourHandAlpha = 0.0
+        self.clock.minuteHandWidth = 8
+        self.clock.secondHandWidth = 4
+        self.clock.secondHandColor = UIColor.whiteColor()
+        self.clock.minuteHandColor = UIColor.greenColor()
+        self.clock.faceBackgroundColor = UIColor.redColor()
+        
+        self.clock.enableDigit = true
+        self.clock.digitColor = UIColor.whiteColor()
+        
+        self.clock.minutes = 0
+        self.clock.seconds = 0
+        
+        self.clock.updateTimeAnimated(true)
+        
+        self.actionButton.layer.cornerRadius = self.actionButton.frame.size.width/2
+        self.actionButton.clipsToBounds = true
+        
+        self.actionButton.layer.borderColor = UIColor.whiteColor().CGColor
+        self.actionButton.layer.borderWidth = 1
+        
+        if self.textField.text == "" {
+            self.textField.becomeFirstResponder()
+        }
+    }
+    
+    // general
+    
+    func fire() {
+        if let startInterval = self.startInterval {
+            let timeIntervalNow = NSDate.timeIntervalSinceReferenceDate()
+            self.clock.seconds = Int(timeIntervalNow - startInterval)
+            self.clock.updateTimeAnimated(true)
+        }
+    }
+    
+    func save() {
+        self.ticket.name = self.textField.text
+        
+        if self.textField.text != "" {
+            self.delegate.pomodoroViewControllerDelegateSave(self)
+        }
+        else {
+            let alert = UIAlertController(title: "Oops", message: "Please Enter a Name for the Ticket", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
+            
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+}
+
+// extensions
+
+extension PomodoroViewController : UITextFieldDelegate {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.save()
+        return true
+    }
 }
 

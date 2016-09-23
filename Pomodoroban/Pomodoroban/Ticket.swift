@@ -98,4 +98,32 @@ class Ticket: NSManagedObject {
     
   }
   
+    
+    class func removeAllAddTickets(moc:NSManagedObjectContext) {
+        let request = NSFetchRequest(entityName: Ticket.entityName)
+        
+        let objects = try! moc.executeFetchRequest(request) as! [Ticket]
+        
+        for object in objects {
+          
+            if object.name == "" {
+            moc.deleteObject(object)
+        }
+        }
+    }
+    
+    class func createAllAddTickets(moc:NSManagedObjectContext) {
+        var ticket: Ticket!
+        
+        for section in 0...8 {
+            
+            ticket = Ticket.createInMoc(moc)
+            ticket.name = ""
+            ticket.section = Int32(section)
+            ticket.row = 0
+            
+        }
+    }
+
+    
 }
