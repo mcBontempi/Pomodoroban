@@ -29,7 +29,7 @@
         <!--Pomodoro-->
         <scene sceneID="0ww-8i-p30">
             <objects>
-                <viewController title="Pomodoro" id="R0u-Sl-X0A" customClass="PomodoroViewController" customModule="Pomodoroban" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PomodoroViewController" title="Pomodoro" id="R0u-Sl-X0A" customClass="PomodoroViewController" customModule="Pomodoroban" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9Rd-V2-rBJ"/>
                         <viewControllerLayoutGuide type="bottom" id="aoW-us-oxe"/>

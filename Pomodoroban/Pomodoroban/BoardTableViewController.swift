@@ -19,6 +19,12 @@ class BoardTableViewController: UITableViewController {
         self.tableView.editing = true
     }
     @IBAction func addPressed(sender: AnyObject) {
+        
+        
+        
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("PomodoroViewController") as! PomodoroViewController
+        
+        
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
