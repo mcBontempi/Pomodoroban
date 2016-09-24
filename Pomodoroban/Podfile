@@ -1,2 +1,6 @@
 use_frameworks!
+
+target "Pomodoroban" do
 pod 'MZTimerLabel'
+end
+
