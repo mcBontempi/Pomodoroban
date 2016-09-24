@@ -285,7 +285,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F7AF33C4E5C12686FA3D012BD4EECE18 /* MZTimerLabel.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -417,7 +417,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F7AF33C4E5C12686FA3D012BD4EECE18 /* MZTimerLabel.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
