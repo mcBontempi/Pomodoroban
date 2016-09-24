@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		525D3A61C9AA80709030382A /* Pods_Pomodoroban.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5D66F42967D2FF93EE8280 /* Pods_Pomodoroban.framework */; };
-		CEED4B03B80165D5FAF8E393 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A70D8BAA4B5766D09D5F2FDE /* Pods.framework */; };
 		D61085351D95ED3F001A203A /* CoreDataServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61085341D95ED3F001A203A /* CoreDataServices.swift */; };
 		D61085371D960601001A203A /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61085361D960601001A203A /* TimerViewController.swift */; };
 		D67FAECF1D95235B0085BF2D /* BoardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67FAECE1D95235B0085BF2D /* BoardTableViewController.swift */; };
@@ -24,11 +22,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		21014F24DDC56D669813284F /* Pods-Pomodoroban.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pomodoroban.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pomodoroban/Pods-Pomodoroban.release.xcconfig"; sourceTree = "<group>"; };
-		3D5D66F42967D2FF93EE8280 /* Pods_Pomodoroban.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pomodoroban.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5E8D60214BBB2128FBE650CB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		A70D8BAA4B5766D09D5F2FDE /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB6B9D621C60C90CDB5B602F /* Pods-Pomodoroban.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pomodoroban.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pomodoroban/Pods-Pomodoroban.debug.xcconfig"; sourceTree = "<group>"; };
 		D61085341D95ED3F001A203A /* CoreDataServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataServices.swift; sourceTree = "<group>"; };
 		D61085361D960601001A203A /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		D67FAECE1D95235B0085BF2D /* BoardTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardTableViewController.swift; sourceTree = "<group>"; };
@@ -44,7 +37,6 @@
 		FD5BE9F61C5BD21100535A78 /* PomodoroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PomodoroViewController.swift; sourceTree = "<group>"; };
 		FD5BEA011C5CF83100535A78 /* Ticket+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ticket+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FD5BEA021C5CF83100535A78 /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
-		FE71FCE00F43FC960F9FB28E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,8 +44,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEED4B03B80165D5FAF8E393 /* Pods.framework in Frameworks */,
-				525D3A61C9AA80709030382A /* Pods_Pomodoroban.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,21 +53,8 @@
 		2EEBA23431972463A46873AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A70D8BAA4B5766D09D5F2FDE /* Pods.framework */,
-				3D5D66F42967D2FF93EE8280 /* Pods_Pomodoroban.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		433E2D15170648381BBD71D2 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				5E8D60214BBB2128FBE650CB /* Pods.debug.xcconfig */,
-				FE71FCE00F43FC960F9FB28E /* Pods.release.xcconfig */,
-				AB6B9D621C60C90CDB5B602F /* Pods-Pomodoroban.debug.xcconfig */,
-				21014F24DDC56D669813284F /* Pods-Pomodoroban.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		FD5BE9D51C5BB5CA00535A78 = {
@@ -85,7 +62,6 @@
 			children = (
 				FD5BE9E01C5BB5CA00535A78 /* Pomodoroban */,
 				FD5BE9DF1C5BB5CA00535A78 /* Products */,
-				433E2D15170648381BBD71D2 /* Pods */,
 				2EEBA23431972463A46873AE /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -150,12 +126,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FD5BE9F31C5BB5CA00535A78 /* Build configuration list for PBXNativeTarget "Pomodoroban" */;
 			buildPhases = (
-				47965FA16FA6C2C352E5DF58 /* [CP] Check Pods Manifest.lock */,
 				FD5BE9DA1C5BB5CA00535A78 /* Sources */,
 				FD5BE9DB1C5BB5CA00535A78 /* Frameworks */,
 				FD5BE9DC1C5BB5CA00535A78 /* Resources */,
-				6BEA5FC937B9504B9056CDED /* [CP] Embed Pods Frameworks */,
-				36EDBE0BE225ABCE5FA561C6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -214,54 +187,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		36EDBE0BE225ABCE5FA561C6 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pomodoroban/Pods-Pomodoroban-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		47965FA16FA6C2C352E5DF58 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		6BEA5FC937B9504B9056CDED /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pomodoroban/Pods-Pomodoroban-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FD5BE9DA1C5BB5CA00535A78 /* Sources */ = {
@@ -392,7 +317,6 @@
 		};
 		FD5BE9F41C5BB5CA00535A78 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AB6B9D621C60C90CDB5B602F /* Pods-Pomodoroban.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -411,7 +335,6 @@
 		};
 		FD5BE9F51C5BB5CA00535A78 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 21014F24DDC56D669813284F /* Pods-Pomodoroban.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
