@@ -84,8 +84,8 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods/BEMAnalogClock.framework"
+  install_framework "Pods/MZTimerLabel.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods/BEMAnalogClock.framework"
+  install_framework "Pods/MZTimerLabel.framework"
 fi

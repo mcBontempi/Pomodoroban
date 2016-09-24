@@ -3,17 +3,26 @@ import CoreData
 
 class BoardTableViewController: UITableViewController {
     
+    // vars
+    
     let moc = CoreDataServices.sharedInstance.moc
-    
     var childMoc:NSManagedObjectContext!
-    
     lazy var fetchedResultsController: NSFetchedResultsController = {
         let tempFetchedResultsController = NSFetchedResultsController( fetchRequest: Ticket.fetchRequestAll(), managedObjectContext: self.moc, sectionNameKeyPath: "section", cacheName: nil)
         tempFetchedResultsController.delegate = self
         return tempFetchedResultsController
     }()
     
+    // outlets
+    
     @IBOutlet weak var planWorkButton: UIBarButtonItem!
+    
+    // actions
+    
+    @IBAction func addPressed(sender: AnyObject) {
+        self.addInSection(0)
+    }
+    
     @IBAction func PlanWordPressed(sender: AnyObject) {
         
         if  self.tableView.editing == false {
@@ -26,23 +35,17 @@ class BoardTableViewController: UITableViewController {
         }
     }
     
+    // general
     
     func reloadAddCells() {
         self.tableView.beginUpdates()
-        
         var indexPaths = [NSIndexPath]()
-        
         for sectionIndex in 0 ... 8 {
-            
             indexPaths.append(  NSIndexPath(forRow:self.tableView.numberOfRowsInSection(sectionIndex)-1, inSection:  sectionIndex))
-            
         }
-        
         self.tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
-        
         self.tableView.endUpdates()
     }
-    
     
     func setWorkMode() {
         self.tableView.setEditing(false, animated: true)
@@ -50,7 +53,7 @@ class BoardTableViewController: UITableViewController {
         
         self.planWorkButton.title = "Plan"
         
-        UIView.animateWithDuration(1.0, animations: {
+        UIView.animateWithDuration(0.3, animations: {
             self.navigationController?.navigationBar.backgroundColor = UIColor.whiteColor()
         })
     }
@@ -61,7 +64,7 @@ class BoardTableViewController: UITableViewController {
         self.planWorkButton.title = "Work"
         
         
-        UIView.animateWithDuration(1.0, animations: {
+        UIView.animateWithDuration(0.3, animations: {
             self.navigationController?.navigationBar.backgroundColor = UIColor.redColor()
         })
         
@@ -73,12 +76,8 @@ class BoardTableViewController: UITableViewController {
         
         self.tableView.allowsSelectionDuringEditing = true
         self.setWorkMode()
-        
-        
     }
-    @IBAction func addPressed(sender: AnyObject) {
-        //   let vc = self.storyboard?.instantiateViewControllerWithIdentifier("PomodoroViewController") as! PomodoroViewController
-    }
+    
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
@@ -96,9 +95,7 @@ class BoardTableViewController: UITableViewController {
     
     
     override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-        
         let ticket = fetchedResultsController.objectAtIndexPath(sourceIndexPath) as? Ticket
-        
         Ticket.insertTicket(ticket!, toIndexPath: destinationIndexPath, moc:self.moc)
     }
     
@@ -106,17 +103,12 @@ class BoardTableViewController: UITableViewController {
         return !self.isAddAtIndexPath(indexPath)
     }
     
-    
-    
-    
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return self.isAddAtIndexPath(indexPath) ? ( self.tableView.editing ? 30 : 0 ) :  90
+        return self.isAddAtIndexPath(indexPath) ? ( self.tableView.editing ? 30 : 0 ) :  50
     }
     
     override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-        
         return self.isAddAtIndexPath(indexPath) == true ?  .Insert :  .Delete
-        
     }
     
     override func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
@@ -124,11 +116,13 @@ class BoardTableViewController: UITableViewController {
         var realProposed = proposedDestinationIndexPath
         
         if proposedDestinationIndexPath.section == sourceIndexPath.section {
-            realProposed = NSIndexPath(forRow: proposedDestinationIndexPath.row-1, inSection: proposedDestinationIndexPath.section)
+            realProposed = NSIndexPath(forRow: proposedDestinationIndexPath.row, inSection: proposedDestinationIndexPath.section)
         }
-        
-        
-        return self.isAddAtIndexPath(proposedDestinationIndexPath) ? realProposed : sourceIndexPath
+        else {
+            realProposed = NSIndexPath(forRow: proposedDestinationIndexPath.row-1, inSection: proposedDestinationIndexPath.section)
+            
+        }
+        return !self.isAddAtIndexPath(realProposed) ? proposedDestinationIndexPath : sourceIndexPath
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -155,47 +149,87 @@ class BoardTableViewController: UITableViewController {
         return self.sectionTitles()[section]
     }
     
+    func spareRowForSection(section: Int) -> Int{
+        var row:Int = 0
+        if let sections = self.fetchedResultsController.sections {
+            let currentSection = sections[section]
+            
+            let rowCountForSection = currentSection.objects!.count
+            
+            if rowCountForSection == 1 {
+                row = 0
+            }
+            else {
+                
+                if let objects = currentSection.objects as? [Ticket]{
+                    
+                    let ticket = objects[rowCountForSection - 2]
+                    row = Int(ticket.row) + 1
+                }
+            }
+        }
+        
+        return Int(row)
+        
+    }
+    
+    func addInSection(section:Int) {
+        let nc = self.storyboard?.instantiateViewControllerWithIdentifier("PomodoroNavigationViewController") as! UINavigationController
+        let vc = nc.viewControllers[0] as! PomodoroViewController
+        
+        let row = self.spareRowForSection(section)
+        
+        self.childMoc = CoreDataServices.sharedInstance.childMoc()
+        vc.ticket = Ticket.createInMoc(self.childMoc)
+        vc.ticket.name = ""
+        vc.ticket.row = Int32(row)
+        vc.ticket.section = Int32(section)
+        
+        vc.delegate = self
+        
+        self.presentViewController(nc, animated: true) {}
+        
+    }
+    
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Insert {
-            
-            let nc = self.storyboard?.instantiateViewControllerWithIdentifier("PomodoroNavigationViewController") as! UINavigationController
-            let vc = nc.viewControllers[0] as! PomodoroViewController
-            
-            self.childMoc = CoreDataServices.sharedInstance.childMoc()
-            vc.ticket = Ticket.createInMoc(self.childMoc)
-            vc.ticket.name = "DDT"
-            vc.ticket.row = Int32(indexPath.row+3)
-            vc.ticket.section = Int32(indexPath.section)
-            
-            vc.delegate = self
-            
-            self.presentViewController(nc, animated: true) {}
-            
+            self.addInSection(indexPath.section)
         }
     }
     
     func saveChildMoc() {
+        
         if self.childMoc != nil {
             self.moc.performBlockAndWait({
                 try! self.childMoc.save()
                 self.childMoc = nil
                 
-                
-                self.moc.performBlockAndWait({ 
+                self.moc.performBlockAndWait({
                     try! self.moc.save()
                 })
             })
         }
     }
     
-    
-    
-    
-    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        
+        if indexPath.row < self.tableView.numberOfRowsInSection(indexPath.section)-1 {
+            
+            let nc = self.storyboard?.instantiateViewControllerWithIdentifier("PomodoroNavigationViewController") as! UINavigationController
+            let vc = nc.viewControllers[0] as! PomodoroViewController
+            
+            
+            self.childMoc = CoreDataServices.sharedInstance.childMoc()
+            vc.ticket = Ticket.ticketForTicket(self.fetchedResultsController.objectAtIndexPath(indexPath) as! Ticket, moc:self.childMoc)
+            
+            vc.delegate = self
+            
+            self.presentViewController(nc, animated: true) {}
+        }
+        else {
+            self.addInSection(indexPath.section)
+        }
     }
     
     
@@ -210,14 +244,7 @@ class BoardTableViewController: UITableViewController {
 extension BoardTableViewController : PomodoroViewControllerDelegate {
     func pomodoroViewControllerDelegateSave(pomodoroViewController: PomodoroViewController) {
         self.dismissViewControllerAnimated(true) {
-            //           self.tableView.beginUpdates()
-            //       Ticket.removeAllAddTickets(self.moc)
-            
-            
-            //     Ticket.createAllAddTickets(self.moc)
             self.saveChildMoc()
-            //         self.tableView.endUpdates()
-            
         }
         
     }
@@ -227,74 +254,22 @@ extension BoardTableViewController : PomodoroViewControllerDelegate {
             
         }
     }
+    
+    func pomodoroViewControllerDelegateDone(pomodoroViewController: PomodoroViewController, ticket:Ticket) {
+        self.dismissViewControllerAnimated(true) {
+            ticket.row = Int32( self.spareRowForSection(Int( ticket.section)))
+            ticket.section = 8
+            self.saveChildMoc()
+        }
+    }
+    
 }
 
 extension BoardTableViewController : NSFetchedResultsControllerDelegate {
     
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
-        self.tableView.beginUpdates()
-    }
-    
-    func controller(controller: NSFetchedResultsController,
-                    didChangeObject anObject: AnyObject,
-                                    atIndexPath indexPath: NSIndexPath?,
-                                                forChangeType type: NSFetchedResultsChangeType,
-                                                              newIndexPath: NSIndexPath?)
-    {
-        switch(type) {
-            
-        case .Insert:
-            if let newIndexPath = newIndexPath {
-                tableView.insertRowsAtIndexPaths([newIndexPath],
-                                                 withRowAnimation:UITableViewRowAnimation.Fade)
-            }
-            
-        case .Delete:
-            if let indexPath = indexPath {
-                tableView.deleteRowsAtIndexPaths([indexPath],
-                                                 withRowAnimation: UITableViewRowAnimation.Fade)
-            }
-            
-        case .Update:
-            if let indexPath = indexPath {
-                tableView.reloadRowsAtIndexPaths([indexPath],
-                                                 withRowAnimation: UITableViewRowAnimation.Fade)
-            }
-            
-        case .Move:
-            if let indexPath = indexPath {
-                if let newIndexPath = newIndexPath {
-                    tableView.deleteRowsAtIndexPaths([indexPath],
-                                                     withRowAnimation: UITableViewRowAnimation.Fade)
-                    tableView.insertRowsAtIndexPaths([newIndexPath],
-                                                     withRowAnimation: UITableViewRowAnimation.Fade)
-                }
-            }
-        }
-    }
-    
-    func controller(controller: NSFetchedResultsController,
-                    didChangeSection sectionInfo: NSFetchedResultsSectionInfo,
-                                     atIndex sectionIndex: Int,
-                                             forChangeType type: NSFetchedResultsChangeType)
-    {
-        switch(type) {
-            
-        case .Insert:
-            tableView.insertSections(NSIndexSet(index: sectionIndex),
-                                     withRowAnimation: UITableViewRowAnimation.Fade)
-            
-        case .Delete:
-            tableView.deleteSections(NSIndexSet(index: sectionIndex),
-                                     withRowAnimation: UITableViewRowAnimation.Fade)
-            
-        default:
-            break
-        }
-    }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        tableView.endUpdates()
+        tableView.reloadData()
     }
 }
 

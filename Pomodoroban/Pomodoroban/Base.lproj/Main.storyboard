@@ -19,24 +19,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YPf-2J-dZ7" customClass="BEMAnalogClockView">
-                                <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="240" id="Bsr-oA-C1d"/>
-                                    <constraint firstAttribute="width" constant="240" id="fiR-Zc-8iW"/>
-                                </constraints>
-                            </view>
-                            <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MLw-ah-ldB">
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="ERM-Mp-nHa"/>
-                                    <constraint firstAttribute="height" constant="40" id="Fgu-Mi-is4"/>
-                                </constraints>
-                                <state key="normal" title="Start"/>
-                                <connections>
-                                    <action selector="actionButtonPressed:" destination="R0u-Sl-X0A" eventType="touchUpInside" id="Wbc-vR-rar"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tzx-tm-laE">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -44,23 +26,25 @@
                                     <outlet property="delegate" destination="R0u-Sl-X0A" id="pVj-MF-I6r"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1yC-fI-S4v">
+                                <frame key="frameInset" minX="22" minY="144" width="330" height="144"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.2784313725" green="0.78039215689999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="KohinoorDevanagari-Regular" family="Kohinoor Devanagari" pointSize="50"/>
+                                <state key="normal" title="Lets Go">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="x3K-CM-2WU" kind="presentation" identifier="timerSegue" id="Qyq-aF-NhK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="MLw-ah-ldB" firstAttribute="centerX" secondItem="YPf-2J-dZ7" secondAttribute="centerX" id="387-xJ-lYE"/>
-                            <constraint firstItem="YPf-2J-dZ7" firstAttribute="centerX" secondItem="6kP-t3-mVl" secondAttribute="centerX" id="5al-a3-x8e"/>
-                            <constraint firstItem="MLw-ah-ldB" firstAttribute="top" secondItem="YPf-2J-dZ7" secondAttribute="bottom" constant="8" id="ESo-pG-wTZ"/>
-                            <constraint firstItem="YPf-2J-dZ7" firstAttribute="centerY" secondItem="6kP-t3-mVl" secondAttribute="centerY" id="Ius-nO-G6O"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Tzx-tm-laE" secondAttribute="trailing" constant="20" id="bAE-aH-AOc"/>
-                            <constraint firstItem="MLw-ah-ldB" firstAttribute="centerY" secondItem="YPf-2J-dZ7" secondAttribute="centerY" id="ged-in-k53"/>
                             <constraint firstItem="Tzx-tm-laE" firstAttribute="leading" secondItem="6kP-t3-mVl" secondAttribute="leadingMargin" constant="20" id="qrr-zM-2Pt"/>
                             <constraint firstItem="Tzx-tm-laE" firstAttribute="top" secondItem="9Rd-V2-rBJ" secondAttribute="bottom" constant="16" id="wXl-vY-cDV"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="ESo-pG-wTZ"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="4WU-r2-Rs9">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="cTt-Qd-6bw">
@@ -75,8 +59,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="actionButton" destination="MLw-ah-ldB" id="Slo-22-2RI"/>
-                        <outlet property="clock" destination="YPf-2J-dZ7" id="Vb2-A5-Oxf"/>
                         <outlet property="saveButton" destination="WW0-t6-MsV" id="ejm-db-SgG"/>
                         <outlet property="textField" destination="Tzx-tm-laE" id="8bW-BM-rUf"/>
                     </connections>
@@ -84,6 +66,80 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xmg-Al-zlh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2828" y="-584.25787106446785"/>
+        </scene>
+        <!--Timer View Controller-->
+        <scene sceneID="7N6-LM-H0b">
+            <objects>
+                <viewController id="x3K-CM-2WU" customClass="TimerViewController" customModule="Pomodoroban" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="whV-Ze-cZc"/>
+                        <viewControllerLayoutGuide type="bottom" id="kbq-8O-Jxf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dTS-8B-bq9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNy-Z1-6Ag" customClass="MZTimerLabel">
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="163" id="ooR-yl-tNc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="65"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K6m-yO-Y7h">
+                                <color key="backgroundColor" red="0.70980392160000005" green="0.70196078429999997" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="QOo-bU-qfw"/>
+                                    <constraint firstAttribute="width" constant="150" id="eqf-Gz-kBf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="40"/>
+                                <state key="normal" title="Quit">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="quitPressed:" destination="x3K-CM-2WU" eventType="touchUpInside" id="UIU-SB-EK6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nf9-3i-yZ4">
+                                <color key="backgroundColor" red="0.70980392160000005" green="0.70196078429999997" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="Gya-ku-gpx"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="Yc5-bV-pbq"/>
+                                    <constraint firstAttribute="height" constant="150" id="ZXz-u6-dIu"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="eu0-Rg-snl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="40"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="donePressed:" destination="x3K-CM-2WU" eventType="touchUpInside" id="fML-Ia-qrn"/>
+                                    <action selector="quitPressed:" destination="x3K-CM-2WU" eventType="touchUpInside" id="9TE-D6-dBJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="nf9-3i-yZ4" firstAttribute="centerX" secondItem="dTS-8B-bq9" secondAttribute="centerX" id="DL4-5E-efU"/>
+                            <constraint firstItem="aNy-Z1-6Ag" firstAttribute="top" secondItem="K6m-yO-Y7h" secondAttribute="bottom" constant="50" id="Jdb-D9-c2V"/>
+                            <constraint firstItem="aNy-Z1-6Ag" firstAttribute="trailing" secondItem="dTS-8B-bq9" secondAttribute="trailingMargin" id="LTN-Av-yj8"/>
+                            <constraint firstItem="K6m-yO-Y7h" firstAttribute="centerX" secondItem="dTS-8B-bq9" secondAttribute="centerX" id="b3g-ZJ-3tZ"/>
+                            <constraint firstItem="nf9-3i-yZ4" firstAttribute="top" secondItem="aNy-Z1-6Ag" secondAttribute="bottom" constant="34" id="iYk-FR-vWn"/>
+                            <constraint firstItem="aNy-Z1-6Ag" firstAttribute="centerY" secondItem="dTS-8B-bq9" secondAttribute="centerY" id="pGJ-eF-uza"/>
+                            <constraint firstItem="aNy-Z1-6Ag" firstAttribute="leading" secondItem="dTS-8B-bq9" secondAttribute="leadingMargin" id="rrX-1X-QBK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="doneButton" destination="nf9-3i-yZ4" id="Dhb-D8-fcq"/>
+                        <outlet property="quitButton" destination="K6m-yO-Y7h" id="pCW-rv-cZw"/>
+                        <outlet property="timerLabel" destination="aNy-Z1-6Ag" id="2zc-5b-Anl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yO3-gj-bog" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3941.5999999999999" y="-578.86056971514245"/>
         </scene>
         <!--POMODOROBAN - Work Mode-->
         <scene sceneID="Uyy-x0-Vjj">
@@ -102,8 +158,8 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qxx-Ys-h4t">
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="27"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>

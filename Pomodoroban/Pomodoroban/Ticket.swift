@@ -42,6 +42,10 @@ class Ticket: NSManagedObject {
   }
   
   
+    class func ticketForTicket(ticket:Ticket, moc:NSManagedObjectContext) -> Ticket {
+        return moc.objectWithID(ticket.objectID) as! Ticket
+    }
+    
   class func removeAllEntities(moc: NSManagedObjectContext) {
     
     let request = NSFetchRequest(entityName: Ticket.entityName)
@@ -129,11 +133,13 @@ class Ticket: NSManagedObject {
         var ticket: Ticket!
         
         for section in 0...8 {
+      
+            
             
             ticket = Ticket.createInMoc(moc)
             ticket.name = ""
             ticket.section = Int32(section)
-            ticket.row = 0
+            ticket.row = 999999
             
         }
     }

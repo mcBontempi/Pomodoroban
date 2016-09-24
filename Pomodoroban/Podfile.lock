@@ -1,17 +1,10 @@
 PODS:
-  - BEMAnalogClock (1.4)
-  - Crashlytics (3.6.0):
-    - Fabric (~> 1.6.3)
-  - Fabric (1.6.4)
+  - MZTimerLabel (0.5.4)
 
 DEPENDENCIES:
-  - BEMAnalogClock
-  - Crashlytics
-  - Fabric
+  - MZTimerLabel
 
 SPEC CHECKSUMS:
-  BEMAnalogClock: 88786eba7763d63abd5a9956c2d1106f30c7f251
-  Crashlytics: e4e8d02914f2608fbc7bf42b1a7af838b0db67a2
-  Fabric: ed41fd62173c6bdea24ab02c9d7707161eabb750
+  MZTimerLabel: cd9bfb9304540ef2a9e163384fca9c978f0dbf83
 
 COCOAPODS: 0.39.0

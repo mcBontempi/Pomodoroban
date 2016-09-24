@@ -22,10 +22,10 @@ class TicketTableViewCell: UITableViewCell {
             self.showsReorderControl = true
             
             if !self.isAddCell {
-            self.contentView.layer.cornerRadius = 4
+            self.contentView.layer.cornerRadius = 15
             self.contentView.clipsToBounds = true
             self.contentView.layer.borderColor = UIColor.lightGrayColor().CGColor
-            self.contentView.layer.borderWidth = 2
+            self.contentView.layer.borderWidth = 6
             self.contentView.layer.backgroundColor = UIColor.redColor().CGColor
             
             }
@@ -36,6 +36,8 @@ class TicketTableViewCell: UITableViewCell {
         }
         
     }
+    
+    
     
     
     

@@ -1,2 +1,2 @@
 use_frameworks!
-pod 'BEMAnalogClock'
+pod 'MZTimerLabel'

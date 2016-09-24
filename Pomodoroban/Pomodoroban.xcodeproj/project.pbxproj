@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CEED4B03B80165D5FAF8E393 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A70D8BAA4B5766D09D5F2FDE /* Pods.framework */; };
-		D61085331D957442001A203A /* TAFetchedResultsController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61085321D957442001A203A /* TAFetchedResultsController.m */; };
 		D61085351D95ED3F001A203A /* CoreDataServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61085341D95ED3F001A203A /* CoreDataServices.swift */; };
+		D61085371D960601001A203A /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61085361D960601001A203A /* TimerViewController.swift */; };
 		D67FAECF1D95235B0085BF2D /* BoardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67FAECE1D95235B0085BF2D /* BoardTableViewController.swift */; };
 		D67FAED11D952B1C0085BF2D /* TicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67FAED01D952B1C0085BF2D /* TicketTableViewCell.swift */; };
 		FD5BE9E21C5BB5CA00535A78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5BE9E11C5BB5CA00535A78 /* AppDelegate.swift */; };
@@ -20,15 +20,13 @@
 		FD5BE9F71C5BD21100535A78 /* PomodoroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5BE9F61C5BD21100535A78 /* PomodoroViewController.swift */; };
 		FD5BEA031C5CF83100535A78 /* Ticket+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5BEA011C5CF83100535A78 /* Ticket+CoreDataProperties.swift */; };
 		FD5BEA041C5CF83100535A78 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5BEA021C5CF83100535A78 /* Ticket.swift */; };
-		FDA652871C61D82F00D30BFB /* RAReorderableLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA652861C61D82F00D30BFB /* RAReorderableLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5E8D60214BBB2128FBE650CB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A70D8BAA4B5766D09D5F2FDE /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D61085311D957442001A203A /* TAFetchedResultsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAFetchedResultsController.h; sourceTree = "<group>"; };
-		D61085321D957442001A203A /* TAFetchedResultsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAFetchedResultsController.m; sourceTree = "<group>"; };
 		D61085341D95ED3F001A203A /* CoreDataServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataServices.swift; sourceTree = "<group>"; };
+		D61085361D960601001A203A /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		D67FAECE1D95235B0085BF2D /* BoardTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardTableViewController.swift; sourceTree = "<group>"; };
 		D67FAED01D952B1C0085BF2D /* TicketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewCell.swift; sourceTree = "<group>"; };
 		D67FAED21D953B980085BF2D /* Pomodoroban-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pomodoroban-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -42,7 +40,6 @@
 		FD5BE9F61C5BD21100535A78 /* PomodoroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PomodoroViewController.swift; sourceTree = "<group>"; };
 		FD5BEA011C5CF83100535A78 /* Ticket+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ticket+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FD5BEA021C5CF83100535A78 /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
-		FDA652861C61D82F00D30BFB /* RAReorderableLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAReorderableLayout.swift; sourceTree = "<group>"; };
 		FE71FCE00F43FC960F9FB28E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,6 +117,7 @@
 				FD5BE9F61C5BD21100535A78 /* PomodoroViewController.swift */,
 				D67FAECE1D95235B0085BF2D /* BoardTableViewController.swift */,
 				D67FAED01D952B1C0085BF2D /* TicketTableViewCell.swift */,
+				D61085361D960601001A203A /* TimerViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -128,9 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				D61085341D95ED3F001A203A /* CoreDataServices.swift */,
-				D61085311D957442001A203A /* TAFetchedResultsController.h */,
-				D61085321D957442001A203A /* TAFetchedResultsController.m */,
-				FDA652861C61D82F00D30BFB /* RAReorderableLayout.swift */,
 				FD5BE9E11C5BB5CA00535A78 /* AppDelegate.swift */,
 				FD5BE9EB1C5BB5CA00535A78 /* Assets.xcassets */,
 				FD5BE9F01C5BB5CA00535A78 /* Info.plist */,
@@ -153,7 +148,6 @@
 				FD5BE9DC1C5BB5CA00535A78 /* Resources */,
 				6BEA5FC937B9504B9056CDED /* Embed Pods Frameworks */,
 				36EDBE0BE225ABCE5FA561C6 /* Copy Pods Resources */,
-				FD5BE9F81C5BD91C00535A78 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -258,19 +252,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FD5BE9F81C5BD91C00535A78 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" 3ef96aea5c3fc3bce538d64de1b929e339cf407f 1280a7ecf875ed15aa7be8f93a3ffa0387bdf2b0dbfc4848097db199ccbd51df";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -282,11 +263,10 @@
 				D67FAED11D952B1C0085BF2D /* TicketTableViewCell.swift in Sources */,
 				FD5BEA041C5CF83100535A78 /* Ticket.swift in Sources */,
 				FD5BE9F71C5BD21100535A78 /* PomodoroViewController.swift in Sources */,
-				FDA652871C61D82F00D30BFB /* RAReorderableLayout.swift in Sources */,
 				D67FAECF1D95235B0085BF2D /* BoardTableViewController.swift in Sources */,
-				D61085331D957442001A203A /* TAFetchedResultsController.m in Sources */,
 				FD5BEA031C5CF83100535A78 /* Ticket+CoreDataProperties.swift in Sources */,
 				D61085351D95ED3F001A203A /* CoreDataServices.swift in Sources */,
+				D61085371D960601001A203A /* TimerViewController.swift in Sources */,
 				FD5BE9E21C5BB5CA00535A78 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
