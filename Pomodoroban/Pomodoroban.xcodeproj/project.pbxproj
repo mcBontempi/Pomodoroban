@@ -170,7 +170,6 @@
 				TargetAttributes = {
 					FD5BE9DD1C5BB5CA00535A78 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 3U786KR73N;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
@@ -390,7 +389,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 3U786KR73N;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Pomodoroban/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.LondonSwift.Pomodoroban;
@@ -407,9 +406,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 3U786KR73N;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Pomodoroban/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.LondonSwift.Pomodoroban;
