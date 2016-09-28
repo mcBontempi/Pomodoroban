@@ -17,16 +17,16 @@ class TicketTableViewCell: UITableViewCell {
     var ticket: Ticket? {
         didSet {
             self.titleLabel.text = ticket!.name
-            
-            
+            self.titleLabel.textColor = UIColor.darkGrayColor()
+          
+          
             self.showsReorderControl = true
             
             if !self.isAddCell {
             self.contentView.layer.cornerRadius = 15
             self.contentView.clipsToBounds = true
-            self.contentView.layer.borderColor = UIColor.lightGrayColor().CGColor
+            self.contentView.layer.borderColor = UIColor.redColor().CGColor
             self.contentView.layer.borderWidth = 6
-            self.contentView.layer.backgroundColor = UIColor.redColor().CGColor
             
             }
             else {
