@@ -16,6 +16,12 @@ protocol TimerViewControllerDelegate {
 
 class TimerViewController: UIViewController {
     
+    var pomodoro:[Ticket]!
+    var pomodoroLength:Int!
+    var shortBreakLength:Int!
+    var shortBreakCount:Int!
+    var longBreakLength:Int!
+    
     @IBOutlet weak var quitButton: UIButton!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var timerLabel: MZTimerLabel!
@@ -26,7 +32,7 @@ class TimerViewController: UIViewController {
         super.viewDidLoad()
     
         self.timerLabel.timerType = MZTimerLabelTypeTimer
-        timerLabel.setCountDownTime(25*60)
+        timerLabel.setCountDownTime(Double(self.pomodoroLength) * 60)
         timerLabel.start()
         
         self.quitButton.layer.cornerRadius = 75
