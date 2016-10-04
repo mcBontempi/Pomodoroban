@@ -26,18 +26,6 @@
                                     <outlet property="delegate" destination="R0u-Sl-X0A" id="pVj-MF-I6r"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1yC-fI-S4v">
-                                <frame key="frameInset" minX="22" minY="144" width="330" height="144"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.2784313725" green="0.78039215689999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="KohinoorDevanagari-Regular" family="Kohinoor Devanagari" pointSize="50"/>
-                                <state key="normal" title="Lets Go">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="x3K-CM-2WU" kind="presentation" identifier="timerSegue" id="Qyq-aF-NhK"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -154,7 +142,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8QY-gx-r5u" id="snV-hf-C0U">
-                                    <frame key="frameInset" width="375" height="43"/>
+                                    <frame key="frameInset" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qxx-Ys-h4t">
@@ -242,7 +230,7 @@
                                 <items>
                                     <barButtonItem title="Thats ok, let me start" id="hcC-nW-qye">
                                         <connections>
-                                            <segue destination="x3K-CM-2WU" kind="presentation" id="Ae7-G6-gmx"/>
+                                            <segue destination="x3K-CM-2WU" kind="show" id="Ae7-G6-gmx"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -259,7 +247,13 @@
                             <constraint firstItem="0Ug-ZT-J53" firstAttribute="top" secondItem="bbs-gl-wZV" secondAttribute="bottom" id="vix-J4-apq"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="VIR-Oe-YWZ"/>
+                    <navigationItem key="navigationItem" id="VIR-Oe-YWZ">
+                        <barButtonItem key="leftBarButtonItem" title="No im not ready yet!" id="2ia-re-lT4">
+                            <connections>
+                                <action selector="didPressCancel:" destination="dK8-Uw-zrZ" id="xfJ-VH-K1q"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="wordsAndQuestionsView" destination="Fxj-Hc-9ym" id="QER-VA-J09"/>
                     </connections>
@@ -305,7 +299,4 @@
             <point key="canvasLocation" x="-991.20000000000005" y="428.63568215892059"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="Ae7-G6-gmx"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -54,6 +54,28 @@ class BoardTableViewController: UITableViewController {
     
     // general
     
+
+    
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        if Ticket.allForToday(self.moc).count == 0 {
+            
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "EEEE"
+            
+            let day = dateFormatter.stringFromDate(NSDate())
+            
+            let alert = UIAlertController(title: "Oops", message: "There need to be some pomodoro in \(day) for this to work!", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
+            
+            self.presentViewController(alert, animated: true, completion: nil)
+         return false
+        }
+        
+        else {
+            return true
+        }
+    }
     func reloadAddCells() {
         self.tableView.beginUpdates()
         var indexPaths = [NSIndexPath]()
@@ -151,9 +173,31 @@ class BoardTableViewController: UITableViewController {
         
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.sectionTitles()[section]
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 80
     }
+    
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let view = UIView(frame:CGRectMake(0,0,self.tableView.frame.size.width,80))
+        
+        if (NSDate().getDayOfWeek() == section+1) {
+            view.backgroundColor = UIColor.blueColor()
+        }
+        else {
+            view.backgroundColor = UIColor.darkGrayColor()
+        }
+        
+        let label = UILabel(frame:CGRectMake(10,20,self.tableView.frame.size.width - 40,40))
+        label.text = self.sectionTitles()[section]
+        label.textColor = UIColor.whiteColor()
+        
+        view.addSubview(label)
+        
+        return view
+        
+    }
+ 
     
     func spareRowForSection(section: Int) -> Int{
         var row:Int = 0

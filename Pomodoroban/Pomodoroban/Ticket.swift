@@ -40,7 +40,21 @@ class Ticket: NSManagedObject {
     request.predicate = predicate
     return request
   }
+    
+    class func fetchRequestForToday() -> NSFetchRequest {
+     
+        let weekday = NSDate().getDayOfWeek()
+        
+        let predicate = NSPredicate(format: "section = %d", weekday)
+        
+        return self.fetchRequestWithPredicate(predicate)
+        
+    }
   
+    class func allForToday(moc:NSManagedObjectContext) -> [Ticket] {
+        return try! moc.executeFetchRequest(self.fetchRequestForToday()) as! [Ticket]
+    }
+    
   
     class func ticketForTicket(ticket:Ticket, moc:NSManagedObjectContext) -> Ticket {
         return moc.objectWithID(ticket.objectID) as! Ticket
@@ -102,6 +116,9 @@ class Ticket: NSManagedObject {
     
   }
   
+    
+    
+    
     
     class func removeAllAddTickets(moc:NSManagedObjectContext) {
         let request = NSFetchRequest(entityName: Ticket.entityName)

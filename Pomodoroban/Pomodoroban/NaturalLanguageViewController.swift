@@ -9,7 +9,12 @@
 import UIKit
 
 class NaturalLanguageViewController: UIViewController {
-
+    
+    var pomodoroLengh:StringAndPredicateCollection!
+    var shortBreakLength:StringAndPredicateCollection!
+    var shortBreakCount:StringAndPredicateCollection!
+    var longBreakLength:StringAndPredicateCollection!
+    
     @IBOutlet weak var wordsAndQuestionsView: WordsAndQuestionsView!
     
     override func viewDidLoad() {
@@ -17,9 +22,18 @@ class NaturalLanguageViewController: UIViewController {
         
     }
     
+    @IBAction func didPressCancel(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true) { 
+            
+            
+        }
+    
+    }
+    
+    
     override func viewDidAppear(animated: Bool) {
-      
-        let pomodoroLengh = StringAndPredicateCollection(WIthStringAndPredicateArray: [
+        
+        self.pomodoroLengh = StringAndPredicateCollection(WIthStringAndPredicateArray: [
             StringAndPredicate(string: "25 minutes", predicate: 25),
             StringAndPredicate(string: "20 minutes", predicate: 20),
             StringAndPredicate(string: "15 minutes", predicate: 15),
@@ -31,20 +45,20 @@ class NaturalLanguageViewController: UIViewController {
             StringAndPredicate(string: "35 minutes", predicate: 35),
             StringAndPredicate(string: "30 minutes", predicate: 30)])
         
-        let shortBreakLength = StringAndPredicateCollection(WIthStringAndPredicateArray: [
+        self.shortBreakLength = StringAndPredicateCollection(WIthStringAndPredicateArray: [
             StringAndPredicate(string: "5 minutes", predicate: 5),
             StringAndPredicate(string: "6 minutes", predicate: 6),
             StringAndPredicate(string: "7 minutes", predicate: 7),
             StringAndPredicate(string: "8 minutes", predicate: 8),
             StringAndPredicate(string: "9 minutes", predicate: 9),
             StringAndPredicate(string: "10 minutes", predicate: 10)])
-       
-        let shortBreakCount = StringAndPredicateCollection(WIthStringAndPredicateArray: [
+        
+        self.shortBreakCount = StringAndPredicateCollection(WIthStringAndPredicateArray: [
             StringAndPredicate(string: "2nd", predicate: 2),
             StringAndPredicate(string: "3rd", predicate: 3),
             StringAndPredicate(string: "4th", predicate: 4)])
-       
-        let longBreakLength = StringAndPredicateCollection(WIthStringAndPredicateArray: [
+        
+        self.longBreakLength = StringAndPredicateCollection(WIthStringAndPredicateArray: [
             StringAndPredicate(string: "20 minutes", predicate: 2),
             StringAndPredicate(string: "25 minutes", predicate: 2),
             StringAndPredicate(string: "30 minutes", predicate: 2),
@@ -52,13 +66,20 @@ class NaturalLanguageViewController: UIViewController {
             StringAndPredicate(string: "15 minutes", predicate: 2)])
         
         
-        wordsAndQuestionsView.wordsAndQuestions = ["Pomodoroban", "will", "create","your","working","day","with","each","pomodoro","lasting",pomodoroLengh,"after","each","pomodoro","you","will","have","a","break","of",shortBreakLength,"and","after","every",shortBreakCount,"pomodoro","you","will","have","a","break","of",longBreakLength]
+        wordsAndQuestionsView.wordsAndQuestions = ["Pomodoroban", "will", "create","your","working","day","with","each","pomodoro","lasting",self.pomodoroLengh,"after","each","pomodoro","you","will","have","a","break","of",self.shortBreakLength,"and","after","every",self.shortBreakCount,"pomodoro","you","will","have","a","break","of",self.longBreakLength]
         
         print (wordsAndQuestionsView.frame)
     }
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        let vc = segue.destinationViewController as! TimerViewController
+        
+        vc.pomodoroLength = self.pomodoroLengh.predicate() as! Int
+        vc.shortBreakLength = self.shortBreakLength.predicate() as! Int
+        vc.shortBreakCount = self.shortBreakCount.predicate() as! Int
+        vc.longBreakLength = self.longBreakLength.predicate() as! Int
         
     }
 }

@@ -47,16 +47,6 @@ class PomodoroViewController: UIViewController {
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "timerSegue" {
-            
-            let vc = segue.destinationViewController as! TimerViewController
-            
-            vc.delegate = self
-            
-        }
-    }
-    
     func save() {
         self.ticket.name = self.textField.text
         

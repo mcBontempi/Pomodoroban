@@ -16,7 +16,7 @@ protocol TimerViewControllerDelegate {
 
 class TimerViewController: UIViewController {
     
-    var pomodoro:[Ticket]!
+    var tickets:[Ticket]!
     var pomodoroLength:Int!
     var shortBreakLength:Int!
     var shortBreakCount:Int!
@@ -28,9 +28,13 @@ class TimerViewController: UIViewController {
     
     var delegate:TimerViewControllerDelegate!
     
+    let moc = CoreDataServices.sharedInstance.moc
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        self.tickets = Ticket.allForToday(self.moc)
+        
         self.timerLabel.timerType = MZTimerLabelTypeTimer
         timerLabel.setCountDownTime(Double(self.pomodoroLength) * 60)
         timerLabel.start()
@@ -40,18 +44,21 @@ class TimerViewController: UIViewController {
         self.quitButton.layer.borderColor = UIColor.lightGrayColor().CGColor
         self.quitButton.layer.borderWidth = 6
         self.quitButton.layer.backgroundColor = UIColor.darkGrayColor().CGColor
+        
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     @IBAction func quitPressed(sender: AnyObject) {
         self.dismissViewControllerAnimated(true) {
-            self.delegate.timerViewControllerQuit(self)
+  //          self.delegate.timerViewControllerQuit(self)
         }
     }
     
     @IBAction func donePressed(sender: AnyObject) {
         self.dismissViewControllerAnimated(true) {
         
-            self.delegate.timerViewControllerDone(self)
+    //        self.delegate.timerViewControllerDone(self)
         
         }
     }
