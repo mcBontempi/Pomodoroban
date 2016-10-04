@@ -1,4 +1,5 @@
 target "Pomodoroban" do
 pod 'MZTimerLabel'
+pod 'syncano-ios'
 end
 

@@ -19,7 +19,6 @@ class TicketTableViewCell: UITableViewCell {
             self.titleLabel.text = ticket!.name
             self.titleLabel.textColor = UIColor.darkGrayColor()
           
-          
             self.showsReorderControl = true
             
             if !self.isAddCell {

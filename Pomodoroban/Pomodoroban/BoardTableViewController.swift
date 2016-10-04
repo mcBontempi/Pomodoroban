@@ -35,6 +35,20 @@ class BoardTableViewController: UITableViewController {
         }
     }
     
+    // lifetime
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        try! self.fetchedResultsController.performFetch()
+        
+        self.tableView.allowsSelectionDuringEditing = true
+        self.setWorkMode()
+        
+        self.navigationController?.toolbarHidden = false
+        
+    //    self.toolbarItems = "hello"
+    }
+    
     // general
     
     func reloadAddCells() {
@@ -67,17 +81,7 @@ class BoardTableViewController: UITableViewController {
         UIView.animateWithDuration(0.3, animations: {
             self.navigationController?.navigationBar.backgroundColor = UIColor.redColor()
         })
-        
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        try! self.fetchedResultsController.performFetch()
-        
-        self.tableView.allowsSelectionDuringEditing = true
-        self.setWorkMode()
-    }
-    
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
@@ -93,7 +97,6 @@ class BoardTableViewController: UITableViewController {
         return 0
     }
     
-    
     override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
         let ticket = fetchedResultsController.objectAtIndexPath(sourceIndexPath) as? Ticket
         Ticket.insertTicket(ticket!, toIndexPath: destinationIndexPath, moc:self.moc)
@@ -104,7 +107,7 @@ class BoardTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return self.isAddAtIndexPath(indexPath) ? ( self.tableView.editing ? 30 : 0 ) :  50
+        return self.isAddAtIndexPath(indexPath) ? ( self.tableView.editing ? 40 : 0 ) :  90
     }
     
     override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {

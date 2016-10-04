@@ -3,3 +3,8 @@
 //
 
 //#import "MZTimerLabel/MZTimerLabel.h"
+
+
+#import "WordsAndQuestionsView.h"
+#import "StringAndPredicateCollection.h"
+#import "StringAndPredicate.h"

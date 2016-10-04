@@ -1,0 +1,1 @@
+../../../syncano-ios/syncano-ios/SCAPIClient_SCAPIClient.h

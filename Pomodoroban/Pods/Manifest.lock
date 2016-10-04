@@ -1,10 +1,48 @@
 PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - FMDB (2.6):
+    - FMDB/standard (= 2.6)
+  - FMDB/standard (2.6)
+  - FMDBMigrationManager (1.4.1):
+    - FMDBMigrationManager/System (= 1.4.1)
+  - FMDBMigrationManager/System (1.4.1):
+    - FMDB/standard (>= 2.3)
+  - Mantle (2.0.7):
+    - Mantle/extobjc (= 2.0.7)
+  - Mantle/extobjc (2.0.7)
   - MZTimerLabel (0.5.4)
+  - syncano-ios (4.3.1):
+    - AFNetworking (= 3.1.0)
+    - FMDB (= 2.6)
+    - FMDBMigrationManager (= 1.4.1)
+    - Mantle (~> 2.0)
 
 DEPENDENCIES:
   - MZTimerLabel
+  - syncano-ios
 
 SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  FMDB: c1968bab3ab0aed38f66cb778ae1e7fa9a652b6e
+  FMDBMigrationManager: d52007f328ea0665e8985ca8a33500707aef084f
+  Mantle: bc40bb061d8c2c6fb48d5083e04d928c3b7f73d9
   MZTimerLabel: cd9bfb9304540ef2a9e163384fca9c978f0dbf83
+  syncano-ios: f89c7b55f3542b90e52baaf307678bf21860ac65
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: b3b2c358380a09a8bfddaab6cd460adf3ef009d3
+
+COCOAPODS: 1.1.0.rc.2

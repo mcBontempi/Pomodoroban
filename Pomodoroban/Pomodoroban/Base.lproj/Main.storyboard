@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qvh-2M-BY9">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qvh-2M-BY9">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -179,6 +179,13 @@
                             <outlet property="delegate" destination="lpa-3H-vWj" id="0gk-3j-pNK"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem title="Start Working Today" id="CU6-vO-wmF">
+                            <connections>
+                                <segue destination="5SE-R3-54R" kind="presentation" animates="NO" id="ScC-PL-6LH"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="POMODOROBAN - Work Mode" id="pd0-F2-yTn">
                         <barButtonItem key="leftBarButtonItem" title="Plan" id="qsL-7u-LIc">
                             <connections>
@@ -191,6 +198,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" barStyle="black"/>
                     <connections>
                         <outlet property="planWorkButton" destination="qsL-7u-LIc" id="AXz-Db-2Vb"/>
                     </connections>
@@ -215,6 +223,51 @@
             </objects>
             <point key="canvasLocation" x="-743" y="-667"/>
         </scene>
+        <!--Natural Language View Controller-->
+        <scene sceneID="Nh2-8s-m9o">
+            <objects>
+                <viewController id="dK8-Uw-zrZ" customClass="NaturalLanguageViewController" customModule="Pomodoroban" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="abt-0Q-FQr"/>
+                        <viewControllerLayoutGuide type="bottom" id="0Ug-ZT-J53"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sGP-gM-4jt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fxj-Hc-9ym" customClass="WordsAndQuestionsView">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bbs-gl-wZV">
+                                <items>
+                                    <barButtonItem title="Thats ok, let me start" id="hcC-nW-qye">
+                                        <connections>
+                                            <segue destination="h6S-Xe-xaX" kind="presentation" id="nys-Fw-jHk"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="bbs-gl-wZV" secondAttribute="trailing" id="L5b-Kz-7qV"/>
+                            <constraint firstItem="Fxj-Hc-9ym" firstAttribute="leading" secondItem="sGP-gM-4jt" secondAttribute="leadingMargin" constant="-20" id="Lgn-m1-qnX"/>
+                            <constraint firstItem="Fxj-Hc-9ym" firstAttribute="top" secondItem="abt-0Q-FQr" secondAttribute="bottom" id="Mr4-OT-eOj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Fxj-Hc-9ym" secondAttribute="trailing" constant="-20" id="OMn-fY-PBd"/>
+                            <constraint firstItem="bbs-gl-wZV" firstAttribute="leading" secondItem="sGP-gM-4jt" secondAttribute="leading" id="u27-Bq-cQ6"/>
+                            <constraint firstItem="bbs-gl-wZV" firstAttribute="top" secondItem="Fxj-Hc-9ym" secondAttribute="bottom" id="vDB-ci-KPV"/>
+                            <constraint firstItem="0Ug-ZT-J53" firstAttribute="top" secondItem="bbs-gl-wZV" secondAttribute="bottom" id="vix-J4-apq"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="VIR-Oe-YWZ"/>
+                    <connections>
+                        <outlet property="wordsAndQuestionsView" destination="Fxj-Hc-9ym" id="QER-VA-J09"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YJa-YH-hqn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1196" y="-361"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="cyC-Pr-470">
             <objects>
@@ -232,6 +285,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Emq-kl-AvK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1888.8" y="-584.25787106446785"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="evi-3b-QLK">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5SE-R3-54R" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="M07-fr-Jgb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="dK8-Uw-zrZ" kind="relationship" relationship="rootViewController" id="3Pw-LY-VQz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xMm-5K-4Dg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-991.20000000000005" y="428.63568215892059"/>
         </scene>
     </scenes>
 </document>
