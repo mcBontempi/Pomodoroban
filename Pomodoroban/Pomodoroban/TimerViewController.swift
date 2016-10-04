@@ -18,16 +18,16 @@ class TimerViewController: UIViewController {
     
     @IBOutlet weak var quitButton: UIButton!
     @IBOutlet weak var doneButton: UIButton!
-    @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var timerLabel: MZTimerLabel!
     
     var delegate:TimerViewControllerDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
-     //   self.timerLabel.timerType = MZTimerLabelTypeTimer
-     //   timerLabel.setCountDownTime(25*60)
-     //   timerLabel.start()
+        self.timerLabel.timerType = MZTimerLabelTypeTimer
+        timerLabel.setCountDownTime(25*60)
+        timerLabel.start()
         
         self.quitButton.layer.cornerRadius = 75
         self.quitButton.clipsToBounds = true

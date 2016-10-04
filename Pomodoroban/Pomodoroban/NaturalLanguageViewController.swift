@@ -31,19 +31,34 @@ class NaturalLanguageViewController: UIViewController {
             StringAndPredicate(string: "35 minutes", predicate: 35),
             StringAndPredicate(string: "30 minutes", predicate: 30)])
         
-        
-        let shortBreakLength = StringAndPredicateCollection(WIthStringAndPredicateArray: [StringAndPredicate(string: "5 minutes", predicate: 2)])
-        let shortBreakCount = StringAndPredicateCollection(WIthStringAndPredicateArray: [StringAndPredicate(string: "4th", predicate: 5)])
-        let longBreakLength = StringAndPredicateCollection(WIthStringAndPredicateArray: [StringAndPredicate(string: "20 minutes", predicate: 2)])
+        let shortBreakLength = StringAndPredicateCollection(WIthStringAndPredicateArray: [
+            StringAndPredicate(string: "5 minutes", predicate: 5),
+            StringAndPredicate(string: "6 minutes", predicate: 6),
+            StringAndPredicate(string: "7 minutes", predicate: 7),
+            StringAndPredicate(string: "8 minutes", predicate: 8),
+            StringAndPredicate(string: "9 minutes", predicate: 9),
+            StringAndPredicate(string: "10 minutes", predicate: 10)])
+       
+        let shortBreakCount = StringAndPredicateCollection(WIthStringAndPredicateArray: [
+            StringAndPredicate(string: "2nd", predicate: 2),
+            StringAndPredicate(string: "3rd", predicate: 3),
+            StringAndPredicate(string: "4th", predicate: 4)])
+       
+        let longBreakLength = StringAndPredicateCollection(WIthStringAndPredicateArray: [
+            StringAndPredicate(string: "20 minutes", predicate: 2),
+            StringAndPredicate(string: "25 minutes", predicate: 2),
+            StringAndPredicate(string: "30 minutes", predicate: 2),
+            StringAndPredicate(string: "10 minutes", predicate: 2),
+            StringAndPredicate(string: "15 minutes", predicate: 2)])
         
         
         wordsAndQuestionsView.wordsAndQuestions = ["Pomodoroban", "will", "create","your","working","day","with","each","pomodoro","lasting",pomodoroLengh,"after","each","pomodoro","you","will","have","a","break","of",shortBreakLength,"and","after","every",shortBreakCount,"pomodoro","you","will","have","a","break","of",longBreakLength]
-      
         
         print (wordsAndQuestionsView.frame)
-        
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
     }
-
-
 }

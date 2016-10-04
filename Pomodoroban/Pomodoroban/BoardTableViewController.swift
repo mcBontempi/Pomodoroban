@@ -47,6 +47,9 @@ class BoardTableViewController: UITableViewController {
         self.navigationController?.toolbarHidden = false
         
     //    self.toolbarItems = "hello"
+        
+        
+        self.tableView.tableFooterView = UIView()
     }
     
     // general
@@ -107,7 +110,7 @@ class BoardTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return self.isAddAtIndexPath(indexPath) ? ( self.tableView.editing ? 40 : 0 ) :  90
+        return self.isAddAtIndexPath(indexPath) ? ( self.tableView.editing ? 50 : 0 ) :  50
     }
     
     override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
