@@ -244,8 +244,8 @@ class BoardTableViewController: UITableViewController {
     }
     
     func addInSection(section:Int) {
-        let nc = self.storyboard?.instantiateViewControllerWithIdentifier("PomodoroNavigationViewController") as! UINavigationController
-        let vc = nc.viewControllers[0] as! PomodoroViewController
+        let nc = self.storyboard?.instantiateViewControllerWithIdentifier("TicketNavigationViewController") as! UINavigationController
+        let vc = nc.viewControllers[0] as! TicketViewController
         
         let row = self.spareRowForSection(section)
         
@@ -280,8 +280,8 @@ class BoardTableViewController: UITableViewController {
         
         if indexPath.row < self.tableView.numberOfRowsInSection(indexPath.section)-1 {
             
-            let nc = self.storyboard?.instantiateViewControllerWithIdentifier("PomodoroNavigationViewController") as! UINavigationController
-            let vc = nc.viewControllers[0] as! PomodoroViewController
+            let nc = self.storyboard?.instantiateViewControllerWithIdentifier("TicketNavigationViewController") as! UINavigationController
+            let vc = nc.viewControllers[0] as! TicketViewController
             
             
             self.childMoc = CoreDataServices.sharedInstance.childMoc()
@@ -305,20 +305,24 @@ class BoardTableViewController: UITableViewController {
 
 // extensions
 
-extension BoardTableViewController : PomodoroViewControllerDelegate {
-    func pomodoroViewControllerDelegateSave(pomodoroViewController: PomodoroViewController) {
+extension BoardTableViewController : TicketViewControllerDelegate {
+    func ticketViewControllerSave(ticketViewController: TicketViewController) {
+        
         self.dismissViewControllerAnimated(true) {
             self.saveChildMoc()
         }
         
     }
     
-    func pomodoroViewControllerDelegateCancal(pomodoroViewController: PomodoroViewController) {
+    func ticketViewControllerCancel(ticketViewController: TicketViewController) {
+        
         self.dismissViewControllerAnimated(true) {
             
         }
     }
     
+    
+    /*
     func pomodoroViewControllerDelegateDone(pomodoroViewController: PomodoroViewController, ticket:Ticket) {
         self.dismissViewControllerAnimated(true) {
             ticket.row = Int32( self.spareRowForSection(Int( ticket.section)))
@@ -326,6 +330,7 @@ extension BoardTableViewController : PomodoroViewControllerDelegate {
             self.saveChildMoc()
         }
     }
+ */
     
 }
 

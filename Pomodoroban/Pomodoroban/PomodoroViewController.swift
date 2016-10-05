@@ -48,9 +48,9 @@ class PomodoroViewController: UIViewController {
     }
     
     func save() {
-        self.ticket.name = self.textField.text
         
         if self.textField.text != "" {
+            self.ticket.name = self.textField.text
             self.delegate.pomodoroViewControllerDelegateSave(self)
         }
         else {

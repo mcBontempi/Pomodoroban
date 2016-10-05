@@ -63,7 +63,165 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xmg-Al-zlh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2828" y="-584.25787106446785"/>
+            <point key="canvasLocation" x="2406" y="-1286"/>
+        </scene>
+        <!--Ticket View Controller-->
+        <scene sceneID="LDL-Zl-dkO">
+            <objects>
+                <tableViewController id="Bao-VS-BAp" customClass="TicketViewController" customModule="Pomodoroban" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ofk-z0-eKi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection headerTitle="TITLE" id="85k-Hr-N4Y">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ukj-AD-ztl">
+                                        <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ukj-AD-ztl" id="nNh-2j-Hts">
+                                            <frame key="frameInset" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name you task here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Ty-pf-QQp">
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="4Ty-pf-QQp" firstAttribute="top" secondItem="nNh-2j-Hts" secondAttribute="top" id="8IR-Pk-jnn"/>
+                                                <constraint firstAttribute="trailing" secondItem="4Ty-pf-QQp" secondAttribute="trailing" id="RmE-3Y-Wbj"/>
+                                                <constraint firstAttribute="bottom" secondItem="4Ty-pf-QQp" secondAttribute="bottom" id="esy-Dv-hjJ"/>
+                                                <constraint firstItem="4Ty-pf-QQp" firstAttribute="leading" secondItem="nNh-2j-Hts" secondAttribute="leading" id="xVN-Na-1ee"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="COLOR" id="C9Z-00-ajE">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ColorTableViewCell" id="F1w-b3-SzQ" customClass="ColorTableViewCell" customModule="Pomodoroban" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="164" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F1w-b3-SzQ" id="MOy-j9-PRj">
+                                            <frame key="frameInset" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ee1-84-VQK">
+                                                    <frame key="frameInset" minX="13" minY="11" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ColorDropDownTableViewCell" rowHeight="216" id="kZh-c7-ORp" customClass="ColorDropDownTableViewCell" customModule="Pomodoroban" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="208" width="375" height="216"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kZh-c7-ORp" id="Tk4-7t-P4C">
+                                            <frame key="frameInset" width="375" height="215"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tKR-pw-wSm"/>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="tKR-pw-wSm" firstAttribute="leading" secondItem="Tk4-7t-P4C" secondAttribute="leading" id="GdP-uN-xGz"/>
+                                                <constraint firstAttribute="trailing" secondItem="tKR-pw-wSm" secondAttribute="trailing" id="M4t-Xm-gAz"/>
+                                                <constraint firstItem="tKR-pw-wSm" firstAttribute="top" secondItem="Tk4-7t-P4C" secondAttribute="top" id="Vn4-Ze-TyA"/>
+                                                <constraint firstAttribute="bottom" secondItem="tKR-pw-wSm" secondAttribute="bottom" id="cje-t0-5dm"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="POMODORO COUNT" id="rbg-Zp-5pa">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PomodoroCountTableViewCell" id="FOk-36-Z0F" customClass="PomodoroCountTableViewCell" customModule="Pomodoroban" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="452" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FOk-36-Z0F" id="qkz-fc-1WU">
+                                            <frame key="frameInset" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PomodoroCountTableViewCell" rowHeight="216" id="16P-ns-78f" customClass="PomodoroCountTableViewCell" customModule="Pomodoroban" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="496" width="375" height="216"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="16P-ns-78f" id="0n0-fK-Iif">
+                                            <frame key="frameInset" width="375" height="215"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tsq-Na-1VY"/>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="tsq-Na-1VY" firstAttribute="leading" secondItem="0n0-fK-Iif" secondAttribute="leading" id="NJf-Df-ebt"/>
+                                                <constraint firstAttribute="bottom" secondItem="tsq-Na-1VY" secondAttribute="bottom" id="b5Q-op-y1q"/>
+                                                <constraint firstItem="tsq-Na-1VY" firstAttribute="top" secondItem="0n0-fK-Iif" secondAttribute="top" id="f7Z-0a-ZaD"/>
+                                                <constraint firstAttribute="trailing" secondItem="tsq-Na-1VY" secondAttribute="trailing" id="u5d-h9-7ni"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="NOTES" id="leS-Uo-ecZ">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="F5f-JU-0nf" customClass="TextViewTableViewCell" customModule="Pomodoroban" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="740" width="375" height="120"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F5f-JU-0nf" id="AAg-BY-Mmp">
+                                            <frame key="frameInset" width="375" height="119"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="QzL-RF-973">
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="QzL-RF-973" secondAttribute="bottom" id="0BW-jf-tVb"/>
+                                                <constraint firstItem="QzL-RF-973" firstAttribute="leading" secondItem="AAg-BY-Mmp" secondAttribute="leadingMargin" id="Csv-Gs-tXz"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="QzL-RF-973" secondAttribute="trailing" id="cDR-E6-U90"/>
+                                                <constraint firstItem="QzL-RF-973" firstAttribute="top" secondItem="AAg-BY-Mmp" secondAttribute="topMargin" id="fMc-E0-nmE"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="Bao-VS-BAp" id="1hf-tQ-S5w"/>
+                            <outlet property="delegate" destination="Bao-VS-BAp" id="7qn-wk-oJL"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="JOb-Or-vqL">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="NyG-7L-AjP">
+                            <connections>
+                                <action selector="leftButtonPressed:" destination="Bao-VS-BAp" id="ppb-dH-1Ms"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="ele-6Q-V4e">
+                            <connections>
+                                <action selector="rightButtonPressed:" destination="Bao-VS-BAp" id="3SU-5B-MRX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="colorPicker" destination="tKR-pw-wSm" id="qWh-8D-aCx"/>
+                        <outlet property="leftButton" destination="NyG-7L-AjP" id="WRr-XA-6uL"/>
+                        <outlet property="notes" destination="AAg-BY-Mmp" id="ONo-rE-t0w"/>
+                        <outlet property="pomodoroCountPicker" destination="tsq-Na-1VY" id="OKD-ku-D8P"/>
+                        <outlet property="rightButton" destination="ele-6Q-V4e" id="2dJ-rd-OYN"/>
+                        <outlet property="titleField" destination="4Ty-pf-QQp" id="scX-PN-q4B"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QRN-cw-hjZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4012" y="-1318.2908545727137"/>
         </scene>
         <!--Timer View Controller-->
         <scene sceneID="7N6-LM-H0b">
@@ -137,7 +295,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yO3-gj-bog" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3941.5999999999999" y="-578.86056971514245"/>
+            <point key="canvasLocation" x="3930" y="-268"/>
         </scene>
         <!--POMODOROBAN - Work Mode-->
         <scene sceneID="Uyy-x0-Vjj">
@@ -152,7 +310,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8QY-gx-r5u" id="snV-hf-C0U">
-                                    <frame key="frameInset" width="375" height="44"/>
+                                    <frame key="frameInset" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qxx-Ys-h4t">
@@ -275,7 +433,7 @@
         <!--Navigation Controller-->
         <scene sceneID="cyC-Pr-470">
             <objects>
-                <navigationController storyboardIdentifier="PomodoroNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="h6S-Xe-xaX" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TicketNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="h6S-Xe-xaX" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sov-75-St2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -283,7 +441,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="R0u-Sl-X0A" kind="relationship" relationship="rootViewController" id="0dt-Ak-tHS"/>
+                        <segue destination="Bao-VS-BAp" kind="relationship" relationship="rootViewController" id="Lys-Qs-k86"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Emq-kl-AvK" userLabel="First Responder" sceneMemberID="firstResponder"/>

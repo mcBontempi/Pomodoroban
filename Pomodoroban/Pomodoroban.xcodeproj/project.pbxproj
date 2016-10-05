@@ -11,6 +11,12 @@
 		D61085371D960601001A203A /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61085361D960601001A203A /* TimerViewController.swift */; };
 		D617FB661D9E54C700A4CA53 /* SyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D617FB651D9E54C700A4CA53 /* SyncService.swift */; };
 		D6456A5B1DA5013A0002FDA2 /* TicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A5A1DA5013A0002FDA2 /* TicketViewController.swift */; };
+		D6456A5D1DA505CA0002FDA2 /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A5C1DA505CA0002FDA2 /* TextFieldTableViewCell.swift */; };
+		D6456A5F1DA505DB0002FDA2 /* TextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A5E1DA505DB0002FDA2 /* TextViewTableViewCell.swift */; };
+		D6456A611DA506B40002FDA2 /* PomodoroCountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A601DA506B40002FDA2 /* PomodoroCountTableViewCell.swift */; };
+		D6456A631DA506EB0002FDA2 /* ColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A621DA506EB0002FDA2 /* ColorTableViewCell.swift */; };
+		D6456A661DA513FE0002FDA2 /* ColorDropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A651DA513FE0002FDA2 /* ColorDropDownTableViewCell.swift */; };
+		D6456A681DA534330002FDA2 /* UIColor+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A671DA534330002FDA2 /* UIColor+Palette.swift */; };
 		D656B36B1DA413630035500A /* NSDate+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D656B36A1DA413630035500A /* NSDate+Utils.swift */; };
 		D67FAECF1D95235B0085BF2D /* BoardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67FAECE1D95235B0085BF2D /* BoardTableViewController.swift */; };
 		D67FAED11D952B1C0085BF2D /* TicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67FAED01D952B1C0085BF2D /* TicketTableViewCell.swift */; };
@@ -39,6 +45,12 @@
 		D61085361D960601001A203A /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		D617FB651D9E54C700A4CA53 /* SyncService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncService.swift; sourceTree = "<group>"; };
 		D6456A5A1DA5013A0002FDA2 /* TicketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketViewController.swift; sourceTree = "<group>"; };
+		D6456A5C1DA505CA0002FDA2 /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		D6456A5E1DA505DB0002FDA2 /* TextViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewTableViewCell.swift; sourceTree = "<group>"; };
+		D6456A601DA506B40002FDA2 /* PomodoroCountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PomodoroCountTableViewCell.swift; sourceTree = "<group>"; };
+		D6456A621DA506EB0002FDA2 /* ColorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTableViewCell.swift; sourceTree = "<group>"; };
+		D6456A651DA513FE0002FDA2 /* ColorDropDownTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorDropDownTableViewCell.swift; sourceTree = "<group>"; };
+		D6456A671DA534330002FDA2 /* UIColor+Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Palette.swift"; sourceTree = "<group>"; };
 		D656B36A1DA413630035500A /* NSDate+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Utils.swift"; sourceTree = "<group>"; };
 		D67FAECE1D95235B0085BF2D /* BoardTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardTableViewController.swift; sourceTree = "<group>"; };
 		D67FAED01D952B1C0085BF2D /* TicketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewCell.swift; sourceTree = "<group>"; };
@@ -97,10 +109,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D6456A641DA5074D0002FDA2 /* TicketViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D6456A5A1DA5013A0002FDA2 /* TicketViewController.swift */,
+				D6456A601DA506B40002FDA2 /* PomodoroCountTableViewCell.swift */,
+				D6456A621DA506EB0002FDA2 /* ColorTableViewCell.swift */,
+				D6456A5C1DA505CA0002FDA2 /* TextFieldTableViewCell.swift */,
+				D6456A5E1DA505DB0002FDA2 /* TextViewTableViewCell.swift */,
+				D6456A651DA513FE0002FDA2 /* ColorDropDownTableViewCell.swift */,
+			);
+			name = TicketViewController;
+			sourceTree = "<group>";
+		};
 		D656B3691DA4134A0035500A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				D656B36A1DA413630035500A /* NSDate+Utils.swift */,
+				D6456A671DA534330002FDA2 /* UIColor+Palette.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -165,6 +191,7 @@
 		FD5BE9FE1C5CF79400535A78 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D6456A641DA5074D0002FDA2 /* TicketViewController */,
 				D6E71D851DA3EDBB0055F2AA /* CALayer+Animations.h */,
 				D6E71D861DA3EDBB0055F2AA /* CALayer+Animations.m */,
 				FD5BE9F61C5BD21100535A78 /* PomodoroViewController.swift */,
@@ -172,7 +199,6 @@
 				D67FAED01D952B1C0085BF2D /* TicketTableViewCell.swift */,
 				D61085361D960601001A203A /* TimerViewController.swift */,
 				D6E71D881DA3EFC10055F2AA /* NaturalLanguageViewController.swift */,
-				D6456A5A1DA5013A0002FDA2 /* TicketViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -321,11 +347,16 @@
 				D67FAED11D952B1C0085BF2D /* TicketTableViewCell.swift in Sources */,
 				D656B36B1DA413630035500A /* NSDate+Utils.swift in Sources */,
 				D6E71D871DA3EDBB0055F2AA /* CALayer+Animations.m in Sources */,
+				D6456A611DA506B40002FDA2 /* PomodoroCountTableViewCell.swift in Sources */,
 				FD5BEA041C5CF83100535A78 /* Ticket.swift in Sources */,
 				FD5BE9F71C5BD21100535A78 /* PomodoroViewController.swift in Sources */,
+				D6456A681DA534330002FDA2 /* UIColor+Palette.swift in Sources */,
+				D6456A631DA506EB0002FDA2 /* ColorTableViewCell.swift in Sources */,
 				D617FB661D9E54C700A4CA53 /* SyncService.swift in Sources */,
 				D6E71D891DA3EFC10055F2AA /* NaturalLanguageViewController.swift in Sources */,
+				D6456A661DA513FE0002FDA2 /* ColorDropDownTableViewCell.swift in Sources */,
 				D6456A5B1DA5013A0002FDA2 /* TicketViewController.swift in Sources */,
+				D6456A5F1DA505DB0002FDA2 /* TextViewTableViewCell.swift in Sources */,
 				D67FAECF1D95235B0085BF2D /* BoardTableViewController.swift in Sources */,
 				D6E71D8D1DA3F2A60055F2AA /* StringAndPredicateCollection.m in Sources */,
 				FD5BEA031C5CF83100535A78 /* Ticket+CoreDataProperties.swift in Sources */,
@@ -335,6 +366,7 @@
 				D6E71D831DA3ECAE0055F2AA /* TagLabel.m in Sources */,
 				D6E71D801DA3EB5C0055F2AA /* WordsAndQuestionsView.m in Sources */,
 				FD5BE9E21C5BB5CA00535A78 /* AppDelegate.swift in Sources */,
+				D6456A5D1DA505CA0002FDA2 /* TextFieldTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
