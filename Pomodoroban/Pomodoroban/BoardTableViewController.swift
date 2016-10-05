@@ -5,6 +5,8 @@ class BoardTableViewController: UITableViewController {
     
     // vars
     
+    var isActuallyEditing = false
+    
     let moc = CoreDataServices.sharedInstance.moc
     var childMoc:NSManagedObjectContext!
     lazy var fetchedResultsController: NSFetchedResultsController = {
@@ -25,11 +27,15 @@ class BoardTableViewController: UITableViewController {
     
     @IBAction func PlanWordPressed(sender: AnyObject) {
         
-        if  self.tableView.editing == false {
+        if  self.isActuallyEditing == false {
+            
+            
+            self.isActuallyEditing = true
             self.setPlanMode()
             self.reloadAddCells()
         }
         else {
+            self.isActuallyEditing = false
             self.setWorkMode()
             self.reloadAddCells()
         }
@@ -46,7 +52,7 @@ class BoardTableViewController: UITableViewController {
         
         self.navigationController?.toolbarHidden = false
         
-    //    self.toolbarItems = "hello"
+        //    self.toolbarItems = "hello"
         
         
         self.tableView.tableFooterView = UIView()
@@ -54,11 +60,11 @@ class BoardTableViewController: UITableViewController {
     
     // general
     
-
+    
     
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-        if Ticket.allForToday(self.moc).count == 0 {
+        if Ticket.allForToday(self.moc).count <= 1 {
             
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "EEEE"
@@ -69,7 +75,7 @@ class BoardTableViewController: UITableViewController {
             alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
             
             self.presentViewController(alert, animated: true, completion: nil)
-         return false
+            return false
         }
         
         else {
@@ -132,11 +138,23 @@ class BoardTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return self.isAddAtIndexPath(indexPath) ? ( self.tableView.editing ? 50 : 0 ) :  50
+        return self.isAddAtIndexPath(indexPath) ? ( self.isActuallyEditing ? 50 : 0 ) :  50
     }
     
     override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
         return self.isAddAtIndexPath(indexPath) == true ?  .Insert :  .Delete
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            if let ticket = fetchedResultsController.objectAtIndexPath(indexPath) as? Ticket {
+                
+                self.moc.deleteObject(ticket)
+            }
+        }
+      else if editingStyle == .Insert {
+                self.addInSection(indexPath.section)
+            }
     }
     
     override func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
@@ -181,8 +199,8 @@ class BoardTableViewController: UITableViewController {
         
         let view = UIView(frame:CGRectMake(0,0,self.tableView.frame.size.width,80))
         
-        if (NSDate().getDayOfWeek() == section+1) {
-            view.backgroundColor = UIColor.blueColor()
+        if (NSDate().getDayOfWeek() == section) {
+            view.backgroundColor = UIColor.redColor()
         }
         else {
             view.backgroundColor = UIColor.darkGrayColor()
@@ -197,7 +215,7 @@ class BoardTableViewController: UITableViewController {
         return view
         
     }
- 
+    
     
     func spareRowForSection(section: Int) -> Int{
         var row:Int = 0
@@ -242,14 +260,8 @@ class BoardTableViewController: UITableViewController {
     }
     
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Insert {
-            self.addInSection(indexPath.section)
-        }
-    }
     
     func saveChildMoc() {
-        
         if self.childMoc != nil {
             self.moc.performBlockAndWait({
                 try! self.childMoc.save()
@@ -318,8 +330,71 @@ extension BoardTableViewController : PomodoroViewControllerDelegate {
 extension BoardTableViewController : NSFetchedResultsControllerDelegate {
     
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        tableView.reloadData()
+     func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        self.tableView.beginUpdates()
     }
+    
+     func controller(controller: NSFetchedResultsController,
+                           didChangeObject anObject: AnyObject,
+                                           atIndexPath indexPath: NSIndexPath?,
+                                                       forChangeType type: NSFetchedResultsChangeType,
+                                                                     newIndexPath: NSIndexPath?)
+    {
+        switch(type) {
+            
+        case .Insert:
+            if let newIndexPath = newIndexPath {
+                tableView.insertRowsAtIndexPaths([newIndexPath],
+                                                 withRowAnimation:UITableViewRowAnimation.Fade)
+            }
+            
+        case .Delete:
+            if let indexPath = indexPath {
+                tableView.deleteRowsAtIndexPaths([indexPath],
+                                                 withRowAnimation: UITableViewRowAnimation.Fade)
+            }
+            
+        case .Update:
+            if let indexPath = indexPath {
+                tableView.reloadRowsAtIndexPaths([indexPath],
+                                                 withRowAnimation: UITableViewRowAnimation.Fade)
+            }
+            
+        case .Move:
+            if let indexPath = indexPath {
+                if let newIndexPath = newIndexPath {
+                    tableView.deleteRowsAtIndexPaths([indexPath],
+                                                     withRowAnimation: UITableViewRowAnimation.Fade)
+                    tableView.insertRowsAtIndexPaths([newIndexPath],
+                                                     withRowAnimation: UITableViewRowAnimation.Fade)
+                }
+            }
+        }
+    }
+    
+     func controller(controller: NSFetchedResultsController,
+                           didChangeSection sectionInfo: NSFetchedResultsSectionInfo,
+                                            atIndex sectionIndex: Int,
+                                                    forChangeType type: NSFetchedResultsChangeType)
+    {
+        switch(type) {
+            
+        case .Insert:
+            tableView.insertSections(NSIndexSet(index: sectionIndex),
+                                     withRowAnimation: UITableViewRowAnimation.Fade)
+            
+        case .Delete:
+            tableView.deleteSections(NSIndexSet(index: sectionIndex),
+                                     withRowAnimation: UITableViewRowAnimation.Fade)
+            
+        default:
+            break
+        }
+    }
+    
+     func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        tableView.endUpdates()
+    }
+
 }
 

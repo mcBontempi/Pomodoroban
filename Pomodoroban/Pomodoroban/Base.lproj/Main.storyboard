@@ -20,18 +20,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tzx-tm-laE">
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ljf-bN-J2I"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="R0u-Sl-X0A" id="pVj-MF-I6r"/>
                                 </connections>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pomodoro Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUo-iP-Nh3">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="Tzx-tm-laE" secondAttribute="trailing" constant="20" id="bAE-aH-AOc"/>
-                            <constraint firstItem="Tzx-tm-laE" firstAttribute="leading" secondItem="6kP-t3-mVl" secondAttribute="leadingMargin" constant="20" id="qrr-zM-2Pt"/>
-                            <constraint firstItem="Tzx-tm-laE" firstAttribute="top" secondItem="9Rd-V2-rBJ" secondAttribute="bottom" constant="16" id="wXl-vY-cDV"/>
+                            <constraint firstItem="Tzx-tm-laE" firstAttribute="top" secondItem="gUo-iP-Nh3" secondAttribute="bottom" constant="7" id="VlB-4R-Zrz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Tzx-tm-laE" secondAttribute="trailing" id="bAE-aH-AOc"/>
+                            <constraint firstItem="gUo-iP-Nh3" firstAttribute="leading" secondItem="Tzx-tm-laE" secondAttribute="leading" id="qDj-Gl-XkN"/>
+                            <constraint firstItem="Tzx-tm-laE" firstAttribute="leading" secondItem="6kP-t3-mVl" secondAttribute="leadingMargin" id="qrr-zM-2Pt"/>
+                            <constraint firstItem="Tzx-tm-laE" firstAttribute="top" secondItem="9Rd-V2-rBJ" secondAttribute="bottom" constant="60" id="wXl-vY-cDV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4WU-r2-Rs9">

@@ -45,13 +45,17 @@ class Ticket: NSManagedObject {
      
         let weekday = NSDate().getDayOfWeek()
         
-        let predicate = NSPredicate(format: "section = %d", weekday)
+        let predicate = NSPredicate(format: "section == %d", weekday)
         
         return self.fetchRequestWithPredicate(predicate)
         
     }
   
     class func allForToday(moc:NSManagedObjectContext) -> [Ticket] {
+        
+        let objects = try! moc.executeFetchRequest(self.fetchRequestForToday())
+        
+        
         return try! moc.executeFetchRequest(self.fetchRequestForToday()) as! [Ticket]
     }
     
