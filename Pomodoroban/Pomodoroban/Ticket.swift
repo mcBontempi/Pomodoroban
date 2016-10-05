@@ -152,7 +152,7 @@ class Ticket: NSManagedObject {
     
     class func createAllAddTickets(moc:NSManagedObjectContext) {
         var ticket: Ticket!
-        
+     
         for section in 0...8 {
       
             

@@ -10,6 +10,7 @@
 		D61085351D95ED3F001A203A /* CoreDataServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61085341D95ED3F001A203A /* CoreDataServices.swift */; };
 		D61085371D960601001A203A /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61085361D960601001A203A /* TimerViewController.swift */; };
 		D617FB661D9E54C700A4CA53 /* SyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D617FB651D9E54C700A4CA53 /* SyncService.swift */; };
+		D6456A5B1DA5013A0002FDA2 /* TicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A5A1DA5013A0002FDA2 /* TicketViewController.swift */; };
 		D656B36B1DA413630035500A /* NSDate+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D656B36A1DA413630035500A /* NSDate+Utils.swift */; };
 		D67FAECF1D95235B0085BF2D /* BoardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67FAECE1D95235B0085BF2D /* BoardTableViewController.swift */; };
 		D67FAED11D952B1C0085BF2D /* TicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67FAED01D952B1C0085BF2D /* TicketTableViewCell.swift */; };
@@ -37,6 +38,7 @@
 		D61085341D95ED3F001A203A /* CoreDataServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataServices.swift; sourceTree = "<group>"; };
 		D61085361D960601001A203A /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		D617FB651D9E54C700A4CA53 /* SyncService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncService.swift; sourceTree = "<group>"; };
+		D6456A5A1DA5013A0002FDA2 /* TicketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketViewController.swift; sourceTree = "<group>"; };
 		D656B36A1DA413630035500A /* NSDate+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Utils.swift"; sourceTree = "<group>"; };
 		D67FAECE1D95235B0085BF2D /* BoardTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardTableViewController.swift; sourceTree = "<group>"; };
 		D67FAED01D952B1C0085BF2D /* TicketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewCell.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				D67FAED01D952B1C0085BF2D /* TicketTableViewCell.swift */,
 				D61085361D960601001A203A /* TimerViewController.swift */,
 				D6E71D881DA3EFC10055F2AA /* NaturalLanguageViewController.swift */,
+				D6456A5A1DA5013A0002FDA2 /* TicketViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				FD5BE9F71C5BD21100535A78 /* PomodoroViewController.swift in Sources */,
 				D617FB661D9E54C700A4CA53 /* SyncService.swift in Sources */,
 				D6E71D891DA3EFC10055F2AA /* NaturalLanguageViewController.swift in Sources */,
+				D6456A5B1DA5013A0002FDA2 /* TicketViewController.swift in Sources */,
 				D67FAECF1D95235B0085BF2D /* BoardTableViewController.swift in Sources */,
 				D6E71D8D1DA3F2A60055F2AA /* StringAndPredicateCollection.m in Sources */,
 				FD5BEA031C5CF83100535A78 /* Ticket+CoreDataProperties.swift in Sources */,

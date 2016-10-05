@@ -150,6 +150,8 @@ class BoardTableViewController: UITableViewController {
             if let ticket = fetchedResultsController.objectAtIndexPath(indexPath) as? Ticket {
                 
                 self.moc.deleteObject(ticket)
+                
+                try! self.moc.save()
             }
         }
       else if editingStyle == .Insert {
@@ -329,71 +331,8 @@ extension BoardTableViewController : PomodoroViewControllerDelegate {
 
 extension BoardTableViewController : NSFetchedResultsControllerDelegate {
     
-    
-     func controllerWillChangeContent(controller: NSFetchedResultsController) {
-        self.tableView.beginUpdates()
-    }
-    
-     func controller(controller: NSFetchedResultsController,
-                           didChangeObject anObject: AnyObject,
-                                           atIndexPath indexPath: NSIndexPath?,
-                                                       forChangeType type: NSFetchedResultsChangeType,
-                                                                     newIndexPath: NSIndexPath?)
-    {
-        switch(type) {
-            
-        case .Insert:
-            if let newIndexPath = newIndexPath {
-                tableView.insertRowsAtIndexPaths([newIndexPath],
-                                                 withRowAnimation:UITableViewRowAnimation.Fade)
-            }
-            
-        case .Delete:
-            if let indexPath = indexPath {
-                tableView.deleteRowsAtIndexPaths([indexPath],
-                                                 withRowAnimation: UITableViewRowAnimation.Fade)
-            }
-            
-        case .Update:
-            if let indexPath = indexPath {
-                tableView.reloadRowsAtIndexPaths([indexPath],
-                                                 withRowAnimation: UITableViewRowAnimation.Fade)
-            }
-            
-        case .Move:
-            if let indexPath = indexPath {
-                if let newIndexPath = newIndexPath {
-                    tableView.deleteRowsAtIndexPaths([indexPath],
-                                                     withRowAnimation: UITableViewRowAnimation.Fade)
-                    tableView.insertRowsAtIndexPaths([newIndexPath],
-                                                     withRowAnimation: UITableViewRowAnimation.Fade)
-                }
-            }
-        }
-    }
-    
-     func controller(controller: NSFetchedResultsController,
-                           didChangeSection sectionInfo: NSFetchedResultsSectionInfo,
-                                            atIndex sectionIndex: Int,
-                                                    forChangeType type: NSFetchedResultsChangeType)
-    {
-        switch(type) {
-            
-        case .Insert:
-            tableView.insertSections(NSIndexSet(index: sectionIndex),
-                                     withRowAnimation: UITableViewRowAnimation.Fade)
-            
-        case .Delete:
-            tableView.deleteSections(NSIndexSet(index: sectionIndex),
-                                     withRowAnimation: UITableViewRowAnimation.Fade)
-            
-        default:
-            break
-        }
-    }
-    
-     func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        tableView.endUpdates()
+         func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        tableView.reloadData()
     }
 
 }
