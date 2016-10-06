@@ -231,6 +231,7 @@
 				FD5BE9DC1C5BB5CA00535A78 /* Resources */,
 				4411128454F3031105E83013 /* [CP] Embed Pods Frameworks */,
 				278361D14754B1292F208879 /* [CP] Copy Pods Resources */,
+				D6456A781DA6B71B0002FDA2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -320,6 +321,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pomodoroban/Pods-Pomodoroban-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		D6456A781DA6B71B0002FDA2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 3ef96aea5c3fc3bce538d64de1b929e339cf407f 1280a7ecf875ed15aa7be8f93a3ffa0387bdf2b0dbfc4848097db199ccbd51df";
 		};
 		F49A9C0F746725B724B00A1E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -505,8 +519,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 3U786KR73N;
 				INFOPLIST_FILE = Pomodoroban/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
