@@ -126,8 +126,8 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cOr-0s-noS">
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="24" id="68r-lh-wss"/>
-                                                        <constraint firstAttribute="width" constant="24" id="7wF-3v-M9r"/>
+                                                        <constraint firstAttribute="height" constant="40" id="68r-lh-wss"/>
+                                                        <constraint firstAttribute="width" constant="100" id="7wF-3v-M9r"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -135,7 +135,7 @@
                                                 <constraint firstItem="cOr-0s-noS" firstAttribute="leading" secondItem="MOy-j9-PRj" secondAttribute="leading" constant="15" id="UIZ-8F-Pq5"/>
                                                 <constraint firstItem="HBQ-xH-Xc2" firstAttribute="leading" secondItem="MOy-j9-PRj" secondAttribute="leadingMargin" constant="5" id="ev4-ma-yV3"/>
                                                 <constraint firstItem="HBQ-xH-Xc2" firstAttribute="top" secondItem="MOy-j9-PRj" secondAttribute="topMargin" constant="5" id="qnm-FK-1O9"/>
-                                                <constraint firstAttribute="bottom" secondItem="cOr-0s-noS" secondAttribute="bottom" constant="10" id="wZO-Po-kwo"/>
+                                                <constraint firstAttribute="bottom" secondItem="cOr-0s-noS" secondAttribute="bottom" constant="1" id="wZO-Po-kwo"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -266,6 +266,7 @@
                         <outlet property="colorPicker" destination="tKR-pw-wSm" id="qWh-8D-aCx"/>
                         <outlet property="leftButton" destination="NyG-7L-AjP" id="WRr-XA-6uL"/>
                         <outlet property="notes" destination="AAg-BY-Mmp" id="ONo-rE-t0w"/>
+                        <outlet property="notesText" destination="QzL-RF-973" id="JFb-5B-fla"/>
                         <outlet property="pomodoroCountPicker" destination="tsq-Na-1VY" id="OKD-ku-D8P"/>
                         <outlet property="pomodoroCountView" destination="BTE-9g-EcW" id="bQE-g5-rPV"/>
                         <outlet property="rightButton" destination="ele-6Q-V4e" id="2dJ-rd-OYN"/>
@@ -329,7 +330,7 @@
                                             <constraint firstAttribute="height" constant="36" id="drL-4g-1Ku"/>
                                         </constraints>
                                     </view>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ypo-k2-Ica">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ypo-k2-Ica">
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -400,11 +401,16 @@
                                     <frame key="frameInset" width="375" height="75"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kDT-H9-ees">
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="40" id="MzU-tk-drA"/>
+                                            </constraints>
+                                        </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c50-Th-Aoy">
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qxx-Ys-h4t">
-                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="OWM-cG-ikl"/>
                                             </constraints>
@@ -416,14 +422,19 @@
                                     <constraints>
                                         <constraint firstItem="c50-Th-Aoy" firstAttribute="top" secondItem="snV-hf-C0U" secondAttribute="top" constant="38" id="1d6-Ep-TOk"/>
                                         <constraint firstAttribute="bottom" secondItem="c50-Th-Aoy" secondAttribute="bottom" constant="5" id="G5U-zI-pgP"/>
-                                        <constraint firstItem="Qxx-Ys-h4t" firstAttribute="leading" secondItem="snV-hf-C0U" secondAttribute="leadingMargin" constant="10" id="N1n-by-6G0"/>
+                                        <constraint firstItem="Qxx-Ys-h4t" firstAttribute="trailing" secondItem="snV-hf-C0U" secondAttribute="trailingMargin" id="IMy-ne-GLc"/>
+                                        <constraint firstItem="Qxx-Ys-h4t" firstAttribute="leading" secondItem="snV-hf-C0U" secondAttribute="leadingMargin" constant="36" id="N1n-by-6G0"/>
                                         <constraint firstItem="Qxx-Ys-h4t" firstAttribute="top" secondItem="snV-hf-C0U" secondAttribute="topMargin" id="Pdh-gh-B6G"/>
+                                        <constraint firstItem="kDT-H9-ees" firstAttribute="leading" secondItem="snV-hf-C0U" secondAttribute="leadingMargin" constant="-10" id="YhG-tF-VRy"/>
                                         <constraint firstAttribute="trailing" secondItem="c50-Th-Aoy" secondAttribute="trailing" id="Zis-Z9-7Fu"/>
-                                        <constraint firstItem="c50-Th-Aoy" firstAttribute="leading" secondItem="snV-hf-C0U" secondAttribute="leading" constant="20" id="uAU-rU-HHi"/>
+                                        <constraint firstItem="c50-Th-Aoy" firstAttribute="leading" secondItem="Qxx-Ys-h4t" secondAttribute="leading" id="g8y-rX-5x4"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="kDT-H9-ees" secondAttribute="bottom" constant="-10" id="qOk-bK-RJa"/>
+                                        <constraint firstItem="kDT-H9-ees" firstAttribute="top" secondItem="snV-hf-C0U" secondAttribute="topMargin" constant="-10" id="rCF-kf-dNX"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
+                                    <outlet property="colorView" destination="kDT-H9-ees" id="2Dn-33-2Ss"/>
                                     <outlet property="pomodoroCountView" destination="c50-Th-Aoy" id="FKg-RC-RYK"/>
                                     <outlet property="titleLabel" destination="Qxx-Ys-h4t" id="LIq-LS-azK"/>
                                 </connections>

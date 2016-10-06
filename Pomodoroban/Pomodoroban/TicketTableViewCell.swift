@@ -12,6 +12,7 @@ class TicketTableViewCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     
+    @IBOutlet weak var colorView: UIView!
     var isAddCell = true
     
     @IBOutlet weak var pomodoroCountView: UIView!
@@ -20,7 +21,8 @@ class TicketTableViewCell: UITableViewCell {
             self.titleLabel.text = ticket!.name
             self.titleLabel.textColor = UIColor.darkGrayColor()
             
-            self.backgroundColor = UIColor.colorFrom(Int( self.ticket!.colorIndex))
+            self.backgroundColor = UIColor.whiteColor()
+            
             
             
             self.showsReorderControl = true
@@ -29,15 +31,19 @@ class TicketTableViewCell: UITableViewCell {
             }
             
             if !self.isAddCell {
+            
+                
+                self.colorView.backgroundColor = UIColor.colorFrom(Int( self.ticket!.colorIndex))
+                
                 
                 let pomodoroView = UIView.pomodoroRowWith(Int(self.ticket!.pomodoroEstimate))
                 
-                pomodoroView.backgroundColor = UIColor.lightGrayColor()
                 self.pomodoroCountView.addSubview(pomodoroView)
             
             
             }
             else {
+                self.colorView.backgroundColor = UIColor.whiteColor()
                 self.backgroundColor = UIColor.whiteColor()
                 
                 

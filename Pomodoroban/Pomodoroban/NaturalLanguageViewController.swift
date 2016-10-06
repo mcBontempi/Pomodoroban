@@ -34,7 +34,7 @@ class NaturalLanguageViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         
         self.pomodoroLengh = StringAndPredicateCollection(WIthStringAndPredicateArray: [
-            StringAndPredicate(string: "5 minutes", predicate: 5),
+            StringAndPredicate(string: "25 minutes", predicate: 25),
             StringAndPredicate(string: "20 minutes", predicate: 20),
             StringAndPredicate(string: "15 minutes", predicate: 15),
             StringAndPredicate(string: "60 minutes", predicate: 60),

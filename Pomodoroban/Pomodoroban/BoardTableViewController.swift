@@ -56,6 +56,17 @@ class BoardTableViewController: UITableViewController {
         
         
         self.tableView.tableFooterView = UIView()
+        
+        
+        self.navigationController?.navigationBar.translucent = false
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
+            self.navigationController?.navigationBar.barTintColor = UIColor.redColor()
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
+        
+        
     }
     
     // general
@@ -99,18 +110,18 @@ class BoardTableViewController: UITableViewController {
         self.planWorkButton.title = "Plan"
         
         UIView.animateWithDuration(0.3, animations: {
-            self.navigationController?.navigationBar.backgroundColor = UIColor.whiteColor()
+            self.navigationController?.navigationBar.barTintColor = UIColor.redColor()
         })
     }
     
     func setPlanMode() {
         self.tableView.setEditing(true, animated: true)
-        self.title = "Editing Mode"
+        self.title = "EDITING"
         self.planWorkButton.title = "Work"
         
         
         UIView.animateWithDuration(0.3, animations: {
-            self.navigationController?.navigationBar.backgroundColor = UIColor.redColor()
+            self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
         })
     }
     
@@ -256,6 +267,8 @@ class BoardTableViewController: UITableViewController {
         vc.ticket.row = Int32(row)
         vc.ticket.section = Int32(section)
         vc.ticket.pomodoroEstimate = 1
+        vc.ticket.colorIndex = 2
+        
         
         vc.delegate = self
         

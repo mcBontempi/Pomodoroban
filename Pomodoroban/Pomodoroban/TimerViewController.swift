@@ -53,6 +53,8 @@ class TimerViewController: UIViewController {
         
         self.titleLabel.text = ticket.name
         
+        self.notesTextView.text = ticket.desc
+        
         for view in self.pomodoroCountView.subviews {
             view.removeFromSuperview()
         }
@@ -81,7 +83,7 @@ class TimerViewController: UIViewController {
             
             self.takeABreakLabel.text = "Take a short break"
             
-            timerLabel.setCountDownTime(Double(self.shortBreakLength) ) // *60
+            timerLabel.setCountDownTime(Double(self.shortBreakLength) * 60)
             
             self.shortBreaks = self.shortBreaks + 1
         }
@@ -89,7 +91,7 @@ class TimerViewController: UIViewController {
             
             self.takeABreakLabel.text = "Take a long break"
             
-            timerLabel.setCountDownTime(Double(self.longBreakLength) ) // *60
+            timerLabel.setCountDownTime(Double(self.longBreakLength) * 60)
             
             self.shortBreaks = 0
         }
@@ -120,7 +122,7 @@ class TimerViewController: UIViewController {
         self.updateWithTicket(self.tickets[index])
         
         self.timerLabel.timerType = MZTimerLabelTypeTimer
-        timerLabel.setCountDownTime(Double(self.pomodoroLength) ) // *60
+        timerLabel.setCountDownTime(Double(self.pomodoroLength) * 60)
         
         if self.index == self.tickets.count - 1 {
             self.close()
@@ -159,7 +161,6 @@ class TimerViewController: UIViewController {
         self.quitButton.clipsToBounds = true
         self.quitButton.layer.borderColor = UIColor.lightGrayColor().CGColor
         self.quitButton.layer.borderWidth = 6
-        self.quitButton.layer.backgroundColor = UIColor.darkGrayColor().CGColor
         
         
         
@@ -171,13 +172,13 @@ class TimerViewController: UIViewController {
     }
     @IBAction func quitPressed(sender: AnyObject) {
         
-        self.timerLabel.pause()
+     //   self.timerLabel.pause()
         
         let alert = UIAlertController(title: "Paused", message: "", preferredStyle: .ActionSheet)
         
         
         alert.addAction(UIAlertAction(title: "Continue", style: .Default, handler: { (action) in
-            self.timerLabel.pause()
+       //     self.timerLabel.reset()
         }))
         
         alert.addAction(UIAlertAction(title: "Quit", style: .Default, handler: { (action) in

@@ -23,6 +23,7 @@ class TicketViewController: UITableViewController {
         self.save()
     }
     @IBOutlet weak var colorCell: UITableViewCell!
+    @IBOutlet weak var notesText: UITextView!
     
     @IBOutlet weak var pomodoroCountView: UIView!
     var delegate: TicketViewControllerDelegate!
@@ -36,12 +37,16 @@ class TicketViewController: UITableViewController {
         self.titleField.text = self.ticket.name
         
         
+        self.notesText.text = self.ticket.desc
+        
+        
         self.navigationController?.navigationBar.translucent = false
         
-        self.navigationController?.navigationBar.barTintColor = UIColor.colorFrom(Int( self.ticket.colorIndex))
+        
+     //   self.navigationController?.navigationBar.barTintColor = UIColor.colorFrom(Int( self.ticket.colorIndex))
         self.colorCircle.backgroundColor = UIColor.colorFrom(Int( self.ticket.colorIndex))
         
-        self.colorCircle.layer.cornerRadius = 12.0
+      //  self.colorCircle.layer.cornerRadius = 12.0
       //  self.colorCircle.layer.borderWidth = 1
       //  self.colorCircle.layer.borderColor = UIColor.blackColor().CGColor
         
@@ -52,6 +57,8 @@ class TicketViewController: UITableViewController {
     func save() {
         
         if self.titleField.text != "" {
+            
+            self.ticket.desc = self.notesText.text
             self.ticket.name = self.titleField.text
             self.delegate.ticketViewControllerSave(self)
         }
@@ -149,7 +156,7 @@ extension TicketViewController : UIPickerViewDelegate {
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         if pickerView == self.colorPicker {
             
-            self.navigationController?.navigationBar.barTintColor = UIColor.colorFrom(Int( row))
+       //     self.navigationController?.navigationBar.barTintColor = UIColor.colorFrom(Int( row))
             self.colorCircle.backgroundColor = UIColor.colorFrom(row)
             
             
