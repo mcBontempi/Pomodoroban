@@ -59,11 +59,11 @@ class NaturalLanguageViewController: UIViewController {
             StringAndPredicate(string: "4th", predicate: 4)])
         
         self.longBreakLength = StringAndPredicateCollection(WIthStringAndPredicateArray: [
-            StringAndPredicate(string: "20 minutes", predicate: 2),
-            StringAndPredicate(string: "25 minutes", predicate: 2),
-            StringAndPredicate(string: "30 minutes", predicate: 2),
-            StringAndPredicate(string: "10 minutes", predicate: 2),
-            StringAndPredicate(string: "15 minutes", predicate: 2)])
+            StringAndPredicate(string: "20 minutes", predicate: 20),
+            StringAndPredicate(string: "25 minutes", predicate: 25),
+            StringAndPredicate(string: "30 minutes", predicate: 30),
+            StringAndPredicate(string: "10 minutes", predicate: 10),
+            StringAndPredicate(string: "15 minutes", predicate: 15)])
         
         
         wordsAndQuestionsView.wordsAndQuestions = ["Pomodoroban", "will", "create","your","working","day","with","each","pomodoro","lasting",self.pomodoroLengh,"after","each","pomodoro","you","will","have","a","break","of",self.shortBreakLength,"and","after","every",self.shortBreakCount,"pomodoro","you","will","have","a","break","of",self.longBreakLength]
