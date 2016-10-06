@@ -33,7 +33,6 @@
 		FD5BE9EA1C5BB5CA00535A78 /* Pomodoroban.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FD5BE9E81C5BB5CA00535A78 /* Pomodoroban.xcdatamodeld */; };
 		FD5BE9EC1C5BB5CA00535A78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD5BE9EB1C5BB5CA00535A78 /* Assets.xcassets */; };
 		FD5BE9EF1C5BB5CA00535A78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD5BE9ED1C5BB5CA00535A78 /* LaunchScreen.storyboard */; };
-		FD5BE9F71C5BD21100535A78 /* PomodoroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5BE9F61C5BD21100535A78 /* PomodoroViewController.swift */; };
 		FD5BEA031C5CF83100535A78 /* Ticket+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5BEA011C5CF83100535A78 /* Ticket+CoreDataProperties.swift */; };
 		FD5BEA041C5CF83100535A78 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5BEA021C5CF83100535A78 /* Ticket.swift */; };
 /* End PBXBuildFile section */
@@ -77,7 +76,6 @@
 		FD5BE9EB1C5BB5CA00535A78 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD5BE9EE1C5BB5CA00535A78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FD5BE9F01C5BB5CA00535A78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FD5BE9F61C5BD21100535A78 /* PomodoroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PomodoroViewController.swift; sourceTree = "<group>"; };
 		FD5BEA011C5CF83100535A78 /* Ticket+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ticket+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FD5BEA021C5CF83100535A78 /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -197,7 +195,6 @@
 				D6456A641DA5074D0002FDA2 /* TicketViewController */,
 				D6E71D851DA3EDBB0055F2AA /* CALayer+Animations.h */,
 				D6E71D861DA3EDBB0055F2AA /* CALayer+Animations.m */,
-				FD5BE9F61C5BD21100535A78 /* PomodoroViewController.swift */,
 				D67FAECE1D95235B0085BF2D /* BoardTableViewController.swift */,
 				D67FAED01D952B1C0085BF2D /* TicketTableViewCell.swift */,
 				D61085361D960601001A203A /* TimerViewController.swift */,
@@ -353,7 +350,6 @@
 				D6456A611DA506B40002FDA2 /* PomodoroCountTableViewCell.swift in Sources */,
 				FD5BEA041C5CF83100535A78 /* Ticket.swift in Sources */,
 				D6456A6A1DA540E70002FDA2 /* UIView+PomodoroRow.swift in Sources */,
-				FD5BE9F71C5BD21100535A78 /* PomodoroViewController.swift in Sources */,
 				D6456A681DA534330002FDA2 /* UIColor+Palette.swift in Sources */,
 				D6456A631DA506EB0002FDA2 /* ColorTableViewCell.swift in Sources */,
 				D617FB661D9E54C700A4CA53 /* SyncService.swift in Sources */,

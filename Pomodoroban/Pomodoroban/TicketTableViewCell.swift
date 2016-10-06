@@ -14,6 +14,7 @@ class TicketTableViewCell: UITableViewCell {
     
     var isAddCell = true
     
+    @IBOutlet weak var pomodoroCountView: UIView!
     var ticket: Ticket? {
         didSet {
             self.titleLabel.text = ticket!.name
@@ -24,6 +25,16 @@ class TicketTableViewCell: UITableViewCell {
             self.showsReorderControl = true
             
             if !self.isAddCell {
+            
+                
+                for view in self.pomodoroCountView.subviews {
+                    view.removeFromSuperview()
+                }
+                
+                let pomodoroView = UIView.pomodoroRowWith(Int(self.ticket!.pomodoroEstimate))
+                self.pomodoroCountView.addSubview(pomodoroView)
+            
+            
             }
             else {
                 self.backgroundColor = UIColor.whiteColor()

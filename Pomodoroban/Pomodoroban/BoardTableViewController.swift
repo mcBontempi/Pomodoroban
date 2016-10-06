@@ -138,7 +138,7 @@ class BoardTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return self.isAddAtIndexPath(indexPath) ? ( self.isActuallyEditing ? 50 : 0 ) :  50
+        return self.isAddAtIndexPath(indexPath) ? ( self.isActuallyEditing ? 50 : 0 ) :  76
     }
     
     override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
@@ -255,6 +255,7 @@ class BoardTableViewController: UITableViewController {
         vc.ticket.name = ""
         vc.ticket.row = Int32(row)
         vc.ticket.section = Int32(section)
+        vc.ticket.pomodoroEstimate = 1
         
         vc.delegate = self
         

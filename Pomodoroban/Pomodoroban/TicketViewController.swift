@@ -36,6 +36,9 @@ class TicketViewController: UITableViewController {
         self.titleField.text = self.ticket.name
         
         
+        self.navigationController?.navigationBar.translucent = false
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor.colorFrom(Int( self.ticket.colorIndex))
         self.colorCircle.backgroundColor = UIColor.colorFrom(Int( self.ticket.colorIndex))
         
         self.colorCircle.layer.cornerRadius = 12.0
@@ -44,8 +47,6 @@ class TicketViewController: UITableViewController {
         
         let pomodoroView = UIView.pomodoroRowWith(Int(self.ticket.pomodoroEstimate))
         self.pomodoroCountView.addSubview(pomodoroView)
-        
-        
     }
     
     func save() {
@@ -135,7 +136,7 @@ extension TicketViewController : UIPickerViewDelegate {
         
         if pickerView == self.pomodoroCountPicker {
             
-            let view = UIView.pomodoroRowWith(row)
+            let view = UIView.pomodoroRowWith(row+1)
             return view
         }
         else {
@@ -147,6 +148,8 @@ extension TicketViewController : UIPickerViewDelegate {
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         if pickerView == self.colorPicker {
+            
+            self.navigationController?.navigationBar.barTintColor = UIColor.colorFrom(Int( row))
             self.colorCircle.backgroundColor = UIColor.colorFrom(row)
             
             
@@ -154,13 +157,13 @@ extension TicketViewController : UIPickerViewDelegate {
         }
         else {
             
-            self.ticket.pomodoroEstimate = Int32(row)
+            self.ticket.pomodoroEstimate = Int32(row+1)
             
             for view in self.pomodoroCountView.subviews {
                 view.removeFromSuperview()
             }
             
-            let pomodoroView = UIView.pomodoroRowWith(row)
+            let pomodoroView = UIView.pomodoroRowWith(row+1)
             self.pomodoroCountView.addSubview(pomodoroView)
             
             
