@@ -89,7 +89,7 @@ class TicketViewController: UITableViewController {
             
             pomodoroCountHidden = !pomodoroCountHidden
             
-            self.pomodoroCountPicker.selectRow(Int(self.ticket.pomodoroEstimate), inComponent: 0, animated: true)
+            self.pomodoroCountPicker.selectRow(Int(self.ticket.pomodoroEstimate)-1, inComponent: 0, animated: true)
             
             
             tableView.beginUpdates()

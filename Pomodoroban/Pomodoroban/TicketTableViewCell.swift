@@ -22,22 +22,25 @@ class TicketTableViewCell: UITableViewCell {
             
             self.backgroundColor = UIColor.colorFrom(Int( self.ticket!.colorIndex))
             
+            
             self.showsReorderControl = true
+            for view in self.pomodoroCountView.subviews {
+                view.removeFromSuperview()
+            }
             
             if !self.isAddCell {
-            
-                
-                for view in self.pomodoroCountView.subviews {
-                    view.removeFromSuperview()
-                }
                 
                 let pomodoroView = UIView.pomodoroRowWith(Int(self.ticket!.pomodoroEstimate))
+                
+                pomodoroView.backgroundColor = UIColor.lightGrayColor()
                 self.pomodoroCountView.addSubview(pomodoroView)
             
             
             }
             else {
                 self.backgroundColor = UIColor.whiteColor()
+                
+                
             }
         }
         

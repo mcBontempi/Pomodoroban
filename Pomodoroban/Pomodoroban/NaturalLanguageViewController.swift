@@ -34,7 +34,7 @@ class NaturalLanguageViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         
         self.pomodoroLengh = StringAndPredicateCollection(WIthStringAndPredicateArray: [
-            StringAndPredicate(string: "25 minutes", predicate: 25),
+            StringAndPredicate(string: "5 minutes", predicate: 5),
             StringAndPredicate(string: "20 minutes", predicate: 20),
             StringAndPredicate(string: "15 minutes", predicate: 15),
             StringAndPredicate(string: "60 minutes", predicate: 60),
@@ -76,7 +76,8 @@ class NaturalLanguageViewController: UIViewController {
         
         let vc = segue.destinationViewController as! TimerViewController
         
-        vc.pomodoroLength = self.pomodoroLengh.predicate() as! Int
+        let length = self.pomodoroLengh.predicate() as! Int
+        vc.pomodoroLength = length
         vc.shortBreakLength = self.shortBreakLength.predicate() as! Int
         vc.shortBreakCount = self.shortBreakCount.predicate() as! Int
         vc.longBreakLength = self.longBreakLength.predicate() as! Int
