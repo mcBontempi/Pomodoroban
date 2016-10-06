@@ -25,6 +25,7 @@ PODS:
     - Mantle/extobjc (= 2.0.7)
   - Mantle/extobjc (2.0.7)
   - MZTimerLabel (0.5.4)
+  - SwiftHEXColors (1.0.4)
   - syncano-ios (4.3.1):
     - AFNetworking (= 3.1.0)
     - FMDB (= 2.6)
@@ -33,6 +34,7 @@ PODS:
 
 DEPENDENCIES:
   - MZTimerLabel
+  - SwiftHEXColors
   - syncano-ios
 
 SPEC CHECKSUMS:
@@ -41,8 +43,9 @@ SPEC CHECKSUMS:
   FMDBMigrationManager: d52007f328ea0665e8985ca8a33500707aef084f
   Mantle: bc40bb061d8c2c6fb48d5083e04d928c3b7f73d9
   MZTimerLabel: cd9bfb9304540ef2a9e163384fca9c978f0dbf83
+  SwiftHEXColors: b0ecc7bd83a1aa2e1956f9ba51f55ebb2bcf86ef
   syncano-ios: f89c7b55f3542b90e52baaf307678bf21860ac65
 
-PODFILE CHECKSUM: b3b2c358380a09a8bfddaab6cd460adf3ef009d3
+PODFILE CHECKSUM: 7c8e9c7ce76858c09f64c6adf72ee015bdb6bdd5
 
 COCOAPODS: 1.1.0.rc.2

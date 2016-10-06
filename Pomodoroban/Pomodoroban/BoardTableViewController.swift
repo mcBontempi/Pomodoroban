@@ -178,6 +178,7 @@ class BoardTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("TicketTableViewCell") as! TicketTableViewCell
         cell.isAddCell = self.isAddAtIndexPath(indexPath)
         cell.ticket =  ticket
+        
         return cell
     }
     

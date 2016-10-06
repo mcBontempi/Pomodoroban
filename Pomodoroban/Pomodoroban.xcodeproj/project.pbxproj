@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E6662D4EE1E8EFAE544C0AE /* Pods_Pomodoroban.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCA3848EA8942B910EDC377 /* Pods_Pomodoroban.framework */; };
 		D61085351D95ED3F001A203A /* CoreDataServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61085341D95ED3F001A203A /* CoreDataServices.swift */; };
 		D61085371D960601001A203A /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61085361D960601001A203A /* TimerViewController.swift */; };
 		D617FB661D9E54C700A4CA53 /* SyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D617FB651D9E54C700A4CA53 /* SyncService.swift */; };
@@ -17,6 +18,7 @@
 		D6456A631DA506EB0002FDA2 /* ColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A621DA506EB0002FDA2 /* ColorTableViewCell.swift */; };
 		D6456A661DA513FE0002FDA2 /* ColorDropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A651DA513FE0002FDA2 /* ColorDropDownTableViewCell.swift */; };
 		D6456A681DA534330002FDA2 /* UIColor+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A671DA534330002FDA2 /* UIColor+Palette.swift */; };
+		D6456A6A1DA540E70002FDA2 /* UIView+PomodoroRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A691DA540E70002FDA2 /* UIView+PomodoroRow.swift */; };
 		D656B36B1DA413630035500A /* NSDate+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D656B36A1DA413630035500A /* NSDate+Utils.swift */; };
 		D67FAECF1D95235B0085BF2D /* BoardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67FAECE1D95235B0085BF2D /* BoardTableViewController.swift */; };
 		D67FAED11D952B1C0085BF2D /* TicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67FAED01D952B1C0085BF2D /* TicketTableViewCell.swift */; };
@@ -26,7 +28,6 @@
 		D6E71D891DA3EFC10055F2AA /* NaturalLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E71D881DA3EFC10055F2AA /* NaturalLanguageViewController.swift */; };
 		D6E71D8D1DA3F2A60055F2AA /* StringAndPredicateCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E71D8C1DA3F2A60055F2AA /* StringAndPredicateCollection.m */; };
 		D6E71D901DA3F3480055F2AA /* StringAndPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E71D8F1DA3F3480055F2AA /* StringAndPredicate.m */; };
-		D89D9EC32A248C8C86AF97A6 /* libPods-Pomodoroban.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4B66E620E07A64E220F33BF /* libPods-Pomodoroban.a */; };
 		FD5BE9E21C5BB5CA00535A78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5BE9E11C5BB5CA00535A78 /* AppDelegate.swift */; };
 		FD5BE9E71C5BB5CA00535A78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD5BE9E51C5BB5CA00535A78 /* Main.storyboard */; };
 		FD5BE9EA1C5BB5CA00535A78 /* Pomodoroban.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FD5BE9E81C5BB5CA00535A78 /* Pomodoroban.xcdatamodeld */; };
@@ -40,7 +41,7 @@
 /* Begin PBXFileReference section */
 		224728038F259033A1FD86F1 /* Pods-Pomodoroban.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pomodoroban.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pomodoroban/Pods-Pomodoroban.release.xcconfig"; sourceTree = "<group>"; };
 		9D0361FD1C10D660CAC26D4D /* Pods-Pomodoroban.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pomodoroban.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pomodoroban/Pods-Pomodoroban.debug.xcconfig"; sourceTree = "<group>"; };
-		A4B66E620E07A64E220F33BF /* libPods-Pomodoroban.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Pomodoroban.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCCA3848EA8942B910EDC377 /* Pods_Pomodoroban.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pomodoroban.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D61085341D95ED3F001A203A /* CoreDataServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataServices.swift; sourceTree = "<group>"; };
 		D61085361D960601001A203A /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		D617FB651D9E54C700A4CA53 /* SyncService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncService.swift; sourceTree = "<group>"; };
@@ -51,6 +52,7 @@
 		D6456A621DA506EB0002FDA2 /* ColorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTableViewCell.swift; sourceTree = "<group>"; };
 		D6456A651DA513FE0002FDA2 /* ColorDropDownTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorDropDownTableViewCell.swift; sourceTree = "<group>"; };
 		D6456A671DA534330002FDA2 /* UIColor+Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Palette.swift"; sourceTree = "<group>"; };
+		D6456A691DA540E70002FDA2 /* UIView+PomodoroRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+PomodoroRow.swift"; sourceTree = "<group>"; };
 		D656B36A1DA413630035500A /* NSDate+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Utils.swift"; sourceTree = "<group>"; };
 		D67FAECE1D95235B0085BF2D /* BoardTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardTableViewController.swift; sourceTree = "<group>"; };
 		D67FAED01D952B1C0085BF2D /* TicketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewCell.swift; sourceTree = "<group>"; };
@@ -85,7 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D89D9EC32A248C8C86AF97A6 /* libPods-Pomodoroban.a in Frameworks */,
+				4E6662D4EE1E8EFAE544C0AE /* Pods_Pomodoroban.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,7 +106,7 @@
 		9C92CEDF848A63397DE26336 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A4B66E620E07A64E220F33BF /* libPods-Pomodoroban.a */,
+				CCCA3848EA8942B910EDC377 /* Pods_Pomodoroban.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -127,6 +129,7 @@
 			children = (
 				D656B36A1DA413630035500A /* NSDate+Utils.swift */,
 				D6456A671DA534330002FDA2 /* UIColor+Palette.swift */,
+				D6456A691DA540E70002FDA2 /* UIView+PomodoroRow.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				D6E71D871DA3EDBB0055F2AA /* CALayer+Animations.m in Sources */,
 				D6456A611DA506B40002FDA2 /* PomodoroCountTableViewCell.swift in Sources */,
 				FD5BEA041C5CF83100535A78 /* Ticket.swift in Sources */,
+				D6456A6A1DA540E70002FDA2 /* UIView+PomodoroRow.swift in Sources */,
 				FD5BE9F71C5BD21100535A78 /* PomodoroViewController.swift in Sources */,
 				D6456A681DA534330002FDA2 /* UIColor+Palette.swift in Sources */,
 				D6456A631DA506EB0002FDA2 /* ColorTableViewCell.swift in Sources */,

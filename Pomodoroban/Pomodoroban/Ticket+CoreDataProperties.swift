@@ -19,5 +19,6 @@ extension Ticket {
     @NSManaged var pomodoroEstimate: Int32
     @NSManaged var section: Int32
     @NSManaged var row: Int32
+    @NSManaged var colorIndex: Int32
 
 }

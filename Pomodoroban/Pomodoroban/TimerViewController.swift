@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MZTimerLabel
 
 protocol TimerViewControllerDelegate {
     func timerViewControllerDone(timerViewController: TimerViewController)

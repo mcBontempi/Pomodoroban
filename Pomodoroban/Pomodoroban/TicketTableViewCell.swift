@@ -19,12 +19,14 @@ class TicketTableViewCell: UITableViewCell {
             self.titleLabel.text = ticket!.name
             self.titleLabel.textColor = UIColor.darkGrayColor()
           
+            self.backgroundColor = UIColor.colorFrom(Int( self.ticket!.colorIndex))
+                
             self.showsReorderControl = true
             
             if !self.isAddCell {
-            
             }
             else {
+                self.backgroundColor = UIColor.whiteColor()
             }
         }
         

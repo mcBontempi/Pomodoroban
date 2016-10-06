@@ -6,6 +6,11 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Pomodoro-->
         <scene sceneID="0ww-8i-p30">
@@ -69,63 +74,84 @@
         <scene sceneID="LDL-Zl-dkO">
             <objects>
                 <tableViewController id="Bao-VS-BAp" customClass="TicketViewController" customModule="Pomodoroban" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ofk-z0-eKi">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ofk-z0-eKi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
-                            <tableViewSection headerTitle="TITLE" id="85k-Hr-N4Y">
+                            <tableViewSection id="85k-Hr-N4Y">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ukj-AD-ztl">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="88" id="ukj-AD-ztl">
+                                        <rect key="frame" x="0.0" y="64" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ukj-AD-ztl" id="nNh-2j-Hts">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="87"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name you task here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Ty-pf-QQp">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2B5-ku-K41">
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="23"/>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name you task here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Ty-pf-QQp">
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="4Ty-pf-QQp" firstAttribute="top" secondItem="nNh-2j-Hts" secondAttribute="top" id="8IR-Pk-jnn"/>
-                                                <constraint firstAttribute="trailing" secondItem="4Ty-pf-QQp" secondAttribute="trailing" id="RmE-3Y-Wbj"/>
-                                                <constraint firstAttribute="bottom" secondItem="4Ty-pf-QQp" secondAttribute="bottom" id="esy-Dv-hjJ"/>
-                                                <constraint firstItem="4Ty-pf-QQp" firstAttribute="leading" secondItem="nNh-2j-Hts" secondAttribute="leading" id="xVN-Na-1ee"/>
+                                                <constraint firstItem="4Ty-pf-QQp" firstAttribute="top" secondItem="nNh-2j-Hts" secondAttribute="top" constant="44" id="8IR-Pk-jnn"/>
+                                                <constraint firstAttribute="trailing" secondItem="4Ty-pf-QQp" secondAttribute="trailing" constant="5" id="RmE-3Y-Wbj"/>
+                                                <constraint firstItem="2B5-ku-K41" firstAttribute="leading" secondItem="nNh-2j-Hts" secondAttribute="leadingMargin" constant="5" id="YNc-on-KBe"/>
+                                                <constraint firstAttribute="bottom" secondItem="4Ty-pf-QQp" secondAttribute="bottom" constant="5" id="esy-Dv-hjJ"/>
+                                                <constraint firstItem="2B5-ku-K41" firstAttribute="top" secondItem="nNh-2j-Hts" secondAttribute="topMargin" constant="5" id="vDQ-DB-29B"/>
+                                                <constraint firstItem="4Ty-pf-QQp" firstAttribute="leading" secondItem="nNh-2j-Hts" secondAttribute="leading" constant="15" id="xVN-Na-1ee"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="COLOR" id="C9Z-00-ajE">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ColorTableViewCell" id="F1w-b3-SzQ" customClass="ColorTableViewCell" customModule="Pomodoroban" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="164" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ColorTableViewCell" rowHeight="88" id="F1w-b3-SzQ">
+                                        <rect key="frame" x="0.0" y="152" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F1w-b3-SzQ" id="MOy-j9-PRj">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="87"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ee1-84-VQK">
-                                                    <frame key="frameInset" minX="13" minY="11" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COLOR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBQ-xH-Xc2">
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="23"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cOr-0s-noS">
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="24" id="68r-lh-wss"/>
+                                                        <constraint firstAttribute="width" constant="24" id="7wF-3v-M9r"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="cOr-0s-noS" firstAttribute="leading" secondItem="MOy-j9-PRj" secondAttribute="leading" constant="15" id="UIZ-8F-Pq5"/>
+                                                <constraint firstItem="HBQ-xH-Xc2" firstAttribute="leading" secondItem="MOy-j9-PRj" secondAttribute="leadingMargin" constant="5" id="ev4-ma-yV3"/>
+                                                <constraint firstItem="HBQ-xH-Xc2" firstAttribute="top" secondItem="MOy-j9-PRj" secondAttribute="topMargin" constant="5" id="qnm-FK-1O9"/>
+                                                <constraint firstAttribute="bottom" secondItem="cOr-0s-noS" secondAttribute="bottom" constant="10" id="wZO-Po-kwo"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ColorDropDownTableViewCell" rowHeight="216" id="kZh-c7-ORp" customClass="ColorDropDownTableViewCell" customModule="Pomodoroban" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="208" width="375" height="216"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ColorDropDownTableViewCell" rowHeight="100" id="kZh-c7-ORp" customClass="ColorDropDownTableViewCell" customModule="Pomodoroban" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="240" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kZh-c7-ORp" id="Tk4-7t-P4C">
-                                            <frame key="frameInset" width="375" height="215"/>
+                                            <frame key="frameInset" width="375" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tKR-pw-wSm"/>
+                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tKR-pw-wSm">
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="Bao-VS-BAp" id="fEU-2e-GCP"/>
+                                                        <outlet property="delegate" destination="Bao-VS-BAp" id="o6y-TG-PLa"/>
+                                                    </connections>
+                                                </pickerView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="tKR-pw-wSm" firstAttribute="leading" secondItem="Tk4-7t-P4C" secondAttribute="leading" id="GdP-uN-xGz"/>
@@ -135,26 +161,47 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="POMODORO COUNT" id="rbg-Zp-5pa">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PomodoroCountTableViewCell" id="FOk-36-Z0F" customClass="PomodoroCountTableViewCell" customModule="Pomodoroban" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="452" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PomodoroCountTableViewCell" rowHeight="88" id="FOk-36-Z0F" customClass="PomodoroCountTableViewCell" customModule="Pomodoroban" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="340" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FOk-36-Z0F" id="qkz-fc-1WU">
-                                            <frame key="frameInset" width="375" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PomodoroCountTableViewCell" rowHeight="216" id="16P-ns-78f" customClass="PomodoroCountTableViewCell" customModule="Pomodoroban" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="496" width="375" height="216"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="16P-ns-78f" id="0n0-fK-Iif">
-                                            <frame key="frameInset" width="375" height="215"/>
+                                            <frame key="frameInset" width="375" height="87"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tsq-Na-1VY"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="POMODORO COUNT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FrU-sG-4wm">
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="23"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BTE-9g-EcW">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="24" id="oYf-2I-Atf"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="FrU-sG-4wm" firstAttribute="leading" secondItem="qkz-fc-1WU" secondAttribute="leadingMargin" constant="5" id="13u-6p-sv1"/>
+                                                <constraint firstAttribute="bottom" secondItem="BTE-9g-EcW" secondAttribute="bottom" constant="15" id="6nG-BA-eUT"/>
+                                                <constraint firstAttribute="trailing" secondItem="BTE-9g-EcW" secondAttribute="trailing" constant="5" id="9gd-u4-ZG8"/>
+                                                <constraint firstItem="BTE-9g-EcW" firstAttribute="leading" secondItem="qkz-fc-1WU" secondAttribute="leading" constant="10" id="RHE-uu-bL2"/>
+                                                <constraint firstItem="FrU-sG-4wm" firstAttribute="top" secondItem="qkz-fc-1WU" secondAttribute="topMargin" constant="5" id="YLk-bc-SXE"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PomodoroCountTableViewCell" rowHeight="100" id="16P-ns-78f" customClass="PomodoroCountTableViewCell" customModule="Pomodoroban" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="428" width="375" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="16P-ns-78f" id="0n0-fK-Iif">
+                                            <frame key="frameInset" width="375" height="99"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tsq-Na-1VY">
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="Bao-VS-BAp" id="Ihj-uq-BqQ"/>
+                                                        <outlet property="delegate" destination="Bao-VS-BAp" id="m3d-9C-ihf"/>
+                                                    </connections>
+                                                </pickerView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="tsq-Na-1VY" firstAttribute="leading" secondItem="0n0-fK-Iif" secondAttribute="leading" id="NJf-Df-ebt"/>
@@ -164,17 +211,19 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="NOTES" id="leS-Uo-ecZ">
-                                <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="F5f-JU-0nf" customClass="TextViewTableViewCell" customModule="Pomodoroban" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="740" width="375" height="120"/>
+                                        <rect key="frame" x="0.0" y="528" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F5f-JU-0nf" id="AAg-BY-Mmp">
                                             <frame key="frameInset" width="375" height="119"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NOTES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2i-fS-zAz">
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="23"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="QzL-RF-973">
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -185,8 +234,10 @@
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="QzL-RF-973" secondAttribute="bottom" id="0BW-jf-tVb"/>
                                                 <constraint firstItem="QzL-RF-973" firstAttribute="leading" secondItem="AAg-BY-Mmp" secondAttribute="leadingMargin" id="Csv-Gs-tXz"/>
+                                                <constraint firstItem="b2i-fS-zAz" firstAttribute="top" secondItem="AAg-BY-Mmp" secondAttribute="topMargin" constant="5" id="L8j-0B-NUU"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="QzL-RF-973" secondAttribute="trailing" id="cDR-E6-U90"/>
-                                                <constraint firstItem="QzL-RF-973" firstAttribute="top" secondItem="AAg-BY-Mmp" secondAttribute="topMargin" id="fMc-E0-nmE"/>
+                                                <constraint firstItem="QzL-RF-973" firstAttribute="top" secondItem="AAg-BY-Mmp" secondAttribute="topMargin" constant="44" id="fMc-E0-nmE"/>
+                                                <constraint firstItem="b2i-fS-zAz" firstAttribute="leading" secondItem="AAg-BY-Mmp" secondAttribute="leadingMargin" constant="5" id="gQs-Db-7FS"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -211,10 +262,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="colorCell" destination="F1w-b3-SzQ" id="jEd-LC-i6H"/>
+                        <outlet property="colorCircle" destination="cOr-0s-noS" id="VRU-nP-HPB"/>
                         <outlet property="colorPicker" destination="tKR-pw-wSm" id="qWh-8D-aCx"/>
                         <outlet property="leftButton" destination="NyG-7L-AjP" id="WRr-XA-6uL"/>
                         <outlet property="notes" destination="AAg-BY-Mmp" id="ONo-rE-t0w"/>
                         <outlet property="pomodoroCountPicker" destination="tsq-Na-1VY" id="OKD-ku-D8P"/>
+                        <outlet property="pomodoroCountView" destination="BTE-9g-EcW" id="bQE-g5-rPV"/>
                         <outlet property="rightButton" destination="ele-6Q-V4e" id="2dJ-rd-OYN"/>
                         <outlet property="titleField" destination="4Ty-pf-QQp" id="scX-PN-q4B"/>
                     </connections>
