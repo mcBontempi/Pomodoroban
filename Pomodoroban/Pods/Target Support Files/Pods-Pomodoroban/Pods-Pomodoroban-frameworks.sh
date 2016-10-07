@@ -84,20 +84,10 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/AFNetworking/AFNetworking.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/FMDB/FMDB.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/FMDBMigrationManager/FMDBMigrationManager.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MZTimerLabel/MZTimerLabel.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Mantle/Mantle.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftHEXColors/SwiftHEXColors.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/syncano-ios/syncano_ios.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/AFNetworking/AFNetworking.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/FMDB/FMDB.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/FMDBMigrationManager/FMDBMigrationManager.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MZTimerLabel/MZTimerLabel.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Mantle/Mantle.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftHEXColors/SwiftHEXColors.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/syncano-ios/syncano_ios.framework"
 fi

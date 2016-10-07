@@ -1,1 +1,0 @@
-../../../syncano-ios/syncano-ios/SCParseManager+SCUser.h

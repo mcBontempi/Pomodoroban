@@ -1,1 +1,0 @@
-../../../syncano-ios/syncano-ios/SCDataObject+ArrayOperators.h

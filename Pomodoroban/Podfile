@@ -2,7 +2,6 @@ use_frameworks!
 
 target "Pomodoroban" do
 pod 'MZTimerLabel'
-pod 'syncano-ios'
 pod 'SwiftHEXColors'
 pod 'Fabric'
 pod 'Crashlytics'

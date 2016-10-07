@@ -107,16 +107,23 @@ class Ticket: NSManagedObject {
             
             
             if toIndexPath.row == newRowIndex {
-                ticket.row = Int32(newRowIndex++)
+                ticket.row = Int32(newRowIndex)
+                
+                newRowIndex = newRowIndex + 1
+                
                 ticket.section = Int32(toIndexPath.section)
                 
                 if iteratingTicket.row != addRowControl {
-                    iteratingTicket.row = Int32(newRowIndex++)
+                    iteratingTicket.row = Int32(newRowIndex)
+                    
+                    newRowIndex = newRowIndex + 1
                 }
             }
             else {
                 if iteratingTicket.row != addRowControl {
-                    iteratingTicket.row = Int32(newRowIndex++)
+                    iteratingTicket.row = Int32(newRowIndex)
+                    
+                    newRowIndex = newRowIndex + 1
                 }
             }
         }
