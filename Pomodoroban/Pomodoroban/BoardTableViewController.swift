@@ -213,17 +213,21 @@ class BoardTableViewController: UITableViewController {
         
         let view = UIView(frame:CGRectMake(0,0,self.tableView.frame.size.width,30))
      
-        view.backgroundColor = UIColor.darkGrayColor()
+        view.backgroundColor = UIColor(hexString: "1fa511")
         let label = UILabel(frame:CGRectMake(10,0,self.tableView.frame.size.width - 20,30))
         
         if (NSDate().getDayOfWeek() == section) {
               label.text = "TODAY"
             label.textColor = UIColor.whiteColor()
+            
+            label.font = UIFont(name:"HelveticaNeue-Bold", size: 20.0)
         }
         else {
-            label.textColor = UIColor.grayColor()
+            label.textColor = UIColor.whiteColor()
             
               label.text = self.sectionTitles()[section]
+            
+            label.font = UIFont(name:"HelveticaNeue", size: 18.0)
         }
         
        

@@ -87,7 +87,7 @@ class TimerViewController: UIViewController {
             timerLabel.setCountDownTime(Double(self.shortBreakLength) * 60)
             
             
-                 self.createNotification(NSDate(),minsFromNow:self.shortBreakLength,message:"Its Time to Start Work, Tap to start.")
+                 self.createNotification(NSDate(),minsFromNow:self.shortBreakLength,message:"Its Time to Start Work, swipe to return.")
             
             self.shortBreaks = self.shortBreaks + 1
         }
@@ -97,7 +97,7 @@ class TimerViewController: UIViewController {
             
             timerLabel.setCountDownTime(Double(self.longBreakLength) * 60)
             
-              self.createNotification(NSDate(),minsFromNow:self.longBreakLength,message:"Its Time to Start Work, Tap to start.")
+              self.createNotification(NSDate(),minsFromNow:self.longBreakLength,message:"Its Time to Start Work, swipe to return.")
             
             self.shortBreaks = 0
         }
@@ -131,7 +131,7 @@ class TimerViewController: UIViewController {
         timerLabel.setCountDownTime(Double(self.pomodoroLength) * 60)
         
         
-        self.createNotification(NSDate(),minsFromNow: 5 /*self.pomodoroLength*/,message:"Its Time For A Break, Tap to start.")
+        self.createNotification(NSDate(),minsFromNow: self.pomodoroLength,message:"Its Time For A Break, swipe to return.")
         
         
         
@@ -156,6 +156,9 @@ class TimerViewController: UIViewController {
     }
     
     func close() {
+        
+        UIApplication.sharedApplication().cancelAllLocalNotifications()
+        
         self.timerLabel.endedBlock = nil
         
         self.dismissViewControllerAnimated(true) {
@@ -178,9 +181,17 @@ class TimerViewController: UIViewController {
     }
     
     func createNotification(date:NSDate, minsFromNow:Int, message: String) {
+        
+        print("mins from now \(minsFromNow) message\(message)")
+        
+        // ensure we only have one
+        UIApplication.sharedApplication().cancelAllLocalNotifications()
+        
         let notification = UILocalNotification()
+        
         notification.alertBody = message
         notification.alertAction = "Hey there!"
+        notification.soundName = UILocalNotificationDefaultSoundName
         notification.fireDate = date.dateByAddingTimeInterval(NSTimeInterval(minsFromNow*60))
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
     }

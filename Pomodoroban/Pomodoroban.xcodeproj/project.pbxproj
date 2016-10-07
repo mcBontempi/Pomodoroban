@@ -256,7 +256,7 @@
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = 3U786KR73N;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -507,6 +507,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.LondonSwift.Pomodoroban;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "383b2f4f-51c3-4297-939e-68297c684f89";
+				PROVISIONING_PROFILE_SPECIFIER = "ddt pomodoroban";
 				SWIFT_OBJC_BRIDGING_HEADER = "Pomodoroban/Pomodoroban-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 2.3;
@@ -526,6 +528,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.LondonSwift.Pomodoroban;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "383b2f4f-51c3-4297-939e-68297c684f89";
+				PROVISIONING_PROFILE_SPECIFIER = "ddt pomodoroban";
 				SWIFT_OBJC_BRIDGING_HEADER = "Pomodoroban/Pomodoroban-Bridging-Header.h";
 				SWIFT_VERSION = 2.3;
 			};
