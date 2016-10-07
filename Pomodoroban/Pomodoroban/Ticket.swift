@@ -10,41 +10,41 @@ import Foundation
 import CoreData
 
 class Ticket: NSManagedObject {
-  
+    
     static let addRowControl:Int32 = 999999
     
-  static let entityName = "Ticket"
-  static let attributeName = "name"
-  static let attributeDesc = "desc"
-  static let attributePomodoroEstimate = "pomodoroEstimate"
-  static let attributeSection = "section"
-  static let attributeRow = "row"
-  
-  class func count(moc:NSManagedObjectContext) -> Int {
-    let objects = try! moc.executeFetchRequest(Ticket.fetchRequestAll())
-    return objects.count
-  }
-  
-  class func createInMoc(moc:NSManagedObjectContext) -> Ticket {
-    return NSEntityDescription.insertNewObjectForEntityForName(Ticket.entityName, inManagedObjectContext: moc) as! Ticket
-  }
-  
-  class func fetchRequestAll() -> NSFetchRequest {
-    return self.fetchRequestWithPredicate(nil)
-  }
-  
-  class func fetchRequestWithPredicate(predicate: NSPredicate?) -> NSFetchRequest {
-    let request = NSFetchRequest(entityName: Ticket.entityName)
-    let primarySortDescriptor = NSSortDescriptor(key: Ticket.attributeSection, ascending: true)
-    let secondarySortDescriptor = NSSortDescriptor(key: Ticket.attributeRow, ascending: true)
-    request.sortDescriptors = [primarySortDescriptor,secondarySortDescriptor]
+    static let entityName = "Ticket"
+    static let attributeName = "name"
+    static let attributeDesc = "desc"
+    static let attributePomodoroEstimate = "pomodoroEstimate"
+    static let attributeSection = "section"
+    static let attributeRow = "row"
     
-    request.predicate = predicate
-    return request
-  }
+    class func count(moc:NSManagedObjectContext) -> Int {
+        let objects = try! moc.executeFetchRequest(Ticket.fetchRequestAll())
+        return objects.count
+    }
+    
+    class func createInMoc(moc:NSManagedObjectContext) -> Ticket {
+        return NSEntityDescription.insertNewObjectForEntityForName(Ticket.entityName, inManagedObjectContext: moc) as! Ticket
+    }
+    
+    class func fetchRequestAll() -> NSFetchRequest {
+        return self.fetchRequestWithPredicate(nil)
+    }
+    
+    class func fetchRequestWithPredicate(predicate: NSPredicate?) -> NSFetchRequest {
+        let request = NSFetchRequest(entityName: Ticket.entityName)
+        let primarySortDescriptor = NSSortDescriptor(key: Ticket.attributeSection, ascending: true)
+        let secondarySortDescriptor = NSSortDescriptor(key: Ticket.attributeRow, ascending: true)
+        request.sortDescriptors = [primarySortDescriptor,secondarySortDescriptor]
+        
+        request.predicate = predicate
+        return request
+    }
     
     class func fetchRequestForToday() -> NSFetchRequest {
-     
+        
         let weekday = NSDate().getDayOfWeek()
         
         let predicate = NSPredicate(format: "section == %d", weekday)
@@ -52,7 +52,7 @@ class Ticket: NSManagedObject {
         return self.fetchRequestWithPredicate(predicate)
         
     }
-  
+    
     class func allForToday(moc:NSManagedObjectContext) -> [Ticket] {
         
         _ = try! moc.executeFetchRequest(self.fetchRequestForToday())
@@ -61,70 +61,70 @@ class Ticket: NSManagedObject {
         return try! moc.executeFetchRequest(self.fetchRequestForToday()) as! [Ticket]
     }
     
-  
+    
     class func ticketForTicket(ticket:Ticket, moc:NSManagedObjectContext) -> Ticket {
         return moc.objectWithID(ticket.objectID) as! Ticket
     }
     
-  class func removeAllEntities(moc: NSManagedObjectContext) {
-    
-    let request = NSFetchRequest(entityName: Ticket.entityName)
-    
-    let objects = try! moc.executeFetchRequest(request) as! [NSManagedObject]
-    
-    for object in objects {
-      moc.deleteObject(object)
-    }
-    
-    try! moc.save()
-    
-    
-  }
-  
-  
-  class func insertTicket(ticket: Ticket, toIndexPath: NSIndexPath, moc:NSManagedObjectContext) {
-    let request = NSFetchRequest(entityName: Ticket.entityName)
-   
-    var predicate:NSPredicate?
-    
-    if ticket.section == Int32(toIndexPath.section) {
-      predicate = NSPredicate(format: "section == %d && row != %d", toIndexPath.section, ticket.row)
-    }
-    else {
-      predicate = NSPredicate(format: "section == %d", toIndexPath.section)
-    }
-    
-    let primarySortDescriptor = NSSortDescriptor(key: Ticket.attributeRow, ascending: true)
-    request.sortDescriptors = [primarySortDescriptor]
-    
-    
-    request.predicate = predicate
-    let tickets = try! moc.executeFetchRequest(request) as! [Ticket]
-    
-    var newRowIndex = 0
-    
-    for iteratingTicket in tickets {
-      
-      
-      if toIndexPath.row == newRowIndex {
-        ticket.row = Int32(newRowIndex++)
-        ticket.section = Int32(toIndexPath.section)
+    class func removeAllEntities(moc: NSManagedObjectContext) {
         
-        if iteratingTicket.row != addRowControl {
-        iteratingTicket.row = Int32(newRowIndex++)
+        let request = NSFetchRequest(entityName: Ticket.entityName)
+        
+        let objects = try! moc.executeFetchRequest(request) as! [NSManagedObject]
+        
+        for object in objects {
+            moc.deleteObject(object)
         }
-      }
-      else {
-        if iteratingTicket.row != addRowControl {
-            iteratingTicket.row = Int32(newRowIndex++)
-        }
-      }
+        
+        try! moc.save()
+        
+        
     }
- 
-    try! moc.save()
     
-  }
-  
+    
+    class func insertTicket(ticket: Ticket, toIndexPath: NSIndexPath, moc:NSManagedObjectContext) {
+        let request = NSFetchRequest(entityName: Ticket.entityName)
+        
+        var predicate:NSPredicate?
+        
+        if ticket.section == Int32(toIndexPath.section) {
+            predicate = NSPredicate(format: "section == %d && row != %d", toIndexPath.section, ticket.row)
+        }
+        else {
+            predicate = NSPredicate(format: "section == %d", toIndexPath.section)
+        }
+        
+        let primarySortDescriptor = NSSortDescriptor(key: Ticket.attributeRow, ascending: true)
+        request.sortDescriptors = [primarySortDescriptor]
+        
+        
+        request.predicate = predicate
+        let tickets = try! moc.executeFetchRequest(request) as! [Ticket]
+        
+        var newRowIndex = 0
+        
+        for iteratingTicket in tickets {
+            
+            
+            if toIndexPath.row == newRowIndex {
+                ticket.row = Int32(newRowIndex++)
+                ticket.section = Int32(toIndexPath.section)
+                
+                if iteratingTicket.row != addRowControl {
+                    iteratingTicket.row = Int32(newRowIndex++)
+                }
+            }
+            else {
+                if iteratingTicket.row != addRowControl {
+                    iteratingTicket.row = Int32(newRowIndex++)
+                }
+            }
+        }
+        
+        try! moc.save()
+        
+    }
+    
     
     
     
@@ -135,10 +135,10 @@ class Ticket: NSManagedObject {
         let objects = try! moc.executeFetchRequest(request) as! [Ticket]
         
         for object in objects {
-          
+            
             if object.name == "" {
-            moc.deleteObject(object)
-        }
+                moc.deleteObject(object)
+            }
         }
     }
     
@@ -149,7 +149,7 @@ class Ticket: NSManagedObject {
         let objects = try! moc.executeFetchRequest(request) as! [Ticket]
         
         for object in objects {
-     
+            
             print(object)
         }
         
@@ -157,9 +157,9 @@ class Ticket: NSManagedObject {
     
     class func createAllAddTickets(moc:NSManagedObjectContext) {
         var ticket: Ticket!
-     
+        
         for section in 0...8 {
-      
+            
             
             
             ticket = Ticket.createInMoc(moc)
@@ -169,6 +169,36 @@ class Ticket: NSManagedObject {
             
         }
     }
-
     
+    
+    
+    class func spareRowForSection(section: Int, moc: NSManagedObjectContext) -> Int{
+        
+        
+        
+        let predicate = NSPredicate(format: "section == %d", section)
+        
+        let fetchRequest =  Ticket.fetchRequestWithPredicate(predicate)
+        
+        let currentSection = try! moc.executeFetchRequest(fetchRequest)
+        
+        
+        var row:Int = 0
+        
+        let rowCountForSection = currentSection.count
+        
+        if rowCountForSection == 1 {
+            row = 0
+        }
+        else {
+            
+            if let objects = currentSection as? [Ticket]{
+                
+                let ticket = objects[rowCountForSection - 2]
+                row = Int(ticket.row) + 1
+            }
+        }
+        
+        return Int(row)
+    }
 }

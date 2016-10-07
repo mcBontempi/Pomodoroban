@@ -29,6 +29,13 @@ class TicketViewController: UITableViewController {
     var delegate: TicketViewControllerDelegate!
     var ticket:Ticket!
     
+    
+    func decorateDropdown(view:UIView) {
+        view.layer.borderWidth = 3
+        view.layer.borderColor = UIColor.darkGrayColor().CGColor
+        view.layer.cornerRadius = 3
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,6 +49,8 @@ class TicketViewController: UITableViewController {
         
         self.navigationController?.navigationBar.translucent = false
         
+    self.decorateDropdown(self.pomodoroCountPicker)
+        self.decorateDropdown(self.colorPicker)
         
      //   self.navigationController?.navigationBar.barTintColor = UIColor.colorFrom(Int( self.ticket.colorIndex))
         self.colorCircle.backgroundColor = UIColor.colorFrom(Int( self.ticket.colorIndex))

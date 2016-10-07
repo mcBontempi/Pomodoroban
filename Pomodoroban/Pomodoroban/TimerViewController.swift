@@ -8,6 +8,7 @@
 
 import UIKit
 import MZTimerLabel
+import CoreData
 
 protocol TimerViewControllerDelegate {
     func timerViewControllerDone(timerViewController: TimerViewController)
@@ -85,6 +86,9 @@ class TimerViewController: UIViewController {
             
             timerLabel.setCountDownTime(Double(self.shortBreakLength) * 60)
             
+            
+                 self.createNotification(NSDate(),minsFromNow:self.shortBreakLength,message:"Its Time to Start Work, Tap to start.")
+            
             self.shortBreaks = self.shortBreaks + 1
         }
         else {
@@ -92,6 +96,8 @@ class TimerViewController: UIViewController {
             self.takeABreakLabel.text = "Take a long break"
             
             timerLabel.setCountDownTime(Double(self.longBreakLength) * 60)
+            
+              self.createNotification(NSDate(),minsFromNow:self.longBreakLength,message:"Its Time to Start Work, Tap to start.")
             
             self.shortBreaks = 0
         }
@@ -123,6 +129,11 @@ class TimerViewController: UIViewController {
         
         self.timerLabel.timerType = MZTimerLabelTypeTimer
         timerLabel.setCountDownTime(Double(self.pomodoroLength) * 60)
+        
+        
+        self.createNotification(NSDate(),minsFromNow: 5 /*self.pomodoroLength*/,message:"Its Time For A Break, Tap to start.")
+        
+        
         
         if self.index == self.tickets.count - 1 {
             self.close()
@@ -162,52 +173,86 @@ class TimerViewController: UIViewController {
         self.quitButton.layer.borderColor = UIColor.lightGrayColor().CGColor
         self.quitButton.layer.borderWidth = 6
         
-        
-        
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        
-        self.createNotifications()
-        
-        
-        
         self.startWork()
-        
     }
-    
     
     func createNotification(date:NSDate, minsFromNow:Int, message: String) {
         let notification = UILocalNotification()
         notification.alertBody = message
-        notification.alertAction = "Do this now"
-        notification.fireDate = date
+        notification.alertAction = "Hey there!"
+        notification.fireDate = date.dateByAddingTimeInterval(NSTimeInterval(minsFromNow*60))
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
     }
-    
-    
-    func createNotifications() {
-     
-        
-        let date = NSDate().dateByAddingTimeInterval(1000)
-        
-        self.createNotification(date,minsFromNow:1,message:"hello")
-        
-        
-    }
-    
-    
-    
+
     @IBAction func quitPressed(sender: AnyObject) {
     
         let alert = UIAlertController(title: "Menu", message: "", preferredStyle: .ActionSheet)
         
+        alert.addAction(UIAlertAction(title: "Quick Add", style: .Default, handler: { (action) in
+        self.quickAdd()
+        }))
+        
+        
         alert.addAction(UIAlertAction(title: "Continue", style: .Default, handler: { (action) in
         }))
+        
+        
+        
         alert.addAction(UIAlertAction(title: "Quit", style: .Default, handler: { (action) in
             self.close()
         }))
         self.presentViewController(alert, animated: true, completion: nil)
+    }
+ 
+    var childMoc:NSManagedObjectContext!
+    
+    func quickAdd() {
+        let nc = self.storyboard?.instantiateViewControllerWithIdentifier("TicketNavigationViewController") as! UINavigationController
+        let vc = nc.viewControllers[0] as! TicketViewController
         
+        let row = Ticket.spareRowForSection(0, moc:self.moc)
         
+        self.childMoc = CoreDataServices.sharedInstance.childMoc()
+        vc.ticket = Ticket.createInMoc(self.childMoc)
+        vc.ticket.name = ""
+        vc.ticket.row = Int32(row)
+        vc.ticket.section = Int32(0)
+        vc.ticket.pomodoroEstimate = 1
+        vc.ticket.colorIndex = 2
+        
+        vc.delegate = self
+        
+        self.presentViewController(nc, animated: true) {}
+    }
+    
+    func saveChildMoc() {
+        if self.childMoc != nil {
+            self.moc.performBlockAndWait({
+                try! self.childMoc.save()
+                self.childMoc = nil
+                
+                self.moc.performBlockAndWait({
+                    try! self.moc.save()
+                })
+            })
+        }
     }
     
 }
+
+
+
+extension TimerViewController : TicketViewControllerDelegate {
+    func ticketViewControllerSave(ticketViewController: TicketViewController) {
+        self.dismissViewControllerAnimated(true) {
+            self.saveChildMoc()
+        }
+    }
+    
+    func ticketViewControllerCancel(ticketViewController: TicketViewController) {
+        self.dismissViewControllerAnimated(true) {
+        }
+    }
+}
+

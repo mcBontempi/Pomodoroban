@@ -190,7 +190,7 @@ class BoardTableViewController: UITableViewController {
         cell.isAddCell = self.isAddAtIndexPath(indexPath)
         cell.ticket =  ticket
         
-        cell.dlabel.text = "s:\(cell.ticket!.section) - r:\(cell.ticket!.row)"
+    //    cell.dlabel.text = "s:\(cell.ticket!.section) - r:\(cell.ticket!.row)"
         
         return cell
     }
@@ -203,28 +203,30 @@ class BoardTableViewController: UITableViewController {
             return currentSection.numberOfObjects-1 == indexPath.row
         }
         return false
-        
-        
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60
+        return 30
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let view = UIView(frame:CGRectMake(0,0,self.tableView.frame.size.width,80))
+        let view = UIView(frame:CGRectMake(0,0,self.tableView.frame.size.width,30))
+     
+        view.backgroundColor = UIColor.darkGrayColor()
+        let label = UILabel(frame:CGRectMake(10,0,self.tableView.frame.size.width - 20,30))
         
         if (NSDate().getDayOfWeek() == section) {
-            view.backgroundColor = UIColor.redColor()
+              label.text = "TODAY"
+            label.textColor = UIColor.whiteColor()
         }
         else {
-            view.backgroundColor = UIColor.darkGrayColor()
+            label.textColor = UIColor.grayColor()
+            
+              label.text = self.sectionTitles()[section]
         }
         
-        let label = UILabel(frame:CGRectMake(10,20,self.tableView.frame.size.width - 40,40))
-        label.text = self.sectionTitles()[section]
-        label.textColor = UIColor.whiteColor()
+       
         
         view.addSubview(label)
         
@@ -261,7 +263,7 @@ class BoardTableViewController: UITableViewController {
         let nc = self.storyboard?.instantiateViewControllerWithIdentifier("TicketNavigationViewController") as! UINavigationController
         let vc = nc.viewControllers[0] as! TicketViewController
         
-        let row = self.spareRowForSection(section)
+        let row = Ticket.spareRowForSection(section, moc:self.moc)
         
         self.childMoc = CoreDataServices.sharedInstance.childMoc()
         vc.ticket = Ticket.createInMoc(self.childMoc)
@@ -270,7 +272,6 @@ class BoardTableViewController: UITableViewController {
         vc.ticket.section = Int32(section)
         vc.ticket.pomodoroEstimate = 1
         vc.ticket.colorIndex = 2
-        
         
         vc.delegate = self
         
@@ -317,7 +318,6 @@ class BoardTableViewController: UITableViewController {
     func sectionTitles() -> [String] {
         return ["BACKLOG", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY", "DONE"]
     }
-    
 }
 
 // extensions

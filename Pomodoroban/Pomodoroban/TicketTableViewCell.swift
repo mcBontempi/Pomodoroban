@@ -10,6 +10,7 @@ import UIKit
 
 class TicketTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var noteTextView: UITextView!
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var colorView: UIView!
@@ -21,6 +22,8 @@ class TicketTableViewCell: UITableViewCell {
         didSet {
             self.titleLabel.text = ticket!.name
             self.titleLabel.textColor = UIColor.darkGrayColor()
+       
+            self.noteTextView.text = ticket!.desc
             
             self.backgroundColor = UIColor.whiteColor()
        
