@@ -166,10 +166,36 @@ class TimerViewController: UIViewController {
         
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
+        self.createNotifications()
+        
+        
         
         self.startWork()
         
     }
+    
+    
+    func createNotification(date:NSDate, minsFromNow:Int, message: String) {
+        let notification = UILocalNotification()
+        notification.alertBody = message
+        notification.alertAction = "Do this now"
+        notification.fireDate = date
+        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+    }
+    
+    
+    func createNotifications() {
+     
+        
+        let date = NSDate().dateByAddingTimeInterval(1000)
+        
+        self.createNotification(date,minsFromNow:1,message:"hello")
+        
+        
+    }
+    
+    
+    
     @IBAction func quitPressed(sender: AnyObject) {
         
      //   self.timerLabel.pause()

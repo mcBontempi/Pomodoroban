@@ -15,6 +15,7 @@ class TicketTableViewCell: UITableViewCell {
     @IBOutlet weak var colorView: UIView!
     var isAddCell = true
     
+    @IBOutlet weak var dlabel: UILabel!
     @IBOutlet weak var pomodoroCountView: UIView!
     var ticket: Ticket? {
         didSet {
@@ -22,7 +23,7 @@ class TicketTableViewCell: UITableViewCell {
             self.titleLabel.textColor = UIColor.darkGrayColor()
             
             self.backgroundColor = UIColor.whiteColor()
-            
+       
             
             
             self.showsReorderControl = true

@@ -418,23 +418,34 @@
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lO4-QK-ebZ">
+                                            <color key="backgroundColor" red="0.5" green="0.82687005090497734" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="c50-Th-Aoy" firstAttribute="top" secondItem="snV-hf-C0U" secondAttribute="top" constant="38" id="1d6-Ep-TOk"/>
                                         <constraint firstAttribute="bottom" secondItem="c50-Th-Aoy" secondAttribute="bottom" constant="5" id="G5U-zI-pgP"/>
-                                        <constraint firstItem="Qxx-Ys-h4t" firstAttribute="trailing" secondItem="snV-hf-C0U" secondAttribute="trailingMargin" id="IMy-ne-GLc"/>
+                                        <constraint firstItem="Qxx-Ys-h4t" firstAttribute="trailing" secondItem="snV-hf-C0U" secondAttribute="trailingMargin" constant="-100" id="IMy-ne-GLc"/>
                                         <constraint firstItem="Qxx-Ys-h4t" firstAttribute="leading" secondItem="snV-hf-C0U" secondAttribute="leadingMargin" constant="36" id="N1n-by-6G0"/>
+                                        <constraint firstItem="lO4-QK-ebZ" firstAttribute="leading" secondItem="Qxx-Ys-h4t" secondAttribute="trailing" constant="5" id="O5g-D0-Pm1"/>
                                         <constraint firstItem="Qxx-Ys-h4t" firstAttribute="top" secondItem="snV-hf-C0U" secondAttribute="topMargin" id="Pdh-gh-B6G"/>
+                                        <constraint firstItem="lO4-QK-ebZ" firstAttribute="centerY" secondItem="Qxx-Ys-h4t" secondAttribute="centerY" id="Ut8-Ie-plE"/>
                                         <constraint firstItem="kDT-H9-ees" firstAttribute="leading" secondItem="snV-hf-C0U" secondAttribute="leadingMargin" constant="-10" id="YhG-tF-VRy"/>
                                         <constraint firstAttribute="trailing" secondItem="c50-Th-Aoy" secondAttribute="trailing" id="Zis-Z9-7Fu"/>
+                                        <constraint firstItem="lO4-QK-ebZ" firstAttribute="height" secondItem="Qxx-Ys-h4t" secondAttribute="height" id="ek0-2l-B0n"/>
                                         <constraint firstItem="c50-Th-Aoy" firstAttribute="leading" secondItem="Qxx-Ys-h4t" secondAttribute="leading" id="g8y-rX-5x4"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="kDT-H9-ees" secondAttribute="bottom" constant="-10" id="qOk-bK-RJa"/>
                                         <constraint firstItem="kDT-H9-ees" firstAttribute="top" secondItem="snV-hf-C0U" secondAttribute="topMargin" constant="-10" id="rCF-kf-dNX"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="lO4-QK-ebZ" secondAttribute="trailing" constant="3" id="xko-n8-HLr"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="colorView" destination="kDT-H9-ees" id="2Dn-33-2Ss"/>
+                                    <outlet property="dlabel" destination="lO4-QK-ebZ" id="9f1-L4-DgE"/>
                                     <outlet property="pomodoroCountView" destination="c50-Th-Aoy" id="FKg-RC-RYK"/>
                                     <outlet property="titleLabel" destination="Qxx-Ys-h4t" id="LIq-LS-azK"/>
                                 </connections>

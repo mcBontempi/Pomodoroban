@@ -11,6 +11,8 @@ import CoreData
 
 class Ticket: NSManagedObject {
   
+    static let addRowControl:Int32 = 999999
+    
   static let entityName = "Ticket"
   static let attributeName = "name"
   static let attributeDesc = "desc"
@@ -53,7 +55,7 @@ class Ticket: NSManagedObject {
   
     class func allForToday(moc:NSManagedObjectContext) -> [Ticket] {
         
-        let objects = try! moc.executeFetchRequest(self.fetchRequestForToday())
+        _ = try! moc.executeFetchRequest(self.fetchRequestForToday())
         
         
         return try! moc.executeFetchRequest(self.fetchRequestForToday()) as! [Ticket]
@@ -108,11 +110,14 @@ class Ticket: NSManagedObject {
         ticket.row = Int32(newRowIndex++)
         ticket.section = Int32(toIndexPath.section)
         
+        if iteratingTicket.row != addRowControl {
         iteratingTicket.row = Int32(newRowIndex++)
+        }
       }
       else {
-        iteratingTicket.row = Int32(newRowIndex++)
-        
+        if iteratingTicket.row != addRowControl {
+            iteratingTicket.row = Int32(newRowIndex++)
+        }
       }
     }
  
@@ -160,7 +165,7 @@ class Ticket: NSManagedObject {
             ticket = Ticket.createInMoc(moc)
             ticket.name = ""
             ticket.section = Int32(section)
-            ticket.row = 999999
+            ticket.row = addRowControl
             
         }
     }

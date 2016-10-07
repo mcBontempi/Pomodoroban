@@ -190,6 +190,8 @@ class BoardTableViewController: UITableViewController {
         cell.isAddCell = self.isAddAtIndexPath(indexPath)
         cell.ticket =  ticket
         
+        cell.dlabel.text = "s:\(cell.ticket!.section) - r:\(cell.ticket!.row)"
+        
         return cell
     }
     
