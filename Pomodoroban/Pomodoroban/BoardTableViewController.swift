@@ -116,7 +116,7 @@ class BoardTableViewController: UITableViewController {
     
     func setPlanMode() {
         self.tableView.setEditing(true, animated: true)
-        self.title = "EDITING"
+        self.title = "PLANNING"
         self.planWorkButton.title = "Work"
         
         
@@ -149,7 +149,7 @@ class BoardTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return self.isAddAtIndexPath(indexPath) ? ( self.isActuallyEditing ? 50 : 0 ) :  76
+        return self.isAddAtIndexPath(indexPath) ? ( self.isActuallyEditing ? 66 : 0 ) :  66
     }
     
     override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
@@ -208,7 +208,7 @@ class BoardTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 80
+        return 60
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

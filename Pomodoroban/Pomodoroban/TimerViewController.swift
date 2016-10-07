@@ -197,20 +197,14 @@ class TimerViewController: UIViewController {
     
     
     @IBAction func quitPressed(sender: AnyObject) {
-        
-     //   self.timerLabel.pause()
-        
-        let alert = UIAlertController(title: "Paused", message: "", preferredStyle: .ActionSheet)
-        
+    
+        let alert = UIAlertController(title: "Menu", message: "", preferredStyle: .ActionSheet)
         
         alert.addAction(UIAlertAction(title: "Continue", style: .Default, handler: { (action) in
-       //     self.timerLabel.reset()
         }))
-        
         alert.addAction(UIAlertAction(title: "Quit", style: .Default, handler: { (action) in
             self.close()
         }))
-        
         self.presentViewController(alert, animated: true, completion: nil)
         
         

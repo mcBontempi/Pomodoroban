@@ -68,7 +68,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xmg-Al-zlh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2406" y="-1286"/>
+            <point key="canvasLocation" x="1590" y="-633"/>
         </scene>
         <!--Ticket View Controller-->
         <scene sceneID="LDL-Zl-dkO">
@@ -127,15 +127,15 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="68r-lh-wss"/>
-                                                        <constraint firstAttribute="width" constant="100" id="7wF-3v-M9r"/>
+                                                        <constraint firstAttribute="width" constant="40" id="7wF-3v-M9r"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="cOr-0s-noS" firstAttribute="leading" secondItem="MOy-j9-PRj" secondAttribute="leading" constant="15" id="UIZ-8F-Pq5"/>
+                                                <constraint firstItem="cOr-0s-noS" firstAttribute="leading" secondItem="MOy-j9-PRj" secondAttribute="leading" id="UIZ-8F-Pq5"/>
                                                 <constraint firstItem="HBQ-xH-Xc2" firstAttribute="leading" secondItem="MOy-j9-PRj" secondAttribute="leadingMargin" constant="5" id="ev4-ma-yV3"/>
                                                 <constraint firstItem="HBQ-xH-Xc2" firstAttribute="top" secondItem="MOy-j9-PRj" secondAttribute="topMargin" constant="5" id="qnm-FK-1O9"/>
-                                                <constraint firstAttribute="bottom" secondItem="cOr-0s-noS" secondAttribute="bottom" constant="1" id="wZO-Po-kwo"/>
+                                                <constraint firstAttribute="bottom" secondItem="cOr-0s-noS" secondAttribute="bottom" id="wZO-Po-kwo"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -275,7 +275,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QRN-cw-hjZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4012" y="-1318.2908545727137"/>
+            <point key="canvasLocation" x="1463" y="-1366"/>
         </scene>
         <!--Timer View Controller-->
         <scene sceneID="7N6-LM-H0b">
@@ -383,7 +383,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yO3-gj-bog" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3928.8000000000002" y="-268.51574212893553"/>
+            <point key="canvasLocation" x="1607" y="145"/>
         </scene>
         <!--POMODOROBAN - Work Mode-->
         <scene sceneID="Uyy-x0-Vjj">
@@ -464,7 +464,7 @@
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="POMODOROBAN - Work Mode" id="pd0-F2-yTn">
-                        <barButtonItem key="leftBarButtonItem" title="Plan" id="qsL-7u-LIc">
+                        <barButtonItem key="leftBarButtonItem" title="PLAN" id="qsL-7u-LIc">
                             <connections>
                                 <action selector="PlanWordPressed:" destination="lpa-3H-vWj" id="n82-Tc-eOI"/>
                             </connections>
@@ -482,7 +482,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="os8-I7-nLU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="208.80000000000001" y="-667.01649175412297"/>
+            <point key="canvasLocation" x="-49" y="-666"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="i9m-el-Ee5">
@@ -519,7 +519,7 @@
                                 <items>
                                     <barButtonItem title="Thats ok, let me start" id="hcC-nW-qye">
                                         <connections>
-                                            <segue destination="x3K-CM-2WU" kind="show" id="Ae7-G6-gmx"/>
+                                            <segue destination="x3K-CM-2WU" kind="show" animates="NO" id="Ae7-G6-gmx"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -549,7 +549,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YJa-YH-hqn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2649" y="131"/>
+            <point key="canvasLocation" x="802" y="146"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cyC-Pr-470">
@@ -567,7 +567,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Emq-kl-AvK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1888.8" y="-584.25787106446785"/>
+            <point key="canvasLocation" x="662" y="-1377"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="evi-3b-QLK">
@@ -585,7 +585,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xMm-5K-4Dg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-991.20000000000005" y="428.63568215892059"/>
+            <point key="canvasLocation" x="818" y="-655"/>
         </scene>
     </scenes>
     <resources>
