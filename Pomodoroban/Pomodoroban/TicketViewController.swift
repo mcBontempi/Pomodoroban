@@ -9,37 +9,69 @@ protocol TicketViewControllerDelegate {
 class TicketViewController: UITableViewController {
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var notes: UIView!
-    @IBOutlet weak var colorPicker: UIPickerView!
-    @IBOutlet weak var pomodoroCountPicker: UIPickerView!
+    @IBOutlet weak var categorySegmentedControl: UISegmentedControl!
     
     @IBOutlet weak var leftButton: UIBarButtonItem!
     @IBOutlet weak var rightButton: UIBarButtonItem!
+    @IBOutlet weak var headerColor: UIView!
     
-    @IBOutlet weak var colorCircle: UIView!
+    @IBOutlet weak var countSegmentedControl: UISegmentedControl!
     @IBAction func leftButtonPressed(sender: AnyObject) {
         self.delegate.ticketViewControllerCancel(self)
     }
     @IBAction func rightButtonPressed(sender: AnyObject) {
         self.save()
     }
-    @IBOutlet weak var colorCell: UITableViewCell!
     @IBOutlet weak var notesText: UITextView!
     
-    @IBOutlet weak var pomodoroCountView: UIView!
     var delegate: TicketViewControllerDelegate!
     var ticket:Ticket!
     
-    
-    func decorateDropdown(view:UIView) {
-        view.layer.borderWidth = 3
-        view.layer.borderColor = UIColor.darkGrayColor().CGColor
-        view.layer.cornerRadius = 3
+    func customiseCategorySegmentedControl() {
+        
+        var index = 0
+        
+        let colors = UIColor.colorArray().reverse()
+        for color in colors {
+            let view = self.categorySegmentedControl.subviews[index]
+            
+            index = index + 1
+            
+            view.backgroundColor = color
+        }
     }
+    
+    
+    func categoryValueChanged(segmentedControl: UISegmentedControl) {
+        
+        self.ticket.colorIndex = Int32(segmentedControl.selectedSegmentIndex)
+        
+        self.headerColor.backgroundColor = UIColor.colorFrom(Int( self.ticket.colorIndex))
+        
+    }
+    
+    func countValueChanged(segmentedControl: UISegmentedControl) {
+        self.ticket.pomodoroEstimate = Int32(segmentedControl.selectedSegmentIndex)+1
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.tableFooterView = UIView()
+        
+        
+        self.categorySegmentedControl.addTarget(self, action: #selector(TicketViewController.categoryValueChanged(_:)), forControlEvents: .ValueChanged)
+        
+        self.countSegmentedControl.addTarget(self, action: #selector(TicketViewController.countValueChanged(_:)), forControlEvents: .ValueChanged)
+        
+        
+        self.categorySegmentedControl.selectedSegmentIndex = Int(self.ticket.colorIndex)
+        self.countSegmentedControl.selectedSegmentIndex = Int(self.ticket.pomodoroEstimate) - 1
+        
+        
+        
+        self.customiseCategorySegmentedControl()
         
         self.titleField.text = self.ticket.name
         
@@ -49,18 +81,12 @@ class TicketViewController: UITableViewController {
         
         self.navigationController?.navigationBar.translucent = false
         
-    self.decorateDropdown(self.pomodoroCountPicker)
-        self.decorateDropdown(self.colorPicker)
+        self.headerColor.backgroundColor = UIColor.colorFrom(Int( self.ticket.colorIndex))
         
-     //   self.navigationController?.navigationBar.barTintColor = UIColor.colorFrom(Int( self.ticket.colorIndex))
-        self.colorCircle.backgroundColor = UIColor.colorFrom(Int( self.ticket.colorIndex))
+        //    let pomodoroView = UIView.pomodoroRowWith(Int(self.ticket.pomodoroEstimate))
         
-      //  self.colorCircle.layer.cornerRadius = 12.0
-      //  self.colorCircle.layer.borderWidth = 1
-      //  self.colorCircle.layer.borderColor = UIColor.blackColor().CGColor
         
-        let pomodoroView = UIView.pomodoroRowWith(Int(self.ticket.pomodoroEstimate))
-        self.pomodoroCountView.addSubview(pomodoroView)
+        
     }
     
     func save() {
@@ -79,49 +105,17 @@ class TicketViewController: UITableViewController {
         }
     }
     
-    
-    var colorHidden = true
-    var pomodoroCountHidden = true
-    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         self.titleField.resignFirstResponder()
         self.notes.resignFirstResponder()
         
-        if  indexPath.row == 1 {
-            
-            pomodoroCountHidden = true
-            colorHidden = !colorHidden
-            
-            self.colorPicker.selectRow(Int(self.ticket.colorIndex), inComponent: 0, animated: true)
-            
-            tableView.beginUpdates()
-            tableView.endUpdates()
+        if indexPath.row == 0 {
+            self.titleField.becomeFirstResponder()
         }
-        
-        if indexPath.row == 3 {
             
-            colorHidden = true
-            
-            pomodoroCountHidden = !pomodoroCountHidden
-            
-            self.pomodoroCountPicker.selectRow(Int(self.ticket.pomodoroEstimate)-1, inComponent: 0, animated: true)
-            
-            
-            tableView.beginUpdates()
-            tableView.endUpdates()
-        }
-    }
-    
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        
-        if (self.pomodoroCountHidden && indexPath.row == 4) ||
-            (self.colorHidden && indexPath.row == 2)
-        {
-            return 0
-        }
-        else {
-            return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+        else if indexPath.row == 3 {
+            self.notesText.becomeFirstResponder()
         }
     }
     
@@ -130,61 +124,5 @@ class TicketViewController: UITableViewController {
     }
 }
 
-extension TicketViewController : UIPickerViewDataSource {
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 10
-    }
-}
 
-
-extension TicketViewController : UIPickerViewDelegate {
-    
-    
-    func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return 30
-    }
-    
-    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
-        
-        if pickerView == self.pomodoroCountPicker {
-            
-            let view = UIView.pomodoroRowWith(row+1)
-            return view
-        }
-        else {
-            let view = UIView()
-            view.backgroundColor = UIColor.colorFrom(row)
-            return view
-        }
-    }
-    
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
-        if pickerView == self.colorPicker {
-            
-       //     self.navigationController?.navigationBar.barTintColor = UIColor.colorFrom(Int( row))
-            self.colorCircle.backgroundColor = UIColor.colorFrom(row)
-            
-            
-            self.ticket.colorIndex = Int32(row)
-        }
-        else {
-            
-            self.ticket.pomodoroEstimate = Int32(row+1)
-            
-            for view in self.pomodoroCountView.subviews {
-                view.removeFromSuperview()
-            }
-            
-            let pomodoroView = UIView.pomodoroRowWith(row+1)
-            self.pomodoroCountView.addSubview(pomodoroView)
-            
-            
-            
-        }
-    }
-}
 

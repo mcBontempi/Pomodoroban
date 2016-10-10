@@ -12,11 +12,6 @@
 		D61085371D960601001A203A /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61085361D960601001A203A /* TimerViewController.swift */; };
 		D617FB661D9E54C700A4CA53 /* SyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D617FB651D9E54C700A4CA53 /* SyncService.swift */; };
 		D6456A5B1DA5013A0002FDA2 /* TicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A5A1DA5013A0002FDA2 /* TicketViewController.swift */; };
-		D6456A5D1DA505CA0002FDA2 /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A5C1DA505CA0002FDA2 /* TextFieldTableViewCell.swift */; };
-		D6456A5F1DA505DB0002FDA2 /* TextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A5E1DA505DB0002FDA2 /* TextViewTableViewCell.swift */; };
-		D6456A611DA506B40002FDA2 /* PomodoroCountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A601DA506B40002FDA2 /* PomodoroCountTableViewCell.swift */; };
-		D6456A631DA506EB0002FDA2 /* ColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A621DA506EB0002FDA2 /* ColorTableViewCell.swift */; };
-		D6456A661DA513FE0002FDA2 /* ColorDropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A651DA513FE0002FDA2 /* ColorDropDownTableViewCell.swift */; };
 		D6456A681DA534330002FDA2 /* UIColor+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A671DA534330002FDA2 /* UIColor+Palette.swift */; };
 		D6456A6A1DA540E70002FDA2 /* UIView+PomodoroRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A691DA540E70002FDA2 /* UIView+PomodoroRow.swift */; };
 		D656B36B1DA413630035500A /* NSDate+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D656B36A1DA413630035500A /* NSDate+Utils.swift */; };
@@ -45,11 +40,6 @@
 		D61085361D960601001A203A /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		D617FB651D9E54C700A4CA53 /* SyncService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncService.swift; sourceTree = "<group>"; };
 		D6456A5A1DA5013A0002FDA2 /* TicketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketViewController.swift; sourceTree = "<group>"; };
-		D6456A5C1DA505CA0002FDA2 /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
-		D6456A5E1DA505DB0002FDA2 /* TextViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewTableViewCell.swift; sourceTree = "<group>"; };
-		D6456A601DA506B40002FDA2 /* PomodoroCountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PomodoroCountTableViewCell.swift; sourceTree = "<group>"; };
-		D6456A621DA506EB0002FDA2 /* ColorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTableViewCell.swift; sourceTree = "<group>"; };
-		D6456A651DA513FE0002FDA2 /* ColorDropDownTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorDropDownTableViewCell.swift; sourceTree = "<group>"; };
 		D6456A671DA534330002FDA2 /* UIColor+Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Palette.swift"; sourceTree = "<group>"; };
 		D6456A691DA540E70002FDA2 /* UIView+PomodoroRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+PomodoroRow.swift"; sourceTree = "<group>"; };
 		D656B36A1DA413630035500A /* NSDate+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Utils.swift"; sourceTree = "<group>"; };
@@ -113,11 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				D6456A5A1DA5013A0002FDA2 /* TicketViewController.swift */,
-				D6456A601DA506B40002FDA2 /* PomodoroCountTableViewCell.swift */,
-				D6456A621DA506EB0002FDA2 /* ColorTableViewCell.swift */,
-				D6456A5C1DA505CA0002FDA2 /* TextFieldTableViewCell.swift */,
-				D6456A5E1DA505DB0002FDA2 /* TextViewTableViewCell.swift */,
-				D6456A651DA513FE0002FDA2 /* ColorDropDownTableViewCell.swift */,
 			);
 			name = TicketViewController;
 			sourceTree = "<group>";
@@ -256,7 +241,7 @@
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = 3U786KR73N;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -361,16 +346,12 @@
 				D67FAED11D952B1C0085BF2D /* TicketTableViewCell.swift in Sources */,
 				D656B36B1DA413630035500A /* NSDate+Utils.swift in Sources */,
 				D6E71D871DA3EDBB0055F2AA /* CALayer+Animations.m in Sources */,
-				D6456A611DA506B40002FDA2 /* PomodoroCountTableViewCell.swift in Sources */,
 				FD5BEA041C5CF83100535A78 /* Ticket.swift in Sources */,
 				D6456A6A1DA540E70002FDA2 /* UIView+PomodoroRow.swift in Sources */,
 				D6456A681DA534330002FDA2 /* UIColor+Palette.swift in Sources */,
-				D6456A631DA506EB0002FDA2 /* ColorTableViewCell.swift in Sources */,
 				D617FB661D9E54C700A4CA53 /* SyncService.swift in Sources */,
 				D6E71D891DA3EFC10055F2AA /* NaturalLanguageViewController.swift in Sources */,
-				D6456A661DA513FE0002FDA2 /* ColorDropDownTableViewCell.swift in Sources */,
 				D6456A5B1DA5013A0002FDA2 /* TicketViewController.swift in Sources */,
-				D6456A5F1DA505DB0002FDA2 /* TextViewTableViewCell.swift in Sources */,
 				D67FAECF1D95235B0085BF2D /* BoardTableViewController.swift in Sources */,
 				D6E71D8D1DA3F2A60055F2AA /* StringAndPredicateCollection.m in Sources */,
 				FD5BEA031C5CF83100535A78 /* Ticket+CoreDataProperties.swift in Sources */,
@@ -380,7 +361,6 @@
 				D6E71D831DA3ECAE0055F2AA /* TagLabel.m in Sources */,
 				D6E71D801DA3EB5C0055F2AA /* WordsAndQuestionsView.m in Sources */,
 				FD5BE9E21C5BB5CA00535A78 /* AppDelegate.swift in Sources */,
-				D6456A5D1DA505CA0002FDA2 /* TextFieldTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,13 +482,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 3U786KR73N;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Pomodoroban/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.LondonSwift.Pomodoroban;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "383b2f4f-51c3-4297-939e-68297c684f89";
-				PROVISIONING_PROFILE_SPECIFIER = "ddt pomodoroban";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Pomodoroban/Pomodoroban-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 2.3;
@@ -523,13 +503,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 3U786KR73N;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Pomodoroban/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.LondonSwift.Pomodoroban;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "383b2f4f-51c3-4297-939e-68297c684f89";
-				PROVISIONING_PROFILE_SPECIFIER = "ddt pomodoroban";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Pomodoroban/Pomodoroban-Bridging-Header.h";
 				SWIFT_VERSION = 2.3;
 			};

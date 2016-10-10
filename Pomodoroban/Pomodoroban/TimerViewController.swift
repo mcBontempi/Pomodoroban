@@ -35,7 +35,6 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var timerLabel: MZTimerLabel!
     
     @IBOutlet weak var notesTextView: UITextView!
-    @IBOutlet weak var pomodoroCountView: UIView!
     var delegate:TimerViewControllerDelegate!
     
     let moc = CoreDataServices.sharedInstance.moc
@@ -56,13 +55,7 @@ class TimerViewController: UIViewController {
         
         self.notesTextView.text = ticket.desc
         
-        for view in self.pomodoroCountView.subviews {
-            view.removeFromSuperview()
-        }
-        
-        let pomodoroView = UIView.pomodoroRowWith(Int(ticket.pomodoroEstimate))
-        self.pomodoroCountView.addSubview(pomodoroView)
-    }
+     }
     
     func updateWithBreak() {
         
@@ -102,7 +95,7 @@ class TimerViewController: UIViewController {
             self.shortBreaks = 0
         }
         
-        if self.index == self.tickets.count - 1 {
+        if self.index == self.tickets.count {
             self.close()
         }
         else {
@@ -135,13 +128,13 @@ class TimerViewController: UIViewController {
         
         
         
-        if self.index == self.tickets.count - 1 {
+        if self.index == self.tickets.count {
             self.close()
         }
         else {
             timerLabel.startWithEndingBlock { (time) in
                 
-                if self.index == self.tickets.count - 1  && self.tickets[self.index].pomodoroEstimate == 1 {
+                if self.index == self.tickets.count  && self.tickets[self.index].pomodoroEstimate == 1 {
                     
                     self.close()
                     
@@ -154,6 +147,8 @@ class TimerViewController: UIViewController {
             }
         }
     }
+    
+    
     
     func close() {
         

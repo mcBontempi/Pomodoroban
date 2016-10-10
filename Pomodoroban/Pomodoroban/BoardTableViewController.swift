@@ -75,7 +75,7 @@ class BoardTableViewController: UITableViewController {
     
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-        if Ticket.allForToday(self.moc).count <= 1 {
+        if Ticket.allForToday(self.moc).count < 1 {
             
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "EEEE"
@@ -133,7 +133,6 @@ class BoardTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let sections = self.fetchedResultsController.sections {
             let currentSection = sections[section]
-            print(currentSection.numberOfObjects)
             return currentSection.numberOfObjects
         }
         return 0

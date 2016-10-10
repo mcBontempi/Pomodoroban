@@ -34,7 +34,7 @@ class NaturalLanguageViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         
         self.pomodoroLengh = StringAndPredicateCollection(WIthStringAndPredicateArray: [
-            StringAndPredicate(string: "25 minutes", predicate: 25),
+            StringAndPredicate(string: "25 minutes", predicate: 25), //25
             StringAndPredicate(string: "20 minutes", predicate: 20),
             StringAndPredicate(string: "15 minutes", predicate: 15),
             StringAndPredicate(string: "60 minutes", predicate: 60),
@@ -46,7 +46,7 @@ class NaturalLanguageViewController: UIViewController {
             StringAndPredicate(string: "30 minutes", predicate: 30)])
         
         self.shortBreakLength = StringAndPredicateCollection(WIthStringAndPredicateArray: [
-            StringAndPredicate(string: "5 minutes", predicate: 5),
+            StringAndPredicate(string: "5 minutes", predicate: 5), //5
             StringAndPredicate(string: "6 minutes", predicate: 6),
             StringAndPredicate(string: "7 minutes", predicate: 7),
             StringAndPredicate(string: "8 minutes", predicate: 8),
@@ -59,7 +59,7 @@ class NaturalLanguageViewController: UIViewController {
             StringAndPredicate(string: "4th", predicate: 4)])
         
         self.longBreakLength = StringAndPredicateCollection(WIthStringAndPredicateArray: [
-            StringAndPredicate(string: "20 minutes", predicate: 20),
+            StringAndPredicate(string: "20 minutes", predicate: 20), //20
             StringAndPredicate(string: "25 minutes", predicate: 25),
             StringAndPredicate(string: "30 minutes", predicate: 30),
             StringAndPredicate(string: "10 minutes", predicate: 10),

@@ -17,7 +17,29 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hOs-yJ-g7K">
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Pomodoro-Timer" translatesAutoresizingMaskIntoConstraints="NO" id="W9y-jM-w7M">
+                                        <frame key="frameInset" minX="74" minY="116" width="240" height="128"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="W9y-jM-w7M" firstAttribute="centerX" secondItem="hOs-yJ-g7K" secondAttribute="centerX" id="08t-tZ-rrZ"/>
+                                    <constraint firstItem="W9y-jM-w7M" firstAttribute="width" secondItem="hOs-yJ-g7K" secondAttribute="width" id="0Ut-Kr-MjA"/>
+                                    <constraint firstItem="W9y-jM-w7M" firstAttribute="centerY" secondItem="hOs-yJ-g7K" secondAttribute="centerY" id="F64-6F-510"/>
+                                    <constraint firstItem="W9y-jM-w7M" firstAttribute="height" secondItem="hOs-yJ-g7K" secondAttribute="height" id="Fh9-Hr-pTB"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.12156862745098039" green="0.6470588235294118" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="hOs-yJ-g7K" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Ech-i4-95Y"/>
+                            <constraint firstItem="hOs-yJ-g7K" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="150" id="O81-5y-Hzm"/>
+                            <constraint firstAttribute="trailing" secondItem="hOs-yJ-g7K" secondAttribute="trailing" id="Xmt-PJ-FXI"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="hOs-yJ-g7K" secondAttribute="bottom" constant="150" id="lI2-n3-hLq"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -25,4 +47,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Pomodoro-Timer" width="225" height="198"/>
+    </resources>
 </document>
