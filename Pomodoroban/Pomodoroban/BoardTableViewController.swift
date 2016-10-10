@@ -43,6 +43,17 @@ class BoardTableViewController: UITableViewController {
     
     // lifetime
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let tracker = GAI.sharedInstance().defaultTracker
+        tracker.set(kGAIScreenName, value: "Main Screen")
+        
+        let builder = GAIDictionaryBuilder.createScreenView()
+        tracker.send(builder.build() as [NSObject : AnyObject])
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         try! self.fetchedResultsController.performFetch()

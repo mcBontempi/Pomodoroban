@@ -23,6 +23,7 @@
 		D6E71D891DA3EFC10055F2AA /* NaturalLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E71D881DA3EFC10055F2AA /* NaturalLanguageViewController.swift */; };
 		D6E71D8D1DA3F2A60055F2AA /* StringAndPredicateCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E71D8C1DA3F2A60055F2AA /* StringAndPredicateCollection.m */; };
 		D6E71D901DA3F3480055F2AA /* StringAndPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E71D8F1DA3F3480055F2AA /* StringAndPredicate.m */; };
+		D6EA5AF81DABF45C00A59B74 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D6EA5AF71DABF45C00A59B74 /* GoogleService-Info.plist */; };
 		FD5BE9E21C5BB5CA00535A78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5BE9E11C5BB5CA00535A78 /* AppDelegate.swift */; };
 		FD5BE9E71C5BB5CA00535A78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD5BE9E51C5BB5CA00535A78 /* Main.storyboard */; };
 		FD5BE9EA1C5BB5CA00535A78 /* Pomodoroban.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FD5BE9E81C5BB5CA00535A78 /* Pomodoroban.xcdatamodeld */; };
@@ -59,6 +60,7 @@
 		D6E71D8C1DA3F2A60055F2AA /* StringAndPredicateCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringAndPredicateCollection.m; sourceTree = "<group>"; };
 		D6E71D8E1DA3F3480055F2AA /* StringAndPredicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringAndPredicate.h; sourceTree = "<group>"; };
 		D6E71D8F1DA3F3480055F2AA /* StringAndPredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringAndPredicate.m; sourceTree = "<group>"; };
+		D6EA5AF71DABF45C00A59B74 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FD5BE9DE1C5BB5CA00535A78 /* Pomodoroban.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pomodoroban.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD5BE9E11C5BB5CA00535A78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD5BE9E61C5BB5CA00535A78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 		FD5BEA051C5CF86B00535A78 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				D6EA5AF71DABF45C00A59B74 /* GoogleService-Info.plist */,
 				D61085341D95ED3F001A203A /* CoreDataServices.swift */,
 				FD5BE9E11C5BB5CA00535A78 /* AppDelegate.swift */,
 				FD5BE9EB1C5BB5CA00535A78 /* Assets.xcassets */,
@@ -269,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD5BE9EF1C5BB5CA00535A78 /* LaunchScreen.storyboard in Resources */,
+				D6EA5AF81DABF45C00A59B74 /* GoogleService-Info.plist in Resources */,
 				FD5BE9EC1C5BB5CA00535A78 /* Assets.xcassets in Resources */,
 				FD5BE9E71C5BB5CA00535A78 /* Main.storyboard in Resources */,
 			);

@@ -5,4 +5,5 @@
 #import "WordsAndQuestionsView.h"
 #import "StringAndPredicateCollection.h"
 #import "StringAndPredicate.h"
+#import <Google/Analytics.h>
 

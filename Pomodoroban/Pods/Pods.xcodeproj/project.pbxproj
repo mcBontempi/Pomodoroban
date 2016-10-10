@@ -7,17 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A485E2E8961209FF066D201EAA5B4DE /* SwiftHEXColors.h in Headers */ = {isa = PBXBuildFile; fileRef = DFEE5CF43583C1096AD3DECE8650E703 /* SwiftHEXColors.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		314B78E81976A6AFA75552095BFD2A57 /* MZTimerLabel-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CCA40391533C4645D8D15DAAF4050841 /* MZTimerLabel-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A485E2E8961209FF066D201EAA5B4DE /* SwiftHEXColors.h in Headers */ = {isa = PBXBuildFile; fileRef = FF0C8F2939FE754B3E161707A4BF74AE /* SwiftHEXColors.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		314B78E81976A6AFA75552095BFD2A57 /* MZTimerLabel-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 79E848028E8F21D960B30D42C96671CC /* MZTimerLabel-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		367CDE266C9937B0D1AF241E51AF1A8C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		387E9DD1FB176FFA10DF63C87F3566FE /* Pods-Pomodoroban-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B42FD58CCF891A442E2406F8A9C372 /* Pods-Pomodoroban-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		41E750DBB6BCACE1A175498E5F7FF758 /* SwiftHEXColors-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A5ADC84CEC4212C6CC21622B19DA24B8 /* SwiftHEXColors-dummy.m */; };
-		72CEF2ED99F52432AEDA588E204CD328 /* MZTimerLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = C9F90F5FBC3238986C683F9F286FD5C9 /* MZTimerLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		88EE34C40AB418A527E718E9AC173E95 /* MZTimerLabel-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C3115DA9F503274BEBF011C67C0A3B93 /* MZTimerLabel-dummy.m */; };
+		41E750DBB6BCACE1A175498E5F7FF758 /* SwiftHEXColors-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AA10AC9370F37B98CA9D3A086C3CB00B /* SwiftHEXColors-dummy.m */; };
+		72CEF2ED99F52432AEDA588E204CD328 /* MZTimerLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 75F2A944BF471ABEDC3FB4CCFB2DE49D /* MZTimerLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		88EE34C40AB418A527E718E9AC173E95 /* MZTimerLabel-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D89E4A8BC25AFE9F20EFC7CB41D8BDA /* MZTimerLabel-dummy.m */; };
 		97D2D3DB802FE40C7E25E8B48751A076 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		BE2499263E6FF24BBAB13A3CBC6CB2D7 /* MZTimerLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A1529AE3185EF1DA2D023C84360CF048 /* MZTimerLabel.m */; };
-		C6CC0EB3E8DE04AE79582D43DC4AF886 /* SwiftHEXColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460D02218A4D6DD89CC3B306D936BDAE /* SwiftHEXColors.swift */; };
-		D813E9729FDAAD8A20760FF02A24A4CD /* SwiftHEXColors-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3820521BB8177E948ADB39C0A1D738B4 /* SwiftHEXColors-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BE2499263E6FF24BBAB13A3CBC6CB2D7 /* MZTimerLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B80522C03B4A64294F4CB90CB37B1707 /* MZTimerLabel.m */; };
+		C6CC0EB3E8DE04AE79582D43DC4AF886 /* SwiftHEXColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEA398871C265630AEEFD00315160DA /* SwiftHEXColors.swift */; };
+		D813E9729FDAAD8A20760FF02A24A4CD /* SwiftHEXColors-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E12FA0860D43FAABAB69746B4FBD7E25 /* SwiftHEXColors-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E675EC84F0747FD71D90B4D2D6892AFD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		E8073B7231190B19BC9D6B1AA86500CA /* Pods-Pomodoroban-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 625EC4EDFDAFED9F471D8A07C9E771AF /* Pods-Pomodoroban-dummy.m */; };
 /* End PBXBuildFile section */
@@ -40,48 +40,73 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0340433E5DBFB0B082921003412F949D /* Answers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Answers.h; path = iOS/Crashlytics.framework/Headers/Answers.h; sourceTree = "<group>"; };
+		00BC0591DC30515E41E23BE88783F2F1 /* GAIFields.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIFields.h; path = Sources/GAIFields.h; sourceTree = "<group>"; };
 		072C8D4873BAB019AF56CB7EEF29DCB6 /* SwiftHEXColors.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftHEXColors.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		20E7428F42136A7734281F652954452F /* MZTimerLabel.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = MZTimerLabel.modulemap; sourceTree = "<group>"; };
+		0CC872B2F8B23CFA98CEA4AEBBE8228E /* GAI.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAI.h; path = Sources/GAI.h; sourceTree = "<group>"; };
+		1687F8EDF2C6EE68D75993D1BF711DD0 /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = Frameworks/frameworks/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
+		1A2567AE85C8D76406AD6FA575C4FEBE /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = iOS/Crashlytics.framework; sourceTree = "<group>"; };
+		1BFC2AE804E82458E101E0A287BE4B63 /* Core-Module.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Core-Module.h"; path = "Headers/ModuleHeaders/Core-Module.h"; sourceTree = "<group>"; };
+		1F8747F64D00321C2D8BA735463B3EF1 /* CLSLogging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLSLogging.h; path = iOS/Crashlytics.framework/Headers/CLSLogging.h; sourceTree = "<group>"; };
+		206209D757879A2CED6C6C4BBD36A0FC /* GAIEcommerceFields.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceFields.h; path = Sources/GAIEcommerceFields.h; sourceTree = "<group>"; };
 		24298166CEC12158F65225BE4852FEF6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		29B20F804FF93B82DABC62BEB12C3FAB /* SwiftHEXColors.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftHEXColors.modulemap; sourceTree = "<group>"; };
-		340999F4BEA43AE1A7E61834CC4E99D8 /* CLSStackFrame.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLSStackFrame.h; path = iOS/Crashlytics.framework/Headers/CLSStackFrame.h; sourceTree = "<group>"; };
-		3820521BB8177E948ADB39C0A1D738B4 /* SwiftHEXColors-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftHEXColors-umbrella.h"; sourceTree = "<group>"; };
-		3A72FF3A9FD7656FE78554BA3BCDF800 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = iOS/Fabric.framework; sourceTree = "<group>"; };
+		24351F4704F95B68A2EF90C20690503C /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceProductAction.h; path = Sources/GAIEcommerceProductAction.h; sourceTree = "<group>"; };
+		26716D8B2C3959DA957CD5811F45B31F /* GGLCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GGLCore.framework; path = Frameworks/GGLCore.framework; sourceTree = "<group>"; };
+		2C1D2BBA805F759F1FD86AAC270D3A28 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C7C0E65C4F84E039ABE1803EFAB6653 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Frameworks/frameworks/GoogleUtilities.framework; sourceTree = "<group>"; };
+		3983BFEE17A9B4D8782E838FE3F2CC56 /* Crashlytics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Crashlytics.h; path = iOS/Crashlytics.framework/Headers/Crashlytics.h; sourceTree = "<group>"; };
 		3D801351BACFC3E09318137E877831F3 /* Pods-Pomodoroban-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Pomodoroban-frameworks.sh"; sourceTree = "<group>"; };
+		3EFB93EFACBA46E72D03A9EB2E8EB638 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Frameworks/frameworks/FirebaseCore.framework; sourceTree = "<group>"; };
 		45B42FD58CCF891A442E2406F8A9C372 /* Pods-Pomodoroban-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Pomodoroban-umbrella.h"; sourceTree = "<group>"; };
-		460D02218A4D6DD89CC3B306D936BDAE /* SwiftHEXColors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftHEXColors.swift; path = Sources/SwiftHEXColors.swift; sourceTree = "<group>"; };
-		47B91B4F9B7A9F5066D226FA607CA840 /* CLSLogging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLSLogging.h; path = iOS/Crashlytics.framework/Headers/CLSLogging.h; sourceTree = "<group>"; };
-		61A214C74E6F6B8FB1D0FF3261FF0061 /* Crashlytics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Crashlytics.h; path = iOS/Crashlytics.framework/Headers/Crashlytics.h; sourceTree = "<group>"; };
+		47EF7143A1AB7955D6D16B58498D505D /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = iOS/Fabric.framework; sourceTree = "<group>"; };
+		49852B219A3020A1AE5064FC06F3E5B1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E8361569D0E0AEA9483E63588456704 /* CLSAttributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLSAttributes.h; path = iOS/Crashlytics.framework/Headers/CLSAttributes.h; sourceTree = "<group>"; };
+		50E3B0753492CCD850122CCFD6DFC6D2 /* FABAttributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FABAttributes.h; path = iOS/Fabric.framework/Headers/FABAttributes.h; sourceTree = "<group>"; };
+		54A10923BBC873CB7F478D1C161734E0 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		58496BC6ECEF0BC26FEF0FCD7F172765 /* FIRInstanceID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceID.h; path = Sources/FIRInstanceID.h; sourceTree = "<group>"; };
+		58C1F51F92D0F8D58E26F6D436AF0EAF /* Analytics-Module.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Analytics-Module.h"; path = "Headers/ModuleHeaders/Analytics-Module.h"; sourceTree = "<group>"; };
+		5D575C12E7E5EF39314A351DF301BF37 /* GAITracker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAITracker.h; path = Sources/GAITracker.h; sourceTree = "<group>"; };
+		5DF9E53FCC5AF1C6E9A03DAA3BAD666A /* GGLAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GGLAnalytics.framework; path = Frameworks/GGLAnalytics.framework; sourceTree = "<group>"; };
+		5FF6F3937616DBAAFDE9AD7E22188C30 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = Libraries/libGoogleAnalytics.a; sourceTree = "<group>"; };
 		625EC4EDFDAFED9F471D8A07C9E771AF /* Pods-Pomodoroban-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Pomodoroban-dummy.m"; sourceTree = "<group>"; };
 		65982A0814D31CFAB096A5671B8CD794 /* Pods-Pomodoroban-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Pomodoroban-acknowledgements.markdown"; sourceTree = "<group>"; };
-		6858FF4D03F0B692E1722ABA218810A2 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = iOS/Crashlytics.framework; sourceTree = "<group>"; };
-		783009345CBEDF543BE980FA7258F642 /* ANSCompatibility.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ANSCompatibility.h; path = iOS/Crashlytics.framework/Headers/ANSCompatibility.h; sourceTree = "<group>"; };
+		67C0C98812A301C46D599640399F2449 /* GAITrackedViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAITrackedViewController.h; path = Sources/GAITrackedViewController.h; sourceTree = "<group>"; };
+		6804D55EE1AF4EDA4D9C25C04E2CF8FE /* ANSCompatibility.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ANSCompatibility.h; path = iOS/Crashlytics.framework/Headers/ANSCompatibility.h; sourceTree = "<group>"; };
+		69184B43FF025A65E21213E845439A92 /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = Frameworks/frameworks/GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
+		75F2A944BF471ABEDC3FB4CCFB2DE49D /* MZTimerLabel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MZTimerLabel.h; path = MZTimerLabel/MZTimerLabel.h; sourceTree = "<group>"; };
+		79E848028E8F21D960B30D42C96671CC /* MZTimerLabel-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MZTimerLabel-umbrella.h"; sourceTree = "<group>"; };
 		7C4D990DADF210078E50C694C2FF5D80 /* Pods-Pomodoroban.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Pomodoroban.debug.xcconfig"; sourceTree = "<group>"; };
-		7DDC02FB403F976FC7CFD4B15E865031 /* CLSAttributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLSAttributes.h; path = iOS/Crashlytics.framework/Headers/CLSAttributes.h; sourceTree = "<group>"; };
+		87B32C9B8394960F1D92695FB5A77429 /* Analytics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Analytics.h; path = Headers/Analytics.h; sourceTree = "<group>"; };
+		8D89E4A8BC25AFE9F20EFC7CB41D8BDA /* MZTimerLabel-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MZTimerLabel-dummy.m"; sourceTree = "<group>"; };
 		90E9264F1F2EBA22C5D8728C5DF0890C /* Pods-Pomodoroban-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Pomodoroban-resources.sh"; sourceTree = "<group>"; };
-		920510B02186AADFCACBCFA0197CDD3F /* FABAttributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FABAttributes.h; path = iOS/Fabric.framework/Headers/FABAttributes.h; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9820DF1F718A9BFB2AD5A23C1440867E /* MZTimerLabel.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MZTimerLabel.xcconfig; sourceTree = "<group>"; };
-		A1529AE3185EF1DA2D023C84360CF048 /* MZTimerLabel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MZTimerLabel.m; path = MZTimerLabel/MZTimerLabel.m; sourceTree = "<group>"; };
+		9C5DF8CCCC69770E4A4435D905710A30 /* Answers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Answers.h; path = iOS/Crashlytics.framework/Headers/Answers.h; sourceTree = "<group>"; };
+		9CF6A1A9FFDAEC3D1EAFEF433D1F86EC /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIDictionaryBuilder.h; path = Sources/GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		9DC37C0EFC9268819042BDE2694F6044 /* Fabric.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Fabric.h; path = iOS/Fabric.framework/Headers/Fabric.h; sourceTree = "<group>"; };
 		A201B842203BDB7878322B1BDF01EB48 /* Pods_Pomodoroban.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pomodoroban.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A3A8350350BDA67B50D83975CD77584F /* Fabric.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Fabric.h; path = iOS/Fabric.framework/Headers/Fabric.h; sourceTree = "<group>"; };
-		A5ADC84CEC4212C6CC21622B19DA24B8 /* SwiftHEXColors-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftHEXColors-dummy.m"; sourceTree = "<group>"; };
-		A5BAE6B556EF2228DB922B05FB445382 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B6D0C0C507DC79665C7F9B669EF26A01 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BDBB8C9E5B94ABB58F348859AB75C7AB /* SwiftHEXColors.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftHEXColors.xcconfig; sourceTree = "<group>"; };
+		AA10AC9370F37B98CA9D3A086C3CB00B /* SwiftHEXColors-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftHEXColors-dummy.m"; sourceTree = "<group>"; };
+		B2682499D071BBD4A1081A4E638B793E /* SignIn-Module.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SignIn-Module.h"; path = "Headers/ModuleHeaders/SignIn-Module.h"; sourceTree = "<group>"; };
+		B80522C03B4A64294F4CB90CB37B1707 /* MZTimerLabel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MZTimerLabel.m; path = MZTimerLabel/MZTimerLabel.m; sourceTree = "<group>"; };
+		BBC3877B8269E1059F47C9DD59112335 /* Core.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Core.h; path = Headers/Core.h; sourceTree = "<group>"; };
 		BF210CE581CA64865C6433568301D5D3 /* Pods-Pomodoroban-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Pomodoroban-acknowledgements.plist"; sourceTree = "<group>"; };
-		C3115DA9F503274BEBF011C67C0A3B93 /* MZTimerLabel-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MZTimerLabel-dummy.m"; sourceTree = "<group>"; };
-		C9F90F5FBC3238986C683F9F286FD5C9 /* MZTimerLabel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MZTimerLabel.h; path = MZTimerLabel/MZTimerLabel.h; sourceTree = "<group>"; };
-		CCA40391533C4645D8D15DAAF4050841 /* MZTimerLabel-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MZTimerLabel-umbrella.h"; sourceTree = "<group>"; };
+		C0A74FCE0045CED224187714BFB87397 /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommercePromotion.h; path = Sources/GAIEcommercePromotion.h; sourceTree = "<group>"; };
+		C8D01F6F6AFEDB79B4FEA7C48A451308 /* SwiftHEXColors.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftHEXColors.xcconfig; sourceTree = "<group>"; };
+		C92CEF03D0D7A56A12D807A72B853FCD /* MZTimerLabel-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MZTimerLabel-prefix.pch"; sourceTree = "<group>"; };
+		C93BCA5F7984EA445A87C4AD1E32865F /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceProduct.h; path = Sources/GAIEcommerceProduct.h; sourceTree = "<group>"; };
+		CAF3320ABB2FD744E0ABF50703AF41B4 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
 		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		D46013A3EFC5C6E3FC25F6EEB92A54A0 /* GAILogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAILogger.h; path = Sources/GAILogger.h; sourceTree = "<group>"; };
 		DA90FACB3A0B0F6B32A47D6A8DF24F0D /* MZTimerLabel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MZTimerLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DFEE5CF43583C1096AD3DECE8650E703 /* SwiftHEXColors.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SwiftHEXColors.h; path = Sources/SwiftHEXColors.h; sourceTree = "<group>"; };
-		E9B4A3238E9BA35D5BEBEEFCC4845320 /* MZTimerLabel-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MZTimerLabel-prefix.pch"; sourceTree = "<group>"; };
+		E12FA0860D43FAABAB69746B4FBD7E25 /* SwiftHEXColors-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftHEXColors-umbrella.h"; sourceTree = "<group>"; };
+		E6652DB048174FE7CA82465DBE0B296B /* CLSStackFrame.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLSStackFrame.h; path = iOS/Crashlytics.framework/Headers/CLSStackFrame.h; sourceTree = "<group>"; };
+		EAC024CCEF98409B55EDBC06C478F4AA /* SwiftHEXColors.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftHEXColors.modulemap; sourceTree = "<group>"; };
+		EBED6E1209F4E7B5A42A642A8518504D /* SwiftHEXColors-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftHEXColors-prefix.pch"; sourceTree = "<group>"; };
+		EC2EEC2FE05C757BA50A87E007772DE8 /* CLSReport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLSReport.h; path = iOS/Crashlytics.framework/Headers/CLSReport.h; sourceTree = "<group>"; };
 		EDF03B66C9A9710837046F415DA9D98F /* Pods-Pomodoroban.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Pomodoroban.release.xcconfig"; sourceTree = "<group>"; };
-		F1CB92C2BB02AA734FBB243573CAD3DD /* CLSReport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLSReport.h; path = iOS/Crashlytics.framework/Headers/CLSReport.h; sourceTree = "<group>"; };
-		F44AD1D1FD9799906015472AD9103C3B /* SwiftHEXColors-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftHEXColors-prefix.pch"; sourceTree = "<group>"; };
+		EEEA398871C265630AEEFD00315160DA /* SwiftHEXColors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftHEXColors.swift; path = Sources/SwiftHEXColors.swift; sourceTree = "<group>"; };
+		F577DEA50F6E1A850B6BC9B47459A216 /* MZTimerLabel.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MZTimerLabel.xcconfig; sourceTree = "<group>"; };
 		F98670145D650E50A63FA424FF3A7598 /* Pods-Pomodoroban.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Pomodoroban.modulemap"; sourceTree = "<group>"; };
+		FF0C8F2939FE754B3E161707A4BF74AE /* SwiftHEXColors.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SwiftHEXColors.h; path = Sources/SwiftHEXColors.h; sourceTree = "<group>"; };
+		FF1D54CCD0787F77BC7E8D9BC8647D00 /* MZTimerLabel.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = MZTimerLabel.modulemap; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,12 +137,68 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2E3FC34861D706D090172D35E807F6F3 /* Frameworks */ = {
+		01FCDFE4817204822AAA84AB50AFF8D9 /* FirebaseAnalytics */ = {
 			isa = PBXGroup;
 			children = (
-				3A72FF3A9FD7656FE78554BA3BCDF800 /* Fabric.framework */,
+				F358EB0EDDF9D2B0998BF3D0653A3D45 /* Frameworks */,
+			);
+			path = FirebaseAnalytics;
+			sourceTree = "<group>";
+		};
+		0527C59894303E4AA948F9DE44D9DEC4 /* FirebaseCore */ = {
+			isa = PBXGroup;
+			children = (
+				B408F5D2EA8F209735F5069B7C414787 /* Frameworks */,
+			);
+			path = FirebaseCore;
+			sourceTree = "<group>";
+		};
+		10E9F1E83A411E9A01D76A71ECF9410F /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				49852B219A3020A1AE5064FC06F3E5B1 /* Info.plist */,
+				FF1D54CCD0787F77BC7E8D9BC8647D00 /* MZTimerLabel.modulemap */,
+				F577DEA50F6E1A850B6BC9B47459A216 /* MZTimerLabel.xcconfig */,
+				8D89E4A8BC25AFE9F20EFC7CB41D8BDA /* MZTimerLabel-dummy.m */,
+				C92CEF03D0D7A56A12D807A72B853FCD /* MZTimerLabel-prefix.pch */,
+				79E848028E8F21D960B30D42C96671CC /* MZTimerLabel-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/MZTimerLabel";
+			sourceTree = "<group>";
+		};
+		117425B463CF975446729548F2E5BFE6 /* SwiftHEXColors */ = {
+			isa = PBXGroup;
+			children = (
+				FF0C8F2939FE754B3E161707A4BF74AE /* SwiftHEXColors.h */,
+				EEEA398871C265630AEEFD00315160DA /* SwiftHEXColors.swift */,
+				4255271EC76BD9597C1E074657138F1C /* Support Files */,
+			);
+			path = SwiftHEXColors;
+			sourceTree = "<group>";
+		};
+		24F5B3E77F35848B651E1C9FD118E855 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5FF6F3937616DBAAFDE9AD7E22188C30 /* libGoogleAnalytics.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		356BA2FF373B882512F6F070E77D5501 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				26716D8B2C3959DA957CD5811F45B31F /* GGLCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		35864E08DE933715775E745E5397AD3C /* GoogleUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				748457DBB51DC3CAD662538F0250F704 /* Frameworks */,
+			);
+			path = GoogleUtilities;
 			sourceTree = "<group>";
 		};
 		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
@@ -128,14 +209,73 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		547D69716C87AC2D9073FBCB2B90A936 /* Fabric */ = {
+		4255271EC76BD9597C1E074657138F1C /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				920510B02186AADFCACBCFA0197CDD3F /* FABAttributes.h */,
-				A3A8350350BDA67B50D83975CD77584F /* Fabric.h */,
-				2E3FC34861D706D090172D35E807F6F3 /* Frameworks */,
+				2C1D2BBA805F759F1FD86AAC270D3A28 /* Info.plist */,
+				EAC024CCEF98409B55EDBC06C478F4AA /* SwiftHEXColors.modulemap */,
+				C8D01F6F6AFEDB79B4FEA7C48A451308 /* SwiftHEXColors.xcconfig */,
+				AA10AC9370F37B98CA9D3A086C3CB00B /* SwiftHEXColors-dummy.m */,
+				EBED6E1209F4E7B5A42A642A8518504D /* SwiftHEXColors-prefix.pch */,
+				E12FA0860D43FAABAB69746B4FBD7E25 /* SwiftHEXColors-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftHEXColors";
+			sourceTree = "<group>";
+		};
+		49068419BECCBE43D3B61DCB3D233102 /* GoogleAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				0CC872B2F8B23CFA98CEA4AEBBE8228E /* GAI.h */,
+				9CF6A1A9FFDAEC3D1EAFEF433D1F86EC /* GAIDictionaryBuilder.h */,
+				206209D757879A2CED6C6C4BBD36A0FC /* GAIEcommerceFields.h */,
+				C93BCA5F7984EA445A87C4AD1E32865F /* GAIEcommerceProduct.h */,
+				24351F4704F95B68A2EF90C20690503C /* GAIEcommerceProductAction.h */,
+				C0A74FCE0045CED224187714BFB87397 /* GAIEcommercePromotion.h */,
+				00BC0591DC30515E41E23BE88783F2F1 /* GAIFields.h */,
+				D46013A3EFC5C6E3FC25F6EEB92A54A0 /* GAILogger.h */,
+				67C0C98812A301C46D599640399F2449 /* GAITrackedViewController.h */,
+				5D575C12E7E5EF39314A351DF301BF37 /* GAITracker.h */,
+				24F5B3E77F35848B651E1C9FD118E855 /* Frameworks */,
+			);
+			path = GoogleAnalytics;
+			sourceTree = "<group>";
+		};
+		490882826D7400E576BAE7EFD80C4D48 /* Fabric */ = {
+			isa = PBXGroup;
+			children = (
+				50E3B0753492CCD850122CCFD6DFC6D2 /* FABAttributes.h */,
+				9DC37C0EFC9268819042BDE2694F6044 /* Fabric.h */,
+				9291FDCD3AC55267ED140F0D1E5568CB /* Frameworks */,
 			);
 			path = Fabric;
+			sourceTree = "<group>";
+		};
+		58AA01ABFDB9396AAF2CBEAF2A70179D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8E14A99324532A032E682CF68C1ED788 /* Crashlytics */,
+				490882826D7400E576BAE7EFD80C4D48 /* Fabric */,
+				01FCDFE4817204822AAA84AB50AFF8D9 /* FirebaseAnalytics */,
+				0527C59894303E4AA948F9DE44D9DEC4 /* FirebaseCore */,
+				95FB59FF5E74098DB9EFEB35903BDBC2 /* FirebaseInstanceID */,
+				FEE19FB1B5842FC58F5B6FDAF95D0146 /* Google */,
+				49068419BECCBE43D3B61DCB3D233102 /* GoogleAnalytics */,
+				FF8F56D69648E12598D3C5910D4BFB7C /* GoogleInterchangeUtilities */,
+				897B1F2FD3BB9A329106F169827AA703 /* GoogleSymbolUtilities */,
+				35864E08DE933715775E745E5397AD3C /* GoogleUtilities */,
+				879776E4792DB484E32B07E341C649C4 /* MZTimerLabel */,
+				117425B463CF975446729548F2E5BFE6 /* SwiftHEXColors */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		748457DBB51DC3CAD662538F0250F704 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2C7C0E65C4F84E039ABE1803EFAB6653 /* GoogleUtilities.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -143,10 +283,52 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				D337B986E5E3E125C7E7DAEB1B9D82E8 /* Pods */,
+				58AA01ABFDB9396AAF2CBEAF2A70179D /* Pods */,
 				904DC80A5B270AEC756076B9348139D9 /* Products */,
 				91992A14AEB2058E861E976F502E1E26 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		82ABC3F9C9F16E3B1AB68E85D00619F9 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				87B32C9B8394960F1D92695FB5A77429 /* Analytics.h */,
+				9DE47E27E1A1257602DC59951A2CA00C /* Frameworks */,
+			);
+			name = Analytics;
+			sourceTree = "<group>";
+		};
+		879776E4792DB484E32B07E341C649C4 /* MZTimerLabel */ = {
+			isa = PBXGroup;
+			children = (
+				75F2A944BF471ABEDC3FB4CCFB2DE49D /* MZTimerLabel.h */,
+				B80522C03B4A64294F4CB90CB37B1707 /* MZTimerLabel.m */,
+				10E9F1E83A411E9A01D76A71ECF9410F /* Support Files */,
+			);
+			path = MZTimerLabel;
+			sourceTree = "<group>";
+		};
+		897B1F2FD3BB9A329106F169827AA703 /* GoogleSymbolUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				CE60B5150FA912382F476DB9232D898C /* Frameworks */,
+			);
+			path = GoogleSymbolUtilities;
+			sourceTree = "<group>";
+		};
+		8E14A99324532A032E682CF68C1ED788 /* Crashlytics */ = {
+			isa = PBXGroup;
+			children = (
+				6804D55EE1AF4EDA4D9C25C04E2CF8FE /* ANSCompatibility.h */,
+				9C5DF8CCCC69770E4A4435D905710A30 /* Answers.h */,
+				4E8361569D0E0AEA9483E63588456704 /* CLSAttributes.h */,
+				1F8747F64D00321C2D8BA735463B3EF1 /* CLSLogging.h */,
+				EC2EEC2FE05C757BA50A87E007772DE8 /* CLSReport.h */,
+				E6652DB048174FE7CA82465DBE0B296B /* CLSStackFrame.h */,
+				3983BFEE17A9B4D8782E838FE3F2CC56 /* Crashlytics.h */,
+				DF19A00F66AF61ABB47DE28C6EF41174 /* Frameworks */,
+			);
+			path = Crashlytics;
 			sourceTree = "<group>";
 		};
 		904DC80A5B270AEC756076B9348139D9 /* Products */ = {
@@ -167,27 +349,21 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		9AA49E53093F84174970C1B1A64B8551 /* Crashlytics */ = {
+		9291FDCD3AC55267ED140F0D1E5568CB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				783009345CBEDF543BE980FA7258F642 /* ANSCompatibility.h */,
-				0340433E5DBFB0B082921003412F949D /* Answers.h */,
-				7DDC02FB403F976FC7CFD4B15E865031 /* CLSAttributes.h */,
-				47B91B4F9B7A9F5066D226FA607CA840 /* CLSLogging.h */,
-				F1CB92C2BB02AA734FBB243573CAD3DD /* CLSReport.h */,
-				340999F4BEA43AE1A7E61834CC4E99D8 /* CLSStackFrame.h */,
-				61A214C74E6F6B8FB1D0FF3261FF0061 /* Crashlytics.h */,
-				9AA5B2E812A12DB500C8793FDAADB231 /* Frameworks */,
-			);
-			path = Crashlytics;
-			sourceTree = "<group>";
-		};
-		9AA5B2E812A12DB500C8793FDAADB231 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				6858FF4D03F0B692E1722ABA218810A2 /* Crashlytics.framework */,
+				47EF7143A1AB7955D6D16B58498D505D /* Fabric.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		95FB59FF5E74098DB9EFEB35903BDBC2 /* FirebaseInstanceID */ = {
+			isa = PBXGroup;
+			children = (
+				58496BC6ECEF0BC26FEF0FCD7F172765 /* FIRInstanceID.h */,
+				A197B479ABAE4EC8E0618A405B8E42CA /* Frameworks */,
+			);
+			path = FirebaseInstanceID;
 			sourceTree = "<group>";
 		};
 		9B442B1BC3D404391C5475C0401A82A1 /* Pods-Pomodoroban */ = {
@@ -208,14 +384,40 @@
 			path = "Target Support Files/Pods-Pomodoroban";
 			sourceTree = "<group>";
 		};
-		ADF4E209EBDF6DBF9B29BA142201D96E /* SwiftHEXColors */ = {
+		9DE47E27E1A1257602DC59951A2CA00C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DFEE5CF43583C1096AD3DECE8650E703 /* SwiftHEXColors.h */,
-				460D02218A4D6DD89CC3B306D936BDAE /* SwiftHEXColors.swift */,
-				D616D659D93C203630FF28375347EA51 /* Support Files */,
+				5DF9E53FCC5AF1C6E9A03DAA3BAD666A /* GGLAnalytics.framework */,
 			);
-			path = SwiftHEXColors;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A197B479ABAE4EC8E0618A405B8E42CA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CAF3320ABB2FD744E0ABF50703AF41B4 /* FirebaseInstanceID.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A599BF26DADB01DC821B86893FA4ADF8 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				58C1F51F92D0F8D58E26F6D436AF0EAF /* Analytics-Module.h */,
+				BBC3877B8269E1059F47C9DD59112335 /* Core.h */,
+				1BFC2AE804E82458E101E0A287BE4B63 /* Core-Module.h */,
+				B2682499D071BBD4A1081A4E638B793E /* SignIn-Module.h */,
+				356BA2FF373B882512F6F070E77D5501 /* Frameworks */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		B408F5D2EA8F209735F5069B7C414787 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3EFB93EFACBA46E72D03A9EB2E8EB638 /* FirebaseCore.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -226,53 +428,53 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C1F2AE6599826B2D1FEEDCA41FC5892C /* Support Files */ = {
+		CE60B5150FA912382F476DB9232D898C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A5BAE6B556EF2228DB922B05FB445382 /* Info.plist */,
-				20E7428F42136A7734281F652954452F /* MZTimerLabel.modulemap */,
-				9820DF1F718A9BFB2AD5A23C1440867E /* MZTimerLabel.xcconfig */,
-				C3115DA9F503274BEBF011C67C0A3B93 /* MZTimerLabel-dummy.m */,
-				E9B4A3238E9BA35D5BEBEEFCC4845320 /* MZTimerLabel-prefix.pch */,
-				CCA40391533C4645D8D15DAAF4050841 /* MZTimerLabel-umbrella.h */,
+				1687F8EDF2C6EE68D75993D1BF711DD0 /* GoogleSymbolUtilities.framework */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/MZTimerLabel";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D337B986E5E3E125C7E7DAEB1B9D82E8 /* Pods */ = {
+		D19D98DBF2D31165CA4DC053632312CB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9AA49E53093F84174970C1B1A64B8551 /* Crashlytics */,
-				547D69716C87AC2D9073FBCB2B90A936 /* Fabric */,
-				FF3162BD3F6169164E27764B20D92951 /* MZTimerLabel */,
-				ADF4E209EBDF6DBF9B29BA142201D96E /* SwiftHEXColors */,
+				69184B43FF025A65E21213E845439A92 /* GoogleInterchangeUtilities.framework */,
 			);
-			name = Pods;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D616D659D93C203630FF28375347EA51 /* Support Files */ = {
+		DF19A00F66AF61ABB47DE28C6EF41174 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B6D0C0C507DC79665C7F9B669EF26A01 /* Info.plist */,
-				29B20F804FF93B82DABC62BEB12C3FAB /* SwiftHEXColors.modulemap */,
-				BDBB8C9E5B94ABB58F348859AB75C7AB /* SwiftHEXColors.xcconfig */,
-				A5ADC84CEC4212C6CC21622B19DA24B8 /* SwiftHEXColors-dummy.m */,
-				F44AD1D1FD9799906015472AD9103C3B /* SwiftHEXColors-prefix.pch */,
-				3820521BB8177E948ADB39C0A1D738B4 /* SwiftHEXColors-umbrella.h */,
+				1A2567AE85C8D76406AD6FA575C4FEBE /* Crashlytics.framework */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/SwiftHEXColors";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		FF3162BD3F6169164E27764B20D92951 /* MZTimerLabel */ = {
+		F358EB0EDDF9D2B0998BF3D0653A3D45 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C9F90F5FBC3238986C683F9F286FD5C9 /* MZTimerLabel.h */,
-				A1529AE3185EF1DA2D023C84360CF048 /* MZTimerLabel.m */,
-				C1F2AE6599826B2D1FEEDCA41FC5892C /* Support Files */,
+				54A10923BBC873CB7F478D1C161734E0 /* FirebaseAnalytics.framework */,
 			);
-			path = MZTimerLabel;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FEE19FB1B5842FC58F5B6FDAF95D0146 /* Google */ = {
+			isa = PBXGroup;
+			children = (
+				82ABC3F9C9F16E3B1AB68E85D00619F9 /* Analytics */,
+				A599BF26DADB01DC821B86893FA4ADF8 /* Core */,
+			);
+			path = Google;
+			sourceTree = "<group>";
+		};
+		FF8F56D69648E12598D3C5910D4BFB7C /* GoogleInterchangeUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				D19D98DBF2D31165CA4DC053632312CB /* Frameworks */,
+			);
+			path = GoogleInterchangeUtilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,12 +570,6 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
-				TargetAttributes = {
-					9E29A23890B992C6D47D51882C1B22A6 = {
-						DevelopmentTeam = 3U786KR73N;
-						ProvisioningStyle = Automatic;
-					};
-				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -485,15 +681,14 @@
 		};
 		2F083515A1EF8FBFE3B81F4F218A0354 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9820DF1F718A9BFB2AD5A23C1440867E /* MZTimerLabel.xcconfig */;
+			baseConfigurationReference = F577DEA50F6E1A850B6BC9B47459A216 /* MZTimerLabel.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 3U786KR73N;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -507,7 +702,6 @@
 				MODULEMAP_FILE = "Target Support Files/MZTimerLabel/MZTimerLabel.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = MZTimerLabel;
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 2.3;
@@ -519,7 +713,7 @@
 		};
 		5FB8704DF28D6124EC0DC2CAB79D3F55 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BDBB8C9E5B94ABB58F348859AB75C7AB /* SwiftHEXColors.xcconfig */;
+			baseConfigurationReference = C8D01F6F6AFEDB79B4FEA7C48A451308 /* SwiftHEXColors.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -551,7 +745,7 @@
 		};
 		81EA4F0FE334AD8CBC43E62B6F96F6E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BDBB8C9E5B94ABB58F348859AB75C7AB /* SwiftHEXColors.xcconfig */;
+			baseConfigurationReference = C8D01F6F6AFEDB79B4FEA7C48A451308 /* SwiftHEXColors.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -619,15 +813,14 @@
 		};
 		96627203C3F7E5D7C1352C414DCC1502 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9820DF1F718A9BFB2AD5A23C1440867E /* MZTimerLabel.xcconfig */;
+			baseConfigurationReference = F577DEA50F6E1A850B6BC9B47459A216 /* MZTimerLabel.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 3U786KR73N;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -641,7 +834,6 @@
 				MODULEMAP_FILE = "Target Support Files/MZTimerLabel/MZTimerLabel.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = MZTimerLabel;
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 2.3;

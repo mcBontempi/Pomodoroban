@@ -69,6 +69,16 @@ class TimerViewController: UIViewController {
     }
     
     func startBreak() {
+        
+        
+        
+            let tracker = GAI.sharedInstance().defaultTracker
+            tracker.set(kGAIScreenName, value: "Timer - Start Break")
+            
+            let builder = GAIDictionaryBuilder.createScreenView()
+            tracker.send(builder.build() as [NSObject : AnyObject])
+        
+        
         self.updateWithBreak()
         
         self.timerLabel.timerType = MZTimerLabelTypeTimer
@@ -118,6 +128,13 @@ class TimerViewController: UIViewController {
     }
     
     func startWork() {
+        
+            let tracker = GAI.sharedInstance().defaultTracker
+            tracker.set(kGAIScreenName, value: "Timer - Start Work")
+            
+            let builder = GAIDictionaryBuilder.createScreenView()
+            tracker.send(builder.build() as [NSObject : AnyObject])
+        
         self.updateWithTicket(self.tickets[index])
         
         self.timerLabel.timerType = MZTimerLabelTypeTimer
