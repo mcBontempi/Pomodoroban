@@ -11,6 +11,8 @@
 		D61085351D95ED3F001A203A /* CoreDataServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61085341D95ED3F001A203A /* CoreDataServices.swift */; };
 		D61085371D960601001A203A /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61085361D960601001A203A /* TimerViewController.swift */; };
 		D617FB661D9E54C700A4CA53 /* SyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D617FB651D9E54C700A4CA53 /* SyncService.swift */; };
+		D634BD311DAD1A7B003348D1 /* Runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = D634BD2F1DAD1A7B003348D1 /* Runtime.swift */; };
+		D634BD321DAD1A7B003348D1 /* Runtime+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D634BD301DAD1A7B003348D1 /* Runtime+CoreDataProperties.swift */; };
 		D6456A5B1DA5013A0002FDA2 /* TicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A5A1DA5013A0002FDA2 /* TicketViewController.swift */; };
 		D6456A681DA534330002FDA2 /* UIColor+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A671DA534330002FDA2 /* UIColor+Palette.swift */; };
 		D6456A6A1DA540E70002FDA2 /* UIView+PomodoroRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A691DA540E70002FDA2 /* UIView+PomodoroRow.swift */; };
@@ -40,6 +42,8 @@
 		D61085341D95ED3F001A203A /* CoreDataServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataServices.swift; sourceTree = "<group>"; };
 		D61085361D960601001A203A /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		D617FB651D9E54C700A4CA53 /* SyncService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncService.swift; sourceTree = "<group>"; };
+		D634BD2F1DAD1A7B003348D1 /* Runtime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Runtime.swift; sourceTree = "<group>"; };
+		D634BD301DAD1A7B003348D1 /* Runtime+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Runtime+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D6456A5A1DA5013A0002FDA2 /* TicketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketViewController.swift; sourceTree = "<group>"; };
 		D6456A671DA534330002FDA2 /* UIColor+Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Palette.swift"; sourceTree = "<group>"; };
 		D6456A691DA540E70002FDA2 /* UIView+PomodoroRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+PomodoroRow.swift"; sourceTree = "<group>"; };
@@ -162,6 +166,8 @@
 			isa = PBXGroup;
 			children = (
 				FD5BE9E81C5BB5CA00535A78 /* Pomodoroban.xcdatamodeld */,
+				D634BD2F1DAD1A7B003348D1 /* Runtime.swift */,
+				D634BD301DAD1A7B003348D1 /* Runtime+CoreDataProperties.swift */,
 				FD5BEA021C5CF83100535A78 /* Ticket.swift */,
 				FD5BEA011C5CF83100535A78 /* Ticket+CoreDataProperties.swift */,
 			);
@@ -343,6 +349,8 @@
 				D656B36B1DA413630035500A /* NSDate+Utils.swift in Sources */,
 				D6E71D871DA3EDBB0055F2AA /* CALayer+Animations.m in Sources */,
 				FD5BEA041C5CF83100535A78 /* Ticket.swift in Sources */,
+				D634BD311DAD1A7B003348D1 /* Runtime.swift in Sources */,
+				D634BD321DAD1A7B003348D1 /* Runtime+CoreDataProperties.swift in Sources */,
 				D6456A6A1DA540E70002FDA2 /* UIView+PomodoroRow.swift in Sources */,
 				D6456A681DA534330002FDA2 /* UIColor+Palette.swift in Sources */,
 				D617FB661D9E54C700A4CA53 /* SyncService.swift in Sources */,

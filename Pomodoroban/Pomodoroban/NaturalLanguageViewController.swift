@@ -84,14 +84,11 @@ class NaturalLanguageViewController: UIViewController {
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
         let vc = segue.destinationViewController as! TimerViewController
-        
         let length = self.pomodoroLengh.predicate() as! Int
         vc.pomodoroLength = length
         vc.shortBreakLength = self.shortBreakLength.predicate() as! Int
         vc.shortBreakCount = self.shortBreakCount.predicate() as! Int
         vc.longBreakLength = self.longBreakLength.predicate() as! Int
-        
     }
 }

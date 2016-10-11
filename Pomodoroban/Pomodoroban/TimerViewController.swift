@@ -13,7 +13,6 @@ import CoreData
 protocol TimerViewControllerDelegate {
     func timerViewControllerDone(timerViewController: TimerViewController)
     func timerViewControllerQuit(timerViewController: TimerViewController)
-    
 }
 
 class TimerViewController: UIViewController {
@@ -43,49 +42,31 @@ class TimerViewController: UIViewController {
     
     
     func updateWithTicket(ticket: Ticket) {
-        
         self.ticketBackgroundView.hidden = false
         self.view.backgroundColor = UIColor.blackColor()
-        
-        
         self.timerLabel.textColor = UIColor.whiteColor()
-        
-        
         self.ticketBackgroundView.backgroundColor = UIColor.colorFrom(Int( ticket.colorIndex))
-        
         self.titleLabel.text = ticket.name
-        
         self.notesTextView.text = ticket.desc
         for view in self.pomodoroCountView.subviews {
             view.removeFromSuperview()
         }
-        
         let pomodoroView = UIView.pomodoroRowWith(Int(ticket.pomodoroEstimate))
         self.pomodoroCountView.addSubview(pomodoroView)
-
-     }
+    }
     
     func updateWithBreak() {
-        
-        
         self.timerLabel.textColor = UIColor.blackColor()
-        
         self.ticketBackgroundView.hidden = true
-        
         self.view.backgroundColor = UIColor.whiteColor()
-        
     }
     
     func startBreak() {
+        let tracker = GAI.sharedInstance().defaultTracker
+        tracker.set(kGAIScreenName, value: "Timer - Start Break")
         
-        
-        
-            let tracker = GAI.sharedInstance().defaultTracker
-            tracker.set(kGAIScreenName, value: "Timer - Start Break")
-            
-            let builder = GAIDictionaryBuilder.createScreenView()
-            tracker.send(builder.build() as [NSObject : AnyObject])
-        
+        let builder = GAIDictionaryBuilder.createScreenView()
+        tracker.send(builder.build() as [NSObject : AnyObject])
         
         self.updateWithBreak()
         
@@ -97,8 +78,7 @@ class TimerViewController: UIViewController {
             
             timerLabel.setCountDownTime(Double(self.shortBreakLength) * 60)
             
-            
-                 self.createNotification(NSDate(),minsFromNow:self.shortBreakLength,message:"Its Time to Start Work, swipe to return.")
+            self.createNotification(NSDate(),minsFromNow:self.shortBreakLength,message:"Its Time to Start Work, swipe to return.")
             
             self.shortBreaks = self.shortBreaks + 1
         }
@@ -108,7 +88,7 @@ class TimerViewController: UIViewController {
             
             timerLabel.setCountDownTime(Double(self.longBreakLength) * 60)
             
-              self.createNotification(NSDate(),minsFromNow:self.longBreakLength,message:"Its Time to Start Work, swipe to return.")
+            self.createNotification(NSDate(),minsFromNow:self.longBreakLength,message:"Its Time to Start Work, swipe to return.")
             
             self.shortBreaks = 0
         }
@@ -137,21 +117,18 @@ class TimerViewController: UIViewController {
     
     func startWork() {
         
-            let tracker = GAI.sharedInstance().defaultTracker
-            tracker.set(kGAIScreenName, value: "Timer - Start Work")
-            
-            let builder = GAIDictionaryBuilder.createScreenView()
-            tracker.send(builder.build() as [NSObject : AnyObject])
+        let tracker = GAI.sharedInstance().defaultTracker
+        tracker.set(kGAIScreenName, value: "Timer - Start Work")
+        
+        let builder = GAIDictionaryBuilder.createScreenView()
+        tracker.send(builder.build() as [NSObject : AnyObject])
         
         self.updateWithTicket(self.tickets[index])
         
         self.timerLabel.timerType = MZTimerLabelTypeTimer
         timerLabel.setCountDownTime(Double(self.pomodoroLength) * 60)
         
-        
         self.createNotification(NSDate(),minsFromNow: self.pomodoroLength,message:"Its Time For A Break, swipe to return.")
-        
-        
         
         if self.index == self.tickets.count {
             self.close()
@@ -162,18 +139,12 @@ class TimerViewController: UIViewController {
                 if self.index == self.tickets.count  && self.tickets[self.index].pomodoroEstimate == 1 {
                     
                     self.close()
-                    
-                    
-                    
                 }
-                
                 
                 self.startBreak()
             }
         }
     }
-    
-    
     
     func close() {
         
@@ -215,27 +186,42 @@ class TimerViewController: UIViewController {
         notification.fireDate = date.dateByAddingTimeInterval(NSTimeInterval(minsFromNow*60))
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
     }
-
-    @IBAction func quitPressed(sender: AnyObject) {
     
+    
+    var isPaused = false
+    @IBAction func quitPressed(sender: AnyObject) {
+        
         let alert = UIAlertController(title: "Menu", message: "", preferredStyle: .ActionSheet)
         
+        if self.isPaused == false {
+            
+            alert.addAction(UIAlertAction(title: "Pause", style: .Default, handler: { (action) in
+                self.timerLabel.pause()
+                self.isPaused = true
+            }))
+        }
+        else {
+            alert.addAction(UIAlertAction(title: "Unpause", style: .Default, handler: { (action) in
+                self.timerLabel.start()
+                self.isPaused = false
+            }))
+        }
+        
         alert.addAction(UIAlertAction(title: "Quick Add Story to BACKLOG", style: .Default, handler: { (action) in
-        self.quickAdd()
+            self.quickAdd()
         }))
         
-        
-        alert.addAction(UIAlertAction(title: "Continue", style: .Default, handler: { (action) in
-        }))
-        
-        
-        
-        alert.addAction(UIAlertAction(title: "Quit", style: .Default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "Exit Current Pomodoro sequence", style: .Default, handler: { (action) in
             self.close()
         }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action) in
+        }))
+        
+        
         self.presentViewController(alert, animated: true, completion: nil)
     }
- 
+    
     var childMoc:NSManagedObjectContext!
     
     func quickAdd() {
