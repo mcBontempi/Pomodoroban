@@ -5,6 +5,8 @@ class BoardTableViewController: UITableViewController {
     
     // vars
     
+    var sectionHeaders = [UIView]()
+    
     var isActuallyEditing = false
     
     let moc = CoreDataServices.sharedInstance.moc
@@ -53,9 +55,92 @@ class BoardTableViewController: UITableViewController {
         tracker.send(builder.build() as [NSObject : AnyObject])
     }
     
+    func sectionTitles() -> [String] {
+        return ["BACKLOG", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY", "DONE"]
+    }
+    
+    func updateViewForSection(view:UIView, section: Int)  {
+     
+        for subview in view.subviews {
+            subview.removeFromSuperview()
+        }
+        
+        view.frame = CGRectMake(0,0,self.tableView.frame.size.width,30)
+        
+        let countLabel = UILabel(frame:CGRectMake(self.tableView.frame.size.width-50,0,40,30))
+        countLabel.textColor = UIColor.whiteColor()
+        countLabel.textAlignment = .Right
+        
+        
+        let count = Ticket.countForSection(moc, section:section)
+        
+        
+        if count > 0 {
+        countLabel.text = "\(count)"
+        }
+        
+        view.backgroundColor = UIColor.darkGrayColor()// UIColor(hexString: "1fa511")
+        let label = UILabel(frame:CGRectMake(10,0,self.tableView.frame.size.width - 20,30))
+        
+        if (NSDate().getDayOfWeek() == section) {
+            label.text = "TODAY"
+            label.textColor = UIColor.whiteColor()
+            
+            label.font = UIFont(name:"HelveticaNeue-Bold", size: 20.0)
+        }
+        else {
+            label.textColor = UIColor.whiteColor()
+            
+            label.text = self.sectionTitles()[section]
+            
+            label.font = UIFont(name:"HelveticaNeue", size: 18.0)
+        }
+  
+        view.addSubview(label)
+        
+        view.addSubview(countLabel)
+        
+    }
+    
+    
+    func reloadSectionHeaders() {
+        
+        var index = 0
+        
+        for view in self.sectionHeaders {
+            
+            self.updateViewForSection(view, section: index)
+            
+            index = index + 1
+            
+            
+        }
+    }
+    
+    
+    
+    func createSectionHeaders() {
+        
+        var index = 0
+        
+        for _ in self.sectionTitles() {
+        
+            let view = UIView()
+            
+            self.updateViewForSection(view, section:index)
+            
+            index = index + 1
+            
+            self.sectionHeaders.append(view)
+            
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.createSectionHeaders()
+        
         try! self.fetchedResultsController.performFetch()
         
         self.tableView.allowsSelectionDuringEditing = true
@@ -73,7 +158,7 @@ class BoardTableViewController: UITableViewController {
         
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
-            self.navigationController?.navigationBar.barTintColor = UIColor.redColor()
+        self.navigationController?.navigationBar.barTintColor = UIColor.redColor()
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
         
@@ -99,7 +184,7 @@ class BoardTableViewController: UITableViewController {
             self.presentViewController(alert, animated: true, completion: nil)
             return false
         }
-        
+            
         else {
             return true
         }
@@ -175,9 +260,9 @@ class BoardTableViewController: UITableViewController {
                 try! self.moc.save()
             }
         }
-      else if editingStyle == .Insert {
-                self.addInSection(indexPath.section)
-            }
+        else if editingStyle == .Insert {
+            self.addInSection(indexPath.section)
+        }
     }
     
     override func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
@@ -200,7 +285,7 @@ class BoardTableViewController: UITableViewController {
         cell.isAddCell = self.isAddAtIndexPath(indexPath)
         cell.ticket =  ticket
         
-    //    cell.dlabel.text = "s:\(cell.ticket!.section) - r:\(cell.ticket!.row)"
+        //    cell.dlabel.text = "s:\(cell.ticket!.section) - r:\(cell.ticket!.row)"
         
         return cell
     }
@@ -220,32 +305,7 @@ class BoardTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        let view = UIView(frame:CGRectMake(0,0,self.tableView.frame.size.width,30))
-     
-        view.backgroundColor = UIColor(hexString: "1fa511")
-        let label = UILabel(frame:CGRectMake(10,0,self.tableView.frame.size.width - 20,30))
-        
-        if (NSDate().getDayOfWeek() == section) {
-              label.text = "TODAY"
-            label.textColor = UIColor.whiteColor()
-            
-            label.font = UIFont(name:"HelveticaNeue-Bold", size: 20.0)
-        }
-        else {
-            label.textColor = UIColor.whiteColor()
-            
-              label.text = self.sectionTitles()[section]
-            
-            label.font = UIFont(name:"HelveticaNeue", size: 18.0)
-        }
-        
-       
-        
-        view.addSubview(label)
-        
-        return view
-        
+        return self.sectionHeaders[section]
     }
     
     
@@ -329,9 +389,7 @@ class BoardTableViewController: UITableViewController {
     }
     
     
-    func sectionTitles() -> [String] {
-        return ["BACKLOG", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY", "DONE"]
-    }
+    
 }
 
 // extensions
@@ -354,22 +412,25 @@ extension BoardTableViewController : TicketViewControllerDelegate {
     
     
     /*
-    func pomodoroViewControllerDelegateDone(pomodoroViewController: PomodoroViewController, ticket:Ticket) {
-        self.dismissViewControllerAnimated(true) {
-            ticket.row = Int32( self.spareRowForSection(Int( ticket.section)))
-            ticket.section = 8
-            self.saveChildMoc()
-        }
-    }
- */
+     func pomodoroViewControllerDelegateDone(pomodoroViewController: PomodoroViewController, ticket:Ticket) {
+     self.dismissViewControllerAnimated(true) {
+     ticket.row = Int32( self.spareRowForSection(Int( ticket.section)))
+     ticket.section = 8
+     self.saveChildMoc()
+     }
+     }
+     */
     
 }
 
 extension BoardTableViewController : NSFetchedResultsControllerDelegate {
     
-         func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        
+        self.reloadSectionHeaders()
+        
         tableView.reloadData()
     }
-
+    
 }
 

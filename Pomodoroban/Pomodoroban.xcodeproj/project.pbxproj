@@ -101,14 +101,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D6456A641DA5074D0002FDA2 /* TicketViewController */ = {
-			isa = PBXGroup;
-			children = (
-				D6456A5A1DA5013A0002FDA2 /* TicketViewController.swift */,
-			);
-			name = TicketViewController;
-			sourceTree = "<group>";
-		};
 		D656B3691DA4134A0035500A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,13 +171,11 @@
 		FD5BE9FE1C5CF79400535A78 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				D6456A641DA5074D0002FDA2 /* TicketViewController */,
-				D6E71D851DA3EDBB0055F2AA /* CALayer+Animations.h */,
-				D6E71D861DA3EDBB0055F2AA /* CALayer+Animations.m */,
 				D67FAECE1D95235B0085BF2D /* BoardTableViewController.swift */,
 				D67FAED01D952B1C0085BF2D /* TicketTableViewCell.swift */,
 				D61085361D960601001A203A /* TimerViewController.swift */,
 				D6E71D881DA3EFC10055F2AA /* NaturalLanguageViewController.swift */,
+				D6456A5A1DA5013A0002FDA2 /* TicketViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -193,6 +183,8 @@
 		FD5BEA051C5CF86B00535A78 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				D6E71D851DA3EDBB0055F2AA /* CALayer+Animations.h */,
+				D6E71D861DA3EDBB0055F2AA /* CALayer+Animations.m */,
 				D6EA5AF71DABF45C00A59B74 /* GoogleService-Info.plist */,
 				D61085341D95ED3F001A203A /* CoreDataServices.swift */,
 				FD5BE9E11C5BB5CA00535A78 /* AppDelegate.swift */,

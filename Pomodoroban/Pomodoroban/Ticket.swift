@@ -43,9 +43,39 @@ class Ticket: NSManagedObject {
         return request
     }
     
-    class func fetchRequestForToday() -> NSFetchRequest {
+    
+    class func countForSection(moc:NSManagedObjectContext, section: Int) -> Int {
+      
+        let tickets = Ticket.allForSection(moc, section: section)
         
-        let weekday = NSDate().getDayOfWeek()
+        var count = 0
+        
+        for ticket in tickets {
+            
+            count = count + Int(ticket.pomodoroEstimate)
+            
+        }
+        
+        return count
+        
+    }
+    
+
+    class func allForToday(moc:NSManagedObjectContext) -> [Ticket] {
+        
+         let weekday = NSDate().getDayOfWeek()
+        
+        let debug = try! moc.executeFetchRequest(self.fetchRequestForSection(weekday))
+        
+        print(debug)
+        
+        return try! moc.executeFetchRequest(self.fetchRequestForSection(weekday)) as! [Ticket]
+    }
+    
+    
+    class func fetchRequestForSection(section:Int) -> NSFetchRequest {
+        
+        let weekday = section
         
         let predicate = NSPredicate(format: "section == %d && row != 999999 && pomodoroEstimate > 0", weekday)
         
@@ -53,14 +83,16 @@ class Ticket: NSManagedObject {
         
     }
     
-    class func allForToday(moc:NSManagedObjectContext) -> [Ticket] {
+    class func allForSection(moc:NSManagedObjectContext, section:Int) -> [Ticket] {
         
-        let debug = try! moc.executeFetchRequest(self.fetchRequestForToday())
+        let debug = try! moc.executeFetchRequest(self.fetchRequestForSection(section))
         
         print(debug)
         
-        return try! moc.executeFetchRequest(self.fetchRequestForToday()) as! [Ticket]
+        return try! moc.executeFetchRequest(self.fetchRequestForSection(section)) as! [Ticket]
     }
+    
+    
     
     
     class func ticketForTicket(ticket:Ticket, moc:NSManagedObjectContext) -> Ticket {

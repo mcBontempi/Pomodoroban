@@ -20,20 +20,21 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hOs-yJ-g7K">
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Pomodoro-Timer" translatesAutoresizingMaskIntoConstraints="NO" id="W9y-jM-w7M">
-                                        <frame key="frameInset" minX="74" minY="116" width="240" height="128"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pomodoro-Timer" translatesAutoresizingMaskIntoConstraints="NO" id="W9y-jM-w7M">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="4Pa-lg-5Il"/>
+                                            <constraint firstAttribute="width" constant="128" id="uoa-1m-Cwn"/>
+                                        </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="W9y-jM-w7M" firstAttribute="centerX" secondItem="hOs-yJ-g7K" secondAttribute="centerX" id="08t-tZ-rrZ"/>
-                                    <constraint firstItem="W9y-jM-w7M" firstAttribute="width" secondItem="hOs-yJ-g7K" secondAttribute="width" id="0Ut-Kr-MjA"/>
                                     <constraint firstItem="W9y-jM-w7M" firstAttribute="centerY" secondItem="hOs-yJ-g7K" secondAttribute="centerY" id="F64-6F-510"/>
-                                    <constraint firstItem="W9y-jM-w7M" firstAttribute="height" secondItem="hOs-yJ-g7K" secondAttribute="height" id="Fh9-Hr-pTB"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.12156862745098039" green="0.6470588235294118" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="hOs-yJ-g7K" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Ech-i4-95Y"/>
                             <constraint firstItem="hOs-yJ-g7K" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="150" id="O81-5y-Hzm"/>

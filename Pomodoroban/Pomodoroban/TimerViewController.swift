@@ -35,6 +35,8 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var timerLabel: MZTimerLabel!
     
     @IBOutlet weak var notesTextView: UITextView!
+    @IBOutlet weak var pomodoroCountView: UIView!
+    
     var delegate:TimerViewControllerDelegate!
     
     let moc = CoreDataServices.sharedInstance.moc
@@ -54,7 +56,13 @@ class TimerViewController: UIViewController {
         self.titleLabel.text = ticket.name
         
         self.notesTextView.text = ticket.desc
+        for view in self.pomodoroCountView.subviews {
+            view.removeFromSuperview()
+        }
         
+        let pomodoroView = UIView.pomodoroRowWith(Int(ticket.pomodoroEstimate))
+        self.pomodoroCountView.addSubview(pomodoroView)
+
      }
     
     func updateWithBreak() {
@@ -212,7 +220,7 @@ class TimerViewController: UIViewController {
     
         let alert = UIAlertController(title: "Menu", message: "", preferredStyle: .ActionSheet)
         
-        alert.addAction(UIAlertAction(title: "Quick Add", style: .Default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "Quick Add Story to BACKLOG", style: .Default, handler: { (action) in
         self.quickAdd()
         }))
         
@@ -269,6 +277,7 @@ class TimerViewController: UIViewController {
 extension TimerViewController : TicketViewControllerDelegate {
     func ticketViewControllerSave(ticketViewController: TicketViewController) {
         self.dismissViewControllerAnimated(true) {
+            
             self.saveChildMoc()
         }
     }
