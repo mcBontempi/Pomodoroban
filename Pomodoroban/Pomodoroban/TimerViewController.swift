@@ -18,7 +18,7 @@ protocol TimerViewControllerDelegate {
 class TimerViewController: UIViewController {
     @IBOutlet weak var loadingImage: UIImageView!
     
-    @IBOutlet weak var maskedLoadingImage: UIImageView!
+    @IBOutlet weak var maskedLoadingImage: ImageMaskView!
     @IBOutlet weak var ticketBackgroundView: UIView!
     
     var pomodoroLength:Int!
@@ -43,10 +43,22 @@ class TimerViewController: UIViewController {
     let moc = CoreDataServices.sharedInstance.moc
     
     
+    
+    let darkBackgroundColor = UIColor(hexString: "555555")!
+    let darkBackgroundColorForMask = UIColor(hexString: "505050")!
+    
+    
+    
+    let veryDarkBackgroundColor = UIColor(hexString: "333333")!
+    let veryDarkBackgroundColorForMask = UIColor(hexString: "2e2e2e")!
+    
+    
+    
     func updateWithTicket(ticket: Ticket) {
         self.ticketBackgroundView.hidden = false
-        self.view.backgroundColor = UIColor.whiteColor()
-        self.timerLabel.textColor = UIColor.blackColor()
+        self.view.backgroundColor = self.veryDarkBackgroundColor
+        self.timerLabel.textColor = UIColor.lightGrayColor()
+        self.maskedLoadingImage.tintColor = self.veryDarkBackgroundColorForMask
         self.ticketBackgroundView.backgroundColor = UIColor.colorFrom(Int( ticket.colorIndex))
         self.titleLabel.text = ticket.name
         self.notesTextView.text = ticket.desc
@@ -55,17 +67,37 @@ class TimerViewController: UIViewController {
         }
         let pomodoroView = UIView.pomodoroRowWith(Int(ticket.pomodoroEstimate))
         self.pomodoroCountView.addSubview(pomodoroView)
+        
+        
+        self.loadingImage.image = UIImage(named: "Pomodoro-Timer")
     }
     
     func updateWithBreak() {
         self.timerLabel.textColor = UIColor.whiteColor()
         self.ticketBackgroundView.hidden = true
-        self.view.backgroundColor = UIColor.blackColor()
+        self.view.backgroundColor = self.darkBackgroundColor
+        self.maskedLoadingImage.tintColor = self.darkBackgroundColorForMask
+        self.loadingImage.image = UIImage(named: "blueCup")
     }
     
+    func updateWithLongBreak() {
+        self.timerLabel.textColor = UIColor.whiteColor()
+        self.ticketBackgroundView.hidden = true
+        self.timerLabel.textColor = UIColor.lightGrayColor()
+        
+        self.view.backgroundColor = self.darkBackgroundColor
+        self.maskedLoadingImage.tintColor = self.darkBackgroundColorForMask
+        self.loadingImage.image = UIImage(named: "fries")
+        
+    }
+    
+    
+    
     func close() {
-
-        self.repeater.invalidate()
+        
+        if let repeater = self.repeater {
+            repeater.invalidate()
+        }
         
         UIApplication.sharedApplication().cancelAllLocalNotifications()
         
@@ -91,6 +123,7 @@ class TimerViewController: UIViewController {
         
         
         self.loadingImage.layer.magnificationFilter = kCAFilterNearest
+        
         self.maskedLoadingImage.layer.magnificationFilter = kCAFilterNearest
         
         if Runtime.all(self.moc).count > 0 {
@@ -122,9 +155,9 @@ class TimerViewController: UIViewController {
         
         
         
-        self.quitButton.layer.cornerRadius = 75
+        self.quitButton.layer.cornerRadius = 2
         self.quitButton.clipsToBounds = true
-        self.quitButton.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.quitButton.layer.borderColor = UIColor.whiteColor().CGColor
         self.quitButton.layer.borderWidth = 6
         
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -136,6 +169,8 @@ class TimerViewController: UIViewController {
         
         
     }
+    
+    
     
     var repeater:LSRepeater!
     
@@ -184,34 +219,48 @@ class TimerViewController: UIViewController {
                 
                 self.currentPartRemaining = runningTotal - dateDiff
                 
-                let pc = self.currentPartLength / self.currentPartRemaining
+                let pc = ( self.currentPartRemaining) / self.currentPartLength
                 
+                print(pc)
                 
                 self.maskedLoadingImage.image = self.loadingImage.image!.imageFromColor(UIColor.blackColor(), frame:CGRectZero)
+                
+                
+                self.maskedLoadingImage.tintColor = UIColor(hexString: "EEEEEE")
+                
+                let height = -(self.maskedLoadingImage.frame.size.height * CGFloat(pc))
+                
+                let maskLayer = CAShapeLayer()
+                let maskRect = CGRectMake(0, self.maskedLoadingImage.frame.size.height, self.maskedLoadingImage.frame.size.width, height  )
+                let path = CGPathCreateWithRect(maskRect, nil);
+                maskLayer.path = path;
+                
+                loadingImage.layer.mask = maskLayer;
+                
                 
                 if runtime.type == 0 {
                     
                     let ticket = runtime.ticket!
                     
                     let partCount = runtime.ticket.pomodoroEstimate
-                    self.timerLabel.text = String(format:"Minutes remaining = %.0f\nPomodoro in Story (%d/%d)",self.currentPartRemaining / 60 , part,partCount)
+                    self.timerLabel.text = String(format:"Seconds remaining = %.0f\nPomodoro in Story (%d/%d)",self.currentPartRemaining , part,partCount)
                     
                     self.updateWithTicket(ticket)
                     print(ticket.name)
                 }
                 else if runtime.type == 1 {
-                    self.timerLabel.text = String(format:"Minutes remaining = %.0f", self.currentPartRemaining / 60)
+                    self.timerLabel.text = String(format:"Seconds remaining = %.0f", self.currentPartRemaining)
                     
                     self.takeABreakLabel.text = "Take a short break"
                     
                     self.updateWithBreak()
                 }
                 else if runtime.type == 2 {
-                    self.timerLabel.text = String(format:"Minutes remaining = %.0f", self.currentPartRemaining / 60)
+                    self.timerLabel.text = String(format:"Seconds remaining = %.0f", self.currentPartRemaining)
                     
                     self.takeABreakLabel.text = "Take a long break"
                     
-                    self.updateWithBreak()
+                    self.updateWithLongBreak()
                 }
                 
                 
@@ -225,19 +274,11 @@ class TimerViewController: UIViewController {
                 print("this is not the end")
                 
             }
-            
-            
         }
         
         print("this is definately the end")
         self.close()
-        
-        
-        
     }
-    
-    
-    
     
     func createNotifications() {
         
@@ -252,9 +293,9 @@ class TimerViewController: UIViewController {
             if runtime.type == 0 {
                 
                 if let ticket = runtime.ticket {
-                
-                message = "Its time to start the '\(ticket.name) task"
-            }
+                    
+                    message = "It's time to start the '\(ticket.name!)' task"
+                }
                 else {
                     message = "Test Value"
                 }
@@ -265,7 +306,7 @@ class TimerViewController: UIViewController {
             }
             else if runtime.type == 2
             {
-                message = "Its time for a long break of \(runtime.length) mins"
+                message = "It's time for a long break of \(runtime.length) mins"
             }
             
             self.createNotification(self.startDatePlusPauses(), secondsFrom: Int(runningTotal) ,message:message)
@@ -373,7 +414,7 @@ class TimerViewController: UIViewController {
                 
                 
             }))
-           
+            
             
             alert.addAction(UIAlertAction(title: "forward 5 mins", style: .Default, handler: { (action) in
                 
@@ -394,7 +435,7 @@ class TimerViewController: UIViewController {
             
             
         }
-       
+        
         
         
         alert.addAction(UIAlertAction(title: "Quick Add Story to BACKLOG", style: .Default, handler: { (action) in

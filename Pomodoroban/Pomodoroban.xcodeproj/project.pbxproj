@@ -11,6 +11,7 @@
 		D60AD7601DADBF660011F429 /* IMG_6628.MOV in Resources */ = {isa = PBXBuildFile; fileRef = D60AD75F1DADBF660011F429 /* IMG_6628.MOV */; };
 		D60AD76A1DAE40840011F429 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D60AD7691DAE40840011F429 /* Assets.xcassets */; };
 		D60AD76C1DAE41B60011F429 /* UIImage + ColorMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60AD76B1DAE41B60011F429 /* UIImage + ColorMask.swift */; };
+		D60AD76F1DAE509C0011F429 /* ImageMaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60AD76E1DAE509C0011F429 /* ImageMaskView.swift */; };
 		D61085351D95ED3F001A203A /* CoreDataServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61085341D95ED3F001A203A /* CoreDataServices.swift */; };
 		D61085371D960601001A203A /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61085361D960601001A203A /* TimerViewController.swift */; };
 		D617FB661D9E54C700A4CA53 /* SyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D617FB651D9E54C700A4CA53 /* SyncService.swift */; };
@@ -43,6 +44,7 @@
 		D60AD75F1DADBF660011F429 /* IMG_6628.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = IMG_6628.MOV; sourceTree = "<group>"; };
 		D60AD7691DAE40840011F429 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D60AD76B1DAE41B60011F429 /* UIImage + ColorMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage + ColorMask.swift"; sourceTree = "<group>"; };
+		D60AD76E1DAE509C0011F429 /* ImageMaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageMaskView.swift; sourceTree = "<group>"; };
 		D61085341D95ED3F001A203A /* CoreDataServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataServices.swift; sourceTree = "<group>"; };
 		D61085361D960601001A203A /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		D617FB651D9E54C700A4CA53 /* SyncService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncService.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				FD5BE9E51C5BB5CA00535A78 /* Main.storyboard */,
 				D617FB651D9E54C700A4CA53 /* SyncService.swift */,
 				D67FAED21D953B980085BF2D /* Pomodoroban-Bridging-Header.h */,
+				D60AD76E1DAE509C0011F429 /* ImageMaskView.swift */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 			files = (
 				FD5BE9EA1C5BB5CA00535A78 /* Pomodoroban.xcdatamodeld in Sources */,
 				D67FAED11D952B1C0085BF2D /* TicketTableViewCell.swift in Sources */,
+				D60AD76F1DAE509C0011F429 /* ImageMaskView.swift in Sources */,
 				D656B36B1DA413630035500A /* NSDate+Utils.swift in Sources */,
 				D6E71D871DA3EDBB0055F2AA /* CALayer+Animations.m in Sources */,
 				FD5BEA041C5CF83100535A78 /* Ticket.swift in Sources */,

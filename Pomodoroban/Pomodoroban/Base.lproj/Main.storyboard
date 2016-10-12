@@ -280,10 +280,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nj8-zQ-jvX">
-                                <frame key="frameInset" minX="67" minY="269" width="240" height="128"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pomodoro-Timer" translatesAutoresizingMaskIntoConstraints="NO" id="tQC-Qz-NA9">
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nj8-zQ-jvX"/>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pomodoro-Timer" translatesAutoresizingMaskIntoConstraints="NO" id="tQC-Qz-NA9">
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="tQC-Qz-NA9" secondAttribute="height" multiplier="1:1" id="cTC-Pq-GQ9"/>
                                 </constraints>
@@ -302,8 +300,8 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K6m-yO-Y7h">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="QOo-bU-qfw"/>
-                                    <constraint firstAttribute="width" constant="50" id="eqf-Gz-kBf"/>
+                                    <constraint firstAttribute="height" constant="100" id="QOo-bU-qfw"/>
+                                    <constraint firstAttribute="width" constant="100" id="eqf-Gz-kBf"/>
                                 </constraints>
                                 <state key="normal" image="mobile-menu">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -602,7 +600,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Pomodoro-Timer" width="64" height="64"/>
+        <image name="Pomodoro-Timer" width="256" height="256"/>
         <image name="mobile-menu" width="2000" height="2000"/>
         <image name="xPomodoro" width="500" height="198"/>
     </resources>
