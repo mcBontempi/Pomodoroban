@@ -4,6 +4,20 @@ import Onboard
 
 class BoardTableViewController: UITableViewController {
     
+    @IBOutlet weak var filterSwitch: UISwitch!
+    
+    var showAll = false
+    
+    @IBAction func filterSwitchPressed(sender: AnyObject) {
+        
+        self.showAll = !self.showAll
+        
+        self.tableView.reloadData()
+        
+    }
+    
+    
+    
     // vars
     
     var sectionHeaders = [UIView]()
@@ -25,7 +39,13 @@ class BoardTableViewController: UITableViewController {
     // actions
     
     @IBAction func addPressed(sender: AnyObject) {
-        self.addInSection(0)
+        
+        
+        print(NSDate().getDayOfWeek())
+        
+        let section = self.showAll ? 0 : NSDate().getDayOfWeek()
+        
+        self.addInSection(section)
     }
     
     @IBAction func PlanWordPressed(sender: AnyObject) {
@@ -300,7 +320,21 @@ class BoardTableViewController: UITableViewController {
         return !self.isAddAtIndexPath(indexPath)
     }
     
+    func hiddenSections() -> [Int] {
+        var array = [0,1,2,3,4,5,6,7]
+        array.removeAtIndex(NSDate().getDayOfWeek())
+        return array
+    }
+    
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        if self.showAll == false {
+            if self.hiddenSections().contains(indexPath.section) == true {
+                return 0
+            }
+        }
+        
+        
         return self.isAddAtIndexPath(indexPath) ? ( self.isActuallyEditing ? 66 : 0 ) :  66
     }
     
@@ -358,6 +392,11 @@ class BoardTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if self.showAll == false {
+            if self.hiddenSections().contains(section) == true {
+                return 0
+            }
+        }
         return 30
     }
     

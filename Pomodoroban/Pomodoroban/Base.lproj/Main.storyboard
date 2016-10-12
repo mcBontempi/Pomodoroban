@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -86,7 +87,7 @@
                                         <rect key="frame" x="0.0" y="64" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ukj-AD-ztl" id="nNh-2j-Hts">
-                                            <frame key="frameInset" width="375" height="87.5"/>
+                                            <frame key="frameInset" width="375" height="87"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2B5-ku-K41">
@@ -118,7 +119,7 @@
                                         <rect key="frame" x="0.0" y="152" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F1w-b3-SzQ" id="MOy-j9-PRj">
-                                            <frame key="frameInset" width="375" height="87.5"/>
+                                            <frame key="frameInset" width="375" height="87"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CATEGORY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBQ-xH-Xc2">
@@ -154,7 +155,7 @@
                                         <rect key="frame" x="0.0" y="240" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FOk-36-Z0F" id="qkz-fc-1WU">
-                                            <frame key="frameInset" width="375" height="87.5"/>
+                                            <frame key="frameInset" width="375" height="87"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xPomodoro" translatesAutoresizingMaskIntoConstraints="NO" id="y3r-iU-XRU">
@@ -201,7 +202,7 @@
                                         <rect key="frame" x="0.0" y="328" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F5f-JU-0nf" id="AAg-BY-Mmp">
-                                            <frame key="frameInset" width="375" height="199.5"/>
+                                            <frame key="frameInset" width="375" height="199"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NOTES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2i-fS-zAz">
@@ -358,10 +359,10 @@
                             <constraint firstItem="Nj8-zQ-jvX" firstAttribute="width" secondItem="tQC-Qz-NA9" secondAttribute="width" id="I0F-Yk-yOc"/>
                             <constraint firstItem="aNy-Z1-6Ag" firstAttribute="trailing" secondItem="dTS-8B-bq9" secondAttribute="trailingMargin" id="LTN-Av-yj8"/>
                             <constraint firstItem="tQC-Qz-NA9" firstAttribute="centerX" secondItem="dTS-8B-bq9" secondAttribute="centerX" id="MQ3-ir-985"/>
-                            <constraint firstItem="Lj4-Kr-XAY" firstAttribute="leading" secondItem="dTS-8B-bq9" secondAttribute="leading" id="OML-UW-FyL"/>
+                            <constraint firstItem="Lj4-Kr-XAY" firstAttribute="leading" secondItem="dTS-8B-bq9" secondAttribute="leading" constant="20" id="OML-UW-FyL"/>
                             <constraint firstItem="Lj4-Kr-XAY" firstAttribute="top" secondItem="aNy-Z1-6Ag" secondAttribute="bottom" constant="20" id="PJo-eH-9u4"/>
-                            <constraint firstItem="kbq-8O-Jxf" firstAttribute="top" secondItem="Lj4-Kr-XAY" secondAttribute="bottom" id="Pe2-jo-kDP"/>
-                            <constraint firstAttribute="trailing" secondItem="Lj4-Kr-XAY" secondAttribute="trailing" id="Yf7-WX-0wg"/>
+                            <constraint firstItem="kbq-8O-Jxf" firstAttribute="top" secondItem="Lj4-Kr-XAY" secondAttribute="bottom" constant="20" id="Pe2-jo-kDP"/>
+                            <constraint firstAttribute="trailing" secondItem="Lj4-Kr-XAY" secondAttribute="trailing" constant="20" id="Yf7-WX-0wg"/>
                             <constraint firstItem="K6m-yO-Y7h" firstAttribute="top" secondItem="whV-Ze-cZc" secondAttribute="bottom" constant="20" id="ZXP-oq-Fd1"/>
                             <constraint firstItem="K6m-yO-Y7h" firstAttribute="centerX" secondItem="dTS-8B-bq9" secondAttribute="centerX" id="b3g-ZJ-3tZ"/>
                             <constraint firstItem="Nj8-zQ-jvX" firstAttribute="centerY" secondItem="tQC-Qz-NA9" secondAttribute="centerY" id="kNP-aK-LRV"/>
@@ -387,7 +388,7 @@
             </objects>
             <point key="canvasLocation" x="1607" y="145"/>
         </scene>
-        <!--POMODOROBAN - Work Mode-->
+        <!--Board Table View Controller-->
         <scene sceneID="Uyy-x0-Vjj">
             <objects>
                 <tableViewController id="lpa-3H-vWj" customClass="BoardTableViewController" customModule="Pomodoroban" customModuleProvider="target" sceneMemberID="viewController">
@@ -400,7 +401,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="76"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8QY-gx-r5u" id="snV-hf-C0U">
-                                    <frame key="frameInset" width="375" height="75.5"/>
+                                    <frame key="frameInset" width="375" height="75"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kDT-H9-ees">
@@ -464,20 +465,33 @@
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="POMODOROBAN - Work Mode" id="pd0-F2-yTn">
+                    <navigationItem key="navigationItem" id="pd0-F2-yTn">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="PLAN" id="qsL-7u-LIc">
                             <connections>
                                 <action selector="PlanWordPressed:" destination="lpa-3H-vWj" id="n82-Tc-eOI"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="dUH-bx-5Kj">
-                            <connections>
-                                <action selector="addPressed:" destination="lpa-3H-vWj" id="62q-7w-mzl"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="dUH-bx-5Kj">
+                                <connections>
+                                    <action selector="addPressed:" destination="lpa-3H-vWj" id="62q-7w-mzl"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem style="plain" id="NhQ-s9-dfp">
+                                <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="929-5y-1Bp">
+                                    <rect key="frame" x="275" y="6" width="51" height="31"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <connections>
+                                        <action selector="filterSwitchPressed:" destination="lpa-3H-vWj" eventType="valueChanged" id="g9e-kg-1Qu"/>
+                                    </connections>
+                                </switch>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics" barStyle="black"/>
                     <connections>
+                        <outlet property="filterSwitch" destination="929-5y-1Bp" id="gxI-yB-pLI"/>
                         <outlet property="planWorkButton" destination="qsL-7u-LIc" id="AXz-Db-2Vb"/>
                     </connections>
                 </tableViewController>
@@ -600,7 +614,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Pomodoro-Timer" width="256" height="256"/>
+        <image name="Pomodoro-Timer" width="220" height="216"/>
         <image name="mobile-menu" width="2000" height="2000"/>
         <image name="xPomodoro" width="500" height="198"/>
     </resources>

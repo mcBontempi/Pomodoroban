@@ -11,6 +11,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        application.statusBarHidden = true
         
         // Configure tracker from GoogleService-Info.plist.
         var configureError:NSError?

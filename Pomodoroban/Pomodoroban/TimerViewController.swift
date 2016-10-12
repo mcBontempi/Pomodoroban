@@ -122,6 +122,18 @@ class TimerViewController: UIViewController {
         super.viewDidLoad()
         
         
+        self.view.layer.cornerRadius = 20
+        self.view.layer.borderWidth = 5
+        self.view.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.view.clipsToBounds = true
+        
+        
+        
+        self.ticketBackgroundView.layer.cornerRadius = 10
+        self.ticketBackgroundView.layer.borderWidth = 3
+        self.ticketBackgroundView.layer.borderColor = UIColor.darkGrayColor().CGColor
+        self.ticketBackgroundView.clipsToBounds = true
+        
         self.loadingImage.layer.magnificationFilter = kCAFilterNearest
         
         self.maskedLoadingImage.layer.magnificationFilter = kCAFilterNearest
@@ -155,7 +167,7 @@ class TimerViewController: UIViewController {
         
         
         
-        self.quitButton.layer.cornerRadius = 2
+        self.quitButton.layer.cornerRadius = 4
         self.quitButton.clipsToBounds = true
         self.quitButton.layer.borderColor = UIColor.whiteColor().CGColor
         self.quitButton.layer.borderWidth = 6
