@@ -181,7 +181,7 @@ class TimerViewController: UIViewController {
                 
                 if let ticket = runtime.ticket {
                     let partCount = runtime.ticket.pomodoroEstimate
-                    self.timerLabel.text = String(format:"Seconds rmaining = %.1f\nin task (%d/%d)",self.currentPartRemaining , part,partCount)
+                    self.timerLabel.text = String(format:"Seconds remaining = %.1f\nPomodoro in Story (%d/%d)",self.currentPartRemaining , part,partCount)
                     
                     self.updateWithTicket(ticket)
                     print(ticket.name)

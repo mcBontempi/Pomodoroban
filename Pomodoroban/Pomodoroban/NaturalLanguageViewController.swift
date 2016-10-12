@@ -24,7 +24,7 @@ class NaturalLanguageViewController: UIViewController {
     let moc = CoreDataServices.sharedInstance.moc
     
     func updateEstimateLabel() {
-     return
+    
         let childMoc = CoreDataServices.sharedInstance.childMoc()
         Runtime.removeAllEntities(childMoc)
         
