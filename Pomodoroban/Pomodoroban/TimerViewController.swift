@@ -18,6 +18,7 @@ protocol TimerViewControllerDelegate {
 class TimerViewController: UIViewController {
     @IBOutlet weak var loadingImage: UIImageView!
     
+    @IBOutlet weak var maskedLoadingImage: UIImageView!
     @IBOutlet weak var ticketBackgroundView: UIView!
     
     var pomodoroLength:Int!
@@ -90,6 +91,7 @@ class TimerViewController: UIViewController {
         
         
         self.loadingImage.layer.magnificationFilter = kCAFilterNearest
+        self.maskedLoadingImage.layer.magnificationFilter = kCAFilterNearest
         
         if Runtime.all(self.moc).count > 0 {
             self.startDate = NSUserDefaults.standardUserDefaults().objectForKey("startDate") as! NSDate
@@ -185,7 +187,7 @@ class TimerViewController: UIViewController {
                 let pc = self.currentPartLength / self.currentPartRemaining
                 
                 
-                
+                self.maskedLoadingImage.image = self.loadingImage.image!.imageFromColor(UIColor.blackColor(), frame:CGRectZero)
                 
                 if runtime.type == 0 {
                     

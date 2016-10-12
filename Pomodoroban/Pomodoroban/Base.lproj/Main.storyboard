@@ -280,6 +280,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nj8-zQ-jvX">
+                                <frame key="frameInset" minX="67" minY="269" width="240" height="128"/>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pomodoro-Timer" translatesAutoresizingMaskIntoConstraints="NO" id="tQC-Qz-NA9">
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="tQC-Qz-NA9" secondAttribute="height" multiplier="1:1" id="cTC-Pq-GQ9"/>
@@ -352,6 +355,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="tQC-Qz-NA9" firstAttribute="top" secondItem="K6m-yO-Y7h" secondAttribute="bottom" constant="15" id="2Ph-e8-3w6"/>
+                            <constraint firstItem="Nj8-zQ-jvX" firstAttribute="centerX" secondItem="tQC-Qz-NA9" secondAttribute="centerX" id="5af-XG-nlh"/>
+                            <constraint firstItem="Nj8-zQ-jvX" firstAttribute="height" secondItem="tQC-Qz-NA9" secondAttribute="height" id="Cmh-IY-KRZ"/>
+                            <constraint firstItem="Nj8-zQ-jvX" firstAttribute="width" secondItem="tQC-Qz-NA9" secondAttribute="width" id="I0F-Yk-yOc"/>
                             <constraint firstItem="aNy-Z1-6Ag" firstAttribute="trailing" secondItem="dTS-8B-bq9" secondAttribute="trailingMargin" id="LTN-Av-yj8"/>
                             <constraint firstItem="tQC-Qz-NA9" firstAttribute="centerX" secondItem="dTS-8B-bq9" secondAttribute="centerX" id="MQ3-ir-985"/>
                             <constraint firstItem="Lj4-Kr-XAY" firstAttribute="leading" secondItem="dTS-8B-bq9" secondAttribute="leading" id="OML-UW-FyL"/>
@@ -360,6 +366,7 @@
                             <constraint firstAttribute="trailing" secondItem="Lj4-Kr-XAY" secondAttribute="trailing" id="Yf7-WX-0wg"/>
                             <constraint firstItem="K6m-yO-Y7h" firstAttribute="top" secondItem="whV-Ze-cZc" secondAttribute="bottom" constant="20" id="ZXP-oq-Fd1"/>
                             <constraint firstItem="K6m-yO-Y7h" firstAttribute="centerX" secondItem="dTS-8B-bq9" secondAttribute="centerX" id="b3g-ZJ-3tZ"/>
+                            <constraint firstItem="Nj8-zQ-jvX" firstAttribute="centerY" secondItem="tQC-Qz-NA9" secondAttribute="centerY" id="kNP-aK-LRV"/>
                             <constraint firstItem="0IV-lu-m60" firstAttribute="centerX" secondItem="dTS-8B-bq9" secondAttribute="centerX" id="lwt-ZV-zg2"/>
                             <constraint firstItem="aNy-Z1-6Ag" firstAttribute="top" secondItem="tQC-Qz-NA9" secondAttribute="bottom" constant="15" id="nR3-fx-H1j"/>
                             <constraint firstItem="aNy-Z1-6Ag" firstAttribute="leading" secondItem="dTS-8B-bq9" secondAttribute="leadingMargin" id="rrX-1X-QBK"/>
@@ -368,6 +375,7 @@
                     </view>
                     <connections>
                         <outlet property="loadingImage" destination="tQC-Qz-NA9" id="MTS-np-bPB"/>
+                        <outlet property="maskedLoadingImage" destination="Nj8-zQ-jvX" id="sU5-Bq-ct2"/>
                         <outlet property="notesTextView" destination="ypo-k2-Ica" id="RaM-l2-3bA"/>
                         <outlet property="pomodoroCountView" destination="Y15-JP-zwY" id="seP-cJ-uU5"/>
                         <outlet property="quitButton" destination="K6m-yO-Y7h" id="pCW-rv-cZw"/>
@@ -594,7 +602,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Pomodoro-Timer" width="64" height="56"/>
+        <image name="Pomodoro-Timer" width="64" height="64"/>
         <image name="mobile-menu" width="2000" height="2000"/>
         <image name="xPomodoro" width="500" height="198"/>
     </resources>

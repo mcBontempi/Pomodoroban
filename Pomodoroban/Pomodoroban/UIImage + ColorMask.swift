@@ -1,18 +1,17 @@
 import UIKit
 import SwiftHEXColors
 
-extension UIColor {
+extension UIImage {
     
     
-    class func colorArray() -> [UIColor] {
-        let array = [UIColor.blackColor(), UIColor.blueColor(), UIColor.greenColor(), UIColor.yellowColor(), UIColor.redColor(), UIColor.whiteColor()]
-        return array
-    }
+    func imageFromColor(color:UIColor, frame:CGRect) -> UIImage{
     
-    class func colorFrom(paletteIndex: Int) -> UIColor {
         
-        return UIColor.colorArray()[paletteIndex]
+            return self.imageWithRenderingMode(.AlwaysTemplate)
+        
     }
     
     
 }
+
+
