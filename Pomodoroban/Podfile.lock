@@ -22,14 +22,14 @@ PODS:
   - GoogleSymbolUtilities (1.1.2)
   - GoogleUtilities (1.3.2):
     - GoogleSymbolUtilities (~> 1.1)
-  - MZTimerLabel (0.5.4)
+  - LSRepeater (0.0.11)
   - SwiftHEXColors (1.0.4)
 
 DEPENDENCIES:
   - Crashlytics
   - Fabric
   - Google/Analytics
-  - MZTimerLabel
+  - LSRepeater
   - SwiftHEXColors
 
 SPEC CHECKSUMS:
@@ -43,9 +43,9 @@ SPEC CHECKSUMS:
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
-  MZTimerLabel: cd9bfb9304540ef2a9e163384fca9c978f0dbf83
+  LSRepeater: a595bb0e043612c7a23a636654a5875f2c229aa4
   SwiftHEXColors: b0ecc7bd83a1aa2e1956f9ba51f55ebb2bcf86ef
 
-PODFILE CHECKSUM: f2561b0ec636d24b313b243a1b90e0f16b0f1dc0
+PODFILE CHECKSUM: 5c17966a6bd8560f8763c39bd0ab0cbaaf4c2082
 
 COCOAPODS: 1.1.0.rc.2

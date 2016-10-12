@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import MZTimerLabel
 import CoreData
+import LSRepeater
 
 protocol TimerViewControllerDelegate {
     func timerViewControllerDone(timerViewController: TimerViewController)
@@ -18,7 +18,7 @@ protocol TimerViewControllerDelegate {
 class TimerViewController: UIViewController {
     
     @IBOutlet weak var ticketBackgroundView: UIView!
-    var tickets:[Ticket]!
+    
     var pomodoroLength:Int!
     var shortBreakLength:Int!
     var shortBreakCount:Int!
@@ -31,7 +31,7 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var quitButton: UIButton!
     @IBOutlet weak var doneButton: UIButton!
-    @IBOutlet weak var timerLabel: MZTimerLabel!
+    @IBOutlet weak var timerLabel: UILabel!
     
     @IBOutlet weak var notesTextView: UITextView!
     @IBOutlet weak var pomodoroCountView: UIView!
@@ -61,106 +61,60 @@ class TimerViewController: UIViewController {
         self.view.backgroundColor = UIColor.whiteColor()
     }
     
-    func startBreak() {
-        let tracker = GAI.sharedInstance().defaultTracker
-        tracker.set(kGAIScreenName, value: "Timer - Start Break")
-        
-        let builder = GAIDictionaryBuilder.createScreenView()
-        tracker.send(builder.build() as [NSObject : AnyObject])
-        
-        self.updateWithBreak()
-        
-        self.timerLabel.timerType = MZTimerLabelTypeTimer
-        
-        if self.shortBreaks < self.shortBreakCount {
-            
-            self.takeABreakLabel.text = "Take a short break"
-            
-            timerLabel.setCountDownTime(Double(self.shortBreakLength) * 60)
-            
-            self.createNotification(NSDate(),minsFromNow:self.shortBreakLength,message:"Its Time to Start Work, swipe to return.")
-            
-            self.shortBreaks = self.shortBreaks + 1
-        }
-        else {
-            
-            self.takeABreakLabel.text = "Take a long break"
-            
-            timerLabel.setCountDownTime(Double(self.longBreakLength) * 60)
-            
-            self.createNotification(NSDate(),minsFromNow:self.longBreakLength,message:"Its Time to Start Work, swipe to return.")
-            
-            self.shortBreaks = 0
-        }
-        
-        if self.index == self.tickets.count {
-            self.close()
-        }
-        else {
-            timerLabel.startWithEndingBlock { (time) in
-                
-                self.tickets[self.index].pomodoroEstimate = self.tickets[self.index].pomodoroEstimate - 1
-                
-                if self.tickets[self.index].pomodoroEstimate == 0 {
-                    
-                    self.tickets[self.index].section = 8
-                    
-                    self.index = self.index + 1
-                }
-                
-                try! self.moc.save()
-                
-                self.startWork()
-            }
-        }
-    }
-    
-    func startWork() {
-        
-        let tracker = GAI.sharedInstance().defaultTracker
-        tracker.set(kGAIScreenName, value: "Timer - Start Work")
-        
-        let builder = GAIDictionaryBuilder.createScreenView()
-        tracker.send(builder.build() as [NSObject : AnyObject])
-        
-        self.updateWithTicket(self.tickets[index])
-        
-        self.timerLabel.timerType = MZTimerLabelTypeTimer
-        timerLabel.setCountDownTime(Double(self.pomodoroLength) * 60)
-        
-        self.createNotification(NSDate(),minsFromNow: self.pomodoroLength,message:"Its Time For A Break, swipe to return.")
-        
-        if self.index == self.tickets.count {
-            self.close()
-        }
-        else {
-            timerLabel.startWithEndingBlock { (time) in
-                
-                if self.index == self.tickets.count  && self.tickets[self.index].pomodoroEstimate == 1 {
-                    
-                    self.close()
-                }
-                
-                self.startBreak()
-            }
-        }
-    }
-    
     func close() {
+
+        self.repeater.invalidate()
         
         UIApplication.sharedApplication().cancelAllLocalNotifications()
         
-        self.timerLabel.endedBlock = nil
+        Runtime.removeAllEntities(self.moc)
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        
+        userDefaults.removeObjectForKey("startPausedDate")
+        userDefaults.removeObjectForKey("totalPausedTime")
+        
+        userDefaults.synchronize()
         
         self.dismissViewControllerAnimated(true) {
-            
         }
     }
+    
+    var runtimes: [Runtime]!
+    
+    var startDate: NSDate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tickets = Ticket.allForToday(self.moc)
+        if Runtime.all(self.moc).count > 0 {
+            self.startDate = NSUserDefaults.standardUserDefaults().objectForKey("startDate") as! NSDate
+        }
+        else {
+            
+            let defaults = NSUserDefaults.standardUserDefaults()
+            
+            self.startDate = NSDate()
+            
+            defaults.setObject(startDate, forKey: "startDate")
+            defaults.synchronize()
+            
+            Runtime.removeAllEntities(self.moc)
+            
+            Runtime.createForToday(self.moc, pomodoroLength: self.pomodoroLength, shortBreakLength: self.shortBreakLength, longBreakLength: self.longBreakLength, shortBreakCount: self.shortBreakCount)
+            
+            
+            try! self.moc.save()
+            
+            Runtime.printAll(self.moc)
+            
+        }
+        
+        self.runtimes = Runtime.all(self.moc)
+        
+        self.createNotifications()
+        
+        
         
         self.quitButton.layer.cornerRadius = 75
         self.quitButton.clipsToBounds = true
@@ -168,44 +122,260 @@ class TimerViewController: UIViewController {
         self.quitButton.layer.borderWidth = 6
         
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        self.startWork()
+        
+        
+        self.repeater = LSRepeater.repeater(0.1, fireOnceInstantly: true, execute: {
+            self.update()
+        })
+        
+        
     }
     
-    func createNotification(date:NSDate, minsFromNow:Int, message: String) {
+    var repeater:LSRepeater!
+    
+    
+    func startDatePlusPauses() -> NSDate {
+        var startDatePlusPauses = self.startDate
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        if let startPausedDate = userDefaults.objectForKey("startPausedDate") as? NSDate{
+            let diff = NSDate().timeIntervalSinceDate(startPausedDate)
+            print(diff)
+            startDatePlusPauses = startDatePlusPauses.dateByAddingTimeInterval(diff)
+        }
+        if userDefaults.objectForKey("totalPausedTime") != nil {
+            let totalPausedTime = userDefaults.doubleForKey("totalPausedTime")
+            startDatePlusPauses = startDatePlusPauses.dateByAddingTimeInterval(NSTimeInterval(totalPausedTime))
+        }
         
-        print("mins from now \(minsFromNow) message\(message)")
+        return startDatePlusPauses
+        
+    }
+    
+    var currentPartRemaining = 0.0
+    var currentPartLength = 0.0
+    
+    func update() {
+        
+        let startDatePlusPauses = self.startDatePlusPauses()
+        
+        let dateDiff = NSDate().timeIntervalSinceDate(startDatePlusPauses)
+        
+        var runningTotal:NSTimeInterval = 0
+        
+        for runtime in self.runtimes {
+            
+            let runtimeLength = NSTimeInterval(runtime.length)
+            
+            runningTotal = runningTotal + runtimeLength
+            
+            if dateDiff < runningTotal {
+                
+                print(runningTotal - dateDiff)
+                
+                let part = runtime.part
+                
+                self.currentPartLength = Double(runtime.length)
+                
+                
+                self.currentPartRemaining = runningTotal - dateDiff
+                
+                if let ticket = runtime.ticket {
+                    let partCount = runtime.ticket.pomodoroEstimate
+                    self.timerLabel.text = String(format:"%.1f - (%d/%d)",self.currentPartRemaining , part,partCount)
+                    
+                    self.updateWithTicket(ticket)
+                    print(ticket.name)
+                }
+                else if runtime.type == 1 {
+                    self.timerLabel.text = String(format:"%.1f", self.currentPartRemaining)
+                    
+                    self.takeABreakLabel.text = "Take a short break"
+                    
+                    self.updateWithBreak()
+                }
+                else if runtime.type == 2 {
+                    self.timerLabel.text = String(format:"%.1f", self.currentPartRemaining)
+                    
+                    self.takeABreakLabel.text = "Take a long break"
+                    
+                    self.updateWithBreak()
+                }
+                
+                
+                print(runtime.length)
+                
+                return
+                
+                //  self.updateWithTicket(runtime.ticket)
+            }
+            else {
+                print("this is not the end")
+                
+            }
+            
+            
+        }
+        
+        print("this is definately the end")
+        self.close()
+        
+        
+        
+    }
+    
+    
+    
+    
+    func createNotifications() {
         
         // ensure we only have one
         UIApplication.sharedApplication().cancelAllLocalNotifications()
+        
+        var runningTotal:Int32 = 0
+        
+        for runtime in self.runtimes {
+            
+            var message:String!
+            if runtime.type == 0 {
+                message = runtime.ticket.name
+            }
+            else if runtime.type == 1
+            {
+                message = "Take a short break for \(runtime.length) mins"
+            }
+            else if runtime.type == 2
+            {
+                message = "Its time for a long break of \(runtime.length) mins"
+            }
+            
+            self.createNotification(self.startDatePlusPauses(), secondsFrom: Int(runningTotal) ,message:"Its time to start the '\(message) task")
+            
+            runningTotal = runningTotal + runtime.length
+            
+        }
+    }
+    
+    func createNotification(date:NSDate, secondsFrom:Int, message: String) {
+        
+        print("mins from now \(secondsFrom) message\(message)")
+        
         
         let notification = UILocalNotification()
         
         notification.alertBody = message
         notification.alertAction = "Hey there!"
         notification.soundName = UILocalNotificationDefaultSoundName
-        notification.fireDate = date.dateByAddingTimeInterval(NSTimeInterval(minsFromNow*60))
+        notification.fireDate = date.dateByAddingTimeInterval(NSTimeInterval(secondsFrom))
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
     }
     
     
-    var isPaused = false
     @IBAction func quitPressed(sender: AnyObject) {
+        
         
         let alert = UIAlertController(title: "Menu", message: "", preferredStyle: .ActionSheet)
         
-        if self.isPaused == false {
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        if let startPausedDate = userDefaults.objectForKey("startPausedDate") as? NSDate {
             
-            alert.addAction(UIAlertAction(title: "Pause", style: .Default, handler: { (action) in
-                self.timerLabel.pause()
-                self.isPaused = true
+            alert.addAction(UIAlertAction(title: "Unpause", style: .Default, handler: { (action) in
+                let userDefaults = NSUserDefaults.standardUserDefaults()
+                var totalPausedTime = 0.0
+                if userDefaults.objectForKey("totalPausedTime") != nil {
+                    totalPausedTime = userDefaults.doubleForKey("totalPausedTime")
+                }
+                
+                let timeDiff = NSDate().timeIntervalSinceDate(startPausedDate)
+                
+                print(timeDiff)
+                
+                totalPausedTime = totalPausedTime + timeDiff
+                
+                userDefaults.removeObjectForKey("startPausedDate")
+                
+                userDefaults.setDouble(totalPausedTime, forKey: "totalPausedTime")
+                
+                userDefaults.synchronize()
+                
+                
+                self.createNotifications()
+                
+                
             }))
+            
         }
         else {
-            alert.addAction(UIAlertAction(title: "Unpause", style: .Default, handler: { (action) in
-                self.timerLabel.start()
-                self.isPaused = false
+            
+            alert.addAction(UIAlertAction(title: "Pause", style: .Default, handler: { (action) in
+                userDefaults.setObject(NSDate(), forKey: "startPausedDate" )
+                
+                userDefaults.synchronize()
+                
+                UIApplication.sharedApplication().cancelAllLocalNotifications()
+                
+                
             }))
+            
+            alert.addAction(UIAlertAction(title: "Skip this pomodoro", style: .Default, handler: { (action) in
+                
+                var totalPausedTime = 0.0
+                if userDefaults.objectForKey("totalPausedTime") != nil {
+                    totalPausedTime = userDefaults.doubleForKey("totalPausedTime")
+                }
+                totalPausedTime = totalPausedTime - self.currentPartRemaining
+                
+                userDefaults.setDouble(totalPausedTime, forKey: "totalPausedTime")
+                
+                userDefaults.synchronize()
+                
+                UIApplication.sharedApplication().cancelAllLocalNotifications()
+                self.createNotifications()
+                
+                
+                
+            }))
+            
+            
+            alert.addAction(UIAlertAction(title: "back 5 mins", style: .Default, handler: { (action) in
+                
+                var totalPausedTime = 0.0
+                if userDefaults.objectForKey("totalPausedTime") != nil {
+                    totalPausedTime = userDefaults.doubleForKey("totalPausedTime")
+                }
+                totalPausedTime = totalPausedTime + 300
+                
+                userDefaults.setDouble(totalPausedTime, forKey: "totalPausedTime")
+                
+                userDefaults.synchronize()
+                UIApplication.sharedApplication().cancelAllLocalNotifications()
+                self.createNotifications()
+                
+                
+            }))
+           
+            
+            alert.addAction(UIAlertAction(title: "forward 5 mins", style: .Default, handler: { (action) in
+                
+                var totalPausedTime = 0.0
+                if userDefaults.objectForKey("totalPausedTime") != nil {
+                    totalPausedTime = userDefaults.doubleForKey("totalPausedTime")
+                }
+                totalPausedTime = totalPausedTime - 300
+                
+                userDefaults.setDouble(totalPausedTime, forKey: "totalPausedTime")
+                
+                userDefaults.synchronize()
+                UIApplication.sharedApplication().cancelAllLocalNotifications()
+                self.createNotifications()
+                
+                
+            }))
+            
+            
         }
+       
+        
         
         alert.addAction(UIAlertAction(title: "Quick Add Story to BACKLOG", style: .Default, handler: { (action) in
             self.quickAdd()
@@ -220,6 +390,7 @@ class TimerViewController: UIViewController {
         
         
         self.presentViewController(alert, animated: true, completion: nil)
+        
     }
     
     var childMoc:NSManagedObjectContext!
@@ -255,10 +426,7 @@ class TimerViewController: UIViewController {
             })
         }
     }
-    
 }
-
-
 
 extension TimerViewController : TicketViewControllerDelegate {
     func ticketViewControllerSave(ticketViewController: TicketViewController) {

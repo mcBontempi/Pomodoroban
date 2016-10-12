@@ -85,7 +85,7 @@
                                         <rect key="frame" x="0.0" y="64" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ukj-AD-ztl" id="nNh-2j-Hts">
-                                            <frame key="frameInset" width="375" height="87"/>
+                                            <frame key="frameInset" width="375" height="87.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2B5-ku-K41">
@@ -117,7 +117,7 @@
                                         <rect key="frame" x="0.0" y="152" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F1w-b3-SzQ" id="MOy-j9-PRj">
-                                            <frame key="frameInset" width="375" height="87"/>
+                                            <frame key="frameInset" width="375" height="87.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CATEGORY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBQ-xH-Xc2">
@@ -153,7 +153,7 @@
                                         <rect key="frame" x="0.0" y="240" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FOk-36-Z0F" id="qkz-fc-1WU">
-                                            <frame key="frameInset" width="375" height="87"/>
+                                            <frame key="frameInset" width="375" height="87.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xPomodoro" translatesAutoresizingMaskIntoConstraints="NO" id="y3r-iU-XRU">
@@ -200,7 +200,7 @@
                                         <rect key="frame" x="0.0" y="328" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F5f-JU-0nf" id="AAg-BY-Mmp">
-                                            <frame key="frameInset" width="375" height="199"/>
+                                            <frame key="frameInset" width="375" height="199.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NOTES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2i-fS-zAz">
@@ -270,7 +270,7 @@
         <!--Timer View Controller-->
         <scene sceneID="7N6-LM-H0b">
             <objects>
-                <viewController id="x3K-CM-2WU" customClass="TimerViewController" customModule="Pomodoroban" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TimerViewController" id="x3K-CM-2WU" customClass="TimerViewController" customModule="Pomodoroban" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="whV-Ze-cZc"/>
                         <viewControllerLayoutGuide type="bottom" id="kbq-8O-Jxf"/>
@@ -283,11 +283,11 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="26"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNy-Z1-6Ag" customClass="MZTimerLabel">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNy-Z1-6Ag">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="ooR-yl-tNc"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="65"/>
+                                <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="38"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -387,7 +387,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="76"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8QY-gx-r5u" id="snV-hf-C0U">
-                                    <frame key="frameInset" width="375" height="76"/>
+                                    <frame key="frameInset" width="375" height="75.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kDT-H9-ees">
@@ -503,11 +503,16 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fxj-Hc-9ym" customClass="WordsAndQuestionsView">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EeF-Qr-mQu">
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bbs-gl-wZV">
                                 <items>
                                     <barButtonItem title="Thats ok, let me start" id="hcC-nW-qye">
                                         <connections>
-                                            <segue destination="x3K-CM-2WU" kind="show" animates="NO" id="Ae7-G6-gmx"/>
+                                            <segue destination="x3K-CM-2WU" kind="show" identifier="showRuntime" animates="NO" id="Ae7-G6-gmx"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -515,12 +520,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="EeF-Qr-mQu" secondAttribute="trailing" constant="10" id="Deb-Tk-Uhm"/>
                             <constraint firstAttribute="trailing" secondItem="bbs-gl-wZV" secondAttribute="trailing" id="L5b-Kz-7qV"/>
                             <constraint firstItem="Fxj-Hc-9ym" firstAttribute="leading" secondItem="sGP-gM-4jt" secondAttribute="leadingMargin" constant="-20" id="Lgn-m1-qnX"/>
                             <constraint firstItem="Fxj-Hc-9ym" firstAttribute="top" secondItem="abt-0Q-FQr" secondAttribute="bottom" id="Mr4-OT-eOj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Fxj-Hc-9ym" secondAttribute="trailing" constant="-20" id="OMn-fY-PBd"/>
+                            <constraint firstItem="EeF-Qr-mQu" firstAttribute="top" secondItem="Fxj-Hc-9ym" secondAttribute="bottom" id="ScD-SE-SBa"/>
+                            <constraint firstItem="bbs-gl-wZV" firstAttribute="top" secondItem="EeF-Qr-mQu" secondAttribute="bottom" id="XKj-vV-DOU"/>
+                            <constraint firstItem="EeF-Qr-mQu" firstAttribute="leading" secondItem="sGP-gM-4jt" secondAttribute="leading" constant="10" id="fj2-lB-oI4"/>
                             <constraint firstItem="bbs-gl-wZV" firstAttribute="leading" secondItem="sGP-gM-4jt" secondAttribute="leading" id="u27-Bq-cQ6"/>
-                            <constraint firstItem="bbs-gl-wZV" firstAttribute="top" secondItem="Fxj-Hc-9ym" secondAttribute="bottom" id="vDB-ci-KPV"/>
+                            <constraint firstItem="bbs-gl-wZV" firstAttribute="top" secondItem="Fxj-Hc-9ym" secondAttribute="bottom" constant="100" id="vDB-ci-KPV"/>
                             <constraint firstItem="0Ug-ZT-J53" firstAttribute="top" secondItem="bbs-gl-wZV" secondAttribute="bottom" id="vix-J4-apq"/>
                         </constraints>
                     </view>
@@ -532,6 +541,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="estimateLabel" destination="EeF-Qr-mQu" id="Ajt-d3-YxC"/>
                         <outlet property="wordsAndQuestionsView" destination="Fxj-Hc-9ym" id="QER-VA-J09"/>
                     </connections>
                 </viewController>

@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import LSRepeater
 
 class NaturalLanguageViewController: UIViewController {
+    
+    @IBOutlet weak var estimateLabel: UILabel!
     
     var pomodoroLengh:StringAndPredicateCollection!
     var shortBreakLength:StringAndPredicateCollection!
@@ -17,8 +20,55 @@ class NaturalLanguageViewController: UIViewController {
     
     @IBOutlet weak var wordsAndQuestionsView: WordsAndQuestionsView!
     
+    
+    let moc = CoreDataServices.sharedInstance.moc
+    
+    func updateEstimateLabel() {
+     return
+        let childMoc = CoreDataServices.sharedInstance.childMoc()
+        Runtime.removeAllEntities(childMoc)
+        
+        Runtime.createForToday(childMoc, pomodoroLength: self.pomodoroLengh.predicate() as! Int
+        , shortBreakLength: (self.shortBreakLength.predicate() as! Int)
+        , longBreakLength: (self.longBreakLength.predicate() as! Int) 
+        , shortBreakCount: self.shortBreakCount.predicate() as! Int)
+        
+        
+        let runtimes = Runtime.all(childMoc)
+        
+        var totalWork = 0
+        var totalBreak = 0
+        
+        for runtime in runtimes {
+            if runtime.type == 0 {
+            totalWork = totalWork + Int(runtime.length)
+            }
+            else {
+                totalBreak = totalBreak + Int(runtime.length)
+            }
+        }
+        
+        Runtime.removeAllEntities(childMoc)
+        
+        
+        
+        let finishTime = NSDate().dateByAddingTimeInterval(NSTimeInterval(totalBreak*60 + totalWork*60))
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.timeStyle = .ShortStyle
+        
+        let time = dateFormatter.stringFromDate(finishTime)
+        
+        
+        self.estimateLabel.text = "\(totalWork + totalBreak) mins total time, \(totalWork) mins of work and \(totalBreak) mins of break, estimated finish time will be \(time)"
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.wordsAndQuestionsView.delegate = self
+        
         
     }
     
@@ -80,15 +130,31 @@ class NaturalLanguageViewController: UIViewController {
         wordsAndQuestionsView.wordsAndQuestions = ["Pomodoroban", "will", "create","your","working","day","with","each","pomodoro","lasting",self.pomodoroLengh,"after","each","pomodoro","you","will","have","a","break","of",self.shortBreakLength,"and","after","every",self.shortBreakCount,"pomodoro","you","will","have","a","break","of",self.longBreakLength]
         
         print (wordsAndQuestionsView.frame)
+        
+        self.repeater = LSRepeater.repeater(1, fireOnceInstantly: true
+            , execute: { 
+                self.updateEstimateLabel()
+                
+                
+        })
+        
     }
+    
+    var repeater:LSRepeater!
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let vc = segue.destinationViewController as! TimerViewController
         let length = self.pomodoroLengh.predicate() as! Int
-        vc.pomodoroLength = length
-        vc.shortBreakLength = self.shortBreakLength.predicate() as! Int
+        vc.pomodoroLength = length * 60
+        vc.shortBreakLength = self.shortBreakLength.predicate() as! Int * 60
         vc.shortBreakCount = self.shortBreakCount.predicate() as! Int
-        vc.longBreakLength = self.longBreakLength.predicate() as! Int
+        vc.longBreakLength = self.longBreakLength.predicate() as! Int * 60
+    }
+}
+
+extension NaturalLanguageViewController : WordsAndQuestionsViewDelegate {
+    func userChangedWordsAndQuestionsView(wordsAndQuestionsView: WordsAndQuestionsView!) {
+        self.updateEstimateLabel()
     }
 }

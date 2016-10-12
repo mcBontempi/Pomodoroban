@@ -139,6 +139,7 @@ class BoardTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         self.createSectionHeaders()
         
         try! self.fetchedResultsController.performFetch()
@@ -163,12 +164,17 @@ class BoardTableViewController: UITableViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
         
         
+        if Runtime.all(self.moc).count > 0 {
+            
+        let vc = self.storyboard!.instantiateViewControllerWithIdentifier("TimerViewController")
+            
+            self.presentViewController(vc, animated: false, completion: { 
+                
+            })
+        }
     }
     
     // general
-    
-    
-    
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         if Ticket.allForToday(self.moc).count < 1 {
