@@ -181,20 +181,20 @@ class TimerViewController: UIViewController {
                 
                 if let ticket = runtime.ticket {
                     let partCount = runtime.ticket.pomodoroEstimate
-                    self.timerLabel.text = String(format:"%.1f - (%d/%d)",self.currentPartRemaining , part,partCount)
+                    self.timerLabel.text = String(format:"Seconds rmaining = %.1f\nin task (%d/%d)",self.currentPartRemaining , part,partCount)
                     
                     self.updateWithTicket(ticket)
                     print(ticket.name)
                 }
                 else if runtime.type == 1 {
-                    self.timerLabel.text = String(format:"%.1f", self.currentPartRemaining)
+                    self.timerLabel.text = String(format:"Seconds remaining = %.1f", self.currentPartRemaining)
                     
                     self.takeABreakLabel.text = "Take a short break"
                     
                     self.updateWithBreak()
                 }
                 else if runtime.type == 2 {
-                    self.timerLabel.text = String(format:"%.1f", self.currentPartRemaining)
+                    self.timerLabel.text = String(format:"Seconds remaining = %.1f", self.currentPartRemaining)
                     
                     self.takeABreakLabel.text = "Take a long break"
                     
@@ -237,7 +237,7 @@ class TimerViewController: UIViewController {
             
             var message:String!
             if runtime.type == 0 {
-                message = runtime.ticket.name
+                message = "Its time to start the '\(runtime.ticket.name) task"
             }
             else if runtime.type == 1
             {
@@ -248,7 +248,7 @@ class TimerViewController: UIViewController {
                 message = "Its time for a long break of \(runtime.length) mins"
             }
             
-            self.createNotification(self.startDatePlusPauses(), secondsFrom: Int(runningTotal) ,message:"Its time to start the '\(message) task")
+            self.createNotification(self.startDatePlusPauses(), secondsFrom: Int(runningTotal) ,message:message)
             
             runningTotal = runningTotal + runtime.length
             

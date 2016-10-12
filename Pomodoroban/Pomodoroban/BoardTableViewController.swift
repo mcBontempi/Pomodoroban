@@ -1,5 +1,6 @@
 import UIKit
 import CoreData
+import Onboard
 
 class BoardTableViewController: UITableViewController {
     
@@ -43,10 +44,46 @@ class BoardTableViewController: UITableViewController {
         }
     }
     
+    
+    func showOnboarding() {
+        
+        
+        
+        let firstPage = OnboardingContentViewController(title: "Page Title", body: "Page body goes here.", image: UIImage(named: "icon"), buttonText: "Text For Button") { () -> Void in
+        }
+        
+        let secondPage = OnboardingContentViewController(title: "Page Title", body: "Page body goes here.", image: UIImage(named: "icon"), buttonText: "Text For Button") { () -> Void in
+        }
+ 
+        let thirdPage = OnboardingContentViewController(title: "Page Title", body: "Page body goes here.", image: UIImage(named: "icon"), buttonText: "Done") { () -> Void in
+        
+        self.dismissViewControllerAnimated(true, completion: { 
+            
+        })
+        }
+        
+        let bundle = NSBundle.mainBundle()
+        let moviePath = bundle.pathForResource("IMG_6628", ofType: "MOV")
+        let movieURL = NSURL(fileURLWithPath: moviePath!)
+        
+        let onboardingVC = OnboardingViewController(backgroundVideoURL: movieURL, contents: [firstPage, secondPage, thirdPage])
+        
+        
+        
+        self.presentViewController(onboardingVC, animated: true) { 
+            
+        }
+        
+    }
+    
     // lifetime
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        
+        
+        
         
         let tracker = GAI.sharedInstance().defaultTracker
         tracker.set(kGAIScreenName, value: "Main Screen")
@@ -138,6 +175,20 @@ class BoardTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        if defaults.objectForKey("shownOnboarding") == nil {
+        
+            self.showOnboarding()
+            
+            defaults.setBool(true, forKey: "shownOnboarding")
+            
+            defaults.synchronize()
+            
+        }
+        
         
         
         self.createSectionHeaders()
