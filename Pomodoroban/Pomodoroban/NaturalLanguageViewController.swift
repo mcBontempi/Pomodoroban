@@ -33,7 +33,6 @@ class NaturalLanguageViewController: UIViewController {
         , longBreakLength: (self.longBreakLength.predicate() as! Int) 
         , shortBreakCount: self.shortBreakCount.predicate() as! Int)
         
-        
         let runtimes = Runtime.all(childMoc)
         
         var totalWork = 0
@@ -50,15 +49,12 @@ class NaturalLanguageViewController: UIViewController {
         
         Runtime.removeAllEntities(childMoc)
         
-        
-        
         let finishTime = NSDate().dateByAddingTimeInterval(NSTimeInterval(totalBreak*60 + totalWork*60))
         
         let dateFormatter = NSDateFormatter()
         dateFormatter.timeStyle = .ShortStyle
         
         let time = dateFormatter.stringFromDate(finishTime)
-        
         
         self.estimateLabel.text = "\(totalWork + totalBreak) mins total time, \(totalWork) mins of work and \(totalBreak) mins of break, estimated finish time will be \(time)"
         
@@ -144,6 +140,9 @@ class NaturalLanguageViewController: UIViewController {
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        self.repeater.invalidate()
+        
         let vc = segue.destinationViewController as! TimerViewController
         let length = self.pomodoroLengh.predicate() as! Int
         vc.pomodoroLength = length * 60

@@ -16,6 +16,7 @@ protocol TimerViewControllerDelegate {
 }
 
 class TimerViewController: UIViewController {
+    @IBOutlet weak var loadingImage: UIImageView!
     
     @IBOutlet weak var ticketBackgroundView: UIView!
     
@@ -43,8 +44,8 @@ class TimerViewController: UIViewController {
     
     func updateWithTicket(ticket: Ticket) {
         self.ticketBackgroundView.hidden = false
-        self.view.backgroundColor = UIColor.blackColor()
-        self.timerLabel.textColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.whiteColor()
+        self.timerLabel.textColor = UIColor.blackColor()
         self.ticketBackgroundView.backgroundColor = UIColor.colorFrom(Int( ticket.colorIndex))
         self.titleLabel.text = ticket.name
         self.notesTextView.text = ticket.desc
@@ -56,9 +57,9 @@ class TimerViewController: UIViewController {
     }
     
     func updateWithBreak() {
-        self.timerLabel.textColor = UIColor.blackColor()
+        self.timerLabel.textColor = UIColor.whiteColor()
         self.ticketBackgroundView.hidden = true
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.blackColor()
     }
     
     func close() {
@@ -86,6 +87,9 @@ class TimerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        self.loadingImage.layer.magnificationFilter = kCAFilterNearest
         
         if Runtime.all(self.moc).count > 0 {
             self.startDate = NSUserDefaults.standardUserDefaults().objectForKey("startDate") as! NSDate
@@ -176,25 +180,32 @@ class TimerViewController: UIViewController {
                 
                 self.currentPartLength = Double(runtime.length)
                 
-                
                 self.currentPartRemaining = runningTotal - dateDiff
                 
-                if let ticket = runtime.ticket {
+                let pc = self.currentPartLength / self.currentPartRemaining
+                
+                
+                
+                
+                if runtime.type == 0 {
+                    
+                    let ticket = runtime.ticket!
+                    
                     let partCount = runtime.ticket.pomodoroEstimate
-                    self.timerLabel.text = String(format:"Seconds remaining = %.1f\nPomodoro in Story (%d/%d)",self.currentPartRemaining , part,partCount)
+                    self.timerLabel.text = String(format:"Minutes remaining = %.0f\nPomodoro in Story (%d/%d)",self.currentPartRemaining / 60 , part,partCount)
                     
                     self.updateWithTicket(ticket)
                     print(ticket.name)
                 }
                 else if runtime.type == 1 {
-                    self.timerLabel.text = String(format:"Seconds remaining = %.1f", self.currentPartRemaining)
+                    self.timerLabel.text = String(format:"Minutes remaining = %.0f", self.currentPartRemaining / 60)
                     
                     self.takeABreakLabel.text = "Take a short break"
                     
                     self.updateWithBreak()
                 }
                 else if runtime.type == 2 {
-                    self.timerLabel.text = String(format:"Seconds remaining = %.1f", self.currentPartRemaining)
+                    self.timerLabel.text = String(format:"Minutes remaining = %.0f", self.currentPartRemaining / 60)
                     
                     self.takeABreakLabel.text = "Take a long break"
                     
@@ -237,7 +248,14 @@ class TimerViewController: UIViewController {
             
             var message:String!
             if runtime.type == 0 {
-                message = "Its time to start the '\(runtime.ticket.name) task"
+                
+                if let ticket = runtime.ticket {
+                
+                message = "Its time to start the '\(ticket.name) task"
+            }
+                else {
+                    message = "Test Value"
+                }
             }
             else if runtime.type == 1
             {

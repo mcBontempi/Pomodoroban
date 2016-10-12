@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -279,6 +280,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pomodoro-Timer" translatesAutoresizingMaskIntoConstraints="NO" id="tQC-Qz-NA9">
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="tQC-Qz-NA9" secondAttribute="height" multiplier="1:1" id="cTC-Pq-GQ9"/>
+                                </constraints>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take A Break" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0IV-lu-m60">
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="26"/>
                                 <nil key="highlightedColor"/>
@@ -293,8 +299,8 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K6m-yO-Y7h">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="QOo-bU-qfw"/>
-                                    <constraint firstAttribute="width" constant="150" id="eqf-Gz-kBf"/>
+                                    <constraint firstAttribute="height" constant="50" id="QOo-bU-qfw"/>
+                                    <constraint firstAttribute="width" constant="50" id="eqf-Gz-kBf"/>
                                 </constraints>
                                 <state key="normal" image="mobile-menu">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -338,29 +344,30 @@
                                     <constraint firstItem="ypo-k2-Ica" firstAttribute="leading" secondItem="Lj4-Kr-XAY" secondAttribute="leading" constant="44" id="LbS-DA-BCR"/>
                                     <constraint firstItem="Y15-JP-zwY" firstAttribute="leading" secondItem="Lj4-Kr-XAY" secondAttribute="leading" constant="44" id="Lhs-nb-Ihr"/>
                                     <constraint firstItem="Y15-JP-zwY" firstAttribute="top" secondItem="LTk-4d-UH9" secondAttribute="bottom" id="Nic-wf-vEW"/>
+                                    <constraint firstAttribute="height" constant="140" id="Z08-YC-Skb"/>
                                     <constraint firstItem="LTk-4d-UH9" firstAttribute="top" secondItem="Lj4-Kr-XAY" secondAttribute="top" id="cxo-5e-Biy"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="aNy-Z1-6Ag" firstAttribute="top" secondItem="K6m-yO-Y7h" secondAttribute="bottom" constant="50" id="Jdb-D9-c2V"/>
+                            <constraint firstItem="tQC-Qz-NA9" firstAttribute="top" secondItem="K6m-yO-Y7h" secondAttribute="bottom" constant="15" id="2Ph-e8-3w6"/>
                             <constraint firstItem="aNy-Z1-6Ag" firstAttribute="trailing" secondItem="dTS-8B-bq9" secondAttribute="trailingMargin" id="LTN-Av-yj8"/>
+                            <constraint firstItem="tQC-Qz-NA9" firstAttribute="centerX" secondItem="dTS-8B-bq9" secondAttribute="centerX" id="MQ3-ir-985"/>
                             <constraint firstItem="Lj4-Kr-XAY" firstAttribute="leading" secondItem="dTS-8B-bq9" secondAttribute="leading" id="OML-UW-FyL"/>
-                            <constraint firstAttribute="trailing" secondItem="Lj4-Kr-XAY" secondAttribute="trailing" id="Xcs-u9-vif"/>
+                            <constraint firstItem="Lj4-Kr-XAY" firstAttribute="top" secondItem="aNy-Z1-6Ag" secondAttribute="bottom" constant="20" id="PJo-eH-9u4"/>
+                            <constraint firstItem="kbq-8O-Jxf" firstAttribute="top" secondItem="Lj4-Kr-XAY" secondAttribute="bottom" id="Pe2-jo-kDP"/>
                             <constraint firstAttribute="trailing" secondItem="Lj4-Kr-XAY" secondAttribute="trailing" id="Yf7-WX-0wg"/>
+                            <constraint firstItem="K6m-yO-Y7h" firstAttribute="top" secondItem="whV-Ze-cZc" secondAttribute="bottom" constant="20" id="ZXP-oq-Fd1"/>
                             <constraint firstItem="K6m-yO-Y7h" firstAttribute="centerX" secondItem="dTS-8B-bq9" secondAttribute="centerX" id="b3g-ZJ-3tZ"/>
-                            <constraint firstItem="Lj4-Kr-XAY" firstAttribute="top" secondItem="aNy-Z1-6Ag" secondAttribute="bottom" constant="40" id="hQE-ZJ-bqm"/>
-                            <constraint firstItem="kbq-8O-Jxf" firstAttribute="top" secondItem="Lj4-Kr-XAY" secondAttribute="bottom" id="i3f-hJ-JKi"/>
                             <constraint firstItem="0IV-lu-m60" firstAttribute="centerX" secondItem="dTS-8B-bq9" secondAttribute="centerX" id="lwt-ZV-zg2"/>
-                            <constraint firstItem="kbq-8O-Jxf" firstAttribute="top" secondItem="Lj4-Kr-XAY" secondAttribute="bottom" id="ob3-Dg-zii"/>
-                            <constraint firstItem="aNy-Z1-6Ag" firstAttribute="centerY" secondItem="dTS-8B-bq9" secondAttribute="centerY" id="pGJ-eF-uza"/>
+                            <constraint firstItem="aNy-Z1-6Ag" firstAttribute="top" secondItem="tQC-Qz-NA9" secondAttribute="bottom" constant="15" id="nR3-fx-H1j"/>
                             <constraint firstItem="aNy-Z1-6Ag" firstAttribute="leading" secondItem="dTS-8B-bq9" secondAttribute="leadingMargin" id="rrX-1X-QBK"/>
-                            <constraint firstItem="Lj4-Kr-XAY" firstAttribute="leading" secondItem="dTS-8B-bq9" secondAttribute="leading" id="xIa-gW-3c5"/>
                             <constraint firstItem="kbq-8O-Jxf" firstAttribute="top" secondItem="0IV-lu-m60" secondAttribute="bottom" constant="100" id="z5Y-Fv-sqL"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="loadingImage" destination="tQC-Qz-NA9" id="MTS-np-bPB"/>
                         <outlet property="notesTextView" destination="ypo-k2-Ica" id="RaM-l2-3bA"/>
                         <outlet property="pomodoroCountView" destination="Y15-JP-zwY" id="seP-cJ-uU5"/>
                         <outlet property="quitButton" destination="K6m-yO-Y7h" id="pCW-rv-cZw"/>
@@ -587,6 +594,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Pomodoro-Timer" width="64" height="56"/>
         <image name="mobile-menu" width="2000" height="2000"/>
         <image name="xPomodoro" width="500" height="198"/>
     </resources>

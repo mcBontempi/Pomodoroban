@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		BA1D819B3A51E2E2B8F54873 /* Pods_Pomodoroban.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF4E32D1AB475AB56EF78304 /* Pods_Pomodoroban.framework */; };
 		D60AD7601DADBF660011F429 /* IMG_6628.MOV in Resources */ = {isa = PBXBuildFile; fileRef = D60AD75F1DADBF660011F429 /* IMG_6628.MOV */; };
+		D60AD76A1DAE40840011F429 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D60AD7691DAE40840011F429 /* Assets.xcassets */; };
+		D60AD76C1DAE41B60011F429 /* UIImage + ColorMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60AD76B1DAE41B60011F429 /* UIImage + ColorMask.swift */; };
 		D61085351D95ED3F001A203A /* CoreDataServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61085341D95ED3F001A203A /* CoreDataServices.swift */; };
 		D61085371D960601001A203A /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61085361D960601001A203A /* TimerViewController.swift */; };
 		D617FB661D9E54C700A4CA53 /* SyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D617FB651D9E54C700A4CA53 /* SyncService.swift */; };
@@ -30,7 +32,6 @@
 		FD5BE9E21C5BB5CA00535A78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5BE9E11C5BB5CA00535A78 /* AppDelegate.swift */; };
 		FD5BE9E71C5BB5CA00535A78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD5BE9E51C5BB5CA00535A78 /* Main.storyboard */; };
 		FD5BE9EA1C5BB5CA00535A78 /* Pomodoroban.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FD5BE9E81C5BB5CA00535A78 /* Pomodoroban.xcdatamodeld */; };
-		FD5BE9EC1C5BB5CA00535A78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD5BE9EB1C5BB5CA00535A78 /* Assets.xcassets */; };
 		FD5BE9EF1C5BB5CA00535A78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD5BE9ED1C5BB5CA00535A78 /* LaunchScreen.storyboard */; };
 		FD5BEA031C5CF83100535A78 /* Ticket+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5BEA011C5CF83100535A78 /* Ticket+CoreDataProperties.swift */; };
 		FD5BEA041C5CF83100535A78 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5BEA021C5CF83100535A78 /* Ticket.swift */; };
@@ -40,6 +41,8 @@
 		23425E891A7EAC3EF309C19C /* Pods-Pomodoroban.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pomodoroban.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pomodoroban/Pods-Pomodoroban.release.xcconfig"; sourceTree = "<group>"; };
 		9D58ACCE5609D27AF5B640F2 /* Pods-Pomodoroban.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pomodoroban.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pomodoroban/Pods-Pomodoroban.debug.xcconfig"; sourceTree = "<group>"; };
 		D60AD75F1DADBF660011F429 /* IMG_6628.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = IMG_6628.MOV; sourceTree = "<group>"; };
+		D60AD7691DAE40840011F429 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D60AD76B1DAE41B60011F429 /* UIImage + ColorMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage + ColorMask.swift"; sourceTree = "<group>"; };
 		D61085341D95ED3F001A203A /* CoreDataServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataServices.swift; sourceTree = "<group>"; };
 		D61085361D960601001A203A /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		D617FB651D9E54C700A4CA53 /* SyncService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncService.swift; sourceTree = "<group>"; };
@@ -71,7 +74,6 @@
 		FD5BE9E11C5BB5CA00535A78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD5BE9E61C5BB5CA00535A78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FD5BE9E91C5BB5CA00535A78 /* Pomodoroban.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pomodoroban.xcdatamodel; sourceTree = "<group>"; };
-		FD5BE9EB1C5BB5CA00535A78 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD5BE9EE1C5BB5CA00535A78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FD5BE9F01C5BB5CA00535A78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD5BEA011C5CF83100535A78 /* Ticket+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ticket+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				D656B36A1DA413630035500A /* NSDate+Utils.swift */,
 				D6456A671DA534330002FDA2 /* UIColor+Palette.swift */,
 				D6456A691DA540E70002FDA2 /* UIView+PomodoroRow.swift */,
+				D60AD76B1DAE41B60011F429 /* UIImage + ColorMask.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -196,8 +199,8 @@
 				D6E71D861DA3EDBB0055F2AA /* CALayer+Animations.m */,
 				D6EA5AF71DABF45C00A59B74 /* GoogleService-Info.plist */,
 				D61085341D95ED3F001A203A /* CoreDataServices.swift */,
+				D60AD7691DAE40840011F429 /* Assets.xcassets */,
 				FD5BE9E11C5BB5CA00535A78 /* AppDelegate.swift */,
-				FD5BE9EB1C5BB5CA00535A78 /* Assets.xcassets */,
 				FD5BE9F01C5BB5CA00535A78 /* Info.plist */,
 				FD5BE9ED1C5BB5CA00535A78 /* LaunchScreen.storyboard */,
 				FD5BE9E51C5BB5CA00535A78 /* Main.storyboard */,
@@ -275,8 +278,8 @@
 				FD5BE9EF1C5BB5CA00535A78 /* LaunchScreen.storyboard in Resources */,
 				D60AD7601DADBF660011F429 /* IMG_6628.MOV in Resources */,
 				D6EA5AF81DABF45C00A59B74 /* GoogleService-Info.plist in Resources */,
-				FD5BE9EC1C5BB5CA00535A78 /* Assets.xcassets in Resources */,
 				FD5BE9E71C5BB5CA00535A78 /* Main.storyboard in Resources */,
+				D60AD76A1DAE40840011F429 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +358,7 @@
 				FD5BEA041C5CF83100535A78 /* Ticket.swift in Sources */,
 				D634BD311DAD1A7B003348D1 /* Runtime.swift in Sources */,
 				D634BD321DAD1A7B003348D1 /* Runtime+CoreDataProperties.swift in Sources */,
+				D60AD76C1DAE41B60011F429 /* UIImage + ColorMask.swift in Sources */,
 				D6456A6A1DA540E70002FDA2 /* UIView+PomodoroRow.swift in Sources */,
 				D6456A681DA534330002FDA2 /* UIColor+Palette.swift in Sources */,
 				D617FB661D9E54C700A4CA53 /* SyncService.swift in Sources */,
