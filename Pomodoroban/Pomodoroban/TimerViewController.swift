@@ -1,11 +1,3 @@
-//
-//  TimerViewController.swift
-//  Pomodoroban
-//
-//  Created by Daren David Taylor on 24/09/2016.
-//  Copyright © 2016 LondonSwift. All rights reserved.
-//
-
 import UIKit
 import CoreData
 import LSRepeater
@@ -42,17 +34,11 @@ class TimerViewController: UIViewController {
     
     let moc = CoreDataServices.sharedInstance.moc
     
-    
-    
     let darkBackgroundColor = UIColor(hexString: "555555")!
     let darkBackgroundColorForMask = UIColor(hexString: "505050")!
     
-    
-    
     let veryDarkBackgroundColor = UIColor(hexString: "333333")!
     let veryDarkBackgroundColorForMask = UIColor(hexString: "2e2e2e")!
-    
-    
     
     func updateWithTicket(ticket: Ticket) {
         self.ticketBackgroundView.hidden = false
@@ -67,7 +53,6 @@ class TimerViewController: UIViewController {
         }
         let pomodoroView = UIView.pomodoroRowWith(Int(ticket.pomodoroEstimate))
         self.pomodoroCountView.addSubview(pomodoroView)
-        
         
         self.loadingImage.image = UIImage(named: "Pomodoro-Timer")
     }
@@ -88,10 +73,7 @@ class TimerViewController: UIViewController {
         self.view.backgroundColor = self.darkBackgroundColor
         self.maskedLoadingImage.tintColor = self.darkBackgroundColorForMask
         self.loadingImage.image = UIImage(named: "fries")
-        
     }
-    
-    
     
     func close() {
         
@@ -314,11 +296,11 @@ class TimerViewController: UIViewController {
             }
             else if runtime.type == 1
             {
-                message = "Take a short break for \(runtime.length) mins"
+                message = "Take a short break for \(runtime.length/60) mins"
             }
             else if runtime.type == 2
             {
-                message = "It's time for a long break of \(runtime.length) mins"
+                message = "It's time for a long break of \(runtime.length/60) mins"
             }
             
             self.createNotification(self.startDatePlusPauses(), secondsFrom: Int(runningTotal) ,message:message)
@@ -370,13 +352,9 @@ class TimerViewController: UIViewController {
                 userDefaults.setDouble(totalPausedTime, forKey: "totalPausedTime")
                 
                 userDefaults.synchronize()
-                
-                
+      
                 self.createNotifications()
-                
-                
             }))
-            
         }
         else {
             
@@ -404,11 +382,7 @@ class TimerViewController: UIViewController {
                 
                 UIApplication.sharedApplication().cancelAllLocalNotifications()
                 self.createNotifications()
-                
-                
-                
             }))
-            
             
             alert.addAction(UIAlertAction(title: "back 5 mins", style: .Default, handler: { (action) in
                 
@@ -444,11 +418,7 @@ class TimerViewController: UIViewController {
                 
                 
             }))
-            
-            
         }
-        
-        
         
         alert.addAction(UIAlertAction(title: "Quick Add Story to BACKLOG", style: .Default, handler: { (action) in
             self.quickAdd()
