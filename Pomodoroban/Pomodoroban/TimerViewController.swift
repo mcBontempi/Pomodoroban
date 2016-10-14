@@ -1,6 +1,7 @@
 import UIKit
 import CoreData
 import LSRepeater
+import Firebase
 
 protocol TimerViewControllerDelegate {
     func timerViewControllerDone(timerViewController: TimerViewController)
@@ -12,6 +13,8 @@ class TimerViewController: UIViewController {
     
     @IBOutlet weak var maskedLoadingImage: ImageMaskView!
     @IBOutlet weak var ticketBackgroundView: UIView!
+    
+    let storage = FIRStorage.storage()
     
     var pomodoroLength:Int!
     var shortBreakLength:Int!

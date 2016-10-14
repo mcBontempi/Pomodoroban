@@ -7,5 +7,6 @@ pod 'Crashlytics'
 pod 'Google/Analytics'
 pod 'LSRepeater'
 pod 'Onboard'
+pod 'Firebase/Storage'
 end
 
