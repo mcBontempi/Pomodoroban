@@ -20,12 +20,6 @@ PODS:
   - FirebaseStorage (1.0.3):
     - FirebaseAnalytics (~> 3.3)
     - GoogleNetworkingUtilities (~> 1.2)
-  - Google/Analytics (3.0.3):
-    - Google/Core
-    - GoogleAnalytics (~> 3.12)
-  - Google/Core (3.0.3):
-    - FirebaseAnalytics (~> 3.2)
-  - GoogleAnalytics (3.17.0)
   - GoogleInterchangeUtilities (1.2.2):
     - GoogleSymbolUtilities (~> 1.1)
   - GoogleNetworkingUtilities (1.2.2):
@@ -41,7 +35,6 @@ DEPENDENCIES:
   - Crashlytics
   - Fabric
   - Firebase/Storage
-  - Google/Analytics
   - LSRepeater
   - Onboard
   - SwiftHEXColors
@@ -54,8 +47,6 @@ SPEC CHECKSUMS:
   FirebaseCore: 5a885548bbc5f0c410b04f8e9ac9d73ff1221907
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
   FirebaseStorage: 3992817bf405f5c1a4f8349678d22724cd0ef509
-  Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
-  GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
   GoogleNetworkingUtilities: 3edd3a8161347494f2da60ea0deddc8a472d94cb
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
@@ -64,6 +55,6 @@ SPEC CHECKSUMS:
   Onboard: b6871f25ac753175b2ab9a362fb2feb26a81a311
   SwiftHEXColors: b0ecc7bd83a1aa2e1956f9ba51f55ebb2bcf86ef
 
-PODFILE CHECKSUM: ea4f398232053f6953aaac0f026374370b1cafe7
+PODFILE CHECKSUM: 37cad77f038ee5f8fbc233bf2f4e85a00374f9ba
 
 COCOAPODS: 1.1.0.rc.2

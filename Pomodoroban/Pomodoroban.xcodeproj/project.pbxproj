@@ -22,6 +22,7 @@
 		D6456A6A1DA540E70002FDA2 /* UIView+PomodoroRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A691DA540E70002FDA2 /* UIView+PomodoroRow.swift */; };
 		D656B36B1DA413630035500A /* NSDate+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D656B36A1DA413630035500A /* NSDate+Utils.swift */; };
 		D665D2741DB0FD5D0079ED43 /* UIView+Capture.swift in Sources */ = {isa = PBXBuildFile; fileRef = D665D2731DB0FD5D0079ED43 /* UIView+Capture.swift */; };
+		D665D2781DB104F30079ED43 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D665D2771DB104F30079ED43 /* GoogleService-Info.plist */; };
 		D67FAECF1D95235B0085BF2D /* BoardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67FAECE1D95235B0085BF2D /* BoardTableViewController.swift */; };
 		D67FAED11D952B1C0085BF2D /* TicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67FAED01D952B1C0085BF2D /* TicketTableViewCell.swift */; };
 		D6E71D801DA3EB5C0055F2AA /* WordsAndQuestionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E71D7E1DA3EB5C0055F2AA /* WordsAndQuestionsView.m */; };
@@ -30,7 +31,6 @@
 		D6E71D891DA3EFC10055F2AA /* NaturalLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E71D881DA3EFC10055F2AA /* NaturalLanguageViewController.swift */; };
 		D6E71D8D1DA3F2A60055F2AA /* StringAndPredicateCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E71D8C1DA3F2A60055F2AA /* StringAndPredicateCollection.m */; };
 		D6E71D901DA3F3480055F2AA /* StringAndPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E71D8F1DA3F3480055F2AA /* StringAndPredicate.m */; };
-		D6EA5AF81DABF45C00A59B74 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D6EA5AF71DABF45C00A59B74 /* GoogleService-Info.plist */; };
 		FD5BE9E21C5BB5CA00535A78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5BE9E11C5BB5CA00535A78 /* AppDelegate.swift */; };
 		FD5BE9E71C5BB5CA00535A78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD5BE9E51C5BB5CA00535A78 /* Main.storyboard */; };
 		FD5BE9EA1C5BB5CA00535A78 /* Pomodoroban.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FD5BE9E81C5BB5CA00535A78 /* Pomodoroban.xcdatamodeld */; };
@@ -56,6 +56,7 @@
 		D6456A691DA540E70002FDA2 /* UIView+PomodoroRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+PomodoroRow.swift"; sourceTree = "<group>"; };
 		D656B36A1DA413630035500A /* NSDate+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Utils.swift"; sourceTree = "<group>"; };
 		D665D2731DB0FD5D0079ED43 /* UIView+Capture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Capture.swift"; sourceTree = "<group>"; };
+		D665D2771DB104F30079ED43 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D67FAECE1D95235B0085BF2D /* BoardTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardTableViewController.swift; sourceTree = "<group>"; };
 		D67FAED01D952B1C0085BF2D /* TicketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewCell.swift; sourceTree = "<group>"; };
 		D67FAED21D953B980085BF2D /* Pomodoroban-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pomodoroban-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -72,7 +73,6 @@
 		D6E71D8C1DA3F2A60055F2AA /* StringAndPredicateCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringAndPredicateCollection.m; sourceTree = "<group>"; };
 		D6E71D8E1DA3F3480055F2AA /* StringAndPredicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringAndPredicate.h; sourceTree = "<group>"; };
 		D6E71D8F1DA3F3480055F2AA /* StringAndPredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringAndPredicate.m; sourceTree = "<group>"; };
-		D6EA5AF71DABF45C00A59B74 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EF4E32D1AB475AB56EF78304 /* Pods_Pomodoroban.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pomodoroban.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD5BE9DE1C5BB5CA00535A78 /* Pomodoroban.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pomodoroban.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD5BE9E11C5BB5CA00535A78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -199,19 +199,19 @@
 		FD5BEA051C5CF86B00535A78 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				D60AD75F1DADBF660011F429 /* IMG_6628.MOV */,
+				D665D2771DB104F30079ED43 /* GoogleService-Info.plist */,
+				FD5BE9E11C5BB5CA00535A78 /* AppDelegate.swift */,
+				D60AD7691DAE40840011F429 /* Assets.xcassets */,
 				D6E71D851DA3EDBB0055F2AA /* CALayer+Animations.h */,
 				D6E71D861DA3EDBB0055F2AA /* CALayer+Animations.m */,
-				D6EA5AF71DABF45C00A59B74 /* GoogleService-Info.plist */,
 				D61085341D95ED3F001A203A /* CoreDataServices.swift */,
-				D60AD7691DAE40840011F429 /* Assets.xcassets */,
-				FD5BE9E11C5BB5CA00535A78 /* AppDelegate.swift */,
+				D60AD76E1DAE509C0011F429 /* ImageMaskView.swift */,
+				D60AD75F1DADBF660011F429 /* IMG_6628.MOV */,
 				FD5BE9F01C5BB5CA00535A78 /* Info.plist */,
 				FD5BE9ED1C5BB5CA00535A78 /* LaunchScreen.storyboard */,
 				FD5BE9E51C5BB5CA00535A78 /* Main.storyboard */,
-				D617FB651D9E54C700A4CA53 /* SyncService.swift */,
 				D67FAED21D953B980085BF2D /* Pomodoroban-Bridging-Header.h */,
-				D60AD76E1DAE509C0011F429 /* ImageMaskView.swift */,
+				D617FB651D9E54C700A4CA53 /* SyncService.swift */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -283,7 +283,7 @@
 			files = (
 				FD5BE9EF1C5BB5CA00535A78 /* LaunchScreen.storyboard in Resources */,
 				D60AD7601DADBF660011F429 /* IMG_6628.MOV in Resources */,
-				D6EA5AF81DABF45C00A59B74 /* GoogleService-Info.plist in Resources */,
+				D665D2781DB104F30079ED43 /* GoogleService-Info.plist in Resources */,
 				FD5BE9E71C5BB5CA00535A78 /* Main.storyboard in Resources */,
 				D60AD76A1DAE40840011F429 /* Assets.xcassets in Resources */,
 			);

@@ -192,6 +192,13 @@ class TimerViewController: UIViewController {
     var currentPartRemaining = 0.0
     var currentPartLength = 0.0
     
+    
+    func getDocumentsDirectory() -> NSURL {
+        let paths = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
+    }
+    
     func update() {
         
         let startDatePlusPauses = self.startDatePlusPauses()
@@ -280,237 +287,236 @@ class TimerViewController: UIViewController {
         self.close()
     }
     
-    var uploadIndex = 0
-    
     func upload() {
         let image =  self.view.image()
         
         if let data = UIImageJPEGRepresentation(image!,3) {
-            let filename = self.getDocumentsDirectory().URLByAppendingPathComponent("image\(self.uploadIndex).jpg")
-            let fileManager = NSFileManager.defaultManager()
             
-            if fileManager.fileExistsAtPath(filename!.path!) {
-                try! fileManager.removeItemAtPath(filename!.path!)
-            }
+            let storageRef = storage.reference()
             
-            let r = data.writeToURL(filename!, atomically: true)
+            let screenshotRef = storageRef.child("screenshot.jpg")
             
-            if r == true {
-                
-                if fileManager.fileExistsAtPath(filename!.path!) {
-                    
+            let uploadTask = screenshotRef.putData(data, metadata: nil) { metadata, error in
+                if (error != nil) {
+                    // Uh-oh, an error occurred!
+                } else {
+                    // Metadata contains file metadata such as size, content-type, and download URL.
+                    let downloadURL = metadata!.downloadURL
                 }
             }
-        }
-        
-        func createNotifications() {
-            
-            // ensure we only have one
-            UIApplication.sharedApplication().cancelAllLocalNotifications()
-            
-            var runningTotal:Int32 = 0
-            
-            for runtime in self.runtimes {
-                
-                var message:String!
-                if runtime.type == 0 {
-                    
-                    if let ticket = runtime.ticket {
-                        
-                        message = "It's time to start the '\(ticket.name!)' task"
-                    }
-                    else {
-                        message = "Test Value"
-                    }
-                }
-                else if runtime.type == 1
-                {
-                    message = "Take a short break for \(runtime.length/60) mins"
-                }
-                else if runtime.type == 2
-                {
-                    message = "It's time for a long break of \(runtime.length/60) mins"
-                }
-                
-                self.createNotification(self.startDatePlusPauses(), secondsFrom: Int(runningTotal) ,message:message)
-                
-                runningTotal = runningTotal + runtime.length
-                
-            }
-        }
-        
-        func createNotification(date:NSDate, secondsFrom:Int, message: String) {
-            
-            print("mins from now \(secondsFrom) message\(message)")
             
             
-            let notification = UILocalNotification()
-            
-            notification.alertBody = message
-            notification.alertAction = "Hey there!"
-            notification.soundName = UILocalNotificationDefaultSoundName
-            notification.fireDate = date.dateByAddingTimeInterval(NSTimeInterval(secondsFrom))
-            UIApplication.sharedApplication().scheduleLocalNotification(notification)
-        }
-        
-        
-        @IBAction func quitPressed(sender: AnyObject) {
-            
-            
-            let alert = UIAlertController(title: "Menu", message: "", preferredStyle: .ActionSheet)
-            
-            
-            let userDefaults = NSUserDefaults.standardUserDefaults()
-            if let startPausedDate = userDefaults.objectForKey("startPausedDate") as? NSDate {
-                
-                alert.addAction(UIAlertAction(title: "Unpause", style: .Default, handler: { (action) in
-                    let userDefaults = NSUserDefaults.standardUserDefaults()
-                    var totalPausedTime = 0.0
-                    if userDefaults.objectForKey("totalPausedTime") != nil {
-                        totalPausedTime = userDefaults.doubleForKey("totalPausedTime")
-                    }
-                    
-                    let timeDiff = NSDate().timeIntervalSinceDate(startPausedDate)
-                    
-                    print(timeDiff)
-                    
-                    totalPausedTime = totalPausedTime + timeDiff
-                    
-                    userDefaults.removeObjectForKey("startPausedDate")
-                    
-                    userDefaults.setDouble(totalPausedTime, forKey: "totalPausedTime")
-                    
-                    userDefaults.synchronize()
-                    
-                    self.createNotifications()
-                }))
-            }
-            else {
-                
-                alert.addAction(UIAlertAction(title: "Pause", style: .Default, handler: { (action) in
-                    userDefaults.setObject(NSDate(), forKey: "startPausedDate" )
-                    
-                    userDefaults.synchronize()
-                    
-                    UIApplication.sharedApplication().cancelAllLocalNotifications()
-                    
-                    
-                }))
-                
-                alert.addAction(UIAlertAction(title: "Skip this pomodoro", style: .Default, handler: { (action) in
-                    
-                    var totalPausedTime = 0.0
-                    if userDefaults.objectForKey("totalPausedTime") != nil {
-                        totalPausedTime = userDefaults.doubleForKey("totalPausedTime")
-                    }
-                    totalPausedTime = totalPausedTime - self.currentPartRemaining
-                    
-                    userDefaults.setDouble(totalPausedTime, forKey: "totalPausedTime")
-                    
-                    userDefaults.synchronize()
-                    
-                    UIApplication.sharedApplication().cancelAllLocalNotifications()
-                    self.createNotifications()
-                }))
-                
-                alert.addAction(UIAlertAction(title: "back 5 mins", style: .Default, handler: { (action) in
-                    
-                    var totalPausedTime = 0.0
-                    if userDefaults.objectForKey("totalPausedTime") != nil {
-                        totalPausedTime = userDefaults.doubleForKey("totalPausedTime")
-                    }
-                    totalPausedTime = totalPausedTime + 300
-                    
-                    userDefaults.setDouble(totalPausedTime, forKey: "totalPausedTime")
-                    
-                    userDefaults.synchronize()
-                    UIApplication.sharedApplication().cancelAllLocalNotifications()
-                    self.createNotifications()
-                    
-                    
-                }))
-                
-                
-                alert.addAction(UIAlertAction(title: "forward 5 mins", style: .Default, handler: { (action) in
-                    
-                    var totalPausedTime = 0.0
-                    if userDefaults.objectForKey("totalPausedTime") != nil {
-                        totalPausedTime = userDefaults.doubleForKey("totalPausedTime")
-                    }
-                    totalPausedTime = totalPausedTime - 300
-                    
-                    userDefaults.setDouble(totalPausedTime, forKey: "totalPausedTime")
-                    
-                    userDefaults.synchronize()
-                    UIApplication.sharedApplication().cancelAllLocalNotifications()
-                    self.createNotifications()
-                    
-                    
-                }))
-            }
-            
-            alert.addAction(UIAlertAction(title: "Quick Add Story to BACKLOG", style: .Default, handler: { (action) in
-                self.quickAdd()
-            }))
-            
-            alert.addAction(UIAlertAction(title: "Exit Current Pomodoro sequence", style: .Default, handler: { (action) in
-                self.close()
-            }))
-            
-            alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action) in
-            }))
-            
-            
-            self.presentViewController(alert, animated: true, completion: nil)
-            
-        }
-        
-        var childMoc:NSManagedObjectContext!
-        
-        func quickAdd() {
-            let nc = self.storyboard?.instantiateViewControllerWithIdentifier("TicketNavigationViewController") as! UINavigationController
-            let vc = nc.viewControllers[0] as! TicketViewController
-            
-            let row = Ticket.spareRowForSection(0, moc:self.moc)
-            
-            self.childMoc = CoreDataServices.sharedInstance.childMoc()
-            vc.ticket = Ticket.createInMoc(self.childMoc)
-            vc.ticket.name = ""
-            vc.ticket.row = Int32(row)
-            vc.ticket.section = Int32(0)
-            vc.ticket.pomodoroEstimate = 1
-            vc.ticket.colorIndex = 2
-            
-            vc.delegate = self
-            
-            self.presentViewController(nc, animated: true) {}
-        }
-        
-        func saveChildMoc() {
-            if self.childMoc != nil {
-                self.moc.performBlockAndWait({
-                    try! self.childMoc.save()
-                    self.childMoc = nil
-                    
-                    self.moc.performBlockAndWait({
-                        try! self.moc.save()
-                    })
-                })
-            }
         }
     }
     
-    extension TimerViewController : TicketViewControllerDelegate {
-        func ticketViewControllerSave(ticketViewController: TicketViewController) {
-            self.dismissViewControllerAnimated(true) {
+    func createNotifications() {
+        
+        // ensure we only have one
+        UIApplication.sharedApplication().cancelAllLocalNotifications()
+        
+        var runningTotal:Int32 = 0
+        
+        for runtime in self.runtimes {
+            
+            var message:String!
+            if runtime.type == 0 {
                 
-                self.saveChildMoc()
+                if let ticket = runtime.ticket {
+                    
+                    message = "It's time to start the '\(ticket.name!)' task"
+                }
+                else {
+                    message = "Test Value"
+                }
             }
+            else if runtime.type == 1
+            {
+                message = "Take a short break for \(runtime.length/60) mins"
+            }
+            else if runtime.type == 2
+            {
+                message = "It's time for a long break of \(runtime.length/60) mins"
+            }
+            
+            self.createNotification(self.startDatePlusPauses(), secondsFrom: Int(runningTotal) ,message:message)
+            
+            runningTotal = runningTotal + runtime.length
+            
+        }
+    }
+    
+    func createNotification(date:NSDate, secondsFrom:Int, message: String) {
+        
+        print("mins from now \(secondsFrom) message\(message)")
+        
+        
+        let notification = UILocalNotification()
+        
+        notification.alertBody = message
+        notification.alertAction = "Hey there!"
+        notification.soundName = UILocalNotificationDefaultSoundName
+        notification.fireDate = date.dateByAddingTimeInterval(NSTimeInterval(secondsFrom))
+        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+    }
+    
+    
+    @IBAction func quitPressed(sender: AnyObject) {
+        
+        
+        let alert = UIAlertController(title: "Menu", message: "", preferredStyle: .ActionSheet)
+        
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        if let startPausedDate = userDefaults.objectForKey("startPausedDate") as? NSDate {
+            
+            alert.addAction(UIAlertAction(title: "Unpause", style: .Default, handler: { (action) in
+                let userDefaults = NSUserDefaults.standardUserDefaults()
+                var totalPausedTime = 0.0
+                if userDefaults.objectForKey("totalPausedTime") != nil {
+                    totalPausedTime = userDefaults.doubleForKey("totalPausedTime")
+                }
+                
+                let timeDiff = NSDate().timeIntervalSinceDate(startPausedDate)
+                
+                print(timeDiff)
+                
+                totalPausedTime = totalPausedTime + timeDiff
+                
+                userDefaults.removeObjectForKey("startPausedDate")
+                
+                userDefaults.setDouble(totalPausedTime, forKey: "totalPausedTime")
+                
+                userDefaults.synchronize()
+                
+                self.createNotifications()
+            }))
+        }
+        else {
+            
+            alert.addAction(UIAlertAction(title: "Pause", style: .Default, handler: { (action) in
+                userDefaults.setObject(NSDate(), forKey: "startPausedDate" )
+                
+                userDefaults.synchronize()
+                
+                UIApplication.sharedApplication().cancelAllLocalNotifications()
+                
+                
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Skip this pomodoro", style: .Default, handler: { (action) in
+                
+                var totalPausedTime = 0.0
+                if userDefaults.objectForKey("totalPausedTime") != nil {
+                    totalPausedTime = userDefaults.doubleForKey("totalPausedTime")
+                }
+                totalPausedTime = totalPausedTime - self.currentPartRemaining
+                
+                userDefaults.setDouble(totalPausedTime, forKey: "totalPausedTime")
+                
+                userDefaults.synchronize()
+                
+                UIApplication.sharedApplication().cancelAllLocalNotifications()
+                self.createNotifications()
+            }))
+            
+            alert.addAction(UIAlertAction(title: "back 5 mins", style: .Default, handler: { (action) in
+                
+                var totalPausedTime = 0.0
+                if userDefaults.objectForKey("totalPausedTime") != nil {
+                    totalPausedTime = userDefaults.doubleForKey("totalPausedTime")
+                }
+                totalPausedTime = totalPausedTime + 300
+                
+                userDefaults.setDouble(totalPausedTime, forKey: "totalPausedTime")
+                
+                userDefaults.synchronize()
+                UIApplication.sharedApplication().cancelAllLocalNotifications()
+                self.createNotifications()
+                
+                
+            }))
+            
+            
+            alert.addAction(UIAlertAction(title: "forward 5 mins", style: .Default, handler: { (action) in
+                
+                var totalPausedTime = 0.0
+                if userDefaults.objectForKey("totalPausedTime") != nil {
+                    totalPausedTime = userDefaults.doubleForKey("totalPausedTime")
+                }
+                totalPausedTime = totalPausedTime - 300
+                
+                userDefaults.setDouble(totalPausedTime, forKey: "totalPausedTime")
+                
+                userDefaults.synchronize()
+                UIApplication.sharedApplication().cancelAllLocalNotifications()
+                self.createNotifications()
+                
+                
+            }))
         }
         
-        func ticketViewControllerCancel(ticketViewController: TicketViewController) {
-            self.dismissViewControllerAnimated(true) {
-            }
+        alert.addAction(UIAlertAction(title: "Quick Add Story to BACKLOG", style: .Default, handler: { (action) in
+            self.quickAdd()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Exit Current Pomodoro sequence", style: .Default, handler: { (action) in
+            self.close()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action) in
+        }))
+        
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+    }
+    
+    var childMoc:NSManagedObjectContext!
+    
+    func quickAdd() {
+        let nc = self.storyboard?.instantiateViewControllerWithIdentifier("TicketNavigationViewController") as! UINavigationController
+        let vc = nc.viewControllers[0] as! TicketViewController
+        
+        let row = Ticket.spareRowForSection(0, moc:self.moc)
+        
+        self.childMoc = CoreDataServices.sharedInstance.childMoc()
+        vc.ticket = Ticket.createInMoc(self.childMoc)
+        vc.ticket.name = ""
+        vc.ticket.row = Int32(row)
+        vc.ticket.section = Int32(0)
+        vc.ticket.pomodoroEstimate = 1
+        vc.ticket.colorIndex = 2
+        
+        vc.delegate = self
+        
+        self.presentViewController(nc, animated: true) {}
+    }
+    
+    func saveChildMoc() {
+        if self.childMoc != nil {
+            self.moc.performBlockAndWait({
+                try! self.childMoc.save()
+                self.childMoc = nil
+                
+                self.moc.performBlockAndWait({
+                    try! self.moc.save()
+                })
+            })
         }
+    }
+}
+
+extension TimerViewController : TicketViewControllerDelegate {
+    func ticketViewControllerSave(ticketViewController: TicketViewController) {
+        self.dismissViewControllerAnimated(true) {
+            
+            self.saveChildMoc()
+        }
+    }
+    
+    func ticketViewControllerCancel(ticketViewController: TicketViewController) {
+        self.dismissViewControllerAnimated(true) {
+        }
+    }
 }
 
