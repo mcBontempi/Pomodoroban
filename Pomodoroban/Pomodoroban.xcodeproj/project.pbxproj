@@ -21,6 +21,7 @@
 		D6456A681DA534330002FDA2 /* UIColor+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A671DA534330002FDA2 /* UIColor+Palette.swift */; };
 		D6456A6A1DA540E70002FDA2 /* UIView+PomodoroRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A691DA540E70002FDA2 /* UIView+PomodoroRow.swift */; };
 		D656B36B1DA413630035500A /* NSDate+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D656B36A1DA413630035500A /* NSDate+Utils.swift */; };
+		D665D2741DB0FD5D0079ED43 /* UIView+Capture.swift in Sources */ = {isa = PBXBuildFile; fileRef = D665D2731DB0FD5D0079ED43 /* UIView+Capture.swift */; };
 		D67FAECF1D95235B0085BF2D /* BoardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67FAECE1D95235B0085BF2D /* BoardTableViewController.swift */; };
 		D67FAED11D952B1C0085BF2D /* TicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67FAED01D952B1C0085BF2D /* TicketTableViewCell.swift */; };
 		D6E71D801DA3EB5C0055F2AA /* WordsAndQuestionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E71D7E1DA3EB5C0055F2AA /* WordsAndQuestionsView.m */; };
@@ -54,6 +55,7 @@
 		D6456A671DA534330002FDA2 /* UIColor+Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Palette.swift"; sourceTree = "<group>"; };
 		D6456A691DA540E70002FDA2 /* UIView+PomodoroRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+PomodoroRow.swift"; sourceTree = "<group>"; };
 		D656B36A1DA413630035500A /* NSDate+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Utils.swift"; sourceTree = "<group>"; };
+		D665D2731DB0FD5D0079ED43 /* UIView+Capture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Capture.swift"; sourceTree = "<group>"; };
 		D67FAECE1D95235B0085BF2D /* BoardTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardTableViewController.swift; sourceTree = "<group>"; };
 		D67FAED01D952B1C0085BF2D /* TicketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewCell.swift; sourceTree = "<group>"; };
 		D67FAED21D953B980085BF2D /* Pomodoroban-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pomodoroban-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 		D656B3691DA4134A0035500A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				D665D2731DB0FD5D0079ED43 /* UIView+Capture.swift */,
 				D656B36A1DA413630035500A /* NSDate+Utils.swift */,
 				D6456A671DA534330002FDA2 /* UIColor+Palette.swift */,
 				D6456A691DA540E70002FDA2 /* UIView+PomodoroRow.swift */,
@@ -377,6 +380,7 @@
 				D6E71D831DA3ECAE0055F2AA /* TagLabel.m in Sources */,
 				D6E71D801DA3EB5C0055F2AA /* WordsAndQuestionsView.m in Sources */,
 				FD5BE9E21C5BB5CA00535A78 /* AppDelegate.swift in Sources */,
+				D665D2741DB0FD5D0079ED43 /* UIView+Capture.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
