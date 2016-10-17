@@ -65,10 +65,6 @@ class Ticket: NSManagedObject {
         
          let weekday = NSDate().getDayOfWeek()
         
-        let debug = try! moc.executeFetchRequest(self.fetchRequestForSection(weekday))
-        
-        print(debug)
-        
         return try! moc.executeFetchRequest(self.fetchRequestForSection(weekday)) as! [Ticket]
     }
     
@@ -84,10 +80,6 @@ class Ticket: NSManagedObject {
     }
     
     class func allForSection(moc:NSManagedObjectContext, section:Int) -> [Ticket] {
-        
-        let debug = try! moc.executeFetchRequest(self.fetchRequestForSection(section))
-        
-        print(debug)
         
         return try! moc.executeFetchRequest(self.fetchRequestForSection(section)) as! [Ticket]
     }

@@ -2,9 +2,15 @@ PODS:
   - Crashlytics (3.8.2):
     - Fabric (~> 1.6.3)
   - Fabric (1.6.9)
+  - Firebase/Auth (3.7.1):
+    - Firebase/Core
+    - FirebaseAuth (= 3.0.5)
   - Firebase/Core (3.7.1):
     - FirebaseAnalytics (= 3.4.4)
     - FirebaseCore (= 3.4.3)
+  - Firebase/Database (3.7.1):
+    - Firebase/Core
+    - FirebaseDatabase (= 3.0.3)
   - Firebase/Storage (3.7.1):
     - Firebase/Core
     - FirebaseStorage (= 1.0.3)
@@ -13,9 +19,15 @@ PODS:
     - FirebaseInstanceID (~> 1.0)
     - GoogleInterchangeUtilities (~> 1.2)
     - GoogleSymbolUtilities (~> 1.1)
+  - FirebaseAuth (3.0.5):
+    - FirebaseAnalytics (~> 3.3)
+    - GoogleNetworkingUtilities (~> 1.2)
+    - GoogleUtilities (~> 1.2)
   - FirebaseCore (3.4.3):
     - GoogleInterchangeUtilities (~> 1.2)
     - GoogleUtilities (~> 1.2)
+  - FirebaseDatabase (3.0.3):
+    - FirebaseAnalytics (~> 3.3)
   - FirebaseInstanceID (1.0.8)
   - FirebaseStorage (1.0.3):
     - FirebaseAnalytics (~> 3.3)
@@ -34,6 +46,8 @@ PODS:
 DEPENDENCIES:
   - Crashlytics
   - Fabric
+  - Firebase/Auth
+  - Firebase/Database
   - Firebase/Storage
   - LSRepeater
   - Onboard
@@ -44,7 +58,9 @@ SPEC CHECKSUMS:
   Fabric: bc5bec42cef4bcf1ee3ce0e218fc518e4b44dfbb
   Firebase: be473484f0d515e72ffd04acf22f981773c23e58
   FirebaseAnalytics: 0533a00b681e08fd0b2cd0444b7ddf0ef9fd7a1a
+  FirebaseAuth: 75a062bbf2d3c97d1e6e55bbc110e13a6853e25d
   FirebaseCore: 5a885548bbc5f0c410b04f8e9ac9d73ff1221907
+  FirebaseDatabase: 750a4a0fe18ef114318876fd654b2d9c671e0992
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
   FirebaseStorage: 3992817bf405f5c1a4f8349678d22724cd0ef509
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
@@ -55,6 +71,6 @@ SPEC CHECKSUMS:
   Onboard: b6871f25ac753175b2ab9a362fb2feb26a81a311
   SwiftHEXColors: b0ecc7bd83a1aa2e1956f9ba51f55ebb2bcf86ef
 
-PODFILE CHECKSUM: 37cad77f038ee5f8fbc233bf2f4e85a00374f9ba
+PODFILE CHECKSUM: 570fc1659863b77f57f68a54d439b8ed2cac7061
 
 COCOAPODS: 1.1.0.rc.2

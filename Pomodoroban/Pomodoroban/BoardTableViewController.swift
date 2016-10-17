@@ -40,9 +40,6 @@ class BoardTableViewController: UITableViewController {
     
     @IBAction func addPressed(sender: AnyObject) {
         
-        
-        print(NSDate().getDayOfWeek())
-        
         let section = self.showAll ? 0 : NSDate().getDayOfWeek()
         
         self.addInSection(section)

@@ -177,7 +177,6 @@ class TimerViewController: UIViewController {
         let userDefaults = NSUserDefaults.standardUserDefaults()
         if let startPausedDate = userDefaults.objectForKey("startPausedDate") as? NSDate{
             let diff = NSDate().timeIntervalSinceDate(startPausedDate)
-            print(diff)
             startDatePlusPauses = startDatePlusPauses.dateByAddingTimeInterval(diff)
         }
         if userDefaults.objectForKey("totalPausedTime") != nil {
@@ -215,8 +214,6 @@ class TimerViewController: UIViewController {
             
             if dateDiff < runningTotal {
                 
-                print(runningTotal - dateDiff)
-                
                 let part = runtime.part
                 
                 self.currentPartLength = Double(runtime.length)
@@ -224,8 +221,6 @@ class TimerViewController: UIViewController {
                 self.currentPartRemaining = runningTotal - dateDiff
                 
                 let pc = ( self.currentPartRemaining) / self.currentPartLength
-                
-                print(pc)
                 
                 self.maskedLoadingImage.image = self.loadingImage.image!.imageFromColor(UIColor.blackColor(), frame:CGRectZero)
                 
@@ -241,7 +236,6 @@ class TimerViewController: UIViewController {
                 
                 loadingImage.layer.mask = maskLayer;
                 
-                
                 if runtime.type == 0 {
                     
                     let ticket = runtime.ticket!
@@ -250,7 +244,6 @@ class TimerViewController: UIViewController {
                     self.timerLabel.text = String(format:"Seconds remaining = %.0f\nPomodoro in Story (%d/%d)",self.currentPartRemaining , part,partCount)
                     
                     self.updateWithTicket(ticket)
-                    print(ticket.name)
                 }
                 else if runtime.type == 1 {
                     self.timerLabel.text = String(format:"Seconds remaining = %.0f", self.currentPartRemaining)
@@ -267,10 +260,6 @@ class TimerViewController: UIViewController {
                     self.updateWithLongBreak()
                 }
                 
-                
-                print(runtime.length)
-                
-                
                 self.upload()
                 
                 return
@@ -278,7 +267,6 @@ class TimerViewController: UIViewController {
                 //  self.updateWithTicket(runtime.ticket)
             }
             else {
-                print("this is not the end")
                 
             }
         }
@@ -287,6 +275,7 @@ class TimerViewController: UIViewController {
         self.close()
     }
     
+    /*
     func upload() {
         let image =  self.view.image()
         
@@ -297,17 +286,16 @@ class TimerViewController: UIViewController {
             let screenshotRef = storageRef.child("screenshot.jpg")
             
             let uploadTask = screenshotRef.putData(data, metadata: nil) { metadata, error in
-                if (error != nil) {
-                    // Uh-oh, an error occurred!
+                if let error = error {
+                    UIAlertController.quickMessage(error.description, vc:self)
                 } else {
-                    // Metadata contains file metadata such as size, content-type, and download URL.
-                    let downloadURL = metadata!.downloadURL
+                    print("uploaded")
+                    let downloadURL = metadata!.downloadURL()
                 }
             }
-            
-            
         }
     }
+ */
     
     func createNotifications() {
         
