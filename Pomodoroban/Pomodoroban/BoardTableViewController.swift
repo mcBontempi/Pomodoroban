@@ -1,6 +1,8 @@
 import UIKit
 import CoreData
 import Onboard
+import Firebase
+import FirebaseDatabase
 
 class BoardTableViewController: UITableViewController {
     
@@ -79,11 +81,11 @@ class BoardTableViewController: UITableViewController {
         })
         }
         
-        let bundle = NSBundle.mainBundle()
-        let moviePath = bundle.pathForResource("IMG_6628", ofType: "MOV")
-        let movieURL = NSURL(fileURLWithPath: moviePath!)
+ //       let bundle = NSBundle.mainBundle()
+   //     let moviePath = bundle.pathForResource("IMG_6628", ofType: "MOV")
+     //   let movieURL = NSURL(fileURLWithPath: moviePath!)
         
-        let onboardingVC = OnboardingViewController(backgroundVideoURL: movieURL, contents: [firstPage, secondPage, thirdPage])
+        let onboardingVC = OnboardingViewController(backgroundVideoURL: nil, contents: [firstPage, secondPage, thirdPage])
         
         
         
@@ -201,7 +203,7 @@ class BoardTableViewController: UITableViewController {
         
         if defaults.objectForKey("shownOnboarding") == nil {
         
-            self.showOnboarding()
+        //    self.showOnboarding()
             
             defaults.setBool(true, forKey: "shownOnboarding")
             
@@ -346,7 +348,7 @@ class BoardTableViewController: UITableViewController {
         if editingStyle == .Delete {
             if let ticket = fetchedResultsController.objectAtIndexPath(indexPath) as? Ticket {
                 
-                self.moc.deleteObject(ticket)
+                ticket.removed = true
                 
                 try! self.moc.save()
             }
@@ -442,6 +444,10 @@ class BoardTableViewController: UITableViewController {
         vc.ticket.section = Int32(section)
         vc.ticket.pomodoroEstimate = 1
         vc.ticket.colorIndex = 2
+        
+        
+        
+   
         
         vc.delegate = self
         

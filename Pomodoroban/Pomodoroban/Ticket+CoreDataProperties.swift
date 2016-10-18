@@ -20,5 +20,7 @@ extension Ticket {
     @NSManaged var section: Int32
     @NSManaged var row: Int32
     @NSManaged var colorIndex: Int32
+    @NSManaged var identifier: String?
+    @NSManaged var removed: Bool
 
 }

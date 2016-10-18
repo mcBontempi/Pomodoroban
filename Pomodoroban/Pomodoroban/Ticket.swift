@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 
+
+
 class Ticket: NSManagedObject {
     
     static let addRowControl:Int32 = 999999
@@ -26,11 +28,17 @@ class Ticket: NSManagedObject {
     }
     
     class func createInMoc(moc:NSManagedObjectContext) -> Ticket {
-        return NSEntityDescription.insertNewObjectForEntityForName(Ticket.entityName, inManagedObjectContext: moc) as! Ticket
+    
+        
+        let ticket = NSEntityDescription.insertNewObjectForEntityForName(Ticket.entityName, inManagedObjectContext: moc) as! Ticket
+        ticket.identifier = NSUUID().UUIDString
+        
+     
+        return ticket
     }
     
     class func fetchRequestAll() -> NSFetchRequest {
-        return self.fetchRequestWithPredicate(nil)
+        return self.fetchRequestWithPredicate(NSPredicate(format: "removed = false"))
     }
     
     class func fetchRequestWithPredicate(predicate: NSPredicate?) -> NSFetchRequest {
@@ -41,6 +49,22 @@ class Ticket: NSManagedObject {
         
         request.predicate = predicate
         return request
+    }
+    
+    class func fetch(managedObjectContext: NSManagedObjectContext, identifier: String) -> Ticket?{
+        let request = NSFetchRequest(entityName: entityName)
+        request.predicate = NSPredicate(format: "identifier = %@", identifier)
+        return try! managedObjectContext.executeFetchRequest(request).first as? Ticket
+    }
+    
+    class func createOrUpdate( managedObjectContext: NSManagedObjectContext, identifier: String) -> Ticket? {
+        
+        if let entity = self.fetch(managedObjectContext, identifier: identifier) {
+            return entity
+        }
+        else {
+            return self.createInMoc(managedObjectContext)
+        }
     }
     
     
@@ -68,12 +92,16 @@ class Ticket: NSManagedObject {
         return try! moc.executeFetchRequest(self.fetchRequestForSection(weekday)) as! [Ticket]
     }
     
+    class func all(moc:NSManagedObjectContext) -> [Ticket] {
+        return try! moc.executeFetchRequest(self.fetchRequestAll()) as! [Ticket]
+    }
+    
     
     class func fetchRequestForSection(section:Int) -> NSFetchRequest {
         
         let weekday = section
         
-        let predicate = NSPredicate(format: "section == %d && row != 999999 && pomodoroEstimate > 0", weekday)
+        let predicate = NSPredicate(format: "section == %d && row != 999999 && pomodoroEstimate > 0 && removed = false", weekday)
         
         return self.fetchRequestWithPredicate(predicate)
         
@@ -92,18 +120,12 @@ class Ticket: NSManagedObject {
     }
     
     class func removeAllEntities(moc: NSManagedObjectContext) {
-        
         let request = NSFetchRequest(entityName: Ticket.entityName)
-        
         let objects = try! moc.executeFetchRequest(request) as! [NSManagedObject]
-        
         for object in objects {
             moc.deleteObject(object)
         }
-        
         try! moc.save()
-        
-        
     }
     
     
@@ -202,7 +224,12 @@ class Ticket: NSManagedObject {
         }
     }
     
-    
+    class func delete(moc:NSManagedObjectContext, identifier: String) {
+        if let entity = self.fetch(moc, identifier: identifier) {
+            
+            moc.deleteObject(entity)
+        }
+    }
     
     class func spareRowForSection(section: Int, moc: NSManagedObjectContext) -> Int{
         

@@ -260,7 +260,7 @@ class TimerViewController: UIViewController {
                     self.updateWithLongBreak()
                 }
                 
-                self.upload()
+              //  self.upload()
                 
                 return
                 

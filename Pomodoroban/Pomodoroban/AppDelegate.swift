@@ -5,36 +5,17 @@ import Crashlytics
 import UserNotifications
 import Firebase
 import FirebaseAuth
+import FirebaseDatabase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
+    let moc = CoreDataServices.sharedInstance.moc
+    
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
-        
-        SyncService.sharedInstance.start()
-        
-        FIRApp.configure()
-        
-        
-        
-        
-        
-        application.statusBarHidden = true
-        
-        
-        
-        UNUserNotificationCenter.currentNotificationCenter().requestAuthorizationWithOptions([.Alert,.Sound]) { (bool:Bool, error:NSError?) in
-            
-        }
-        
-        
-        Fabric.with([Crashlytics.self])
-        
-        let moc = CoreDataServices.sharedInstance.moc
-        
         
         if Ticket.count(moc) == 0 {
             Ticket.removeAllEntities(moc)
@@ -42,11 +23,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             try! moc.save()
         }
         
+        FIRApp.configure()
+        FIRDatabase.database().persistenceEnabled = true
         
-  //      self.createFirebaseAccount("mcbontempi@gmail.com", password: "Debb123x")
+        SyncService.sharedInstance.setupSync()
         
+        application.statusBarHidden = true
+        UNUserNotificationCenter.currentNotificationCenter().requestAuthorizationWithOptions([.Alert,.Sound]) { (bool:Bool, error:NSError?) in
+        }
+        
+        Fabric.with([Crashlytics.self])
+        
+        //self.createFirebaseAccount("mcbontempi@gmail.com", password: "Debb123x")
         self.signinFirebaseAccount("mcbontempi@gmail.com", password: "Debb123x")
-        
         
         return true
     }
@@ -74,8 +63,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FIRAuth.auth()!.signInWithEmail(email, password: password, completion: { (user, error) in
             
-            UIAlertController.quickMessage("Firebase signed in", vc: self.window!.rootViewController!)
-        })
+         //   if error != 0 {
+            
+         //   UIAlertController.quickMessage("Firebase failed to sign in", vc: self.window!.rootViewController!)
+          //  }
+            })
         
     }
     
