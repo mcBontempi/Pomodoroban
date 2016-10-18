@@ -3,6 +3,7 @@ import CoreData
 import Onboard
 import Firebase
 import FirebaseDatabase
+import FirebaseAuth
 
 class BoardTableViewController: UITableViewController {
     
@@ -19,6 +20,12 @@ class BoardTableViewController: UITableViewController {
     }
     
     
+    @IBAction func signOutPressed(sender: AnyObject) {
+        SyncService.sharedInstance.removeAllForSignOut()
+        try! FIRAuth.auth()!.signOut()
+        
+        self.showLogin()
+    }
     
     // vars
     
@@ -63,33 +70,30 @@ class BoardTableViewController: UITableViewController {
         }
     }
     
-    
     func showOnboarding() {
-        
-        
         
         let firstPage = OnboardingContentViewController(title: "Page Title", body: "Page body goes here.", image: UIImage(named: "icon"), buttonText: "Text For Button") { () -> Void in
         }
         
         let secondPage = OnboardingContentViewController(title: "Page Title", body: "Page body goes here.", image: UIImage(named: "icon"), buttonText: "Text For Button") { () -> Void in
         }
- 
-        let thirdPage = OnboardingContentViewController(title: "Page Title", body: "Page body goes here.", image: UIImage(named: "icon"), buttonText: "Done") { () -> Void in
         
-        self.dismissViewControllerAnimated(true, completion: { 
+        let thirdPage = OnboardingContentViewController(title: "Page Title", body: "Page body goes here.", image: UIImage(named: "icon"), buttonText: "Done") { () -> Void in
             
-        })
+            self.dismissViewControllerAnimated(true, completion: {
+                
+            })
         }
         
- //       let bundle = NSBundle.mainBundle()
-   //     let moviePath = bundle.pathForResource("IMG_6628", ofType: "MOV")
-     //   let movieURL = NSURL(fileURLWithPath: moviePath!)
+        //       let bundle = NSBundle.mainBundle()
+        //     let moviePath = bundle.pathForResource("IMG_6628", ofType: "MOV")
+        //   let movieURL = NSURL(fileURLWithPath: moviePath!)
         
         let onboardingVC = OnboardingViewController(backgroundVideoURL: nil, contents: [firstPage, secondPage, thirdPage])
         
         
         
-        self.presentViewController(onboardingVC, animated: true) { 
+        self.presentViewController(onboardingVC, animated: true) {
             
         }
         
@@ -103,23 +107,23 @@ class BoardTableViewController: UITableViewController {
         
         
         /*
+         
+         let tracker = GAI.sharedInstance().defaultTracker
+         tracker.set(kGAIScreenName, value: "Main Screen")
+         
+         let builder = GAIDictionaryBuilder.createScreenView()
+         tracker.send(builder.build() as [NSObject : AnyObject])
+         */
         
-        let tracker = GAI.sharedInstance().defaultTracker
-        tracker.set(kGAIScreenName, value: "Main Screen")
         
-        let builder = GAIDictionaryBuilder.createScreenView()
-        tracker.send(builder.build() as [NSObject : AnyObject])
-    */
- 
- 
- }
+    }
     
     func sectionTitles() -> [String] {
         return ["BACKLOG", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY", "DONE"]
     }
     
     func updateViewForSection(view:UIView, section: Int)  {
-     
+        
         for subview in view.subviews {
             subview.removeFromSuperview()
         }
@@ -135,7 +139,7 @@ class BoardTableViewController: UITableViewController {
         
         
         if count > 0 {
-        countLabel.text = "\(count)"
+            countLabel.text = "\(count)"
         }
         
         view.backgroundColor = UIColor.darkGrayColor()// UIColor(hexString: "1fa511")
@@ -154,7 +158,7 @@ class BoardTableViewController: UITableViewController {
             
             label.font = UIFont(name:"HelveticaNeue", size: 18.0)
         }
-  
+        
         view.addSubview(label)
         
         view.addSubview(countLabel)
@@ -183,7 +187,7 @@ class BoardTableViewController: UITableViewController {
         var index = 0
         
         for _ in self.sectionTitles() {
-        
+            
             let view = UIView()
             
             self.updateViewForSection(view, section:index)
@@ -202,8 +206,8 @@ class BoardTableViewController: UITableViewController {
         let defaults = NSUserDefaults.standardUserDefaults()
         
         if defaults.objectForKey("shownOnboarding") == nil {
-        
-        //    self.showOnboarding()
+            
+            //    self.showOnboarding()
             
             defaults.setBool(true, forKey: "shownOnboarding")
             
@@ -239,12 +243,30 @@ class BoardTableViewController: UITableViewController {
         
         if Runtime.all(self.moc).count > 0 {
             
-        let vc = self.storyboard!.instantiateViewControllerWithIdentifier("TimerViewController")
+            let vc = self.storyboard!.instantiateViewControllerWithIdentifier("TimerViewController")
             
-            self.presentViewController(vc, animated: false, completion: { 
+            self.presentViewController(vc, animated: false, completion: {
                 
             })
         }
+        
+        if FIRAuth.auth()!.currentUser == nil {
+            self.showLogin()
+        } else {
+            self.title = FIRAuth.auth()!.currentUser?.email
+        SyncService.sharedInstance.setupSync()
+        }
+    }
+    
+    func showLogin() {
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+        
+        vc.delegate = self
+        
+        self.presentViewController(vc, animated: false, completion: {
+            
+        })
+        
     }
     
     // general
@@ -280,7 +302,6 @@ class BoardTableViewController: UITableViewController {
     
     func setWorkMode() {
         self.tableView.setEditing(false, animated: true)
-        self.title = "POMODOROBAN"
         
         self.planWorkButton.title = "Plan"
         
@@ -291,7 +312,6 @@ class BoardTableViewController: UITableViewController {
     
     func setPlanMode() {
         self.tableView.setEditing(true, animated: true)
-        self.title = "PLANNING"
         self.planWorkButton.title = "Work"
         
         
@@ -378,7 +398,7 @@ class BoardTableViewController: UITableViewController {
         cell.isAddCell = self.isAddAtIndexPath(indexPath)
         cell.ticket =  ticket
         
-        //    cell.dlabel.text = "s:\(cell.ticket!.section) - r:\(cell.ticket!.row)"
+        cell.dlabel.text = "s:\(cell.ticket!.section) - r:\(cell.ticket!.row)"
         
         return cell
     }
@@ -447,7 +467,7 @@ class BoardTableViewController: UITableViewController {
         
         
         
-   
+        
         
         vc.delegate = self
         
@@ -489,9 +509,6 @@ class BoardTableViewController: UITableViewController {
             self.addInSection(indexPath.section)
         }
     }
-    
-    
-    
 }
 
 // extensions
@@ -502,7 +519,6 @@ extension BoardTableViewController : TicketViewControllerDelegate {
         self.dismissViewControllerAnimated(true) {
             self.saveChildMoc()
         }
-        
     }
     
     func ticketViewControllerCancel(ticketViewController: TicketViewController) {
@@ -511,28 +527,18 @@ extension BoardTableViewController : TicketViewControllerDelegate {
             
         }
     }
-    
-    
-    /*
-     func pomodoroViewControllerDelegateDone(pomodoroViewController: PomodoroViewController, ticket:Ticket) {
-     self.dismissViewControllerAnimated(true) {
-     ticket.row = Int32( self.spareRowForSection(Int( ticket.section)))
-     ticket.section = 8
-     self.saveChildMoc()
-     }
-     }
-     */
-    
 }
 
 extension BoardTableViewController : NSFetchedResultsControllerDelegate {
-    
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        
         self.reloadSectionHeaders()
-        
         tableView.reloadData()
     }
-    
 }
 
+
+extension BoardTableViewController : LoginViewControllerDelegate {
+    func loginViewControllerDidSignIn(loginViewController: LoginViewController) {
+        self.title = FIRAuth.auth()!.currentUser?.email
+    }
+}

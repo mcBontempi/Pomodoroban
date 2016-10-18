@@ -26,6 +26,8 @@
 		D67FAED11D952B1C0085BF2D /* TicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67FAED01D952B1C0085BF2D /* TicketTableViewCell.swift */; };
 		D686EF911DB4CF3F001431D4 /* UIAlertController + Quick.swift in Sources */ = {isa = PBXBuildFile; fileRef = D686EF901DB4CF3F001431D4 /* UIAlertController + Quick.swift */; };
 		D686EF981DB62807001431D4 /* Pomodoroban.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D686EF961DB62807001431D4 /* Pomodoroban.xcdatamodeld */; };
+		D686EF9A1DB64C1C001431D4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D686EF991DB64C1C001431D4 /* LoginViewController.swift */; };
+		D686EF9C1DB64CE2001431D4 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D686EF9B1DB64CE2001431D4 /* SignupViewController.swift */; };
 		D6E71D801DA3EB5C0055F2AA /* WordsAndQuestionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E71D7E1DA3EB5C0055F2AA /* WordsAndQuestionsView.m */; };
 		D6E71D831DA3ECAE0055F2AA /* TagLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E71D821DA3ECAE0055F2AA /* TagLabel.m */; };
 		D6E71D871DA3EDBB0055F2AA /* CALayer+Animations.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E71D861DA3EDBB0055F2AA /* CALayer+Animations.m */; };
@@ -62,6 +64,8 @@
 		D686EF901DB4CF3F001431D4 /* UIAlertController + Quick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController + Quick.swift"; sourceTree = "<group>"; };
 		D686EF921DB4D99D001431D4 /* Pomodoroban.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pomodoroban.entitlements; sourceTree = "<group>"; };
 		D686EF971DB62807001431D4 /* Pomodoroban.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pomodoroban.xcdatamodel; sourceTree = "<group>"; };
+		D686EF991DB64C1C001431D4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D686EF9B1DB64CE2001431D4 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		D6E71D7D1DA3EB5C0055F2AA /* WordsAndQuestionsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordsAndQuestionsView.h; sourceTree = "<group>"; };
 		D6E71D7E1DA3EB5C0055F2AA /* WordsAndQuestionsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordsAndQuestionsView.m; sourceTree = "<group>"; };
 		D6E71D7F1DA3EB5C0055F2AA /* WordsAndQuestionsViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordsAndQuestionsViewDelegate.h; sourceTree = "<group>"; };
@@ -195,6 +199,8 @@
 				D61085361D960601001A203A /* TimerViewController.swift */,
 				D6E71D881DA3EFC10055F2AA /* NaturalLanguageViewController.swift */,
 				D6456A5A1DA5013A0002FDA2 /* TicketViewController.swift */,
+				D686EF991DB64C1C001431D4 /* LoginViewController.swift */,
+				D686EF9B1DB64CE2001431D4 /* SignupViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -363,6 +369,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D686EF9C1DB64CE2001431D4 /* SignupViewController.swift in Sources */,
 				D67FAED11D952B1C0085BF2D /* TicketTableViewCell.swift in Sources */,
 				D60AD76F1DAE509C0011F429 /* ImageMaskView.swift in Sources */,
 				D656B36B1DA413630035500A /* NSDate+Utils.swift in Sources */,
@@ -387,6 +394,7 @@
 				D6E71D831DA3ECAE0055F2AA /* TagLabel.m in Sources */,
 				D6E71D801DA3EB5C0055F2AA /* WordsAndQuestionsView.m in Sources */,
 				FD5BE9E21C5BB5CA00535A78 /* AppDelegate.swift in Sources */,
+				D686EF9A1DB64C1C001431D4 /* LoginViewController.swift in Sources */,
 				D665D2741DB0FD5D0079ED43 /* UIView+Capture.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -32,9 +32,14 @@ class Ticket: NSManagedObject {
         
         let ticket = NSEntityDescription.insertNewObjectForEntityForName(Ticket.entityName, inManagedObjectContext: moc) as! Ticket
         ticket.identifier = NSUUID().UUIDString
+        ticket.desc = ""
         
      
         return ticket
+    }
+    
+    class func fetchRequestAllIncludingDeleted() -> NSFetchRequest {
+        return self.fetchRequestWithPredicate(nil)
     }
     
     class func fetchRequestAll() -> NSFetchRequest {
@@ -125,7 +130,6 @@ class Ticket: NSManagedObject {
         for object in objects {
             moc.deleteObject(object)
         }
-        try! moc.save()
     }
     
     
@@ -135,10 +139,10 @@ class Ticket: NSManagedObject {
         var predicate:NSPredicate?
         
         if ticket.section == Int32(toIndexPath.section) {
-            predicate = NSPredicate(format: "section == %d && row != %d", toIndexPath.section, ticket.row)
+            predicate = NSPredicate(format: "section == %d && row != %d && removed = false", toIndexPath.section, ticket.row)
         }
         else {
-            predicate = NSPredicate(format: "section == %d", toIndexPath.section)
+            predicate = NSPredicate(format: "section == %d && removed = false", toIndexPath.section)
         }
         
         let primarySortDescriptor = NSSortDescriptor(key: Ticket.attributeRow, ascending: true)
@@ -235,7 +239,7 @@ class Ticket: NSManagedObject {
         
         
         
-        let predicate = NSPredicate(format: "section == %d", section)
+        let predicate = NSPredicate(format: "section == %d && removed = false", section)
         
         let fetchRequest =  Ticket.fetchRequestWithPredicate(predicate)
         

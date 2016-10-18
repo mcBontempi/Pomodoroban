@@ -14,7 +14,7 @@
 const CGFloat SidePadding = 5;
 const CGFloat WordPadding = 5;
 
-const NSUInteger fontSize = 28;
+const NSUInteger fontSize = 24;
 
 @interface WordsAndQuestionsView () <TagLabelDelegate>
 

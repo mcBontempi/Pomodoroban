@@ -14,7 +14,7 @@ import CoreData
 
 extension Ticket {
 
-    @NSManaged var desc: String?
+    @NSManaged var desc: String
     @NSManaged var name: String?
     @NSManaged var pomodoroEstimate: Int32
     @NSManaged var section: Int32
@@ -22,5 +22,4 @@ extension Ticket {
     @NSManaged var colorIndex: Int32
     @NSManaged var identifier: String?
     @NSManaged var removed: Bool
-
 }
