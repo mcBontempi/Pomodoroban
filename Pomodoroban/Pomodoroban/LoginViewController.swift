@@ -46,7 +46,7 @@ class LoginViewController: UIViewController {
     
     
     func signinFirebaseAccount(email:String, password: String) {
-        FIRAuth.auth()!.signInWithEmail(self.email.text!, password: self.password.text!, completion: { (user, error) in
+        FIRAuth.auth()!.signInWithEmail(email, password: password, completion: { (user, error) in
             print(error)
             if error == nil {
                 SyncService.sharedInstance.setupSync()
@@ -120,6 +120,7 @@ class LoginViewController: UIViewController {
             self.backButton.alpha = 0.0
             
             self.email.resignFirstResponder()
+            self.password.resignFirstResponder()
             
             
             }, completion: { (completed) in
@@ -219,19 +220,33 @@ class LoginViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.tomatoeTopSpaceConstraint.constant = 30
         
-        UIView.animateWithDuration(1.0, animations: {
-            self.view.layoutIfNeeded()
-            }, completion: { (completed) in
-                
-                UIView.animateWithDuration(1.0, animations: {
-                    self.introLabel.alpha = 1.0
-                    self.letMeInButton.alpha = 1.0
-                })
-                
-        })
-    }
+        
+        
+        if FIRAuth.auth()!.currentUser == nil {
+  
+            self.tomatoeTopSpaceConstraint.constant = 30
+            
+            UIView.animateWithDuration(1.0, animations: {
+                self.view.layoutIfNeeded()
+                }, completion: { (completed) in
+                    
+                    UIView.animateWithDuration(1.0, animations: {
+                        self.introLabel.alpha = 1.0
+                        self.letMeInButton.alpha = 1.0
+                    })
+                    
+            })
+            
+        
+        } else {
+      
+            self.moveToMainScreen()
+        }
+        
+        
+        
+         }
     
     
     func commitAction() {
@@ -245,11 +260,34 @@ class LoginViewController: UIViewController {
                     
                 }
                 else {
-                    UIAlertController.quickMessage("Firebase failed to sign in", vc: self)
+                    UIAlertController.quickMessage("Failed to LOGIN", vc: self)
                 }
             })
             
         }
+            
+        else if self.mode == .Signup {
+            FIRAuth.auth()!.createUserWithEmail(email.text!,password:password.text!) { user, error in
+                if error == nil {
+                    
+                    FIRAuth.auth()!.signInWithEmail(self.email.text!, password: self.password.text!, completion: { (user, error) in
+                        if error == nil {
+                            SyncService.sharedInstance.setupSync()
+                            
+                            self.moveToFinished()
+                            
+                        }
+                        else {
+                            UIAlertController.quickMessage("Failed to LOGIN", vc: self)
+                        }
+                    })
+                }
+                else {
+                    UIAlertController.quickMessage("Failed to SIGNUP", vc: self)
+                }
+            }
+        }
+        
     }
     
     
@@ -265,26 +303,52 @@ class LoginViewController: UIViewController {
             self.password.alpha = 0.0
             self.backButton.alpha = 0.0
             self.email.resignFirstResponder()
+            self.password.resignFirstResponder()
             
             }, completion: { (completed) in
                 UIView.animateWithDuration(0.3, animations: {
                     self.introLabel.text = "Thanks, please enjoy POMODOROBAN"
                     self.introLabel.alpha = 1.0
+                    
+                    let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC)))
+                    dispatch_after(delayTime, dispatch_get_main_queue()) {
+               
+                    self.moveToMainScreen()
+                    
+                    }
                 })
-            })
-        }
+        })
     }
 
-    extension LoginViewController : UITextFieldDelegate {
+    func moveToMainScreen() {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
-        func textFieldShouldReturn(textField: UITextField) -> Bool {
-            if textField == self.email {
-                self.password.becomeFirstResponder()
-            }
-                
-            else if textField == self.password {
-                self.commitAction()
-            }
-            return true
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("MainNavigationController")
+        
+        appDelegate.setRootVC(vc!)
+        
+    }
+
+
+}
+
+
+
+
+extension LoginViewController : UITextFieldDelegate {
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == self.email {
+            self.password.becomeFirstResponder()
         }
+            
+            
+            
+        else if textField == self.password {
+            
+            
+            self.commitAction()
+        }
+        return true
+    }
 }

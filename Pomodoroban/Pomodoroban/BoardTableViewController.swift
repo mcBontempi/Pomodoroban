@@ -250,12 +250,9 @@ class BoardTableViewController: UITableViewController {
             })
         }
         
-        if FIRAuth.auth()!.currentUser == nil {
-            self.showLogin()
-        } else {
-            self.title = FIRAuth.auth()!.currentUser?.email
+        self.title = "POMODOROBAN" // FIRAuth.auth()!.currentUser?.email
         SyncService.sharedInstance.setupSync()
-        }
+        
     }
     
     func showLogin() {
@@ -398,7 +395,7 @@ class BoardTableViewController: UITableViewController {
         cell.isAddCell = self.isAddAtIndexPath(indexPath)
         cell.ticket =  ticket
         
-        cell.dlabel.text = "s:\(cell.ticket!.section) - r:\(cell.ticket!.row)"
+     //   cell.dlabel.text = "s:\(cell.ticket!.section) - r:\(cell.ticket!.row)"
         
         return cell
     }
@@ -539,6 +536,6 @@ extension BoardTableViewController : NSFetchedResultsControllerDelegate {
 
 extension BoardTableViewController : LoginViewControllerDelegate {
     func loginViewControllerDidSignIn(loginViewController: LoginViewController) {
-        self.title = FIRAuth.auth()!.currentUser?.email
+    //    self.title = FIRAuth.auth()!.currentUser?.email
     }
 }

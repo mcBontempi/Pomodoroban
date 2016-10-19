@@ -42,6 +42,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func setRootVC(vc:UIViewController) {
+        
+        self.window?.rootViewController = vc
+        
+    }
+    
     
     func createFirebaseAccount(email:String, password:String) {
         

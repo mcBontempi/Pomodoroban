@@ -557,7 +557,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="mcbontempi@gmail.com" borderStyle="roundedRect" placeholder="email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2ry-0D-ePC">
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2ry-0D-ePC">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="qeN-SS-Sjv"/>
                                 </constraints>
@@ -565,10 +565,10 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <outlet property="delegate" destination="RVc-O1-TNp" id="N6g-BQ-z0V"/>
+                                    <outlet property="delegate" destination="RVc-O1-TNp" id="1jW-bd-qOi"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Debb123x" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4fH-Of-xbO">
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4fH-Of-xbO">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="FPY-Nq-Hcf"/>
                                 </constraints>
@@ -576,7 +576,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <outlet property="delegate" destination="RVc-O1-TNp" id="Ehg-oe-5df"/>
+                                    <outlet property="delegate" destination="RVc-O1-TNp" id="hPB-va-fyg"/>
                                 </connections>
                             </textField>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWw-x7-iso">
@@ -733,7 +733,7 @@
         <!--Navigation Controller-->
         <scene sceneID="i9m-el-Ee5">
             <objects>
-                <navigationController id="qvh-2M-BY9" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainNavigationController" id="qvh-2M-BY9" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3jY-NP-dyk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
