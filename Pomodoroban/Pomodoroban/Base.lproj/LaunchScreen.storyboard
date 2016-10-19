@@ -18,28 +18,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hOs-yJ-g7K">
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pomodoro-Timer" translatesAutoresizingMaskIntoConstraints="NO" id="W9y-jM-w7M">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="128" id="4Pa-lg-5Il"/>
-                                            <constraint firstAttribute="width" constant="128" id="uoa-1m-Cwn"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pomodoro-Timer" translatesAutoresizingMaskIntoConstraints="NO" id="Uc4-Fi-gEj">
                                 <constraints>
-                                    <constraint firstItem="W9y-jM-w7M" firstAttribute="centerX" secondItem="hOs-yJ-g7K" secondAttribute="centerX" id="08t-tZ-rrZ"/>
-                                    <constraint firstItem="W9y-jM-w7M" firstAttribute="centerY" secondItem="hOs-yJ-g7K" secondAttribute="centerY" id="F64-6F-510"/>
+                                    <constraint firstAttribute="width" constant="240" id="8DM-WQ-PRg"/>
+                                    <constraint firstAttribute="height" constant="170" id="zMM-xL-Rvt"/>
                                 </constraints>
-                            </view>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="POMODOROBAN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ayN-xg-3ZY">
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="hOs-yJ-g7K" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Ech-i4-95Y"/>
-                            <constraint firstItem="hOs-yJ-g7K" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="150" id="O81-5y-Hzm"/>
-                            <constraint firstAttribute="trailing" secondItem="hOs-yJ-g7K" secondAttribute="trailing" id="Xmt-PJ-FXI"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="hOs-yJ-g7K" secondAttribute="bottom" constant="150" id="lI2-n3-hLq"/>
+                            <constraint firstItem="Uc4-Fi-gEj" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="150" id="7d6-wW-ICy"/>
+                            <constraint firstItem="Uc4-Fi-gEj" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="8H4-GK-hZo"/>
+                            <constraint firstItem="ayN-xg-3ZY" firstAttribute="top" secondItem="Uc4-Fi-gEj" secondAttribute="bottom" constant="25" id="Npm-xZ-VvU"/>
+                            <constraint firstItem="ayN-xg-3ZY" firstAttribute="centerX" secondItem="Uc4-Fi-gEj" secondAttribute="centerX" id="jW4-Dp-Vl6"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -49,6 +45,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Pomodoro-Timer" width="225" height="198"/>
+        <image name="Pomodoro-Timer" width="220" height="216"/>
     </resources>
 </document>
