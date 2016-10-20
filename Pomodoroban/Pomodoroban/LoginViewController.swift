@@ -63,8 +63,18 @@ class LoginViewController: UIViewController {
   @IBOutlet weak var email: UITextField!
   @IBOutlet weak var password: UITextField!
   
+  
+  func cornerView(view:UIView,radius:CGFloat) {
+    view.layer.cornerRadius = radius
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    for view in [self.letMeInButton, self.SIGNUPBUTTON,self.LOGINBUTTON] {
+      self.cornerView(view,radius:5)
+    }
+    
     
     let height = UIScreen.mainScreen().bounds.height
     

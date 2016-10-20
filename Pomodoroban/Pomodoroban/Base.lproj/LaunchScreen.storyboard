@@ -30,7 +30,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.98039215690000003" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Uc4-Fi-gEj" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="150" id="7d6-wW-ICy"/>
                             <constraint firstItem="Uc4-Fi-gEj" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="8H4-GK-hZo"/>
@@ -45,6 +45,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Pomodoro-Timer" width="220" height="216"/>
+        <image name="Pomodoro-Timer" width="512" height="512"/>
     </resources>
 </document>
