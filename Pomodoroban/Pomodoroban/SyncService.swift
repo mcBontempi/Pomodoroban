@@ -3,6 +3,7 @@ import LSRepeater
 import Firebase
 import FirebaseDatabase
 import CoreData
+import FirebaseAuth
 
 class SyncService : NSObject {
     
