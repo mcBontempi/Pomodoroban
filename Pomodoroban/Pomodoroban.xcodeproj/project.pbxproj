@@ -35,6 +35,8 @@
 		D6E71D8D1DA3F2A60055F2AA /* StringAndPredicateCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E71D8C1DA3F2A60055F2AA /* StringAndPredicateCollection.m */; };
 		D6E71D901DA3F3480055F2AA /* StringAndPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E71D8F1DA3F3480055F2AA /* StringAndPredicate.m */; };
 		FD577BD31DB8BCA700470457 /* TSMessagesDefaultDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = FD577BD21DB8BCA700470457 /* TSMessagesDefaultDesign.json */; };
+		FD577BD91DB93BA500470457 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = FD577BD61DB93BA400470457 /* Product.m */; };
+		FD577BDA1DB93BA500470457 /* Products.m in Sources */ = {isa = PBXBuildFile; fileRef = FD577BD81DB93BA400470457 /* Products.m */; };
 		FD5BE9E21C5BB5CA00535A78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5BE9E11C5BB5CA00535A78 /* AppDelegate.swift */; };
 		FD5BE9E71C5BB5CA00535A78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD5BE9E51C5BB5CA00535A78 /* Main.storyboard */; };
 		FD5BE9EF1C5BB5CA00535A78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD5BE9ED1C5BB5CA00535A78 /* LaunchScreen.storyboard */; };
@@ -82,6 +84,10 @@
 		D6E71D8F1DA3F3480055F2AA /* StringAndPredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringAndPredicate.m; sourceTree = "<group>"; };
 		EF4E32D1AB475AB56EF78304 /* Pods_Pomodoroban.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pomodoroban.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD577BD21DB8BCA700470457 /* TSMessagesDefaultDesign.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TSMessagesDefaultDesign.json; path = ../../../../../Buddi/nudge/nudge/nudge/TSMessagesDefaultDesign.json; sourceTree = "<group>"; };
+		FD577BD51DB93BA400470457 /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
+		FD577BD61DB93BA400470457 /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
+		FD577BD71DB93BA400470457 /* Products.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Products.h; sourceTree = "<group>"; };
+		FD577BD81DB93BA400470457 /* Products.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Products.m; sourceTree = "<group>"; };
 		FD5BE9DE1C5BB5CA00535A78 /* Pomodoroban.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pomodoroban.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD5BE9E11C5BB5CA00535A78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD5BE9E61C5BB5CA00535A78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -150,6 +156,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FD577BD41DB93B8C00470457 /* StoreKitWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				FD577BD51DB93BA400470457 /* Product.h */,
+				FD577BD61DB93BA400470457 /* Product.m */,
+				FD577BD71DB93BA400470457 /* Products.h */,
+				FD577BD81DB93BA400470457 /* Products.m */,
+			);
+			name = StoreKitWrapper;
+			sourceTree = "<group>";
+		};
 		FD5BE9D51C5BB5CA00535A78 = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +188,7 @@
 		FD5BE9E01C5BB5CA00535A78 /* Pomodoroban */ = {
 			isa = PBXGroup;
 			children = (
+				FD577BD41DB93B8C00470457 /* StoreKitWrapper */,
 				D686EF921DB4D99D001431D4 /* Pomodoroban.entitlements */,
 				D656B3691DA4134A0035500A /* Extensions */,
 				D6E71D911DA3F46E0055F2AA /* WordsAndQuestions */,
@@ -397,6 +415,7 @@
 				FD5BEA041C5CF83100535A78 /* Ticket.swift in Sources */,
 				D634BD311DAD1A7B003348D1 /* Runtime.swift in Sources */,
 				D686EF911DB4CF3F001431D4 /* UIAlertController + Quick.swift in Sources */,
+				FD577BDA1DB93BA500470457 /* Products.m in Sources */,
 				D634BD321DAD1A7B003348D1 /* Runtime+CoreDataProperties.swift in Sources */,
 				D60AD76C1DAE41B60011F429 /* UIImage + ColorMask.swift in Sources */,
 				D6456A6A1DA540E70002FDA2 /* UIView+PomodoroRow.swift in Sources */,
@@ -410,6 +429,7 @@
 				D6E71D901DA3F3480055F2AA /* StringAndPredicate.m in Sources */,
 				D61085351D95ED3F001A203A /* CoreDataServices.swift in Sources */,
 				D686EF981DB62807001431D4 /* Pomodoroban.xcdatamodeld in Sources */,
+				FD577BD91DB93BA500470457 /* Product.m in Sources */,
 				D61085371D960601001A203A /* TimerViewController.swift in Sources */,
 				D6E71D831DA3ECAE0055F2AA /* TagLabel.m in Sources */,
 				D6E71D801DA3EB5C0055F2AA /* WordsAndQuestionsView.m in Sources */,

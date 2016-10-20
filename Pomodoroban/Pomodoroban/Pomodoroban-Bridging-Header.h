@@ -5,4 +5,4 @@
 #import "WordsAndQuestionsView.h"
 #import "StringAndPredicateCollection.h"
 #import "StringAndPredicate.h"
-
+#import "Products.h"

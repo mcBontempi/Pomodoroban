@@ -845,7 +845,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Pomodoro-Timer" width="220" height="216"/>
+        <image name="Pomodoro-Timer" width="512" height="512"/>
         <image name="left-arrow" width="128" height="128"/>
         <image name="mobile-menu" width="2000" height="2000"/>
         <image name="xPomodoro" width="500" height="198"/>
