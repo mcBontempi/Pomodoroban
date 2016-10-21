@@ -9,7 +9,9 @@ import FirebaseDatabase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
+  
+  //  Products.instance()
+  
     var window: UIWindow?
     
     let moc = CoreDataServices.sharedInstance.moc
