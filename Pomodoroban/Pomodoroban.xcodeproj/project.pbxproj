@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BA1D819B3A51E2E2B8F54873 /* Pods_Pomodoroban.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF4E32D1AB475AB56EF78304 /* Pods_Pomodoroban.framework */; };
+		D2315C31FDE060D49B0E3FA4 /* Pods_Pomodoroban.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F69886AA5919349B8129604B /* Pods_Pomodoroban.framework */; };
 		D60AD76A1DAE40840011F429 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D60AD7691DAE40840011F429 /* Assets.xcassets */; };
 		D60AD76C1DAE41B60011F429 /* UIImage + ColorMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60AD76B1DAE41B60011F429 /* UIImage + ColorMask.swift */; };
 		D60AD76F1DAE509C0011F429 /* ImageMaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60AD76E1DAE509C0011F429 /* ImageMaskView.swift */; };
@@ -47,8 +47,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		23425E891A7EAC3EF309C19C /* Pods-Pomodoroban.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pomodoroban.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pomodoroban/Pods-Pomodoroban.release.xcconfig"; sourceTree = "<group>"; };
-		9D58ACCE5609D27AF5B640F2 /* Pods-Pomodoroban.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pomodoroban.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pomodoroban/Pods-Pomodoroban.debug.xcconfig"; sourceTree = "<group>"; };
+		99C6C5B414A3CEE32CC9D563 /* Pods-Pomodoroban.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pomodoroban.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pomodoroban/Pods-Pomodoroban.debug.xcconfig"; sourceTree = "<group>"; };
+		C4716EC3B166CD8ED04CDCE5 /* Pods-Pomodoroban.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pomodoroban.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pomodoroban/Pods-Pomodoroban.release.xcconfig"; sourceTree = "<group>"; };
 		D60AD7691DAE40840011F429 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D60AD76B1DAE41B60011F429 /* UIImage + ColorMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage + ColorMask.swift"; sourceTree = "<group>"; };
 		D60AD76E1DAE509C0011F429 /* ImageMaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageMaskView.swift; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 		D6E71D8C1DA3F2A60055F2AA /* StringAndPredicateCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringAndPredicateCollection.m; sourceTree = "<group>"; };
 		D6E71D8E1DA3F3480055F2AA /* StringAndPredicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringAndPredicate.h; sourceTree = "<group>"; };
 		D6E71D8F1DA3F3480055F2AA /* StringAndPredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringAndPredicate.m; sourceTree = "<group>"; };
-		EF4E32D1AB475AB56EF78304 /* Pods_Pomodoroban.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pomodoroban.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F69886AA5919349B8129604B /* Pods_Pomodoroban.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pomodoroban.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD577BD21DB8BCA700470457 /* TSMessagesDefaultDesign.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TSMessagesDefaultDesign.json; path = ../../../../../Buddi/nudge/nudge/nudge/TSMessagesDefaultDesign.json; sourceTree = "<group>"; };
 		FD577BD51DB93BA400470457 /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
 		FD577BD61DB93BA400470457 /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
@@ -106,18 +106,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA1D819B3A51E2E2B8F54873 /* Pods_Pomodoroban.framework in Frameworks */,
+				D2315C31FDE060D49B0E3FA4 /* Pods_Pomodoroban.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C2DD826BAC6C302BCDEA78A4 /* Pods */ = {
+		28516065C8730D904FFD63E4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9D58ACCE5609D27AF5B640F2 /* Pods-Pomodoroban.debug.xcconfig */,
-				23425E891A7EAC3EF309C19C /* Pods-Pomodoroban.release.xcconfig */,
+				99C6C5B414A3CEE32CC9D563 /* Pods-Pomodoroban.debug.xcconfig */,
+				C4716EC3B166CD8ED04CDCE5 /* Pods-Pomodoroban.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -153,10 +153,10 @@
 			name = WordsAndQuestions;
 			sourceTree = "<group>";
 		};
-		F4F5D3E43E8381989A60FBB6 /* Frameworks */ = {
+		FBD5C27A64EF1F002D985801 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EF4E32D1AB475AB56EF78304 /* Pods_Pomodoroban.framework */,
+				F69886AA5919349B8129604B /* Pods_Pomodoroban.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -177,8 +177,8 @@
 			children = (
 				FD5BE9E01C5BB5CA00535A78 /* Pomodoroban */,
 				FD5BE9DF1C5BB5CA00535A78 /* Products */,
-				C2DD826BAC6C302BCDEA78A4 /* Pods */,
-				F4F5D3E43E8381989A60FBB6 /* Frameworks */,
+				28516065C8730D904FFD63E4 /* Pods */,
+				FBD5C27A64EF1F002D985801 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -258,14 +258,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FD5BE9F31C5BB5CA00535A78 /* Build configuration list for PBXNativeTarget "Pomodoroban" */;
 			buildPhases = (
-				A646857FA11FF253FBC5A8BA /* [CP] Check Pods Manifest.lock */,
+				C6E8A73797FC8370CCF0EC6B /* [CP] Check Pods Manifest.lock */,
 				FD5BE9DA1C5BB5CA00535A78 /* Sources */,
 				FD5BE9DB1C5BB5CA00535A78 /* Frameworks */,
 				FD5BE9DC1C5BB5CA00535A78 /* Resources */,
 				D6456A781DA6B71B0002FDA2 /* ShellScript */,
-				2A3E6027634F7CB2B68C8B29 /* [CP] Embed Pods Frameworks */,
-				5D85B660991FB8D6409497C1 /* [CP] Copy Pods Resources */,
-				B2B1EF97097897E9AC0F7B52 /* Embed Pods Frameworks */,
+				EDA77D6311D839E9BA3AEAF3 /* [CP] Embed Pods Frameworks */,
+				9A23F24CE922B8E17D600FC2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -333,22 +332,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2A3E6027634F7CB2B68C8B29 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pomodoroban/Pods-Pomodoroban-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5D85B660991FB8D6409497C1 /* [CP] Copy Pods Resources */ = {
+		9A23F24CE922B8E17D600FC2 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -363,7 +347,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pomodoroban/Pods-Pomodoroban-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A646857FA11FF253FBC5A8BA /* [CP] Check Pods Manifest.lock */ = {
+		C6E8A73797FC8370CCF0EC6B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -378,21 +362,6 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		B2B1EF97097897E9AC0F7B52 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pomodoroban/Pods-Pomodoroban-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		D6456A781DA6B71B0002FDA2 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -405,6 +374,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 3ef96aea5c3fc3bce538d64de1b929e339cf407f 1280a7ecf875ed15aa7be8f93a3ffa0387bdf2b0dbfc4848097db199ccbd51df";
+		};
+		EDA77D6311D839E9BA3AEAF3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pomodoroban/Pods-Pomodoroban-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -559,7 +543,7 @@
 		};
 		FD5BE9F41C5BB5CA00535A78 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D58ACCE5609D27AF5B640F2 /* Pods-Pomodoroban.debug.xcconfig */;
+			baseConfigurationReference = 99C6C5B414A3CEE32CC9D563 /* Pods-Pomodoroban.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -581,7 +565,7 @@
 		};
 		FD5BE9F51C5BB5CA00535A78 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 23425E891A7EAC3EF309C19C /* Pods-Pomodoroban.release.xcconfig */;
+			baseConfigurationReference = C4716EC3B166CD8ED04CDCE5 /* Pods-Pomodoroban.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

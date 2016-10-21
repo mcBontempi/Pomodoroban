@@ -20,7 +20,7 @@ class PixelTestViewController: UIViewController {
       
 
 
-      let size:CGFloat = 40.0
+      let size:CGFloat = 30.0
       let padding:CGFloat = 0.0
       
       
@@ -83,7 +83,7 @@ class PixelTestViewController: UIViewController {
         y = y + size + padding
       }
       
-      /*
+      
       
       self.repeater = LSRepeater.repeater(30.0 / Double(self.view.subviews.count), execute: {
         
@@ -100,7 +100,7 @@ class PixelTestViewController: UIViewController {
         
         
       })
- */
+ 
       
   }
 
