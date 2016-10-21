@@ -22,6 +22,7 @@
 		D656B36B1DA413630035500A /* NSDate+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D656B36A1DA413630035500A /* NSDate+Utils.swift */; };
 		D665D2741DB0FD5D0079ED43 /* UIView+Capture.swift in Sources */ = {isa = PBXBuildFile; fileRef = D665D2731DB0FD5D0079ED43 /* UIView+Capture.swift */; };
 		D665D2781DB104F30079ED43 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D665D2771DB104F30079ED43 /* GoogleService-Info.plist */; };
+		D67CB2C31DBA3B290026E60D /* TSMessagesDefaultDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = D67CB2C21DBA3B290026E60D /* TSMessagesDefaultDesign.json */; };
 		D67FAECF1D95235B0085BF2D /* BoardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67FAECE1D95235B0085BF2D /* BoardTableViewController.swift */; };
 		D67FAED11D952B1C0085BF2D /* TicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67FAED01D952B1C0085BF2D /* TicketTableViewCell.swift */; };
 		D686EF911DB4CF3F001431D4 /* UIAlertController + Quick.swift in Sources */ = {isa = PBXBuildFile; fileRef = D686EF901DB4CF3F001431D4 /* UIAlertController + Quick.swift */; };
@@ -34,7 +35,6 @@
 		D6E71D891DA3EFC10055F2AA /* NaturalLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E71D881DA3EFC10055F2AA /* NaturalLanguageViewController.swift */; };
 		D6E71D8D1DA3F2A60055F2AA /* StringAndPredicateCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E71D8C1DA3F2A60055F2AA /* StringAndPredicateCollection.m */; };
 		D6E71D901DA3F3480055F2AA /* StringAndPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E71D8F1DA3F3480055F2AA /* StringAndPredicate.m */; };
-		FD577BD31DB8BCA700470457 /* TSMessagesDefaultDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = FD577BD21DB8BCA700470457 /* TSMessagesDefaultDesign.json */; };
 		FD577BD91DB93BA500470457 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = FD577BD61DB93BA400470457 /* Product.m */; };
 		FD577BDA1DB93BA500470457 /* Products.m in Sources */ = {isa = PBXBuildFile; fileRef = FD577BD81DB93BA400470457 /* Products.m */; };
 		FD577BDC1DB942C400470457 /* PixelTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD577BDB1DB942C400470457 /* PixelTestViewController.swift */; };
@@ -63,6 +63,7 @@
 		D656B36A1DA413630035500A /* NSDate+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Utils.swift"; sourceTree = "<group>"; };
 		D665D2731DB0FD5D0079ED43 /* UIView+Capture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Capture.swift"; sourceTree = "<group>"; };
 		D665D2771DB104F30079ED43 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D67CB2C21DBA3B290026E60D /* TSMessagesDefaultDesign.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TSMessagesDefaultDesign.json; sourceTree = "<group>"; };
 		D67FAECE1D95235B0085BF2D /* BoardTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardTableViewController.swift; sourceTree = "<group>"; };
 		D67FAED01D952B1C0085BF2D /* TicketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewCell.swift; sourceTree = "<group>"; };
 		D67FAED21D953B980085BF2D /* Pomodoroban-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pomodoroban-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -85,7 +86,6 @@
 		D6E71D8E1DA3F3480055F2AA /* StringAndPredicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringAndPredicate.h; sourceTree = "<group>"; };
 		D6E71D8F1DA3F3480055F2AA /* StringAndPredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringAndPredicate.m; sourceTree = "<group>"; };
 		F69886AA5919349B8129604B /* Pods_Pomodoroban.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pomodoroban.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FD577BD21DB8BCA700470457 /* TSMessagesDefaultDesign.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TSMessagesDefaultDesign.json; path = ../../../../../Buddi/nudge/nudge/nudge/TSMessagesDefaultDesign.json; sourceTree = "<group>"; };
 		FD577BD51DB93BA400470457 /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
 		FD577BD61DB93BA400470457 /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
 		FD577BD71DB93BA400470457 /* Products.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Products.h; sourceTree = "<group>"; };
@@ -233,7 +233,7 @@
 		FD5BEA051C5CF86B00535A78 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				FD577BD21DB8BCA700470457 /* TSMessagesDefaultDesign.json */,
+				D67CB2C21DBA3B290026E60D /* TSMessagesDefaultDesign.json */,
 				D665D2771DB104F30079ED43 /* GoogleService-Info.plist */,
 				FD5BE9E11C5BB5CA00535A78 /* AppDelegate.swift */,
 				D60AD7691DAE40840011F429 /* Assets.xcassets */,
@@ -323,7 +323,7 @@
 			files = (
 				FD5BE9EF1C5BB5CA00535A78 /* LaunchScreen.storyboard in Resources */,
 				D665D2781DB104F30079ED43 /* GoogleService-Info.plist in Resources */,
-				FD577BD31DB8BCA700470457 /* TSMessagesDefaultDesign.json in Resources */,
+				D67CB2C31DBA3B290026E60D /* TSMessagesDefaultDesign.json in Resources */,
 				FD5BE9E71C5BB5CA00535A78 /* Main.storyboard in Resources */,
 				D60AD76A1DAE40840011F429 /* Assets.xcassets in Resources */,
 			);

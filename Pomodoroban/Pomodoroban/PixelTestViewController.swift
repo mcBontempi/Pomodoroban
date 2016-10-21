@@ -17,10 +17,9 @@ class PixelTestViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
       
-      
+    
 
-
-      let size:CGFloat = 30.0
+      let size:CGFloat = 3.0
       let padding:CGFloat = 0.0
       
       
@@ -83,7 +82,7 @@ class PixelTestViewController: UIViewController {
         y = y + size + padding
       }
       
-      
+      /*
       
       self.repeater = LSRepeater.repeater(30.0 / Double(self.view.subviews.count), execute: {
         
@@ -100,9 +99,22 @@ class PixelTestViewController: UIViewController {
         
         
       })
- 
+ */
       
   }
+    
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        print(self.view.frame.size)
+
+    }
+    
+    
+    func resize() {
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
