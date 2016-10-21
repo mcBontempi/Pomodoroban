@@ -17,17 +17,7 @@ class PixelTestViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
       
-    
-
-      let size:CGFloat = 3.0
-      let padding:CGFloat = 0.0
-      
-      
-      let width = UIScreen.mainScreen().bounds.width
-      
-      let pomoSize = (size * 24) + (padding * 23)
-      
-      let leftPadding = (width - pomoSize) / 2
+    //    self.view.backgroundColor = UIColor.greenColor()
       
       let pixels = [[0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0],
                     [0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0],
@@ -49,37 +39,59 @@ class PixelTestViewController: UIViewController {
                     [0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
                     [0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0],
                     [0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0],
-                    [0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0],
+                    [0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0],
                     [0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0],
                     [0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0]]
       
       var delay:Double = 0.0
       
+        var size:CGFloat = 6
       
-      var y:CGFloat = 100
+      var y:CGFloat = 1
       
       for row in pixels {
         
-        var x:CGFloat = leftPadding
+        var x:CGFloat = 1
         
         for pixel in row {
           
           if pixel != 0 {
           
-          let view = UIView(frame:CGRectMake(x,y,size,size))
-          
+          let view = UIView(frame:CGRectZero)
+            
           view.layer.cornerRadius = size / 2
             view.backgroundColor = pixel == 1 ? UIColor.redColor() : UIColor.greenColor()
             
             self.view.addSubview(view)
+          
+            view.translatesAutoresizingMaskIntoConstraints = false
             
-         //   view.delayedBounce(delay)
+            self.view.addConstraint(NSLayoutConstraint(item: view, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: size))
             
-            delay = delay + 0.001
+            self.view.addConstraint(NSLayoutConstraint(item: view, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: size))
+            
+            
+            let xMultiplier = x / 24
+            
+            let yMultiplier = y / 24
+            print (xMultiplier)
+            
+            self.view.addConstraint(NSLayoutConstraint(item: view, attribute: .CenterX, relatedBy: .Equal, toItem: self.view, attribute: .Right, multiplier: xMultiplier, constant: -size/2))
+           
+            self.view.addConstraint(NSLayoutConstraint(item: view, attribute: .CenterY, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: yMultiplier, constant: -size/2))
+            
+         view.alpha = 0
+           view.delayedBounce(Double(Double(arc4random()) / Double(UINT32_MAX))*2)
+            
+            
+            
+            
+            
+            delay = delay + 0.004
           }
-          x = x + size + padding
+          x = x + 1
         }
-        y = y + size + padding
+        y = y + 1
       }
       
       /*

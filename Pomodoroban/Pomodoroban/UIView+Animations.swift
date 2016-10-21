@@ -15,7 +15,7 @@ extension UIView {
   
   func smallBounce(velocity: CGFloat) {
     
-      self.transform = CGAffineTransformMakeScale(0.1, 0.1)
+      self.transform = CGAffineTransformMakeScale(5.1, 5.1)
       
       UIView.animateWithDuration(1.0,
         delay: 0,
@@ -29,7 +29,7 @@ extension UIView {
   
     func delayedBounce(delay: NSTimeInterval) {
         
-        self.transform = CGAffineTransformMakeScale(3.9, 3.9)
+        self.transform = CGAffineTransformMakeScale(0.01, 0.01)
         
         UIView.animateWithDuration(0.5,
                                    delay: delay,
@@ -38,6 +38,7 @@ extension UIView {
                                    options: UIViewAnimationOptions.AllowUserInteraction,
                                    animations: {
                                     self.transform = CGAffineTransformIdentity
+                                    self.alpha = 1.0
             }, completion: nil)
     }
     

@@ -236,7 +236,9 @@ class LoginViewController: UIViewController {
       
       self.tomatoeTopSpaceConstraint.constant = 30
       
-      UIView.animateWithDuration(1.0, animations: {
+        
+  
+      UIView.animateWithDuration(3.0, animations: {
         self.view.layoutIfNeeded()
         }, completion: { (completed) in
           
@@ -246,6 +248,7 @@ class LoginViewController: UIViewController {
           })
           
       })
+        
       
       
     } else {
@@ -355,7 +358,7 @@ class LoginViewController: UIViewController {
       self.view.layoutIfNeeded()
       
       }, completion: { (completed) in
-        UIView.animateWithDuration(0.3, animations: {
+        UIView.animateWithDuration(1.3, animations: {
           self.introLabel.text = "Thanks, please enjoy POMODOROBAN"
           self.introLabel.alpha = 1.0
           
