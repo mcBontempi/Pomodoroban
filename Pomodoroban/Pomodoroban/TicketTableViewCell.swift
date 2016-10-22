@@ -20,6 +20,9 @@ class TicketTableViewCell: UITableViewCell {
     @IBOutlet weak var pomodoroCountView: UIView!
     var ticket: Ticket? {
         didSet {
+            
+            self.contentView.backgroundColor = UIColor(hexString: "F8FAE1")
+            
             self.titleLabel.text = ticket!.name
             self.titleLabel.textColor = UIColor.darkGrayColor()
        

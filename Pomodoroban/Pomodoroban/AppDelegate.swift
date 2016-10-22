@@ -36,12 +36,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
       //  let utterance = AVSpeechUtterance(string: "")
         
-      //  let synth = AVSpeechSynthesizer()
+       // let synth = AVSpeechSynthesizer()
         
-       // synth.speakUtterance(utterance)
+      ///  synth.speakUtterance(utterance)
         
         
-      //  synth.outputChannels
+      //  synth.outputChannels?.append(<#T##newElement: Element##Element#>)
         
         
         

@@ -142,17 +142,17 @@ class BoardTableViewController: UITableViewController {
             countLabel.text = "\(count)"
         }
         
-        view.backgroundColor = UIColor.darkGrayColor()// UIColor(hexString: "1fa511")
+        view.backgroundColor = UIColor(hexString: "e9ebd4")
         let label = UILabel(frame:CGRectMake(10,0,self.tableView.frame.size.width - 20,30))
         
         if (NSDate().getDayOfWeek() == section) {
             label.text = "TODAY"
-            label.textColor = UIColor.whiteColor()
+            label.textColor = UIColor.darkGrayColor()
             
             label.font = UIFont(name:"HelveticaNeue-Bold", size: 20.0)
         }
         else {
-            label.textColor = UIColor.whiteColor()
+            label.textColor = UIColor.darkGrayColor()
             
             label.text = self.sectionTitles()[section]
             
