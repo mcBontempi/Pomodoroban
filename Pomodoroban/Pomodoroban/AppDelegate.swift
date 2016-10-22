@@ -7,6 +7,12 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
+import Speech
+
+import AVFoundation
+
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
   
@@ -17,8 +23,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let moc = CoreDataServices.sharedInstance.moc
     
     
+    
+    
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
      
+        
+        
+        
+        
+      //  let utterance = AVSpeechUtterance(string: "")
+        
+      //  let synth = AVSpeechSynthesizer()
+        
+       // synth.speakUtterance(utterance)
+        
+        
+      //  synth.outputChannels
+        
+        
+        
+        
         if Ticket.count(moc) == 0 {
             Ticket.removeAllEntities(moc)
             Ticket.createAllAddTickets(moc)

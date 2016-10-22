@@ -292,7 +292,7 @@ class LoginViewController: UIViewController {
               
             }
             else {
-              UIAlertController.quickMessage("Failed to LOGIN", vc: self)
+              UIAlertController.quickMessage((error?.localizedDescription)!, vc: self)
               
               
               
@@ -319,7 +319,7 @@ class LoginViewController: UIViewController {
                   
                 }
                 else {
-                  UIAlertController.quickMessage("Failed to LOGIN", vc: self)
+                  UIAlertController.quickMessage((error?.localizedDescription)!, vc: self)
                   self.showEmailAndPasswordAndBackButton()
                   
                 }
@@ -328,7 +328,7 @@ class LoginViewController: UIViewController {
             else {
               
               MBProgressHUD.hideHUDForView(self.view, animated: true)
-              UIAlertController.quickMessage("Failed to SIGNUP", vc: self)
+              UIAlertController.quickMessage((error?.localizedDescription)!, vc: self)
               
               self.showEmailAndPasswordAndBackButton()
             }
