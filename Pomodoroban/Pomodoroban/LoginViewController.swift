@@ -76,16 +76,7 @@ class LoginViewController: UIViewController {
       self.cornerView(view,radius:5)
     }
     
-    
-    let height = UIScreen.mainScreen().bounds.height
-    
-    
-    if height == 568 {
-      self.emailTextFieldTopSpacingToTomatoe.constant = 10
-      self.emailtoPasswordPaddingConastraint.constant = 10
-      
-    }
-    
+
     
   }
   
@@ -116,8 +107,9 @@ class LoginViewController: UIViewController {
     
     self.mode = .Menu
     
-    self.tomatoeHeightConstraint.constant = 170
+    self.tomatoeHeightConstraint.constant = 150
     
+    self.pixelVC.setAlternateRowSize(6)
     
     UIView.animateWithDuration(0.6, animations: {
       
@@ -153,6 +145,8 @@ class LoginViewController: UIViewController {
     self.mode = .Login
     
     self.tomatoeHeightConstraint.constant = 100
+    
+    self.pixelVC.setAlternateRowSize(0)
     
     
     UIView.animateWithDuration(0.6, animations: {
@@ -190,6 +184,8 @@ class LoginViewController: UIViewController {
     
     self.tomatoeHeightConstraint.constant = 100
     
+    self.pixelVC.setAlternateRowSize(0)
+    
     
     UIView.animateWithDuration(0.6, animations: {
       
@@ -218,7 +214,7 @@ class LoginViewController: UIViewController {
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     
-    
+
     self.tomatoeTopSpaceConstraint.constant = 150
     
     
@@ -230,31 +226,41 @@ class LoginViewController: UIViewController {
     super.viewDidAppear(animated)
     
     
-    
-    
-    if FIRAuth.auth()!.currentUser == nil {
-      
-      self.tomatoeTopSpaceConstraint.constant = 30
-      
         
-  
+        self.pixelVC.setupAsPomodoro(6)
+        self.view.layoutIfNeeded()
+        
+        let height = UIScreen.mainScreen().bounds.height
+        if height == 568 {
+            self.emailTextFieldTopSpacingToTomatoe.constant = 10
+            self.emailtoPasswordPaddingConastraint.constant = 10
+            
+        }
+        
+      self.tomatoeTopSpaceConstraint.constant = 30
+    
       UIView.animateWithDuration(3.0, animations: {
         self.view.layoutIfNeeded()
         }, completion: { (completed) in
-          
+       
+            if FIRAuth.auth()!.currentUser == nil {
+                
+            
+            
           UIView.animateWithDuration(1.0, animations: {
             self.introLabel.alpha = 1.0
             self.letMeInButton.alpha = 1.0
           })
-          
+                
+            } else {
+                
+                self.moveToMainScreen()
+            }
+            
       })
         
       
-      
-    } else {
-      
-      self.moveToMainScreen()
-    }
+    
   }
   
   
@@ -353,6 +359,9 @@ class LoginViewController: UIViewController {
     
     self.tomatoeHeightConstraint.constant = 170
     
+    
+    self.pixelVC.setAlternateRowSize(6)
+    
     UIView.animateWithDuration(0.6, animations: {
       
       self.view.layoutIfNeeded()
@@ -377,6 +386,12 @@ class LoginViewController: UIViewController {
     let vc = self.storyboard?.instantiateViewControllerWithIdentifier("MainNavigationController")
     appDelegate.setRootVC(vc!)
   }
+    
+    var pixelVC: PixelTestViewController!
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+       self.pixelVC = segue.destinationViewController as! PixelTestViewController
+    }
 }
 
 extension LoginViewController : UITextFieldDelegate {

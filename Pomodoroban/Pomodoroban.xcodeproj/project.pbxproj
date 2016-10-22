@@ -225,6 +225,7 @@
 				D6E71D881DA3EFC10055F2AA /* NaturalLanguageViewController.swift */,
 				D6456A5A1DA5013A0002FDA2 /* TicketViewController.swift */,
 				D686EF991DB64C1C001431D4 /* LoginViewController.swift */,
+				FD577BDB1DB942C400470457 /* PixelTestViewController.swift */,
 				D686EF9B1DB64CE2001431D4 /* SignupViewController.swift */,
 			);
 			name = ViewControllers;
@@ -246,7 +247,6 @@
 				FD5BE9E51C5BB5CA00535A78 /* Main.storyboard */,
 				D67FAED21D953B980085BF2D /* Pomodoroban-Bridging-Header.h */,
 				D617FB651D9E54C700A4CA53 /* SyncService.swift */,
-				FD577BDB1DB942C400470457 /* PixelTestViewController.swift */,
 			);
 			name = Other;
 			sourceTree = "<group>";

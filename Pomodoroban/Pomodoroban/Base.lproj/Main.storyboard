@@ -281,12 +281,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nj8-zQ-jvX"/>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pomodoro-Timer" translatesAutoresizingMaskIntoConstraints="NO" id="tQC-Qz-NA9">
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="tQC-Qz-NA9" secondAttribute="height" multiplier="1:1" id="cTC-Pq-GQ9"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take A Break" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0IV-lu-m60">
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="26"/>
                                 <nil key="highlightedColor"/>
@@ -350,31 +344,33 @@
                                     <constraint firstItem="LTk-4d-UH9" firstAttribute="top" secondItem="Lj4-Kr-XAY" secondAttribute="top" id="cxo-5e-Biy"/>
                                 </constraints>
                             </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TU4-Rd-tb9">
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="TU4-Rd-tb9" secondAttribute="height" multiplier="1:1" id="9hj-zW-dPG"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="xrI-tz-O9j" kind="embed" id="v6o-xC-8W4"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="tQC-Qz-NA9" firstAttribute="top" secondItem="K6m-yO-Y7h" secondAttribute="bottom" constant="15" id="2Ph-e8-3w6"/>
-                            <constraint firstItem="Nj8-zQ-jvX" firstAttribute="centerX" secondItem="tQC-Qz-NA9" secondAttribute="centerX" id="5af-XG-nlh"/>
-                            <constraint firstItem="Nj8-zQ-jvX" firstAttribute="height" secondItem="tQC-Qz-NA9" secondAttribute="height" id="Cmh-IY-KRZ"/>
-                            <constraint firstItem="Nj8-zQ-jvX" firstAttribute="width" secondItem="tQC-Qz-NA9" secondAttribute="width" id="I0F-Yk-yOc"/>
+                            <constraint firstItem="TU4-Rd-tb9" firstAttribute="top" secondItem="K6m-yO-Y7h" secondAttribute="bottom" constant="32" id="Cr7-3f-Vcc"/>
                             <constraint firstItem="aNy-Z1-6Ag" firstAttribute="trailing" secondItem="dTS-8B-bq9" secondAttribute="trailingMargin" id="LTN-Av-yj8"/>
-                            <constraint firstItem="tQC-Qz-NA9" firstAttribute="centerX" secondItem="dTS-8B-bq9" secondAttribute="centerX" id="MQ3-ir-985"/>
                             <constraint firstItem="Lj4-Kr-XAY" firstAttribute="leading" secondItem="dTS-8B-bq9" secondAttribute="leading" constant="20" id="OML-UW-FyL"/>
                             <constraint firstItem="Lj4-Kr-XAY" firstAttribute="top" secondItem="aNy-Z1-6Ag" secondAttribute="bottom" constant="20" id="PJo-eH-9u4"/>
                             <constraint firstItem="kbq-8O-Jxf" firstAttribute="top" secondItem="Lj4-Kr-XAY" secondAttribute="bottom" constant="20" id="Pe2-jo-kDP"/>
                             <constraint firstAttribute="trailing" secondItem="Lj4-Kr-XAY" secondAttribute="trailing" constant="20" id="Yf7-WX-0wg"/>
                             <constraint firstItem="K6m-yO-Y7h" firstAttribute="top" secondItem="whV-Ze-cZc" secondAttribute="bottom" constant="20" id="ZXP-oq-Fd1"/>
                             <constraint firstItem="K6m-yO-Y7h" firstAttribute="centerX" secondItem="dTS-8B-bq9" secondAttribute="centerX" id="b3g-ZJ-3tZ"/>
-                            <constraint firstItem="Nj8-zQ-jvX" firstAttribute="centerY" secondItem="tQC-Qz-NA9" secondAttribute="centerY" id="kNP-aK-LRV"/>
+                            <constraint firstItem="aNy-Z1-6Ag" firstAttribute="top" secondItem="TU4-Rd-tb9" secondAttribute="bottom" constant="10" id="eeM-0q-VXA"/>
+                            <constraint firstItem="TU4-Rd-tb9" firstAttribute="centerX" secondItem="dTS-8B-bq9" secondAttribute="centerX" id="fru-E5-xWA"/>
                             <constraint firstItem="0IV-lu-m60" firstAttribute="centerX" secondItem="dTS-8B-bq9" secondAttribute="centerX" id="lwt-ZV-zg2"/>
-                            <constraint firstItem="aNy-Z1-6Ag" firstAttribute="top" secondItem="tQC-Qz-NA9" secondAttribute="bottom" constant="15" id="nR3-fx-H1j"/>
                             <constraint firstItem="aNy-Z1-6Ag" firstAttribute="leading" secondItem="dTS-8B-bq9" secondAttribute="leadingMargin" id="rrX-1X-QBK"/>
                             <constraint firstItem="kbq-8O-Jxf" firstAttribute="top" secondItem="0IV-lu-m60" secondAttribute="bottom" constant="100" id="z5Y-Fv-sqL"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="loadingImage" destination="tQC-Qz-NA9" id="MTS-np-bPB"/>
-                        <outlet property="maskedLoadingImage" destination="Nj8-zQ-jvX" id="sU5-Bq-ct2"/>
                         <outlet property="notesTextView" destination="ypo-k2-Ica" id="RaM-l2-3bA"/>
                         <outlet property="pomodoroCountView" destination="Y15-JP-zwY" id="seP-cJ-uU5"/>
                         <outlet property="quitButton" destination="K6m-yO-Y7h" id="pCW-rv-cZw"/>
@@ -688,7 +684,7 @@
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5iI-lC-JnX">
-                                <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="3Mf-uH-Wew"/>
                                     <constraint firstAttribute="width" secondItem="5iI-lC-JnX" secondAttribute="height" multiplier="1:1" id="sRh-hH-PKX"/>
@@ -866,9 +862,25 @@
             </objects>
             <point key="canvasLocation" x="818" y="-655"/>
         </scene>
+        <!--Pixel Test View Controller-->
+        <scene sceneID="LpU-Jb-tFY">
+            <objects>
+                <viewController id="xrI-tz-O9j" customClass="PixelTestViewController" customModule="Pomodoroban" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wVP-2m-djj"/>
+                        <viewControllerLayoutGuide type="bottom" id="C7Z-zR-UYZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JRt-uj-ise">
+                        <rect key="frame" x="0.0" y="0.0" width="201" height="201"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Btk-SK-it0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
     </scenes>
     <resources>
-        <image name="Pomodoro-Timer" width="512" height="512"/>
         <image name="left-arrow" width="128" height="128"/>
         <image name="mobile-menu" width="2000" height="2000"/>
         <image name="xPomodoro" width="500" height="198"/>

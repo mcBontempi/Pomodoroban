@@ -9,9 +9,14 @@ protocol TimerViewControllerDelegate {
 }
 
 class TimerViewController: UIViewController {
-    @IBOutlet weak var loadingImage: UIImageView!
     
-    @IBOutlet weak var maskedLoadingImage: ImageMaskView!
+    
+    var pixelVC: PixelTestViewController!
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        self.pixelVC = segue.destinationViewController as! PixelTestViewController
+    }
+    
     @IBOutlet weak var ticketBackgroundView: UIView!
     
     let storage = FIRStorage.storage()
@@ -47,7 +52,6 @@ class TimerViewController: UIViewController {
         self.ticketBackgroundView.hidden = false
         self.view.backgroundColor = self.veryDarkBackgroundColor
         self.timerLabel.textColor = UIColor.lightGrayColor()
-        self.maskedLoadingImage.tintColor = self.veryDarkBackgroundColorForMask
         self.ticketBackgroundView.backgroundColor = UIColor.colorFrom(Int( ticket.colorIndex))
         self.titleLabel.text = ticket.name
         self.notesTextView.text = ticket.desc
@@ -57,15 +61,19 @@ class TimerViewController: UIViewController {
         let pomodoroView = UIView.pomodoroRowWith(Int(ticket.pomodoroEstimate))
         self.pomodoroCountView.addSubview(pomodoroView)
         
-        self.loadingImage.image = UIImage(named: "Pomodoro-Timer")
+        
+        self.pixelVC.setupAsPomodoro(10)
+        
+        
     }
     
     func updateWithBreak() {
         self.timerLabel.textColor = UIColor.whiteColor()
         self.ticketBackgroundView.hidden = true
         self.view.backgroundColor = self.darkBackgroundColor
-        self.maskedLoadingImage.tintColor = self.darkBackgroundColorForMask
-        self.loadingImage.image = UIImage(named: "blueCup")
+        
+        
+        self.pixelVC.setupAsCup(10)
     }
     
     func updateWithLongBreak() {
@@ -74,8 +82,9 @@ class TimerViewController: UIViewController {
         self.timerLabel.textColor = UIColor.lightGrayColor()
         
         self.view.backgroundColor = self.darkBackgroundColor
-        self.maskedLoadingImage.tintColor = self.darkBackgroundColorForMask
-        self.loadingImage.image = UIImage(named: "fries")
+        
+        
+        self.pixelVC.setupAsFood(10)
     }
     
     func close() {
@@ -118,10 +127,6 @@ class TimerViewController: UIViewController {
         self.ticketBackgroundView.layer.borderWidth = 3
         self.ticketBackgroundView.layer.borderColor = UIColor.darkGrayColor().CGColor
         self.ticketBackgroundView.clipsToBounds = true
-        
-        self.loadingImage.layer.magnificationFilter = kCAFilterNearest
-        
-        self.maskedLoadingImage.layer.magnificationFilter = kCAFilterNearest
         
         if Runtime.all(self.moc).count > 0 {
             self.startDate = NSUserDefaults.standardUserDefaults().objectForKey("startDate") as! NSDate
@@ -222,19 +227,10 @@ class TimerViewController: UIViewController {
                 
                 let pc = ( self.currentPartRemaining) / self.currentPartLength
                 
-                self.maskedLoadingImage.image = self.loadingImage.image!.imageFromColor(UIColor.blackColor(), frame:CGRectZero)
-                
-                
-                self.maskedLoadingImage.tintColor = UIColor(hexString: "EEEEEE")
-                
-                let height = -(self.maskedLoadingImage.frame.size.height * CGFloat(pc))
-                
-                let maskLayer = CAShapeLayer()
-                let maskRect = CGRectMake(0, self.maskedLoadingImage.frame.size.height, self.maskedLoadingImage.frame.size.width, height  )
-                let path = CGPathCreateWithRect(maskRect, nil);
-                maskLayer.path = path;
-                
-                loadingImage.layer.mask = maskLayer;
+            //    UIView.animateWithDuration(0.1, animations: {
+                    
+                    self.pixelVC.setProgress(pc)
+              //  })
                 
                 if runtime.type == 0 {
                     
@@ -260,7 +256,7 @@ class TimerViewController: UIViewController {
                     self.updateWithLongBreak()
                 }
                 
-              //  self.upload()
+                //  self.upload()
                 
                 return
                 
@@ -276,26 +272,26 @@ class TimerViewController: UIViewController {
     }
     
     /*
-    func upload() {
-        let image =  self.view.image()
-        
-        if let data = UIImageJPEGRepresentation(image!,3) {
-            
-            let storageRef = storage.reference()
-            
-            let screenshotRef = storageRef.child("screenshot.jpg")
-            
-            let uploadTask = screenshotRef.putData(data, metadata: nil) { metadata, error in
-                if let error = error {
-                    UIAlertController.quickMessage(error.description, vc:self)
-                } else {
-                    print("uploaded")
-                    let downloadURL = metadata!.downloadURL()
-                }
-            }
-        }
-    }
- */
+     func upload() {
+     let image =  self.view.image()
+     
+     if let data = UIImageJPEGRepresentation(image!,3) {
+     
+     let storageRef = storage.reference()
+     
+     let screenshotRef = storageRef.child("screenshot.jpg")
+     
+     let uploadTask = screenshotRef.putData(data, metadata: nil) { metadata, error in
+     if let error = error {
+     UIAlertController.quickMessage(error.description, vc:self)
+     } else {
+     print("uploaded")
+     let downloadURL = metadata!.downloadURL()
+     }
+     }
+     }
+     }
+     */
     
     func createNotifications() {
         
