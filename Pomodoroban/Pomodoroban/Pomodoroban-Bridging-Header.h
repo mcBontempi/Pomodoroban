@@ -6,3 +6,4 @@
 #import "StringAndPredicateCollection.h"
 #import "StringAndPredicate.h"
 #import "Products.h"
+#import <BuddyBuildSDK/BuddyBuildSDK.h>

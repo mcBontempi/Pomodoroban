@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34DEEBF757B1EF12F4973640 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D7B413C60458E80518CC94 /* CoreVideo.framework */; };
+		45736E9464E17DC019141542 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95BAC38868AE587ED7406011 /* AVFoundation.framework */; };
+		54622054142A841D017CD612 /* BuddyBuildSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E777183DB54B2E29403C9EAE /* BuddyBuildSDK.framework */; };
+		74D1C7DBBB8EDECAE50AE6AE /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E23989444A96BCC6942726D /* CoreTelephony.framework */; };
+		80D53AA627AC205F44339658 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 807DAFF1D7C3D1EC9325F533 /* CoreMedia.framework */; };
+		94FA3CEFCE8501B215D73F1E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7BA48914D57A868B512C04 /* SystemConfiguration.framework */; };
+		9AC7EF7838915076DFB73711 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1446438605D528D1F312D7 /* AssetsLibrary.framework */; };
+		A30ED94395DED1E6DF404B7A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E6FEAFFD32F6C345B81C00F /* QuartzCore.framework */; };
+		C32D6ED85F18C76A4A2805D0 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DF71CF5892D5657207A2D31 /* CoreText.framework */; };
 		D2315C31FDE060D49B0E3FA4 /* Pods_Pomodoroban.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F69886AA5919349B8129604B /* Pods_Pomodoroban.framework */; };
 		D60AD76A1DAE40840011F429 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D60AD7691DAE40840011F429 /* Assets.xcassets */; };
 		D60AD76C1DAE41B60011F429 /* UIImage + ColorMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60AD76B1DAE41B60011F429 /* UIImage + ColorMask.swift */; };
@@ -47,8 +56,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E23989444A96BCC6942726D /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		1C7BA48914D57A868B512C04 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		6B1446438605D528D1F312D7 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		807DAFF1D7C3D1EC9325F533 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		8DF71CF5892D5657207A2D31 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		8E6FEAFFD32F6C345B81C00F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		95BAC38868AE587ED7406011 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		99C6C5B414A3CEE32CC9D563 /* Pods-Pomodoroban.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pomodoroban.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pomodoroban/Pods-Pomodoroban.debug.xcconfig"; sourceTree = "<group>"; };
 		C4716EC3B166CD8ED04CDCE5 /* Pods-Pomodoroban.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pomodoroban.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pomodoroban/Pods-Pomodoroban.release.xcconfig"; sourceTree = "<group>"; };
+		D5D7B413C60458E80518CC94 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		D60AD7691DAE40840011F429 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D60AD76B1DAE41B60011F429 /* UIImage + ColorMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage + ColorMask.swift"; sourceTree = "<group>"; };
 		D60AD76E1DAE509C0011F429 /* ImageMaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageMaskView.swift; sourceTree = "<group>"; };
@@ -85,6 +102,7 @@
 		D6E71D8C1DA3F2A60055F2AA /* StringAndPredicateCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringAndPredicateCollection.m; sourceTree = "<group>"; };
 		D6E71D8E1DA3F3480055F2AA /* StringAndPredicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringAndPredicate.h; sourceTree = "<group>"; };
 		D6E71D8F1DA3F3480055F2AA /* StringAndPredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringAndPredicate.m; sourceTree = "<group>"; };
+		E777183DB54B2E29403C9EAE /* BuddyBuildSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BuddyBuildSDK.framework; sourceTree = "<group>"; };
 		F69886AA5919349B8129604B /* Pods_Pomodoroban.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pomodoroban.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD577BD51DB93BA400470457 /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
 		FD577BD61DB93BA400470457 /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
@@ -107,6 +125,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2315C31FDE060D49B0E3FA4 /* Pods_Pomodoroban.framework in Frameworks */,
+				54622054142A841D017CD612 /* BuddyBuildSDK.framework in Frameworks */,
+				9AC7EF7838915076DFB73711 /* AssetsLibrary.framework in Frameworks */,
+				C32D6ED85F18C76A4A2805D0 /* CoreText.framework in Frameworks */,
+				74D1C7DBBB8EDECAE50AE6AE /* CoreTelephony.framework in Frameworks */,
+				94FA3CEFCE8501B215D73F1E /* SystemConfiguration.framework in Frameworks */,
+				A30ED94395DED1E6DF404B7A /* QuartzCore.framework in Frameworks */,
+				45736E9464E17DC019141542 /* AVFoundation.framework in Frameworks */,
+				80D53AA627AC205F44339658 /* CoreMedia.framework in Frameworks */,
+				34DEEBF757B1EF12F4973640 /* CoreVideo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +184,15 @@
 			isa = PBXGroup;
 			children = (
 				F69886AA5919349B8129604B /* Pods_Pomodoroban.framework */,
+				E777183DB54B2E29403C9EAE /* BuddyBuildSDK.framework */,
+				6B1446438605D528D1F312D7 /* AssetsLibrary.framework */,
+				8DF71CF5892D5657207A2D31 /* CoreText.framework */,
+				0E23989444A96BCC6942726D /* CoreTelephony.framework */,
+				1C7BA48914D57A868B512C04 /* SystemConfiguration.framework */,
+				8E6FEAFFD32F6C345B81C00F /* QuartzCore.framework */,
+				95BAC38868AE587ED7406011 /* AVFoundation.framework */,
+				807DAFF1D7C3D1EC9325F533 /* CoreMedia.framework */,
+				D5D7B413C60458E80518CC94 /* CoreVideo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -551,6 +587,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Pomodoroban/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.LondonSwift.Pomodoroban;
@@ -573,6 +613,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Pomodoroban/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.LondonSwift.Pomodoroban;
