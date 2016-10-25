@@ -14,7 +14,7 @@ class BoardTableViewController: UITableViewController {
     
     @IBOutlet weak var layerButton: UIButton!
     
-    var showAll = false
+    var showAll = true
   
     
     @IBAction func signOutPressed(sender: AnyObject) {
