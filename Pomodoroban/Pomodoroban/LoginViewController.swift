@@ -106,7 +106,7 @@ class LoginViewController: UIViewController {
     
     self.mode = .Menu
     
-    self.tomatoeHeightConstraint.constant = 150
+    self.tomatoeHeightConstraint.constant = 170
     
     self.pixelVC.setAlternateRowSize(6)
     

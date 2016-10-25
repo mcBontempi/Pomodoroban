@@ -603,47 +603,6 @@ extension BoardTableViewController : NSFetchedResultsControllerDelegate {
         self.tableView.beginUpdates()
     }
     
-    /*
-     func controller(controller: NSFetchedResultsController,
-     didChangeObject anObject: AnyObject,
-     atIndexPath indexPath: NSIndexPath?,
-     forChangeType type: NSFetchedResultsChangeType,
-     newIndexPath: NSIndexPath?)
-     {
-     switch(type) {
-     
-     case .Insert:
-     if let newIndexPath = newIndexPath {
-     tableView.insertRowsAtIndexPaths([newIndexPath],
-     withRowAnimation:UITableViewRowAnimation.Fade)
-     }
-     
-     case .Delete:
-     if let indexPath = indexPath {
-     tableView.deleteRowsAtIndexPaths([indexPath],
-     withRowAnimation: UITableViewRowAnimation.Fade)
-     }
-     
-     case .Update:
-     if let indexPath = indexPath {
-     tableView.reloadRowsAtIndexPaths([indexPath],
-     withRowAnimation: UITableViewRowAnimation.Fade)
-     }
-     
-     case .Move:
-     if let indexPath = indexPath {
-     if let newIndexPath = newIndexPath {
-     tableView.deleteRowsAtIndexPaths([indexPath],
-     withRowAnimation: UITableViewRowAnimation.Fade)
-     tableView.insertRowsAtIndexPaths([newIndexPath],
-     withRowAnimation: UITableViewRowAnimation.Fade)
-     }
-     }
-     }
-     }
-     
-     */
-    
     func controller(
         controller: NSFetchedResultsController,
         didChangeObject anObject: AnyObject,
@@ -670,11 +629,10 @@ extension BoardTableViewController : NSFetchedResultsControllerDelegate {
         case NSFetchedResultsChangeType.Update:
             if let updateIndexPath = indexPath {
                 // Note that for Update, we update the row at __indexPath__
-                //   let cell = self.tableView.cellForRowAtIndexPath(updateIndexPath)
-                //     let animal = self.fetchedResultsController.objectAtIndexPath(updateIndexPath) as? Animal
+                   let cell = self.tableView.cellForRowAtIndexPath(updateIndexPath) as! TicketTableViewCell
+                     let ticket = self.fetchedResultsController.objectAtIndexPath(updateIndexPath) as? Ticket
                 
-                //   cell?.textLabel?.text = animal?.commonName
-                //   cell?.detailTextLabel?.text = animal?.habitat
+                   cell.ticket = ticket
             }
         case NSFetchedResultsChangeType.Move:
             // Note that for Move, we delete the row at __indexPath__
