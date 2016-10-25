@@ -15,15 +15,6 @@ class BoardTableViewController: UITableViewController {
     @IBOutlet weak var layerButton: UIButton!
     
     var showAll = true
-  
-    
-    @IBAction func signOutPressed(sender: AnyObject) {
-        SyncService.sharedInstance.removeAllForSignOut()
-        try! FIRAuth.auth()!.signOut()
-        self.showLogin()
-    }
-    
-    // vars
     
     var sectionHeaders = [UIView]()
     
@@ -37,9 +28,8 @@ class BoardTableViewController: UITableViewController {
         return tempFetchedResultsController
     }()
     
-    // actions
     @IBAction func addPressed(sender: AnyObject) {
- 
+   
         let section = self.showAll ? 0 : NSDate().getDayOfWeek()
         
         self.addInSection(section)
@@ -235,11 +225,6 @@ class BoardTableViewController: UITableViewController {
         self.tableView.allowsSelectionDuringEditing = true
         self.setWorkMode()
         
-        self.navigationController?.toolbarHidden = false
-        
-        //    self.toolbarItems = "hello"
-        
-        
         self.tableView.tableFooterView = UIView()
         
         
@@ -277,6 +262,65 @@ class BoardTableViewController: UITableViewController {
         
     }
     
+    @IBAction func settingsPressed(sender: AnyObject) {
+        
+        let alert = UIAlertController(title: "Settings", message: nil, preferredStyle: .ActionSheet)
+       
+        
+        
+        if self.showAll == false {
+            
+            alert.addAction(UIAlertAction(title: "Show All Days", style: .Destructive, handler: { (action
+                ) in
+                self.dismissViewControllerAnimated(true, completion: nil)
+                self.showAll = true
+                self.tableView.reloadData()
+            }))
+        }
+        else {
+            
+            alert.addAction(UIAlertAction(title: "Show Today and Backlog Only", style: .Destructive, handler: { (action
+                ) in
+                self.dismissViewControllerAnimated(true, completion: nil)
+                self.showAll = false
+                self.tableView.reloadData()
+            }))
+        }
+        
+        
+        alert.addAction(UIAlertAction(title: "Sign Out", style: .Default, handler: { (action
+            ) in
+           
+            self.dismissViewControllerAnimated(true, completion: nil)
+            
+            SyncService.sharedInstance.removeAllForSignOut()
+            try! FIRAuth.auth()!.signOut()
+            self.showLogin()
+            
+            
+        }))
+        
+        
+        alert.addAction(UIAlertAction(title: "Restore Purchase", style: .Default, handler: { (action
+            ) in
+            
+            self.dismissViewControllerAnimated(true, completion: nil)
+            
+            Products.instance().restoreAllProducts()
+            
+        }))
+      
+        
+
+  
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action
+            ) in
+            }))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+        
+    }
     // general
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
