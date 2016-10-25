@@ -4,26 +4,22 @@ import Onboard
 import Firebase
 import FirebaseDatabase
 import FirebaseAuth
+import UserNotifications
 
 class BoardTableViewController: UITableViewController {
     
-    @IBOutlet weak var filterSwitch: UISwitch!
-    
-    var showAll = false
-    
-    @IBAction func filterSwitchPressed(sender: AnyObject) {
-        
-        self.showAll = !self.showAll
-        
-        self.tableView.reloadData()
-        
+    @IBAction func buyPressed(sender: AnyObject) {
+        Products.instance().purchaseProduct("1")
     }
     
+    @IBOutlet weak var layerButton: UIButton!
+    
+    var showAll = false
+  
     
     @IBAction func signOutPressed(sender: AnyObject) {
         SyncService.sharedInstance.removeAllForSignOut()
         try! FIRAuth.auth()!.signOut()
-        
         self.showLogin()
     }
     
@@ -41,21 +37,16 @@ class BoardTableViewController: UITableViewController {
         return tempFetchedResultsController
     }()
     
-    // outlets
-    
-    @IBOutlet weak var planWorkButton: UIBarButtonItem!
-    
     // actions
-    
     @IBAction func addPressed(sender: AnyObject) {
-        
+ 
         let section = self.showAll ? 0 : NSDate().getDayOfWeek()
         
         self.addInSection(section)
     }
     
-    @IBAction func PlanWordPressed(sender: AnyObject) {
-        
+    @IBAction func layerPressed(sender: AnyObject) {
+    
         if  self.isActuallyEditing == false {
             
             
@@ -199,9 +190,29 @@ class BoardTableViewController: UITableViewController {
         }
     }
     
+    
+    func updateHeaderOnPurchaseStatus() {
+        let products = Products.instance().productsArray
+        
+        if (products.firstObject?.purchased)! == true {
+            self.tableView.tableHeaderView = nil
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        UNUserNotificationCenter.currentNotificationCenter().requestAuthorizationWithOptions([.Alert,.Sound]) { (bool:Bool, error:NSError?) in
+            
+            self.updateHeaderOnPurchaseStatus()
+        }
         
+        NSNotificationCenter.defaultCenter().addObserverForName("productsRefreshed", object: nil, queue: nil) { (Notification) in
+            
+            self.updateHeaderOnPurchaseStatus()
+            
+        }
+        
+        BuddyBuildSDK.setup()
         
         let defaults = NSUserDefaults.standardUserDefaults()
         
@@ -300,7 +311,7 @@ class BoardTableViewController: UITableViewController {
     func setWorkMode() {
         self.tableView.setEditing(false, animated: true)
         
-        self.planWorkButton.title = "Plan"
+        self.layerButton.setImage(UIImage(named:"layers"), forState: .Normal)
         
         UIView.animateWithDuration(0.3, animations: {
             self.navigationController?.navigationBar.barTintColor = UIColor.redColor()
@@ -309,7 +320,7 @@ class BoardTableViewController: UITableViewController {
     
     func setPlanMode() {
         self.tableView.setEditing(true, animated: true)
-        self.planWorkButton.title = "Work"
+        self.layerButton.setImage(UIImage(named:"layersOn"), forState: .Normal)
         
         
         UIView.animateWithDuration(0.3, animations: {
@@ -395,7 +406,7 @@ class BoardTableViewController: UITableViewController {
         cell.isAddCell = self.isAddAtIndexPath(indexPath)
         cell.ticket =  ticket
         
-     //   cell.dlabel.text = "s:\(cell.ticket!.section) - r:\(cell.ticket!.row)"
+        //   cell.dlabel.text = "s:\(cell.ticket!.section) - r:\(cell.ticket!.row)"
         
         return cell
     }
@@ -527,15 +538,130 @@ extension BoardTableViewController : TicketViewControllerDelegate {
 }
 
 extension BoardTableViewController : NSFetchedResultsControllerDelegate {
+    //  func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    //    self.reloadSectionHeaders()
+    //      tableView.reloadData()
+    //   }
+    
+    
+    
+    
+    
+    
+    
+    
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        
+        
+        if self.isActuallyEditing {
+            return
+        }
+        self.tableView.beginUpdates()
+    }
+    
+    /*
+     func controller(controller: NSFetchedResultsController,
+     didChangeObject anObject: AnyObject,
+     atIndexPath indexPath: NSIndexPath?,
+     forChangeType type: NSFetchedResultsChangeType,
+     newIndexPath: NSIndexPath?)
+     {
+     switch(type) {
+     
+     case .Insert:
+     if let newIndexPath = newIndexPath {
+     tableView.insertRowsAtIndexPaths([newIndexPath],
+     withRowAnimation:UITableViewRowAnimation.Fade)
+     }
+     
+     case .Delete:
+     if let indexPath = indexPath {
+     tableView.deleteRowsAtIndexPaths([indexPath],
+     withRowAnimation: UITableViewRowAnimation.Fade)
+     }
+     
+     case .Update:
+     if let indexPath = indexPath {
+     tableView.reloadRowsAtIndexPaths([indexPath],
+     withRowAnimation: UITableViewRowAnimation.Fade)
+     }
+     
+     case .Move:
+     if let indexPath = indexPath {
+     if let newIndexPath = newIndexPath {
+     tableView.deleteRowsAtIndexPaths([indexPath],
+     withRowAnimation: UITableViewRowAnimation.Fade)
+     tableView.insertRowsAtIndexPaths([newIndexPath],
+     withRowAnimation: UITableViewRowAnimation.Fade)
+     }
+     }
+     }
+     }
+     
+     */
+    
+    func controller(
+        controller: NSFetchedResultsController,
+        didChangeObject anObject: AnyObject,
+                        atIndexPath indexPath: NSIndexPath?,
+                                    forChangeType type: NSFetchedResultsChangeType,
+                                                  newIndexPath: NSIndexPath?) {
+        
+        if self.isActuallyEditing {
+            return
+        }
+        
+        
+        switch type {
+        case NSFetchedResultsChangeType.Insert:
+            // Note that for Insert, we insert a row at the __newIndexPath__
+            if let insertIndexPath = newIndexPath {
+                self.tableView.insertRowsAtIndexPaths([insertIndexPath], withRowAnimation: UITableViewRowAnimation.Right)
+            }
+        case NSFetchedResultsChangeType.Delete:
+            // Note that for Delete, we delete the row at __indexPath__
+            if let deleteIndexPath = indexPath {
+                self.tableView.deleteRowsAtIndexPaths([deleteIndexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+            }
+        case NSFetchedResultsChangeType.Update:
+            if let updateIndexPath = indexPath {
+                // Note that for Update, we update the row at __indexPath__
+                //   let cell = self.tableView.cellForRowAtIndexPath(updateIndexPath)
+                //     let animal = self.fetchedResultsController.objectAtIndexPath(updateIndexPath) as? Animal
+                
+                //   cell?.textLabel?.text = animal?.commonName
+                //   cell?.detailTextLabel?.text = animal?.habitat
+            }
+        case NSFetchedResultsChangeType.Move:
+            // Note that for Move, we delete the row at __indexPath__
+            if let deleteIndexPath = indexPath {
+                self.tableView.deleteRowsAtIndexPaths([deleteIndexPath], withRowAnimation: UITableViewRowAnimation.Left)
+            }
+            
+            // Note that for Move, we insert a row at the __newIndexPath__
+            if let insertIndexPath = newIndexPath {
+                self.tableView.insertRowsAtIndexPaths([insertIndexPath], withRowAnimation: UITableViewRowAnimation.Right)
+            }
+        }
+    }
+    
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        self.reloadSectionHeaders()
-        tableView.reloadData()
+       
+        
+        if self.isActuallyEditing {
+         
+            self.tableView.reloadData()
+            return
+        }
+        tableView.endUpdates()
+        
+        //     self.refreshControl?.attributedTitle = NSAttributedString(string: String(format:"Last update %@",String.niceFormattedCurrentDate()))
     }
 }
 
 
 extension BoardTableViewController : LoginViewControllerDelegate {
     func loginViewControllerDidSignIn(loginViewController: LoginViewController) {
-    //    self.title = FIRAuth.auth()!.currentUser?.email
+        //    self.title = FIRAuth.auth()!.currentUser?.email
     }
 }

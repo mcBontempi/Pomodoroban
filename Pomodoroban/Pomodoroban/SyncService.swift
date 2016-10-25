@@ -77,9 +77,6 @@ class SyncService : NSObject {
                     
                     if name != createOrUpdateTicket.name || createOrUpdateTicket.section != Int32(section)! || createOrUpdateTicket.row != Int32(row)! || createOrUpdateTicket.colorIndex != Int32(colorIndex)! || createOrUpdateTicket.pomodoroEstimate != Int32(pomodoroEstimate)! || createOrUpdateTicket.removed != removedBool || desc != createOrUpdateTicket.desc {
                         
-                        print(name)
-                        print(createOrUpdateTicket.name)
-                        
                         createOrUpdateTicket.name = name
                         
                         createOrUpdateTicket.row = Int32(row)!
@@ -110,8 +107,6 @@ class SyncService : NSObject {
 
 extension SyncService : NSFetchedResultsControllerDelegate {
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        
-        print(type)
         
         if let ticket = anObject as? Ticket {
             

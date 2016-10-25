@@ -11,7 +11,7 @@
 @synthesize price = _price;
 
 
-- (id)initWithProductID:(NSString *)productID teaserImage:(NSString *)teaserImage productPurchasedImage:(NSString *)productPurchasedImage purchased:(BOOL)purchased title:(NSString *)title description:(NSString *)description {
+- (id)initWithProductID:(NSString *)productID teaserImage:(NSString *)teaserImage productPurchasedImage:(NSString *)productPurchasedImage purchased:(BOOL)purchased title:(NSString *)title description:(NSString *)desc {
     self = [super init];
     if (self) {
         self.productID = productID;
@@ -19,7 +19,7 @@
         self.productPurchasedImage = productPurchasedImage;
         self.purchased = purchased;
         self.title = title;
-        self.description = description;
+        self.desc = desc;
  }
 
     return self;
@@ -31,7 +31,7 @@
     [encoder encodeObject:self.productPurchasedImage forKey:@"productPurchasedImage"];
     [encoder encodeObject:[NSNumber numberWithBool:self.purchased] forKey:@"purchased"];
     [encoder encodeObject:self.title forKey:@"title"];
-    [encoder encodeObject:self.description forKey:@"description"];
+    [encoder encodeObject:self.desc forKey:@"desc"];
 }
 
 
@@ -42,7 +42,7 @@
         self.productPurchasedImage = [decoder decodeObjectForKey:@"productPurchasedImage"];
         self.purchased = [[decoder decodeObjectForKey:@"purchased"] boolValue];
         self.title = [decoder decodeObjectForKey:@"title"];
-        self.description = [decoder decodeObjectForKey:@"description"];
+        self.desc = [decoder decodeObjectForKey:@"desc"];
     }
     return self;
 }

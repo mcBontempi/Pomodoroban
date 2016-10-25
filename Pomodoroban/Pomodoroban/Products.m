@@ -92,29 +92,17 @@
         // its for the upgrade
         switch (productsDataVersion) {
             case 0: {
-                Product *pack1 = [[Product alloc] initWithProductID:@"SUBSTITUTE_YOUR_PRODUCTID_HERE_GET_ONE_FROM_ITUNES_CONNECT"
-                                                         teaserImage:@"Pack1.jpg"
-                                               productPurchasedImage:@"Purchase1.png"
+                Product *pack1 = [[Product alloc] initWithProductID:@"1"
+                                                         teaserImage:@"premiumgray.png"
+                                               productPurchasedImage:@"premium.png"
                                                            purchased:NO
-                                                               title:@"Nice product title here"
-                                                         description:@"Useful product description here"];
+                                                               title:@"Premium"
+                                                         description:@"POMODOROBAN PREMIUM is an optional yearly subscription that removes ads and supports future development."];
                 
                 [self.productsArray addObject:pack1];
                 productsDataVersion = 1;
             }
-                
-                // This could be used to have an extra feature added with an app update.
-                /*  case 1: {
-                 Product *pack2 = [[Product alloc] initWithProductID:@"SUBSTITUTE_YOUR_PRODUCTID_HERE_GET_ONE_FROM_ITUNES_CONNECT"
-                 teaserImage:@"Pack2.jpg"
-                 productPurchasedImage:@"Purchase1.png"
-                 purchased:NO
-                 title:@"Nice product title here"
-                 description:@"Useful product description here"];
-                 
-                 [self.productsArray addObject:pack1];
-                 productsDataVersion = 2;
-                 }*/
+
         }
         
         // now save all the stuff back to the NSUserDefaults
@@ -164,7 +152,7 @@
                 break;
         }
     }
-    
+    /*
     // so we dont get multiple alertViews
     UIAlertView *alertView = nil;
     if(restored)
@@ -176,6 +164,8 @@
     
     if(alertView)
         [alertView show];
+     
+     */
     
 }
 

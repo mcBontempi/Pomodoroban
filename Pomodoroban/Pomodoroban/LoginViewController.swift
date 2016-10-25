@@ -46,7 +46,6 @@ class LoginViewController: UIViewController {
   
   func signinFirebaseAccount(email:String, password: String) {
     FIRAuth.auth()!.signInWithEmail(email, password: password, completion: { (user, error) in
-      print(error)
       if error == nil {
         SyncService.sharedInstance.setupSync()
         
@@ -244,8 +243,6 @@ class LoginViewController: UIViewController {
         }, completion: { (completed) in
        
             if FIRAuth.auth()!.currentUser == nil {
-                
-            
             
           UIView.animateWithDuration(1.0, animations: {
             self.introLabel.alpha = 1.0
@@ -281,7 +278,6 @@ class LoginViewController: UIViewController {
           let progress = MBProgressHUD.showHUDAddedTo(self.view, animated: false)
   
           FIRAuth.auth()!.signInWithEmail(self.email.text!, password: self.password.text!, completion: { (user, error) in
-            print(error)
          
             MBProgressHUD.hideHUDForView(self.view, animated: true)
             

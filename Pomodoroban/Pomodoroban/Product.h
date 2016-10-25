@@ -10,9 +10,9 @@
 @property(nonatomic, assign) BOOL purchased;
 @property(nonatomic, strong) NSString *productPurchasedImage;
 @property(nonatomic, strong) NSString *title;
-@property(nonatomic, strong) NSString *description;
+@property(nonatomic, strong) NSString *desc;
 @property(nonatomic, strong) NSString *price;
 
-- (id)initWithProductID:(NSString *)productID teaserImage:(NSString *)teaserImage productPurchasedImage:(NSString *)productPurchasedImage purchased:(BOOL)purchased title:(NSString *)title description:(NSString *)description;
+- (id)initWithProductID:(NSString *)productID teaserImage:(NSString *)teaserImage productPurchasedImage:(NSString *)productPurchasedImage purchased:(BOOL)purchased title:(NSString *)title description:(NSString *)desc;
 
 @end
