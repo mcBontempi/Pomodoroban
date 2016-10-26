@@ -477,6 +477,7 @@ class TimerViewController: UIViewController {
     }
     
     func saveChildMoc() {
+        
         if self.childMoc != nil {
             self.moc.performBlockAndWait({
                 try! self.childMoc.save()

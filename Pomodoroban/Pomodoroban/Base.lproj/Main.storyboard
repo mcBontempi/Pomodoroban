@@ -115,8 +115,47 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ColorTableViewCell" rowHeight="88" id="F1w-b3-SzQ" userLabel="Category Cell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ColorTableViewCell" rowHeight="88" id="gDz-eF-MWn" userLabel="Section Cell">
                                         <rect key="frame" x="0.0" y="152" width="375" height="88"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gDz-eF-MWn" id="yUV-l2-E3w">
+                                            <frame key="frameInset" width="375" height="87.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SECTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h6L-aI-25f">
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="23"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="AmB-1X-X5G">
+                                                    <segments>
+                                                        <segment title="LOG"/>
+                                                        <segment title="MON"/>
+                                                        <segment title="TUE"/>
+                                                        <segment title="WED"/>
+                                                        <segment title="THU"/>
+                                                        <segment title="FRI"/>
+                                                        <segment title="SAT"/>
+                                                        <segment title="SUN"/>
+                                                        <segment title="DONE"/>
+                                                    </segments>
+                                                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </segmentedControl>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="h6L-aI-25f" firstAttribute="leading" secondItem="yUV-l2-E3w" secondAttribute="leadingMargin" constant="5" id="UJ4-1l-RC7"/>
+                                                <constraint firstItem="AmB-1X-X5G" firstAttribute="leading" secondItem="yUV-l2-E3w" secondAttribute="leading" constant="10" id="VOE-gq-rD2"/>
+                                                <constraint firstAttribute="trailing" secondItem="AmB-1X-X5G" secondAttribute="trailing" constant="10" id="ZX5-p8-JrB"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="h6L-aI-25f" secondAttribute="trailing" constant="5" id="bwe-UH-6f5"/>
+                                                <constraint firstItem="h6L-aI-25f" firstAttribute="top" secondItem="yUV-l2-E3w" secondAttribute="topMargin" constant="5" id="deq-JU-pAx"/>
+                                                <constraint firstAttribute="bottom" secondItem="AmB-1X-X5G" secondAttribute="bottom" constant="5" id="mnc-tT-3FC"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ColorTableViewCell" rowHeight="88" id="F1w-b3-SzQ" userLabel="Category Cell">
+                                        <rect key="frame" x="0.0" y="240" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F1w-b3-SzQ" id="MOy-j9-PRj">
                                             <frame key="frameInset" width="375" height="87.5"/>
@@ -152,7 +191,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PomodoroCountTableViewCell" rowHeight="88" id="FOk-36-Z0F" userLabel="Duration Cell">
-                                        <rect key="frame" x="0.0" y="240" width="375" height="88"/>
+                                        <rect key="frame" x="0.0" y="328" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FOk-36-Z0F" id="qkz-fc-1WU">
                                             <frame key="frameInset" width="375" height="87.5"/>
@@ -199,7 +238,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="200" id="F5f-JU-0nf" userLabel="Notes Cell">
-                                        <rect key="frame" x="0.0" y="328" width="375" height="200"/>
+                                        <rect key="frame" x="0.0" y="416" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F5f-JU-0nf" id="AAg-BY-Mmp">
                                             <frame key="frameInset" width="375" height="199.5"/>
@@ -244,7 +283,7 @@
                             </connections>
                         </barButtonItem>
                         <view key="titleView" contentMode="scaleToFill" id="Bun-TA-t4I">
-                            <rect key="frame" x="113" y="6" width="150" height="33"/>
+                            <rect key="frame" x="112.5" y="5.5" width="150" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
@@ -262,6 +301,7 @@
                         <outlet property="notes" destination="AAg-BY-Mmp" id="ONo-rE-t0w"/>
                         <outlet property="notesText" destination="QzL-RF-973" id="JFb-5B-fla"/>
                         <outlet property="rightButton" destination="ele-6Q-V4e" id="2dJ-rd-OYN"/>
+                        <outlet property="sectionSegmentedControl" destination="AmB-1X-X5G" id="BKh-0M-zuK"/>
                         <outlet property="titleField" destination="4Ty-pf-QQp" id="scX-PN-q4B"/>
                     </connections>
                 </tableViewController>
@@ -429,7 +469,7 @@
                                 <rect key="frame" x="0.0" y="169" width="375" height="76"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8QY-gx-r5u" id="snV-hf-C0U">
-                                    <frame key="frameInset" width="375" height="75"/>
+                                    <frame key="frameInset" width="375" height="75.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kDT-H9-ees">
@@ -606,21 +646,21 @@
                                     <outlet property="delegate" destination="RVc-O1-TNp" id="hPB-va-fyg"/>
                                 </connections>
                             </textField>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWw-x7-iso">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWw-x7-iso">
                                 <color key="backgroundColor" red="0.70980392160000005" green="0.70196078429999997" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="User1"/>
                                 <connections>
                                     <action selector="user1Pressed:" destination="RVc-O1-TNp" eventType="touchUpInside" id="sYl-G9-Bcz"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xOW-rH-h2U">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xOW-rH-h2U">
                                 <color key="backgroundColor" red="0.70980392160000005" green="0.70196078429999997" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="User3"/>
                                 <connections>
                                     <action selector="user3Pressed:" destination="RVc-O1-TNp" eventType="touchUpInside" id="tzw-eY-0bo"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOG-WX-0vC">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOG-WX-0vC">
                                 <color key="backgroundColor" red="0.70980392160000005" green="0.70196078429999997" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Dxj-Ly-Lmf"/>

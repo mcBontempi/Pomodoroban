@@ -238,7 +238,7 @@ class LoginViewController: UIViewController {
         
       self.tomatoeTopSpaceConstraint.constant = 30
     
-      UIView.animateWithDuration(3.0, animations: {
+      UIView.animateWithDuration(0.1/*3.0*/, animations: {
         self.view.layoutIfNeeded()
         }, completion: { (completed) in
        

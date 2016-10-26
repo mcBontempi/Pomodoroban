@@ -20,7 +20,6 @@ class NaturalLanguageViewController: UIViewController {
     
     @IBOutlet weak var wordsAndQuestionsView: WordsAndQuestionsView!
     
-    
     let moc = CoreDataServices.sharedInstance.moc
     
     func updateEstimateLabel() {
@@ -57,7 +56,6 @@ class NaturalLanguageViewController: UIViewController {
         let time = dateFormatter.stringFromDate(finishTime)
         
         self.estimateLabel.text = "\(totalWork + totalBreak) mins total time, \(totalWork) mins of work and \(totalBreak) mins of break, estimated finish time will be \(time)"
-        
     }
     
     override func viewDidLoad() {

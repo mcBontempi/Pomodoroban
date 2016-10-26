@@ -11,6 +11,7 @@ class TicketViewController: UITableViewController {
     @IBOutlet weak var notes: UIView!
     @IBOutlet weak var categorySegmentedControl: UISegmentedControl!
     
+    @IBOutlet weak var sectionSegmentedControl: UISegmentedControl!
     @IBOutlet weak var leftButton: UIBarButtonItem!
     @IBOutlet weak var rightButton: UIBarButtonItem!
     @IBOutlet weak var headerColor: UIView!
@@ -44,9 +45,8 @@ class TicketViewController: UITableViewController {
     
     func categoryValueChanged(segmentedControl: UISegmentedControl) {
         
-        self.ticket.colorIndex = Int32(segmentedControl.selectedSegmentIndex)
         
-        self.headerColor.backgroundColor = UIColor.colorFrom(Int( self.ticket.colorIndex))
+        self.headerColor.backgroundColor = UIColor.colorFrom(Int( segmentedControl.selectedSegmentIndex))
         
     }
     
@@ -69,6 +69,9 @@ class TicketViewController: UITableViewController {
         self.categorySegmentedControl.selectedSegmentIndex = Int(self.ticket.colorIndex)
         self.countSegmentedControl.selectedSegmentIndex = Int(self.ticket.pomodoroEstimate) - 1
         
+        
+        
+        self.sectionSegmentedControl.selectedSegmentIndex = Int(self.ticket.section)
         
         
         self.customiseCategorySegmentedControl()
@@ -110,6 +113,9 @@ class TicketViewController: UITableViewController {
             
             self.ticket.desc = self.notesText.text
             self.ticket.name = self.titleField.text
+            
+            self.ticket.colorIndex = Int32(self.categorySegmentedControl.selectedSegmentIndex)
+            self.ticket.section = Int32(self.sectionSegmentedControl.selectedSegmentIndex)
             self.delegate.ticketViewControllerSave(self)
         }
         else {
