@@ -61,10 +61,14 @@ class TimerViewController: UIViewController {
         let pomodoroView = UIView.pomodoroRowWith(Int(ticket.pomodoroEstimate))
         self.pomodoroCountView.addSubview(pomodoroView)
         
-        
-        self.pixelVC.setupAsPomodoro(10)
-        
-        
+        let height = UIScreen.mainScreen().bounds.height
+        if height == 568 {
+            self.pixelVC.setupAsPomodoro(6)
+        }
+        else {
+            self.pixelVC.setupAsPomodoro(10)
+            
+        }
     }
     
     func updateWithBreak() {

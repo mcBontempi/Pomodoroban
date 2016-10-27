@@ -30,7 +30,7 @@ const NSUInteger fontSize = 24;
 {
     if(self = [super initWithFrame:frame]) {
         
-        self.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [UIColor darkGrayColor];
         
         UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]
                                                initWithTarget:self

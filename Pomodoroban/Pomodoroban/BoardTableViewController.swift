@@ -44,12 +44,10 @@ class BoardTableViewController: UITableViewController {
             
             self.isActuallyEditing = true
             self.setPlanMode()
-            self.reloadAddCells()
         }
         else {
             self.isActuallyEditing = false
             self.setWorkMode()
-            self.reloadAddCells()
         }
     }
     
@@ -349,16 +347,7 @@ class BoardTableViewController: UITableViewController {
                 return true
             }
         }
-        func reloadAddCells() {
-            self.tableView.beginUpdates()
-            var indexPaths = [NSIndexPath]()
-            for sectionIndex in 0 ... 8 {
-                indexPaths.append(  NSIndexPath(forRow:self.tableView.numberOfRowsInSection(sectionIndex)-1, inSection:  sectionIndex))
-            }
-            self.tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
-            self.tableView.endUpdates()
-        }
-        
+    
         func setWorkMode() {
             self.tableView.setEditing(false, animated: true)
             
@@ -387,7 +376,7 @@ class BoardTableViewController: UITableViewController {
         override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             if let sections = self.fetchedResultsController.sections {
                 let currentSection = sections[section]
-                return currentSection.numberOfObjects
+                return currentSection.numberOfObjects == 0 ? 0 : currentSection.numberOfObjects - 1
             }
             return 0
         }
@@ -398,7 +387,7 @@ class BoardTableViewController: UITableViewController {
         }
         
         override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-            return !self.isAddAtIndexPath(indexPath)
+            return true
         }
         
         func hiddenSections() -> [Int] {
@@ -414,14 +403,11 @@ class BoardTableViewController: UITableViewController {
                     return 0
                 }
             }
-            
-            return self.isAddAtIndexPath(indexPath) ? 0 :  66
-            
-          //        return self.isAddAtIndexPath(indexPath) ? ( self.isActuallyEditing ? 66 : 0 ) :  66
+            return 66
         }
         
         override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-            return self.isAddAtIndexPath(indexPath) == true ?  .Insert :  .Delete
+            return .Delete
         }
         
         override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -438,41 +424,14 @@ class BoardTableViewController: UITableViewController {
             }
         }
         
-        override func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
-            
-            var realProposed = proposedDestinationIndexPath
-            
-            if proposedDestinationIndexPath.section == sourceIndexPath.section {
-                realProposed = NSIndexPath(forRow: proposedDestinationIndexPath.row, inSection: proposedDestinationIndexPath.section)
-            }
-            else {
-                realProposed = NSIndexPath(forRow: proposedDestinationIndexPath.row-1, inSection: proposedDestinationIndexPath.section)
-                
-            }
-            return !self.isAddAtIndexPath(realProposed) ? proposedDestinationIndexPath : sourceIndexPath
-        }
-        
+    
         override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
             let ticket = fetchedResultsController.objectAtIndexPath(indexPath) as? Ticket
             let cell = tableView.dequeueReusableCellWithIdentifier("TicketTableViewCell") as! TicketTableViewCell
-            cell.isAddCell = self.isAddAtIndexPath(indexPath)
             cell.ticket =  ticket
-            
-            //   cell.dlabel.text = "s:\(cell.ticket!.section) - r:\(cell.ticket!.row)"
-            
             return cell
         }
-        
-        
-        func isAddAtIndexPath(indexPath:NSIndexPath) -> Bool {
-            
-            if let sections = self.fetchedResultsController.sections {
-                let currentSection = sections[indexPath.section]
-                return currentSection.numberOfObjects-1 == indexPath.row
-            }
-            return false
-        }
-        
+    
         override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
             if self.showAll == false {
                 if self.hiddenSections().contains(section) == true {
@@ -483,7 +442,11 @@ class BoardTableViewController: UITableViewController {
         }
         
         override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-            return self.sectionHeaders[section]
+            
+            let view = self.sectionHeaders[section]
+            print(view)
+            
+            return view
         }
         
         
@@ -543,19 +506,15 @@ class BoardTableViewController: UITableViewController {
                     try! self.childMoc.save()
                     self.childMoc = nil
                     
-                    //   self.moc.performBlockAndWait({
-                    //     try! self.moc.save()
-                    
-                    
-                    // })
+                       self.moc.performBlockAndWait({
+                         try! self.moc.save()
+                     })
                 })
             }
         }
         
         override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
             
-            if indexPath.row < self.tableView.numberOfRowsInSection(indexPath.section)-1 {
-                
                 let nc = self.storyboard?.instantiateViewControllerWithIdentifier("TicketNavigationViewController") as! UINavigationController
                 let vc = nc.viewControllers[0] as! TicketViewController
                 
@@ -566,40 +525,8 @@ class BoardTableViewController: UITableViewController {
                 vc.delegate = self
                 
                 self.presentViewController(nc, animated: true) {}
-            }
-            else {
-                self.addInSection(indexPath.section)
-            }
-        }
-    
-    /*
-    // call back function by saveContext, support multi-thread
-    func contextDidSaveContext(notification: NSNotification) {
-        let sender = notification.object as! NSManagedObjectContext
-        if sender == self.moc {
-            NSLog("******** Saved main Context in this thread")
-            self.childMoc!.performBlock {
-                self.childMoc!.mergeChangesFromContextDidSaveNotification(notification)
-            }
-        } else if sender === self.childMoc {
-            NSLog("******** Saved background Context in this thread")
-            self.moc.performBlock {
-                self.moc.mergeChangesFromContextDidSaveNotification(notification)
-            }
-        } else {
-            NSLog("******** Saved Context in other thread")
-            self.childMoc!.performBlock {
-                self.childMoc!.mergeChangesFromContextDidSaveNotification(notification)
-            }
-            self.moc.performBlock {
-                self.moc.mergeChangesFromContextDidSaveNotification(notification)
-            }
         }
     }
- */
-    }
-    
-    // extensions
     
     extension BoardTableViewController : TicketViewControllerDelegate {
         func ticketViewControllerSave(ticketViewController: TicketViewController) {
@@ -612,25 +539,14 @@ class BoardTableViewController: UITableViewController {
         func ticketViewControllerCancel(ticketViewController: TicketViewController) {
             
             self.dismissViewControllerAnimated(true) {
-                
             }
         }
     }
     
     extension BoardTableViewController : NSFetchedResultsControllerDelegate {
-        //   func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        //     self.reloadSectionHeaders()
-        //       tableView.reloadData()
-        //    }
-        
-        
-        
-        
-        
-        
-        
         
         func controllerWillChangeContent(controller: NSFetchedResultsController) {
+     
             
             if self.isActuallyEditing {
                 self.tableView.reloadData()
@@ -638,6 +554,7 @@ class BoardTableViewController: UITableViewController {
             }
             
             self.tableView.beginUpdates()
+            
         }
         
         func controller(
@@ -686,7 +603,6 @@ class BoardTableViewController: UITableViewController {
                     self.tableView.deleteRowsAtIndexPaths([deleteIndexPath], withRowAnimation: UITableViewRowAnimation.Left)
                 }
                 
-                // Note that for Move, we insert a row at the __newIndexPath__
                 if let insertIndexPath = newIndexPath {
                     self.tableView.insertRowsAtIndexPaths([insertIndexPath], withRowAnimation: UITableViewRowAnimation.Right)
                 }
@@ -698,6 +614,10 @@ class BoardTableViewController: UITableViewController {
         
         
         func controllerDidChangeContent(controller: NSFetchedResultsController) {
+         
+          //  self.reloadSectionHeaders()
+            
+            
             if self.isActuallyEditing {
                 return
             }

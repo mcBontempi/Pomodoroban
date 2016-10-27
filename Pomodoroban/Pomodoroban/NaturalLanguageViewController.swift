@@ -64,6 +64,10 @@ class NaturalLanguageViewController: UIViewController {
         self.wordsAndQuestionsView.delegate = self
         
         
+        self.view.backgroundColor = UIColor.darkGrayColor()
+        
+        
+        
     }
     
     @IBAction func didPressCancel(sender: AnyObject) {

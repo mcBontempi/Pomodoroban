@@ -18,13 +18,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let moc = CoreDataServices.sharedInstance.moc
     
     func testSpeech() {
-        //  let utterance = AVSpeechUtterance(string: "")
-        // let synth = AVSpeechSynthesizer()
+          let utterance = AVSpeechUtterance(string: "")
+         let synth = AVSpeechSynthesizer()
         ///  synth.speakUtterance(utterance)
         //  synth.outputChannels?.append(<#T##newElement: Element##Element#>)
+    
+        
+        
+        NSSpeechSynthesizer 
+    
+    synth.sta
     }
     
+    func appearance() {
+        let attr = NSDictionary(object: UIFont(name: "HelveticaNeue-Bold", size: 16.0)!, forKey: NSFontAttributeName)
+        UISegmentedControl.appearance().setTitleTextAttributes(attr as [NSObject : AnyObject] , forState: .Normal)
+    }
+    
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        
+        self.appearance()
+        
+        
+        
+        
         
         FIRApp.configure()
         FIRDatabase.database().persistenceEnabled = true
