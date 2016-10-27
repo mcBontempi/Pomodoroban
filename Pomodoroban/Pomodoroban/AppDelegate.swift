@@ -6,8 +6,6 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-import Speech
-
 import AVFoundation
 
 
@@ -16,22 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     let moc = CoreDataServices.sharedInstance.moc
-    
-    func testSpeech() {
-       //   let utterance = AVSpeechUtterance(string: "")
-     //    let synth = AVSpeechSynthesizer()
-        ///  synth.speakUtterance(utterance)
-        //  synth.outputChannels?.append(<#T##newElement: Element##Element#>)
-    
-        
-        
-   //     NSSpeechSynthesizer
-    
-   // synth.sta
-    }
-    
     func appearance() {
-        let attr = NSDictionary(object: UIFont(name: "HelveticaNeue-Bold", size: 16.0)!, forKey: NSFontAttributeName)
+        let attr = NSDictionary(object: UIFont(name: "HelveticaNeue", size: 6.0)!, forKey: NSFontAttributeName)
         UISegmentedControl.appearance().setTitleTextAttributes(attr as [NSObject : AnyObject] , forState: .Normal)
     }
     
@@ -42,14 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.appearance()
         
         
-        
-        
-        
         FIRApp.configure()
         FIRDatabase.database().persistenceEnabled = true
         
           let products =  Products.instance()
-             print(products.productsArray)
         
         if Ticket.count(moc) == 0 {
             Ticket.removeAllEntities(moc)

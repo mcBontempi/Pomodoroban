@@ -124,17 +124,7 @@ class Runtime: NSManagedObject {
     }
     
     
-    class func printAll(moc:NSManagedObjectContext) {
-        let request = Runtime.fetchRequestAll()
-        
-        let objects = try! moc.executeFetchRequest(request) as! [Runtime]
-        
-        for object in objects {
-            
-            print(object)
-        }
-        
-    }
+
     
     
 }

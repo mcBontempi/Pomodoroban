@@ -2,6 +2,7 @@ import UIKit
 import CoreData
 import LSRepeater
 import Firebase
+import UserNotifications
 
 protocol TimerViewControllerDelegate {
     func timerViewControllerDone(timerViewController: TimerViewController)
@@ -10,7 +11,6 @@ protocol TimerViewControllerDelegate {
 
 class TimerViewController: UIViewController {
     
-    
     var pixelVC: PixelTestViewController!
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -18,6 +18,9 @@ class TimerViewController: UIViewController {
     }
     
     @IBOutlet weak var ticketBackgroundView: UIView!
+    
+    
+    var timers = [NSTimer]()
     
     let storage = FIRStorage.storage()
     
@@ -48,7 +51,30 @@ class TimerViewController: UIViewController {
     let veryDarkBackgroundColor = UIColor(hexString: "333333")!
     let veryDarkBackgroundColorForMask = UIColor(hexString: "2e2e2e")!
     
+    
+    
+    enum State {
+        case Short
+        case Long
+        case Ticket
+        case None
+    }
+    
+    
+    //  var state:State = .None
+    
+    
+    
+    
+    
+    
     func updateWithTicket(ticket: Ticket) {
+        
+        // if (self.state != )
+        
+        
+        // self.state = Ticket
+        
         self.ticketBackgroundView.hidden = false
         self.view.backgroundColor = self.veryDarkBackgroundColor
         self.timerLabel.textColor = UIColor.lightGrayColor()
@@ -67,7 +93,6 @@ class TimerViewController: UIViewController {
         }
         else {
             self.pixelVC.setupAsPomodoro(10)
-            
         }
     }
     
@@ -75,7 +100,6 @@ class TimerViewController: UIViewController {
         self.timerLabel.textColor = UIColor.whiteColor()
         self.ticketBackgroundView.hidden = true
         self.view.backgroundColor = self.darkBackgroundColor
-        
         
         self.pixelVC.setupAsCup(10)
     }
@@ -87,7 +111,6 @@ class TimerViewController: UIViewController {
         
         self.view.backgroundColor = self.darkBackgroundColor
         
-        
         self.pixelVC.setupAsFood(10)
     }
     
@@ -96,8 +119,7 @@ class TimerViewController: UIViewController {
         if let repeater = self.repeater {
             repeater.invalidate()
         }
-        
-        UIApplication.sharedApplication().cancelAllLocalNotifications()
+        self.cancelNotificationsAndAudioPlaybacks()
         
         Runtime.removeAllEntities(self.moc)
         
@@ -119,13 +141,10 @@ class TimerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         self.view.layer.cornerRadius = 20
         self.view.layer.borderWidth = 5
         self.view.layer.borderColor = UIColor.lightGrayColor().CGColor
         self.view.clipsToBounds = true
-        
-        
         
         self.ticketBackgroundView.layer.cornerRadius = 10
         self.ticketBackgroundView.layer.borderWidth = 3
@@ -151,15 +170,11 @@ class TimerViewController: UIViewController {
             
             try! self.moc.save()
             
-            Runtime.printAll(self.moc)
-            
         }
         
         self.runtimes = Runtime.all(self.moc)
         
         self.createNotifications()
-        
-        
         
         self.quitButton.layer.cornerRadius = 4
         self.quitButton.clipsToBounds = true
@@ -172,14 +187,9 @@ class TimerViewController: UIViewController {
         self.repeater = LSRepeater.repeater(0.1, fireOnceInstantly: true, execute: {
             self.update()
         })
-        
-        
     }
     
-    
-    
     var repeater:LSRepeater!
-    
     
     func startDatePlusPauses() -> NSDate {
         var startDatePlusPauses = self.startDate
@@ -231,10 +241,10 @@ class TimerViewController: UIViewController {
                 
                 let pc = ( self.currentPartRemaining) / self.currentPartLength
                 
-            //    UIView.animateWithDuration(0.1, animations: {
-                    
-                    self.pixelVC.setProgress(pc)
-              //  })
+                //    UIView.animateWithDuration(0.1, animations: {
+                
+                self.pixelVC.setProgress(pc)
+                //  })
                 
                 if runtime.type == 0 {
                     
@@ -259,12 +269,7 @@ class TimerViewController: UIViewController {
                     
                     self.updateWithLongBreak()
                 }
-                
-                //  self.upload()
-                
                 return
-                
-                //  self.updateWithTicket(runtime.ticket)
             }
             else {
                 
@@ -275,77 +280,137 @@ class TimerViewController: UIViewController {
         self.close()
     }
     
-    /*
-     func upload() {
-     let image =  self.view.image()
-     
-     if let data = UIImageJPEGRepresentation(image!,3) {
-     
-     let storageRef = storage.reference()
-     
-     let screenshotRef = storageRef.child("screenshot.jpg")
-     
-     let uploadTask = screenshotRef.putData(data, metadata: nil) { metadata, error in
-     if let error = error {
-     UIAlertController.quickMessage(error.description, vc:self)
-     } else {
-     print("uploaded")
-     let downloadURL = metadata!.downloadURL()
-     }
-     }
-     }
-     }
-     */
-    
     func createNotifications() {
-        
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
         // ensure we only have one
-        UIApplication.sharedApplication().cancelAllLocalNotifications()
+        self.cancelNotificationsAndAudioPlaybacks()
         
         var runningTotal:Int32 = 0
+        
+        var index = 0
+        
+        let dateNow = NSDate()
         
         for runtime in self.runtimes {
             
             var message:String!
+            var say:String!
             if runtime.type == 0 {
                 
                 if let ticket = runtime.ticket {
                     
                     message = "It's time to start the '\(ticket.name!)' task"
+                    say = ticket.name!
+                    
                 }
                 else {
                     message = "Test Value"
+                    say = "Test Vlaue"
                 }
             }
             else if runtime.type == 1
             {
-                message = "Take a short break for \(runtime.length/60) mins"
+                message = "Take a short break for \(runtime.length/60) minutes"
+                say = message
             }
             else if runtime.type == 2
             {
-                message = "It's time for a long break of \(runtime.length/60) mins"
+                message = "It's time for a long break of \(runtime.length/60) minutes"
+                say = message
             }
             
-            self.createNotification(self.startDatePlusPauses(), secondsFrom: Int(runningTotal) ,message:message)
+            self.createNotification(dateNow, date:self.startDatePlusPauses(), secondsFrom: Int(runningTotal) ,message:message, index:index, say:say)
             
+            index = index + 1
             runningTotal = runningTotal + runtime.length
-            
+        }
         }
     }
     
-    func createNotification(date:NSDate, secondsFrom:Int, message: String) {
+    var audioPlayer:AVAudioPlayer!
+    
+    func createNotification(dateNow:NSDate, date:NSDate, secondsFrom:Int, message: String, index: Int, say:String) {
         
-        print("mins from now \(secondsFrom) message\(message)")
         
+        let path = self.createAudioFromMessage(say, index:index)
         
-        let notification = UILocalNotification()
+        print("create notification ")
+        print(date)
+        print(secondsFrom)
         
-        notification.alertBody = message
-        notification.alertAction = "Hey there!"
-        notification.soundName = UILocalNotificationDefaultSoundName
-        notification.fireDate = date.dateByAddingTimeInterval(NSTimeInterval(secondsFrom))
-        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        let fireDate = date.dateByAddingTimeInterval(NSTimeInterval(secondsFrom))
+        let seconds = fireDate.timeIntervalSinceDate(dateNow)
+        
+        print(seconds)
+        
+        if seconds > 0 {
+            let content = UNMutableNotificationContent()
+            content.title = "POMODOROBAN"
+            content.body = message
+            content.sound = UNNotificationSound(named:"\(index).wav")
+            content.categoryIdentifier = "com.elonchan.localNotification"
+            
+            let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: seconds , repeats: false)
+            let request = UNNotificationRequest.init(identifier: "FiveSecond", content: content, trigger: trigger)
+            
+            // Schedule the notification.
+            let center = UNUserNotificationCenter.currentNotificationCenter()
+            center.addNotificationRequest(request, withCompletionHandler: nil)
+          dispatch_async(dispatch_get_main_queue(),{
+            
+            let timer = NSTimer(timeInterval: seconds, target: self, selector: Selector("timerDidFire:"), userInfo: path, repeats: false)
+            NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
+            
+            self.timers.append(timer)
+        
+            })
+            
+            }
     }
+    
+    func timerDidFire(timer:NSTimer) {
+        let path = timer.userInfo as! String
+        let url = NSURL(fileURLWithPath: path)
+        print("say speech")
+        print(url)
+        self.audioPlayer = try! AVAudioPlayer(contentsOfURL: url)
+        self.audioPlayer.play()
+    }
+    
+    
+    func createAudioFromMessage(message:String, index:Int) -> String{
+        
+        let libraryPath = NSSearchPathForDirectoriesInDomains(.LibraryDirectory, .UserDomainMask, true)[0]
+        let soundsPath = libraryPath + "/Sounds"
+        let filePath = soundsPath + "/\(index).wav"
+        
+        
+        
+        
+        let fileManager = NSFileManager.defaultManager()
+        do {
+            try fileManager.createDirectoryAtPath(soundsPath, withIntermediateDirectories: false, attributes: nil)
+            
+        } catch let error1 as NSError {
+            print("error" + error1.description)
+        }
+        
+        
+        
+        self.speechEngine.setVoice("cmu_us_slt")
+        self.speechEngine.setPitch(194, variance:5, speed:0.9)
+        
+        
+        self.speechEngine.writeMessage(message,toPath: filePath)
+        
+        return filePath
+        
+    }
+    
+    
+    let speechEngine = FliteTTS()
+    
     
     
     @IBAction func quitPressed(sender: AnyObject) {
@@ -366,8 +431,6 @@ class TimerViewController: UIViewController {
                 
                 let timeDiff = NSDate().timeIntervalSinceDate(startPausedDate)
                 
-                print(timeDiff)
-                
                 totalPausedTime = totalPausedTime + timeDiff
                 
                 userDefaults.removeObjectForKey("startPausedDate")
@@ -386,7 +449,7 @@ class TimerViewController: UIViewController {
                 
                 userDefaults.synchronize()
                 
-                UIApplication.sharedApplication().cancelAllLocalNotifications()
+                self.cancelNotificationsAndAudioPlaybacks()
                 
                 
             }))
@@ -403,7 +466,7 @@ class TimerViewController: UIViewController {
                 
                 userDefaults.synchronize()
                 
-                UIApplication.sharedApplication().cancelAllLocalNotifications()
+                self.cancelNotificationsAndAudioPlaybacks()
                 self.createNotifications()
             }))
             
@@ -418,12 +481,12 @@ class TimerViewController: UIViewController {
                 userDefaults.setDouble(totalPausedTime, forKey: "totalPausedTime")
                 
                 userDefaults.synchronize()
-                UIApplication.sharedApplication().cancelAllLocalNotifications()
+                self.cancelNotificationsAndAudioPlaybacks()
+                
+                self.cancelNotificationsAndAudioPlaybacks()
+                
                 self.createNotifications()
-                
-                
             }))
-            
             
             alert.addAction(UIAlertAction(title: "forward 5 mins", style: .Default, handler: { (action) in
                 
@@ -436,10 +499,8 @@ class TimerViewController: UIViewController {
                 userDefaults.setDouble(totalPausedTime, forKey: "totalPausedTime")
                 
                 userDefaults.synchronize()
-                UIApplication.sharedApplication().cancelAllLocalNotifications()
+                self.cancelNotificationsAndAudioPlaybacks()
                 self.createNotifications()
-                
-                
             }))
         }
         
@@ -454,9 +515,7 @@ class TimerViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action) in
         }))
         
-        
         self.presentViewController(alert, animated: true, completion: nil)
-        
     }
     
     var childMoc:NSManagedObjectContext!
@@ -492,6 +551,17 @@ class TimerViewController: UIViewController {
                 })
             })
         }
+    }
+    
+    func cancelNotificationsAndAudioPlaybacks() {
+        
+        UIApplication.sharedApplication().cancelAllLocalNotifications()
+        
+        for timer in self.timers {
+            timer.invalidate()
+        }
+    
+        self.timers.removeAll()
     }
 }
 

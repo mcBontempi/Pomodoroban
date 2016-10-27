@@ -111,7 +111,6 @@
         
         [self synchronize];
         
-        NSLog(@"%@", self.productsArray);
     }
     
     return self;

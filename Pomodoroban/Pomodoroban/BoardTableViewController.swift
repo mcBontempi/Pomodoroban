@@ -444,7 +444,6 @@ class BoardTableViewController: UITableViewController {
         override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
             
             let view = self.sectionHeaders[section]
-            print(view)
             
             return view
         }

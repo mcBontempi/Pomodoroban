@@ -7,13 +7,6 @@ protocol LoginViewControllerDelegate : class {
   func loginViewControllerDidSignIn(loginViewController:LoginViewController)
 }
 
-enum Mode {
-  case Welcome
-  case Menu
-  case Login
-  case Signup
-}
-
 class LoginViewController: UIViewController {
   
   var mode:Mode = .Welcome
@@ -238,7 +231,7 @@ class LoginViewController: UIViewController {
         
       self.tomatoeTopSpaceConstraint.constant = 30
     
-      UIView.animateWithDuration(2.8, animations: {
+      UIView.animateWithDuration(3.0, animations: {
         self.view.layoutIfNeeded()
         }, completion: { (completed) in
        

@@ -115,9 +115,9 @@ class NaturalLanguageViewController: UIViewController {
             StringAndPredicate(string: "10 minutes", predicate: 10)])
         
         self.shortBreakCount = StringAndPredicateCollection(WIthStringAndPredicateArray: [
-            StringAndPredicate(string: "2nd", predicate: 2),
             StringAndPredicate(string: "3rd", predicate: 3),
-            StringAndPredicate(string: "4th", predicate: 4)])
+            StringAndPredicate(string: "4th", predicate: 4),
+            StringAndPredicate(string: "2nd", predicate: 1)])
         
         self.longBreakLength = StringAndPredicateCollection(WIthStringAndPredicateArray: [
             StringAndPredicate(string: "20 minutes", predicate: 20), //20
