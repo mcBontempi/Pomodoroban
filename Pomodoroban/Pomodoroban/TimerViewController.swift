@@ -364,6 +364,9 @@ class TimerViewController: UIViewController {
     
     func createNotification(dateNow:NSDate, date:NSDate, secondsFrom:Int, message: String, index: Int, say:String) {
         
+        
+        self.createAudioFromMessage(say,index:index)
+        
         let fireDate = date.dateByAddingTimeInterval(NSTimeInterval(secondsFrom))
         let seconds = fireDate.timeIntervalSinceDate(dateNow)
         
