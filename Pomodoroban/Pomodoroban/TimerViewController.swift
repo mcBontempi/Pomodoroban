@@ -367,7 +367,7 @@ class TimerViewController: UIViewController {
     func createNotification(dateNow:NSDate, date:NSDate, secondsFrom:Int, message: String, index: Int, say:String) {
         
         let fireDate = date.dateByAddingTimeInterval(NSTimeInterval(secondsFrom))
-        let seconds = fireDate.timeIntervalSinceDate(dateNow) + 1
+        let seconds = fireDate.timeIntervalSinceDate(dateNow)
         
         if seconds > 0 {
             let content = UNMutableNotificationContent()
