@@ -63,11 +63,6 @@ class NaturalLanguageViewController: UIViewController {
         
         self.wordsAndQuestionsView.delegate = self
         
-        
-        self.view.backgroundColor = UIColor.darkGrayColor()
-        
-        
-        
     }
     
     @IBAction func didPressCancel(sender: AnyObject) {
@@ -77,22 +72,9 @@ class NaturalLanguageViewController: UIViewController {
         }
     
     }
-    
+
     
     override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        /*
-        let tracker = GAI.sharedInstance().defaultTracker
-        tracker.set(kGAIScreenName, value: "Natural Language")
-        
-        let builder = GAIDictionaryBuilder.createScreenView()
-        tracker.send(builder.build() as [NSObject : AnyObject])
- */   
- 
- }
-    
-    
-    override func viewDidAppear(animated: Bool) {
         
         self.pomodoroLengh = StringAndPredicateCollection(WIthStringAndPredicateArray: [
             StringAndPredicate(string: "25 minutes", predicate: 25), //25

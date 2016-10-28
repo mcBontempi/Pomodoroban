@@ -26,20 +26,18 @@ const NSUInteger fontSize = 24;
 @implementation WordsAndQuestionsView
 
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    if(self = [super initWithFrame:frame]) {
-        
-        self.backgroundColor = [UIColor darkGrayColor];
-        
-        UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]
-                                               initWithTarget:self
-                                               action:@selector(hideKeyBoard)];
-        
-        [self addGestureRecognizer:tapGesture];
-    }
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+}
+
+
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
     
-    return self;
+    [self redrawWordsAndQuestions];
+    
 }
 
 - (void)hideKeyBoard
