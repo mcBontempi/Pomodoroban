@@ -147,8 +147,6 @@ class TimerViewController: UIViewController {
         super.viewDidLoad()
         
         
-        
-        
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         appDelegate.timerVC = self

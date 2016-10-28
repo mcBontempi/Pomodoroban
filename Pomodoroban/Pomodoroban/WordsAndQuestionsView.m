@@ -121,9 +121,10 @@ const NSUInteger fontSize = 24;
         
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
             
-            label.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:fontSize];
+            label.font = [UIFont fontWithName:@"HelveticaNeue" size:fontSize];
             label.backgroundColor= [UIColor clearColor];
             label.alpha = 0.8;
+            label.textColor = [UIColor whiteColor];
             
             label.text = [NSString stringWithFormat:@" %@ ",obj];
             
@@ -141,8 +142,8 @@ const NSUInteger fontSize = 24;
             
             TagLabel *tagLabel = [[TagLabel alloc] initWithStringAndPredicateCollection:obj delegate:self];
             
-            tagLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:fontSize];
-            tagLabel.backgroundColor= [UIColor grayColor];
+            tagLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:fontSize];
+            tagLabel.backgroundColor= [UIColor whiteColor];
             tagLabel.alpha = 0.8;
             
             tagLabel.text = [NSString stringWithFormat:@" %@ ",[obj string]];
