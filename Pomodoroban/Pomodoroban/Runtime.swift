@@ -32,7 +32,7 @@ class Runtime: NSManagedObject {
     }
 
     
-    class func createForToday(moc:NSManagedObjectContext, pomodoroLength:Int, shortBreakLength:Int, longBreakLength:Int, shortBreakCount: Int) {
+    class func createForToday(moc:NSManagedObjectContext, pomodoroLength:Double, shortBreakLength:Double, longBreakLength:Double, shortBreakCount: Int) {
         
         let tickets = Ticket.allForToday(moc)
         

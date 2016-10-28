@@ -190,11 +190,7 @@ class BoardTableViewController: UITableViewController {
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        UNUserNotificationCenter.currentNotificationCenter().requestAuthorizationWithOptions([.Alert,.Sound]) { (bool:Bool, error:NSError?) in
-            
-            self.updateHeaderOnPurchaseStatus()
-        }
+  
             NSNotificationCenter.defaultCenter().addObserverForName("productsRefreshed", object: nil, queue: nil) { (Notification) in
                 
                 self.updateHeaderOnPurchaseStatus()
@@ -249,6 +245,11 @@ class BoardTableViewController: UITableViewController {
             SyncService.sharedInstance.setupSync()
      
     //    NSNotificationCenter.defaultCenter().addObserver(self, selector: "contextDidSaveContext:", name: NSManagedObjectContextDidSaveNotification, object: nil)
+  
+    
+        super.viewDidLoad()
+
+    
     }
     
     deinit{
@@ -580,7 +581,7 @@ class BoardTableViewController: UITableViewController {
             case NSFetchedResultsChangeType.Update:
           
                 
-                if let indexPath = indexPath , newIndexPath = newIndexPath {
+                if let indexPath = indexPath , let newIndexPath = newIndexPath {
                     
                         self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Left)
                     

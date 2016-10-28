@@ -20,6 +20,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     
+
+    
+    var timerVC:TimerViewController?
+    
+    func applicationWillResignActive(application: UIApplication) {
+        
+    }
+    
+    
+    func applicationDidEnterBackground(application: UIApplication) {
+     
+        if let timerVC = self.timerVC {
+        
+     //   timerVC.cancelAllAudioPlaybacks()
+        }
+        
+    }
+    
+    func applicationWillEnterForeground(application: UIApplication) {
+    
+        if let timerVC = self.timerVC {
+       //     timerVC.cancelNotificationsAndAudioPlaybacks()
+         //   timerVC.createNotifications()
+        }
+    }
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         

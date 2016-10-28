@@ -27,9 +27,9 @@ class NaturalLanguageViewController: UIViewController {
         let childMoc = CoreDataServices.sharedInstance.childMoc()
         Runtime.removeAllEntities(childMoc)
         
-        Runtime.createForToday(childMoc, pomodoroLength: self.pomodoroLengh.predicate() as! Int
-        , shortBreakLength: (self.shortBreakLength.predicate() as! Int)
-        , longBreakLength: (self.longBreakLength.predicate() as! Int) 
+        Runtime.createForToday(childMoc, pomodoroLength: self.pomodoroLengh.predicate() as! Double
+        , shortBreakLength: (self.shortBreakLength.predicate() as! Double)
+        , longBreakLength: (self.longBreakLength.predicate() as! Double) 
         , shortBreakCount: self.shortBreakCount.predicate() as! Int)
         
         let runtimes = Runtime.all(childMoc)
@@ -148,11 +148,11 @@ class NaturalLanguageViewController: UIViewController {
         self.repeater.invalidate()
         
         let vc = segue.destinationViewController as! TimerViewController
-        let length = self.pomodoroLengh.predicate() as! Int
+        let length = self.pomodoroLengh.predicate() as! Double
         vc.pomodoroLength = length * 60
-        vc.shortBreakLength = self.shortBreakLength.predicate() as! Int * 60
+        vc.shortBreakLength = self.shortBreakLength.predicate() as! Double * 60
         vc.shortBreakCount = self.shortBreakCount.predicate() as! Int
-        vc.longBreakLength = self.longBreakLength.predicate() as! Int * 60
+        vc.longBreakLength = self.longBreakLength.predicate() as! Double * 60
     }
 }
 

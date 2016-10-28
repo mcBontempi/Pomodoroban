@@ -24,10 +24,10 @@ class TimerViewController: UIViewController {
     
     let storage = FIRStorage.storage()
     
-    var pomodoroLength:Int!
-    var shortBreakLength:Int!
+    var pomodoroLength:Double!
+    var shortBreakLength:Double!
     var shortBreakCount:Int!
-    var longBreakLength:Int!
+    var longBreakLength:Double!
     
     var index = 0
     var shortBreaks = 0
@@ -138,8 +138,23 @@ class TimerViewController: UIViewController {
     
     var startDate: NSDate!
     
+    deinit {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        appDelegate.timerVC = nil
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        appDelegate.timerVC = self
         
         self.view.layer.cornerRadius = 20
         self.view.layer.borderWidth = 5
@@ -174,7 +189,23 @@ class TimerViewController: UIViewController {
         
         self.runtimes = Runtime.all(self.moc)
         
-        self.createNotifications()
+        UNUserNotificationCenter.currentNotificationCenter().requestAuthorizationWithOptions([.Alert,.Sound]) { (granted:Bool, error:NSError?) in
+            
+            
+            if granted {
+            
+            self.registerCategory()
+            
+            
+            UNUserNotificationCenter.currentNotificationCenter().delegate = self
+            
+            
+                self.createNotifications()
+     
+        }}
+        
+        
+        
         
         self.quitButton.layer.cornerRadius = 4
         self.quitButton.clipsToBounds = true
@@ -187,6 +218,18 @@ class TimerViewController: UIViewController {
         self.repeater = LSRepeater.repeater(0.1, fireOnceInstantly: true, execute: {
             self.update()
         })
+    }
+    
+    
+    func registerCategory() -> Void{
+        
+        let callNow = UNNotificationAction(identifier: "call", title: "Call now", options: [])
+        let clear = UNNotificationAction(identifier: "clear", title: "Clear", options: [])
+        let category : UNNotificationCategory = UNNotificationCategory.init(identifier: "CALLINNOTIFICATION", actions: [callNow, clear], intentIdentifiers: [], options: [])
+        
+        let center = UNUserNotificationCenter.currentNotificationCenter()
+        center.setNotificationCategories([category])
+        
     }
     
     var repeater:LSRepeater!
@@ -281,8 +324,8 @@ class TimerViewController: UIViewController {
     }
     
     func createNotifications() {
-        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+        //  let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        //  dispatch_async(dispatch_get_global_queue(priority, 0)) {
         // ensure we only have one
         self.cancelNotificationsAndAudioPlaybacks()
         
@@ -325,7 +368,7 @@ class TimerViewController: UIViewController {
             index = index + 1
             runningTotal = runningTotal + runtime.length
         }
-        }
+        //   }
     }
     
     var audioPlayer:AVAudioPlayer!
@@ -357,26 +400,31 @@ class TimerViewController: UIViewController {
             // Schedule the notification.
             let center = UNUserNotificationCenter.currentNotificationCenter()
             center.addNotificationRequest(request, withCompletionHandler: nil)
-          dispatch_async(dispatch_get_main_queue(),{
-            
-            let timer = NSTimer(timeInterval: seconds, target: self, selector: Selector("timerDidFire:"), userInfo: path, repeats: false)
-            NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
-            
-            self.timers.append(timer)
+            //dispatch_async(dispatch_get_main_queue(),{
+                
+                /*
+                 
+                 let timer = NSTimer(timeInterval: seconds, target: self, selector: Selector("timerDidFire:"), userInfo: path, repeats: false)
+                 NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
+                 
+                 self.timers.append(timer)
+                 */
+                
+                
+                
+            //})
+        }
         
-            })
-            
-            }
     }
     
-    func timerDidFire(timer:NSTimer) {
-        let path = timer.userInfo as! String
-        let url = NSURL(fileURLWithPath: path)
-        print("say speech")
-        print(url)
-        self.audioPlayer = try! AVAudioPlayer(contentsOfURL: url)
-        self.audioPlayer.play()
-    }
+  //  func timerDidFire(timer:NSTimer) {
+    //    let path = timer.userInfo as! String
+    //    let url = NSURL(fileURLWithPath: path)
+        //     print("say speech")
+        //     print(url)
+        //     self.audioPlayer = try! AVAudioPlayer(contentsOfURL: url)
+        //     self.audioPlayer.play()
+   // }
     
     
     func createAudioFromMessage(message:String, index:Int) -> String{
@@ -483,8 +531,6 @@ class TimerViewController: UIViewController {
                 userDefaults.synchronize()
                 self.cancelNotificationsAndAudioPlaybacks()
                 
-                self.cancelNotificationsAndAudioPlaybacks()
-                
                 self.createNotifications()
             }))
             
@@ -553,15 +599,21 @@ class TimerViewController: UIViewController {
         }
     }
     
-    func cancelNotificationsAndAudioPlaybacks() {
-        
-        UIApplication.sharedApplication().cancelAllLocalNotifications()
-        
+    func cancelAllAudioPlaybacks() {
         for timer in self.timers {
             timer.invalidate()
         }
-    
+        
         self.timers.removeAll()
+    }
+    
+    func cancelNotificationsAndAudioPlaybacks() {
+        
+        self.cancelAllAudioPlaybacks()
+        
+        //  UNUserNotificationCenter.currentNotificationCenter().removeAllPendingNotificationRequests()
+        
+        
     }
 }
 
@@ -577,5 +629,33 @@ extension TimerViewController : TicketViewControllerDelegate {
         self.dismissViewControllerAnimated(true) {
         }
     }
+}
+
+
+extension TimerViewController : UNUserNotificationCenterDelegate {
+
+    
+    
+    
+    func userNotificationCenter(center: UNUserNotificationCenter, willPresentNotification notification: UNNotification, withCompletionHandler completionHandler: (UNNotificationPresentationOptions) -> Void) {
+        
+        print("willPresent")
+        completionHandler([.Sound])
+    }
+    
+    /*
+    func userNotificationCenter(center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: () -> Void) {
+        
+        let path = notification.request.content.sound
+        
+        let url = NSURL(fileURLWithPath: path!.description)
+        print("say speech")
+        print(url)
+        self.audioPlayer = try! AVAudioPlayer(contentsOfURL: url)
+        self.audioPlayer.play()
+        
+    }
+ */
+    
 }
 
