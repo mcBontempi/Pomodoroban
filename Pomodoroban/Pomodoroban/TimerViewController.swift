@@ -366,17 +366,8 @@ class TimerViewController: UIViewController {
     
     func createNotification(dateNow:NSDate, date:NSDate, secondsFrom:Int, message: String, index: Int, say:String) {
         
-        
-        let path = self.createAudioFromMessage(say, index:index)
-        
-        print("create notification ")
-        print(date)
-        print(secondsFrom)
-        
         let fireDate = date.dateByAddingTimeInterval(NSTimeInterval(secondsFrom))
-        let seconds = fireDate.timeIntervalSinceDate(dateNow)
-        
-        print(seconds)
+        let seconds = fireDate.timeIntervalSinceDate(dateNow) + 1
         
         if seconds > 0 {
             let content = UNMutableNotificationContent()
@@ -384,16 +375,12 @@ class TimerViewController: UIViewController {
             content.body = message
             content.sound = UNNotificationSound(named:"\(index).wav")
             content.categoryIdentifier = "dave"
-            
             let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: seconds , repeats: false)
             let request = UNNotificationRequest.init(identifier: "\(index)", content: content, trigger: trigger)
-            
             // Schedule the notification.
             let center = UNUserNotificationCenter.currentNotificationCenter()
             center.addNotificationRequest(request, withCompletionHandler: nil)
-            
         }
-        
     }
     
     func createAudioFromMessage(message:String, index:Int){
