@@ -19,9 +19,6 @@ class TimerViewController: UIViewController {
     
     @IBOutlet weak var ticketBackgroundView: UIView!
     
-    
-    var timers = [NSTimer]()
-    
     let storage = FIRStorage.storage()
     
     var pomodoroLength:Double!
@@ -189,20 +186,14 @@ class TimerViewController: UIViewController {
         
         self.runtimes = Runtime.all(self.moc)
         
-        UNUserNotificationCenter.currentNotificationCenter().requestAuthorizationWithOptions([.Alert,.Sound]) { (granted:Bool, error:NSError?) in
-            
-            
-            if granted {
-            
-            self.registerCategory()
-            
-            
-            UNUserNotificationCenter.currentNotificationCenter().delegate = self
-            
-            
-                self.createNotifications()
-     
-        }}
+        
+        self.registerCategory()
+        
+        
+        UNUserNotificationCenter.currentNotificationCenter().delegate = self
+        
+        
+        self.createNotifications()
         
         
         
@@ -392,50 +383,24 @@ class TimerViewController: UIViewController {
             content.title = "POMODOROBAN"
             content.body = message
             content.sound = UNNotificationSound(named:"\(index).wav")
-            content.categoryIdentifier = "com.elonchan.localNotification"
+            content.categoryIdentifier = "dave"
             
             let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: seconds , repeats: false)
-            let request = UNNotificationRequest.init(identifier: "FiveSecond", content: content, trigger: trigger)
+            let request = UNNotificationRequest.init(identifier: "\(index)", content: content, trigger: trigger)
             
             // Schedule the notification.
             let center = UNUserNotificationCenter.currentNotificationCenter()
             center.addNotificationRequest(request, withCompletionHandler: nil)
-            //dispatch_async(dispatch_get_main_queue(),{
-                
-                /*
-                 
-                 let timer = NSTimer(timeInterval: seconds, target: self, selector: Selector("timerDidFire:"), userInfo: path, repeats: false)
-                 NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
-                 
-                 self.timers.append(timer)
-                 */
-                
-                
-                
-            //})
+            
         }
         
     }
     
-  //  func timerDidFire(timer:NSTimer) {
-    //    let path = timer.userInfo as! String
-    //    let url = NSURL(fileURLWithPath: path)
-        //     print("say speech")
-        //     print(url)
-        //     self.audioPlayer = try! AVAudioPlayer(contentsOfURL: url)
-        //     self.audioPlayer.play()
-   // }
-    
-    
-    func createAudioFromMessage(message:String, index:Int) -> String{
+    func createAudioFromMessage(message:String, index:Int){
         
         let libraryPath = NSSearchPathForDirectoriesInDomains(.LibraryDirectory, .UserDomainMask, true)[0]
         let soundsPath = libraryPath + "/Sounds"
         let filePath = soundsPath + "/\(index).wav"
-        
-        
-        
-        
         let fileManager = NSFileManager.defaultManager()
         do {
             try fileManager.createDirectoryAtPath(soundsPath, withIntermediateDirectories: false, attributes: nil)
@@ -444,16 +409,9 @@ class TimerViewController: UIViewController {
             print("error" + error1.description)
         }
         
-        
-        
         self.speechEngine.setVoice("cmu_us_slt")
-        self.speechEngine.setPitch(194, variance:5, speed:0.9)
-        
-        
+        self.speechEngine.setPitch(194, variance:0, speed:1.0)
         self.speechEngine.writeMessage(message,toPath: filePath)
-        
-        return filePath
-        
     }
     
     
@@ -599,21 +557,9 @@ class TimerViewController: UIViewController {
         }
     }
     
-    func cancelAllAudioPlaybacks() {
-        for timer in self.timers {
-            timer.invalidate()
-        }
-        
-        self.timers.removeAll()
-    }
-    
     func cancelNotificationsAndAudioPlaybacks() {
-        
-        self.cancelAllAudioPlaybacks()
-        
-        //  UNUserNotificationCenter.currentNotificationCenter().removeAllPendingNotificationRequests()
-        
-        
+        UNUserNotificationCenter.currentNotificationCenter().removeAllDeliveredNotifications()
+        UNUserNotificationCenter.currentNotificationCenter().removeAllPendingNotificationRequests()
     }
 }
 
@@ -633,7 +579,7 @@ extension TimerViewController : TicketViewControllerDelegate {
 
 
 extension TimerViewController : UNUserNotificationCenterDelegate {
-
+    
     
     
     
@@ -644,18 +590,18 @@ extension TimerViewController : UNUserNotificationCenterDelegate {
     }
     
     /*
-    func userNotificationCenter(center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: () -> Void) {
-        
-        let path = notification.request.content.sound
-        
-        let url = NSURL(fileURLWithPath: path!.description)
-        print("say speech")
-        print(url)
-        self.audioPlayer = try! AVAudioPlayer(contentsOfURL: url)
-        self.audioPlayer.play()
-        
-    }
- */
+     func userNotificationCenter(center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: () -> Void) {
+     
+     let path = notification.request.content.sound
+     
+     let url = NSURL(fileURLWithPath: path!.description)
+     print("say speech")
+     print(url)
+     self.audioPlayer = try! AVAudioPlayer(contentsOfURL: url)
+     self.audioPlayer.play()
+     
+     }
+     */
     
 }
 

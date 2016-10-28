@@ -207,8 +207,6 @@ class Ticket: NSManagedObject {
         
         for section in 0...8 {
             
-            
-            
             ticket = Ticket.createInMoc(moc)
             ticket.name = ""
             ticket.section = Int32(section)
