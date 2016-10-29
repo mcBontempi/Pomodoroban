@@ -357,6 +357,10 @@ class TimerViewController: UIViewController {
             index = index + 1
             runningTotal = runningTotal + runtime.length
         }
+        
+        self.createNotification(dateNow, date:self.startDatePlusPauses(), secondsFrom: Int(runningTotal)-1 ,message:"End Of Work, well done", index:index, say:"End Of Work, well done")
+        
+        
         //   }
     }
     
@@ -368,9 +372,18 @@ class TimerViewController: UIViewController {
         self.createAudioFromMessage(say,index:index)
         
         let fireDate = date.dateByAddingTimeInterval(NSTimeInterval(secondsFrom))
-        let seconds = fireDate.timeIntervalSinceDate(dateNow)
+        var seconds = fireDate.timeIntervalSinceDate(dateNow)
+       
+        
+        if seconds > -1 && seconds <= 0 {
+            seconds = 0.01
+        }
+        
         
         if seconds > 0 {
+           
+            
+            
             let content = UNMutableNotificationContent()
             content.title = "POMODOROBAN"
             content.body = message
@@ -382,6 +395,8 @@ class TimerViewController: UIViewController {
             let center = UNUserNotificationCenter.currentNotificationCenter()
             center.addNotificationRequest(request, withCompletionHandler: nil)
         }
+        
+    
     }
     
     func createAudioFromMessage(message:String, index:Int){
