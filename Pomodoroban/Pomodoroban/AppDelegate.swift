@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     let moc = CoreDataServices.sharedInstance.moc
     func appearance() {
-        let attr = NSDictionary(object: UIFont(name: "HelveticaNeue", size: 6.0)!, forKey: NSFontAttributeName)
+        let attr = NSDictionary(object: UIFont(name: "HelveticaNeue", size: 10.0)!, forKey: NSFontAttributeName)
         UISegmentedControl.appearance().setTitleTextAttributes(attr as [NSObject : AnyObject] , forState: .Normal)
     }
     

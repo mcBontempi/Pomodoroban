@@ -125,6 +125,7 @@
 		D6456A5B1DA5013A0002FDA2 /* TicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A5A1DA5013A0002FDA2 /* TicketViewController.swift */; };
 		D6456A681DA534330002FDA2 /* UIColor+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A671DA534330002FDA2 /* UIColor+Palette.swift */; };
 		D6456A6A1DA540E70002FDA2 /* UIView+PomodoroRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A691DA540E70002FDA2 /* UIView+PomodoroRow.swift */; };
+		D655FFD71DC7811E00ED6363 /* UIImage + Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D655FFD61DC7811E00ED6363 /* UIImage + Color.swift */; };
 		D656B36B1DA413630035500A /* NSDate+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D656B36A1DA413630035500A /* NSDate+Utils.swift */; };
 		D665D2741DB0FD5D0079ED43 /* UIView+Capture.swift in Sources */ = {isa = PBXBuildFile; fileRef = D665D2731DB0FD5D0079ED43 /* UIView+Capture.swift */; };
 		D665D2781DB104F30079ED43 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D665D2771DB104F30079ED43 /* GoogleService-Info.plist */; };
@@ -136,6 +137,7 @@
 		D686EF981DB62807001431D4 /* Pomodoroban.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D686EF961DB62807001431D4 /* Pomodoroban.xcdatamodeld */; };
 		D686EF9A1DB64C1C001431D4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D686EF991DB64C1C001431D4 /* LoginViewController.swift */; };
 		D686EF9C1DB64CE2001431D4 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D686EF9B1DB64CE2001431D4 /* SignupViewController.swift */; };
+		D6E5E0F71DCB58B100CDA49F /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E5E0F61DCB58B100CDA49F /* ColorPicker.swift */; };
 		D6E71D801DA3EB5C0055F2AA /* WordsAndQuestionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E71D7E1DA3EB5C0055F2AA /* WordsAndQuestionsView.m */; };
 		D6E71D831DA3ECAE0055F2AA /* TagLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E71D821DA3ECAE0055F2AA /* TagLabel.m */; };
 		D6E71D871DA3EDBB0055F2AA /* CALayer+Animations.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E71D861DA3EDBB0055F2AA /* CALayer+Animations.m */; };
@@ -340,6 +342,7 @@
 		D6456A5A1DA5013A0002FDA2 /* TicketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketViewController.swift; sourceTree = "<group>"; };
 		D6456A671DA534330002FDA2 /* UIColor+Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Palette.swift"; sourceTree = "<group>"; };
 		D6456A691DA540E70002FDA2 /* UIView+PomodoroRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+PomodoroRow.swift"; sourceTree = "<group>"; };
+		D655FFD61DC7811E00ED6363 /* UIImage + Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage + Color.swift"; sourceTree = "<group>"; };
 		D656B36A1DA413630035500A /* NSDate+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Utils.swift"; sourceTree = "<group>"; };
 		D665D2731DB0FD5D0079ED43 /* UIView+Capture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Capture.swift"; sourceTree = "<group>"; };
 		D665D2771DB104F30079ED43 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -353,6 +356,7 @@
 		D686EF971DB62807001431D4 /* Pomodoroban.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pomodoroban.xcdatamodel; sourceTree = "<group>"; };
 		D686EF991DB64C1C001431D4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D686EF9B1DB64CE2001431D4 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		D6E5E0F61DCB58B100CDA49F /* ColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
 		D6E71D7D1DA3EB5C0055F2AA /* WordsAndQuestionsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordsAndQuestionsView.h; sourceTree = "<group>"; };
 		D6E71D7E1DA3EB5C0055F2AA /* WordsAndQuestionsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordsAndQuestionsView.m; sourceTree = "<group>"; };
 		D6E71D7F1DA3EB5C0055F2AA /* WordsAndQuestionsViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordsAndQuestionsViewDelegate.h; sourceTree = "<group>"; };
@@ -674,8 +678,17 @@
 				D6456A691DA540E70002FDA2 /* UIView+PomodoroRow.swift */,
 				D60AD76B1DAE41B60011F429 /* UIImage + ColorMask.swift */,
 				D686EF901DB4CF3F001431D4 /* UIAlertController + Quick.swift */,
+				D655FFD61DC7811E00ED6363 /* UIImage + Color.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		D6E5E0F51DCB581A00CDA49F /* ColorPicker */ = {
+			isa = PBXGroup;
+			children = (
+				D6E5E0F61DCB58B100CDA49F /* ColorPicker.swift */,
+			);
+			name = ColorPicker;
 			sourceTree = "<group>";
 		};
 		D6E71D911DA3F46E0055F2AA /* WordsAndQuestions */ = {
@@ -745,6 +758,7 @@
 		FD5BE9E01C5BB5CA00535A78 /* Pomodoroban */ = {
 			isa = PBXGroup;
 			children = (
+				D6E5E0F51DCB581A00CDA49F /* ColorPicker */,
 				D6177C521DC21363008A61CE /* flite-1.4-iphone */,
 				FD577BD41DB93B8C00470457 /* StoreKitWrapper */,
 				D686EF921DB4D99D001431D4 /* Pomodoroban.entitlements */,
@@ -961,6 +975,7 @@
 				D6177D591DC21363008A61CE /* us_nums_cart.c in Sources */,
 				D6177D231DC21363008A61CE /* cst_voice.c in Sources */,
 				D67FAED11D952B1C0085BF2D /* TicketTableViewCell.swift in Sources */,
+				D6E5E0F71DCB58B100CDA49F /* ColorPicker.swift in Sources */,
 				D6177D241DC21363008A61CE /* cst_wave.c in Sources */,
 				D60AD76F1DAE509C0011F429 /* ImageMaskView.swift in Sources */,
 				D656B36B1DA413630035500A /* NSDate+Utils.swift in Sources */,
@@ -1047,6 +1062,7 @@
 				FD577BD91DB93BA500470457 /* Product.m in Sources */,
 				D6177D3B1DC21363008A61CE /* cmu_us_rms.c in Sources */,
 				D6177D141DC21363008A61CE /* cst_regex.c in Sources */,
+				D655FFD71DC7811E00ED6363 /* UIImage + Color.swift in Sources */,
 				D6177D2C1DC21363008A61CE /* cmu_us_awb_cg_durmodel.c in Sources */,
 				D6177D371DC21363008A61CE /* cmu_us_kal16_diphone.c in Sources */,
 				D6177D1E1DC21363008A61CE /* cst_utterance.c in Sources */,

@@ -34,6 +34,9 @@ class TicketViewController: UITableViewController {
         
         let colors = UIColor.colorArray().reverse()
         for color in colors {
+            
+            print(color)
+            
             let view = self.categorySegmentedControl.subviews[index]
             
             index = index + 1
@@ -58,6 +61,10 @@ class TicketViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        self.customiseCategorySegmentedControl()
+        
+        
         self.tableView.tableFooterView = UIView()
         
         
@@ -74,7 +81,6 @@ class TicketViewController: UITableViewController {
         self.sectionSegmentedControl.selectedSegmentIndex = Int(self.ticket.section)
         
         
-        self.customiseCategorySegmentedControl()
         
         self.titleField.text = self.ticket.name
         
@@ -95,6 +101,8 @@ class TicketViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        
         
         /*
         let tracker = GAI.sharedInstance().defaultTracker
@@ -127,6 +135,7 @@ class TicketViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
         
         self.titleField.resignFirstResponder()
         self.notes.resignFirstResponder()

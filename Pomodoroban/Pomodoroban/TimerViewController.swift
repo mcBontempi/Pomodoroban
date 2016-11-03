@@ -333,7 +333,7 @@ class TimerViewController: UIViewController {
                 if let ticket = runtime.ticket {
                     
                     message = "It's time to start the '\(ticket.name!)' task"
-                    say = ticket.name!
+                    say = message
                     
                 }
                 else {
@@ -373,7 +373,7 @@ class TimerViewController: UIViewController {
         
         let fireDate = date.dateByAddingTimeInterval(NSTimeInterval(secondsFrom))
         var seconds = fireDate.timeIntervalSinceDate(dateNow)
-       
+        
         
         if seconds > -1 && seconds <= 0 {
             seconds = 0.01
@@ -381,7 +381,7 @@ class TimerViewController: UIViewController {
         
         
         if seconds > 0 {
-           
+            
             
             
             let content = UNMutableNotificationContent()
@@ -396,7 +396,7 @@ class TimerViewController: UIViewController {
             center.addNotificationRequest(request, withCompletionHandler: nil)
         }
         
-    
+        
     }
     
     func createAudioFromMessage(message:String, index:Int){
