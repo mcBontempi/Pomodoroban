@@ -1,4 +1,5 @@
 import UIKit
+import EasyTipView
 
 protocol TicketViewControllerDelegate {
     func ticketViewControllerSave(ticketViewController:TicketViewController)
@@ -93,9 +94,6 @@ class TicketViewController: UITableViewController {
         self.headerColor.backgroundColor = UIColor.colorFrom(Int( self.ticket.colorIndex))
         
         //    let pomodoroView = UIView.pomodoroRowWith(Int(self.ticket.pomodoroEstimate))
-        
-        
-        
     }
     
     
@@ -105,14 +103,64 @@ class TicketViewController: UITableViewController {
         
         
         /*
-        let tracker = GAI.sharedInstance().defaultTracker
-        tracker.set(kGAIScreenName, value: "Story Editor")
+         let tracker = GAI.sharedInstance().defaultTracker
+         tracker.set(kGAIScreenName, value: "Story Editor")
+         
+         let builder = GAIDictionaryBuilder.createScreenView()
+         tracker.send(builder.build() as [NSObject : AnyObject])
+         */
         
-        let builder = GAIDictionaryBuilder.createScreenView()
-        tracker.send(builder.build() as [NSObject : AnyObject])
-    */
- 
- }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        if defaults.objectForKey("shownTicketToolTips") == nil {
+            self.showColorTooltip()
+            
+            defaults.setBool(true, forKey: "shownTicketToolTips")
+            
+            defaults.synchronize()
+            
+        }
+        
+        
+        
+    }
+    
+    
+    var colorTooltip:EasyTipView!
+    
+    func showColorTooltip() {
+        self.colorTooltip = EasyTipView(text: "Use Colors to organise your stories on the Board.", preferences: self.tooltipPrefs(), delegate: self)
+        self.colorTooltip.show(animated: true, forView: self.categorySegmentedControl, withinSuperview: self.tableView)
+    }
+    
+    
+    var pomodoroTooltip:EasyTipView!
+    
+    func showPomodoroTooltip() {
+        self.pomodoroTooltip = EasyTipView(text: "Assign a number of pomodoro (which usually equal 25 mins) to a story, which allows POMODOROBAN to work its magic", preferences: self.tooltipPrefs(), delegate: self)
+        self.pomodoroTooltip.show(animated: true, forView: self.categorySegmentedControl, withinSuperview: self.tableView)
+    }
+    
+    
+    func tooltipPrefs() -> EasyTipView.Preferences {
+        
+        var preferences = EasyTipView.Preferences()
+        
+        preferences.drawing.font = UIFont(name: "Futura-Medium", size: 16)!
+        preferences.drawing.foregroundColor = UIColor.whiteColor()
+        preferences.drawing.backgroundColor = UIColor(hue:0.46, saturation:0.99, brightness:0.6, alpha:1)
+        preferences.drawing.arrowPosition = .Right
+        
+        return preferences
+    }
+    
+    
     
     
     func save() {
@@ -154,5 +202,13 @@ class TicketViewController: UITableViewController {
     }
 }
 
+extension TicketViewController : EasyTipViewDelegate {
+    func easyTipViewDidDismiss(tipView : EasyTipView) {
+        
+        if tipView == self.colorTooltip {
+            self.showPomodoroTooltip()
+        }
+    }
+}
 
 

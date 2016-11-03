@@ -23,12 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        UIApplication.sharedApplication().idleTimerDisabled = true
+        
         self.appearance()
         
         FIRApp.configure()
         FIRDatabase.database().persistenceEnabled = true
         
-        let products =  Products.instance()
+        Products.instance()
         
         if Ticket.count(moc) == 0 {
             Ticket.removeAllEntities(moc)
