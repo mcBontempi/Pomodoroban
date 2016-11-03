@@ -118,14 +118,14 @@ class TicketViewController: UITableViewController {
         
         let defaults = NSUserDefaults.standardUserDefaults()
         
-        if defaults.objectForKey("shownTicketToolTips") == nil {
+     //   if defaults.objectForKey("shownTicketToolTips") == nil {
             self.showColorTooltip()
             
             defaults.setBool(true, forKey: "shownTicketToolTips")
             
             defaults.synchronize()
             
-        }
+       // }
         
         
         
