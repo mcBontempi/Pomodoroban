@@ -5,8 +5,13 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 import UserNotifications
+import EasyTipView
 
 class BoardTableViewController: UITableViewController {
+    
+    @IBOutlet weak var addButton: UIButton!
+    
+    @IBOutlet weak var playButton: UIButton!
     
     @IBAction func buyPressed(sender: AnyObject) {
         Products.instance().purchaseProduct("1")
@@ -216,8 +221,6 @@ class BoardTableViewController: UITableViewController {
             
         }
         
-        
-        
         self.createSectionHeaders()
         
         try! self.fetchedResultsController.performFetch()
@@ -250,15 +253,30 @@ class BoardTableViewController: UITableViewController {
         SyncService.sharedInstance.setupSync()
         
         //    NSNotificationCenter.defaultCenter().addObserver(self, selector: "contextDidSaveContext:", name: NSManagedObjectContextDidSaveNotification, object: nil)
-        
+     
         
         super.viewDidLoad()
         
-        
+        if Ticket.all(self.moc).count == 9 {
+            self.showAddTooltip()
+        }
     }
+    
     
     deinit{
         NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    func tooltipPrefs() -> EasyTipView.Preferences {
+        
+        var preferences = EasyTipView.Preferences()
+        
+        preferences.drawing.font = UIFont(name: "Futura-Medium", size: 16)!
+        preferences.drawing.foregroundColor = UIColor.whiteColor()
+        preferences.drawing.backgroundColor = UIColor(hue:0.46, saturation:0.99, brightness:0.6, alpha:1)
+        preferences.drawing.arrowPosition = .Right
+        
+        return preferences
     }
     
     
@@ -342,7 +360,7 @@ class BoardTableViewController: UITableViewController {
             
             let day = dateFormatter.stringFromDate(NSDate())
             
-            let alert = UIAlertController(title: "Oops", message: "There need to be some pomodoro in \(day) for this to work!", preferredStyle: .Alert)
+            let alert = UIAlertController(title: "Oops", message: "There need to be some Stories in \(day) for this to work!", preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
             
             self.presentViewController(alert, animated: true, completion: nil)
@@ -442,7 +460,7 @@ class BoardTableViewController: UITableViewController {
                 let cell = tableView.dequeueReusableCellWithIdentifier("TicketTableViewCell") as! TicketTableViewCell
                 cell.ticket =  ticket
                 
-         //       cell.dlabel.text = "s:\(cell.ticket!.section) - r:\(cell.ticket!.row)"
+                //       cell.dlabel.text = "s:\(cell.ticket!.section) - r:\(cell.ticket!.row)"
                 return cell
             }
         }
@@ -543,6 +561,22 @@ class BoardTableViewController: UITableViewController {
         
         self.presentViewController(nc, animated: true) {}
     }
+    
+    
+    var addTooltip:EasyTipView!
+    
+    func showAddTooltip() {
+        self.addTooltip = EasyTipView(text: "Use the plus button to create a new Story to add to the board.", preferences: self.tooltipPrefs(), delegate: self)
+        self.addTooltip.show(animated: true, forView: self.addButton, withinSuperview: self.navigationController?.view)
+    }
+    
+    var playTooltip:EasyTipView!
+    
+    func showPlayTooltip() {
+        self.playTooltip = EasyTipView(text: "Use the play button to start work, you will need to add some stories to today for this to work!", preferences: self.tooltipPrefs(), delegate: self)
+        self.playTooltip.show(animated: true, forView: self.playButton, withinSuperview: self.navigationController?.view)
+    }
+    
 }
 
 extension BoardTableViewController : TicketViewControllerDelegate {
@@ -568,7 +602,7 @@ extension BoardTableViewController : NSFetchedResultsControllerDelegate {
         if self.isActuallyEditing {
             return
         }
-
+        
         
         self.tableView.beginUpdates()
         
@@ -623,9 +657,6 @@ extension BoardTableViewController : NSFetchedResultsControllerDelegate {
             if let insertIndexPath = newIndexPath {
                 self.tableView.insertRowsAtIndexPaths([insertIndexPath], withRowAnimation: UITableViewRowAnimation.Right)
             }
-            
-            
-            
         }
     }
     
@@ -642,8 +673,16 @@ extension BoardTableViewController : NSFetchedResultsControllerDelegate {
     
 }
 
-
 extension BoardTableViewController : LoginViewControllerDelegate {
     func loginViewControllerDidSignIn(loginViewController: LoginViewController) {
+    }
+}
+
+extension BoardTableViewController : EasyTipViewDelegate {
+    func easyTipViewDidDismiss(tipView : EasyTipView) {
+     
+        if tipView == self.addTooltip {
+            self.showPlayTooltip()
+        }
     }
 }

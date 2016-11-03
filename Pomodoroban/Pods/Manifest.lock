@@ -1,6 +1,7 @@
 PODS:
   - Crashlytics (3.8.3):
     - Fabric (~> 1.6.3)
+  - EasyTipView (1.0.1)
   - Fabric (1.6.10)
   - Firebase/Auth (3.7.1):
     - Firebase/Core
@@ -49,6 +50,7 @@ PODS:
 
 DEPENDENCIES:
   - Crashlytics
+  - EasyTipView (= 1.0.1)
   - Fabric
   - Firebase/Auth
   - Firebase/Database
@@ -61,6 +63,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
+  EasyTipView: e74f3f85bd721c9cd09c52e4588d727e3c8f55cf
   Fabric: c73f371ee543e3f0b80608f2674750e4910d1669
   Firebase: be473484f0d515e72ffd04acf22f981773c23e58
   FirebaseAnalytics: 0533a00b681e08fd0b2cd0444b7ddf0ef9fd7a1a
@@ -80,6 +83,6 @@ SPEC CHECKSUMS:
   SwiftHEXColors: b0ecc7bd83a1aa2e1956f9ba51f55ebb2bcf86ef
   TSMessages: c8cc7b80f2a833af533872cd02010cac061532cc
 
-PODFILE CHECKSUM: af9f0b47d583aabcae4897c0abffc960969d7036
+PODFILE CHECKSUM: ddc263d7ed5172928ee20cc9a770f9cdd09a8cd5
 
 COCOAPODS: 1.1.0.rc.2

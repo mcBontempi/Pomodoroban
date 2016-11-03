@@ -313,8 +313,8 @@ class TimerViewController: UIViewController {
     }
     
     func createNotifications() {
-        //  let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-        //  dispatch_async(dispatch_get_global_queue(priority, 0)) {
+          let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+          dispatch_async(dispatch_get_global_queue(priority, 0)) {
         // ensure we only have one
         self.cancelNotificationsAndAudioPlaybacks()
         
@@ -361,7 +361,7 @@ class TimerViewController: UIViewController {
         self.createNotification(dateNow, date:self.startDatePlusPauses(), secondsFrom: Int(runningTotal)-1 ,message:"End Of Work, well done", index:index, say:"End Of Work, well done")
         
         
-        //   }
+           }
     }
     
     var audioPlayer:AVAudioPlayer!
