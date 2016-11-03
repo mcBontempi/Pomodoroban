@@ -144,7 +144,7 @@ class TicketViewController: UITableViewController {
     
     func showPomodoroTooltip() {
         self.pomodoroTooltip = EasyTipView(text: "Assign a number of pomodoro (which usually equal 25 mins) to a story, which allows POMODOROBAN to work its magic", preferences: self.tooltipPrefs(), delegate: self)
-        self.pomodoroTooltip.show(animated: true, forView: self.categorySegmentedControl, withinSuperview: self.tableView)
+        self.pomodoroTooltip.show(animated: true, forView: self.countSegmentedControl, withinSuperview: self.tableView)
     }
     
     
