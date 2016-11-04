@@ -1,9 +1,7 @@
 use_frameworks!
 
 target "Pomodoroban" do
-pod 'SwiftHEXColors'
-pod 'Fabric'
-pod 'Crashlytics'
+pod 'SwiftHEXColors' , '1.0.4'
 pod 'LSRepeater'
 pod 'Onboard'
 pod 'Firebase/Storage'

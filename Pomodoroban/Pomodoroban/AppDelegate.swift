@@ -1,11 +1,10 @@
 import UIKit
 import CoreData
-import Fabric
-import Crashlytics
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 import AVFoundation
+import FirebaseCrash
 
 
 @UIApplicationMain
@@ -25,10 +24,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
         
-        var a:Int!
         
+        //var a:Int!
         
-        a = a + 1
+       // a = a + 1
+        
+      //  FIRCrashMessage("Cause Crash button clicked")
+    //    fatalError()
         
         
         UIApplication.sharedApplication().idleTimerDisabled = true
@@ -47,7 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         application.statusBarHidden = true
-        Fabric.with([Crashlytics.self])
         
         return true
     }
