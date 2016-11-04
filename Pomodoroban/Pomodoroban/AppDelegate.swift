@@ -22,16 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-    
-        
-        
-        //var a:Int!
-        
-       // a = a + 1
-        
-      //  FIRCrashMessage("Cause Crash button clicked")
-    //    fatalError()
-        
         
         UIApplication.sharedApplication().idleTimerDisabled = true
         
