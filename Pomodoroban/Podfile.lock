@@ -9,6 +9,9 @@ PODS:
   - Firebase/Core (3.7.1):
     - FirebaseAnalytics (= 3.4.4)
     - FirebaseCore (= 3.4.3)
+  - Firebase/Crash (3.7.1):
+    - Firebase/Core
+    - FirebaseCrash (= 1.0.7)
   - Firebase/Database (3.7.1):
     - Firebase/Core
     - FirebaseDatabase (= 3.0.3)
@@ -26,6 +29,12 @@ PODS:
     - GoogleUtilities (~> 1.2)
   - FirebaseCore (3.4.3):
     - GoogleInterchangeUtilities (~> 1.2)
+    - GoogleUtilities (~> 1.2)
+  - FirebaseCrash (1.0.7):
+    - FirebaseAnalytics (~> 3.2)
+    - FirebaseInstanceID (~> 1.0)
+    - GoogleInterchangeUtilities (~> 1.2)
+    - GoogleSymbolUtilities (~> 1.1)
     - GoogleUtilities (~> 1.2)
   - FirebaseDatabase (3.0.3):
     - FirebaseAnalytics (~> 3.3)
@@ -53,6 +62,7 @@ DEPENDENCIES:
   - EasyTipView (= 1.0.1)
   - Fabric
   - Firebase/Auth
+  - Firebase/Crash
   - Firebase/Database
   - Firebase/Storage
   - LSRepeater
@@ -69,6 +79,7 @@ SPEC CHECKSUMS:
   FirebaseAnalytics: 0533a00b681e08fd0b2cd0444b7ddf0ef9fd7a1a
   FirebaseAuth: 75a062bbf2d3c97d1e6e55bbc110e13a6853e25d
   FirebaseCore: 5a885548bbc5f0c410b04f8e9ac9d73ff1221907
+  FirebaseCrash: 2efeb3715b76ac843b841529ce413efb67e5fd4d
   FirebaseDatabase: 750a4a0fe18ef114318876fd654b2d9c671e0992
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
   FirebaseStorage: 3992817bf405f5c1a4f8349678d22724cd0ef509
@@ -83,6 +94,6 @@ SPEC CHECKSUMS:
   SwiftHEXColors: b0ecc7bd83a1aa2e1956f9ba51f55ebb2bcf86ef
   TSMessages: c8cc7b80f2a833af533872cd02010cac061532cc
 
-PODFILE CHECKSUM: ddc263d7ed5172928ee20cc9a770f9cdd09a8cd5
+PODFILE CHECKSUM: 5b5bc428f94e44d18930c2bb5a061fcf7f103e09
 
 COCOAPODS: 1.1.0.rc.2

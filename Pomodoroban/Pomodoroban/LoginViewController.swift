@@ -275,7 +275,7 @@ class LoginViewController: UIViewController {
       }) { (completed) in
       
         if self.mode == .Login {
-          let progress = MBProgressHUD.showHUDAddedTo(self.view, animated: false)
+          _ = MBProgressHUD.showHUDAddedTo(self.view, animated: false)
   
           FIRAuth.auth()!.signInWithEmail(self.email.text!, password: self.password.text!, completion: { (user, error) in
          

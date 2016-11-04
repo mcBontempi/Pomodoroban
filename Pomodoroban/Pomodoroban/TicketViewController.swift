@@ -118,14 +118,14 @@ class TicketViewController: UITableViewController {
         
         let defaults = NSUserDefaults.standardUserDefaults()
         
-     //   if defaults.objectForKey("shownTicketToolTips") == nil {
+        if defaults.objectForKey("shownTicketToolTips") == nil {
             self.showColorTooltip()
             
             defaults.setBool(true, forKey: "shownTicketToolTips")
             
             defaults.synchronize()
             
-       // }
+        }
         
         
         
@@ -148,17 +148,21 @@ class TicketViewController: UITableViewController {
     }
     
     
+    
     func tooltipPrefs() -> EasyTipView.Preferences {
         
         var preferences = EasyTipView.Preferences()
         
         preferences.drawing.font = UIFont(name: "Futura-Medium", size: 16)!
         preferences.drawing.foregroundColor = UIColor.whiteColor()
-        preferences.drawing.backgroundColor = UIColor(hue:0.46, saturation:0.99, brightness:0.6, alpha:1)
+        preferences.drawing.backgroundColor = UIColor.darkGrayColor()
         preferences.drawing.arrowPosition = .Right
+        preferences.drawing.borderWidth  = 2
+        preferences.drawing.borderColor = UIColor.lightGrayColor()
         
         return preferences
     }
+    
     
     
     

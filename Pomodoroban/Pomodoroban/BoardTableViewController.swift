@@ -90,18 +90,12 @@ class BoardTableViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        
-        
         /*
-         
-         let tracker = GAI.sharedInstance().defaultTracker
-         tracker.set(kGAIScreenName, value: "Main Screen")
-         
-         let builder = GAIDictionaryBuilder.createScreenView()
-         tracker.send(builder.build() as [NSObject : AnyObject])
-         */
         
-        
+        FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
+            kFIRParameterContentType: "Main Screen" as NSObject
+            ])
+        */
     }
     
     func sectionTitles() -> [String] {
@@ -267,17 +261,21 @@ class BoardTableViewController: UITableViewController {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
+    
     func tooltipPrefs() -> EasyTipView.Preferences {
         
         var preferences = EasyTipView.Preferences()
         
         preferences.drawing.font = UIFont(name: "Futura-Medium", size: 16)!
         preferences.drawing.foregroundColor = UIColor.whiteColor()
-        preferences.drawing.backgroundColor = UIColor(hue:0.46, saturation:0.99, brightness:0.6, alpha:1)
+        preferences.drawing.backgroundColor = UIColor.darkGrayColor()
         preferences.drawing.arrowPosition = .Right
+        preferences.drawing.borderWidth  = 2
+        preferences.drawing.borderColor = UIColor.lightGrayColor()
         
         return preferences
     }
+    
     
     
     func showLogin() {
@@ -299,7 +297,7 @@ class BoardTableViewController: UITableViewController {
         
         if self.showAll == false {
             
-            alert.addAction(UIAlertAction(title: "Show All Days", style: .Destructive, handler: { (action
+            alert.addAction(UIAlertAction(title: "Show ALL Days", style: .Destructive, handler: { (action
                 ) in
                 self.dismissViewControllerAnimated(true, completion: nil)
                 self.showAll = true
@@ -308,7 +306,7 @@ class BoardTableViewController: UITableViewController {
         }
         else {
             
-            alert.addAction(UIAlertAction(title: "Show Today and Backlog Only", style: .Destructive, handler: { (action
+            alert.addAction(UIAlertAction(title: "Show TODAY and DONE Only", style: .Destructive, handler: { (action
                 ) in
                 self.dismissViewControllerAnimated(true, completion: nil)
                 self.showAll = false
