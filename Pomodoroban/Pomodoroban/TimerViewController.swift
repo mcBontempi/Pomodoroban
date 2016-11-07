@@ -49,8 +49,6 @@ class TimerViewController: UIViewController {
     let veryDarkBackgroundColor = UIColor(hexString: "333333")!
     let veryDarkBackgroundColorForMask = UIColor(hexString: "2e2e2e")!
     
-    
-    
     enum State {
         case Short
         case Long
@@ -58,31 +56,17 @@ class TimerViewController: UIViewController {
         case None
     }
     
-    
-    //  var state:State = .None
-    
-    
-    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        
         let defaults = NSUserDefaults.standardUserDefaults()
         
-   //     if defaults.objectForKey("shownTimerToolTips") == nil {
+        if defaults.objectForKey("shownTimerToolTips") == nil {
             self.showButtonTooltip()
-            
             defaults.setBool(true, forKey: "shownTimerToolTips")
-            
             defaults.synchronize()
-            
-     //   }
-        
-        
-        
+        }
     }
-    
-    
     
     var buttonTooltip:EasyTipView!
     
@@ -91,14 +75,12 @@ class TimerViewController: UIViewController {
         self.buttonTooltip.show(animated: true, forView: self.quitButton, withinSuperview: self.view)
     }
     
-    
     var pomodoroTooltip:EasyTipView!
     
     func showPomodoroTooltip() {
         self.pomodoroTooltip = EasyTipView(text: "Here you can see the progress of your current POMODORO or break", preferences: self.tooltipPrefs(), delegate: self)
         self.pomodoroTooltip.show(animated: true, forView: self.pixelVC.view, withinSuperview: self.view)
     }
-    
     
     func tooltipPrefs() -> EasyTipView.Preferences {
         
@@ -114,13 +96,7 @@ class TimerViewController: UIViewController {
         return preferences
     }
     
-    
     func updateWithTicket(ticket: Ticket) {
-        
-        // if (self.state != )
-        
-        
-        // self.state = Ticket
         
         self.ticketBackgroundView.hidden = false
         self.view.backgroundColor = self.veryDarkBackgroundColor
@@ -134,13 +110,19 @@ class TimerViewController: UIViewController {
         let pomodoroView = UIView.pomodoroRowWith(Int(ticket.pomodoroEstimate))
         self.pomodoroCountView.addSubview(pomodoroView)
         
+        self.pixelVC.setupAsPomodoro(self.pixelSizeForThisDevice())
+    }
+    
+    
+    func pixelSizeForThisDevice() -> CGFloat{
         let height = UIScreen.mainScreen().bounds.height
         if height == 568 {
-            self.pixelVC.setupAsPomodoro(6)
+            return 6
         }
-        else {
-            self.pixelVC.setupAsPomodoro(10)
+        else if height >= 768 {
+            return 20
         }
+            return 10
     }
     
     func updateWithBreak() {
@@ -148,7 +130,7 @@ class TimerViewController: UIViewController {
         self.ticketBackgroundView.hidden = true
         self.view.backgroundColor = self.darkBackgroundColor
         
-        self.pixelVC.setupAsCup(10)
+        self.pixelVC.setupAsCup(self.pixelSizeForThisDevice())
     }
     
     func updateWithLongBreak() {
@@ -158,7 +140,7 @@ class TimerViewController: UIViewController {
         
         self.view.backgroundColor = self.darkBackgroundColor
         
-        self.pixelVC.setupAsFood(10)
+        self.pixelVC.setupAsFood(self.pixelSizeForThisDevice())
     }
     
     func close() {
@@ -330,12 +312,13 @@ class TimerViewController: UIViewController {
                 
                 if runtime.type == 0 {
                     
-                    let ticket = runtime.ticket!
+                    if let ticket = runtime.ticket {
                     
                     let partCount = runtime.ticket.pomodoroEstimate
                     self.timerLabel.text = String(format:"Seconds remaining = %.0f\nPomodoro in Story (%d/%d)",self.currentPartRemaining , part,partCount)
                     
                     self.updateWithTicket(ticket)
+                    }
                 }
                 else if runtime.type == 1 {
                     self.timerLabel.text = String(format:"Seconds remaining = %.0f", self.currentPartRemaining)
@@ -571,6 +554,8 @@ class TimerViewController: UIViewController {
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action) in
         }))
+        
+        alert.popoverPresentationController?.sourceView = self.quitButton
         
         self.presentViewController(alert, animated: true, completion: nil)
     }

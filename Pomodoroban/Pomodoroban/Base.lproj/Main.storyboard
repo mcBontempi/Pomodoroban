@@ -621,6 +621,7 @@
                         <outlet property="addButton" destination="mv0-dK-hTO" id="mJu-dm-tPs"/>
                         <outlet property="layerButton" destination="7nE-na-teQ" id="0UL-GD-QDq"/>
                         <outlet property="playButton" destination="BmL-pU-T6A" id="Q8I-MM-mrs"/>
+                        <outlet property="settingsButton" destination="uLQ-Zy-JtZ" id="o9N-bw-JOS"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="os8-I7-nLU" userLabel="First Responder" sceneMemberID="firstResponder"/>

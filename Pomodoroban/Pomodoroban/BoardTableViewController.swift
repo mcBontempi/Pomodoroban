@@ -9,6 +9,7 @@ import EasyTipView
 
 class BoardTableViewController: UITableViewController {
     
+    @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var addButton: UIButton!
     
     @IBOutlet weak var playButton: UIButton!
@@ -343,6 +344,8 @@ class BoardTableViewController: UITableViewController {
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action
             ) in
         }))
+        
+        alert.popoverPresentationController?.sourceView = self.settingsButton
         
         self.presentViewController(alert, animated: true, completion: nil)
         
