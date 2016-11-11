@@ -626,7 +626,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="os8-I7-nLU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-50.399999999999999" y="-666.11694152923542"/>
+            <point key="canvasLocation" x="68" y="-688"/>
         </scene>
         <!--Pixel Test View Controller-->
         <scene sceneID="UPy-e6-CfK">

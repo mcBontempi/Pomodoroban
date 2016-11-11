@@ -92,11 +92,11 @@ class BoardTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         /*
-        
-        FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
-            kFIRParameterContentType: "Main Screen" as NSObject
-            ])
-        */
+         
+         FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
+         kFIRParameterContentType: "Main Screen" as NSObject
+         ])
+         */
     }
     
     func sectionTitles() -> [String] {
@@ -189,8 +189,14 @@ class BoardTableViewController: UITableViewController {
         }
     }
     
+    @objc func dayChanged(notification: NSNotification){
+        self.tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "dayChanged:", name: UIApplicationSignificantTimeChangeNotification, object: nil)
         UNUserNotificationCenter.currentNotificationCenter().requestAuthorizationWithOptions([.Alert,.Sound]) { (granted:Bool, error:NSError?) in
             
         }
@@ -248,7 +254,7 @@ class BoardTableViewController: UITableViewController {
         SyncService.sharedInstance.setupSync()
         
         //    NSNotificationCenter.defaultCenter().addObserver(self, selector: "contextDidSaveContext:", name: NSManagedObjectContextDidSaveNotification, object: nil)
-     
+        
         
         super.viewDidLoad()
         
@@ -681,7 +687,7 @@ extension BoardTableViewController : LoginViewControllerDelegate {
 
 extension BoardTableViewController : EasyTipViewDelegate {
     func easyTipViewDidDismiss(tipView : EasyTipView) {
-     
+        
         if tipView == self.addTooltip {
             self.showPlayTooltip()
         }
