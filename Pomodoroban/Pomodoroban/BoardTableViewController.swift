@@ -251,7 +251,8 @@ class BoardTableViewController: UITableViewController {
         }
         
         self.title = "POMODOROBAN" // FIRAuth.auth()!.currentUser?.email
-        SyncService.sharedInstance.setupSync()
+       
+
         
         //    NSNotificationCenter.defaultCenter().addObserver(self, selector: "contextDidSaveContext:", name: NSManagedObjectContextDidSaveNotification, object: nil)
         
@@ -285,13 +286,19 @@ class BoardTableViewController: UITableViewController {
     
     
     
-    func showLogin() {
+    func showLogin(register:Bool) {
         let vc = self.storyboard?.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
         
         vc.delegate = self
+        if register == true {
+            
+            vc.mode = .SignupOnly
+        }
+        else {
+            vc.mode = .Login
+        }
         
         self.presentViewController(vc, animated: false, completion: {
-            
         })
         
     }
@@ -300,6 +307,8 @@ class BoardTableViewController: UITableViewController {
         
         let alert = UIAlertController(title: "Settings", message: nil, preferredStyle: .ActionSheet)
         
+        
+ 
         
         
         if self.showAll == false {
@@ -322,6 +331,19 @@ class BoardTableViewController: UITableViewController {
         }
         
         
+        
+        if  FIRAuth.auth()!.currentUser?.uid == nil {
+            
+            
+            alert.addAction(UIAlertAction(title: "Register for sync", style: .Destructive, handler: { (action
+                ) in
+                self.showLogin(true)
+                
+            }))
+            
+        }
+        else {
+        
         alert.addAction(UIAlertAction(title: "Sign Out", style: .Default, handler: { (action
             ) in
             
@@ -329,10 +351,11 @@ class BoardTableViewController: UITableViewController {
             
             SyncService.sharedInstance.removeAllForSignOut()
             try! FIRAuth.auth()!.signOut()
-            self.showLogin()
+            self.showLogin(false)
             
             
         }))
+        }
         
         
         alert.addAction(UIAlertAction(title: "Restore Purchase", style: .Default, handler: { (action

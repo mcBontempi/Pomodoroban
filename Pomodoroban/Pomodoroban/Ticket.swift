@@ -46,6 +46,10 @@ class Ticket: NSManagedObject {
         return self.fetchRequestWithPredicate(NSPredicate(format: "removed = false"))
     }
     
+    class func fetchRequestAllWithoutControl() -> NSFetchRequest {
+        return self.fetchRequestWithPredicate(NSPredicate(format: "row != 999999"))
+    }
+    
     class func fetchRequestWithPredicate(predicate: NSPredicate?) -> NSFetchRequest {
         let request = NSFetchRequest(entityName: Ticket.entityName)
         let primarySortDescriptor = NSSortDescriptor(key: Ticket.attributeSection, ascending: true)
@@ -99,6 +103,11 @@ class Ticket: NSManagedObject {
     
     class func all(moc:NSManagedObjectContext) -> [Ticket] {
         return try! moc.executeFetchRequest(self.fetchRequestAll()) as! [Ticket]
+    }
+    
+    class func allWithoutControl(moc:NSManagedObjectContext) -> [Ticket] {
+        return try! moc.executeFetchRequest(self.fetchRequestAllWithoutControl()) as! [Ticket]
+        
     }
     
     

@@ -39,6 +39,20 @@ class SyncService : NSObject {
         self.fetchedResultsController.delegate = self
     }
     
+    func syncExisting() {
+        let tickets = Ticket.allWithoutControl(self.moc)
+        
+        for ticket in tickets {
+            let ref = FIRDatabase.database().reference()
+            
+            let uid = FIRAuth.auth()!.currentUser?.uid
+            
+            let ticketRef = ref.child(uid!).child(ticket.identifier!)
+            ticketRef.setValue(["name" : ticket.name!,"row" : "\(ticket.row)","section" : "\(ticket.section)", "identifier" : ticket.identifier!, "colorIndex" : "\(ticket.colorIndex)", "pomodoroEstimate" : "\(ticket.pomodoroEstimate)", "removed" : "\(ticket.removed)", "desc" : ticket.desc])
+        }
+        
+    
+    }
     
     func setupSync() {
         
