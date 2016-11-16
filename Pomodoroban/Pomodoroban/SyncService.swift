@@ -36,7 +36,6 @@ class SyncService : NSObject {
         
         try! self.moc.save()
         
-        self.fetchedResultsController.delegate = self
     }
     
     func syncExisting() {

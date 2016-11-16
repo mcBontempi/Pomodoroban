@@ -697,8 +697,9 @@
                                     <action selector="letMeInPressed:" destination="RVc-O1-TNp" eventType="touchUpInside" id="mXO-yw-vfF"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Before we start, you will need to sign up to POMODOROBAN. This will allow you to sync your tasks across multiple devices." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pVp-JO-los">
-                                <rect key="frame" x="24" y="299" width="272" height="122.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pVp-JO-los">
+                                <rect key="frame" x="24" y="287" width="272" height="147"/>
+                                <string key="text">An easy way to slice your day into manageable bite-sized tasks. A mashup of the best features of Pomodoro and Kanban. Work,rest &amp; focus.</string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

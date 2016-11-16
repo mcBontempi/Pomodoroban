@@ -2,6 +2,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import MBProgressHUD
+import EasyTipView
 
 protocol LoginViewControllerDelegate : class {
     func loginViewControllerDidSignIn(loginViewController:LoginViewController)
@@ -16,8 +17,6 @@ enum Mode {
 }
 
 class LoginViewController: UIViewController {
-    
-    
     
     var mode:Mode = .Welcome
     
@@ -92,6 +91,16 @@ class LoginViewController: UIViewController {
                     self.SIGNUPBUTTON.alpha = 1.0
                     self.LOGINBUTTON.alpha = 1.0
                     self.JUSTLETMEINBUTTON.alpha = 1.0
+                    
+                    let defaults = NSUserDefaults.standardUserDefaults()
+                    
+                    if defaults.objectForKey("shownRegisterToolTips") == nil {
+                        self.showRegisterTooltip()
+                        defaults.setBool(true, forKey: "shownRegisterToolTips")
+                        defaults.synchronize()
+                    }
+                    
+                    
                     
                 })
                 
@@ -238,13 +247,31 @@ class LoginViewController: UIViewController {
         
     }
     
+    func tooltipPrefs() -> EasyTipView.Preferences {
+        
+        var preferences = EasyTipView.Preferences()
+        
+        preferences.drawing.font = UIFont(name: "Futura-Medium", size: 16)!
+        preferences.drawing.foregroundColor = UIColor.whiteColor()
+        preferences.drawing.backgroundColor = UIColor.redColor()
+        preferences.drawing.arrowPosition = .Bottom
+        preferences.drawing.borderWidth  = 2
+        preferences.drawing.borderColor = UIColor.lightGrayColor()
+        
+        return preferences
+    }
     
+    
+    
+    var registerTooltip:EasyTipView!
+    
+    func showRegisterTooltip() {
+        self.registerTooltip = EasyTipView(text: "Ensure your data is saved to the cloud and synced across multiple devices by signing up for a toally free account!", preferences: self.tooltipPrefs(), delegate: self)
+        self.registerTooltip.show(animated: true, forView: self.SIGNUPBUTTON, withinSuperview: self.view)
+    }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        
-        
         
         self.pixelVC.setupAsPomodoro(6)
         self.view.layoutIfNeeded()
@@ -446,5 +473,11 @@ extension LoginViewController : UITextFieldDelegate {
             self.commitAction()
         }
         return true
+    }
+}
+
+
+extension LoginViewController : EasyTipViewDelegate {
+    func easyTipViewDidDismiss(tipView : EasyTipView) {
     }
 }

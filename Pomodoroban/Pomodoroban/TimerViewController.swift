@@ -71,7 +71,7 @@ class TimerViewController: UIViewController {
     var buttonTooltip:EasyTipView!
     
     func showButtonTooltip() {
-        self.buttonTooltip = EasyTipView(text: "Use the menu to skip a POMODORO or to pause.", preferences: self.tooltipPrefs(), delegate: self)
+        self.buttonTooltip = EasyTipView(text: "Use the menu to skip a POMODORO or to pause.", preferences: self.tooltipPrefs(), delegate: nil)
         self.buttonTooltip.show(animated: true, forView: self.quitButton, withinSuperview: self.view)
     }
     
