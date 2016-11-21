@@ -17,7 +17,23 @@ enum Mode {
 }
 
 class LoginViewController: UIViewController {
-    
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "privacySegue" || segue.identifier == "skepticsSegue" {
+            let popoverViewController = segue.destinationViewController as! WebViewController
+            popoverViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
+            popoverViewController.popoverPresentationController!.delegate = self
+        
+            popoverViewController.preferredContentSize = CGRectInset(UIScreen.mainScreen().bounds, 40,40).size
+            
+            popoverViewController.url = segue.identifier == "privacySegue" ? NSURL(string:"http://www.pomodoroban.com/privacy.html") : NSURL(string:"http://www.pomodoroban.com/skeptics_faq.html")
+        
+        }
+        else if segue.identifier == "pixelSegue" {
+            self.pixelVC = segue.destinationViewController as! PixelTestViewController
+        }
+}
+
     var mode:Mode = .Welcome
     
     @IBOutlet weak var emailTextFieldTopSpacingToTomatoe: NSLayoutConstraint!
@@ -148,11 +164,11 @@ class LoginViewController: UIViewController {
     @IBAction func backPressed(sender: AnyObject) {
         
         if self.mode == .SignupOnly {
-            self.dismissViewControllerAnimated(true, completion: { 
+            self.dismissViewControllerAnimated(true, completion: {
                 self.goBack()
             })
         }
-
+            
         else {
             self.goBack()
         }
@@ -288,7 +304,7 @@ class LoginViewController: UIViewController {
         UIView.animateWithDuration(2.8, animations: {
             
             if self.mode == .SignupOnly {
-                 self.signup()
+                self.signup()
             }
             
             self.view.layoutIfNeeded()
@@ -308,7 +324,7 @@ class LoginViewController: UIViewController {
                     }
                 }
                 else {
-                   
+                    
                     
                 }
         })
@@ -458,9 +474,6 @@ class LoginViewController: UIViewController {
     
     var pixelVC: PixelTestViewController!
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        self.pixelVC = segue.destinationViewController as! PixelTestViewController
-    }
 }
 
 extension LoginViewController : UITextFieldDelegate {
@@ -479,5 +492,13 @@ extension LoginViewController : UITextFieldDelegate {
 
 extension LoginViewController : EasyTipViewDelegate {
     func easyTipViewDidDismiss(tipView : EasyTipView) {
+    }
+}
+
+
+extension LoginViewController : UIPopoverPresentationControllerDelegate {
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
     }
 }
