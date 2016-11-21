@@ -475,7 +475,7 @@
                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
-                                        <action selector="buyPressed:" destination="lpa-3H-vWj" eventType="touchUpInside" id="388-Ef-MkF"/>
+                                        <segue destination="Tz5-mD-lpU" kind="show" id="vof-0H-WFe"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -588,7 +588,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="play"/>
                                     <connections>
-                                        <segue destination="5SE-R3-54R" kind="presentation" id="9QZ-kb-25H"/>
+                                        <segue destination="5SE-R3-54R" kind="presentation" identifier="timerSegue" id="9QZ-kb-25H"/>
                                     </connections>
                                 </button>
                             </barButtonItem>
@@ -887,6 +887,8 @@
                         <outlet property="introLabel" destination="pVp-JO-los" id="xnJ-YJ-32T"/>
                         <outlet property="letMeInButton" destination="KMQ-Ne-n30" id="Qh1-ON-6vb"/>
                         <outlet property="password" destination="4fH-Of-xbO" id="piv-qV-eLh"/>
+                        <outlet property="privacyButton" destination="pHm-tF-dlH" id="wPn-rh-dAT"/>
+                        <outlet property="skepticsButton" destination="x4a-vh-oXf" id="VlI-6e-Jc9"/>
                         <outlet property="tomatoeHeightConstraint" destination="3Mf-uH-Wew" id="EId-q1-haH"/>
                         <outlet property="tomatoeTopSpaceConstraint" destination="vJ3-Wf-kBh" id="txb-5c-G6C"/>
                     </connections>
@@ -894,6 +896,109 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9l4-pb-Zks" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1298" y="-1600"/>
+        </scene>
+        <!--Buy View Controller-->
+        <scene sceneID="JJ5-5q-Qrc">
+            <objects>
+                <viewController storyboardIdentifier="BuyViewController" id="rHR-gp-iiY" customClass="BuyViewController" customModule="Pomodoroban" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8Pg-iZ-qDh"/>
+                        <viewControllerLayoutGuide type="bottom" id="au3-TZ-vhW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yee-Vu-J36">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pMN-lN-bgc">
+                                <rect key="frame" x="149.5" y="94" width="21" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="pMN-lN-bgc" secondAttribute="height" multiplier="1:1" constant="1" id="inp-Tn-OJ6"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="g9L-WB-VA2" kind="embed" identifier="pixelSegue" id="8Tz-7U-0I6"/>
+                                </connections>
+                            </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ZY-0a-n6H">
+                                <rect key="frame" x="16" y="144" width="288" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="At5-PI-ZkL"/>
+                                </constraints>
+                                <string key="text">POMODOROBAN PREMIUM is an optional yearly subscription that removes ads and supports future development. You can quickly and easily cancel at any time, from the App Store, without havign to talk to anyone.</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OII-Ds-pzy" userLabel="Buy Button">
+                                <rect key="frame" x="0.0" y="350" width="320" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="e6m-qX-jr6"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="buyPressed:" destination="rHR-gp-iiY" eventType="touchUpInside" id="F7k-Xd-ied"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JOf-oL-Ofp">
+                                <rect key="frame" x="0.0" y="396" width="320" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="371-8M-PRG"/>
+                                </constraints>
+                                <state key="normal" title="Restore Purchase"/>
+                                <connections>
+                                    <action selector="restorePurchasesPressed:" destination="rHR-gp-iiY" eventType="touchUpInside" id="vlo-Bw-eye"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subscribe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D2e-vD-Yqk">
+                                <rect key="frame" x="16" y="356.5" width="104.5" height="28"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sLK-Eb-mxK">
+                                <rect key="frame" x="256" y="358" width="49" height="23.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.97254901960784312" green="0.98039215686274506" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="au3-TZ-vhW" firstAttribute="top" secondItem="JOf-oL-Ofp" secondAttribute="bottom" id="0Pe-9U-mpF"/>
+                            <constraint firstItem="OII-Ds-pzy" firstAttribute="top" secondItem="1ZY-0a-n6H" secondAttribute="bottom" constant="6" id="1aa-xJ-ATb"/>
+                            <constraint firstItem="pMN-lN-bgc" firstAttribute="centerX" secondItem="yee-Vu-J36" secondAttribute="centerX" id="2g5-zl-nUB"/>
+                            <constraint firstItem="D2e-vD-Yqk" firstAttribute="leading" secondItem="OII-Ds-pzy" secondAttribute="leading" constant="16" id="4As-Cm-OPY"/>
+                            <constraint firstAttribute="trailing" secondItem="sLK-Eb-mxK" secondAttribute="trailing" constant="15" id="5NO-cT-yfZ"/>
+                            <constraint firstItem="OII-Ds-pzy" firstAttribute="leading" secondItem="yee-Vu-J36" secondAttribute="leading" id="7fR-Py-RQF"/>
+                            <constraint firstItem="JOf-oL-Ofp" firstAttribute="leading" secondItem="yee-Vu-J36" secondAttribute="leading" id="Exc-jB-NAD"/>
+                            <constraint firstItem="JOf-oL-Ofp" firstAttribute="top" secondItem="OII-Ds-pzy" secondAttribute="bottom" constant="6" id="LXZ-2x-14g"/>
+                            <constraint firstAttribute="trailing" secondItem="OII-Ds-pzy" secondAttribute="trailing" id="Vpt-R1-fGw"/>
+                            <constraint firstItem="D2e-vD-Yqk" firstAttribute="centerY" secondItem="OII-Ds-pzy" secondAttribute="centerY" id="cER-gm-U1P"/>
+                            <constraint firstAttribute="trailing" secondItem="JOf-oL-Ofp" secondAttribute="trailing" id="enz-HW-BAE"/>
+                            <constraint firstItem="pMN-lN-bgc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yee-Vu-J36" secondAttribute="leadingMargin" constant="89.5" id="jHP-fn-lcy"/>
+                            <constraint firstAttribute="trailing" secondItem="1ZY-0a-n6H" secondAttribute="trailing" constant="16" id="jHf-Dq-6M5"/>
+                            <constraint firstItem="sLK-Eb-mxK" firstAttribute="centerY" secondItem="OII-Ds-pzy" secondAttribute="centerY" id="jdZ-TN-1pt"/>
+                            <constraint firstItem="pMN-lN-bgc" firstAttribute="top" secondItem="8Pg-iZ-qDh" secondAttribute="bottom" constant="30" id="m95-ar-zG8"/>
+                            <constraint firstItem="1ZY-0a-n6H" firstAttribute="top" secondItem="pMN-lN-bgc" secondAttribute="bottom" constant="30" id="mol-rr-CGp"/>
+                            <constraint firstItem="1ZY-0a-n6H" firstAttribute="leading" secondItem="yee-Vu-J36" secondAttribute="leading" constant="16" id="mzD-Lg-of1"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="pMN-lN-bgc" secondAttribute="trailing" constant="89.5" id="tZO-iP-MAR"/>
+                            <constraint firstItem="OII-Ds-pzy" firstAttribute="top" secondItem="1ZY-0a-n6H" secondAttribute="bottom" constant="6" id="u9X-RD-ceo"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="0WD-2v-kA4">
+                        <barButtonItem key="rightBarButtonItem" title="I Changed My Mind" id="lcy-mm-0dK">
+                            <connections>
+                                <action selector="IChangedMyMindPressed:" destination="rHR-gp-iiY" id="zrI-xd-BKa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="priceLabel" destination="sLK-Eb-mxK" id="4wS-z0-K1q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ev5-qs-65z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="916.875" y="-2331.25"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="i9m-el-Ee5">
@@ -909,7 +1014,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yme-44-pCC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="360" y="-1075"/>
+            <point key="canvasLocation" x="13" y="-1206"/>
         </scene>
         <!--Natural Language View Controller-->
         <scene sceneID="Nh2-8s-m9o">
@@ -1009,7 +1114,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Emq-kl-AvK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="662" y="-1377"/>
+            <point key="canvasLocation" x="1258" y="-1603"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="evi-3b-QLK">
@@ -1063,6 +1168,42 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Btk-SK-it0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Pixel Test View Controller-->
+        <scene sceneID="ajo-nS-KF1">
+            <objects>
+                <viewController id="g9L-WB-VA2" customClass="PixelTestViewController" customModule="Pomodoroban" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="V37-SY-tAo">
+                        <rect key="frame" x="0.0" y="0.0" width="21" height="20"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xDJ-6u-KaN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-763" y="-505"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cVh-O8-gui">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="Tz5-mD-lpU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="emz-7B-Md6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="bVA-ns-R0t">
+                        <rect key="frame" x="0.0" y="436" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="rHR-gp-iiY" kind="relationship" relationship="rootViewController" id="JrJ-fq-qLJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MSl-2c-Kzd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2949" y="-2149"/>
         </scene>
     </scenes>
     <resources>

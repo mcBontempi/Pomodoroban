@@ -15,7 +15,12 @@ class BoardTableViewController: UITableViewController {
     @IBOutlet weak var playButton: UIButton!
     
     @IBAction func buyPressed(sender: AnyObject) {
-        Products.instance().purchaseProduct("1")
+        
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("BuyViewController") as! BuyViewController
+        
+        self.presentViewController(vc, animated: true, completion: nil)
+        
+        
     }
     
     @IBOutlet weak var layerButton: UIButton!
@@ -251,8 +256,8 @@ class BoardTableViewController: UITableViewController {
         }
         
         self.title = "POMODOROBAN" // FIRAuth.auth()!.currentUser?.email
-       
-
+        
+        
         
         //    NSNotificationCenter.defaultCenter().addObserver(self, selector: "contextDidSaveContext:", name: NSManagedObjectContextDidSaveNotification, object: nil)
         
@@ -308,7 +313,7 @@ class BoardTableViewController: UITableViewController {
         let alert = UIAlertController(title: "Settings", message: nil, preferredStyle: .ActionSheet)
         
         
- 
+        
         
         
         if self.showAll == false {
@@ -343,32 +348,29 @@ class BoardTableViewController: UITableViewController {
             
         }
         else {
-        
-        alert.addAction(UIAlertAction(title: "Sign Out", style: .Default, handler: { (action
-            ) in
             
-            self.dismissViewControllerAnimated(true, completion: nil)
-            
-            SyncService.sharedInstance.removeAllForSignOut()
-            try! FIRAuth.auth()!.signOut()
-            self.showLogin(false)
-            
-            
-        }))
+            alert.addAction(UIAlertAction(title: "Sign Out", style: .Default, handler: { (action
+                ) in
+                
+                self.dismissViewControllerAnimated(true, completion: nil)
+                
+                
+                let defaults = NSUserDefaults.standardUserDefaults()
+                
+                defaults.removeObjectForKey("loggedInWithoutAuth")
+                
+                defaults.synchronize()
+                
+                
+                
+                
+                SyncService.sharedInstance.removeAllForSignOut()
+                try! FIRAuth.auth()!.signOut()
+                self.showLogin(false)
+                
+                
+            }))
         }
-        
-        
-        alert.addAction(UIAlertAction(title: "Restore Purchase", style: .Default, handler: { (action
-            ) in
-            
-            self.dismissViewControllerAnimated(true, completion: nil)
-            
-            Products.instance().restoreAllProducts()
-            
-        }))
-        
-        
-        
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action
             ) in
@@ -383,6 +385,8 @@ class BoardTableViewController: UITableViewController {
     // general
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+      
+        if identifier == "timerSegue" {
         if Ticket.allForToday(self.moc).count < 1 {
             
             let dateFormatter = NSDateFormatter()
@@ -400,6 +404,8 @@ class BoardTableViewController: UITableViewController {
         else {
             return true
         }
+        }
+        return true
     }
     
     func setWorkMode() {

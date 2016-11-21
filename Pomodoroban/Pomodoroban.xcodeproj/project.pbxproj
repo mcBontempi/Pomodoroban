@@ -136,6 +136,7 @@
 		D67CB2C31DBA3B290026E60D /* TSMessagesDefaultDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = D67CB2C21DBA3B290026E60D /* TSMessagesDefaultDesign.json */; };
 		D67FAECF1D95235B0085BF2D /* BoardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67FAECE1D95235B0085BF2D /* BoardTableViewController.swift */; };
 		D67FAED11D952B1C0085BF2D /* TicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67FAED01D952B1C0085BF2D /* TicketTableViewCell.swift */; };
+		D6862BD11DE388E600B52B96 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6862BD01DE388E600B52B96 /* BuyViewController.swift */; };
 		D686EF911DB4CF3F001431D4 /* UIAlertController + Quick.swift in Sources */ = {isa = PBXBuildFile; fileRef = D686EF901DB4CF3F001431D4 /* UIAlertController + Quick.swift */; };
 		D686EF981DB62807001431D4 /* Pomodoroban.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D686EF961DB62807001431D4 /* Pomodoroban.xcdatamodeld */; };
 		D686EF9A1DB64C1C001431D4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D686EF991DB64C1C001431D4 /* LoginViewController.swift */; };
@@ -357,6 +358,7 @@
 		D67FAECE1D95235B0085BF2D /* BoardTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardTableViewController.swift; sourceTree = "<group>"; };
 		D67FAED01D952B1C0085BF2D /* TicketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewCell.swift; sourceTree = "<group>"; };
 		D67FAED21D953B980085BF2D /* Pomodoroban-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pomodoroban-Bridging-Header.h"; sourceTree = "<group>"; };
+		D6862BD01DE388E600B52B96 /* BuyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
 		D686EF901DB4CF3F001431D4 /* UIAlertController + Quick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController + Quick.swift"; sourceTree = "<group>"; };
 		D686EF921DB4D99D001431D4 /* Pomodoroban.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pomodoroban.entitlements; sourceTree = "<group>"; };
 		D686EF971DB62807001431D4 /* Pomodoroban.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pomodoroban.xcdatamodel; sourceTree = "<group>"; };
@@ -801,6 +803,7 @@
 				FD577BDB1DB942C400470457 /* PixelTestViewController.swift */,
 				D686EF9B1DB64CE2001431D4 /* SignupViewController.swift */,
 				D637C3AF1DE3792E00A21FE7 /* WebViewController.swift */,
+				D6862BD01DE388E600B52B96 /* BuyViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1070,6 +1073,7 @@
 				D61085371D960601001A203A /* TimerViewController.swift in Sources */,
 				D6177D4F1DC21363008A61CE /* us_aswd.c in Sources */,
 				D6E71D831DA3ECAE0055F2AA /* TagLabel.m in Sources */,
+				D6862BD11DE388E600B52B96 /* BuyViewController.swift in Sources */,
 				D6177D3A1DC21363008A61CE /* cmu_us_kal16_residx.c in Sources */,
 				D6177D161DC21363008A61CE /* cst_sigpr.c in Sources */,
 				D6177D211DC21363008A61CE /* cst_val_user.c in Sources */,

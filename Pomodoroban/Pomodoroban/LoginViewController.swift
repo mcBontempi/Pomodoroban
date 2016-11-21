@@ -17,6 +17,8 @@ enum Mode {
 }
 
 class LoginViewController: UIViewController {
+    @IBOutlet weak var privacyButton: UIButton!
+    @IBOutlet weak var skepticsButton: UIButton!
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "privacySegue" || segue.identifier == "skepticsSegue" {
@@ -86,6 +88,15 @@ class LoginViewController: UIViewController {
         
     }
     @IBAction func justLetMeInPressed(sender: AnyObject) {
+        
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        if defaults.objectForKey("loggedInWithoutAuth") == nil {
+            defaults.setBool(true, forKey: "loggedInWithoutAuth")
+            defaults.synchronize()
+        }
+        
         
         self.moveToFinished()
         
@@ -253,6 +264,20 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        var alpha:CGFloat = 0.0
+        
+                if FIRAuth.auth()!.currentUser == nil && defaults.objectForKey("loggedInWithoutAuth") == nil  {
+         
+                 alpha = 1.0
+                    
+        }
+        
+        self.privacyButton.alpha = alpha
+        self.skepticsButton.alpha = alpha
+        
+        
         if self.mode == .Signup {
             
             self.introLabel.alpha = 0.0
@@ -307,11 +332,18 @@ class LoginViewController: UIViewController {
                 self.signup()
             }
             
+            
+            
+            
             self.view.layoutIfNeeded()
             }, completion: { (completed) in
                 
                 if self.mode != .SignupOnly {
-                    if FIRAuth.auth()!.currentUser == nil {
+                    
+                    
+                    let defaults = NSUserDefaults.standardUserDefaults()
+                    
+                    if FIRAuth.auth()!.currentUser == nil && defaults.objectForKey("loggedInWithoutAuth") == nil  {
                         
                         UIView.animateWithDuration(1.0, animations: {
                             self.introLabel.alpha = 1.0
