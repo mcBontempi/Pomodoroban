@@ -442,12 +442,12 @@ class LoginViewController: UIViewController {
                         
                     }
                     else {
-                        UIAlertController.quickMessage((error?.localizedDescription)!, vc: self)
                         
                         
                         
                         
                         self.showEmailAndPasswordAndBackButton()
+                        UIAlertController.quickMessage((error?.localizedDescription)!, vc: self)
                     }
                 })
                 
@@ -465,9 +465,9 @@ class LoginViewController: UIViewController {
                         UIAlertController.quickMessage("Check your email for a further verication step", vc: self)
                     }
                     else {
-                        UIAlertController.quickMessage((error?.localizedDescription)!, vc: self)
                         
                         self.showEmailAndBackButton()
+                        UIAlertController.quickMessage((error?.localizedDescription)!, vc: self)
                     }
                 })
                 
@@ -495,8 +495,8 @@ class LoginViewController: UIViewController {
                                 
                             }
                             else {
-                                UIAlertController.quickMessage((error?.localizedDescription)!, vc: self)
                                 self.showEmailAndPasswordAndBackButton()
+                                UIAlertController.quickMessage((error?.localizedDescription)!, vc: self)
                                 
                             }
                         })
@@ -504,9 +504,9 @@ class LoginViewController: UIViewController {
                     else {
                         
                         MBProgressHUD.hideHUDForView(self.view, animated: true)
-                        UIAlertController.quickMessage((error?.localizedDescription)!, vc: self)
                         
                         self.showEmailAndPasswordAndBackButton()
+                        UIAlertController.quickMessage((error?.localizedDescription)!, vc: self)
                     }
                 }
             }

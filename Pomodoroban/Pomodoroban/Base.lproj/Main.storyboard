@@ -947,7 +947,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="At5-PI-ZkL"/>
                                 </constraints>
-                                <string key="text">POMODOROBAN PREMIUM is an optional yearly subscription that removes ads and supports future development. You can quickly and easily cancel at any time, from the App Store, without havign to talk to anyone.</string>
+                                <string key="text">POMODOROBAN PREMIUM is an optional yearly subscription that removes ads and supports future development. You can quickly and easily cancel at any time, from the App Store, without having to talk to anyone.</string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
