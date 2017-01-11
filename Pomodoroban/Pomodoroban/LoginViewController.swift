@@ -14,28 +14,29 @@ enum Mode {
     case Login
     case Signup
     case SignupOnly
+    case SendPassword
 }
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var privacyButton: UIButton!
     @IBOutlet weak var skepticsButton: UIButton!
-
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "privacySegue" || segue.identifier == "skepticsSegue" {
             let popoverViewController = segue.destinationViewController as! WebViewController
             popoverViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
             popoverViewController.popoverPresentationController!.delegate = self
-        
-            popoverViewController.preferredContentSize = CGRectInset(UIScreen.mainScreen().bounds, 40,40).size
+            
+            popoverViewController.preferredContentSize = CGRectInset(UIScreen.mainScreen().bounds, 0,40).size
             
             popoverViewController.url = segue.identifier == "privacySegue" ? NSURL(string:"http://www.pomodoroban.com/privacy.html") : NSURL(string:"http://www.pomodoroban.com/skeptics_faq.html")
-        
+            
         }
         else if segue.identifier == "pixelSegue" {
             self.pixelVC = segue.destinationViewController as! PixelTestViewController
         }
-}
-
+    }
+    
     var mode:Mode = .Welcome
     
     @IBOutlet weak var emailTextFieldTopSpacingToTomatoe: NSLayoutConstraint!
@@ -52,6 +53,7 @@ class LoginViewController: UIViewController {
     
     
     weak var delegate:LoginViewControllerDelegate!
+    @IBOutlet weak var FORGOTPASSWORDBUTTON: UIButton!
     
     func signinFirebaseAccount(email:String, password: String) {
         FIRAuth.auth()!.signInWithEmail(email, password: password, completion: { (user, error) in
@@ -80,13 +82,51 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for view in [self.letMeInButton, self.SIGNUPBUTTON,self.LOGINBUTTON, self.JUSTLETMEINBUTTON] {
+        for view in [self.letMeInButton, self.SIGNUPBUTTON,self.LOGINBUTTON, self.JUSTLETMEINBUTTON, self.FORGOTPASSWORDBUTTON] {
             self.cornerView(view,radius:5)
         }
         
         
         
     }
+    
+    func clearFields() {
+        self.password.text = ""
+        self.email.text = ""
+    }
+    
+    @IBAction func forgotPasswordPressed(sender: AnyObject) {
+        
+        self.clearFields()
+        
+        self.mode = .SendPassword
+        
+        self.tomatoeHeightConstraint.constant = 100
+        
+        self.pixelVC.setAlternateRowSize(0)
+        
+        
+        UIView.animateWithDuration(0.6, animations: {
+            
+            self.view.layoutIfNeeded()
+            
+            self.SIGNUPBUTTON.alpha = 0.0
+            self.LOGINBUTTON.alpha = 0.0
+            self.JUSTLETMEINBUTTON.alpha = 0.0
+            self.FORGOTPASSWORDBUTTON.alpha = 0.0
+            
+            }, completion: { (completed) in
+                
+                UIView.animateWithDuration(0.3, animations: {
+                    self.email.alpha = 1.0
+                    self.backButton.alpha = 1.0
+                    self.email.becomeFirstResponder()
+                })
+                
+        })
+        
+    }
+    
     @IBAction func justLetMeInPressed(sender: AnyObject) {
         
         
@@ -118,6 +158,7 @@ class LoginViewController: UIViewController {
                     self.SIGNUPBUTTON.alpha = 1.0
                     self.LOGINBUTTON.alpha = 1.0
                     self.JUSTLETMEINBUTTON.alpha = 1.0
+                    self.FORGOTPASSWORDBUTTON.alpha = 1.0
                     
                     let defaults = NSUserDefaults.standardUserDefaults()
                     
@@ -165,6 +206,7 @@ class LoginViewController: UIViewController {
                     self.SIGNUPBUTTON.alpha = 1.0
                     self.LOGINBUTTON.alpha = 1.0
                     self.JUSTLETMEINBUTTON.alpha = 1.0
+                    self.FORGOTPASSWORDBUTTON.alpha = 1.0
                     
                     
                 })
@@ -187,7 +229,7 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func loginPressed(sender: AnyObject) {
-        
+        self.clearFields()
         
         self.mode = .Login
         
@@ -203,6 +245,7 @@ class LoginViewController: UIViewController {
             self.SIGNUPBUTTON.alpha = 0.0
             self.LOGINBUTTON.alpha = 0.0
             self.JUSTLETMEINBUTTON.alpha = 0.0
+            self.FORGOTPASSWORDBUTTON.alpha = 0.0
             
             }, completion: { (completed) in
                 
@@ -225,6 +268,8 @@ class LoginViewController: UIViewController {
     
     func signup() {
         
+        self.clearFields()
+        
         self.tomatoeHeightConstraint.constant = 100
         
         self.pixelVC.setAlternateRowSize(0)
@@ -237,6 +282,7 @@ class LoginViewController: UIViewController {
             self.SIGNUPBUTTON.alpha = 0.0
             self.LOGINBUTTON.alpha = 0.0
             self.JUSTLETMEINBUTTON.alpha = 0.0
+            self.FORGOTPASSWORDBUTTON.alpha = 0.0
             
             }, completion: { (completed) in
                 
@@ -268,10 +314,10 @@ class LoginViewController: UIViewController {
         
         var alpha:CGFloat = 0.0
         
-                if FIRAuth.auth()!.currentUser == nil && defaults.objectForKey("loggedInWithoutAuth") == nil  {
-         
-                 alpha = 1.0
-                    
+        if FIRAuth.auth()!.currentUser == nil && defaults.objectForKey("loggedInWithoutAuth") == nil  {
+            
+            alpha = 1.0
+            
         }
         
         self.privacyButton.alpha = alpha
@@ -307,7 +353,7 @@ class LoginViewController: UIViewController {
     var registerTooltip:EasyTipView!
     
     func showRegisterTooltip() {
-        self.registerTooltip = EasyTipView(text: "Ensure your data is saved to the cloud and synced across multiple devices by signing up for a toally free account!", preferences: self.tooltipPrefs(), delegate: self)
+        self.registerTooltip = EasyTipView(text: "Ensure your data is saved to the cloud and synced across multiple devices by signing up for a totally free account!", preferences: self.tooltipPrefs(), delegate: self)
         self.registerTooltip.show(animated: true, forView: self.SIGNUPBUTTON, withinSuperview: self.view)
     }
     
@@ -406,6 +452,27 @@ class LoginViewController: UIViewController {
                 })
                 
             }
+            else if self.mode == .SendPassword {
+                _ = MBProgressHUD.showHUDAddedTo(self.view, animated: false)
+                
+                FIRAuth.auth()!.sendPasswordResetWithEmail(self.email.text!, completion: { (error) in
+                    
+                    MBProgressHUD.hideHUDForView(self.view, animated: true)
+                    
+                    if error == nil {
+                        
+                        self.goBack()
+                        UIAlertController.quickMessage("Check your email for a further verication step", vc: self)
+                    }
+                    else {
+                        UIAlertController.quickMessage((error?.localizedDescription)!, vc: self)
+                        
+                        self.showEmailAndBackButton()
+                    }
+                })
+                
+            }
+                
                 
             else if self.mode == .Signup || self.mode == .SignupOnly {
                 MBProgressHUD.showHUDAddedTo(self.view, animated: false)
@@ -447,6 +514,22 @@ class LoginViewController: UIViewController {
     }
     
     
+    func showEmailAndBackButton() {
+        
+        UIView.animateWithDuration(0.3, animations: {
+            
+            self.email.alpha = 1.0
+            self.backButton.alpha = 1.0
+            
+        }) { (complted) in
+            self.password.becomeFirstResponder()
+            
+        }
+        
+        
+    }
+    
+    
     func showEmailAndPasswordAndBackButton() {
         
         UIView.animateWithDuration(0.3, animations: {
@@ -480,6 +563,7 @@ class LoginViewController: UIViewController {
             self.SIGNUPBUTTON.alpha = 0.0
             self.LOGINBUTTON.alpha = 0.0
             self.JUSTLETMEINBUTTON.alpha = 0.0
+            self.FORGOTPASSWORDBUTTON.alpha = 0.0
             
             self.view.layoutIfNeeded()
             
@@ -512,7 +596,14 @@ extension LoginViewController : UITextFieldDelegate {
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if textField == self.email {
-            self.password.becomeFirstResponder()
+            
+            if self.mode == .SendPassword {
+                self.commitAction()
+            }
+            else {
+                
+                self.password.becomeFirstResponder()
+            }
         }
         else if textField == self.password {
             self.commitAction()
