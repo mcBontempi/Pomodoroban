@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
             
             popoverViewController.preferredContentSize = CGRectInset(UIScreen.mainScreen().bounds, 0,40).size
             
-            popoverViewController.url = segue.identifier == "privacySegue" ? NSURL(string:"http://www.pomodoroban.com/privacy.html") : NSURL(string:"http://www.pomodoroban.com/skeptics_faq.html")
+            popoverViewController.url = segue.identifier == "privacySegue" ? NSURL(string:"http://www.pomodoroban.com/privacy.html") : NSURL(string:"htxxtp://www.pomodoroban.com/skeptics_faq.html")
             
         }
         else if segue.identifier == "pixelSegue" {
@@ -320,12 +320,15 @@ class LoginViewController: UIViewController {
             
         }
         
-        self.privacyButton.alpha = alpha
-        self.skepticsButton.alpha = alpha
+        UIView.animateWithDuration(0.6) { 
+            
+            self.privacyButton.alpha = alpha
+            self.skepticsButton.alpha = alpha
+            
+        }
         
         
         if self.mode == .Signup {
-            
             self.introLabel.alpha = 0.0
         }
         
