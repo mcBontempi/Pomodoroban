@@ -566,6 +566,8 @@ class TimerViewController: UIViewController {
         let nc = self.storyboard?.instantiateViewControllerWithIdentifier("TicketNavigationViewController") as! UINavigationController
         let vc = nc.viewControllers[0] as! TicketViewController
         
+        vc.setFocusToName = true
+        
         let row = Ticket.spareRowForSection(0, moc:self.moc)
         
         self.childMoc = CoreDataServices.sharedInstance.childMoc()

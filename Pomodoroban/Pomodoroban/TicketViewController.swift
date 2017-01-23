@@ -26,6 +26,8 @@ class TicketViewController: UITableViewController {
     }
     @IBOutlet weak var notesText: UITextView!
     
+    var setFocusToName = false
+    
     var delegate: TicketViewControllerDelegate!
     var ticket:Ticket!
     
@@ -62,7 +64,6 @@ class TicketViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         self.customiseCategorySegmentedControl()
         
         
@@ -94,6 +95,8 @@ class TicketViewController: UITableViewController {
         self.headerColor.backgroundColor = UIColor.colorFrom(Int( self.ticket.colorIndex))
         
         //    let pomodoroView = UIView.pomodoroRowWith(Int(self.ticket.pomodoroEstimate))
+        
+        
     }
     
     
@@ -115,6 +118,10 @@ class TicketViewController: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        if self.setFocusToName == true {
+            self.titleField.becomeFirstResponder()
+            self.setFocusToName = false
+        }
         
         let defaults = NSUserDefaults.standardUserDefaults()
         
