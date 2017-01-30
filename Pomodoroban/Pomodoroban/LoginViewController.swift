@@ -406,7 +406,10 @@ class LoginViewController: UIViewController {
                         
                     } else {
                         
+                          SyncService.sharedInstance.setupSync()
+                        
                         self.moveToMainScreen()
+                        
                     }
                 }
                 else {
