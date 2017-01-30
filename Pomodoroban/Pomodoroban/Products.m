@@ -151,21 +151,6 @@
                 break;
         }
     }
-    /*
-    // so we dont get multiple alertViews
-    UIAlertView *alertView = nil;
-    if(restored)
-        alertView = [[UIAlertView alloc] initWithTitle:@"In App Purchase" message:@"Restore complete." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-    else if(purchased)
-        alertView = [[UIAlertView alloc] initWithTitle:@"In App Purchase" message:@"Purchase complete." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-    else if(failed)
-        alertView = [[UIAlertView alloc] initWithTitle:@"In App Purchase" message:@"An error occured." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-    
-    if(alertView)
-        [alertView show];
-     
-     */
-    
 }
 
 - (void) failedTransaction: (SKPaymentTransaction *)transaction

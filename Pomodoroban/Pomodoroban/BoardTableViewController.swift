@@ -191,6 +191,10 @@ class BoardTableViewController: UITableViewController {
         
         if (products.firstObject?.purchased)! == true {
             self.tableView.tableHeaderView = nil
+            
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "purchased")
+            NSUserDefaults.standardUserDefaults().synchronize()
+            
         }
     }
     
@@ -267,6 +271,13 @@ class BoardTableViewController: UITableViewController {
         if Ticket.all(self.moc).count == 9 {
             self.showAddTooltip()
         }
+        
+        let purchased = NSUserDefaults.standardUserDefaults().boolForKey("purchased")
+        
+        if purchased == true {
+            self.tableView.tableHeaderView = nil
+        }
+        
     }
     
     
