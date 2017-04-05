@@ -1,10 +1,10 @@
 import UIKit
 
-extension NSDate {
+extension Date {
     func getDayOfWeek()->Int {
-        let myCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-        let myComponents = myCalendar.components(.NSWeekdayCalendarUnit, fromDate: self)
+        let myCalendar = Calendar(identifier: Calendar.Identifier.gregorian)
+        let myComponents = (myCalendar as NSCalendar).components(.NSWeekdayCalendarUnit, from: self)
         let weekDay = myComponents.weekday
-        return ((weekDay + 5) % 7) + 1
+        return ((weekDay! + 5) % 7) + 1
     }
 }

@@ -4,10 +4,10 @@ import SwiftHEXColors
 extension UIImage {
     
     
-    func imageFromColor(color:UIColor, frame:CGRect) -> UIImage{
+    func imageFromColor(_ color:UIColor, frame:CGRect) -> UIImage{
     
         
-            return self.imageWithRenderingMode(.AlwaysTemplate)
+            return self.withRenderingMode(.alwaysTemplate)
         
     }
     

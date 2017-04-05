@@ -2,17 +2,17 @@ import UIKit
 
 class WebViewController: UIViewController {
 
-    @IBAction func okPressed(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func okPressed(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
     @IBOutlet weak var webView: UIWebView!
 
-    var url:NSURL!
+    var url:URL!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let request = NSURLRequest(URL: self.url)
+        let request = URLRequest(url: self.url)
         
         self.webView.loadRequest(request)
     }

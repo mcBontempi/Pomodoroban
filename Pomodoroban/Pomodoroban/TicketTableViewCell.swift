@@ -21,7 +21,7 @@ class TicketTableViewCell: UITableViewCell {
             self.contentView.backgroundColor = UIColor(hexString: "F8FAE1")
             
             self.titleLabel.text = ticket!.name
-            self.titleLabel.textColor = UIColor.darkGrayColor()
+            self.titleLabel.textColor = UIColor.darkGray
             
             self.noteTextView.text = ticket!.desc
             

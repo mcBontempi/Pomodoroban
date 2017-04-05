@@ -1,10 +1,10 @@
 import TSMessages
 
 extension UIAlertController {
-    class func quickMessage(message:String, vc:UIViewController) {
+    class func quickMessage(_ message:String, vc:UIViewController) {
      
       
-        TSMessage.showNotificationInViewController(vc, title:"POMODOROBAN", subtitle: message, type: .Message)
+        TSMessage.showNotification(in: vc, title:"POMODOROBAN", subtitle: message, type: .message)
   }
   
   

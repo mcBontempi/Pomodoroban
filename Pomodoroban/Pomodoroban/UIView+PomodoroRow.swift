@@ -3,7 +3,7 @@ import SwiftHEXColors
 
 extension UIView {
     
-    class func pomodoroRowWith(count: Int) -> UIView {
+    class func pomodoroRowWith(_ count: Int) -> UIView {
         
         let pomodoroSize:CGFloat = 24
         
@@ -18,13 +18,13 @@ extension UIView {
             
             view.addSubview(image)
             
-            image.frame = CGRectMake(x,0,pomodoroSize,pomodoroSize)
+            image.frame = CGRect(x: x,y: 0,width: pomodoroSize,height: pomodoroSize)
             
             x = x + pomodoroSize
             
         }
         
-        view.frame = CGRectMake(0,0,x,pomodoroSize)
+        view.frame = CGRect(x: 0,y: 0,width: x,height: pomodoroSize)
         
         return view
     }

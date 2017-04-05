@@ -1,21 +1,21 @@
 import UIKit
 import CoreData
-import LSRepeater
+import DDTRepeater
 import Firebase
 import UserNotifications
 import EasyTipView
 
 protocol TimerViewControllerDelegate {
-    func timerViewControllerDone(timerViewController: TimerViewController)
-    func timerViewControllerQuit(timerViewController: TimerViewController)
+    func timerViewControllerDone(_ timerViewController: TimerViewController)
+    func timerViewControllerQuit(_ timerViewController: TimerViewController)
 }
 
 class TimerViewController: UIViewController {
     
     var pixelVC: PixelTestViewController!
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        self.pixelVC = segue.destinationViewController as! PixelTestViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        self.pixelVC = segue.destination as! PixelTestViewController
     }
     
     @IBOutlet weak var ticketBackgroundView: UIView!
@@ -50,20 +50,20 @@ class TimerViewController: UIViewController {
     let veryDarkBackgroundColorForMask = UIColor(hexString: "2e2e2e")!
     
     enum State {
-        case Short
-        case Long
-        case Ticket
-        case None
+        case short
+        case long
+        case ticket
+        case none
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = UserDefaults.standard
         
-        if defaults.objectForKey("shownTimerToolTips") == nil {
+        if defaults.object(forKey: "shownTimerToolTips") == nil {
             self.showButtonTooltip()
-            defaults.setBool(true, forKey: "shownTimerToolTips")
+            defaults.set(true, forKey: "shownTimerToolTips")
             defaults.synchronize()
         }
     }
@@ -87,20 +87,20 @@ class TimerViewController: UIViewController {
         var preferences = EasyTipView.Preferences()
         
         preferences.drawing.font = UIFont(name: "Futura-Medium", size: 16)!
-        preferences.drawing.foregroundColor = UIColor.whiteColor()
-        preferences.drawing.backgroundColor = UIColor.darkGrayColor()
-        preferences.drawing.arrowPosition = .Right
+        preferences.drawing.foregroundColor = UIColor.white
+        preferences.drawing.backgroundColor = UIColor.darkGray
+        preferences.drawing.arrowPosition = .right
         preferences.drawing.borderWidth  = 2
-        preferences.drawing.borderColor = UIColor.lightGrayColor()
+        preferences.drawing.borderColor = UIColor.lightGray
         
         return preferences
     }
     
-    func updateWithTicket(ticket: Ticket) {
+    func updateWithTicket(_ ticket: Ticket) {
         
-        self.ticketBackgroundView.hidden = false
+        self.ticketBackgroundView.isHidden = false
         self.view.backgroundColor = self.veryDarkBackgroundColor
-        self.timerLabel.textColor = UIColor.lightGrayColor()
+        self.timerLabel.textColor = UIColor.lightGray
         self.ticketBackgroundView.backgroundColor = UIColor.colorFrom(Int( ticket.colorIndex))
         self.titleLabel.text = ticket.name
         self.notesTextView.text = ticket.desc
@@ -115,7 +115,7 @@ class TimerViewController: UIViewController {
     
     
     func pixelSizeForThisDevice() -> CGFloat{
-        let height = UIScreen.mainScreen().bounds.height
+        let height = UIScreen.main.bounds.height
         if height == 568 {
             return 6
         }
@@ -126,17 +126,17 @@ class TimerViewController: UIViewController {
     }
     
     func updateWithBreak() {
-        self.timerLabel.textColor = UIColor.whiteColor()
-        self.ticketBackgroundView.hidden = true
+        self.timerLabel.textColor = UIColor.white
+        self.ticketBackgroundView.isHidden = true
         self.view.backgroundColor = self.darkBackgroundColor
         
         self.pixelVC.setupAsCup(self.pixelSizeForThisDevice())
     }
     
     func updateWithLongBreak() {
-        self.timerLabel.textColor = UIColor.whiteColor()
-        self.ticketBackgroundView.hidden = true
-        self.timerLabel.textColor = UIColor.lightGrayColor()
+        self.timerLabel.textColor = UIColor.white
+        self.ticketBackgroundView.isHidden = true
+        self.timerLabel.textColor = UIColor.lightGray
         
         self.view.backgroundColor = self.darkBackgroundColor
         
@@ -152,23 +152,23 @@ class TimerViewController: UIViewController {
         
         Runtime.removeAllEntities(self.moc)
         
-        let userDefaults = NSUserDefaults.standardUserDefaults()
+        let userDefaults = UserDefaults.standard
         
-        userDefaults.removeObjectForKey("startPausedDate")
-        userDefaults.removeObjectForKey("totalPausedTime")
+        userDefaults.removeObject(forKey: "startPausedDate")
+        userDefaults.removeObject(forKey: "totalPausedTime")
         
         userDefaults.synchronize()
         
-        self.dismissViewControllerAnimated(true) {
+        self.dismiss(animated: true) {
         }
     }
     
     var runtimes: [Runtime]!
     
-    var startDate: NSDate!
+    var startDate: Date!
     
     deinit {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         appDelegate.timerVC = nil
         
@@ -179,30 +179,30 @@ class TimerViewController: UIViewController {
         super.viewDidLoad()
         
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         appDelegate.timerVC = self
         
         self.view.layer.cornerRadius = 20
         self.view.layer.borderWidth = 5
-        self.view.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.view.layer.borderColor = UIColor.lightGray.cgColor
         self.view.clipsToBounds = true
         
         self.ticketBackgroundView.layer.cornerRadius = 10
         self.ticketBackgroundView.layer.borderWidth = 3
-        self.ticketBackgroundView.layer.borderColor = UIColor.darkGrayColor().CGColor
+        self.ticketBackgroundView.layer.borderColor = UIColor.darkGray.cgColor
         self.ticketBackgroundView.clipsToBounds = true
         
         if Runtime.all(self.moc).count > 0 {
-            self.startDate = NSUserDefaults.standardUserDefaults().objectForKey("startDate") as! NSDate
+            self.startDate = UserDefaults.standard.object(forKey: "startDate") as! Date
         }
         else {
             
-            let defaults = NSUserDefaults.standardUserDefaults()
+            let defaults = UserDefaults.standard
             
-            self.startDate = NSDate()
+            self.startDate = Date()
             
-            defaults.setObject(startDate, forKey: "startDate")
+            defaults.set(startDate, forKey: "startDate")
             defaults.synchronize()
             
             Runtime.removeAllEntities(self.moc)
@@ -220,7 +220,7 @@ class TimerViewController: UIViewController {
         self.registerCategory()
         
         
-        UNUserNotificationCenter.currentNotificationCenter().delegate = self
+        UNUserNotificationCenter.current().delegate = self
         
         
         self.createNotifications()
@@ -230,13 +230,13 @@ class TimerViewController: UIViewController {
         
         self.quitButton.layer.cornerRadius = 4
         self.quitButton.clipsToBounds = true
-        self.quitButton.layer.borderColor = UIColor.whiteColor().CGColor
+        self.quitButton.layer.borderColor = UIColor.white.cgColor
         self.quitButton.layer.borderWidth = 6
         
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
         
-        self.repeater = LSRepeater.repeater(0.1, fireOnceInstantly: true, execute: {
+        self.repeater = DDTRepeater.repeater(0.1, fireOnceInstantly: true, execute: {
             self.update()
         })
     }
@@ -248,26 +248,26 @@ class TimerViewController: UIViewController {
         let clear = UNNotificationAction(identifier: "clear", title: "Clear", options: [])
         let category : UNNotificationCategory = UNNotificationCategory.init(identifier: "CALLINNOTIFICATION", actions: [callNow, clear], intentIdentifiers: [], options: [])
         
-        let center = UNUserNotificationCenter.currentNotificationCenter()
+        let center = UNUserNotificationCenter.current()
         center.setNotificationCategories([category])
         
     }
     
-    var repeater:LSRepeater!
+    var repeater:DDTRepeater!
     
-    func startDatePlusPauses() -> NSDate {
+    func startDatePlusPauses() -> Date {
         var startDatePlusPauses = self.startDate
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        if let startPausedDate = userDefaults.objectForKey("startPausedDate") as? NSDate{
-            let diff = NSDate().timeIntervalSinceDate(startPausedDate)
-            startDatePlusPauses = startDatePlusPauses.dateByAddingTimeInterval(diff)
+        let userDefaults = UserDefaults.standard
+        if let startPausedDate = userDefaults.object(forKey: "startPausedDate") as? Date{
+            let diff = Date().timeIntervalSince(startPausedDate)
+            startDatePlusPauses = startDatePlusPauses?.addingTimeInterval(diff)
         }
-        if userDefaults.objectForKey("totalPausedTime") != nil {
-            let totalPausedTime = userDefaults.doubleForKey("totalPausedTime")
-            startDatePlusPauses = startDatePlusPauses.dateByAddingTimeInterval(NSTimeInterval(totalPausedTime))
+        if userDefaults.object(forKey: "totalPausedTime") != nil {
+            let totalPausedTime = userDefaults.double(forKey: "totalPausedTime")
+            startDatePlusPauses = startDatePlusPauses?.addingTimeInterval(TimeInterval(totalPausedTime))
         }
         
-        return startDatePlusPauses
+        return startDatePlusPauses!
         
     }
     
@@ -275,8 +275,8 @@ class TimerViewController: UIViewController {
     var currentPartLength = 0.0
     
     
-    func getDocumentsDirectory() -> NSURL {
-        let paths = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentsDirectory = paths[0]
         return documentsDirectory
     }
@@ -285,13 +285,13 @@ class TimerViewController: UIViewController {
         
         let startDatePlusPauses = self.startDatePlusPauses()
         
-        let dateDiff = NSDate().timeIntervalSinceDate(startDatePlusPauses)
+        let dateDiff = Date().timeIntervalSince(startDatePlusPauses)
         
-        var runningTotal:NSTimeInterval = 0
+        var runningTotal:TimeInterval = 0
         
         for runtime in self.runtimes {
             
-            let runtimeLength = NSTimeInterval(runtime.length)
+            let runtimeLength = TimeInterval(runtime.length)
             
             runningTotal = runningTotal + runtimeLength
             
@@ -346,8 +346,8 @@ class TimerViewController: UIViewController {
     }
     
     func createNotifications() {
-          let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-          dispatch_async(dispatch_get_global_queue(priority, 0)) {
+          let priority = DispatchQueue.GlobalQueuePriority.default
+          DispatchQueue.global(priority: priority).async {
         // ensure we only have one
         self.cancelNotificationsAndAudioPlaybacks()
         
@@ -355,7 +355,7 @@ class TimerViewController: UIViewController {
         
         var index = 0
         
-        let dateNow = NSDate()
+        let dateNow = Date()
         
         for runtime in self.runtimes {
             
@@ -399,13 +399,13 @@ class TimerViewController: UIViewController {
     
     var audioPlayer:AVAudioPlayer!
     
-    func createNotification(dateNow:NSDate, date:NSDate, secondsFrom:Int, message: String, index: Int, say:String) {
+    func createNotification(_ dateNow:Date, date:Date, secondsFrom:Int, message: String, index: Int, say:String) {
         
         
         self.createAudioFromMessage(say,index:index)
         
-        let fireDate = date.dateByAddingTimeInterval(NSTimeInterval(secondsFrom))
-        var seconds = fireDate.timeIntervalSinceDate(dateNow)
+        let fireDate = date.addingTimeInterval(TimeInterval(secondsFrom))
+        var seconds = fireDate.timeIntervalSince(dateNow)
         
         
         if seconds > -1 && seconds <= 0 {
@@ -425,21 +425,21 @@ class TimerViewController: UIViewController {
             let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: seconds , repeats: false)
             let request = UNNotificationRequest.init(identifier: "\(index)", content: content, trigger: trigger)
             // Schedule the notification.
-            let center = UNUserNotificationCenter.currentNotificationCenter()
-            center.addNotificationRequest(request, withCompletionHandler: nil)
+            let center = UNUserNotificationCenter.current()
+            center.add(request, withCompletionHandler: nil)
         }
         
         
     }
     
-    func createAudioFromMessage(message:String, index:Int){
+    func createAudioFromMessage(_ message:String, index:Int){
         
-        let libraryPath = NSSearchPathForDirectoriesInDomains(.LibraryDirectory, .UserDomainMask, true)[0]
+        let libraryPath = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)[0]
         let soundsPath = libraryPath + "/Sounds"
         let filePath = soundsPath + "/\(index).wav"
-        let fileManager = NSFileManager.defaultManager()
+        let fileManager = FileManager.default
         do {
-            try fileManager.createDirectoryAtPath(soundsPath, withIntermediateDirectories: false, attributes: nil)
+            try fileManager.createDirectory(atPath: soundsPath, withIntermediateDirectories: false, attributes: nil)
             
         } catch let error1 as NSError {
             print("error" + error1.description)
@@ -455,29 +455,29 @@ class TimerViewController: UIViewController {
     
     
     
-    @IBAction func quitPressed(sender: AnyObject) {
+    @IBAction func quitPressed(_ sender: AnyObject) {
         
         
-        let alert = UIAlertController(title: "Menu", message: "", preferredStyle: .ActionSheet)
+        let alert = UIAlertController(title: "Menu", message: "", preferredStyle: .actionSheet)
         
         
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        if let startPausedDate = userDefaults.objectForKey("startPausedDate") as? NSDate {
+        let userDefaults = UserDefaults.standard
+        if let startPausedDate = userDefaults.object(forKey: "startPausedDate") as? Date {
             
-            alert.addAction(UIAlertAction(title: "Unpause", style: .Default, handler: { (action) in
-                let userDefaults = NSUserDefaults.standardUserDefaults()
+            alert.addAction(UIAlertAction(title: "Unpause", style: .default, handler: { (action) in
+                let userDefaults = UserDefaults.standard
                 var totalPausedTime = 0.0
-                if userDefaults.objectForKey("totalPausedTime") != nil {
-                    totalPausedTime = userDefaults.doubleForKey("totalPausedTime")
+                if userDefaults.object(forKey: "totalPausedTime") != nil {
+                    totalPausedTime = userDefaults.double(forKey: "totalPausedTime")
                 }
                 
-                let timeDiff = NSDate().timeIntervalSinceDate(startPausedDate)
+                let timeDiff = Date().timeIntervalSince(startPausedDate)
                 
                 totalPausedTime = totalPausedTime + timeDiff
                 
-                userDefaults.removeObjectForKey("startPausedDate")
+                userDefaults.removeObject(forKey: "startPausedDate")
                 
-                userDefaults.setDouble(totalPausedTime, forKey: "totalPausedTime")
+                userDefaults.set(totalPausedTime, forKey: "totalPausedTime")
                 
                 userDefaults.synchronize()
                 
@@ -486,8 +486,8 @@ class TimerViewController: UIViewController {
         }
         else {
             
-            alert.addAction(UIAlertAction(title: "Pause", style: .Default, handler: { (action) in
-                userDefaults.setObject(NSDate(), forKey: "startPausedDate" )
+            alert.addAction(UIAlertAction(title: "Pause", style: .default, handler: { (action) in
+                userDefaults.set(Date(), forKey: "startPausedDate" )
                 
                 userDefaults.synchronize()
                 
@@ -496,15 +496,15 @@ class TimerViewController: UIViewController {
                 
             }))
             
-            alert.addAction(UIAlertAction(title: "Skip this pomodoro", style: .Default, handler: { (action) in
+            alert.addAction(UIAlertAction(title: "Skip this pomodoro", style: .default, handler: { (action) in
                 
                 var totalPausedTime = 0.0
-                if userDefaults.objectForKey("totalPausedTime") != nil {
-                    totalPausedTime = userDefaults.doubleForKey("totalPausedTime")
+                if userDefaults.object(forKey: "totalPausedTime") != nil {
+                    totalPausedTime = userDefaults.double(forKey: "totalPausedTime")
                 }
                 totalPausedTime = totalPausedTime - self.currentPartRemaining
                 
-                userDefaults.setDouble(totalPausedTime, forKey: "totalPausedTime")
+                userDefaults.set(totalPausedTime, forKey: "totalPausedTime")
                 
                 userDefaults.synchronize()
                 
@@ -512,15 +512,15 @@ class TimerViewController: UIViewController {
                 self.createNotifications()
             }))
             
-            alert.addAction(UIAlertAction(title: "back 5 mins", style: .Default, handler: { (action) in
+            alert.addAction(UIAlertAction(title: "back 5 mins", style: .default, handler: { (action) in
                 
                 var totalPausedTime = 0.0
-                if userDefaults.objectForKey("totalPausedTime") != nil {
-                    totalPausedTime = userDefaults.doubleForKey("totalPausedTime")
+                if userDefaults.object(forKey: "totalPausedTime") != nil {
+                    totalPausedTime = userDefaults.double(forKey: "totalPausedTime")
                 }
                 totalPausedTime = totalPausedTime + 300
                 
-                userDefaults.setDouble(totalPausedTime, forKey: "totalPausedTime")
+                userDefaults.set(totalPausedTime, forKey: "totalPausedTime")
                 
                 userDefaults.synchronize()
                 self.cancelNotificationsAndAudioPlaybacks()
@@ -528,15 +528,15 @@ class TimerViewController: UIViewController {
                 self.createNotifications()
             }))
             
-            alert.addAction(UIAlertAction(title: "forward 5 mins", style: .Default, handler: { (action) in
+            alert.addAction(UIAlertAction(title: "forward 5 mins", style: .default, handler: { (action) in
                 
                 var totalPausedTime = 0.0
-                if userDefaults.objectForKey("totalPausedTime") != nil {
-                    totalPausedTime = userDefaults.doubleForKey("totalPausedTime")
+                if userDefaults.object(forKey: "totalPausedTime") != nil {
+                    totalPausedTime = userDefaults.double(forKey: "totalPausedTime")
                 }
                 totalPausedTime = totalPausedTime - 300
                 
-                userDefaults.setDouble(totalPausedTime, forKey: "totalPausedTime")
+                userDefaults.set(totalPausedTime, forKey: "totalPausedTime")
                 
                 userDefaults.synchronize()
                 self.cancelNotificationsAndAudioPlaybacks()
@@ -544,26 +544,26 @@ class TimerViewController: UIViewController {
             }))
         }
         
-        alert.addAction(UIAlertAction(title: "Quick Add Story to BACKLOG", style: .Default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "Quick Add Story to BACKLOG", style: .default, handler: { (action) in
             self.quickAdd()
         }))
         
-        alert.addAction(UIAlertAction(title: "Exit Current Pomodoro sequence", style: .Default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "Exit Current Pomodoro sequence", style: .default, handler: { (action) in
             self.close()
         }))
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
         }))
         
         alert.popoverPresentationController?.sourceView = self.quitButton
         
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
     var childMoc:NSManagedObjectContext!
     
     func quickAdd() {
-        let nc = self.storyboard?.instantiateViewControllerWithIdentifier("TicketNavigationViewController") as! UINavigationController
+        let nc = self.storyboard?.instantiateViewController(withIdentifier: "TicketNavigationViewController") as! UINavigationController
         let vc = nc.viewControllers[0] as! TicketViewController
         
         vc.setFocusToName = true
@@ -580,17 +580,17 @@ class TimerViewController: UIViewController {
         
         vc.delegate = self
         
-        self.presentViewController(nc, animated: true) {}
+        self.present(nc, animated: true) {}
     }
     
     func saveChildMoc() {
         
         if self.childMoc != nil {
-            self.moc.performBlockAndWait({
+            self.moc.performAndWait({
                 try! self.childMoc.save()
                 self.childMoc = nil
                 
-                self.moc.performBlockAndWait({
+                self.moc.performAndWait({
                     try! self.moc.save()
                 })
             })
@@ -598,21 +598,21 @@ class TimerViewController: UIViewController {
     }
     
     func cancelNotificationsAndAudioPlaybacks() {
-        UNUserNotificationCenter.currentNotificationCenter().removeAllDeliveredNotifications()
-        UNUserNotificationCenter.currentNotificationCenter().removeAllPendingNotificationRequests()
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
     }
 }
 
 extension TimerViewController : TicketViewControllerDelegate {
-    func ticketViewControllerSave(ticketViewController: TicketViewController) {
-        self.dismissViewControllerAnimated(true) {
+    func ticketViewControllerSave(_ ticketViewController: TicketViewController) {
+        self.dismiss(animated: true) {
             
             self.saveChildMoc()
         }
     }
     
-    func ticketViewControllerCancel(ticketViewController: TicketViewController) {
-        self.dismissViewControllerAnimated(true) {
+    func ticketViewControllerCancel(_ ticketViewController: TicketViewController) {
+        self.dismiss(animated: true) {
         }
     }
 }
@@ -623,10 +623,10 @@ extension TimerViewController : UNUserNotificationCenterDelegate {
     
     
     
-    func userNotificationCenter(center: UNUserNotificationCenter, willPresentNotification notification: UNNotification, withCompletionHandler completionHandler: (UNNotificationPresentationOptions) -> Void) {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
         print("willPresent")
-        completionHandler([.Sound])
+        completionHandler([.sound])
     }
     
     /*
@@ -646,7 +646,7 @@ extension TimerViewController : UNUserNotificationCenterDelegate {
 }
 
 extension TimerViewController : EasyTipViewDelegate {
-    func easyTipViewDidDismiss(tipView : EasyTipView) {
+    func easyTipViewDidDismiss(_ tipView : EasyTipView) {
         
         if tipView == self.buttonTooltip {
             self.showPomodoroTooltip()

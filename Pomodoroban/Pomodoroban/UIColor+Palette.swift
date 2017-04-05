@@ -5,11 +5,11 @@ extension UIColor {
     
     
     class func colorArray() -> [UIColor] {
-        let array = [UIColor.blackColor(), UIColor.blueColor(), UIColor.greenColor(), UIColor.yellowColor(), UIColor.redColor(), UIColor.whiteColor()]
+        let array = [UIColor.black, UIColor.blue, UIColor.green, UIColor.yellow, UIColor.red, UIColor.white]
         return array
     }
     
-    class func colorFrom(paletteIndex: Int) -> UIColor {
+    class func colorFrom(_ paletteIndex: Int) -> UIColor {
         
         return UIColor.colorArray()[paletteIndex]
     }

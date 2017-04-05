@@ -7,34 +7,28 @@
 //
 
 import UIKit
-import LSRepeater
-
-
-
 
 class PixelTestViewController: UIViewController {
     
     enum Mode {
-        case None
-        case Pomodoro
-        case Cup
-        case Food
+        case none
+        case pomodoro
+        case cup
+        case food
     }
     
     
-    var mode:Mode = .None
+    var mode:Mode = .none
     
     var widthAndHeightConstraints = [NSLayoutConstraint]()
     
-    var repeater:LSRepeater!
-    
     var viewIndex = 0
     
-    func setupAsCup(size:CGFloat) {
+    func setupAsCup(_ size:CGFloat) {
         
         
-        if mode != .Cup {
-            self.mode = .Cup
+        if mode != .cup {
+            self.mode = .cup
             self.removeAll()
             
             // cup outline = 8
@@ -75,10 +69,10 @@ class PixelTestViewController: UIViewController {
         
     }
     
-    func setupAsFood(size:CGFloat) {
+    func setupAsFood(_ size:CGFloat) {
         
-        if self.mode != .Food {
-            self.mode = .Food
+        if self.mode != .food {
+            self.mode = .food
             self.removeAll()
             
             
@@ -131,11 +125,11 @@ class PixelTestViewController: UIViewController {
     }
     
     
-    func setupAsPomodoro(size:CGFloat) {
+    func setupAsPomodoro(_ size:CGFloat) {
         
-        if self.mode != .Pomodoro {
+        if self.mode != .pomodoro {
             
-            self.mode = .Pomodoro
+            self.mode = .pomodoro
             
             self.removeAll()
             
@@ -172,13 +166,13 @@ class PixelTestViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.clearColor()
+        self.view.backgroundColor = UIColor.clear
         
     }
     
     
     
-    func setupWithPixels(pixels:[[Int]], size:CGFloat) {
+    func setupWithPixels(_ pixels:[[Int]], size:CGFloat) {
         
         var delay:Double = 0.0
         
@@ -192,7 +186,7 @@ class PixelTestViewController: UIViewController {
                 
                 if pixel != 0 {
                     
-                    let view = UIView(frame:CGRectZero)
+                    let view = UIView(frame:CGRect.zero)
                     view.tag = 1
                     view.layer.cornerRadius = size / 2
                     
@@ -200,7 +194,7 @@ class PixelTestViewController: UIViewController {
                     
                     
                     
-                    view.backgroundColor = [UIColor.grayColor(),UIColor.redColor(),UIColor.greenColor(), UIColor(hexString:"d9a427"),UIColor(hexString:"d20915"), UIColor(hexString:"48a81c"), UIColor(hexString:"542205"), UIColor(hexString:"fedc61"),
+                    view.backgroundColor = [UIColor.gray,UIColor.red,UIColor.green, UIColor(hexString:"d9a427"),UIColor(hexString:"d20915"), UIColor(hexString:"48a81c"), UIColor(hexString:"542205"), UIColor(hexString:"fedc61"),
                         
                         UIColor(hexString:"c3b1d2"),
                         UIColor(hexString:"ce8230"),
@@ -218,16 +212,16 @@ class PixelTestViewController: UIViewController {
                     view.translatesAutoresizingMaskIntoConstraints = false
                     
                     
-                    var constraint = NSLayoutConstraint(item: view, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: size)
+                    var constraint = NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: size)
                     
                     self.view.addConstraint(constraint)
-                    if y % 2 == 0 || x % 2 == 0 {
+                    if y.truncatingRemainder(dividingBy: 2) == 0 || x.truncatingRemainder(dividingBy: 2) == 0 {
                         self.widthAndHeightConstraints.append(constraint)
                     }
-                    constraint = NSLayoutConstraint(item: view, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: size)
+                    constraint = NSLayoutConstraint(item: view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: size)
                     
                     self.view.addConstraint(constraint)
-                    if y % 2 == 0 || x % 2 == 0{
+                    if y.truncatingRemainder(dividingBy: 2) == 0 || x.truncatingRemainder(dividingBy: 2) == 0{
                         self.widthAndHeightConstraints.append(constraint)
                     }
                     
@@ -237,9 +231,9 @@ class PixelTestViewController: UIViewController {
                     
                     let yMultiplier = y / 24
                     
-                    self.view.addConstraint(NSLayoutConstraint(item: view, attribute: .CenterX, relatedBy: .Equal, toItem: self.view, attribute: .Right, multiplier: xMultiplier, constant: -size/2))
+                    self.view.addConstraint(NSLayoutConstraint(item: view, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .right, multiplier: xMultiplier, constant: -size/2))
                     
-                    self.view.addConstraint(NSLayoutConstraint(item: view, attribute: .CenterY, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: yMultiplier, constant: -size/2))
+                    self.view.addConstraint(NSLayoutConstraint(item: view, attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: yMultiplier, constant: -size/2))
                     
                     view.alpha = 0
                     view.delayedBounce(Double(Double(arc4random()) / Double(UINT32_MAX))*2)
@@ -255,35 +249,18 @@ class PixelTestViewController: UIViewController {
             y = y + 1
         }
         
-        /*
-         
-         self.repeater = LSRepeater.repeater(30.0 / Double(self.view.subviews.count), execute: {
-         
-         let view = self.view.subviews[self.viewIndex]
-         
-         self.viewIndex = self.viewIndex + 1
-         
-         view.smallBounce(40)
-         
-         UIView.animateWithDuration(0.1, animations: {
-         view.alpha = 0
-         })
-         
-         
-         
-         })
-         */
+    
         
     }
     
     
-    func setProgress(pc: Double) {
+    func setProgress(_ pc: Double) {
         
         let count:Double = Double(self.view.subviews.count)
         
         var index:Double = 0
         
-        for view in self.view.subviews.reverse() {
+        for view in self.view.subviews.reversed() {
             
             if index / count > pc {
                 
@@ -291,14 +268,14 @@ class PixelTestViewController: UIViewController {
                     view.tag = 0
                     //  view.smallBounce(10)
                     
-                    UIView.animateWithDuration(2.0, animations: {
+                    UIView.animate(withDuration: 2.0, animations: {
                         
                         view.alpha = 0
                     })
                 }
             }
             else {
-                UIView.animateWithDuration(2.0, animations: {
+                UIView.animate(withDuration: 2.0, animations: {
                     
                     //       view.smallBounce(10)
                     
@@ -316,14 +293,14 @@ class PixelTestViewController: UIViewController {
     
     
     
-    func setAlternateRowSize(size:CGFloat) {
+    func setAlternateRowSize(_ size:CGFloat) {
         for constraint in self.widthAndHeightConstraints {
             constraint.constant = size
         }
         
-        UIView.animateWithDuration(1.0) { 
+        UIView.animate(withDuration: 1.0, animations: { 
             self.view.layoutIfNeeded()
-        }
+        }) 
         
     }
     

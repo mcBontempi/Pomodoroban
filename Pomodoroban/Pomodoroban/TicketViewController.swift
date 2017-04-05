@@ -2,8 +2,8 @@ import UIKit
 import EasyTipView
 
 protocol TicketViewControllerDelegate {
-    func ticketViewControllerSave(ticketViewController:TicketViewController)
-    func ticketViewControllerCancel(ticketViewController:TicketViewController)
+    func ticketViewControllerSave(_ ticketViewController:TicketViewController)
+    func ticketViewControllerCancel(_ ticketViewController:TicketViewController)
 }
 
 
@@ -18,10 +18,10 @@ class TicketViewController: UITableViewController {
     @IBOutlet weak var headerColor: UIView!
     
     @IBOutlet weak var countSegmentedControl: UISegmentedControl!
-    @IBAction func leftButtonPressed(sender: AnyObject) {
+    @IBAction func leftButtonPressed(_ sender: AnyObject) {
         self.delegate.ticketViewControllerCancel(self)
     }
-    @IBAction func rightButtonPressed(sender: AnyObject) {
+    @IBAction func rightButtonPressed(_ sender: AnyObject) {
         self.save()
     }
     @IBOutlet weak var notesText: UITextView!
@@ -35,7 +35,7 @@ class TicketViewController: UITableViewController {
         
         var index = 0
         
-        let colors = UIColor.colorArray().reverse()
+        let colors = UIColor.colorArray().reversed()
         for color in colors {
             
             print(color)
@@ -49,14 +49,14 @@ class TicketViewController: UITableViewController {
     }
     
     
-    func categoryValueChanged(segmentedControl: UISegmentedControl) {
+    func categoryValueChanged(_ segmentedControl: UISegmentedControl) {
         
         
         self.headerColor.backgroundColor = UIColor.colorFrom(Int( segmentedControl.selectedSegmentIndex))
         
     }
     
-    func countValueChanged(segmentedControl: UISegmentedControl) {
+    func countValueChanged(_ segmentedControl: UISegmentedControl) {
         self.ticket.pomodoroEstimate = Int32(segmentedControl.selectedSegmentIndex)+1
     }
     
@@ -70,9 +70,9 @@ class TicketViewController: UITableViewController {
         self.tableView.tableFooterView = UIView()
         
         
-        self.categorySegmentedControl.addTarget(self, action: #selector(TicketViewController.categoryValueChanged(_:)), forControlEvents: .ValueChanged)
+        self.categorySegmentedControl.addTarget(self, action: #selector(TicketViewController.categoryValueChanged(_:)), for: .valueChanged)
         
-        self.countSegmentedControl.addTarget(self, action: #selector(TicketViewController.countValueChanged(_:)), forControlEvents: .ValueChanged)
+        self.countSegmentedControl.addTarget(self, action: #selector(TicketViewController.countValueChanged(_:)), for: .valueChanged)
         
         
         self.categorySegmentedControl.selectedSegmentIndex = Int(self.ticket.colorIndex)
@@ -90,7 +90,7 @@ class TicketViewController: UITableViewController {
         self.notesText.text = self.ticket.desc
         
         
-        self.navigationController?.navigationBar.translucent = false
+        self.navigationController?.navigationBar.isTranslucent = false
         
         self.headerColor.backgroundColor = UIColor.colorFrom(Int( self.ticket.colorIndex))
         
@@ -100,7 +100,7 @@ class TicketViewController: UITableViewController {
     }
     
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         
@@ -115,7 +115,7 @@ class TicketViewController: UITableViewController {
         
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         if self.setFocusToName == true {
@@ -123,12 +123,12 @@ class TicketViewController: UITableViewController {
             self.setFocusToName = false
         }
         
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = UserDefaults.standard
         
-        if defaults.objectForKey("shownTicketToolTips") == nil {
+        if defaults.object(forKey: "shownTicketToolTips") == nil {
             self.showColorTooltip()
             
-            defaults.setBool(true, forKey: "shownTicketToolTips")
+            defaults.set(true, forKey: "shownTicketToolTips")
             
             defaults.synchronize()
             
@@ -161,11 +161,11 @@ class TicketViewController: UITableViewController {
         var preferences = EasyTipView.Preferences()
         
         preferences.drawing.font = UIFont(name: "Futura-Medium", size: 16)!
-        preferences.drawing.foregroundColor = UIColor.whiteColor()
-        preferences.drawing.backgroundColor = UIColor.darkGrayColor()
-        preferences.drawing.arrowPosition = .Right
+        preferences.drawing.foregroundColor = UIColor.white
+        preferences.drawing.backgroundColor = UIColor.darkGray
+        preferences.drawing.arrowPosition = .right
         preferences.drawing.borderWidth  = 2
-        preferences.drawing.borderColor = UIColor.lightGrayColor()
+        preferences.drawing.borderColor = UIColor.lightGray
         
         return preferences
     }
@@ -186,14 +186,14 @@ class TicketViewController: UITableViewController {
             self.delegate.ticketViewControllerSave(self)
         }
         else {
-            let alert = UIAlertController(title: "Oops", message: "Please Enter a Name for the Ticket", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
+            let alert = UIAlertController(title: "Oops", message: "Please Enter a Name for the Ticket", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         
         self.titleField.resignFirstResponder()
@@ -208,13 +208,13 @@ class TicketViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
     }
 }
 
 extension TicketViewController : EasyTipViewDelegate {
-    func easyTipViewDidDismiss(tipView : EasyTipView) {
+    func easyTipViewDidDismiss(_ tipView : EasyTipView) {
         
         if tipView == self.colorTooltip {
             self.showPomodoroTooltip()

@@ -1,5 +1,4 @@
 import UIKit
-import LSRepeater
 import Firebase
 import FirebaseDatabase
 import CoreData
@@ -7,14 +6,15 @@ import FirebaseAuth
 
 class SyncService : NSObject {
     
-    var repeater:LSRepeater!
-    
     let moc = CoreDataServices.sharedInstance.moc
     
     static let sharedInstance = SyncService()
     
-    lazy var fetchedResultsController: NSFetchedResultsController = {
-        let tempFetchedResultsController = NSFetchedResultsController( fetchRequest: Ticket.fetchRequestAllIncludingDeleted(), managedObjectContext: self.moc, sectionNameKeyPath: "section", cacheName: nil)
+    lazy var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult> = {
+        let tempFetchedResultsController =
+            
+            NSFetchedResultsController(fetchRequest: Ticket.fetchRequestAllIncludingDeleted(), managedObjectContext: self.moc, sectionNameKeyPath: "section", cacheName: nil)
+        
         tempFetchedResultsController.delegate = self
         return tempFetchedResultsController
     }()
@@ -58,7 +58,7 @@ class SyncService : NSObject {
         let uid = FIRAuth.auth()!.currentUser?.uid
         let ticketRef = self.ref.child(uid!)
         
-        ticketRef.observeEventType(.Value, withBlock: { (snapshot) in
+        ticketRef.observe(.value, with: { (snapshot) in
             
             for ticket in snapshot.children {
                 
@@ -66,25 +66,25 @@ class SyncService : NSObject {
                 
                 let dict = snapshot.value as! NSDictionary
                 
-                let identifier = dict.objectForKey("identifier") as! String
+                let identifier = dict.object(forKey: "identifier") as! String
                 
                 if let createOrUpdateTicket = Ticket.createOrUpdate(self.moc, identifier: identifier) {
                     
-                    let name = dict.objectForKey("name") as! String
+                    let name = dict.object(forKey: "name") as! String
                     
-                    let section = dict.objectForKey("section") as! String
+                    let section = dict.object(forKey: "section") as! String
                     
-                    let row = dict.objectForKey("row") as! String
+                    let row = dict.object(forKey: "row") as! String
                     
-                    let colorIndex = dict.objectForKey("colorIndex") as! String
+                    let colorIndex = dict.object(forKey: "colorIndex") as! String
                     
-                    let pomodoroEstimate = dict.objectForKey("pomodoroEstimate") as! String
+                    let pomodoroEstimate = dict.object(forKey: "pomodoroEstimate") as! String
                     
-                    let removed = dict.objectForKey("removed") as! String
+                    let removed = dict.object(forKey: "removed") as! String
                     
                     let removedBool = removed == "true" ? true : false
                     
-                    let desc = dict.objectForKey("desc") as! String
+                    let desc = dict.object(forKey: "desc") as! String
                     
                     if name != createOrUpdateTicket.name || createOrUpdateTicket.section != Int32(section)! || createOrUpdateTicket.row != Int32(row)! || createOrUpdateTicket.colorIndex != Int32(colorIndex)! || createOrUpdateTicket.pomodoroEstimate != Int32(pomodoroEstimate)! || createOrUpdateTicket.removed != removedBool || desc != createOrUpdateTicket.desc {
                         
@@ -117,7 +117,7 @@ class SyncService : NSObject {
 }
 
 extension SyncService : NSFetchedResultsControllerDelegate {
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         
         if let ticket = anObject as? Ticket {
             

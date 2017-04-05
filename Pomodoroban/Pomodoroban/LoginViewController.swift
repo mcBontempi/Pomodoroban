@@ -5,39 +5,39 @@ import MBProgressHUD
 import EasyTipView
 
 protocol LoginViewControllerDelegate : class {
-    func loginViewControllerDidSignIn(loginViewController:LoginViewController)
+    func loginViewControllerDidSignIn(_ loginViewController:LoginViewController)
 }
 
 enum Mode {
-    case Welcome
-    case Menu
-    case Login
-    case Signup
-    case SignupOnly
-    case SendPassword
+    case welcome
+    case menu
+    case login
+    case signup
+    case signupOnly
+    case sendPassword
 }
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var privacyButton: UIButton!
     @IBOutlet weak var skepticsButton: UIButton!
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "privacySegue" || segue.identifier == "skepticsSegue" {
-            let popoverViewController = segue.destinationViewController as! WebViewController
-            popoverViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
+            let popoverViewController = segue.destination as! WebViewController
+            popoverViewController.modalPresentationStyle = UIModalPresentationStyle.popover
             popoverViewController.popoverPresentationController!.delegate = self
             
-            popoverViewController.preferredContentSize = CGRectInset(UIScreen.mainScreen().bounds, 0,40).size
+            popoverViewController.preferredContentSize = UIScreen.main.bounds.insetBy(dx: 0,dy: 40).size
             
-            popoverViewController.url = segue.identifier == "privacySegue" ? NSURL(string:"http://www.pomodoroban.com/privacy.html") : NSURL(string:"htxxtp://www.pomodoroban.com/skeptics_faq.html")
+            popoverViewController.url = segue.identifier == "privacySegue" ? URL(string:"http://www.pomodoroban.com/privacy.html") : URL(string:"htxxtp://www.pomodoroban.com/skeptics_faq.html")
             
         }
         else if segue.identifier == "pixelSegue" {
-            self.pixelVC = segue.destinationViewController as! PixelTestViewController
+            self.pixelVC = segue.destination as! PixelTestViewController
         }
     }
     
-    var mode:Mode = .Welcome
+    var mode:Mode = .welcome
     
     @IBOutlet weak var emailTextFieldTopSpacingToTomatoe: NSLayoutConstraint!
     @IBOutlet weak var backButton: UIButton!
@@ -55,8 +55,8 @@ class LoginViewController: UIViewController {
     weak var delegate:LoginViewControllerDelegate!
     @IBOutlet weak var FORGOTPASSWORDBUTTON: UIButton!
     
-    func signinFirebaseAccount(email:String, password: String) {
-        FIRAuth.auth()!.signInWithEmail(email, password: password, completion: { (user, error) in
+    func signinFirebaseAccount(_ email:String, password: String) {
+        FIRAuth.auth()!.signIn(withEmail: email, password: password, completion: { (user, error) in
             if error == nil {
                 SyncService.sharedInstance.setupSync()
                 
@@ -75,7 +75,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     
     
-    func cornerView(view:UIView,radius:CGFloat) {
+    func cornerView(_ view:UIView,radius:CGFloat) {
         view.layer.cornerRadius = radius
     }
     
@@ -83,7 +83,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         for view in [self.letMeInButton, self.SIGNUPBUTTON,self.LOGINBUTTON, self.JUSTLETMEINBUTTON, self.FORGOTPASSWORDBUTTON] {
-            self.cornerView(view,radius:5)
+            self.cornerView(view!,radius:5)
         }
         
         
@@ -95,18 +95,18 @@ class LoginViewController: UIViewController {
         self.email.text = ""
     }
     
-    @IBAction func forgotPasswordPressed(sender: AnyObject) {
+    @IBAction func forgotPasswordPressed(_ sender: AnyObject) {
         
         self.clearFields()
         
-        self.mode = .SendPassword
+        self.mode = .sendPassword
         
         self.tomatoeHeightConstraint.constant = 100
         
         self.pixelVC.setAlternateRowSize(0)
         
         
-        UIView.animateWithDuration(0.6, animations: {
+        UIView.animate(withDuration: 0.6, animations: {
             
             self.view.layoutIfNeeded()
             
@@ -117,7 +117,7 @@ class LoginViewController: UIViewController {
             
             }, completion: { (completed) in
                 
-                UIView.animateWithDuration(0.3, animations: {
+                UIView.animate(withDuration: 0.3, animations: {
                     self.email.alpha = 1.0
                     self.backButton.alpha = 1.0
                     self.email.becomeFirstResponder()
@@ -127,13 +127,13 @@ class LoginViewController: UIViewController {
         
     }
     
-    @IBAction func justLetMeInPressed(sender: AnyObject) {
+    @IBAction func justLetMeInPressed(_ sender: AnyObject) {
         
         
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = UserDefaults.standard
         
-        if defaults.objectForKey("loggedInWithoutAuth") == nil {
-            defaults.setBool(true, forKey: "loggedInWithoutAuth")
+        if defaults.object(forKey: "loggedInWithoutAuth") == nil {
+            defaults.set(true, forKey: "loggedInWithoutAuth")
             defaults.synchronize()
         }
         
@@ -142,29 +142,29 @@ class LoginViewController: UIViewController {
         
     }
     
-    @IBAction func letMeInPressed(sender: AnyObject) {
+    @IBAction func letMeInPressed(_ sender: AnyObject) {
         
-        self.mode = .Menu
+        self.mode = .menu
         
-        UIView.animateWithDuration(0.3, animations: {
+        UIView.animate(withDuration: 0.3, animations: {
             self.introLabel.alpha = 0.0
             self.letMeInButton.alpha = 0.0
             
             
             }, completion: { (completed) in
                 
-                UIView.animateWithDuration(0.3, animations: {
+                UIView.animate(withDuration: 0.3, animations: {
                     
                     self.SIGNUPBUTTON.alpha = 1.0
                     self.LOGINBUTTON.alpha = 1.0
                     self.JUSTLETMEINBUTTON.alpha = 1.0
                     self.FORGOTPASSWORDBUTTON.alpha = 1.0
                     
-                    let defaults = NSUserDefaults.standardUserDefaults()
+                    let defaults = UserDefaults.standard
                     
-                    if defaults.objectForKey("shownRegisterToolTips") == nil {
+                    if defaults.object(forKey: "shownRegisterToolTips") == nil {
                         self.showRegisterTooltip()
-                        defaults.setBool(true, forKey: "shownRegisterToolTips")
+                        defaults.set(true, forKey: "shownRegisterToolTips")
                         defaults.synchronize()
                     }
                     
@@ -179,13 +179,13 @@ class LoginViewController: UIViewController {
     
     func goBack() {
         
-        self.mode = .Menu
+        self.mode = .menu
         
         self.tomatoeHeightConstraint.constant = 170
         
         self.pixelVC.setAlternateRowSize(6)
         
-        UIView.animateWithDuration(0.6, animations: {
+        UIView.animate(withDuration: 0.6, animations: {
             
             self.view.layoutIfNeeded()
             
@@ -200,7 +200,7 @@ class LoginViewController: UIViewController {
             
             }, completion: { (completed) in
                 
-                UIView.animateWithDuration(0.3, animations: {
+                UIView.animate(withDuration: 0.3, animations: {
                     
                     
                     self.SIGNUPBUTTON.alpha = 1.0
@@ -214,10 +214,10 @@ class LoginViewController: UIViewController {
         })
     }
     
-    @IBAction func backPressed(sender: AnyObject) {
+    @IBAction func backPressed(_ sender: AnyObject) {
         
-        if self.mode == .SignupOnly {
-            self.dismissViewControllerAnimated(true, completion: {
+        if self.mode == .signupOnly {
+            self.dismiss(animated: true, completion: {
                 self.goBack()
             })
         }
@@ -228,17 +228,17 @@ class LoginViewController: UIViewController {
     }
     
     
-    @IBAction func loginPressed(sender: AnyObject) {
+    @IBAction func loginPressed(_ sender: AnyObject) {
         self.clearFields()
         
-        self.mode = .Login
+        self.mode = .login
         
         self.tomatoeHeightConstraint.constant = 100
         
         self.pixelVC.setAlternateRowSize(0)
         
         
-        UIView.animateWithDuration(0.6, animations: {
+        UIView.animate(withDuration: 0.6, animations: {
             
             self.view.layoutIfNeeded()
             
@@ -249,7 +249,7 @@ class LoginViewController: UIViewController {
             
             }, completion: { (completed) in
                 
-                UIView.animateWithDuration(0.3, animations: {
+                UIView.animate(withDuration: 0.3, animations: {
                     
                     self.email.alpha = 1.0
                     self.password.alpha = 1.0
@@ -275,7 +275,7 @@ class LoginViewController: UIViewController {
         self.pixelVC.setAlternateRowSize(0)
         
         
-        UIView.animateWithDuration(0.6, animations: {
+        UIView.animate(withDuration: 0.6, animations: {
             
             self.view.layoutIfNeeded()
             
@@ -286,7 +286,7 @@ class LoginViewController: UIViewController {
             
             }, completion: { (completed) in
                 
-                UIView.animateWithDuration(0.3, animations: {
+                UIView.animate(withDuration: 0.3, animations: {
                     
                     self.email.alpha = 1.0
                     self.password.alpha = 1.0
@@ -303,32 +303,32 @@ class LoginViewController: UIViewController {
         
     }
     
-    @IBAction func signupPressed(sender: AnyObject) {
-        self.mode = .Signup
+    @IBAction func signupPressed(_ sender: AnyObject) {
+        self.mode = .signup
         self.signup()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = UserDefaults.standard
         
         var alpha:CGFloat = 0.0
         
-        if FIRAuth.auth()!.currentUser == nil && defaults.objectForKey("loggedInWithoutAuth") == nil  {
+        if FIRAuth.auth()!.currentUser == nil && defaults.object(forKey: "loggedInWithoutAuth") == nil  {
             
             alpha = 1.0
             
         }
         
-        UIView.animateWithDuration(0.6) { 
+        UIView.animate(withDuration: 0.6, animations: { 
             
             self.privacyButton.alpha = alpha
             self.skepticsButton.alpha = alpha
             
-        }
+        }) 
         
         
-        if self.mode == .Signup {
+        if self.mode == .signup {
             self.introLabel.alpha = 0.0
         }
         
@@ -342,11 +342,11 @@ class LoginViewController: UIViewController {
         var preferences = EasyTipView.Preferences()
         
         preferences.drawing.font = UIFont(name: "Futura-Medium", size: 16)!
-        preferences.drawing.foregroundColor = UIColor.whiteColor()
-        preferences.drawing.backgroundColor = UIColor.redColor()
-        preferences.drawing.arrowPosition = .Bottom
+        preferences.drawing.foregroundColor = UIColor.white
+        preferences.drawing.backgroundColor = UIColor.red
+        preferences.drawing.arrowPosition = .bottom
         preferences.drawing.borderWidth  = 2
-        preferences.drawing.borderColor = UIColor.lightGrayColor()
+        preferences.drawing.borderColor = UIColor.lightGray
         
         return preferences
     }
@@ -360,18 +360,18 @@ class LoginViewController: UIViewController {
         self.registerTooltip.show(animated: true, forView: self.SIGNUPBUTTON, withinSuperview: self.view)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.3 * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, dispatch_get_main_queue()) {
+        let delayTime = DispatchTime.now() + Double(Int64(0.3 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: delayTime) {
 
         
         self.pixelVC.setupAsPomodoro(6)
         self.view.layoutIfNeeded()
         
-        let height = UIScreen.mainScreen().bounds.height
+        let height = UIScreen.main.bounds.height
         if height == 568 {
             self.emailTextFieldTopSpacingToTomatoe.constant = 10
             self.emailtoPasswordPaddingConastraint.constant = 10
@@ -380,9 +380,9 @@ class LoginViewController: UIViewController {
         
         self.tomatoeTopSpaceConstraint.constant = 30
         
-        UIView.animateWithDuration(2.8, animations: {
+        UIView.animate(withDuration: 2.8, animations: {
             
-            if self.mode == .SignupOnly {
+            if self.mode == .signupOnly {
                 self.signup()
             }
             
@@ -392,14 +392,14 @@ class LoginViewController: UIViewController {
             self.view.layoutIfNeeded()
             }, completion: { (completed) in
                 
-                if self.mode != .SignupOnly {
+                if self.mode != .signupOnly {
                     
                     
-                    let defaults = NSUserDefaults.standardUserDefaults()
+                    let defaults = UserDefaults.standard
                     
-                    if FIRAuth.auth()!.currentUser == nil && defaults.objectForKey("loggedInWithoutAuth") == nil  {
+                    if FIRAuth.auth()!.currentUser == nil && defaults.object(forKey: "loggedInWithoutAuth") == nil  {
                         
-                        UIView.animateWithDuration(1.0, animations: {
+                        UIView.animate(withDuration: 1.0, animations: {
                             self.introLabel.alpha = 1.0
                             self.letMeInButton.alpha = 1.0
                         })
@@ -431,20 +431,20 @@ class LoginViewController: UIViewController {
         
         self.password.resignFirstResponder()
         
-        UIView.animateWithDuration(0.3, animations: {
+        UIView.animate(withDuration: 0.3, animations: {
             
             self.email.alpha = 0.0
             self.password.alpha = 0.0
             self.backButton.alpha = 0.0
             
-        }) { (completed) in
+        }, completion: { (completed) in
             
-            if self.mode == .Login {
-                _ = MBProgressHUD.showHUDAddedTo(self.view, animated: false)
+            if self.mode == .login {
+                _ = MBProgressHUD.showAdded(to: self.view, animated: false)
                 
-                FIRAuth.auth()!.signInWithEmail(self.email.text!, password: self.password.text!, completion: { (user, error) in
+                FIRAuth.auth()!.signIn(withEmail: self.email.text!, password: self.password.text!, completion: { (user, error) in
                     
-                    MBProgressHUD.hideHUDForView(self.view, animated: true)
+                    MBProgressHUD.hide(for: self.view, animated: true)
                     
                     if error == nil {
                         SyncService.sharedInstance.setupSync()
@@ -463,12 +463,12 @@ class LoginViewController: UIViewController {
                 })
                 
             }
-            else if self.mode == .SendPassword {
-                _ = MBProgressHUD.showHUDAddedTo(self.view, animated: false)
+            else if self.mode == .sendPassword {
+                _ = MBProgressHUD.showAdded(to: self.view, animated: false)
                 
-                FIRAuth.auth()!.sendPasswordResetWithEmail(self.email.text!, completion: { (error) in
+                FIRAuth.auth()!.sendPasswordReset(withEmail: self.email.text!, completion: { (error) in
                     
-                    MBProgressHUD.hideHUDForView(self.view, animated: true)
+                    MBProgressHUD.hide(for: self.view, animated: true)
                     
                     if error == nil {
                         
@@ -485,20 +485,20 @@ class LoginViewController: UIViewController {
             }
                 
                 
-            else if self.mode == .Signup || self.mode == .SignupOnly {
-                MBProgressHUD.showHUDAddedTo(self.view, animated: false)
-                FIRAuth.auth()!.createUserWithEmail(self.email.text!,password:self.password.text!) { user, error in
+            else if self.mode == .signup || self.mode == .signupOnly {
+                MBProgressHUD.showAdded(to: self.view, animated: false)
+                FIRAuth.auth()!.createUser(withEmail: self.email.text!,password:self.password.text!) { user, error in
                     
-                    MBProgressHUD.hideHUDForView(self.view, animated: true)
+                    MBProgressHUD.hide(for: self.view, animated: true)
                     
                     if error == nil {
                         
-                        FIRAuth.auth()!.signInWithEmail(self.email.text!, password: self.password.text!, completion: { (user, error) in
+                        FIRAuth.auth()!.signIn(withEmail: self.email.text!, password: self.password.text!, completion: { (user, error) in
                             if error == nil {
                                 SyncService.sharedInstance.setupSync()
                                 
                                 
-                                if self.mode == .SignupOnly {
+                                if self.mode == .signupOnly {
                                     SyncService.sharedInstance.syncExisting()
                                 }
                                 
@@ -514,28 +514,28 @@ class LoginViewController: UIViewController {
                     }
                     else {
                         
-                        MBProgressHUD.hideHUDForView(self.view, animated: true)
+                        MBProgressHUD.hide(for: self.view, animated: true)
                         
                         self.showEmailAndPasswordAndBackButton()
                         UIAlertController.quickMessage((error?.localizedDescription)!, vc: self)
                     }
                 }
             }
-        }
+        }) 
     }
     
     
     func showEmailAndBackButton() {
         
-        UIView.animateWithDuration(0.3, animations: {
+        UIView.animate(withDuration: 0.3, animations: {
             
             self.email.alpha = 1.0
             self.backButton.alpha = 1.0
             
-        }) { (complted) in
+        }, completion: { (complted) in
             self.password.becomeFirstResponder()
             
-        }
+        }) 
         
         
     }
@@ -543,16 +543,16 @@ class LoginViewController: UIViewController {
     
     func showEmailAndPasswordAndBackButton() {
         
-        UIView.animateWithDuration(0.3, animations: {
+        UIView.animate(withDuration: 0.3, animations: {
             
             self.email.alpha = 1.0
             self.password.alpha = 1.0
             self.backButton.alpha = 1.0
             
-        }) { (complted) in
+        }, completion: { (complted) in
             self.password.becomeFirstResponder()
             
-        }
+        }) 
         
         
     }
@@ -561,14 +561,14 @@ class LoginViewController: UIViewController {
         
         
         
-        self.mode = .Menu
+        self.mode = .menu
         
         self.tomatoeHeightConstraint.constant = 170
         
         
         self.pixelVC.setAlternateRowSize(6)
         
-        UIView.animateWithDuration(0.6, animations: {
+        UIView.animate(withDuration: 0.6, animations: {
             
             
             self.SIGNUPBUTTON.alpha = 0.0
@@ -579,12 +579,12 @@ class LoginViewController: UIViewController {
             self.view.layoutIfNeeded()
             
             }, completion: { (completed) in
-                UIView.animateWithDuration(1.3, animations: {
+                UIView.animate(withDuration: 1.3, animations: {
                     self.introLabel.text = "Thanks, please enjoy POMODOROBAN"
                     self.introLabel.alpha = 1.0
                     
-                    let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC)))
-                    dispatch_after(delayTime, dispatch_get_main_queue()) {
+                    let delayTime = DispatchTime.now() + Double(Int64(2 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+                    DispatchQueue.main.asyncAfter(deadline: delayTime) {
                         
                         self.moveToMainScreen()
                         
@@ -594,8 +594,8 @@ class LoginViewController: UIViewController {
     }
     
     func moveToMainScreen() {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("MainNavigationController")
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainNavigationController")
         appDelegate.setRootVC(vc!)
     }
     
@@ -605,10 +605,10 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController : UITextFieldDelegate {
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == self.email {
             
-            if self.mode == .SendPassword {
+            if self.mode == .sendPassword {
                 self.commitAction()
             }
             else {
@@ -625,14 +625,14 @@ extension LoginViewController : UITextFieldDelegate {
 
 
 extension LoginViewController : EasyTipViewDelegate {
-    func easyTipViewDidDismiss(tipView : EasyTipView) {
+    func easyTipViewDidDismiss(_ tipView : EasyTipView) {
     }
 }
 
 
 extension LoginViewController : UIPopoverPresentationControllerDelegate {
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.None
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
     }
 }

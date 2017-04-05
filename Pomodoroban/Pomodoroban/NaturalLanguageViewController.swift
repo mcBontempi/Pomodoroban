@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import LSRepeater
+import DDTRepeater
 
 class NaturalLanguageViewController: UIViewController {
     
@@ -48,12 +48,12 @@ class NaturalLanguageViewController: UIViewController {
         
         Runtime.removeAllEntities(childMoc)
         
-        let finishTime = NSDate().dateByAddingTimeInterval(NSTimeInterval(totalBreak*60 + totalWork*60))
+        let finishTime = Date().addingTimeInterval(TimeInterval(totalBreak*60 + totalWork*60))
         
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.timeStyle = .ShortStyle
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .short
         
-        let time = dateFormatter.stringFromDate(finishTime)
+        let time = dateFormatter.string(from: finishTime)
         
         self.estimateLabel.text = "\(totalWork + totalBreak) mins total time, \(totalWork) mins of work and \(totalBreak) mins of break, estimated finish time will be \(time)"
     }
@@ -65,8 +65,8 @@ class NaturalLanguageViewController: UIViewController {
         
     }
     
-    @IBAction func didPressCancel(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true) { 
+    @IBAction func didPressCancel(_ sender: AnyObject) {
+        self.dismiss(animated: true) { 
             
             
         }
@@ -74,9 +74,9 @@ class NaturalLanguageViewController: UIViewController {
     }
 
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
-        self.pomodoroLengh = StringAndPredicateCollection(WIthStringAndPredicateArray: [
+        self.pomodoroLengh = StringAndPredicateCollection(wIthStringAndPredicateArray: [
             StringAndPredicate(string: "25 minutes", predicate: 25), //25
             StringAndPredicate(string: "20 minutes", predicate: 20),
             StringAndPredicate(string: "15 minutes", predicate: 15),
@@ -88,7 +88,7 @@ class NaturalLanguageViewController: UIViewController {
             StringAndPredicate(string: "35 minutes", predicate: 35),
             StringAndPredicate(string: "30 minutes", predicate: 30)])
         
-        self.shortBreakLength = StringAndPredicateCollection(WIthStringAndPredicateArray: [
+        self.shortBreakLength = StringAndPredicateCollection(wIthStringAndPredicateArray: [
             StringAndPredicate(string: "5 minutes", predicate: 5), //5
             StringAndPredicate(string: "6 minutes", predicate: 6),
             StringAndPredicate(string: "7 minutes", predicate: 7),
@@ -96,12 +96,12 @@ class NaturalLanguageViewController: UIViewController {
             StringAndPredicate(string: "9 minutes", predicate: 9),
             StringAndPredicate(string: "10 minutes", predicate: 10)])
         
-        self.shortBreakCount = StringAndPredicateCollection(WIthStringAndPredicateArray: [
+        self.shortBreakCount = StringAndPredicateCollection(wIthStringAndPredicateArray: [
             StringAndPredicate(string: "3rd", predicate: 3),
             StringAndPredicate(string: "4th", predicate: 4),
             StringAndPredicate(string: "2nd", predicate: 1)])
         
-        self.longBreakLength = StringAndPredicateCollection(WIthStringAndPredicateArray: [
+        self.longBreakLength = StringAndPredicateCollection(wIthStringAndPredicateArray: [
             StringAndPredicate(string: "20 minutes", predicate: 20), //20
             StringAndPredicate(string: "25 minutes", predicate: 25),
             StringAndPredicate(string: "30 minutes", predicate: 30),
@@ -113,7 +113,7 @@ class NaturalLanguageViewController: UIViewController {
         
         print (wordsAndQuestionsView.frame)
         
-        self.repeater = LSRepeater.repeater(1, fireOnceInstantly: true
+        self.repeater = DDTRepeater.repeater(1, fireOnceInstantly: true
             , execute: { 
                 self.updateEstimateLabel()
                 
@@ -122,14 +122,14 @@ class NaturalLanguageViewController: UIViewController {
         
     }
     
-    var repeater:LSRepeater!
+    var repeater:DDTRepeater!
     
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         self.repeater.invalidate()
         
-        let vc = segue.destinationViewController as! TimerViewController
+        let vc = segue.destination as! TimerViewController
         let length = self.pomodoroLengh.predicate() as! Double
         vc.pomodoroLength = length * 60
         vc.shortBreakLength = self.shortBreakLength.predicate() as! Double * 60
@@ -139,7 +139,7 @@ class NaturalLanguageViewController: UIViewController {
 }
 
 extension NaturalLanguageViewController : WordsAndQuestionsViewDelegate {
-    func userChangedWordsAndQuestionsView(wordsAndQuestionsView: WordsAndQuestionsView!) {
+    func userChangedWordsAndQuestionsView(_ wordsAndQuestionsView: WordsAndQuestionsView!) {
         self.updateEstimateLabel()
     }
 }

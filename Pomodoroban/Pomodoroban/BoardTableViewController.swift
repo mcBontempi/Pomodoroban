@@ -14,11 +14,11 @@ class BoardTableViewController: UITableViewController {
     
     @IBOutlet weak var playButton: UIButton!
     
-    @IBAction func buyPressed(sender: AnyObject) {
+    @IBAction func buyPressed(_ sender: AnyObject) {
         
-        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("BuyViewController") as! BuyViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "BuyViewController") as! BuyViewController
         
-        self.presentViewController(vc, animated: true, completion: nil)
+        self.present(vc, animated: true, completion: nil)
         
         
     }
@@ -35,20 +35,20 @@ class BoardTableViewController: UITableViewController {
     
     var childMoc:NSManagedObjectContext!
     
-    lazy var fetchedResultsController: NSFetchedResultsController = {
+    lazy var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult> = {
         let tempFetchedResultsController = NSFetchedResultsController( fetchRequest: Ticket.fetchRequestAll(), managedObjectContext: self.moc, sectionNameKeyPath: "section", cacheName: nil)
         tempFetchedResultsController.delegate = self
         return tempFetchedResultsController
     }()
     
-    @IBAction func addPressed(sender: AnyObject) {
+    @IBAction func addPressed(_ sender: AnyObject) {
         
-        let section = self.showAll ? 0 : NSDate().getDayOfWeek()
+        let section = self.showAll ? 0 : Date().getDayOfWeek()
         
         self.addInSection(section)
     }
     
-    @IBAction func layerPressed(sender: AnyObject) {
+    @IBAction func layerPressed(_ sender: AnyObject) {
         
         if  self.isActuallyEditing == false {
             
@@ -72,7 +72,7 @@ class BoardTableViewController: UITableViewController {
         
         let thirdPage = OnboardingContentViewController(title: "Page Title", body: "Page body goes here.", image: UIImage(named: "icon"), buttonText: "Done") { () -> Void in
             
-            self.dismissViewControllerAnimated(true, completion: {
+            self.dismiss(animated: true, completion: {
                 
             })
         }
@@ -85,7 +85,7 @@ class BoardTableViewController: UITableViewController {
         
         
         
-        self.presentViewController(onboardingVC, animated: true) {
+        self.present(onboardingVC!, animated: true) {
             
         }
         
@@ -93,7 +93,7 @@ class BoardTableViewController: UITableViewController {
     
     // lifetime
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         /*
@@ -108,17 +108,17 @@ class BoardTableViewController: UITableViewController {
         return ["BACKLOG", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY", "DONE"]
     }
     
-    func updateViewForSection(view:UIView, section: Int)  {
+    func updateViewForSection(_ view:UIView, section: Int)  {
         
         for subview in view.subviews {
             subview.removeFromSuperview()
         }
         
-        view.frame = CGRectMake(0,0,self.tableView.frame.size.width,30)
+        view.frame = CGRect(x: 0,y: 0,width: self.tableView.frame.size.width,height: 30)
         
-        let countLabel = UILabel(frame:CGRectMake(self.tableView.frame.size.width-50,0,40,30))
-        countLabel.textColor = UIColor.whiteColor()
-        countLabel.textAlignment = .Right
+        let countLabel = UILabel(frame:CGRect(x: self.tableView.frame.size.width-50,y: 0,width: 40,height: 30))
+        countLabel.textColor = UIColor.white
+        countLabel.textAlignment = .right
         
         
         let count = Ticket.countForSection(moc, section:section)
@@ -129,16 +129,16 @@ class BoardTableViewController: UITableViewController {
         }
         
         view.backgroundColor = UIColor(hexString: "e9ebd4")
-        let label = UILabel(frame:CGRectMake(10,0,self.tableView.frame.size.width - 20,30))
+        let label = UILabel(frame:CGRect(x: 10,y: 0,width: self.tableView.frame.size.width - 20,height: 30))
         
-        if (NSDate().getDayOfWeek() == section) {
+        if (Date().getDayOfWeek() == section) {
             label.text = "TODAY"
-            label.textColor = UIColor.darkGrayColor()
+            label.textColor = UIColor.darkGray
             
             label.font = UIFont(name:"HelveticaNeue-Bold", size: 20.0)
         }
         else {
-            label.textColor = UIColor.darkGrayColor()
+            label.textColor = UIColor.darkGray
             
             label.text = self.sectionTitles()[section]
             
@@ -189,29 +189,29 @@ class BoardTableViewController: UITableViewController {
     func updateHeaderOnPurchaseStatus() {
         let products = Products.instance().productsArray
         
-        if (products.firstObject?.purchased)! == true {
+        if ((products?.firstObject as AnyObject).purchased)! == true {
             self.tableView.tableHeaderView = nil
             
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "purchased")
-            NSUserDefaults.standardUserDefaults().synchronize()
+            UserDefaults.standard.set(true, forKey: "purchased")
+            UserDefaults.standard.synchronize()
             
         }
     }
     
-    @objc func dayChanged(notification: NSNotification){
+    @objc func dayChanged(_ notification: Notification){
         self.tableView.reloadData()
     }
     
     override func viewDidLoad() {
         
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "dayChanged:", name: UIApplicationSignificantTimeChangeNotification, object: nil)
-        UNUserNotificationCenter.currentNotificationCenter().requestAuthorizationWithOptions([.Alert,.Sound]) { (granted:Bool, error:NSError?) in
+        NotificationCenter.default.addObserver(self, selector: #selector(BoardTableViewController.dayChanged(_:)), name: NSNotification.Name.UIApplicationSignificantTimeChange, object: nil)
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound]) { (granted:Bool, error:Error?) in
             
         }
         
         
-        NSNotificationCenter.defaultCenter().addObserverForName("productsRefreshed", object: nil, queue: nil) { (Notification) in
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "productsRefreshed"), object: nil, queue: nil) { (Notification) in
             
             self.updateHeaderOnPurchaseStatus()
             
@@ -219,13 +219,13 @@ class BoardTableViewController: UITableViewController {
         
         BuddyBuildSDK.setup()
         
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = UserDefaults.standard
         
-        if defaults.objectForKey("shownOnboarding") == nil {
+        if defaults.object(forKey: "shownOnboarding") == nil {
             
             //    self.showOnboarding()
             
-            defaults.setBool(true, forKey: "shownOnboarding")
+            defaults.set(true, forKey: "shownOnboarding")
             
             defaults.synchronize()
             
@@ -241,20 +241,20 @@ class BoardTableViewController: UITableViewController {
         self.tableView.tableFooterView = UIView()
         
         
-        self.navigationController?.navigationBar.translucent = false
+        self.navigationController?.navigationBar.isTranslucent = false
         
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         
-        self.navigationController?.navigationBar.barTintColor = UIColor.redColor()
+        self.navigationController?.navigationBar.barTintColor = UIColor.red
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
         
         
         if Runtime.all(self.moc).count > 0 {
             
-            let vc = self.storyboard!.instantiateViewControllerWithIdentifier("TimerViewController")
+            let vc = self.storyboard!.instantiateViewController(withIdentifier: "TimerViewController")
             
-            self.presentViewController(vc, animated: false, completion: {
+            self.present(vc, animated: false, completion: {
                 
             })
         }
@@ -272,7 +272,7 @@ class BoardTableViewController: UITableViewController {
             self.showAddTooltip()
         }
         
-        let purchased = NSUserDefaults.standardUserDefaults().boolForKey("purchased")
+        let purchased = UserDefaults.standard.bool(forKey: "purchased")
         
         if purchased == true {
             self.tableView.tableHeaderView = nil
@@ -282,7 +282,7 @@ class BoardTableViewController: UITableViewController {
     
     
     deinit{
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
     
@@ -291,37 +291,37 @@ class BoardTableViewController: UITableViewController {
         var preferences = EasyTipView.Preferences()
         
         preferences.drawing.font = UIFont(name: "Futura-Medium", size: 16)!
-        preferences.drawing.foregroundColor = UIColor.whiteColor()
-        preferences.drawing.backgroundColor = UIColor.darkGrayColor()
-        preferences.drawing.arrowPosition = .Right
+        preferences.drawing.foregroundColor = UIColor.white
+        preferences.drawing.backgroundColor = UIColor.darkGray
+        preferences.drawing.arrowPosition = .right
         preferences.drawing.borderWidth  = 2
-        preferences.drawing.borderColor = UIColor.lightGrayColor()
+        preferences.drawing.borderColor = UIColor.lightGray
         
         return preferences
     }
     
     
     
-    func showLogin(register:Bool) {
-        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+    func showLogin(_ register:Bool) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         
         vc.delegate = self
         if register == true {
             
-            vc.mode = .SignupOnly
+            vc.mode = .signupOnly
         }
         else {
-            vc.mode = .Login
+            vc.mode = .login
         }
         
-        self.presentViewController(vc, animated: false, completion: {
+        self.present(vc, animated: false, completion: {
         })
         
     }
     
-    @IBAction func settingsPressed(sender: AnyObject) {
+    @IBAction func settingsPressed(_ sender: AnyObject) {
         
-        let alert = UIAlertController(title: "Settings", message: nil, preferredStyle: .ActionSheet)
+        let alert = UIAlertController(title: "Settings", message: nil, preferredStyle: .actionSheet)
         
         
         
@@ -329,18 +329,18 @@ class BoardTableViewController: UITableViewController {
         
         if self.showAll == false {
             
-            alert.addAction(UIAlertAction(title: "Show ALL Days", style: .Destructive, handler: { (action
+            alert.addAction(UIAlertAction(title: "Show ALL Days", style: .destructive, handler: { (action
                 ) in
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
                 self.showAll = true
                 self.tableView.reloadData()
             }))
         }
         else {
             
-            alert.addAction(UIAlertAction(title: "Show TODAY and DONE Only", style: .Destructive, handler: { (action
+            alert.addAction(UIAlertAction(title: "Show TODAY and DONE Only", style: .destructive, handler: { (action
                 ) in
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
                 self.showAll = false
                 self.tableView.reloadData()
             }))
@@ -351,7 +351,7 @@ class BoardTableViewController: UITableViewController {
         if  FIRAuth.auth()!.currentUser?.uid == nil {
             
             
-            alert.addAction(UIAlertAction(title: "Register for sync", style: .Destructive, handler: { (action
+            alert.addAction(UIAlertAction(title: "Register for sync", style: .destructive, handler: { (action
                 ) in
                 self.showLogin(true)
                 
@@ -360,15 +360,15 @@ class BoardTableViewController: UITableViewController {
         }
         else {
             
-            alert.addAction(UIAlertAction(title: "Sign Out", style: .Default, handler: { (action
+            alert.addAction(UIAlertAction(title: "Sign Out", style: .default, handler: { (action
                 ) in
                 
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
                 
                 
-                let defaults = NSUserDefaults.standardUserDefaults()
+                let defaults = UserDefaults.standard
                 
-                defaults.removeObjectForKey("loggedInWithoutAuth")
+                defaults.removeObject(forKey: "loggedInWithoutAuth")
                 
                 defaults.synchronize()
                 
@@ -383,32 +383,32 @@ class BoardTableViewController: UITableViewController {
             }))
         }
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action
             ) in
         }))
         
         alert.popoverPresentationController?.sourceView = self.settingsButton
         
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
         
         
     }
     // general
     
-    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
       
         if identifier == "timerSegue" {
         if Ticket.allForToday(self.moc).count < 1 {
             
-            let dateFormatter = NSDateFormatter()
+            let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "EEEE"
             
-            let day = dateFormatter.stringFromDate(NSDate())
+            let day = dateFormatter.string(from: Date())
             
-            let alert = UIAlertController(title: "Oops", message: "There need to be some Stories in \(day) for this to work!", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
+            let alert = UIAlertController(title: "Oops", message: "There need to be some Stories in \(day) for this to work!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
             return false
         }
             
@@ -422,29 +422,29 @@ class BoardTableViewController: UITableViewController {
     func setWorkMode() {
         self.tableView.setEditing(false, animated: true)
         
-        self.layerButton.setImage(UIImage(named:"layers"), forState: .Normal)
+        self.layerButton.setImage(UIImage(named:"layers"), for: UIControlState())
         
-        UIView.animateWithDuration(0.3, animations: {
-            self.navigationController?.navigationBar.barTintColor = UIColor.redColor()
+        UIView.animate(withDuration: 0.3, animations: {
+            self.navigationController?.navigationBar.barTintColor = UIColor.red
         })
     }
     
     func setPlanMode() {
         self.tableView.setEditing(true, animated: true)
-        self.layerButton.setImage(UIImage(named:"layersOn"), forState: .Normal)
+        self.layerButton.setImage(UIImage(named:"layersOn"), for: UIControlState())
         
         
-        UIView.animateWithDuration(0.3, animations: {
-            self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
+        UIView.animate(withDuration: 0.3, animations: {
+            self.navigationController?.navigationBar.barTintColor = UIColor.black
         })
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         
         return self.sectionTitles().count
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let sections = self.fetchedResultsController.sections {
             let currentSection = sections[section]
             return currentSection.numberOfObjects == 1 ? 0 : currentSection.numberOfObjects - 1
@@ -452,22 +452,22 @@ class BoardTableViewController: UITableViewController {
         return 0
     }
     
-    override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-        let ticket = fetchedResultsController.objectAtIndexPath(sourceIndexPath) as? Ticket
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let ticket = fetchedResultsController.object(at: sourceIndexPath) as? Ticket
         Ticket.insertTicket(ticket!, toIndexPath: destinationIndexPath, moc:self.moc)
     }
     
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
     func hiddenSections() -> [Int] {
         var array = [0,1,2,3,4,5,6,7]
-        array.removeAtIndex(NSDate().getDayOfWeek())
+        array.remove(at: Date().getDayOfWeek())
         return array
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if self.showAll == false {
             if self.hiddenSections().contains(indexPath.section) == true {
@@ -477,34 +477,34 @@ class BoardTableViewController: UITableViewController {
         return 66
     }
     
-    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-        return .Delete
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .delete
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            if let ticket = fetchedResultsController.objectAtIndexPath(indexPath) as? Ticket {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            if let ticket = fetchedResultsController.object(at: indexPath) as? Ticket {
                 
                 ticket.removed = true
                 
                 try! self.moc.save()
             }
         }
-        else if editingStyle == .Insert {
+        else if editingStyle == .insert {
             self.addInSection(indexPath.section)
         }
     }
     
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let sections = self.fetchedResultsController.sections {
             let currentSection = sections[indexPath.section]
             if indexPath.row < currentSection.numberOfObjects {
                 
                 
-                let ticket = fetchedResultsController.objectAtIndexPath(indexPath) as? Ticket
-                let cell = tableView.dequeueReusableCellWithIdentifier("TicketTableViewCell") as! TicketTableViewCell
+                let ticket = fetchedResultsController.object(at: indexPath) as? Ticket
+                let cell = tableView.dequeueReusableCell(withIdentifier: "TicketTableViewCell") as! TicketTableViewCell
                 cell.ticket =  ticket
                 
                 //       cell.dlabel.text = "s:\(cell.ticket!.section) - r:\(cell.ticket!.row)"
@@ -515,7 +515,7 @@ class BoardTableViewController: UITableViewController {
         return UITableViewCell()
     }
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if self.showAll == false {
             if self.hiddenSections().contains(section) == true {
                 return 0
@@ -524,7 +524,7 @@ class BoardTableViewController: UITableViewController {
         return 30
     }
     
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let view = self.sectionHeaders[section]
         
@@ -532,7 +532,7 @@ class BoardTableViewController: UITableViewController {
     }
     
     
-    func spareRowForSection(section: Int) -> Int{
+    func spareRowForSection(_ section: Int) -> Int{
         var row:Int = 0
         if let sections = self.fetchedResultsController.sections {
             let currentSection = sections[section]
@@ -556,8 +556,8 @@ class BoardTableViewController: UITableViewController {
         
     }
     
-    func addInSection(section:Int) {
-        let nc = self.storyboard?.instantiateViewControllerWithIdentifier("TicketNavigationViewController") as! UINavigationController
+    func addInSection(_ section:Int) {
+        let nc = self.storyboard?.instantiateViewController(withIdentifier: "TicketNavigationViewController") as! UINavigationController
         let vc = nc.viewControllers[0] as! TicketViewController
         
         vc.setFocusToName = true
@@ -578,7 +578,7 @@ class BoardTableViewController: UITableViewController {
         
         vc.delegate = self
         
-        self.presentViewController(nc, animated: true) {}
+        self.present(nc, animated: true) {}
         
     }
     
@@ -586,29 +586,29 @@ class BoardTableViewController: UITableViewController {
     
     func saveChildMoc() {
         if self.childMoc != nil {
-            self.moc.performBlockAndWait({
+            self.moc.performAndWait({
                 try! self.childMoc.save()
                 self.childMoc = nil
                 
-                self.moc.performBlockAndWait({
+                self.moc.performAndWait({
                     try! self.moc.save()
                 })
             })
         }
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let nc = self.storyboard?.instantiateViewControllerWithIdentifier("TicketNavigationViewController") as! UINavigationController
+        let nc = self.storyboard?.instantiateViewController(withIdentifier: "TicketNavigationViewController") as! UINavigationController
         let vc = nc.viewControllers[0] as! TicketViewController
         
         
         self.childMoc = CoreDataServices.sharedInstance.childMoc()
-        vc.ticket = Ticket.ticketForTicket(self.fetchedResultsController.objectAtIndexPath(indexPath) as! Ticket, moc:self.childMoc)
+        vc.ticket = Ticket.ticketForTicket(self.fetchedResultsController.object(at: indexPath) as! Ticket, moc:self.childMoc)
         
         vc.delegate = self
         
-        self.presentViewController(nc, animated: true) {}
+        self.present(nc, animated: true) {}
     }
     
     
@@ -629,23 +629,23 @@ class BoardTableViewController: UITableViewController {
 }
 
 extension BoardTableViewController : TicketViewControllerDelegate {
-    func ticketViewControllerSave(ticketViewController: TicketViewController) {
+    func ticketViewControllerSave(_ ticketViewController: TicketViewController) {
         
-        self.dismissViewControllerAnimated(true) {
+        self.dismiss(animated: true) {
             self.saveChildMoc()
         }
     }
     
-    func ticketViewControllerCancel(ticketViewController: TicketViewController) {
+    func ticketViewControllerCancel(_ ticketViewController: TicketViewController) {
         
-        self.dismissViewControllerAnimated(true) {
+        self.dismiss(animated: true) {
         }
     }
 }
 
 extension BoardTableViewController : NSFetchedResultsControllerDelegate {
     
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         
         
         if self.isActuallyEditing {
@@ -658,11 +658,11 @@ extension BoardTableViewController : NSFetchedResultsControllerDelegate {
     }
     
     func controller(
-        controller: NSFetchedResultsController,
-        didChangeObject anObject: AnyObject,
-                        atIndexPath indexPath: NSIndexPath?,
-                                    forChangeType type: NSFetchedResultsChangeType,
-                                                  newIndexPath: NSIndexPath?) {
+        _ controller: NSFetchedResultsController<NSFetchRequestResult>,
+        didChange anObject: Any,
+                        at indexPath: IndexPath?,
+                                    for type: NSFetchedResultsChangeType,
+                                                  newIndexPath: IndexPath?) {
         
         if self.isActuallyEditing {
             return
@@ -670,47 +670,47 @@ extension BoardTableViewController : NSFetchedResultsControllerDelegate {
         
         
         switch type {
-        case NSFetchedResultsChangeType.Insert:
+        case NSFetchedResultsChangeType.insert:
             if let insertIndexPath = newIndexPath {
-                self.tableView.insertRowsAtIndexPaths([insertIndexPath], withRowAnimation: UITableViewRowAnimation.Right)
+                self.tableView.insertRows(at: [insertIndexPath], with: UITableViewRowAnimation.right)
             }
-        case NSFetchedResultsChangeType.Delete:
+        case NSFetchedResultsChangeType.delete:
             if let deleteIndexPath = indexPath {
-                self.tableView.deleteRowsAtIndexPaths([deleteIndexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+                self.tableView.deleteRows(at: [deleteIndexPath], with: UITableViewRowAnimation.fade)
             }
-        case NSFetchedResultsChangeType.Update:
+        case NSFetchedResultsChangeType.update:
             
             
             if let indexPath = indexPath , let newIndexPath = newIndexPath {
                 
-                self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Left)
+                self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.left)
                 
-                self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: UITableViewRowAnimation.Right)
+                self.tableView.insertRows(at: [newIndexPath], with: UITableViewRowAnimation.right)
                 
                 
             }
                 
             else {
-                self.tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+                self.tableView.reloadRows(at: [indexPath!], with: .fade)
                 
             }
             
-        case NSFetchedResultsChangeType.Move:
+        case NSFetchedResultsChangeType.move:
             
             
             
             if let deleteIndexPath = indexPath {
-                self.tableView.deleteRowsAtIndexPaths([deleteIndexPath], withRowAnimation: UITableViewRowAnimation.Left)
+                self.tableView.deleteRows(at: [deleteIndexPath], with: UITableViewRowAnimation.left)
             }
             
             if let insertIndexPath = newIndexPath {
-                self.tableView.insertRowsAtIndexPaths([insertIndexPath], withRowAnimation: UITableViewRowAnimation.Right)
+                self.tableView.insertRows(at: [insertIndexPath], with: UITableViewRowAnimation.right)
             }
         }
     }
     
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         
         if self.isActuallyEditing {
             self.tableView.reloadData()
@@ -723,12 +723,12 @@ extension BoardTableViewController : NSFetchedResultsControllerDelegate {
 }
 
 extension BoardTableViewController : LoginViewControllerDelegate {
-    func loginViewControllerDidSignIn(loginViewController: LoginViewController) {
+    func loginViewControllerDidSignIn(_ loginViewController: LoginViewController) {
     }
 }
 
 extension BoardTableViewController : EasyTipViewDelegate {
-    func easyTipViewDidDismiss(tipView : EasyTipView) {
+    func easyTipViewDidDismiss(_ tipView : EasyTipView) {
         
         if tipView == self.addTooltip {
             self.showPlayTooltip()

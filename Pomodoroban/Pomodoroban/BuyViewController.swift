@@ -4,20 +4,20 @@ class BuyViewController: UIViewController {
     
     @IBOutlet weak var priceLabel: UILabel!
     
-    @IBAction func IChangedMyMindPressed(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func IChangedMyMindPressed(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
     var pixelVC:PixelTestViewController!
     
-    @IBAction func restorePurchasesPressed(sender: AnyObject) {
+    @IBAction func restorePurchasesPressed(_ sender: AnyObject) {
         
         Products.instance().restoreAllProducts()
     }
-    @IBAction func buyPressed(sender: AnyObject) {
+    @IBAction func buyPressed(_ sender: AnyObject) {
         Products.instance().purchaseProduct("1")
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         self.pixelVC.setupAsPomodoro(6)
@@ -27,14 +27,14 @@ class BuyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let product = Products.instance().productForProductID("1")
+        let product = Products.instance().product(forProductID: "1")
         
-        self.priceLabel.text = product.price
+        self.priceLabel.text = product?.price
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pixelSegue" {
-            self.pixelVC = segue.destinationViewController as! PixelTestViewController
+            self.pixelVC = segue.destination as! PixelTestViewController
         }
     }
 }

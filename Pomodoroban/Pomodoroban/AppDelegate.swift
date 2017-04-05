@@ -13,17 +13,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     let moc = CoreDataServices.sharedInstance.moc
     func appearance() {
-        let attr = NSDictionary(object: UIFont(name: "HelveticaNeue", size: 10.0)!, forKey: NSFontAttributeName)
-        UISegmentedControl.appearance().setTitleTextAttributes(attr as [NSObject : AnyObject] , forState: .Normal)
+        let attr = NSDictionary(object: UIFont(name: "HelveticaNeue", size: 10.0)!, forKey: NSFontAttributeName as NSCopying)
+        UISegmentedControl.appearance().setTitleTextAttributes(attr as! [AnyHashable: Any] , for: UIControlState())
     }
     
     var timerVC:TimerViewController?
-    func applicationWillResignActive(application: UIApplication) {
+    func applicationWillResignActive(_ application: UIApplication) {
     }
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        UIApplication.sharedApplication().idleTimerDisabled = true
+        UIApplication.shared.isIdleTimerDisabled = true
         
         self.appearance()
         
@@ -38,16 +38,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             try! moc.save()
         }
         
-        application.statusBarHidden = true
+        application.isStatusBarHidden = true
         
         return true
     }
     
-    func setRootVC(vc:UIViewController) {
+    func setRootVC(_ vc:UIViewController) {
         self.window?.rootViewController = vc
     }
     
-    func applicationWillTerminate(application: UIApplication) {
+    func applicationWillTerminate(_ application: UIApplication) {
         CoreDataServices.sharedInstance.saveContext()
     }
     

@@ -13,31 +13,31 @@ import UIKit
 
 extension UIView {
   
-  func smallBounce(velocity: CGFloat) {
+  func smallBounce(_ velocity: CGFloat) {
     
-      self.transform = CGAffineTransformMakeScale(5.1, 5.1)
+      self.transform = CGAffineTransform(scaleX: 5.1, y: 5.1)
       
-      UIView.animateWithDuration(1.0,
+      UIView.animate(withDuration: 1.0,
         delay: 0,
         usingSpringWithDamping: 0.2,
         initialSpringVelocity: velocity,
-        options: UIViewAnimationOptions.AllowUserInteraction,
+        options: UIViewAnimationOptions.allowUserInteraction,
         animations: {
-          self.transform = CGAffineTransformIdentity
+          self.transform = CGAffineTransform.identity
         }, completion: nil)
     }
   
-    func delayedBounce(delay: NSTimeInterval) {
+    func delayedBounce(_ delay: TimeInterval) {
         
-        self.transform = CGAffineTransformMakeScale(0.01, 0.01)
+        self.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
         
-        UIView.animateWithDuration(0.5,
+        UIView.animate(withDuration: 0.5,
                                    delay: delay,
                                    usingSpringWithDamping: 0.2,
                                    initialSpringVelocity: 2.0,
-                                   options: UIViewAnimationOptions.AllowUserInteraction,
+                                   options: UIViewAnimationOptions.allowUserInteraction,
                                    animations: {
-                                    self.transform = CGAffineTransformIdentity
+                                    self.transform = CGAffineTransform.identity
                                     self.alpha = 1.0
             }, completion: nil)
     }

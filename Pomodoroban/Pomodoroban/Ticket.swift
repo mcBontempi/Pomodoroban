@@ -22,36 +22,36 @@ class Ticket: NSManagedObject {
     static let attributeSection = "section"
     static let attributeRow = "row"
     
-    class func count(moc:NSManagedObjectContext) -> Int {
-        let objects = try! moc.executeFetchRequest(Ticket.fetchRequestAll())
+    class func count(_ moc:NSManagedObjectContext) -> Int {
+        let objects = try! moc.fetch(Ticket.fetchRequestAll())
         return objects.count
     }
     
-    class func createInMoc(moc:NSManagedObjectContext) -> Ticket {
+    class func createInMoc(_ moc:NSManagedObjectContext) -> Ticket {
     
         
-        let ticket = NSEntityDescription.insertNewObjectForEntityForName(Ticket.entityName, inManagedObjectContext: moc) as! Ticket
-        ticket.identifier = NSUUID().UUIDString
+        let ticket = NSEntityDescription.insertNewObject(forEntityName: Ticket.entityName, into: moc) as! Ticket
+        ticket.identifier = UUID().uuidString
         ticket.desc = ""
         
      
         return ticket
     }
     
-    class func fetchRequestAllIncludingDeleted() -> NSFetchRequest {
+    class func fetchRequestAllIncludingDeleted() -> NSFetchRequest<NSFetchRequestResult> {
         return self.fetchRequestWithPredicate(nil)
     }
     
-    class func fetchRequestAll() -> NSFetchRequest {
+    class func fetchRequestAll() -> NSFetchRequest<NSFetchRequestResult> {
         return self.fetchRequestWithPredicate(NSPredicate(format: "removed = false"))
     }
     
-    class func fetchRequestAllWithoutControl() -> NSFetchRequest {
+    class func fetchRequestAllWithoutControl() -> NSFetchRequest<NSFetchRequestResult> {
         return self.fetchRequestWithPredicate(NSPredicate(format: "row != 999999"))
     }
     
-    class func fetchRequestWithPredicate(predicate: NSPredicate?) -> NSFetchRequest {
-        let request = NSFetchRequest(entityName: Ticket.entityName)
+    class func fetchRequestWithPredicate(_ predicate: NSPredicate?) -> NSFetchRequest<NSFetchRequestResult> {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: Ticket.entityName)
         let primarySortDescriptor = NSSortDescriptor(key: Ticket.attributeSection, ascending: true)
         let secondarySortDescriptor = NSSortDescriptor(key: Ticket.attributeRow, ascending: true)
         request.sortDescriptors = [primarySortDescriptor,secondarySortDescriptor]
@@ -60,13 +60,13 @@ class Ticket: NSManagedObject {
         return request
     }
     
-    class func fetch(managedObjectContext: NSManagedObjectContext, identifier: String) -> Ticket?{
-        let request = NSFetchRequest(entityName: entityName)
+    class func fetch(_ managedObjectContext: NSManagedObjectContext, identifier: String) -> Ticket?{
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
         request.predicate = NSPredicate(format: "identifier = %@", identifier)
-        return try! managedObjectContext.executeFetchRequest(request).first as? Ticket
+        return try! managedObjectContext.fetch(request).first as? Ticket
     }
     
-    class func createOrUpdate( managedObjectContext: NSManagedObjectContext, identifier: String) -> Ticket? {
+    class func createOrUpdate( _ managedObjectContext: NSManagedObjectContext, identifier: String) -> Ticket? {
         
         if let entity = self.fetch(managedObjectContext, identifier: identifier) {
             return entity
@@ -77,7 +77,7 @@ class Ticket: NSManagedObject {
     }
     
     
-    class func countForSection(moc:NSManagedObjectContext, section: Int) -> Int {
+    class func countForSection(_ moc:NSManagedObjectContext, section: Int) -> Int {
       
         let tickets = Ticket.allForSection(moc, section: section)
         
@@ -94,24 +94,24 @@ class Ticket: NSManagedObject {
     }
     
 
-    class func allForToday(moc:NSManagedObjectContext) -> [Ticket] {
+    class func allForToday(_ moc:NSManagedObjectContext) -> [Ticket] {
         
-         let weekday = NSDate().getDayOfWeek()
+         let weekday = Date().getDayOfWeek()
         
-        return try! moc.executeFetchRequest(self.fetchRequestForSection(weekday)) as! [Ticket]
+        return try! moc.fetch(self.fetchRequestForSection(weekday)) as! [Ticket]
     }
     
-    class func all(moc:NSManagedObjectContext) -> [Ticket] {
-        return try! moc.executeFetchRequest(self.fetchRequestAll()) as! [Ticket]
+    class func all(_ moc:NSManagedObjectContext) -> [Ticket] {
+        return try! moc.fetch(self.fetchRequestAll()) as! [Ticket]
     }
     
-    class func allWithoutControl(moc:NSManagedObjectContext) -> [Ticket] {
-        return try! moc.executeFetchRequest(self.fetchRequestAllWithoutControl()) as! [Ticket]
+    class func allWithoutControl(_ moc:NSManagedObjectContext) -> [Ticket] {
+        return try! moc.fetch(self.fetchRequestAllWithoutControl()) as! [Ticket]
         
     }
     
     
-    class func fetchRequestForSection(section:Int) -> NSFetchRequest {
+    class func fetchRequestForSection(_ section:Int) -> NSFetchRequest<NSFetchRequestResult> {
         
         let weekday = section
         
@@ -121,29 +121,29 @@ class Ticket: NSManagedObject {
         
     }
     
-    class func allForSection(moc:NSManagedObjectContext, section:Int) -> [Ticket] {
+    class func allForSection(_ moc:NSManagedObjectContext, section:Int) -> [Ticket] {
         
-        return try! moc.executeFetchRequest(self.fetchRequestForSection(section)) as! [Ticket]
+        return try! moc.fetch(self.fetchRequestForSection(section)) as! [Ticket]
     }
     
     
     
     
-    class func ticketForTicket(ticket:Ticket, moc:NSManagedObjectContext) -> Ticket {
-        return moc.objectWithID(ticket.objectID) as! Ticket
+    class func ticketForTicket(_ ticket:Ticket, moc:NSManagedObjectContext) -> Ticket {
+        return moc.object(with: ticket.objectID) as! Ticket
     }
     
-    class func removeAllEntities(moc: NSManagedObjectContext) {
-        let request = NSFetchRequest(entityName: Ticket.entityName)
-        let objects = try! moc.executeFetchRequest(request) as! [NSManagedObject]
+    class func removeAllEntities(_ moc: NSManagedObjectContext) {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: Ticket.entityName)
+        let objects = try! moc.fetch(request) as! [NSManagedObject]
         for object in objects {
-            moc.deleteObject(object)
+            moc.delete(object)
         }
     }
     
     
-    class func insertTicket(ticket: Ticket, toIndexPath: NSIndexPath, moc:NSManagedObjectContext) {
-        let request = NSFetchRequest(entityName: Ticket.entityName)
+    class func insertTicket(_ ticket: Ticket, toIndexPath: IndexPath, moc:NSManagedObjectContext) {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: Ticket.entityName)
         
         var predicate:NSPredicate?
         
@@ -159,7 +159,7 @@ class Ticket: NSManagedObject {
         
         
         request.predicate = predicate
-        let tickets = try! moc.executeFetchRequest(request) as! [Ticket]
+        let tickets = try! moc.fetch(request) as! [Ticket]
         
         var newRowIndex = 0
         
@@ -196,22 +196,22 @@ class Ticket: NSManagedObject {
     
     
     
-    class func removeAllAddTickets(moc:NSManagedObjectContext) {
-        let request = NSFetchRequest(entityName: Ticket.entityName)
+    class func removeAllAddTickets(_ moc:NSManagedObjectContext) {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: Ticket.entityName)
         
-        let objects = try! moc.executeFetchRequest(request) as! [Ticket]
+        let objects = try! moc.fetch(request) as! [Ticket]
         
         for object in objects {
             
             if object.name == "" {
-                moc.deleteObject(object)
+                moc.delete(object)
             }
         }
     }
     
 
     
-    class func createAllAddTickets(moc:NSManagedObjectContext) {
+    class func createAllAddTickets(_ moc:NSManagedObjectContext) {
         var ticket: Ticket!
         
         for section in 0...8 {
@@ -224,14 +224,14 @@ class Ticket: NSManagedObject {
         }
     }
     
-    class func delete(moc:NSManagedObjectContext, identifier: String) {
+    class func delete(_ moc:NSManagedObjectContext, identifier: String) {
         if let entity = self.fetch(moc, identifier: identifier) {
             
-            moc.deleteObject(entity)
+            moc.delete(entity)
         }
     }
     
-    class func spareRowForSection(section: Int, moc: NSManagedObjectContext) -> Int{
+    class func spareRowForSection(_ section: Int, moc: NSManagedObjectContext) -> Int{
         
         
         
@@ -239,7 +239,7 @@ class Ticket: NSManagedObject {
         
         let fetchRequest =  Ticket.fetchRequestWithPredicate(predicate)
         
-        let currentSection = try! moc.executeFetchRequest(fetchRequest)
+        let currentSection = try! moc.fetch(fetchRequest)
         
         
         var row:Int = 0

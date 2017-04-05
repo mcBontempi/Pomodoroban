@@ -9,21 +9,21 @@ class Runtime: NSManagedObject {
     static let attributeType = "type"
     static let attributeTicket = "ticket"
     
-    class func count(moc:NSManagedObjectContext) -> Int {
-        let objects = try! moc.executeFetchRequest(Runtime.fetchRequestAll())
+    class func count(_ moc:NSManagedObjectContext) -> Int {
+        let objects = try! moc.fetch(Runtime.fetchRequestAll())
         return objects.count
     }
     
-    class func createInMoc(moc:NSManagedObjectContext) -> Runtime {
-        return NSEntityDescription.insertNewObjectForEntityForName(Runtime.entityName, inManagedObjectContext: moc) as! Runtime
+    class func createInMoc(_ moc:NSManagedObjectContext) -> Runtime {
+        return NSEntityDescription.insertNewObject(forEntityName: Runtime.entityName, into: moc) as! Runtime
     }
     
-    class func fetchRequestAll() -> NSFetchRequest {
+    class func fetchRequestAll() -> NSFetchRequest<NSFetchRequestResult> {
         return self.fetchRequestWithPredicate(nil)
     }
     
-    class func fetchRequestWithPredicate(predicate: NSPredicate?) -> NSFetchRequest {
-        let request = NSFetchRequest(entityName: Runtime.entityName)
+    class func fetchRequestWithPredicate(_ predicate: NSPredicate?) -> NSFetchRequest<NSFetchRequestResult> {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: Runtime.entityName)
         let primarySortDescriptor = NSSortDescriptor(key: Runtime.attributeOrder, ascending: true)
         request.sortDescriptors = [primarySortDescriptor]
         
@@ -32,7 +32,7 @@ class Runtime: NSManagedObject {
     }
 
     
-    class func createForToday(moc:NSManagedObjectContext, pomodoroLength:Double, shortBreakLength:Double, longBreakLength:Double, shortBreakCount: Int) {
+    class func createForToday(_ moc:NSManagedObjectContext, pomodoroLength:Double, shortBreakLength:Double, longBreakLength:Double, shortBreakCount: Int) {
         
         let tickets = Ticket.allForToday(moc)
         
@@ -91,19 +91,19 @@ class Runtime: NSManagedObject {
         }
     }
     
-    class func all(moc:NSManagedObjectContext) -> [Runtime] {
+    class func all(_ moc:NSManagedObjectContext) -> [Runtime] {
         
-        return try! moc.executeFetchRequest(self.fetchRequestAll()) as! [Runtime]
+        return try! moc.fetch(self.fetchRequestAll()) as! [Runtime]
     }
     
-    class func removeAllEntities(moc: NSManagedObjectContext) {
+    class func removeAllEntities(_ moc: NSManagedObjectContext) {
         
-        let request = NSFetchRequest(entityName: Runtime.entityName)
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: Runtime.entityName)
         
-        let objects = try! moc.executeFetchRequest(request) as! [NSManagedObject]
+        let objects = try! moc.fetch(request) as! [NSManagedObject]
         
         for object in objects {
-            moc.deleteObject(object)
+            moc.delete(object)
         }
         
         try! moc.save()
@@ -112,14 +112,14 @@ class Runtime: NSManagedObject {
     }
     
     
-    class func removeAllRuntimes(moc:NSManagedObjectContext) {
-        let request = NSFetchRequest(entityName: Runtime.entityName)
+    class func removeAllRuntimes(_ moc:NSManagedObjectContext) {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: Runtime.entityName)
         
-        let objects = try! moc.executeFetchRequest(request) as! [Runtime]
+        let objects = try! moc.fetch(request) as! [Runtime]
         
         for object in objects {
             
-            moc.deleteObject(object)
+            moc.delete(object)
         }
     }
     

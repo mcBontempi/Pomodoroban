@@ -11,8 +11,8 @@ import UIKit
 class ImageMaskView: UIImageView {
 
     
-    override func drawRect(rect: CGRect) {
-    super.drawRect(rect)
+    override func draw(_ rect: CGRect) {
+    super.draw(rect)
     }
 
     
