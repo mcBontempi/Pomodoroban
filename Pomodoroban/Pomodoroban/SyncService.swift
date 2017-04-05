@@ -49,8 +49,6 @@ class SyncService : NSObject {
             let ticketRef = ref.child(uid!).child(ticket.identifier!)
             ticketRef.setValue(["name" : ticket.name!,"row" : "\(ticket.row)","section" : "\(ticket.section)", "identifier" : ticket.identifier!, "colorIndex" : "\(ticket.colorIndex)", "pomodoroEstimate" : "\(ticket.pomodoroEstimate)", "removed" : "\(ticket.removed)", "desc" : ticket.desc])
         }
-        
-    
     }
     
     func setupSync() {
@@ -58,7 +56,7 @@ class SyncService : NSObject {
         try! self.fetchedResultsController.performFetch()
         
         let uid = FIRAuth.auth()!.currentUser?.uid
-                let ticketRef = self.ref.child(uid!)
+        let ticketRef = self.ref.child(uid!)
         
         ticketRef.observeEventType(.Value, withBlock: { (snapshot) in
             
