@@ -86,6 +86,9 @@ class LoginViewController: UIViewController {
             self.cornerView(view!,radius:5)
         }
         
+        skepticsButton.alpha = 0.0
+        privacyButton.alpha = 0.0
+        
         
         
     }
