@@ -138,7 +138,6 @@
 		D67FAED11D952B1C0085BF2D /* TicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67FAED01D952B1C0085BF2D /* TicketTableViewCell.swift */; };
 		D6862BD11DE388E600B52B96 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6862BD01DE388E600B52B96 /* BuyViewController.swift */; };
 		D686EF911DB4CF3F001431D4 /* UIAlertController + Quick.swift in Sources */ = {isa = PBXBuildFile; fileRef = D686EF901DB4CF3F001431D4 /* UIAlertController + Quick.swift */; };
-		D686EF981DB62807001431D4 /* Pomodoroban.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D686EF961DB62807001431D4 /* Pomodoroban.xcdatamodeld */; };
 		D686EF9A1DB64C1C001431D4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D686EF991DB64C1C001431D4 /* LoginViewController.swift */; };
 		D686EF9C1DB64CE2001431D4 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D686EF9B1DB64CE2001431D4 /* SignupViewController.swift */; };
 		D6E5E0F71DCB58B100CDA49F /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E5E0F61DCB58B100CDA49F /* ColorPicker.swift */; };
@@ -148,6 +147,7 @@
 		D6E71D891DA3EFC10055F2AA /* NaturalLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E71D881DA3EFC10055F2AA /* NaturalLanguageViewController.swift */; };
 		D6E71D8D1DA3F2A60055F2AA /* StringAndPredicateCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E71D8C1DA3F2A60055F2AA /* StringAndPredicateCollection.m */; };
 		D6E71D901DA3F3480055F2AA /* StringAndPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E71D8F1DA3F3480055F2AA /* StringAndPredicate.m */; };
+		D6F567EC1EA46081004DAD75 /* Pomodoroban.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D6F567EA1EA46081004DAD75 /* Pomodoroban.xcdatamodeld */; };
 		FD577BD91DB93BA500470457 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = FD577BD61DB93BA400470457 /* Product.m */; };
 		FD577BDA1DB93BA500470457 /* Products.m in Sources */ = {isa = PBXBuildFile; fileRef = FD577BD81DB93BA400470457 /* Products.m */; };
 		FD577BDC1DB942C400470457 /* PixelTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD577BDB1DB942C400470457 /* PixelTestViewController.swift */; };
@@ -361,7 +361,6 @@
 		D6862BD01DE388E600B52B96 /* BuyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
 		D686EF901DB4CF3F001431D4 /* UIAlertController + Quick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController + Quick.swift"; sourceTree = "<group>"; };
 		D686EF921DB4D99D001431D4 /* Pomodoroban.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pomodoroban.entitlements; sourceTree = "<group>"; };
-		D686EF971DB62807001431D4 /* Pomodoroban.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pomodoroban.xcdatamodel; sourceTree = "<group>"; };
 		D686EF991DB64C1C001431D4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D686EF9B1DB64CE2001431D4 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		D6E5E0F61DCB58B100CDA49F /* ColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
@@ -378,7 +377,7 @@
 		D6E71D8C1DA3F2A60055F2AA /* StringAndPredicateCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringAndPredicateCollection.m; sourceTree = "<group>"; };
 		D6E71D8E1DA3F3480055F2AA /* StringAndPredicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringAndPredicate.h; sourceTree = "<group>"; };
 		D6E71D8F1DA3F3480055F2AA /* StringAndPredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringAndPredicate.m; sourceTree = "<group>"; };
-		D6F567E61EA43C2E004DAD75 /* Pomodoroban2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pomodoroban2.xcdatamodel; sourceTree = "<group>"; };
+		D6F567EB1EA46081004DAD75 /* Pomodoroban.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pomodoroban.xcdatamodel; sourceTree = "<group>"; };
 		E777183DB54B2E29403C9EAE /* BuddyBuildSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BuddyBuildSDK.framework; sourceTree = "<group>"; };
 		F69886AA5919349B8129604B /* Pods_Pomodoroban.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pomodoroban.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD577BD51DB93BA400470457 /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
@@ -783,7 +782,7 @@
 		FD5BE9FD1C5CF77100535A78 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D686EF961DB62807001431D4 /* Pomodoroban.xcdatamodeld */,
+				D6F567EA1EA46081004DAD75 /* Pomodoroban.xcdatamodeld */,
 				D634BD2F1DAD1A7B003348D1 /* Runtime.swift */,
 				D634BD301DAD1A7B003348D1 /* Runtime+CoreDataProperties.swift */,
 				FD5BEA021C5CF83100535A78 /* Ticket.swift */,
@@ -1061,7 +1060,6 @@
 				D61085351D95ED3F001A203A /* CoreDataServices.swift in Sources */,
 				D6177D361DC21363008A61CE /* cmu_us_kal16.c in Sources */,
 				D6177D111DC21363008A61CE /* cst_mlpg.c in Sources */,
-				D686EF981DB62807001431D4 /* Pomodoroban.xcdatamodeld in Sources */,
 				FD577BD91DB93BA500470457 /* Product.m in Sources */,
 				D6177D3B1DC21363008A61CE /* cmu_us_rms.c in Sources */,
 				D6177D141DC21363008A61CE /* cst_regex.c in Sources */,
@@ -1082,6 +1080,7 @@
 				D6177D571DC21363008A61CE /* us_int_accent_cart.c in Sources */,
 				D6177D431DC21363008A61CE /* cmu_us_slt_cg.c in Sources */,
 				D6E71D801DA3EB5C0055F2AA /* WordsAndQuestionsView.m in Sources */,
+				D6F567EC1EA46081004DAD75 /* Pomodoroban.xcdatamodeld in Sources */,
 				D6177D4E1DC21363008A61CE /* cmu_postlex.c in Sources */,
 				D6177D281DC21363008A61CE /* rateconv.c in Sources */,
 				D6177D4C1DC21363008A61CE /* cmu_lts_model.c in Sources */,
@@ -1300,13 +1299,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		D686EF961DB62807001431D4 /* Pomodoroban.xcdatamodeld */ = {
+		D6F567EA1EA46081004DAD75 /* Pomodoroban.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				D6F567E61EA43C2E004DAD75 /* Pomodoroban2.xcdatamodel */,
-				D686EF971DB62807001431D4 /* Pomodoroban.xcdatamodel */,
+				D6F567EB1EA46081004DAD75 /* Pomodoroban.xcdatamodel */,
 			);
-			currentVersion = D686EF971DB62807001431D4 /* Pomodoroban.xcdatamodel */;
+			currentVersion = D6F567EB1EA46081004DAD75 /* Pomodoroban.xcdatamodel */;
 			path = Pomodoroban.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
