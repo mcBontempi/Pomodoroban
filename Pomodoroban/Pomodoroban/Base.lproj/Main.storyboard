@@ -934,7 +934,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pMN-lN-bgc">
-                                <rect key="frame" x="149.5" y="94" width="21" height="20"/>
+                                <rect key="frame" x="159.5" y="94" width="1" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="pMN-lN-bgc" secondAttribute="height" multiplier="1:1" constant="1" id="inp-Tn-OJ6"/>
                                 </constraints>
@@ -942,12 +942,9 @@
                                     <segue destination="g9L-WB-VA2" kind="embed" identifier="pixelSegue" id="8Tz-7U-0I6"/>
                                 </connections>
                             </containerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ZY-0a-n6H">
-                                <rect key="frame" x="16" y="144" width="288" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="At5-PI-ZkL"/>
-                                </constraints>
-                                <string key="text">POMODOROBAN PREMIUM is an optional yearly subscription that removes ads and supports future development. You can quickly and easily cancel at any time, from the App Store, without having to talk to anyone.</string>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="1ZY-0a-n6H">
+                                <rect key="frame" x="16" y="124" width="288" height="220"/>
+                                <mutableString key="text">POMODOROBAN PREMIUM is an optional yearly subscription that removes ads and supports future development. You can quickly and easily cancel at any time, from the App Store, without having to talk to anyone. Payment will be charged to iTunes Account at confirmation of purchase. Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period. Account will be charged for renewal within 24-hours prior to the end of the current period, and identify the cost of the renewal. Subscriptions may be managed by the user and auto-renewal may be turned off by going to the user's Account Settings after purchase. Any unused portion of a free trial period, if offered, will be forfeited when the user purchases a subscription to that publication, where applicable</mutableString>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -989,7 +986,6 @@
                         <color key="backgroundColor" red="0.97254901960784312" green="0.98039215686274506" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="au3-TZ-vhW" firstAttribute="top" secondItem="JOf-oL-Ofp" secondAttribute="bottom" id="0Pe-9U-mpF"/>
-                            <constraint firstItem="OII-Ds-pzy" firstAttribute="top" secondItem="1ZY-0a-n6H" secondAttribute="bottom" constant="6" id="1aa-xJ-ATb"/>
                             <constraint firstItem="pMN-lN-bgc" firstAttribute="centerX" secondItem="yee-Vu-J36" secondAttribute="centerX" id="2g5-zl-nUB"/>
                             <constraint firstItem="D2e-vD-Yqk" firstAttribute="leading" secondItem="OII-Ds-pzy" secondAttribute="leading" constant="16" id="4As-Cm-OPY"/>
                             <constraint firstAttribute="trailing" secondItem="sLK-Eb-mxK" secondAttribute="trailing" constant="15" id="5NO-cT-yfZ"/>
@@ -1184,7 +1180,7 @@
                         <viewControllerLayoutGuide type="bottom" id="5lS-G1-IWJ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="V37-SY-tAo">
-                        <rect key="frame" x="0.0" y="0.0" width="21" height="20"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1" height="0.0"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
