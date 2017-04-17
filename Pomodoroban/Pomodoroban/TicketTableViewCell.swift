@@ -27,8 +27,6 @@ class TicketTableViewCell: UITableViewCell {
             
             self.backgroundColor = UIColor(hexString: "F8FAE1")
             
-            
-            
             self.showsReorderControl = true
             for view in self.pomodoroCountView.subviews {
                 view.removeFromSuperview()

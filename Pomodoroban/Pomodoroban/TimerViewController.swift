@@ -346,6 +346,7 @@ class TimerViewController: UIViewController {
     }
     
     func createNotifications() {
+        
           let priority = DispatchQueue.GlobalQueuePriority.default
           DispatchQueue.global(priority: priority).async {
         // ensure we only have one

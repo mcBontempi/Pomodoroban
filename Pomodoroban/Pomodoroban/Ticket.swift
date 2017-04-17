@@ -188,6 +188,8 @@ class Ticket: NSManagedObject {
             }
         }
         
+        print(ticket)
+        
         try! moc.save()
         
     }

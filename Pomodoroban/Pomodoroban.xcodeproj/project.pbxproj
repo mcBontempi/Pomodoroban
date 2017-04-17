@@ -378,6 +378,7 @@
 		D6E71D8C1DA3F2A60055F2AA /* StringAndPredicateCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringAndPredicateCollection.m; sourceTree = "<group>"; };
 		D6E71D8E1DA3F3480055F2AA /* StringAndPredicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringAndPredicate.h; sourceTree = "<group>"; };
 		D6E71D8F1DA3F3480055F2AA /* StringAndPredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringAndPredicate.m; sourceTree = "<group>"; };
+		D6F567E61EA43C2E004DAD75 /* Pomodoroban2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pomodoroban2.xcdatamodel; sourceTree = "<group>"; };
 		E777183DB54B2E29403C9EAE /* BuddyBuildSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BuddyBuildSDK.framework; sourceTree = "<group>"; };
 		F69886AA5919349B8129604B /* Pods_Pomodoroban.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pomodoroban.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD577BD51DB93BA400470457 /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
@@ -862,7 +863,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = LondonSwift;
 				TargetAttributes = {
 					FD5BE9DD1C5BB5CA00535A78 = {
@@ -1302,6 +1303,7 @@
 		D686EF961DB62807001431D4 /* Pomodoroban.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D6F567E61EA43C2E004DAD75 /* Pomodoroban2.xcdatamodel */,
 				D686EF971DB62807001431D4 /* Pomodoroban.xcdatamodel */,
 			);
 			currentVersion = D686EF971DB62807001431D4 /* Pomodoroban.xcdatamodel */;

@@ -1,4 +1,4 @@
-import UIKit
+    import UIKit
 import CoreData
 import Firebase
 import FirebaseAuth
@@ -13,8 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     let moc = CoreDataServices.sharedInstance.moc
     func appearance() {
-        let attr = NSDictionary(object: UIFont(name: "HelveticaNeue", size: 10.0)!, forKey: NSFontAttributeName as NSCopying)
-        UISegmentedControl.appearance().setTitleTextAttributes(attr as! [AnyHashable: Any] , for: UIControlState())
+   //     let attr = NSDictionary(object: UIFont(name: "HelveticaNeue", size: 10.0)!, forKey: NSFontAttributeName as NSCopying)
+   //     UISegmentedControl.appearance().setTitleTextAttributes(attr as? [AnyHashable: Any] , for: UIControlState())
     }
     
     var timerVC:TimerViewController?

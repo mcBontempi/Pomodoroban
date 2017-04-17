@@ -458,7 +458,7 @@ class BoardTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        return true
+        return SyncService.sharedInstance.connected
     }
     
     func hiddenSections() -> [Int] {
@@ -507,7 +507,7 @@ class BoardTableViewController: UITableViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TicketTableViewCell") as! TicketTableViewCell
                 cell.ticket =  ticket
                 
-                //       cell.dlabel.text = "s:\(cell.ticket!.section) - r:\(cell.ticket!.row)"
+                       cell.dlabel.text = "s:\(cell.ticket!.section) - r:\(cell.ticket!.row)"
                 return cell
             }
         }
