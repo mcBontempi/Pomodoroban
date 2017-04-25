@@ -47,8 +47,27 @@ class BuyViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "pixelSegue" {
+            if segue.identifier == "privacySegue" || segue.identifier == "skepticsSegue" {
+                let popoverViewController = segue.destination as! WebViewController
+                popoverViewController.modalPresentationStyle = UIModalPresentationStyle.popover
+                popoverViewController.popoverPresentationController!.delegate = self
+                
+                popoverViewController.preferredContentSize = UIScreen.main.bounds.insetBy(dx: 0,dy: 40).size
+                
+                popoverViewController.url = segue.identifier == "privacySegue" ? URL(string:"http://www.pomodoroban.com/privacy.html") : URL(string:"http://www.pomodoroban.com/skeptics_faq.html")
+                
+            }
+            else if segue.identifier == "pixelSegue" {
             self.pixelVC = segue.destination as! PixelTestViewController
         }
+    }
+}
+
+
+
+extension BuyViewController : UIPopoverPresentationControllerDelegate {
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
     }
 }

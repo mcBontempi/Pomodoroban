@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RVc-O1-TNp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RVc-O1-TNp">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
@@ -688,7 +688,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="btv-af-TnB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1142" y="-491"/>
+            <point key="canvasLocation" x="51" y="-1926"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="cSg-HY-TyG">
@@ -1005,7 +1005,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0WD-2v-kA4">
-                        <barButtonItem key="rightBarButtonItem" title="I Changed My Mind" id="lcy-mm-0dK">
+                        <barButtonItem key="leftBarButtonItem" title="Privacy Policy" id="bfC-nK-9UD">
+                            <connections>
+                                <segue destination="8RF-1B-1gr" kind="popoverPresentation" identifier="privacySegue" popoverAnchorBarButtonItem="bfC-nK-9UD" id="Jko-aB-yF8">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="lcy-mm-0dK">
                             <connections>
                                 <action selector="IChangedMyMindPressed:" destination="rHR-gp-iiY" id="zrI-xd-BKa"/>
                             </connections>
@@ -1222,6 +1229,6 @@
         <image name="xPomodoro" width="500" height="198"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pIG-c7-9uG"/>
+        <segue reference="Jko-aB-yF8"/>
     </inferredMetricsTieBreakers>
 </document>
