@@ -94,6 +94,25 @@ const NSUInteger fontSize = 24;
 - (void)redrawWordsAndQuestions
 {
     
+    NSMutableArray *wordsAndQuestionsCopy = [_wordsAndQuestions mutableCopy];
+    
+    StringAndPredicateCollection *useLongBreaks = _wordsAndQuestions[27];
+    
+    NSString *val = useLongBreaks.string;
+    
+    NSNumber *remove = (NSNumber*)useLongBreaks.predicate;
+    
+    if (remove.boolValue) {
+        
+        NSUInteger count = wordsAndQuestionsCopy.count;
+        
+        for (NSInteger i = 28 ; i < count ; i ++)
+        {
+            [wordsAndQuestionsCopy removeLastObject];
+        }
+    }
+    
+    
     [self.layer animateWithType:kCATransitionFade duration:0.1];
     
     
@@ -101,7 +120,7 @@ const NSUInteger fontSize = 24;
         
         
         if (![view isKindOfClass:[UITextField class]]) {
-        [view removeFromSuperview];
+            [view removeFromSuperview];
         }
         else {
             view.hidden = YES;
@@ -114,11 +133,11 @@ const NSUInteger fontSize = 24;
     
     __block CGPoint point = CGPointMake(0, 0);
     
-    [_wordsAndQuestions enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    [wordsAndQuestionsCopy enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         ;
         
         if ([obj isKindOfClass:[NSString class]]) {
-        
+            
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
             
             label.font = [UIFont fontWithName:@"HelveticaNeue" size:fontSize];
@@ -159,7 +178,7 @@ const NSUInteger fontSize = 24;
             assert (0);
         }
         
-    
+        
     }];
     
     [self centreRow];
@@ -173,7 +192,7 @@ const NSUInteger fontSize = 24;
 - (void)centreHeight
 {
     CGFloat bottom = [self.subviews.lastObject frame].origin.y + [self.subviews.lastObject frame].size.height;
-   
+    
     CGFloat screenHeight = self.frame.size.height;
     
     CGFloat offset = (screenHeight - bottom) /2;
@@ -186,7 +205,7 @@ const NSUInteger fontSize = 24;
 - (void)tappedOnTagLabel:(TagLabel *)tagLabel
 {
     [self endEditing:YES];
-
+    
     [self redrawWordsAndQuestions];
     [self.delegate userChangedWordsAndQuestionsView:self];
 }

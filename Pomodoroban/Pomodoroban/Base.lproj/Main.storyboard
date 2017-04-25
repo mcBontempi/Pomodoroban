@@ -139,7 +139,7 @@
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="AmB-1X-X5G">
                                                     <rect key="frame" x="10" y="54.5" width="300" height="29"/>
                                                     <segments>
-                                                        <segment title="LOG"/>
+                                                        <segment title="BOX"/>
                                                         <segment title="MON"/>
                                                         <segment title="TUE"/>
                                                         <segment title="WED"/>

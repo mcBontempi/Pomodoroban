@@ -92,12 +92,18 @@ class Runtime: NSManagedObject {
     }
     
     
-    class func createForSessionLength(_ moc:NSManagedObjectContext, sessionLength:Double, pomodoroLength:Double, shortBreakLength:Double, longBreakLength:Double, shortBreakCount: Int) {
+    class func createForSessionLength(_ moc:NSManagedObjectContext, sessionLength:Double, pomodoroLength:Double, shortBreakLength:Double, longBreakLength:Double, shortBreakCount: Int, haveALongBreak:Int) {
+        
+        var shortBreakIndex = 1
+        
+        
+        if (haveALongBreak == 1) {
+            shortBreakIndex = -999
+        }
         
         let tickets = Ticket.allForToday(moc)
         
         var index:Int32 = 0
-        var shortBreakIndex = 0
         
         var runningSessionLength = 0.0
         
@@ -107,9 +113,6 @@ class Runtime: NSManagedObject {
                 
                 if runningSessionLength + pomodoroLength < sessionLength
                 {
-                    
-                    
-                    
                     // add the task
                     let runtime = Runtime.createInMoc(moc)
                     runtime.length = Int32(pomodoroLength)
@@ -122,23 +125,34 @@ class Runtime: NSManagedObject {
                     
                     runningSessionLength = runningSessionLength + pomodoroLength
                 }
-                if ticket == tickets.last && i == ticket.pomodoroEstimate - 1 {
-                    // end of day here
+                
+                // add the break
+                
+                print(shortBreakIndex)
+                
+                if ticket == tickets.last && i == ticket.pomodoroEstimate - 1
+                {
+                    //tickets are up
                 }
                 else {
-                    // add the break
-                    
+                
                     if shortBreakCount == shortBreakIndex {
                         if runningSessionLength + longBreakLength < sessionLength
                         {
-                            // add long break
-                            let breakRuntime = Runtime.createInMoc(moc)
-                            breakRuntime.order = index
-                            shortBreakIndex = 0
                             
-                            breakRuntime.length = Int32(longBreakLength)
-                            breakRuntime.type = 2
-                            
+                            if runningSessionLength + longBreakLength + pomodoroLength < sessionLength
+                            {
+                                
+                                
+                                
+                                // add long break
+                                let breakRuntime = Runtime.createInMoc(moc)
+                                breakRuntime.order = index
+                                shortBreakIndex = 0
+                                
+                                breakRuntime.length = Int32(longBreakLength)
+                                breakRuntime.type = 2
+                            }
                             runningSessionLength = runningSessionLength + longBreakLength
                             
                         }
@@ -147,15 +161,16 @@ class Runtime: NSManagedObject {
                         // add the short break
                         if runningSessionLength + shortBreakLength < sessionLength
                         {
-                            
-                            
-                            let breakRuntime = Runtime.createInMoc(moc)
-                            breakRuntime.order = index
-                            breakRuntime.length = Int32(shortBreakLength)
-                            breakRuntime.type = 1
-                            
-                            shortBreakIndex = shortBreakIndex + 1
-                            
+                            if runningSessionLength + shortBreakLength + pomodoroLength < sessionLength
+                            {
+                                
+                                let breakRuntime = Runtime.createInMoc(moc)
+                                breakRuntime.order = index
+                                breakRuntime.length = Int32(shortBreakLength)
+                                breakRuntime.type = 1
+                                
+                                shortBreakIndex = shortBreakIndex + 1
+                            }
                             runningSessionLength = runningSessionLength + shortBreakLength
                             
                         }
@@ -163,8 +178,9 @@ class Runtime: NSManagedObject {
                     
                     index = index + 1
                 }
-                
             }
+            
+            
             
         }
     }

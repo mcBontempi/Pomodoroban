@@ -27,6 +27,7 @@ class TimerViewController: UIViewController {
     var shortBreakCount:Int!
     var longBreakLength:Double!
     var sessionLength:Double!
+    var haveALongBreak:Int!
     
     var index = 0
     var shortBreaks = 0
@@ -207,10 +208,9 @@ class TimerViewController: UIViewController {
             defaults.synchronize()
             
             Runtime.removeAllEntities(self.moc)
+
             
-   //         Runtime.createForToday(self.moc, pomodoroLength: self.pomodoroLength, shortBreakLength: self.shortBreakLength, longBreakLength: self.longBreakLength, shortBreakCount: self.shortBreakCount)
-            
-        Runtime.createForSessionLength(self.moc,sessionLength:self.sessionLength, pomodoroLength: self.pomodoroLength, shortBreakLength: self.shortBreakLength, longBreakLength: self.longBreakLength, shortBreakCount: self.shortBreakCount)
+            Runtime.createForSessionLength(self.moc,sessionLength:self.sessionLength, pomodoroLength: self.pomodoroLength, shortBreakLength: self.shortBreakLength, longBreakLength: self.longBreakLength, shortBreakCount: self.shortBreakCount, haveALongBreak:self.haveALongBreak)
             
             
             try! self.moc.save()
@@ -548,7 +548,7 @@ class TimerViewController: UIViewController {
             }))
         }
         
-        alert.addAction(UIAlertAction(title: "Quick Add Story to BACKLOG", style: .default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "Quick Add Story to INBOX", style: .default, handler: { (action) in
             self.quickAdd()
         }))
         

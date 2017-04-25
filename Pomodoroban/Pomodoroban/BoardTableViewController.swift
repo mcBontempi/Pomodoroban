@@ -105,7 +105,7 @@ class BoardTableViewController: UITableViewController {
     }
     
     func sectionTitles() -> [String] {
-        return ["BACKLOG", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY", "DONE"]
+        return ["INBOX", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY", "DONE"]
     }
     
     func updateViewForSection(_ view:UIView, section: Int)  {
