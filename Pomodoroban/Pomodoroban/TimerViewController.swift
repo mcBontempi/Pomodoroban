@@ -344,6 +344,14 @@ class TimerViewController: UIViewController {
             }
         }
         
+        // update all pomodoro
+        for runtime in self.runtimes {
+            if let ticket = runtime.ticket {
+                ticket.pomodoroEstimate = ticket.pomodoroEstimate - 1
+            }
+        }
+        try! self.moc.save()
+        
         print("this is definately the end")
         self.close()
     }

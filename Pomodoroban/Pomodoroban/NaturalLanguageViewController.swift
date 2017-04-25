@@ -163,7 +163,7 @@ class NaturalLanguageViewController: UIViewController {
         
         self.repeater.invalidate()
         
-        let factor = 60.0
+        let factor = 0.3
         
         let vc = segue.destination as! TimerViewController
         let length = self.pomodoroLengh.predicate() as! Int
