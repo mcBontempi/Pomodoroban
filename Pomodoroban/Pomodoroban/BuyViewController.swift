@@ -43,7 +43,6 @@ class BuyViewController: UIViewController {
         if product?.purchased == true {
             self.dismiss(animated: true, completion: nil)
         }
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -62,8 +61,6 @@ class BuyViewController: UIViewController {
         }
     }
 }
-
-
 
 extension BuyViewController : UIPopoverPresentationControllerDelegate {
     

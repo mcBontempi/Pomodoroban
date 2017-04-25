@@ -17,6 +17,7 @@ class NaturalLanguageViewController: UIViewController {
     var shortBreakLength:StringAndPredicateCollection!
     var shortBreakCount:StringAndPredicateCollection!
     var longBreakLength:StringAndPredicateCollection!
+    var sessionLength:StringAndPredicateCollection!
     
     @IBOutlet weak var wordsAndQuestionsView: WordsAndQuestionsView!
     
@@ -38,12 +39,19 @@ class NaturalLanguageViewController: UIViewController {
         let shortBreakLength  = self.shortBreakLength.predicate() as! Int
         let longBreakLength = self.longBreakLength.predicate() as! Int
         let shortBreakCount = self.shortBreakCount.predicate() as! Int
-        
-        
+        let sessionLength = self.sessionLength.predicate() as! Int
+     
+        /*
         Runtime.createForToday(childMoc, pomodoroLength: Double(pomodoroLength)
         , shortBreakLength: Double(shortBreakLength)
         , longBreakLength: Double(longBreakLength)
         , shortBreakCount: shortBreakCount)
+ */
+
+        Runtime.createForSessionLength(childMoc, sessionLength: Double(sessionLength), pomodoroLength: Double(pomodoroLength)
+            , shortBreakLength: Double(shortBreakLength)
+            , longBreakLength: Double(longBreakLength)
+            , shortBreakCount: shortBreakCount)
         
         let runtimes = Runtime.all(childMoc)
         
@@ -115,14 +123,20 @@ class NaturalLanguageViewController: UIViewController {
             StringAndPredicate(string: "2nd", predicate: 1)])
         
         self.longBreakLength = StringAndPredicateCollection(wIthStringAndPredicateArray: [
-            StringAndPredicate(string: "20 minutes", predicate: 20), //20
-            StringAndPredicate(string: "25 minutes", predicate: 25),
-            StringAndPredicate(string: "30 minutes", predicate: 30),
+            StringAndPredicate(string: "25 minutes", predicate: 25), //20
+            StringAndPredicate(string: "20 minutes", predicate: 20),
+            StringAndPredicate(string: "15 minutes", predicate: 15),
             StringAndPredicate(string: "10 minutes", predicate: 10),
-            StringAndPredicate(string: "15 minutes", predicate: 15)])
+            StringAndPredicate(string: "5 minutes", predicate: 5)])
         
+        self.sessionLength = StringAndPredicateCollection(wIthStringAndPredicateArray: [
+            StringAndPredicate(string: "1 hour", predicate: 60), //20
+            StringAndPredicate(string: "2 hours", predicate: 120),
+            StringAndPredicate(string: "3 hours", predicate: 180),
+            StringAndPredicate(string: "4 hours", predicate: 240),
+            StringAndPredicate(string: "5 hours", predicate: 300)])
         
-        wordsAndQuestionsView.wordsAndQuestions = ["Pomodoroban", "will", "create","your","working","day","with","each","pomodoro","lasting",self.pomodoroLengh,"after","each","pomodoro","you","will","have","a","break","of",self.shortBreakLength,"and","after","every",self.shortBreakCount,"pomodoro","you","will","have","a","break","of",self.longBreakLength]
+        wordsAndQuestionsView.wordsAndQuestions = ["Pomodoroban", "will", "create","your","session","lasting","at","most",self.sessionLength,"with", "each","pomodoro","lasting","for",self.pomodoroLengh,"after","each","pomodoro","you","will","have","a","break","of",self.shortBreakLength,"and","after","every",self.shortBreakCount,"pomodoro","you","will","have","a","break","of",self.longBreakLength]
         
         print (wordsAndQuestionsView.frame)
         
@@ -148,6 +162,8 @@ class NaturalLanguageViewController: UIViewController {
         vc.shortBreakLength = Double(self.shortBreakLength.predicate() as! Int * 60)
         vc.longBreakLength = Double(self.longBreakLength.predicate() as! Int * 60)
         vc.shortBreakCount = self.shortBreakCount.predicate() as! Int
+        
+        vc.sessionLength = Double(self.sessionLength.predicate() as! Int)
     }
 }
 

@@ -733,5 +733,20 @@ extension BoardTableViewController : EasyTipViewDelegate {
         if tipView == self.addTooltip {
             self.showPlayTooltip()
         }
+    
+    
+    
+    
+    
+    
+        let storyboard = UIStoryboard(name: "emmlytics", bundle: nil)
+        let controller = storyboard.instantiateInitialViewController()!
+        
+        self.present(controller, animated: true) {
+            
+            
+        }
+    
+    
     }
 }

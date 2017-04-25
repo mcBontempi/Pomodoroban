@@ -26,6 +26,7 @@ class TimerViewController: UIViewController {
     var shortBreakLength:Double!
     var shortBreakCount:Int!
     var longBreakLength:Double!
+    var sessionLength:Double!
     
     var index = 0
     var shortBreaks = 0
@@ -207,7 +208,9 @@ class TimerViewController: UIViewController {
             
             Runtime.removeAllEntities(self.moc)
             
-            Runtime.createForToday(self.moc, pomodoroLength: self.pomodoroLength, shortBreakLength: self.shortBreakLength, longBreakLength: self.longBreakLength, shortBreakCount: self.shortBreakCount)
+   //         Runtime.createForToday(self.moc, pomodoroLength: self.pomodoroLength, shortBreakLength: self.shortBreakLength, longBreakLength: self.longBreakLength, shortBreakCount: self.shortBreakCount)
+            
+        Runtime.createForSessionLength(self.moc,sessionLength:self.sessionLength, pomodoroLength: self.pomodoroLength, shortBreakLength: self.shortBreakLength, longBreakLength: self.longBreakLength, shortBreakCount: self.shortBreakCount)
             
             
             try! self.moc.save()

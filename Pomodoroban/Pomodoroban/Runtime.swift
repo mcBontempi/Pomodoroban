@@ -30,7 +30,7 @@ class Runtime: NSManagedObject {
         request.predicate = predicate
         return request
     }
-
+    
     
     class func createForToday(_ moc:NSManagedObjectContext, pomodoroLength:Double, shortBreakLength:Double, longBreakLength:Double, shortBreakCount: Int) {
         
@@ -77,7 +77,7 @@ class Runtime: NSManagedObject {
                         // add the short break
                         breakRuntime.length = Int32(shortBreakLength)
                         breakRuntime.type = 1
-                  
+                        
                         shortBreakIndex = shortBreakIndex + 1
                         
                     }
@@ -90,6 +90,87 @@ class Runtime: NSManagedObject {
             
         }
     }
+    
+    
+    class func createForSessionLength(_ moc:NSManagedObjectContext, sessionLength:Double, pomodoroLength:Double, shortBreakLength:Double, longBreakLength:Double, shortBreakCount: Int) {
+        
+        let tickets = Ticket.allForToday(moc)
+        
+        var index:Int32 = 0
+        var shortBreakIndex = 0
+        
+        var runningSessionLength = 0.0
+        
+        for ticket in tickets {
+            
+            for i in 0 ..< ticket.pomodoroEstimate {
+                
+                if runningSessionLength + pomodoroLength < sessionLength
+                {
+                    
+                    
+                    
+                    // add the task
+                    let runtime = Runtime.createInMoc(moc)
+                    runtime.length = Int32(pomodoroLength)
+                    runtime.ticket = ticket
+                    runtime.type = 0
+                    runtime.order = index
+                    runtime.part = i + 1
+                    
+                    index = index + 1
+                    
+                    runningSessionLength = runningSessionLength + pomodoroLength
+                }
+                if ticket == tickets.last && i == ticket.pomodoroEstimate - 1 {
+                    // end of day here
+                }
+                else {
+                    // add the break
+                    
+                    if shortBreakCount == shortBreakIndex {
+                        if runningSessionLength + longBreakLength < sessionLength
+                        {
+                            // add long break
+                            let breakRuntime = Runtime.createInMoc(moc)
+                            breakRuntime.order = index
+                            shortBreakIndex = 0
+                            
+                            breakRuntime.length = Int32(longBreakLength)
+                            breakRuntime.type = 2
+                            
+                            runningSessionLength = runningSessionLength + longBreakLength
+                            
+                        }
+                    }
+                    else {
+                        // add the short break
+                        if runningSessionLength + shortBreakLength < sessionLength
+                        {
+                            
+                            
+                            let breakRuntime = Runtime.createInMoc(moc)
+                            breakRuntime.order = index
+                            breakRuntime.length = Int32(shortBreakLength)
+                            breakRuntime.type = 1
+                            
+                            shortBreakIndex = shortBreakIndex + 1
+                            
+                            runningSessionLength = runningSessionLength + shortBreakLength
+                            
+                        }
+                    }
+                    
+                    index = index + 1
+                }
+                
+            }
+            
+        }
+    }
+    
+    
+    
     
     class func all(_ moc:NSManagedObjectContext) -> [Runtime] {
         
@@ -124,7 +205,7 @@ class Runtime: NSManagedObject {
     }
     
     
-
+    
     
     
 }

@@ -323,7 +323,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QRN-cw-hjZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1461.5999999999999" y="-1366.8665667166417"/>
+            <point key="canvasLocation" x="2173" y="-1604"/>
         </scene>
         <!--Timer View Controller-->
         <scene sceneID="7N6-LM-H0b">
@@ -644,7 +644,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fv1-e9-rWJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2050" y="-1409"/>
+            <point key="canvasLocation" x="-1299" y="-1017"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="MMe-dA-zrD">
@@ -688,7 +688,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="btv-af-TnB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="51" y="-1926"/>
+            <point key="canvasLocation" x="34" y="-1849"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="cSg-HY-TyG">
@@ -919,7 +919,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9l4-pb-Zks" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1298" y="-1600"/>
+            <point key="canvasLocation" x="-1299" y="-1848"/>
         </scene>
         <!--Buy View Controller-->
         <scene sceneID="JJ5-5q-Qrc">
@@ -1229,6 +1229,6 @@
         <image name="xPomodoro" width="500" height="198"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Jko-aB-yF8"/>
+        <segue reference="pIG-c7-9uG"/>
     </inferredMetricsTieBreakers>
 </document>
