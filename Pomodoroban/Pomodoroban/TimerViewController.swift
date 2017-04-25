@@ -124,7 +124,7 @@ class TimerViewController: UIViewController {
         else if height >= 768 {
             return 20
         }
-            return 10
+        return 10
     }
     
     func updateWithBreak() {
@@ -151,6 +151,8 @@ class TimerViewController: UIViewController {
             repeater.invalidate()
         }
         self.cancelNotificationsAndAudioPlaybacks()
+        
+        self.deleteAllToNow()
         
         Runtime.removeAllEntities(self.moc)
         
@@ -208,7 +210,7 @@ class TimerViewController: UIViewController {
             defaults.synchronize()
             
             Runtime.removeAllEntities(self.moc)
-
+            
             
             Runtime.createForSessionLength(self.moc,sessionLength:self.sessionLength, pomodoroLength: self.pomodoroLength, shortBreakLength: self.shortBreakLength, longBreakLength: self.longBreakLength, shortBreakCount: self.shortBreakCount, haveALongBreak:self.haveALongBreak)
             
@@ -284,6 +286,36 @@ class TimerViewController: UIViewController {
         return documentsDirectory
     }
     
+    
+    
+    func deleteAllToNow()
+    {
+        let startDatePlusPauses = self.startDatePlusPauses()
+        
+        let dateDiff = Date().timeIntervalSince(startDatePlusPauses)
+        
+        var runningTotal:TimeInterval = 0
+        
+        for runtime in self.runtimes {
+            
+            let runtimeLength = TimeInterval(runtime.length)
+            
+            runningTotal = runningTotal + runtimeLength
+            
+            if dateDiff < runningTotal {
+                
+                
+            }
+            else {
+                if let ticket = runtime.ticket {
+                    ticket.pomodoroEstimate = ticket.pomodoroEstimate - 1
+                }
+            }
+        }
+        try! self.moc.save()
+        
+    }
+    
     func update() {
         
         let startDatePlusPauses = self.startDatePlusPauses()
@@ -316,11 +348,11 @@ class TimerViewController: UIViewController {
                 if runtime.type == 0 {
                     
                     if let ticket = runtime.ticket {
-                    
-                    let partCount = runtime.ticket.pomodoroEstimate
-                    self.timerLabel.text = String(format:"Seconds remaining = %.0f\nPomodoro in Story (%d/%d)",self.currentPartRemaining , part,partCount)
-                    
-                    self.updateWithTicket(ticket)
+                        
+                        let partCount = runtime.ticket.pomodoroEstimate
+                        self.timerLabel.text = String(format:"Seconds remaining = %.0f\nPomodoro in Story (%d/%d)",self.currentPartRemaining , part,partCount)
+                        
+                        self.updateWithTicket(ticket)
                     }
                 }
                 else if runtime.type == 1 {
@@ -344,69 +376,61 @@ class TimerViewController: UIViewController {
             }
         }
         
-        // update all pomodoro
-        for runtime in self.runtimes {
-            if let ticket = runtime.ticket {
-                ticket.pomodoroEstimate = ticket.pomodoroEstimate - 1
-            }
-        }
-        try! self.moc.save()
-        
         print("this is definately the end")
         self.close()
     }
     
     func createNotifications() {
         
-          let priority = DispatchQueue.GlobalQueuePriority.default
-          DispatchQueue.global(priority: priority).async {
-        // ensure we only have one
-        self.cancelNotificationsAndAudioPlaybacks()
-        
-        var runningTotal:Int32 = 0
-        
-        var index = 0
-        
-        let dateNow = Date()
-        
-        for runtime in self.runtimes {
+        let priority = DispatchQueue.GlobalQueuePriority.default
+        DispatchQueue.global(priority: priority).async {
+            // ensure we only have one
+            self.cancelNotificationsAndAudioPlaybacks()
             
-            var message:String!
-            var say:String!
-            if runtime.type == 0 {
+            var runningTotal:Int32 = 0
+            
+            var index = 0
+            
+            let dateNow = Date()
+            
+            for runtime in self.runtimes {
                 
-                if let ticket = runtime.ticket {
+                var message:String!
+                var say:String!
+                if runtime.type == 0 {
                     
-                    message = "It's time to start the '\(ticket.name!)' task"
+                    if let ticket = runtime.ticket {
+                        
+                        message = "It's time to start the '\(ticket.name!)' task"
+                        say = message
+                        
+                    }
+                    else {
+                        message = "Test Value"
+                        say = "Test Vlaue"
+                    }
+                }
+                else if runtime.type == 1
+                {
+                    message = "Take a short break for \(runtime.length/60) minutes"
                     say = message
-                    
                 }
-                else {
-                    message = "Test Value"
-                    say = "Test Vlaue"
+                else if runtime.type == 2
+                {
+                    message = "It's time for a long break of \(runtime.length/60) minutes"
+                    say = message
                 }
-            }
-            else if runtime.type == 1
-            {
-                message = "Take a short break for \(runtime.length/60) minutes"
-                say = message
-            }
-            else if runtime.type == 2
-            {
-                message = "It's time for a long break of \(runtime.length/60) minutes"
-                say = message
+                
+                self.createNotification(dateNow, date:self.startDatePlusPauses(), secondsFrom: Int(runningTotal) ,message:message, index:index, say:say)
+                
+                index = index + 1
+                runningTotal = runningTotal + runtime.length
             }
             
-            self.createNotification(dateNow, date:self.startDatePlusPauses(), secondsFrom: Int(runningTotal) ,message:message, index:index, say:say)
+            self.createNotification(dateNow, date:self.startDatePlusPauses(), secondsFrom: Int(runningTotal)-1 ,message:"End Of Work, well done", index:index, say:"End Of Work, well done")
             
-            index = index + 1
-            runningTotal = runningTotal + runtime.length
+            
         }
-        
-        self.createNotification(dateNow, date:self.startDatePlusPauses(), secondsFrom: Int(runningTotal)-1 ,message:"End Of Work, well done", index:index, say:"End Of Work, well done")
-        
-        
-           }
     }
     
     var audioPlayer:AVAudioPlayer!
