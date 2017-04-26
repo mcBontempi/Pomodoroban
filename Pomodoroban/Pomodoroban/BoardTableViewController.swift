@@ -103,7 +103,7 @@ class BoardTableViewController: UITableViewController {
          ])
          */
     }
-    var selectedSectionTitles:[String] = ["MONDAY"]
+    var selectedSectionTitles:[String] = ["INBOX", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY", "DONE"]
     
     func sectionTitles() -> [String] {
         return ["INBOX", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY", "DONE"]
@@ -324,20 +324,20 @@ class BoardTableViewController: UITableViewController {
         
         let alert = UIAlertController(title: "Settings", message: nil, preferredStyle: .actionSheet)
         
-            alert.addAction(UIAlertAction(title: "Select Sections", style: .destructive, handler: { (action
-                ) in
-                self.dismiss(animated: true, completion: nil)
-                let nc = UIStoryboard(name:"SectionSelect", bundle:nil).instantiateInitialViewController() as! UINavigationController
-                
-                let vc = nc.viewControllers.first! as! SectionSelectTableViewController
-                
-                vc.sectionTitles = self.sectionTitles()
-                vc.selectedSectionTitles = self.selectedSectionTitles
-                vc.delegate = self
-                
-                self.present(nc, animated: true, completion: {})
-                
-            }))
+        alert.addAction(UIAlertAction(title: "Select Sections", style: .destructive, handler: { (action
+            ) in
+            self.dismiss(animated: true, completion: nil)
+            let nc = UIStoryboard(name:"SectionSelect", bundle:nil).instantiateInitialViewController() as! UINavigationController
+            
+            let vc = nc.viewControllers.first! as! SectionSelectTableViewController
+            
+            vc.sectionTitles = self.sectionTitles()
+            vc.selectedSectionTitles = self.selectedSectionTitles
+            vc.delegate = self
+            
+            self.present(nc, animated: true, completion: {})
+            
+        }))
         
         
         
@@ -389,25 +389,25 @@ class BoardTableViewController: UITableViewController {
     // general
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-      
+        
         if identifier == "timerSegue" {
-        if Ticket.allForToday(self.moc).count < 1 {
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "EEEE"
-            
-            let day = dateFormatter.string(from: Date())
-            
-            let alert = UIAlertController(title: "Oops", message: "There need to be some Stories in \(day) for this to work!", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            
-            self.present(alert, animated: true, completion: nil)
-            return false
-        }
-            
-        else {
-            return true
-        }
+            if Ticket.allForToday(self.moc).count < 1 {
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "EEEE"
+                
+                let day = dateFormatter.string(from: Date())
+                
+                let alert = UIAlertController(title: "Oops", message: "There need to be some Stories in \(day) for this to work!", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                
+                self.present(alert, animated: true, completion: nil)
+                return false
+            }
+                
+            else {
+                return true
+            }
         }
         return true
     }
@@ -455,18 +455,28 @@ class BoardTableViewController: UITableViewController {
     }
     
     func hiddenSections() -> [Int] {
-        var array = [0,1,2,3,4,5,6,7]
-        array.remove(at: Date().getDayOfWeek())
+        
+        var array = [Int]()
+        
+        var index = 0
+        
+        for item in self.sectionTitles() {
+            if !self.selectedSectionTitles.contains(item){
+                array.append(index)
+            }
+            
+            index = index + 1
+        }
+        
         return array
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if self.showAll == false {
-            if self.hiddenSections().contains(indexPath.section) == true {
-                return 0
-            }
+        if self.hiddenSections().contains(indexPath.section) == true {
+            return 0
         }
+        
         return 66
     }
     
@@ -500,7 +510,7 @@ class BoardTableViewController: UITableViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TicketTableViewCell") as! TicketTableViewCell
                 cell.ticket =  ticket
                 
-//         cell.dlabel.text = "s:\(cell.ticket!.section) - r:\(cell.ticket!.row)"
+                //         cell.dlabel.text = "s:\(cell.ticket!.section) - r:\(cell.ticket!.row)"
                 return cell
             }
         }
@@ -509,11 +519,9 @@ class BoardTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if self.showAll == false {
             if self.hiddenSections().contains(section) == true {
                 return 0
             }
-        }
         return 30
     }
     
@@ -653,9 +661,9 @@ extension BoardTableViewController : NSFetchedResultsControllerDelegate {
     func controller(
         _ controller: NSFetchedResultsController<NSFetchRequestResult>,
         didChange anObject: Any,
-                        at indexPath: IndexPath?,
-                                    for type: NSFetchedResultsChangeType,
-                                                  newIndexPath: IndexPath?) {
+        at indexPath: IndexPath?,
+        for type: NSFetchedResultsChangeType,
+        newIndexPath: IndexPath?) {
         
         if self.isActuallyEditing {
             return
@@ -726,21 +734,13 @@ extension BoardTableViewController : EasyTipViewDelegate {
         if tipView == self.addTooltip {
             self.showPlayTooltip()
         }
-    
-    
-    
-    
-    
-    
+        
         let storyboard = UIStoryboard(name: "emmlytics", bundle: nil)
         let controller = storyboard.instantiateInitialViewController()!
         
-        self.present(controller, animated: true) {
-            
-            
-        }
-    
-    
+        self.present(controller, animated: true) {}
+        
+        
     }
 }
 
@@ -753,6 +753,6 @@ extension BoardTableViewController : SectionSelectTableViewControllerDelegate
     func sectionSelectTableViewController(sectionSelectTableViewController: SectionSelectTableViewController, didSelectTitles: [String]) {
         
         self.selectedSectionTitles = didSelectTitles
-        self.dismiss(animated: true) {}
+        self.dismiss(animated: true) {self.tableView.reloadData()}
     }
 }

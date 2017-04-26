@@ -20,7 +20,18 @@ class SectionSelectTableViewController: UITableViewController {
     var delegate:SectionSelectTableViewControllerDelegate!
     var sectionTitles:[String]!
     var selectedSectionTitles:[String]!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.tableView.tableFooterView = UIView()
+        
+    }
+    
     @IBAction func okPressed(_ sender: Any) {
+        
+        print(self.selectedSectionTitles)
+        
         self.delegate.sectionSelectTableViewController(sectionSelectTableViewController: self, didSelectTitles: self.selectedSectionTitles)
     }
     @IBAction func cancelPressed(_ sender: Any) {
@@ -32,11 +43,28 @@ class SectionSelectTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SectionSelectCellIdentifier", for: indexPath)
-        cell.textLabel?.text = sectionTitles[indexPath.row]
-//        cell.isSelected = self.selectedSectionTitles.contains(self.sectionTitles[indexPath.row])
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SectionSelectCellIdentifier", for: indexPath) as! SectionSelectTableViewCell
+            cell.sectionLabel?.text = sectionTitles[indexPath.row]
+        
+        let selected = self.selectedSectionTitles.contains(self.sectionTitles[indexPath.row])
+        
+        if (selected == true) {
+            
+            tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+        }
+        
+        print(selected)
+        
+        cell.isSelected = selected
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedSectionTitles.append(self.sectionTitles[indexPath.row])
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        self.selectedSectionTitles.remove(at: self.selectedSectionTitles.index(of: self.sectionTitles[indexPath.row])!)
+    }
 
 }
