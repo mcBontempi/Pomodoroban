@@ -309,6 +309,9 @@ class TimerViewController: UIViewController {
             else {
                 if let ticket = runtime.ticket {
                     ticket.pomodoroEstimate = ticket.pomodoroEstimate - 1
+                    if ticket.pomodoroEstimate == 0 {
+                        ticket.section = 8
+                    }
                 }
             }
         }

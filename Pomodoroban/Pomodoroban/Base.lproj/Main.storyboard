@@ -512,15 +512,18 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qxx-Ys-h4t">
-                                            <rect key="frame" x="44" y="10" width="168" height="24"/>
+                                            <rect key="frame" x="44" y="10" width="268" height="24"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="24" id="OWM-cG-ikl"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="13"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="18"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MCy-PQ-hbV">
-                                            <rect key="frame" x="215" y="0.0" width="105" height="75.5"/>
+                                            <rect key="frame" x="215" y="30" width="105" height="45.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="105" id="UgZ-b5-Otk"/>
+                                            </constraints>
                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="9"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -536,8 +539,7 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="Qxx-Ys-h4t" firstAttribute="trailing" secondItem="snV-hf-C0U" secondAttribute="trailingMargin" constant="-100" id="IMy-ne-GLc"/>
-                                        <constraint firstItem="MCy-PQ-hbV" firstAttribute="leading" secondItem="Qxx-Ys-h4t" secondAttribute="trailing" constant="3" id="IV1-Ac-VMF"/>
+                                        <constraint firstItem="Qxx-Ys-h4t" firstAttribute="trailing" secondItem="snV-hf-C0U" secondAttribute="trailingMargin" id="IMy-ne-GLc"/>
                                         <constraint firstItem="Qxx-Ys-h4t" firstAttribute="centerY" secondItem="snV-hf-C0U" secondAttribute="centerY" constant="-16" id="J4L-Es-uye"/>
                                         <constraint firstAttribute="trailing" secondItem="MCy-PQ-hbV" secondAttribute="trailing" id="JBS-ua-A84"/>
                                         <constraint firstItem="Qxx-Ys-h4t" firstAttribute="leading" secondItem="snV-hf-C0U" secondAttribute="leadingMargin" constant="36" id="N1n-by-6G0"/>
@@ -547,7 +549,7 @@
                                         <constraint firstItem="Feh-7D-nUf" firstAttribute="centerY" secondItem="snV-hf-C0U" secondAttribute="centerY" id="b37-Cl-y0c"/>
                                         <constraint firstAttribute="bottom" secondItem="MCy-PQ-hbV" secondAttribute="bottom" id="fIE-mo-rD3"/>
                                         <constraint firstItem="c50-Th-Aoy" firstAttribute="leading" secondItem="Qxx-Ys-h4t" secondAttribute="leading" id="g8y-rX-5x4"/>
-                                        <constraint firstItem="MCy-PQ-hbV" firstAttribute="top" secondItem="snV-hf-C0U" secondAttribute="top" id="iND-m5-v9R"/>
+                                        <constraint firstItem="MCy-PQ-hbV" firstAttribute="top" secondItem="snV-hf-C0U" secondAttribute="top" constant="30" id="iND-m5-v9R"/>
                                         <constraint firstItem="c50-Th-Aoy" firstAttribute="centerY" secondItem="snV-hf-C0U" secondAttribute="centerY" constant="16" id="kO9-uf-Zua"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="kDT-H9-ees" secondAttribute="bottom" constant="-10" id="qOk-bK-RJa"/>
                                         <constraint firstItem="kDT-H9-ees" firstAttribute="top" secondItem="snV-hf-C0U" secondAttribute="topMargin" constant="-10" id="rCF-kf-dNX"/>

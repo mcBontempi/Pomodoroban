@@ -507,7 +507,7 @@ class BoardTableViewController: UITableViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TicketTableViewCell") as! TicketTableViewCell
                 cell.ticket =  ticket
                 
-                       cell.dlabel.text = "s:\(cell.ticket!.section) - r:\(cell.ticket!.row)"
+//         cell.dlabel.text = "s:\(cell.ticket!.section) - r:\(cell.ticket!.row)"
                 return cell
             }
         }
