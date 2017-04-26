@@ -103,6 +103,7 @@ class BoardTableViewController: UITableViewController {
          ])
          */
     }
+    var selectedSectionTitles:[String] = ["MONDAY"]
     
     func sectionTitles() -> [String] {
         return ["INBOX", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY", "DONE"]
@@ -323,28 +324,20 @@ class BoardTableViewController: UITableViewController {
         
         let alert = UIAlertController(title: "Settings", message: nil, preferredStyle: .actionSheet)
         
-        
-        
-        
-        
-        if self.showAll == false {
-            
-            alert.addAction(UIAlertAction(title: "Show ALL Days", style: .destructive, handler: { (action
+            alert.addAction(UIAlertAction(title: "Select Sections", style: .destructive, handler: { (action
                 ) in
                 self.dismiss(animated: true, completion: nil)
-                self.showAll = true
-                self.tableView.reloadData()
+                let nc = UIStoryboard(name:"SectionSelect", bundle:nil).instantiateInitialViewController() as! UINavigationController
+                
+                let vc = nc.viewControllers.first! as! SectionSelectTableViewController
+                
+                vc.sectionTitles = self.sectionTitles()
+                vc.selectedSectionTitles = self.selectedSectionTitles
+                vc.delegate = self
+                
+                self.present(nc, animated: true, completion: {})
+                
             }))
-        }
-        else {
-            
-            alert.addAction(UIAlertAction(title: "Show TODAY and DONE Only", style: .destructive, handler: { (action
-                ) in
-                self.dismiss(animated: true, completion: nil)
-                self.showAll = false
-                self.tableView.reloadData()
-            }))
-        }
         
         
         
@@ -748,5 +741,18 @@ extension BoardTableViewController : EasyTipViewDelegate {
         }
     
     
+    }
+}
+
+extension BoardTableViewController : SectionSelectTableViewControllerDelegate
+{
+    func sectionSelectTableViewControllerCancelled(sectionSelectTableViewController: SectionSelectTableViewController) {
+        self.dismiss(animated: true) {}
+    }
+    
+    func sectionSelectTableViewController(sectionSelectTableViewController: SectionSelectTableViewController, didSelectTitles: [String]) {
+        
+        self.selectedSectionTitles = didSelectTitles
+        self.dismiss(animated: true) {}
     }
 }

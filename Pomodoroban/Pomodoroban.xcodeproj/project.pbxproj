@@ -122,6 +122,9 @@
 		D617FB661D9E54C700A4CA53 /* SyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D617FB651D9E54C700A4CA53 /* SyncService.swift */; };
 		D634BD311DAD1A7B003348D1 /* Runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = D634BD2F1DAD1A7B003348D1 /* Runtime.swift */; };
 		D634BD321DAD1A7B003348D1 /* Runtime+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D634BD301DAD1A7B003348D1 /* Runtime+CoreDataProperties.swift */; };
+		D6372CC61EB050C8009D474D /* SectionSelect.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6372CC51EB050C8009D474D /* SectionSelect.storyboard */; };
+		D6372CCB1EB054AA009D474D /* SectionSelectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6372CCA1EB054AA009D474D /* SectionSelectTableViewController.swift */; };
+		D6372CCD1EB054D1009D474D /* SectionSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6372CCC1EB054D1009D474D /* SectionSelectTableViewCell.swift */; };
 		D637C3B01DE3792E00A21FE7 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D637C3AF1DE3792E00A21FE7 /* WebViewController.swift */; };
 		D6456A5B1DA5013A0002FDA2 /* TicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A5A1DA5013A0002FDA2 /* TicketViewController.swift */; };
 		D6456A681DA534330002FDA2 /* UIColor+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A671DA534330002FDA2 /* UIColor+Palette.swift */; };
@@ -343,6 +346,10 @@
 		D617FB651D9E54C700A4CA53 /* SyncService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncService.swift; sourceTree = "<group>"; };
 		D634BD2F1DAD1A7B003348D1 /* Runtime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Runtime.swift; sourceTree = "<group>"; };
 		D634BD301DAD1A7B003348D1 /* Runtime+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Runtime+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D6372CC51EB050C8009D474D /* SectionSelect.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SectionSelect.storyboard; sourceTree = "<group>"; };
+		D6372CC71EB05481009D474D /* SectionSelectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionSelectTableViewController.h; sourceTree = "<group>"; };
+		D6372CCA1EB054AA009D474D /* SectionSelectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionSelectTableViewController.swift; sourceTree = "<group>"; };
+		D6372CCC1EB054D1009D474D /* SectionSelectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionSelectTableViewCell.swift; sourceTree = "<group>"; };
 		D637C3AF1DE3792E00A21FE7 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		D6456A5A1DA5013A0002FDA2 /* TicketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketViewController.swift; sourceTree = "<group>"; };
 		D6456A671DA534330002FDA2 /* UIColor+Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Palette.swift"; sourceTree = "<group>"; };
@@ -828,6 +835,10 @@
 				D67FAED21D953B980085BF2D /* Pomodoroban-Bridging-Header.h */,
 				D617FB651D9E54C700A4CA53 /* SyncService.swift */,
 				D670EA6E1DCCD45A00DF08B4 /* FirebaseUtils.swift */,
+				D6372CC51EB050C8009D474D /* SectionSelect.storyboard */,
+				D6372CC71EB05481009D474D /* SectionSelectTableViewController.h */,
+				D6372CCA1EB054AA009D474D /* SectionSelectTableViewController.swift */,
+				D6372CCC1EB054D1009D474D /* SectionSelectTableViewCell.swift */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -910,6 +921,7 @@
 				D6177D5C1DC21363008A61CE /* us_pos.tree in Resources */,
 				FD5BE9EF1C5BB5CA00535A78 /* LaunchScreen.storyboard in Resources */,
 				D665D2781DB104F30079ED43 /* GoogleService-Info.plist in Resources */,
+				D6372CC61EB050C8009D474D /* SectionSelect.storyboard in Resources */,
 				D670EA731DCCDC3500DF08B4 /* ServiceAccount.json in Resources */,
 				D67CB2C31DBA3B290026E60D /* TSMessagesDefaultDesign.json in Resources */,
 				FD5BE9E71C5BB5CA00535A78 /* Main.storyboard in Resources */,
@@ -980,6 +992,7 @@
 				D6E5E0F71DCB58B100CDA49F /* ColorPicker.swift in Sources */,
 				D6177D241DC21363008A61CE /* cst_wave.c in Sources */,
 				D60AD76F1DAE509C0011F429 /* ImageMaskView.swift in Sources */,
+				D6372CCB1EB054AA009D474D /* SectionSelectTableViewController.swift in Sources */,
 				D656B36B1DA413630035500A /* NSDate+Utils.swift in Sources */,
 				D6177D3E1DC21363008A61CE /* cmu_us_rms_cg_f0_trees.c in Sources */,
 				D6177D0C1DC21363008A61CE /* cst_file_stdio.c in Sources */,
@@ -1063,6 +1076,7 @@
 				FD577BD91DB93BA500470457 /* Product.m in Sources */,
 				D6177D3B1DC21363008A61CE /* cmu_us_rms.c in Sources */,
 				D6177D141DC21363008A61CE /* cst_regex.c in Sources */,
+				D6372CCD1EB054D1009D474D /* SectionSelectTableViewCell.swift in Sources */,
 				D655FFD71DC7811E00ED6363 /* UIImage + Color.swift in Sources */,
 				D6177D2C1DC21363008A61CE /* cmu_us_awb_cg_durmodel.c in Sources */,
 				D6177D371DC21363008A61CE /* cmu_us_kal16_diphone.c in Sources */,
