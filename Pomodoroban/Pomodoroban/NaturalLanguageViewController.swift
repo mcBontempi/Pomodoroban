@@ -25,10 +25,10 @@ class NaturalLanguageViewController: UIViewController {
     let moc = CoreDataServices.sharedInstance.moc
     
     func updateEstimateLabel() {
-    
+        
         let childMoc = CoreDataServices.sharedInstance.childMoc()
         Runtime.removeAllEntities(childMoc)
-       
+        
         
         if let length = self.shortBreakLength.predicate() {
             
@@ -42,14 +42,14 @@ class NaturalLanguageViewController: UIViewController {
         let shortBreakCount = self.shortBreakCount.predicate() as! Int
         let sessionLength = self.sessionLength.predicate() as! Int
         let haveALongBreak = self.haveALongBreak.predicate() as! Int
-     
+        
         /*
-        Runtime.createForToday(childMoc, pomodoroLength: Double(pomodoroLength)
-        , shortBreakLength: Double(shortBreakLength)
-        , longBreakLength: Double(longBreakLength)
-        , shortBreakCount: shortBreakCount)
- */
-
+         Runtime.createForToday(childMoc, pomodoroLength: Double(pomodoroLength)
+         , shortBreakLength: Double(shortBreakLength)
+         , longBreakLength: Double(longBreakLength)
+         , shortBreakCount: shortBreakCount)
+         */
+        
         Runtime.createForSessionLength(childMoc, sessionLength: Double(sessionLength), pomodoroLength: Double(pomodoroLength)
             , shortBreakLength: Double(shortBreakLength)
             , longBreakLength: Double(longBreakLength)
@@ -62,7 +62,7 @@ class NaturalLanguageViewController: UIViewController {
         
         for runtime in runtimes {
             if runtime.type == 0 {
-            totalWork = totalWork + Int(runtime.length)
+                totalWork = totalWork + Int(runtime.length)
             }
             else {
                 totalBreak = totalBreak + Int(runtime.length)
@@ -89,13 +89,13 @@ class NaturalLanguageViewController: UIViewController {
     }
     
     @IBAction func didPressCancel(_ sender: AnyObject) {
-        self.dismiss(animated: true) { 
+        self.dismiss(animated: true) {
             
             
         }
-    
+        
     }
-
+    
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -143,12 +143,25 @@ class NaturalLanguageViewController: UIViewController {
             StringAndPredicate(string: "Have A Long Break", predicate: 0),
             StringAndPredicate(string: "Not use long Breaks", predicate: 1)])
         
+        
+        let defaults = UserDefaults.standard
+        
+        if let defaultLanguageIndexs = defaults.value(forKey: "defaultLanguageIndexs") as? [UInt] {
+            self.pomodoroLengh.index = defaultLanguageIndexs[0]
+            self.shortBreakLength.index = defaultLanguageIndexs[1]
+            self.shortBreakCount.index = defaultLanguageIndexs[2]
+            self.longBreakLength.index = defaultLanguageIndexs[3]
+            self.sessionLength.index = defaultLanguageIndexs[4]
+            self.haveALongBreak.index = defaultLanguageIndexs[5]
+        }
+        
+      
         wordsAndQuestionsView.wordsAndQuestions = ["Pomodoroban", "will", "create","your","session","lasting","at","most",self.sessionLength,"with", "each","pomodoro","lasting","for",self.pomodoroLengh,"after","each","pomodoro","you","will","have", "a","short","break","of",self.shortBreakLength,"and",self.haveALongBreak,"every",self.shortBreakCount,"pomodoro","of",self.longBreakLength]
         
         print (wordsAndQuestionsView.frame)
         
         self.repeater = DDTRepeater.repeater(1, fireOnceInstantly: true
-            , execute: { 
+            , execute: {
                 self.updateEstimateLabel()
                 
                 
@@ -175,6 +188,21 @@ class NaturalLanguageViewController: UIViewController {
         vc.sessionLength = Double(self.sessionLength.predicate() as! Int) * factor
         
         vc.haveALongBreak = self.haveALongBreak.predicate() as! Int
+        
+        
+        
+        let defaults = UserDefaults.standard
+        
+        var defaultLanguageIndexs = [UInt]()
+        defaultLanguageIndexs.append(self.pomodoroLengh.index)
+        defaultLanguageIndexs.append(self.shortBreakLength.index)
+        defaultLanguageIndexs.append(self.shortBreakCount.index)
+        defaultLanguageIndexs.append(self.longBreakLength.index)
+        defaultLanguageIndexs.append(self.sessionLength.index)
+        defaultLanguageIndexs.append(self.haveALongBreak.index)
+        defaults.setValue(defaultLanguageIndexs, forKey: "defaultLanguageIndexs")
+        defaults.synchronize()
+        
     }
 }
 

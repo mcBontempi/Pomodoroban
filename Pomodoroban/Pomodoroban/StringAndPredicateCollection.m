@@ -9,7 +9,7 @@
 #import "StringAndPredicateCollection.h"
 
 @implementation StringAndPredicateCollection {
-    NSUInteger _index;
+
     NSArray *_stringAndPredicateArray;
     
 }

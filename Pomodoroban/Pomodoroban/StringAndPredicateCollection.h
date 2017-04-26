@@ -10,9 +10,13 @@
 
 @interface StringAndPredicateCollection : NSObject
 
+@property(nonatomic, assign) NSUInteger index;
+
 - (instancetype)initWIthStringAndPredicateArray:(NSArray *)stringAndPredicateArray;
 
 - (void)incrementIndex;
+
+
 
 - (NSString *)string;
 
