@@ -291,8 +291,8 @@ class BoardTableViewController: UITableViewController {
             self.tableView.tableHeaderView = nil
         }
         
+        self.tableView.tableHeaderView = nil
     }
-    
     
     deinit{
         NotificationCenter.default.removeObserver(self)
