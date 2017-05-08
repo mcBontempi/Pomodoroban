@@ -30,8 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
         FIRDatabase.database().persistenceEnabled = true
         
-        Products.instance()
-        
         if Ticket.count(moc) == 0 {
             Ticket.removeAllEntities(moc)
             Ticket.createAllAddTickets(moc)

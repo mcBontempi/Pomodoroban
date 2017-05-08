@@ -98,7 +98,7 @@ const NSUInteger fontSize = 24;
     
     StringAndPredicateCollection *useLongBreaks = _wordsAndQuestions[27];
     
-    NSString *val = useLongBreaks.string;
+//    NSString *val = useLongBreaks.string;
     
     NSNumber *remove = (NSNumber*)useLongBreaks.predicate;
     

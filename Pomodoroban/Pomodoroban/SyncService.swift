@@ -22,23 +22,6 @@ class SyncService : NSObject {
     
     let ref = FIRDatabase.database().reference()
     
-    func isSynced() -> Bool {
-        
-        if let auth = FIRAuth.auth() {
-            if let currentUser = auth.currentUser {
-                
-                let uid = currentUser.uid
-                
-                
-                
-            }
-            
-        }
-        
-        return true
-    }
-    
-    
     func removeAllForSignOut() {
         
         

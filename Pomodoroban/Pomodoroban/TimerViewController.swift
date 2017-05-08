@@ -385,8 +385,7 @@ class TimerViewController: UIViewController {
     
     func createNotifications() {
         
-        let priority = DispatchQueue.GlobalQueuePriority.default
-        DispatchQueue.global(priority: priority).async {
+        DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
             // ensure we only have one
             self.cancelNotificationsAndAudioPlaybacks()
             

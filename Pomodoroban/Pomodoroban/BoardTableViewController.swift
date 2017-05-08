@@ -198,7 +198,7 @@ class BoardTableViewController: UITableViewController {
         }
     }
     
-    
+    /*
     func updateHeaderOnPurchaseStatus() {
         let products = Products.instance().productsArray
         
@@ -210,6 +210,7 @@ class BoardTableViewController: UITableViewController {
             
         }
     }
+    */
     
     @objc func dayChanged(_ notification: Notification){
         self.tableView.reloadData()
@@ -226,7 +227,7 @@ class BoardTableViewController: UITableViewController {
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "productsRefreshed"), object: nil, queue: nil) { (Notification) in
             
-            self.updateHeaderOnPurchaseStatus()
+           // self.updateHeaderOnPurchaseStatus()
             
         }
         

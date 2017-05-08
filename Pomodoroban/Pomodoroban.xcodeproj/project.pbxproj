@@ -151,8 +151,6 @@
 		D6E71D8D1DA3F2A60055F2AA /* StringAndPredicateCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E71D8C1DA3F2A60055F2AA /* StringAndPredicateCollection.m */; };
 		D6E71D901DA3F3480055F2AA /* StringAndPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E71D8F1DA3F3480055F2AA /* StringAndPredicate.m */; };
 		D6F567EC1EA46081004DAD75 /* Pomodoroban.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D6F567EA1EA46081004DAD75 /* Pomodoroban.xcdatamodeld */; };
-		FD577BD91DB93BA500470457 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = FD577BD61DB93BA400470457 /* Product.m */; };
-		FD577BDA1DB93BA500470457 /* Products.m in Sources */ = {isa = PBXBuildFile; fileRef = FD577BD81DB93BA400470457 /* Products.m */; };
 		FD577BDC1DB942C400470457 /* PixelTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD577BDB1DB942C400470457 /* PixelTestViewController.swift */; };
 		FD577BDF1DB947EB00470457 /* UIView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD577BDE1DB947EB00470457 /* UIView+Animations.swift */; };
 		FD5BE9E21C5BB5CA00535A78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5BE9E11C5BB5CA00535A78 /* AppDelegate.swift */; };
@@ -387,10 +385,6 @@
 		D6F567EB1EA46081004DAD75 /* Pomodoroban.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pomodoroban.xcdatamodel; sourceTree = "<group>"; };
 		E777183DB54B2E29403C9EAE /* BuddyBuildSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BuddyBuildSDK.framework; sourceTree = "<group>"; };
 		F69886AA5919349B8129604B /* Pods_Pomodoroban.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pomodoroban.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FD577BD51DB93BA400470457 /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
-		FD577BD61DB93BA400470457 /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
-		FD577BD71DB93BA400470457 /* Products.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Products.h; sourceTree = "<group>"; };
-		FD577BD81DB93BA400470457 /* Products.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Products.m; sourceTree = "<group>"; };
 		FD577BDB1DB942C400470457 /* PixelTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PixelTestViewController.swift; sourceTree = "<group>"; };
 		FD577BDE1DB947EB00470457 /* UIView+Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Animations.swift"; sourceTree = "<group>"; };
 		FD5BE9DE1C5BB5CA00535A78 /* Pomodoroban.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pomodoroban.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -741,17 +735,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		FD577BD41DB93B8C00470457 /* StoreKitWrapper */ = {
-			isa = PBXGroup;
-			children = (
-				FD577BD51DB93BA400470457 /* Product.h */,
-				FD577BD61DB93BA400470457 /* Product.m */,
-				FD577BD71DB93BA400470457 /* Products.h */,
-				FD577BD81DB93BA400470457 /* Products.m */,
-			);
-			name = StoreKitWrapper;
-			sourceTree = "<group>";
-		};
 		FD5BE9D51C5BB5CA00535A78 = {
 			isa = PBXGroup;
 			children = (
@@ -775,7 +758,6 @@
 			children = (
 				D6E5E0F51DCB581A00CDA49F /* ColorPicker */,
 				D6177C521DC21363008A61CE /* flite-1.4-iphone */,
-				FD577BD41DB93B8C00470457 /* StoreKitWrapper */,
 				D686EF921DB4D99D001431D4 /* Pomodoroban.entitlements */,
 				D656B3691DA4134A0035500A /* Extensions */,
 				D6E71D911DA3F46E0055F2AA /* WordsAndQuestions */,
@@ -1031,7 +1013,6 @@
 				D634BD311DAD1A7B003348D1 /* Runtime.swift in Sources */,
 				D686EF911DB4CF3F001431D4 /* UIAlertController + Quick.swift in Sources */,
 				D6177D1C1DC21363008A61CE /* cst_units.c in Sources */,
-				FD577BDA1DB93BA500470457 /* Products.m in Sources */,
 				D6177D3F1DC21363008A61CE /* cmu_us_rms_cg_phonestate.c in Sources */,
 				D6177D291DC21363008A61CE /* regexp.c in Sources */,
 				D6177D261DC21363008A61CE /* cst_wave_utils.c in Sources */,
@@ -1073,7 +1054,6 @@
 				D61085351D95ED3F001A203A /* CoreDataServices.swift in Sources */,
 				D6177D361DC21363008A61CE /* cmu_us_kal16.c in Sources */,
 				D6177D111DC21363008A61CE /* cst_mlpg.c in Sources */,
-				FD577BD91DB93BA500470457 /* Product.m in Sources */,
 				D6177D3B1DC21363008A61CE /* cmu_us_rms.c in Sources */,
 				D6177D141DC21363008A61CE /* cst_regex.c in Sources */,
 				D6372CCD1EB054D1009D474D /* SectionSelectTableViewCell.swift in Sources */,
@@ -1235,7 +1215,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 99C6C5B414A3CEE32CC9D563 /* Pods-Pomodoroban.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Pomodoroban/Pomodoroban.entitlements;
@@ -1264,7 +1243,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C4716EC3B166CD8ED04CDCE5 /* Pods-Pomodoroban.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Pomodoroban/Pomodoroban.entitlements;

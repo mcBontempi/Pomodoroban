@@ -2,6 +2,7 @@ import UIKit
 import MBProgressHUD
 
 class BuyViewController: UIViewController {
+    /*
     
     @IBOutlet weak var priceLabel: UILabel!
     
@@ -67,4 +68,5 @@ extension BuyViewController : UIPopoverPresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.none
     }
+ */
 }
