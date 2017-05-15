@@ -17,6 +17,11 @@ class PostsViewController: UIViewController {
 
         UIWebView.loadRequest(self.webView)(URLRequest(url: URL(string: "http://www.pomodoroban.com")!))
         
+        
+        self.navigationController?.redWithLogo()
+        
+        self.title = "POMODOROBAN"
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -7,6 +7,7 @@ import FirebaseAuth
 import UserNotifications
 import EasyTipView
 
+
 class BoardTableViewController: UITableViewController {
     
     @IBOutlet weak var settingsButton: UIButton!
@@ -217,7 +218,9 @@ class BoardTableViewController: UITableViewController {
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         
+
         
         NotificationCenter.default.addObserver(self, selector: #selector(BoardTableViewController.dayChanged(_:)), name: NSNotification.Name.UIApplicationSignificantTimeChange, object: nil)
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound]) { (granted:Bool, error:Error?) in
@@ -255,14 +258,7 @@ class BoardTableViewController: UITableViewController {
         self.tableView.tableFooterView = UIView()
         
         
-        self.navigationController?.navigationBar.isTranslucent = false
-        
-        self.navigationController?.navigationBar.tintColor = UIColor.white
-        
-        self.navigationController?.navigationBar.barTintColor = UIColor.red
-        
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
-        
+        self.navigationController!.redWithLogo()
         
         if Runtime.all(self.moc).count > 0 {
             
@@ -273,14 +269,7 @@ class BoardTableViewController: UITableViewController {
             })
         }
         
-        self.title = "POMODOROBAN" // FIRAuth.auth()!.currentUser?.email
-        
-        
-        
-        //    NSNotificationCenter.defaultCenter().addObserver(self, selector: "contextDidSaveContext:", name: NSManagedObjectContextDidSaveNotification, object: nil)
-        
-        
-        super.viewDidLoad()
+        self.title = "POMODOROBAN"
         
         if Ticket.all(self.moc).count == 9 {
             self.showAddTooltip()

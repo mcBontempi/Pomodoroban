@@ -11,6 +11,7 @@ pod 'Firebase/Crash'
 pod 'MBProgressHUD'
 pod 'TSMessages'
 pod 'EasyTipView' 
+pod 'HELargeCenterTabBarController'
 
 end
 

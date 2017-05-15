@@ -383,7 +383,19 @@ class LoginViewController: UIViewController {
         
         self.tomatoeTopSpaceConstraint.constant = 30
         
-        UIView.animate(withDuration: 2.8, animations: {
+            
+            print (ProcessInfo.processInfo.environment)
+            
+            var duration = 2.8
+            
+            if TARGET_IPHONE_SIMULATOR == 1 {
+                duration = 0.1
+             //   delay = 0.2
+            }
+            
+            
+            
+        UIView.animate(withDuration: duration, animations: {
             
             if self.mode == .signupOnly {
                 self.signup()
@@ -582,11 +594,22 @@ class LoginViewController: UIViewController {
             self.view.layoutIfNeeded()
             
             }, completion: { (completed) in
-                UIView.animate(withDuration: 1.3, animations: {
+                
+                var duration = 1.3
+                var delay = 2.0
+                
+                print (ProcessInfo.processInfo.environment)
+                
+                if ProcessInfo.processInfo.environment["iPhone 7 Plus"] != nil {
+                    duration = 0.1
+                    delay = 0.2
+                }
+                
+                UIView.animate(withDuration: duration, animations: {
                     self.introLabel.text = "Thanks, please enjoy POMODOROBAN"
                     self.introLabel.alpha = 1.0
                     
-                    let delayTime = DispatchTime.now() + Double(Int64(2 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+                    let delayTime = DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
                     DispatchQueue.main.asyncAfter(deadline: delayTime) {
                         
                         self.moveToMainScreen()

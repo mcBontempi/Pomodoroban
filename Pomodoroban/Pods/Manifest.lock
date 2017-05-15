@@ -52,6 +52,7 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.9)
+  - HELargeCenterTabBarController (2.0.0)
   - HexColors (2.2.1)
   - MBProgressHUD (1.0.0)
   - Onboard (2.3.1)
@@ -67,6 +68,7 @@ DEPENDENCIES:
   - Firebase/Crash
   - Firebase/Database
   - Firebase/Storage
+  - HELargeCenterTabBarController
   - MBProgressHUD
   - Onboard
   - SwiftHEXColors
@@ -85,6 +87,7 @@ SPEC CHECKSUMS:
   FirebaseStorage: a5c55b23741a49a72af8f30f95b3bb5ddbeda12d
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
+  HELargeCenterTabBarController: 3186bdc15b76b3af2e5ca9918716e88f3f0ceb65
   HexColors: abfd172e329dab59888614ccba6f216cec59289d
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   Onboard: b6871f25ac753175b2ab9a362fb2feb26a81a311
@@ -92,6 +95,6 @@ SPEC CHECKSUMS:
   SwiftHEXColors: 8f7e364df7929e32cff9f9eeb044bb215167d6be
   TSMessages: c8cc7b80f2a833af533872cd02010cac061532cc
 
-PODFILE CHECKSUM: b6b91df177ecb6229f6141ef8c5830eb5457e3ae
+PODFILE CHECKSUM: 09cec6b58dcb3438afe104257ba015cd2b26f19c
 
 COCOAPODS: 1.1.1
