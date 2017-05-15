@@ -126,6 +126,8 @@
 		D6372CCB1EB054AA009D474D /* SectionSelectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6372CCA1EB054AA009D474D /* SectionSelectTableViewController.swift */; };
 		D6372CCD1EB054D1009D474D /* SectionSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6372CCC1EB054D1009D474D /* SectionSelectTableViewCell.swift */; };
 		D637C3B01DE3792E00A21FE7 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D637C3AF1DE3792E00A21FE7 /* WebViewController.swift */; };
+		D641A5FA1EC1A75300D62BCA /* PostsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D641A5F91EC1A75300D62BCA /* PostsStoryboard.storyboard */; };
+		D641A5FC1EC1A79700D62BCA /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D641A5FB1EC1A79700D62BCA /* PostsViewController.swift */; };
 		D6456A5B1DA5013A0002FDA2 /* TicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A5A1DA5013A0002FDA2 /* TicketViewController.swift */; };
 		D6456A681DA534330002FDA2 /* UIColor+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A671DA534330002FDA2 /* UIColor+Palette.swift */; };
 		D6456A6A1DA540E70002FDA2 /* UIView+PomodoroRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A691DA540E70002FDA2 /* UIView+PomodoroRow.swift */; };
@@ -349,6 +351,8 @@
 		D6372CCA1EB054AA009D474D /* SectionSelectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionSelectTableViewController.swift; sourceTree = "<group>"; };
 		D6372CCC1EB054D1009D474D /* SectionSelectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionSelectTableViewCell.swift; sourceTree = "<group>"; };
 		D637C3AF1DE3792E00A21FE7 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		D641A5F91EC1A75300D62BCA /* PostsStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PostsStoryboard.storyboard; sourceTree = "<group>"; };
+		D641A5FB1EC1A79700D62BCA /* PostsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
 		D6456A5A1DA5013A0002FDA2 /* TicketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketViewController.swift; sourceTree = "<group>"; };
 		D6456A671DA534330002FDA2 /* UIColor+Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Palette.swift"; sourceTree = "<group>"; };
 		D6456A691DA540E70002FDA2 /* UIView+PomodoroRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+PomodoroRow.swift"; sourceTree = "<group>"; };
@@ -793,6 +797,7 @@
 				D686EF9B1DB64CE2001431D4 /* SignupViewController.swift */,
 				D637C3AF1DE3792E00A21FE7 /* WebViewController.swift */,
 				D6862BD01DE388E600B52B96 /* BuyViewController.swift */,
+				D641A5FB1EC1A79700D62BCA /* PostsViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -821,6 +826,7 @@
 				D6372CC71EB05481009D474D /* SectionSelectTableViewController.h */,
 				D6372CCA1EB054AA009D474D /* SectionSelectTableViewController.swift */,
 				D6372CCC1EB054D1009D474D /* SectionSelectTableViewCell.swift */,
+				D641A5F91EC1A75300D62BCA /* PostsStoryboard.storyboard */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -908,6 +914,7 @@
 				D67CB2C31DBA3B290026E60D /* TSMessagesDefaultDesign.json in Resources */,
 				FD5BE9E71C5BB5CA00535A78 /* Main.storyboard in Resources */,
 				D60AD76A1DAE40840011F429 /* Assets.xcassets in Resources */,
+				D641A5FA1EC1A75300D62BCA /* PostsStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1029,6 +1036,7 @@
 				D6177D541DC21363008A61CE /* us_f0lr.c in Sources */,
 				D6177D0B1DC21363008A61CE /* cst_ffeatures.c in Sources */,
 				D6177D5A1DC21363008A61CE /* us_phoneset.c in Sources */,
+				D641A5FC1EC1A79700D62BCA /* PostsViewController.swift in Sources */,
 				D6177D2A1DC21363008A61CE /* cmu_us_awb.c in Sources */,
 				D6177D2B1DC21363008A61CE /* cmu_us_awb_cg.c in Sources */,
 				D6177D321DC21363008A61CE /* cmu_us_kal_diphone.c in Sources */,

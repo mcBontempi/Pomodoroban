@@ -13,7 +13,7 @@ extension UIView {
         
         for _ in 0 ..< count {
             
-            let image = UIImageView(image: UIImage(named:"Pomodoro-Timer"))
+            let image = UIImageView(image: UIImage(named:"tomato"))
             
             
             view.addSubview(image)
