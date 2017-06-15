@@ -1,0 +1,3 @@
+Small UI improvements, the main one being that the keyboard is displayed as soon as you add a new pomodoro.
+
+Removed the in app purchase.

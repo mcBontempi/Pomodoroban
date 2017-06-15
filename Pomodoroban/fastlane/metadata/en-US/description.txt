@@ -1,0 +1,5 @@
+An easy way to slice your day into manageable bite-sized tasks. A mashup of the best features of Pomodoro and Kanban. Work,Rest & Rocus.
+
+Pomodoroban is a state of the art time management application featuring focussed workflow and a super easy to use user interface.
+
+Pomodoroban's privacy policy http://pomodoroban.com/privacy.html

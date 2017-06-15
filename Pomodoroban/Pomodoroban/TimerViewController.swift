@@ -20,7 +20,7 @@ class TimerViewController: UIViewController {
     
     @IBOutlet weak var ticketBackgroundView: UIView!
     
-    let storage = FIRStorage.storage()
+    let storage = Storage.storage()
     
     var pomodoroLength:Double!
     var shortBreakLength:Double!

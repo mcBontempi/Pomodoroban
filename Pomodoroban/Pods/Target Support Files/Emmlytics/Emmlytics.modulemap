@@ -1,0 +1,6 @@
+framework module Emmlytics {
+  umbrella header "Emmlytics-umbrella.h"
+
+  export *
+  module * { export * }
+}

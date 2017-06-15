@@ -20,12 +20,12 @@ class SyncService : NSObject {
     }()
     
     
-    let ref = FIRDatabase.database().reference()
+    let ref = Database.database().reference()
     
     func removeAllForSignOut() {
         
         
-        let uid = FIRAuth.auth()!.currentUser?.uid
+        let uid = Auth.auth().currentUser?.uid
         let ticketRef = self.ref.child(uid!)
         ticketRef.removeAllObservers()
         
@@ -42,9 +42,9 @@ class SyncService : NSObject {
         let tickets = Ticket.allWithoutControl(self.moc)
         
         for ticket in tickets {
-            let ref = FIRDatabase.database().reference()
+            let ref = Database.database().reference()
             
-            let uid = FIRAuth.auth()!.currentUser?.uid
+            let uid = Auth.auth().currentUser?.uid
             
             let ticketRef = ref.child(uid!).child(ticket.identifier!)
             ticketRef.setValue(["name" : ticket.name!,"row" : "\(ticket.row)","section" : "\(ticket.section)", "identifier" : ticket.identifier!, "colorIndex" : "\(ticket.colorIndex)", "pomodoroEstimate" : "\(ticket.pomodoroEstimate)", "removed" : "\(ticket.removed)", "desc" : ticket.desc])
@@ -55,7 +55,7 @@ class SyncService : NSObject {
     
     func setupOfflineWatcher() {
       
-        FIRDatabase.database().reference(withPath: ".info/connected").observe(.value, with: { snapshot in
+        Database.database().reference(withPath: ".info/connected").observe(.value, with: { snapshot in
             self.connected = snapshot.value as! Bool
         })
     }
@@ -67,7 +67,7 @@ class SyncService : NSObject {
         
         try! self.fetchedResultsController.performFetch()
         
-        if let auth = FIRAuth.auth() {
+         let auth = Auth.auth()
             if let currentUser = auth.currentUser {
                 
                 let uid = currentUser.uid
@@ -82,7 +82,7 @@ class SyncService : NSObject {
                     
                     for ticket in snapshot.children {
                         
-                        let snapshot = ticket as! FIRDataSnapshot
+                        let snapshot = ticket as! DataSnapshot
                         
                         let dict = snapshot.value as! NSDictionary
                         
@@ -140,7 +140,7 @@ class SyncService : NSObject {
                     }
                 })
             }
-        }
+        
     }
 }
 
@@ -150,14 +150,14 @@ extension SyncService : NSFetchedResultsControllerDelegate {
         if let ticket = anObject as? Ticket {
             
             
-            let ref = FIRDatabase.database().reference()
+            let ref = Database.database().reference()
             
     
    
             
             
             
-            if let auth = FIRAuth.auth() {
+            let auth = Auth.auth()
                 if let currentUser = auth.currentUser {
                     
                     let uid = currentUser.uid
@@ -166,7 +166,7 @@ extension SyncService : NSFetchedResultsControllerDelegate {
                     let ticketRef = ref.child(uid).child(ticket.identifier!)
                     ticketRef.setValue(["name" : ticket.name!,"row" : "\(ticket.row)","section" : "\(ticket.section)", "identifier" : ticket.identifier!, "colorIndex" : "\(ticket.colorIndex)", "pomodoroEstimate" : "\(ticket.pomodoroEstimate)", "removed" : "\(ticket.removed)", "desc" : ticket.desc])
                 }
-            }
+            
         }
     }
     

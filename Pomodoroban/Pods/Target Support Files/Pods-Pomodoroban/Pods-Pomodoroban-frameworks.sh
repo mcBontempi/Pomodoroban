@@ -86,6 +86,7 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/DDTRepeater/DDTRepeater.framework"
   install_framework "$BUILT_PRODUCTS_DIR/EasyTipView/EasyTipView.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Emmlytics/Emmlytics.framework"
   install_framework "$BUILT_PRODUCTS_DIR/GTMSessionFetcher/GTMSessionFetcher.framework"
   install_framework "$BUILT_PRODUCTS_DIR/GoogleToolboxForMac/GoogleToolboxForMac.framework"
   install_framework "$BUILT_PRODUCTS_DIR/HELargeCenterTabBarController/HELargeCenterTabBarController.framework"
@@ -99,6 +100,7 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/DDTRepeater/DDTRepeater.framework"
   install_framework "$BUILT_PRODUCTS_DIR/EasyTipView/EasyTipView.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Emmlytics/Emmlytics.framework"
   install_framework "$BUILT_PRODUCTS_DIR/GTMSessionFetcher/GTMSessionFetcher.framework"
   install_framework "$BUILT_PRODUCTS_DIR/GoogleToolboxForMac/GoogleToolboxForMac.framework"
   install_framework "$BUILT_PRODUCTS_DIR/HELargeCenterTabBarController/HELargeCenterTabBarController.framework"

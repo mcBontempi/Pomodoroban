@@ -56,7 +56,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var FORGOTPASSWORDBUTTON: UIButton!
     
     func signinFirebaseAccount(_ email:String, password: String) {
-        FIRAuth.auth()!.signIn(withEmail: email, password: password, completion: { (user, error) in
+        Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
             if error == nil {
                 SyncService.sharedInstance.setupSync()
                 
@@ -317,7 +317,7 @@ class LoginViewController: UIViewController {
         
         var alpha:CGFloat = 0.0
         
-        if FIRAuth.auth()!.currentUser == nil && defaults.object(forKey: "loggedInWithoutAuth") == nil  {
+        if Auth.auth().currentUser == nil && defaults.object(forKey: "loggedInWithoutAuth") == nil  {
             
             alpha = 1.0
             
@@ -412,7 +412,7 @@ class LoginViewController: UIViewController {
                     
                     let defaults = UserDefaults.standard
                     
-                    if FIRAuth.auth()!.currentUser == nil && defaults.object(forKey: "loggedInWithoutAuth") == nil  {
+                    if Auth.auth().currentUser == nil && defaults.object(forKey: "loggedInWithoutAuth") == nil  {
                         
                         UIView.animate(withDuration: 1.0, animations: {
                             self.introLabel.alpha = 1.0
@@ -457,7 +457,7 @@ class LoginViewController: UIViewController {
             if self.mode == .login {
                 _ = MBProgressHUD.showAdded(to: self.view, animated: false)
                 
-                FIRAuth.auth()!.signIn(withEmail: self.email.text!, password: self.password.text!, completion: { (user, error) in
+                Auth.auth().signIn(withEmail: self.email.text!, password: self.password.text!, completion: { (user, error) in
                     
                     MBProgressHUD.hide(for: self.view, animated: true)
                     
@@ -481,7 +481,7 @@ class LoginViewController: UIViewController {
             else if self.mode == .sendPassword {
                 _ = MBProgressHUD.showAdded(to: self.view, animated: false)
                 
-                FIRAuth.auth()!.sendPasswordReset(withEmail: self.email.text!, completion: { (error) in
+                Auth.auth().sendPasswordReset(withEmail: self.email.text!, completion: { (error) in
                     
                     MBProgressHUD.hide(for: self.view, animated: true)
                     
@@ -502,13 +502,13 @@ class LoginViewController: UIViewController {
                 
             else if self.mode == .signup || self.mode == .signupOnly {
                 MBProgressHUD.showAdded(to: self.view, animated: false)
-                FIRAuth.auth()!.createUser(withEmail: self.email.text!,password:self.password.text!) { user, error in
+                Auth.auth().createUser(withEmail: self.email.text!,password:self.password.text!) { user, error in
                     
                     MBProgressHUD.hide(for: self.view, animated: true)
                     
                     if error == nil {
                         
-                        FIRAuth.auth()!.signIn(withEmail: self.email.text!, password: self.password.text!, completion: { (user, error) in
+                        Auth.auth().signIn(withEmail: self.email.text!, password: self.password.text!, completion: { (user, error) in
                             if error == nil {
                                 SyncService.sharedInstance.setupSync()
                                 

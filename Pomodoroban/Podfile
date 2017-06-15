@@ -12,6 +12,7 @@ pod 'MBProgressHUD'
 pod 'TSMessages'
 pod 'EasyTipView' 
 pod 'HELargeCenterTabBarController'
+pod 'Emmlytics'
 
 end
 

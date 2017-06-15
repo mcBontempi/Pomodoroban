@@ -6,7 +6,7 @@ import FirebaseDatabase
 import FirebaseAuth
 import UserNotifications
 import EasyTipView
-
+import Emmlytics
 
 class BoardTableViewController: UITableViewController {
     
@@ -340,7 +340,16 @@ class BoardTableViewController: UITableViewController {
             self.present(nc, animated: true, completion: {})
         }))
         
-        if  FIRAuth.auth()!.currentUser?.uid == nil {
+        
+        alert.addAction(UIAlertAction(title: "Feedback", style: .default, handler: { (action
+            ) in
+            self.dismiss(animated: true, completion: nil)
+           
+            Emmlytics.show(viewController: self)
+            
+        }))
+        
+        if  Auth.auth().currentUser?.uid == nil {
             
             
             alert.addAction(UIAlertAction(title: "Register for sync", style: .destructive, handler: { (action
@@ -368,7 +377,7 @@ class BoardTableViewController: UITableViewController {
                 
                 
                 SyncService.sharedInstance.removeAllForSignOut()
-                try! FIRAuth.auth()!.signOut()
+                try! Auth.auth().signOut()
                 self.showLogin(false)
                 
                 
