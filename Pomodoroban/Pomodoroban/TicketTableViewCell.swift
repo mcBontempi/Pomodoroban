@@ -34,6 +34,10 @@ class TicketTableViewCell: UITableViewCell {
             
             self.colorView.backgroundColor = UIColor.colorFrom(Int( self.ticket!.colorIndex))
             
+            self.colorView.layer.cornerRadius = self.colorView.frame.size.width/2
+            self.colorView.layer.borderColor = UIColor.darkGray.cgColor
+            self.colorView.layer.borderWidth = 2
+            
             
             let pomodoroView = UIView.pomodoroRowWith(Int(self.ticket!.pomodoroEstimate))
             

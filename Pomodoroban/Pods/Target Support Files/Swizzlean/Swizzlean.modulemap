@@ -1,0 +1,6 @@
+framework module Swizzlean {
+  umbrella header "Swizzlean-umbrella.h"
+
+  export *
+  module * { export * }
+}

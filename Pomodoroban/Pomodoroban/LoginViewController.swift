@@ -621,7 +621,7 @@ class LoginViewController: UIViewController {
     
     func moveToMainScreen() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBar")
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainNavigationController")
         appDelegate.setRootVC(vc!)
     }
     
