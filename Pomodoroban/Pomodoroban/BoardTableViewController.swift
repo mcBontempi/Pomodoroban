@@ -24,7 +24,7 @@ class BoardTableViewController: UITableViewController {
         
     }
     
-    @IBOutlet weak var layerButton: UIButton!
+   @IBOutlet weak var layerButton: UIButton!
     
     var showAll = true
     

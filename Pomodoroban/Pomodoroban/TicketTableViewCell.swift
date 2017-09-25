@@ -14,7 +14,8 @@ class TicketTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var colorView: UIView!
     @IBOutlet weak var dlabel: UILabel!
-    @IBOutlet weak var pomodoroCountView: UIView!
+
+    @IBOutlet weak var pomodoroCountLabel: UILabel!
     var ticket: Ticket? {
         didSet {
             
@@ -28,20 +29,17 @@ class TicketTableViewCell: UITableViewCell {
             self.backgroundColor = UIColor(hexString: "F8FAE1")
             
             self.showsReorderControl = true
-            for view in self.pomodoroCountView.subviews {
-                view.removeFromSuperview()
-            }
+   
             
-            self.colorView.backgroundColor = UIColor.colorFrom(Int( self.ticket!.colorIndex))
+            self.colorView.layer.borderColor = UIColor.colorFrom(Int( self.ticket!.colorIndex)).cgColor
             
             self.colorView.layer.cornerRadius = self.colorView.frame.size.width/2
-            self.colorView.layer.borderColor = UIColor.darkGray.cgColor
-            self.colorView.layer.borderWidth = 2
+    
+            self.colorView.layer.borderWidth = 4
             
+            let count = self.ticket!.pomodoroEstimate
             
-            let pomodoroView = UIView.pomodoroRowWith(Int(self.ticket!.pomodoroEstimate))
-            
-            self.pomodoroCountView.addSubview(pomodoroView)
+            self.pomodoroCountLabel.text = "\(count)"
             
             
         }
