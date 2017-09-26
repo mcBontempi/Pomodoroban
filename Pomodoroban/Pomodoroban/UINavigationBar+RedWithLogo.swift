@@ -8,7 +8,7 @@ extension UINavigationController {
         
         self.navigationBar.barTintColor = UIColor.red
         
-        self.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
+        self.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
         
     }
 }

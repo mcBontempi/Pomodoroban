@@ -5,9 +5,6 @@ import FirebaseAuth
 import FirebaseDatabase
 import AVFoundation
 import FirebaseCrash
-import Emmlytics
-    
-
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,23 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(_ application: UIApplication) {
     }
     
-    func setupEmmylitics() {
-        UserDefaults.standard.set("mcbontempi@gmail.com", forKey: "emmlyticsUserID")
-        UserDefaults.standard.set("https://emmlytics.mynetgear.com:8443/", forKey: "emmlyticsURL")
-        UserDefaults.standard.set("Pomodoroban", forKey: "emmlyticsAppId")
-        
-        //typical event below!
-        Emmlytics().sendAnalytics(event: "appload")
-    }
-    
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
-        
-        self.setupEmmylitics()
-        
-        
-        
         
         UIApplication.shared.isIdleTimerDisabled = true
         

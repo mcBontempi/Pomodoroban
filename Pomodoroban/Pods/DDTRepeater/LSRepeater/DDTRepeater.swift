@@ -32,7 +32,7 @@ open class DDTRepeater: NSObject {
         self.timer.invalidate()
     }
     
-    func timerDidFire() {
+    @objc func timerDidFire() {
         self.execute()
     }
     

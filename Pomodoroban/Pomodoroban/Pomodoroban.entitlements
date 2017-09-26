@@ -6,7 +6,7 @@
 	<string>development</string>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>$(AppIdentifierPrefix)com.LondonSwift.Pomodoroban</string>
+		<string>$(AppIdentifierPrefix)com.DDT.Tomatoe</string>
 	</array>
 </dict>
 </plist>
