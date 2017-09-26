@@ -1,5 +1,4 @@
 import UIKit
-import EasyTipView
 
 protocol TicketViewControllerDelegate {
     func ticketViewControllerSave(_ ticketViewController:TicketViewController)
@@ -122,57 +121,7 @@ class TicketViewController: UITableViewController {
             self.titleField.becomeFirstResponder()
             self.setFocusToName = false
         }
-        
-        let defaults = UserDefaults.standard
-        
-        if defaults.object(forKey: "shownTicketToolTips") == nil {
-            self.showColorTooltip()
-            
-            defaults.set(true, forKey: "shownTicketToolTips")
-            
-            defaults.synchronize()
-            
-        }
-        
-        
-        
     }
-    
-    
-    var colorTooltip:EasyTipView!
-    
-    func showColorTooltip() {
-        self.colorTooltip = EasyTipView(text: "Use Colors to organise your stories on the Board.", preferences: self.tooltipPrefs(), delegate: self)
-        self.colorTooltip.show(animated: true, forView: self.categorySegmentedControl, withinSuperview: self.tableView)
-    }
-    
-    
-    var pomodoroTooltip:EasyTipView!
-    
-    func showPomodoroTooltip() {
-        self.pomodoroTooltip = EasyTipView(text: "Assign a number of pomodoro (which usually equal 25 mins) to a story, which allows POMODOROBAN to work its magic", preferences: self.tooltipPrefs(), delegate: self)
-        self.pomodoroTooltip.show(animated: true, forView: self.countSegmentedControl, withinSuperview: self.tableView)
-    }
-    
-    
-    
-    func tooltipPrefs() -> EasyTipView.Preferences {
-        
-        var preferences = EasyTipView.Preferences()
-        
-        preferences.drawing.font = UIFont(name: "Futura-Medium", size: 16)!
-        preferences.drawing.foregroundColor = UIColor.white
-        preferences.drawing.backgroundColor = UIColor.darkGray
-        preferences.drawing.arrowPosition = .right
-        preferences.drawing.borderWidth  = 2
-        preferences.drawing.borderColor = UIColor.lightGray
-        
-        return preferences
-    }
-    
-    
-    
-    
     
     func save() {
         
@@ -212,14 +161,4 @@ class TicketViewController: UITableViewController {
         return 0
     }
 }
-
-extension TicketViewController : EasyTipViewDelegate {
-    func easyTipViewDidDismiss(_ tipView : EasyTipView) {
-        
-        if tipView == self.colorTooltip {
-            self.showPomodoroTooltip()
-        }
-    }
-}
-
 

@@ -2,7 +2,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import MBProgressHUD
-import EasyTipView
+
 
 protocol LoginViewControllerDelegate : class {
     func loginViewControllerDidSignIn(_ loginViewController:LoginViewController)
@@ -166,7 +166,6 @@ class LoginViewController: UIViewController {
                     let defaults = UserDefaults.standard
                     
                     if defaults.object(forKey: "shownRegisterToolTips") == nil {
-                        self.showRegisterTooltip()
                         defaults.set(true, forKey: "shownRegisterToolTips")
                         defaults.synchronize()
                     }
@@ -340,28 +339,7 @@ class LoginViewController: UIViewController {
         
     }
     
-    func tooltipPrefs() -> EasyTipView.Preferences {
-        
-        var preferences = EasyTipView.Preferences()
-        
-        preferences.drawing.font = UIFont(name: "Futura-Medium", size: 16)!
-        preferences.drawing.foregroundColor = UIColor.white
-        preferences.drawing.backgroundColor = UIColor.red
-        preferences.drawing.arrowPosition = .bottom
-        preferences.drawing.borderWidth  = 2
-        preferences.drawing.borderColor = UIColor.lightGray
-        
-        return preferences
-    }
     
-    
-    
-    var registerTooltip:EasyTipView!
-    
-    func showRegisterTooltip() {
-        self.registerTooltip = EasyTipView(text: "Ensure your data is saved to the cloud and synced across multiple devices by signing up for a totally free account!", preferences: self.tooltipPrefs(), delegate: self)
-        self.registerTooltip.show(animated: true, forView: self.SIGNUPBUTTON, withinSuperview: self.view)
-    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -649,11 +627,6 @@ extension LoginViewController : UITextFieldDelegate {
     }
 }
 
-
-extension LoginViewController : EasyTipViewDelegate {
-    func easyTipViewDidDismiss(_ tipView : EasyTipView) {
-    }
-}
 
 
 extension LoginViewController : UIPopoverPresentationControllerDelegate {

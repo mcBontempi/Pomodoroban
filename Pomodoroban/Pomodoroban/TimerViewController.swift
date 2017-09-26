@@ -3,7 +3,6 @@ import CoreData
 import DDTRepeater
 import Firebase
 import UserNotifications
-import EasyTipView
 
 protocol TimerViewControllerDelegate {
     func timerViewControllerDone(_ timerViewController: TimerViewController)
@@ -57,47 +56,7 @@ class TimerViewController: UIViewController {
         case ticket
         case none
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        let defaults = UserDefaults.standard
-        
-        if defaults.object(forKey: "shownTimerToolTips") == nil {
-            self.showButtonTooltip()
-            defaults.set(true, forKey: "shownTimerToolTips")
-            defaults.synchronize()
-        }
-    }
-    
-    var buttonTooltip:EasyTipView!
-    
-    func showButtonTooltip() {
-        self.buttonTooltip = EasyTipView(text: "Use the menu to skip a POMODORO or to pause.", preferences: self.tooltipPrefs(), delegate: nil)
-        self.buttonTooltip.show(animated: true, forView: self.quitButton, withinSuperview: self.view)
-    }
-    
-    var pomodoroTooltip:EasyTipView!
-    
-    func showPomodoroTooltip() {
-        self.pomodoroTooltip = EasyTipView(text: "Here you can see the progress of your current POMODORO or break", preferences: self.tooltipPrefs(), delegate: self)
-        self.pomodoroTooltip.show(animated: true, forView: self.pixelVC.view, withinSuperview: self.view)
-    }
-    
-    func tooltipPrefs() -> EasyTipView.Preferences {
-        
-        var preferences = EasyTipView.Preferences()
-        
-        preferences.drawing.font = UIFont(name: "Futura-Medium", size: 16)!
-        preferences.drawing.foregroundColor = UIColor.white
-        preferences.drawing.backgroundColor = UIColor.darkGray
-        preferences.drawing.arrowPosition = .right
-        preferences.drawing.borderWidth  = 2
-        preferences.drawing.borderColor = UIColor.lightGray
-        
-        return preferences
-    }
-    
+
     func updateWithTicket(_ ticket: Ticket) {
         
         self.ticketBackgroundView.isHidden = false
@@ -682,14 +641,3 @@ extension TimerViewController : UNUserNotificationCenterDelegate {
      */
     
 }
-
-extension TimerViewController : EasyTipViewDelegate {
-    func easyTipViewDidDismiss(_ tipView : EasyTipView) {
-        
-        if tipView == self.buttonTooltip {
-            self.showPomodoroTooltip()
-        }
-    }
-}
-
-

@@ -5,7 +5,7 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 import UserNotifications
-import EasyTipView
+//import EasyTipView
 
 class BoardTableViewController: UITableViewController {
     
@@ -270,10 +270,6 @@ class BoardTableViewController: UITableViewController {
         
         self.title = "POMODOROBAN"
         
-        if Ticket.all(self.moc).count == 9 {
-            self.showAddTooltip()
-        }
-        
         let purchased = UserDefaults.standard.bool(forKey: "purchased")
         
         if purchased == true {
@@ -286,22 +282,6 @@ class BoardTableViewController: UITableViewController {
     deinit{
         NotificationCenter.default.removeObserver(self)
     }
-    
-    
-    func tooltipPrefs() -> EasyTipView.Preferences {
-        
-        var preferences = EasyTipView.Preferences()
-        
-        preferences.drawing.font = UIFont(name: "Futura-Medium", size: 16)!
-        preferences.drawing.foregroundColor = UIColor.white
-        preferences.drawing.backgroundColor = UIColor.darkGray
-        preferences.drawing.arrowPosition = .right
-        preferences.drawing.borderWidth  = 2
-        preferences.drawing.borderColor = UIColor.lightGray
-        
-        return preferences
-    }
-    
     
     
     func showLogin(_ register:Bool) {
@@ -605,21 +585,7 @@ class BoardTableViewController: UITableViewController {
         
         self.present(nc, animated: true) {}
     }
-    
-    
-    var addTooltip:EasyTipView!
-    
-    func showAddTooltip() {
-        self.addTooltip = EasyTipView(text: "Use the plus button to create a new Story to add to the board.", preferences: self.tooltipPrefs(), delegate: self)
-        self.addTooltip.show(animated: true, forView: self.addButton, withinSuperview: self.navigationController?.view)
-    }
-    
-    var playTooltip:EasyTipView!
-    
-    func showPlayTooltip() {
-        self.playTooltip = EasyTipView(text: "Use the play button to start work, you will need to add some stories to today for this to work!", preferences: self.tooltipPrefs(), delegate: self)
-        self.playTooltip.show(animated: true, forView: self.playButton, withinSuperview: self.navigationController?.view)
-    }
+
     
 }
 
@@ -720,15 +686,6 @@ extension BoardTableViewController : NSFetchedResultsControllerDelegate {
 
 extension BoardTableViewController : LoginViewControllerDelegate {
     func loginViewControllerDidSignIn(_ loginViewController: LoginViewController) {
-    }
-}
-
-extension BoardTableViewController : EasyTipViewDelegate {
-    func easyTipViewDidDismiss(_ tipView : EasyTipView) {
-        
-        if tipView == self.addTooltip {
-            self.showPlayTooltip()
-        }
     }
 }
 

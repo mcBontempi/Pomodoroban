@@ -1,0 +1,6 @@
+framework module HELargeCenterTabBarController {
+  umbrella header "HELargeCenterTabBarController-umbrella.h"
+
+  export *
+  module * { export * }
+}
