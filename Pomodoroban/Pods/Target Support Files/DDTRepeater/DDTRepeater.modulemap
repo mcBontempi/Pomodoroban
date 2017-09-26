@@ -1,6 +1,0 @@
-framework module DDTRepeater {
-  umbrella header "DDTRepeater-umbrella.h"
-
-  export *
-  module * { export * }
-}
