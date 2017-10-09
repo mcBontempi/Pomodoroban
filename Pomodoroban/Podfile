@@ -1,6 +1,6 @@
 use_frameworks!
 
-target "Tomatoe" do
+target "Pomodoroban" do
 pod 'SwiftHEXColors' 
 pod 'DDTRepeater'
 pod 'Onboard'

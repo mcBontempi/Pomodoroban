@@ -10,10 +10,7 @@
 #endif
 #endif
 
-#import "TSBlurView.h"
-#import "TSMessage.h"
-#import "TSMessageView.h"
 
-FOUNDATION_EXPORT double TSMessagesVersionNumber;
-FOUNDATION_EXPORT const unsigned char TSMessagesVersionString[];
+FOUNDATION_EXPORT double Pods_PomodorobanVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_PomodorobanVersionString[];
 
