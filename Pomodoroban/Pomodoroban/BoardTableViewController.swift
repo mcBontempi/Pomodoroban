@@ -130,7 +130,7 @@ class BoardTableViewController: UITableViewController {
         view.frame = CGRect(x: 0,y: 0,width: self.tableView.frame.size.width,height: 30)
         
         let countLabel = UILabel(frame:CGRect(x: self.tableView.frame.size.width-50,y: 0,width: 40,height: 30))
-        countLabel.textColor = UIColor.white
+        countLabel.textColor = UIColor.black
         countLabel.textAlignment = .right
         
         

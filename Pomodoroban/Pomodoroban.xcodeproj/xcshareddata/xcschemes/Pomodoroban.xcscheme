@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FD5BE9DD1C5BB5CA00535A78"
-               BuildableName = "Pomodoroban.app"
-               BlueprintName = "Pomodoroban"
+               BuildableName = "Life Tracker.app"
+               BlueprintName = "Life Tracker"
                ReferencedContainer = "container:Pomodoroban.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -34,8 +34,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FD5BE9DD1C5BB5CA00535A78"
-            BuildableName = "Pomodoroban.app"
-            BlueprintName = "Pomodoroban"
+            BuildableName = "Life Tracker.app"
+            BlueprintName = "Life Tracker"
             ReferencedContainer = "container:Pomodoroban.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -58,8 +58,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FD5BE9DD1C5BB5CA00535A78"
-            BuildableName = "Pomodoroban.app"
-            BlueprintName = "Pomodoroban"
+            BuildableName = "Life Tracker.app"
+            BlueprintName = "Life Tracker"
             ReferencedContainer = "container:Pomodoroban.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -77,8 +77,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FD5BE9DD1C5BB5CA00535A78"
-            BuildableName = "Pomodoroban.app"
-            BlueprintName = "Pomodoroban"
+            BuildableName = "Life Tracker.app"
+            BlueprintName = "Life Tracker"
             ReferencedContainer = "container:Pomodoroban.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

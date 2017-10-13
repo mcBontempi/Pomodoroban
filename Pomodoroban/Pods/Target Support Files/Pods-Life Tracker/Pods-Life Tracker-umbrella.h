@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_PomodorobanVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_PomodorobanVersionString[];
+FOUNDATION_EXPORT double Pods_Life_TrackerVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_Life_TrackerVersionString[];
 

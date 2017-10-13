@@ -468,9 +468,9 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MCy-PQ-hbV">
-                                            <rect key="frame" x="50" y="30" width="220" height="45.5"/>
+                                            <rect key="frame" x="50" y="30" width="220" height="41.5"/>
                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="9"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Feh-7D-nUf">
@@ -501,7 +501,7 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="Feh-7D-nUf" secondAttribute="trailing" id="WxY-HQ-bcp"/>
                                         <constraint firstItem="kDT-H9-ees" firstAttribute="leading" secondItem="snV-hf-C0U" secondAttribute="leadingMargin" constant="-6" id="YhG-tF-VRy"/>
                                         <constraint firstItem="Feh-7D-nUf" firstAttribute="centerY" secondItem="snV-hf-C0U" secondAttribute="centerY" id="b37-Cl-y0c"/>
-                                        <constraint firstAttribute="bottom" secondItem="MCy-PQ-hbV" secondAttribute="bottom" id="fIE-mo-rD3"/>
+                                        <constraint firstAttribute="bottom" secondItem="MCy-PQ-hbV" secondAttribute="bottom" constant="4" id="fIE-mo-rD3"/>
                                         <constraint firstItem="MCy-PQ-hbV" firstAttribute="top" secondItem="snV-hf-C0U" secondAttribute="top" constant="30" id="iND-m5-v9R"/>
                                     </constraints>
                                 </tableViewCellContentView>

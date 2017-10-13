@@ -136,7 +136,10 @@ class NaturalLanguageViewController: UIViewController {
             StringAndPredicate(string: "2 hours", predicate: 120),
             StringAndPredicate(string: "3 hours", predicate: 180),
             StringAndPredicate(string: "4 hours", predicate: 240),
-            StringAndPredicate(string: "5 hours", predicate: 300)])
+            StringAndPredicate(string: "5 hours", predicate: 300),
+            StringAndPredicate(string: "8 hours", predicate: 8*60),
+            StringAndPredicate(string: "12 hours", predicate: 12*60),
+            StringAndPredicate(string: "24 hours", predicate: 24*60)])
         
         
         self.haveALongBreak = StringAndPredicateCollection(wIthStringAndPredicateArray: [

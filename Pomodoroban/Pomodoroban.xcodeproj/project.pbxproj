@@ -11,13 +11,12 @@
 		45736E9464E17DC019141542 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95BAC38868AE587ED7406011 /* AVFoundation.framework */; };
 		54622054142A841D017CD612 /* BuddyBuildSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E777183DB54B2E29403C9EAE /* BuddyBuildSDK.framework */; };
 		74D1C7DBBB8EDECAE50AE6AE /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E23989444A96BCC6942726D /* CoreTelephony.framework */; };
-		7C9BBD6C62E766643374A956 /* Pods_Tomatoe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45DBD60D0FA974E1D9099736 /* Pods_Tomatoe.framework */; };
 		80D53AA627AC205F44339658 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 807DAFF1D7C3D1EC9325F533 /* CoreMedia.framework */; };
 		94FA3CEFCE8501B215D73F1E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7BA48914D57A868B512C04 /* SystemConfiguration.framework */; };
 		9AC7EF7838915076DFB73711 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1446438605D528D1F312D7 /* AssetsLibrary.framework */; };
 		A30ED94395DED1E6DF404B7A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E6FEAFFD32F6C345B81C00F /* QuartzCore.framework */; };
+		BD6CF5ACA5954E34F2264889 /* Pods_Life_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7632D487C8AA92DBDC5D4211 /* Pods_Life_Tracker.framework */; };
 		C32D6ED85F18C76A4A2805D0 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DF71CF5892D5657207A2D31 /* CoreText.framework */; };
-		D2315C31FDE060D49B0E3FA4 /* Pods_Pomodoroban.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F69886AA5919349B8129604B /* Pods_Pomodoroban.framework */; };
 		D60AD76A1DAE40840011F429 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D60AD7691DAE40840011F429 /* Assets.xcassets */; };
 		D60AD76C1DAE41B60011F429 /* UIImage + ColorMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60AD76B1DAE41B60011F429 /* UIImage + ColorMask.swift */; };
 		D60AD76F1DAE509C0011F429 /* ImageMaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60AD76E1DAE509C0011F429 /* ImageMaskView.swift */; };
@@ -167,9 +166,12 @@
 
 /* Begin PBXFileReference section */
 		0E23989444A96BCC6942726D /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		1216A73924A9FD26D180EB29 /* Pods-Life Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Life Tracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Life Tracker/Pods-Life Tracker.release.xcconfig"; sourceTree = "<group>"; };
 		1C7BA48914D57A868B512C04 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		45DBD60D0FA974E1D9099736 /* Pods_Tomatoe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tomatoe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5583782B316966CAF1A7B61A /* Pods-Life Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Life Tracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Life Tracker/Pods-Life Tracker.debug.xcconfig"; sourceTree = "<group>"; };
 		6B1446438605D528D1F312D7 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		7632D487C8AA92DBDC5D4211 /* Pods_Life_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Life_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		807DAFF1D7C3D1EC9325F533 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		8DF71CF5892D5657207A2D31 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		8E6FEAFFD32F6C345B81C00F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -399,7 +401,7 @@
 		F69886AA5919349B8129604B /* Pods_Pomodoroban.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pomodoroban.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD577BDB1DB942C400470457 /* PixelTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PixelTestViewController.swift; sourceTree = "<group>"; };
 		FD577BDE1DB947EB00470457 /* UIView+Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Animations.swift"; sourceTree = "<group>"; };
-		FD5BE9DE1C5BB5CA00535A78 /* Pomodoroban.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pomodoroban.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD5BE9DE1C5BB5CA00535A78 /* Life Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Life Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD5BE9E11C5BB5CA00535A78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD5BE9E61C5BB5CA00535A78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FD5BE9EE1C5BB5CA00535A78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -413,7 +415,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2315C31FDE060D49B0E3FA4 /* Pods_Pomodoroban.framework in Frameworks */,
 				54622054142A841D017CD612 /* BuddyBuildSDK.framework in Frameworks */,
 				9AC7EF7838915076DFB73711 /* AssetsLibrary.framework in Frameworks */,
 				C32D6ED85F18C76A4A2805D0 /* CoreText.framework in Frameworks */,
@@ -424,7 +425,7 @@
 				80D53AA627AC205F44339658 /* CoreMedia.framework in Frameworks */,
 				34DEEBF757B1EF12F4973640 /* CoreVideo.framework in Frameworks */,
 				D6751E761DBE363A00D03BDB /* StoreKit.framework in Frameworks */,
-				7C9BBD6C62E766643374A956 /* Pods_Tomatoe.framework in Frameworks */,
+				BD6CF5ACA5954E34F2264889 /* Pods_Life_Tracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +439,8 @@
 				C4716EC3B166CD8ED04CDCE5 /* Pods-Pomodoroban.release.xcconfig */,
 				D486E90F2311F00439EA2681 /* Pods-Tomatoe.debug.xcconfig */,
 				C74100ACDA9E257AD26B0FE6 /* Pods-Tomatoe.release.xcconfig */,
+				5583782B316966CAF1A7B61A /* Pods-Life Tracker.debug.xcconfig */,
+				1216A73924A9FD26D180EB29 /* Pods-Life Tracker.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -748,6 +751,7 @@
 				807DAFF1D7C3D1EC9325F533 /* CoreMedia.framework */,
 				D5D7B413C60458E80518CC94 /* CoreVideo.framework */,
 				45DBD60D0FA974E1D9099736 /* Pods_Tomatoe.framework */,
+				7632D487C8AA92DBDC5D4211 /* Pods_Life_Tracker.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -765,7 +769,7 @@
 		FD5BE9DF1C5BB5CA00535A78 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FD5BE9DE1C5BB5CA00535A78 /* Pomodoroban.app */,
+				FD5BE9DE1C5BB5CA00535A78 /* Life Tracker.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -848,9 +852,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FD5BE9DD1C5BB5CA00535A78 /* Pomodoroban */ = {
+		FD5BE9DD1C5BB5CA00535A78 /* Life Tracker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FD5BE9F31C5BB5CA00535A78 /* Build configuration list for PBXNativeTarget "Pomodoroban" */;
+			buildConfigurationList = FD5BE9F31C5BB5CA00535A78 /* Build configuration list for PBXNativeTarget "Life Tracker" */;
 			buildPhases = (
 				C6E8A73797FC8370CCF0EC6B /* [CP] Check Pods Manifest.lock */,
 				FD5BE9DA1C5BB5CA00535A78 /* Sources */,
@@ -863,9 +867,9 @@
 			);
 			dependencies = (
 			);
-			name = Pomodoroban;
+			name = "Life Tracker";
 			productName = Pomodoroban;
-			productReference = FD5BE9DE1C5BB5CA00535A78 /* Pomodoroban.app */;
+			productReference = FD5BE9DE1C5BB5CA00535A78 /* Life Tracker.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -910,7 +914,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FD5BE9DD1C5BB5CA00535A78 /* Pomodoroban */,
+				FD5BE9DD1C5BB5CA00535A78 /* Life Tracker */,
 			);
 		};
 /* End PBXProject section */
@@ -947,7 +951,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pomodoroban/Pods-Pomodoroban-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Life Tracker/Pods-Life Tracker-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C6E8A73797FC8370CCF0EC6B /* [CP] Check Pods Manifest.lock */ = {
@@ -961,7 +965,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Pomodoroban-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Life Tracker-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -974,7 +978,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Pomodoroban/Pods-Pomodoroban-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Life Tracker/Pods-Life Tracker-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/DDTRepeater/DDTRepeater.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
@@ -1005,7 +1009,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pomodoroban/Pods-Pomodoroban-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Life Tracker/Pods-Life Tracker-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1277,7 +1281,7 @@
 		};
 		FD5BE9F41C5BB5CA00535A78 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 99C6C5B414A3CEE32CC9D563 /* Pods-Pomodoroban.debug.xcconfig */;
+			baseConfigurationReference = 5583782B316966CAF1A7B61A /* Pods-Life Tracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1292,7 +1296,7 @@
 				INFOPLIST_FILE = Pomodoroban/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.DDT.Pomodoroban;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.Target;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1306,7 +1310,7 @@
 		};
 		FD5BE9F51C5BB5CA00535A78 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C4716EC3B166CD8ED04CDCE5 /* Pods-Pomodoroban.release.xcconfig */;
+			baseConfigurationReference = 1216A73924A9FD26D180EB29 /* Pods-Life Tracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1321,7 +1325,7 @@
 				INFOPLIST_FILE = Pomodoroban/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.DDT.Pomodoroban;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.Target;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1345,7 +1349,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FD5BE9F31C5BB5CA00535A78 /* Build configuration list for PBXNativeTarget "Pomodoroban" */ = {
+		FD5BE9F31C5BB5CA00535A78 /* Build configuration list for PBXNativeTarget "Life Tracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FD5BE9F41C5BB5CA00535A78 /* Debug */,
