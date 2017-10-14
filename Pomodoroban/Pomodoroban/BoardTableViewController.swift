@@ -268,7 +268,7 @@ class BoardTableViewController: UITableViewController {
             })
         }
         
-        self.title = "POMODOROBAN"
+        self.title = "Life Tracker"
         
         let purchased = UserDefaults.standard.bool(forKey: "purchased")
         

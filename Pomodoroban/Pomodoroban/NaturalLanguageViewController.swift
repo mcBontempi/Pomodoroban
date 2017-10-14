@@ -159,7 +159,7 @@ class NaturalLanguageViewController: UIViewController {
         }
         
       
-        wordsAndQuestionsView.wordsAndQuestions = ["Pomodoroban", "will", "create","your","session","lasting","at","most",self.sessionLength,"with", "each","pomodoro","lasting","for",self.pomodoroLengh,"after","each","pomodoro","you","will","have", "a","short","break","of",self.shortBreakLength,"and",self.haveALongBreak,"every",self.shortBreakCount,"pomodoro","of",self.longBreakLength]
+        wordsAndQuestionsView.wordsAndQuestions = ["Life Tracker", "will", "create","your","session","lasting","at","most",self.sessionLength,"with", "each","pomodoro","lasting","for",self.pomodoroLengh,"after","each","pomodoro","you","will","have", "a","short","break","of",self.shortBreakLength,"and",self.haveALongBreak,"every",self.shortBreakCount,"pomodoro","of",self.longBreakLength]
         
         print (wordsAndQuestionsView.frame)
         
