@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tkt-4m-yHa">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+        <array key="HelveticaNeueLights.ttc">
+            <string>HelveticaNeue-Light</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Storyboard Reference-->
+        <scene sceneID="sCE-9f-ZCJ">
+            <objects>
+                <viewControllerPlaceholder id="cdM-9S-Oaa" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Idh-J3-lwE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-466" y="-789"/>
+        </scene>
+        <!--Buy View Controller-->
+        <scene sceneID="eYe-4O-diN">
+            <objects>
+                <viewController storyboardIdentifier="BuyViewController" id="48e-6z-lUu" customClass="BuyViewController" customModule="Pomodoroban" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ogc-tB-UoX"/>
+                        <viewControllerLayoutGuide type="bottom" id="XVh-ex-ggN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xyg-BS-J63">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cC7-vE-9xR">
+                                <rect key="frame" x="112" y="74" width="151" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="cC7-vE-9xR" secondAttribute="height" multiplier="1:1" constant="1" id="Uu2-7W-hiG"/>
+                                    <constraint firstAttribute="height" constant="150" id="gfQ-GE-P0U"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="lth-f9-JGb" kind="embed" identifier="pixelSegue" id="mEz-b9-old"/>
+                                </connections>
+                            </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="3" translatesAutoresizingMaskIntoConstraints="NO" id="0HE-Yo-fur">
+                                <rect key="frame" x="16" y="234" width="343" height="293"/>
+                                <string key="text">POMODOROBAN PREMIUM is an optional yearly subscription that removes ads and supports future development. You can quickly and easily cancel at any time, from the App Store, without having to talk to anyone. Payment will be charged to iTunes Account at confirmation of purchase. Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period. Account will be charged for renewal within 24-hours prior to the end of the current period, and identify the cost of the renewal. Subscriptions may be managed by the user and auto-renewal may be turned off by going to the user's Account Settings after purchase. Any unused portion of a free trial period, if offered, will be forfeited when the user purchases a subscription to that publication, where applicable</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="koN-3Y-f43" userLabel="Buy Button">
+                                <rect key="frame" x="0.0" y="537" width="375" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="NiA-OM-bpp"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="buyPressed:" destination="48e-6z-lUu" eventType="touchUpInside" id="QqQ-OB-zSK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ODd-gf-H8X">
+                                <rect key="frame" x="0.0" y="583" width="375" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="8JM-X8-vWU"/>
+                                </constraints>
+                                <state key="normal" title="Restore Purchase"/>
+                                <connections>
+                                    <action selector="restorePurchasesPressed:" destination="48e-6z-lUu" eventType="touchUpInside" id="3Ny-IO-Zax"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subscribe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GUe-Ep-ejT">
+                                <rect key="frame" x="16" y="543.5" width="104.5" height="28"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nc2-79-MnN">
+                                <rect key="frame" x="311" y="545" width="49" height="23.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.98039215690000003" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="koN-3Y-f43" secondAttribute="trailing" id="0rU-Xl-uFA"/>
+                            <constraint firstItem="nc2-79-MnN" firstAttribute="centerY" secondItem="koN-3Y-f43" secondAttribute="centerY" id="4Cc-rU-0o5"/>
+                            <constraint firstItem="ODd-gf-H8X" firstAttribute="top" secondItem="koN-3Y-f43" secondAttribute="bottom" constant="6" id="6aF-vF-8lZ"/>
+                            <constraint firstItem="koN-3Y-f43" firstAttribute="top" secondItem="0HE-Yo-fur" secondAttribute="bottom" constant="10" id="AKn-UK-ybp"/>
+                            <constraint firstAttribute="trailing" secondItem="nc2-79-MnN" secondAttribute="trailing" constant="15" id="AeJ-9e-tw7"/>
+                            <constraint firstAttribute="trailing" secondItem="0HE-Yo-fur" secondAttribute="trailing" constant="16" id="D0a-yC-vSs"/>
+                            <constraint firstItem="GUe-Ep-ejT" firstAttribute="leading" secondItem="koN-3Y-f43" secondAttribute="leading" constant="16" id="G2a-yk-f3g"/>
+                            <constraint firstAttribute="trailing" secondItem="ODd-gf-H8X" secondAttribute="trailing" id="Mdc-9b-0RL"/>
+                            <constraint firstItem="GUe-Ep-ejT" firstAttribute="centerY" secondItem="koN-3Y-f43" secondAttribute="centerY" id="Mqa-ul-PKx"/>
+                            <constraint firstItem="koN-3Y-f43" firstAttribute="leading" secondItem="xyg-BS-J63" secondAttribute="leading" id="MrE-oN-LWA"/>
+                            <constraint firstItem="cC7-vE-9xR" firstAttribute="top" secondItem="ogc-tB-UoX" secondAttribute="bottom" constant="10" id="Vpy-0b-YQt"/>
+                            <constraint firstItem="cC7-vE-9xR" firstAttribute="centerX" secondItem="xyg-BS-J63" secondAttribute="centerX" id="aDO-hP-MH1"/>
+                            <constraint firstItem="XVh-ex-ggN" firstAttribute="top" secondItem="ODd-gf-H8X" secondAttribute="bottom" id="b2A-Nd-2XN"/>
+                            <constraint firstItem="0HE-Yo-fur" firstAttribute="top" secondItem="cC7-vE-9xR" secondAttribute="bottom" constant="10" id="mP1-Zr-UTF"/>
+                            <constraint firstItem="0HE-Yo-fur" firstAttribute="leading" secondItem="xyg-BS-J63" secondAttribute="leading" constant="16" id="pds-SL-pON"/>
+                            <constraint firstItem="ODd-gf-H8X" firstAttribute="leading" secondItem="xyg-BS-J63" secondAttribute="leading" id="vKo-64-DfL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Cam-sR-eCF"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="SBd-Zf-CUI">
+                        <barButtonItem key="leftBarButtonItem" title="Privacy Policy" id="fJr-8G-Ljt">
+                            <connections>
+                                <segue destination="cdM-9S-Oaa" kind="popoverPresentation" identifier="privacySegue" popoverAnchorBarButtonItem="fJr-8G-Ljt" id="VpE-t4-EcK">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="Mcy-yB-1aD">
+                            <connections>
+                                <action selector="IChangedMyMindPressed:" destination="48e-6z-lUu" id="bc5-RS-uU1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="priceLabel" destination="nc2-79-MnN" id="Yu4-aJ-JH5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZWD-3Y-ptd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1118" y="-391"/>
+        </scene>
+        <!--Pixel Test View Controller-->
+        <scene sceneID="MOp-8b-YiN">
+            <objects>
+                <viewController id="lth-f9-JGb" customClass="PixelTestViewController" customModule="Life_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="D6Y-Db-GOe"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fsb-Tl-7Y4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EB3-BO-MSO">
+                        <rect key="frame" x="0.0" y="0.0" width="151" height="150"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="Ujv-1Q-wYj"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JMh-Mr-8wI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-228" y="237"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="TPX-kz-gop">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="tkt-4m-yHa" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RmC-Sm-eF4">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="b3H-Xp-raj">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="48e-6z-lUu" kind="relationship" relationship="rootViewController" id="H4J-v6-lG6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ivz-td-6JX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1909" y="-390"/>
+        </scene>
+    </scenes>
+</document>

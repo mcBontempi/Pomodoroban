@@ -2,7 +2,7 @@ platform :ios, 10.0
 
 use_frameworks!
 
-target "Life Tracker" do
+target "efficacious" do
 pod 'SwiftHEXColors' 
 pod 'DDTRepeater'
 pod 'Onboard'

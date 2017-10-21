@@ -268,7 +268,7 @@ class BoardTableViewController: UITableViewController {
             })
         }
         
-        self.title = "Life Tracker"
+        self.title = "efficacious"
         
         let purchased = UserDefaults.standard.bool(forKey: "purchased")
         
@@ -285,7 +285,9 @@ class BoardTableViewController: UITableViewController {
     
     
     func showLogin(_ register:Bool) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        
+        let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         
         vc.delegate = self
         if register == true {

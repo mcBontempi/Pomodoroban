@@ -584,7 +584,7 @@ class LoginViewController: UIViewController {
                 }
                 
                 UIView.animate(withDuration: duration, animations: {
-                    self.introLabel.text = "Thanks, please enjoy POMODOROBAN"
+                    self.introLabel.text = "Thanks, please enjoy efficacious"
                     self.introLabel.alpha = 1.0
                     
                     let delayTime = DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
@@ -599,7 +599,9 @@ class LoginViewController: UIViewController {
     
     func moveToMainScreen() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainNavigationController")
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateInitialViewController()
         appDelegate.setRootVC(vc!)
     }
     

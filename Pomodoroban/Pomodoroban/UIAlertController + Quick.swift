@@ -4,7 +4,7 @@ extension UIAlertController {
     class func quickMessage(_ message:String, vc:UIViewController) {
      
       
-        TSMessage.showNotification(in: vc, title:"Life Tracker", subtitle: message, type: .message)
+        TSMessage.showNotification(in: vc, title:"efficacious", subtitle: message, type: .message)
   }
   
   

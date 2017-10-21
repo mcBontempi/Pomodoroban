@@ -415,7 +415,7 @@ class TimerViewController: UIViewController {
             
             
             let content = UNMutableNotificationContent()
-            content.title = "Life Tracker"
+            content.title = "efficacious"
             content.body = message
             content.sound = UNNotificationSound(named:"\(index).wav")
             content.categoryIdentifier = "dave"

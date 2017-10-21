@@ -20,7 +20,7 @@ class PostsViewController: UIViewController {
         
         self.navigationController?.redWithLogo()
         
-        self.title = "Life Tracker"
+        self.title = "efficacious"
         
     }
 
