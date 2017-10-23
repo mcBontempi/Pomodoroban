@@ -135,6 +135,8 @@
 		D6456A5B1DA5013A0002FDA2 /* TicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A5A1DA5013A0002FDA2 /* TicketViewController.swift */; };
 		D6456A681DA534330002FDA2 /* UIColor+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A671DA534330002FDA2 /* UIColor+Palette.swift */; };
 		D6456A6A1DA540E70002FDA2 /* UIView+PomodoroRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A691DA540E70002FDA2 /* UIView+PomodoroRow.swift */; };
+		D6530DB81F9BCDF300DDB73C /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6530DB71F9BCDF300DDB73C /* Feed.storyboard */; };
+		D6530DBE1F9BDC9F00DDB73C /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6530DBD1F9BDC9F00DDB73C /* FeedTableViewController.swift */; };
 		D655FFD71DC7811E00ED6363 /* UIImage + Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D655FFD61DC7811E00ED6363 /* UIImage + Color.swift */; };
 		D656B36B1DA413630035500A /* NSDate+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D656B36A1DA413630035500A /* NSDate+Utils.swift */; };
 		D65C2FF31EC9955300F4DF0F /* UINavigationBar+RedWithLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65C2FF21EC9955300F4DF0F /* UINavigationBar+RedWithLogo.swift */; };
@@ -373,6 +375,10 @@
 		D6456A5A1DA5013A0002FDA2 /* TicketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketViewController.swift; sourceTree = "<group>"; };
 		D6456A671DA534330002FDA2 /* UIColor+Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Palette.swift"; sourceTree = "<group>"; };
 		D6456A691DA540E70002FDA2 /* UIView+PomodoroRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+PomodoroRow.swift"; sourceTree = "<group>"; };
+		D6530DB71F9BCDF300DDB73C /* Feed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Feed.storyboard; sourceTree = "<group>"; };
+		D6530DBA1F9BD32F00DDB73C /* InfoPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPageViewController.swift; sourceTree = "<group>"; };
+		D6530DBB1F9BD33000DDB73C /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		D6530DBD1F9BDC9F00DDB73C /* FeedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
 		D655FFD61DC7811E00ED6363 /* UIImage + Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage + Color.swift"; sourceTree = "<group>"; };
 		D656B36A1DA413630035500A /* NSDate+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Utils.swift"; sourceTree = "<group>"; };
 		D65C2FF21EC9955300F4DF0F /* UINavigationBar+RedWithLogo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+RedWithLogo.swift"; sourceTree = "<group>"; };
@@ -708,6 +714,24 @@
 			path = usenglish;
 			sourceTree = "<group>";
 		};
+		D6530DB91F9BD30A00DDB73C /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				D6530DBA1F9BD32F00DDB73C /* InfoPageViewController.swift */,
+				D6530DBB1F9BD33000DDB73C /* InfoViewController.swift */,
+			);
+			name = Info;
+			sourceTree = "<group>";
+		};
+		D6530DBC1F9BDC8A00DDB73C /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				D6530DBD1F9BDC9F00DDB73C /* FeedTableViewController.swift */,
+				D6530DB71F9BCDF300DDB73C /* Feed.storyboard */,
+			);
+			name = Feed;
+			sourceTree = "<group>";
+		};
 		D656B3691DA4134A0035500A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -791,6 +815,8 @@
 		FD5BE9E01C5BB5CA00535A78 /* Pomodoroban */ = {
 			isa = PBXGroup;
 			children = (
+				D6530DBC1F9BDC8A00DDB73C /* Feed */,
+				D6530DB91F9BD30A00DDB73C /* Info */,
 				D6E5E0F51DCB581A00CDA49F /* ColorPicker */,
 				D6177C521DC21363008A61CE /* flite-1.4-iphone */,
 				D686EF921DB4D99D001431D4 /* Pomodoroban.entitlements */,
@@ -942,6 +968,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D60099971F9A2037004E5772 /* WebView.storyboard in Resources */,
+				D6530DB81F9BCDF300DDB73C /* Feed.storyboard in Resources */,
 				D6177D5C1DC21363008A61CE /* us_pos.tree in Resources */,
 				FD5BE9EF1C5BB5CA00535A78 /* LaunchScreen.storyboard in Resources */,
 				D665D2781DB104F30079ED43 /* GoogleService-Info.plist in Resources */,
@@ -1082,6 +1109,7 @@
 				D6177D501DC21363008A61CE /* us_dur_stats.c in Sources */,
 				D6177D271DC21363008A61CE /* flite.c in Sources */,
 				FD577BDF1DB947EB00470457 /* UIView+Animations.swift in Sources */,
+				D6530DBE1F9BDC9F00DDB73C /* FeedTableViewController.swift in Sources */,
 				D6177D151DC21363008A61CE /* cst_relation.c in Sources */,
 				D6177D401DC21363008A61CE /* cmu_us_rms_cg_single_mcep_trees.c in Sources */,
 				D634BD311DAD1A7B003348D1 /* Runtime.swift in Sources */,

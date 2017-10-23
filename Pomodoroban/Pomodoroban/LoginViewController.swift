@@ -401,7 +401,7 @@ class LoginViewController: UIViewController {
                         
                           SyncService.sharedInstance.setupSync()
                         
-                        self.moveToMainScreen()
+                        self.moveToFeedScreen()
                         
                     }
                 }
@@ -601,6 +601,14 @@ class LoginViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateInitialViewController()
+        appDelegate.setRootVC(vc!)
+    }
+    
+    
+    func moveToFeedScreen() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let storyboard = UIStoryboard(name: "Feed", bundle: nil)
         let vc = storyboard.instantiateInitialViewController()
         appDelegate.setRootVC(vc!)
     }
