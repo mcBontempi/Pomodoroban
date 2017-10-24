@@ -124,13 +124,13 @@
 		D6177D5F1DC21363008A61CE /* usenglish.c in Sources */ = {isa = PBXBuildFile; fileRef = D6177CFE1DC21363008A61CE /* usenglish.c */; };
 		D6177D621DC213FB008A61CE /* FliteTTS.m in Sources */ = {isa = PBXBuildFile; fileRef = D6177D611DC213FB008A61CE /* FliteTTS.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		D617FB661D9E54C700A4CA53 /* SyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D617FB651D9E54C700A4CA53 /* SyncService.swift */; };
+		D6335EC71F9F1DAD00571F2A /* UserHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6335EC61F9F1DAD00571F2A /* UserHeaderTableViewCell.swift */; };
 		D634BD311DAD1A7B003348D1 /* Runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = D634BD2F1DAD1A7B003348D1 /* Runtime.swift */; };
 		D634BD321DAD1A7B003348D1 /* Runtime+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D634BD301DAD1A7B003348D1 /* Runtime+CoreDataProperties.swift */; };
 		D6372CC61EB050C8009D474D /* SectionSelect.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6372CC51EB050C8009D474D /* SectionSelect.storyboard */; };
 		D6372CCB1EB054AA009D474D /* SectionSelectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6372CCA1EB054AA009D474D /* SectionSelectTableViewController.swift */; };
 		D6372CCD1EB054D1009D474D /* SectionSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6372CCC1EB054D1009D474D /* SectionSelectTableViewCell.swift */; };
 		D637C3B01DE3792E00A21FE7 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D637C3AF1DE3792E00A21FE7 /* WebViewController.swift */; };
-		D641A5FA1EC1A75300D62BCA /* PostsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D641A5F91EC1A75300D62BCA /* PostsStoryboard.storyboard */; };
 		D641A5FC1EC1A79700D62BCA /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D641A5FB1EC1A79700D62BCA /* PostsViewController.swift */; };
 		D6456A5B1DA5013A0002FDA2 /* TicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A5A1DA5013A0002FDA2 /* TicketViewController.swift */; };
 		D6456A681DA534330002FDA2 /* UIColor+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6456A671DA534330002FDA2 /* UIColor+Palette.swift */; };
@@ -363,6 +363,7 @@
 		D6177D601DC213FB008A61CE /* FliteTTS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FliteTTS.h; sourceTree = "<group>"; };
 		D6177D611DC213FB008A61CE /* FliteTTS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FliteTTS.m; sourceTree = "<group>"; };
 		D617FB651D9E54C700A4CA53 /* SyncService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncService.swift; sourceTree = "<group>"; };
+		D6335EC61F9F1DAD00571F2A /* UserHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		D634BD2F1DAD1A7B003348D1 /* Runtime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Runtime.swift; sourceTree = "<group>"; };
 		D634BD301DAD1A7B003348D1 /* Runtime+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Runtime+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D6372CC51EB050C8009D474D /* SectionSelect.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SectionSelect.storyboard; sourceTree = "<group>"; };
@@ -370,7 +371,6 @@
 		D6372CCA1EB054AA009D474D /* SectionSelectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionSelectTableViewController.swift; sourceTree = "<group>"; };
 		D6372CCC1EB054D1009D474D /* SectionSelectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionSelectTableViewCell.swift; sourceTree = "<group>"; };
 		D637C3AF1DE3792E00A21FE7 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		D641A5F91EC1A75300D62BCA /* PostsStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PostsStoryboard.storyboard; sourceTree = "<group>"; };
 		D641A5FB1EC1A79700D62BCA /* PostsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
 		D6456A5A1DA5013A0002FDA2 /* TicketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketViewController.swift; sourceTree = "<group>"; };
 		D6456A671DA534330002FDA2 /* UIColor+Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Palette.swift"; sourceTree = "<group>"; };
@@ -728,6 +728,7 @@
 			children = (
 				D6530DBD1F9BDC9F00DDB73C /* FeedTableViewController.swift */,
 				D6530DB71F9BCDF300DDB73C /* Feed.storyboard */,
+				D6335EC61F9F1DAD00571F2A /* UserHeaderTableViewCell.swift */,
 			);
 			name = Feed;
 			sourceTree = "<group>";
@@ -884,7 +885,6 @@
 				D6372CC71EB05481009D474D /* SectionSelectTableViewController.h */,
 				D6372CCA1EB054AA009D474D /* SectionSelectTableViewController.swift */,
 				D6372CCC1EB054D1009D474D /* SectionSelectTableViewCell.swift */,
-				D641A5F91EC1A75300D62BCA /* PostsStoryboard.storyboard */,
 				D60099961F9A2037004E5772 /* WebView.storyboard */,
 				D60099981F9A238E004E5772 /* IAP.storyboard */,
 				D600999A1F9A394C004E5772 /* Login.storyboard */,
@@ -979,7 +979,6 @@
 				D600999B1F9A394C004E5772 /* Login.storyboard in Resources */,
 				FD5BE9E71C5BB5CA00535A78 /* Main.storyboard in Resources */,
 				D60AD76A1DAE40840011F429 /* Assets.xcassets in Resources */,
-				D641A5FA1EC1A75300D62BCA /* PostsStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1103,6 +1102,7 @@
 				D65C2FF31EC9955300F4DF0F /* UINavigationBar+RedWithLogo.swift in Sources */,
 				D6177D081DC21363008A61CE /* cst_error.c in Sources */,
 				D6177D171DC21363008A61CE /* cst_string.c in Sources */,
+				D6335EC71F9F1DAD00571F2A /* UserHeaderTableViewCell.swift in Sources */,
 				D6177D5D1DC21363008A61CE /* us_pos_cart.c in Sources */,
 				D6177D201DC21363008A61CE /* cst_val_const.c in Sources */,
 				D6177D4A1DC21363008A61CE /* cmu_lex_data.c in Sources */,
@@ -1344,7 +1344,7 @@
 				INFOPLIST_FILE = Pomodoroban/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.Target;
+				PRODUCT_BUNDLE_IDENTIFIER = com.LondonSwift.Pomodoroban;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1352,7 +1352,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1373,7 +1373,7 @@
 				INFOPLIST_FILE = Pomodoroban/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.Target;
+				PRODUCT_BUNDLE_IDENTIFIER = com.LondonSwift.Pomodoroban;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1381,7 +1381,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
