@@ -14,6 +14,11 @@ class BoardTableViewController: UITableViewController {
     
     @IBOutlet weak var playButton: UIButton!
     
+    @IBAction func donePressed(_ sender: Any) {
+        
+        self.dismiss(animated: true, completion: nil)
+        
+    }
     @IBAction func buyPressed(_ sender: AnyObject) {
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "BuyViewController") as! BuyViewController

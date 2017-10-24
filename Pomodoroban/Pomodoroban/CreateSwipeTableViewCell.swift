@@ -3,6 +3,7 @@ import DDTRepeater
 
 protocol CreateSwipeTableViewCellDelegate {
     func addToBacklog()
+    func showBoard()
 }
 
 class CreateSwipeTableViewCell: UITableViewCell {
@@ -51,9 +52,14 @@ class CreateSwipeTableViewCell: UITableViewCell {
 extension CreateSwipeTableViewCell : UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.delegate?.addToBacklog()
+        
+        if indexPath.item == 0 {
+            self.delegate?.addToBacklog()
+        }
+        else if indexPath.item == 1 {
+            self.delegate?.showBoard()
+        }
     }
-    
 }
 extension CreateSwipeTableViewCell : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -66,10 +72,8 @@ extension CreateSwipeTableViewCell : UICollectionViewDataSource {
 }
 
 extension CreateSwipeTableViewCell : UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width:80,height:80)
     }
-    
 }
 

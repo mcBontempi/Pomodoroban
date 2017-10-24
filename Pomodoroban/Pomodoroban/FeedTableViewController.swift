@@ -79,6 +79,8 @@ class FeedTableViewController: UITableViewController {
 
 extension FeedTableViewController : CreateSwipeTableViewCellDelegate
 {
+ 
+    
     func addToBacklog() {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -98,11 +100,14 @@ extension FeedTableViewController : CreateSwipeTableViewCellDelegate
         vc.ticket.section = Int32(0)
         vc.ticket.pomodoroEstimate = 1
         vc.ticket.colorIndex = 2
-        
         vc.delegate = self
-        
         self.present(nc, animated: true) {}
-        
+    }
+
+    func showBoard() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let nc = storyboard.instantiateViewController(withIdentifier: "MainNavigationController") as! UINavigationController
+        self.present(nc, animated: true) {}
     }
 }
 
