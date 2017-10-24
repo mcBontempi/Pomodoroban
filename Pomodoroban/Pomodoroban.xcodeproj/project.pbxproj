@@ -125,6 +125,8 @@
 		D6177D621DC213FB008A61CE /* FliteTTS.m in Sources */ = {isa = PBXBuildFile; fileRef = D6177D611DC213FB008A61CE /* FliteTTS.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		D617FB661D9E54C700A4CA53 /* SyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D617FB651D9E54C700A4CA53 /* SyncService.swift */; };
 		D6335EC71F9F1DAD00571F2A /* UserHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6335EC61F9F1DAD00571F2A /* UserHeaderTableViewCell.swift */; };
+		D6335EC91F9F1FEF00571F2A /* UserSwipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6335EC81F9F1FEF00571F2A /* UserSwipeTableViewCell.swift */; };
+		D6335ECB1F9F4A8300571F2A /* AlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6335ECA1F9F4A8300571F2A /* AlertTableViewCell.swift */; };
 		D634BD311DAD1A7B003348D1 /* Runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = D634BD2F1DAD1A7B003348D1 /* Runtime.swift */; };
 		D634BD321DAD1A7B003348D1 /* Runtime+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D634BD301DAD1A7B003348D1 /* Runtime+CoreDataProperties.swift */; };
 		D6372CC61EB050C8009D474D /* SectionSelect.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6372CC51EB050C8009D474D /* SectionSelect.storyboard */; };
@@ -364,6 +366,8 @@
 		D6177D611DC213FB008A61CE /* FliteTTS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FliteTTS.m; sourceTree = "<group>"; };
 		D617FB651D9E54C700A4CA53 /* SyncService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncService.swift; sourceTree = "<group>"; };
 		D6335EC61F9F1DAD00571F2A /* UserHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		D6335EC81F9F1FEF00571F2A /* UserSwipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSwipeTableViewCell.swift; sourceTree = "<group>"; };
+		D6335ECA1F9F4A8300571F2A /* AlertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTableViewCell.swift; sourceTree = "<group>"; };
 		D634BD2F1DAD1A7B003348D1 /* Runtime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Runtime.swift; sourceTree = "<group>"; };
 		D634BD301DAD1A7B003348D1 /* Runtime+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Runtime+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D6372CC51EB050C8009D474D /* SectionSelect.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SectionSelect.storyboard; sourceTree = "<group>"; };
@@ -729,6 +733,8 @@
 				D6530DBD1F9BDC9F00DDB73C /* FeedTableViewController.swift */,
 				D6530DB71F9BCDF300DDB73C /* Feed.storyboard */,
 				D6335EC61F9F1DAD00571F2A /* UserHeaderTableViewCell.swift */,
+				D6335EC81F9F1FEF00571F2A /* UserSwipeTableViewCell.swift */,
+				D6335ECA1F9F4A8300571F2A /* AlertTableViewCell.swift */,
 			);
 			name = Feed;
 			sourceTree = "<group>";
@@ -1116,6 +1122,7 @@
 				D686EF911DB4CF3F001431D4 /* UIAlertController + Quick.swift in Sources */,
 				D6177D1C1DC21363008A61CE /* cst_units.c in Sources */,
 				D6177D3F1DC21363008A61CE /* cmu_us_rms_cg_phonestate.c in Sources */,
+				D6335EC91F9F1FEF00571F2A /* UserSwipeTableViewCell.swift in Sources */,
 				D6177D291DC21363008A61CE /* regexp.c in Sources */,
 				D6177D261DC21363008A61CE /* cst_wave_utils.c in Sources */,
 				D6177D0E1DC21363008A61CE /* cst_lexicon.c in Sources */,
@@ -1128,6 +1135,7 @@
 				D6177D5E1DC21363008A61CE /* us_text.c in Sources */,
 				D6177D2E1DC21363008A61CE /* cmu_us_awb_cg_phonestate.c in Sources */,
 				D6456A6A1DA540E70002FDA2 /* UIView+PomodoroRow.swift in Sources */,
+				D6335ECB1F9F4A8300571F2A /* AlertTableViewCell.swift in Sources */,
 				D6177D541DC21363008A61CE /* us_f0lr.c in Sources */,
 				D6177D0B1DC21363008A61CE /* cst_ffeatures.c in Sources */,
 				D6177D5A1DC21363008A61CE /* us_phoneset.c in Sources */,
