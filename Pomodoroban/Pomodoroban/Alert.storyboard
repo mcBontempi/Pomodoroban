@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dd8-SV-6HJ">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Alert View Controller-->
+        <scene sceneID="2TM-Fl-mDf">
+            <objects>
+                <viewController id="dd8-SV-6HJ" customClass="AlertViewController" customModule="efficacious" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5hJ-2v-D2E">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JtO-R3-3nU">
+                                <rect key="frame" x="164" y="507" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Share"/>
+                                <connections>
+                                    <action selector="sharePressed:" destination="dd8-SV-6HJ" eventType="touchUpInside" id="Sdn-rh-PKb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eL3-ra-40p">
+                                <rect key="frame" x="322" y="16" width="37" height="30"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="donePressed:" destination="dd8-SV-6HJ" eventType="touchUpInside" id="I5f-PX-Qrb"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wicked" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3z-i5-7rk">
+                                <rect key="frame" x="87.5" y="141" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Drc-1Q-4gq"/>
+                                    <constraint firstAttribute="height" constant="200" id="xRt-GJ-Qpa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="f3z-i5-7rk" firstAttribute="top" secondItem="skP-79-lPf" secondAttribute="top" constant="121" id="7Cs-NT-Emx"/>
+                            <constraint firstItem="f3z-i5-7rk" firstAttribute="centerX" secondItem="skP-79-lPf" secondAttribute="centerX" id="KSQ-up-fff"/>
+                            <constraint firstItem="skP-79-lPf" firstAttribute="trailing" secondItem="eL3-ra-40p" secondAttribute="trailing" constant="16" id="MB8-yB-Bl8"/>
+                            <constraint firstItem="eL3-ra-40p" firstAttribute="top" secondItem="5hJ-2v-D2E" secondAttribute="top" constant="16" id="Z7L-cg-y58"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="skP-79-lPf"/>
+                    </view>
+                    <connections>
+                        <outlet property="titleMessage" destination="f3z-i5-7rk" id="ABb-Il-L6s"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eY7-3T-H0Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="60" y="66.11694152923539"/>
+        </scene>
+    </scenes>
+</document>

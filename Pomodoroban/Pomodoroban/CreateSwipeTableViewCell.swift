@@ -67,7 +67,15 @@ extension CreateSwipeTableViewCell : UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: ["addToBacklog","addToBacklog","addToBacklog"][indexPath.row], for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ["addToBacklog","addToBacklog","addToBacklog"][indexPath.row], for: indexPath) as! CreateCollectionViewCell
+        
+        cell.setupWith(title: ["Add task to Backlog","Advanced Editor", "Does Nothing"][indexPath.row])
+        
+        cell.contentView.layer.cornerRadius = 10
+        cell.contentView.layer.borderWidth = 3
+        cell.contentView.layer.borderColor = UIColor.red.cgColor
+        
+        return cell
     }
 }
 

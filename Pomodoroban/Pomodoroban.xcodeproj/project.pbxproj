@@ -128,6 +128,10 @@
 		D6335EC91F9F1FEF00571F2A /* UserSwipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6335EC81F9F1FEF00571F2A /* UserSwipeTableViewCell.swift */; };
 		D6335ECB1F9F4A8300571F2A /* AlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6335ECA1F9F4A8300571F2A /* AlertTableViewCell.swift */; };
 		D6335ECD1F9F51DB00571F2A /* CreateSwipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6335ECC1F9F51DB00571F2A /* CreateSwipeTableViewCell.swift */; };
+		D6335ECF1F9FA3E200571F2A /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6335ECE1F9FA3E200571F2A /* SessionTableViewCell.swift */; };
+		D6335ED11F9FA8AE00571F2A /* CreateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6335ED01F9FA8AE00571F2A /* CreateCollectionViewCell.swift */; };
+		D6335ED31F9FB58600571F2A /* Alert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6335ED21F9FB58600571F2A /* Alert.storyboard */; };
+		D6335ED51F9FB5F000571F2A /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6335ED41F9FB5F000571F2A /* AlertViewController.swift */; };
 		D634BD311DAD1A7B003348D1 /* Runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = D634BD2F1DAD1A7B003348D1 /* Runtime.swift */; };
 		D634BD321DAD1A7B003348D1 /* Runtime+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D634BD301DAD1A7B003348D1 /* Runtime+CoreDataProperties.swift */; };
 		D6372CC61EB050C8009D474D /* SectionSelect.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6372CC51EB050C8009D474D /* SectionSelect.storyboard */; };
@@ -370,6 +374,10 @@
 		D6335EC81F9F1FEF00571F2A /* UserSwipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSwipeTableViewCell.swift; sourceTree = "<group>"; };
 		D6335ECA1F9F4A8300571F2A /* AlertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTableViewCell.swift; sourceTree = "<group>"; };
 		D6335ECC1F9F51DB00571F2A /* CreateSwipeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSwipeTableViewCell.swift; sourceTree = "<group>"; };
+		D6335ECE1F9FA3E200571F2A /* SessionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTableViewCell.swift; sourceTree = "<group>"; };
+		D6335ED01F9FA8AE00571F2A /* CreateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCollectionViewCell.swift; sourceTree = "<group>"; };
+		D6335ED21F9FB58600571F2A /* Alert.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Alert.storyboard; sourceTree = "<group>"; };
+		D6335ED41F9FB5F000571F2A /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		D634BD2F1DAD1A7B003348D1 /* Runtime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Runtime.swift; sourceTree = "<group>"; };
 		D634BD301DAD1A7B003348D1 /* Runtime+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Runtime+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D6372CC51EB050C8009D474D /* SectionSelect.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SectionSelect.storyboard; sourceTree = "<group>"; };
@@ -738,6 +746,10 @@
 				D6335EC81F9F1FEF00571F2A /* UserSwipeTableViewCell.swift */,
 				D6335ECA1F9F4A8300571F2A /* AlertTableViewCell.swift */,
 				D6335ECC1F9F51DB00571F2A /* CreateSwipeTableViewCell.swift */,
+				D6335ECE1F9FA3E200571F2A /* SessionTableViewCell.swift */,
+				D6335ED01F9FA8AE00571F2A /* CreateCollectionViewCell.swift */,
+				D6335ED21F9FB58600571F2A /* Alert.storyboard */,
+				D6335ED41F9FB5F000571F2A /* AlertViewController.swift */,
 			);
 			name = Feed;
 			sourceTree = "<group>";
@@ -873,30 +885,30 @@
 		FD5BEA051C5CF86B00535A78 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				D670EA721DCCDC3500DF08B4 /* ServiceAccount.json */,
-				D6177D601DC213FB008A61CE /* FliteTTS.h */,
-				D6177D611DC213FB008A61CE /* FliteTTS.m */,
-				D67CB2C21DBA3B290026E60D /* TSMessagesDefaultDesign.json */,
-				D665D2771DB104F30079ED43 /* GoogleService-Info.plist */,
 				FD5BE9E11C5BB5CA00535A78 /* AppDelegate.swift */,
 				D60AD7691DAE40840011F429 /* Assets.xcassets */,
 				D6E71D851DA3EDBB0055F2AA /* CALayer+Animations.h */,
 				D6E71D861DA3EDBB0055F2AA /* CALayer+Animations.m */,
 				D61085341D95ED3F001A203A /* CoreDataServices.swift */,
+				D670EA6E1DCCD45A00DF08B4 /* FirebaseUtils.swift */,
+				D6177D601DC213FB008A61CE /* FliteTTS.h */,
+				D6177D611DC213FB008A61CE /* FliteTTS.m */,
+				D665D2771DB104F30079ED43 /* GoogleService-Info.plist */,
+				D60099981F9A238E004E5772 /* IAP.storyboard */,
 				D60AD76E1DAE509C0011F429 /* ImageMaskView.swift */,
 				FD5BE9F01C5BB5CA00535A78 /* Info.plist */,
 				FD5BE9ED1C5BB5CA00535A78 /* LaunchScreen.storyboard */,
+				D600999A1F9A394C004E5772 /* Login.storyboard */,
 				FD5BE9E51C5BB5CA00535A78 /* Main.storyboard */,
 				D67FAED21D953B980085BF2D /* Pomodoroban-Bridging-Header.h */,
-				D617FB651D9E54C700A4CA53 /* SyncService.swift */,
-				D670EA6E1DCCD45A00DF08B4 /* FirebaseUtils.swift */,
 				D6372CC51EB050C8009D474D /* SectionSelect.storyboard */,
+				D6372CCC1EB054D1009D474D /* SectionSelectTableViewCell.swift */,
 				D6372CC71EB05481009D474D /* SectionSelectTableViewController.h */,
 				D6372CCA1EB054AA009D474D /* SectionSelectTableViewController.swift */,
-				D6372CCC1EB054D1009D474D /* SectionSelectTableViewCell.swift */,
+				D670EA721DCCDC3500DF08B4 /* ServiceAccount.json */,
+				D617FB651D9E54C700A4CA53 /* SyncService.swift */,
+				D67CB2C21DBA3B290026E60D /* TSMessagesDefaultDesign.json */,
 				D60099961F9A2037004E5772 /* WebView.storyboard */,
-				D60099981F9A238E004E5772 /* IAP.storyboard */,
-				D600999A1F9A394C004E5772 /* Login.storyboard */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -981,6 +993,7 @@
 				D6177D5C1DC21363008A61CE /* us_pos.tree in Resources */,
 				FD5BE9EF1C5BB5CA00535A78 /* LaunchScreen.storyboard in Resources */,
 				D665D2781DB104F30079ED43 /* GoogleService-Info.plist in Resources */,
+				D6335ED31F9FB58600571F2A /* Alert.storyboard in Resources */,
 				D60099991F9A238E004E5772 /* IAP.storyboard in Resources */,
 				D6372CC61EB050C8009D474D /* SectionSelect.storyboard in Resources */,
 				D670EA731DCCDC3500DF08B4 /* ServiceAccount.json in Resources */,
@@ -1100,6 +1113,7 @@
 				D6177D0F1DC21363008A61CE /* cst_lpcres.c in Sources */,
 				D6177D451DC21363008A61CE /* cmu_us_slt_cg_f0_trees.c in Sources */,
 				D6177D301DC21363008A61CE /* cmu_us_awb_cg_single_params.c in Sources */,
+				D6335ED11F9FA8AE00571F2A /* CreateCollectionViewCell.swift in Sources */,
 				D6177D031DC21363008A61CE /* cst_alloc.c in Sources */,
 				D6177D551DC21363008A61CE /* us_ffeatures.c in Sources */,
 				D6177D0D1DC21363008A61CE /* cst_item.c in Sources */,
@@ -1152,6 +1166,7 @@
 				D6177D441DC21363008A61CE /* cmu_us_slt_cg_durmodel.c in Sources */,
 				D6177D1B1DC21363008A61CE /* cst_track.c in Sources */,
 				D6177D011DC21363008A61CE /* au_streaming.c in Sources */,
+				D6335ECF1F9FA3E200571F2A /* SessionTableViewCell.swift in Sources */,
 				D6177D471DC21363008A61CE /* cmu_us_slt_cg_single_mcep_trees.c in Sources */,
 				D6177D181DC21363008A61CE /* cst_sts.c in Sources */,
 				D6177D251DC21363008A61CE /* cst_wave_io.c in Sources */,
@@ -1200,6 +1215,7 @@
 				D6177D311DC21363008A61CE /* cmu_us_kal.c in Sources */,
 				FD5BE9E21C5BB5CA00535A78 /* AppDelegate.swift in Sources */,
 				D6177D511DC21363008A61CE /* us_durz_cart.c in Sources */,
+				D6335ED51F9FB5F000571F2A /* AlertViewController.swift in Sources */,
 				D6177D331DC21363008A61CE /* cmu_us_kal_lpc.c in Sources */,
 				D6177D521DC21363008A61CE /* us_expand.c in Sources */,
 				FD577BDC1DB942C400470457 /* PixelTestViewController.swift in Sources */,

@@ -89,15 +89,10 @@
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="AmB-1X-X5G">
                                                     <rect key="frame" x="10" y="54.5" width="300" height="29"/>
                                                     <segments>
-                                                        <segment title="BOX"/>
-                                                        <segment title="MON"/>
-                                                        <segment title="TUE"/>
-                                                        <segment title="WED"/>
-                                                        <segment title="THU"/>
-                                                        <segment title="FRI"/>
-                                                        <segment title="SAT"/>
-                                                        <segment title="SUN"/>
-                                                        <segment title="DONE"/>
+                                                        <segment title="BACKLOG"/>
+                                                        <segment title="MORNING"/>
+                                                        <segment title="AFTERNOON"/>
+                                                        <segment title="EVENING"/>
                                                     </segments>
                                                     <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 </segmentedControl>

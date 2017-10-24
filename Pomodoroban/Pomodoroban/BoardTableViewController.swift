@@ -115,7 +115,7 @@ class BoardTableViewController: UITableViewController {
         let key = defaults.value(forKey: "selectedSectionTitles")
         
         if key == nil {
-            defaults.setValue(["INBOX", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY", "DONE"], forKey: "selectedSectionTitles")
+            defaults.setValue(["BACKLOG", "MORNING", "AFTERNOON", "EVENING"], forKey: "selectedSectionTitles")
             defaults.synchronize()
         }
         
@@ -123,7 +123,7 @@ class BoardTableViewController: UITableViewController {
     }
     
     func sectionTitles() -> [String] {
-        return ["INBOX", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY", "DONE"]
+        return ["BACKLOG", "MORNING", "AFTERNOON", "EVENING"]
     }
     
     func updateViewForSection(_ view:UIView, section: Int)  {
