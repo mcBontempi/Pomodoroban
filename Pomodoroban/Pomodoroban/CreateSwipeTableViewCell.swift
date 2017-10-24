@@ -1,9 +1,23 @@
 import UIKit
 import DDTRepeater
 
-class UserSwipeTableViewCell: UITableViewCell {
+protocol CreateSwipeTableViewCellDelegate {
+    func addToBacklog()
+}
+
+class CreateSwipeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    var delegate: CreateSwipeTableViewCellDelegate?
+    
+    
+    func setupWith(delegate: CreateSwipeTableViewCellDelegate) {
+        self.delegate = delegate
+    }
+    
+    
+    
     
     var repeater:DDTRepeater?
     var selectedItem = 0
@@ -34,29 +48,27 @@ class UserSwipeTableViewCell: UITableViewCell {
     }
 }
 
-extension UserSwipeTableViewCell : UICollectionViewDelegate {
+extension CreateSwipeTableViewCell : UICollectionViewDelegate {
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.delegate?.addToBacklog()
+    }
     
 }
-extension UserSwipeTableViewCell : UICollectionViewDataSource {
+extension CreateSwipeTableViewCell : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ["youTube","streak","graph"][indexPath.row], for: indexPath)
-        
-        cell.contentView.layer.cornerRadius = 10
-        
-        return cell
+        return collectionView.dequeueReusableCell(withReuseIdentifier: ["addToBacklog","addToBacklog","addToBacklog"][indexPath.row], for: indexPath)
     }
 }
 
-extension UserSwipeTableViewCell : UICollectionViewDelegateFlowLayout {
+extension CreateSwipeTableViewCell : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width:UIScreen.main.bounds.width,height:110)
+        return CGSize(width:80,height:80)
     }
     
 }
