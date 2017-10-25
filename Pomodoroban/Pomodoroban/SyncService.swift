@@ -30,12 +30,10 @@ class SyncService : NSObject {
         ticketRef.removeAllObservers()
         
         Ticket.removeAllEntities(self.moc)
-        Ticket.createAllAddTickets(self.moc)
         
         self.fetchedResultsController.delegate = nil
         
         try! self.moc.save()
-        
     }
     
     func syncExisting() {
@@ -111,13 +109,13 @@ class SyncService : NSObject {
                             print (createOrUpdateTicket.section)
                             
                             
-                            if name != createOrUpdateTicket.name || createOrUpdateTicket.section != Int32(section)! || createOrUpdateTicket.row != Int32(row)! || createOrUpdateTicket.colorIndex != Int32(colorIndex)! || createOrUpdateTicket.pomodoroEstimate != Int32(pomodoroEstimate)! || createOrUpdateTicket.removed != removedBool || desc != createOrUpdateTicket.desc {
+                            if name != createOrUpdateTicket.name || createOrUpdateTicket.section != section || createOrUpdateTicket.row != Int32(row)! || createOrUpdateTicket.colorIndex != Int32(colorIndex)! || createOrUpdateTicket.pomodoroEstimate != Int32(pomodoroEstimate)! || createOrUpdateTicket.removed != removedBool || desc != createOrUpdateTicket.desc {
                                 
                                 createOrUpdateTicket.name = name
                                 
                                 createOrUpdateTicket.row = Int32(row)!
                                 
-                                createOrUpdateTicket.section = Int32(section)!
+                                createOrUpdateTicket.section = section
                                 
                                 createOrUpdateTicket.identifier = identifier
                                 

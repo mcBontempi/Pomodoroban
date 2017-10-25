@@ -27,6 +27,20 @@ extension UIView {
         }, completion: nil)
     }
   
+    func miniBounce(_ velocity: CGFloat) {
+        
+        self.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        
+        UIView.animate(withDuration: 1.0,
+                       delay: 0,
+                       usingSpringWithDamping: 0.2,
+                       initialSpringVelocity: velocity,
+                       options: UIViewAnimationOptions.allowUserInteraction,
+                       animations: {
+                        self.transform = CGAffineTransform.identity
+        }, completion: nil)
+    }
+    
     func delayedBounce(_ delay: TimeInterval) {
         
         self.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)

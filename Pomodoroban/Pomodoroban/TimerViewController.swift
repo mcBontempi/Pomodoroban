@@ -269,7 +269,7 @@ class TimerViewController: UIViewController {
                 if let ticket = runtime.ticket {
                     ticket.pomodoroEstimate = ticket.pomodoroEstimate - 1
                     if ticket.pomodoroEstimate == 0 {
-                        ticket.section = 8
+                        ticket.section = "TODO"
                     }
                 }
             }
@@ -565,13 +565,13 @@ class TimerViewController: UIViewController {
         
         vc.setFocusToName = true
         
-        let row = Ticket.spareRowForSection(0, moc:self.moc)
+        let row = Ticket.spareRowForSection("Backlog", moc:self.moc)
         
         self.childMoc = CoreDataServices.sharedInstance.childMoc()
         vc.ticket = Ticket.createInMoc(self.childMoc)
         vc.ticket.name = ""
         vc.ticket.row = Int32(row)
-        vc.ticket.section = Int32(0)
+        vc.ticket.section = "Backlog"
         vc.ticket.pomodoroEstimate = 1
         vc.ticket.colorIndex = 2
         

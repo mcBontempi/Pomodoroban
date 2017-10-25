@@ -17,7 +17,7 @@ extension Ticket {
     @NSManaged var desc: String
     @NSManaged var name: String?
     @NSManaged var pomodoroEstimate: Int32
-    @NSManaged var section: Int32
+    @NSManaged var section: String
     @NSManaged var row: Int32
     @NSManaged var colorIndex: Int32
     @NSManaged var identifier: String?

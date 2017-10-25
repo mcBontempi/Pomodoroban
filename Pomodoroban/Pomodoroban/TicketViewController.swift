@@ -79,7 +79,7 @@ class TicketViewController: UITableViewController {
         
         
         
-        self.sectionSegmentedControl.selectedSegmentIndex = Int(self.ticket.section)
+      //  self.sectionSegmentedControl.selectedSegmentIndex = self.ticket.section
         
         
         
@@ -126,12 +126,9 @@ class TicketViewController: UITableViewController {
     func save() {
         
         if self.titleField.text != "" {
-            
             self.ticket.desc = self.notesText.text
             self.ticket.name = self.titleField.text
-            
             self.ticket.colorIndex = Int32(self.categorySegmentedControl.selectedSegmentIndex)
-            self.ticket.section = Int32(self.sectionSegmentedControl.selectedSegmentIndex)
             self.delegate.ticketViewControllerSave(self)
         }
         else {

@@ -202,6 +202,7 @@
 		D60AD7691DAE40840011F429 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D60AD76B1DAE41B60011F429 /* UIImage + ColorMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage + ColorMask.swift"; sourceTree = "<group>"; };
 		D60AD76E1DAE509C0011F429 /* ImageMaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageMaskView.swift; sourceTree = "<group>"; };
+		D60F6D231FA0F57D00666ED0 /* Pomodoroban2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pomodoroban2.xcdatamodel; sourceTree = "<group>"; };
 		D61085341D95ED3F001A203A /* CoreDataServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataServices.swift; sourceTree = "<group>"; };
 		D61085361D960601001A203A /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		D6177C541DC21363008A61CE /* cst_alloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cst_alloc.h; sourceTree = "<group>"; };
@@ -1440,9 +1441,10 @@
 		D6F567EA1EA46081004DAD75 /* Pomodoroban.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D60F6D231FA0F57D00666ED0 /* Pomodoroban2.xcdatamodel */,
 				D6F567EB1EA46081004DAD75 /* Pomodoroban.xcdatamodel */,
 			);
-			currentVersion = D6F567EB1EA46081004DAD75 /* Pomodoroban.xcdatamodel */;
+			currentVersion = D60F6D231FA0F57D00666ED0 /* Pomodoroban2.xcdatamodel */;
 			path = Pomodoroban.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

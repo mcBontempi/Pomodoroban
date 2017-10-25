@@ -2,42 +2,36 @@ import UIKit
 import CoreData
 
 class FeedTableViewController: UITableViewController {
-    
     let moc = CoreDataServices.sharedInstance.moc
     var childMoc:NSManagedObjectContext!
-    
     func data() -> [(String,String)]
     {
         var counts:[Int] = [Int]()
         for count in 0 ... 3 {
-            counts.append(Ticket.countForSection(self.moc, section: count))
+            counts.append(Ticket.countForSection(self.moc, section: ["Backlog","Morning","Afetrnoon","Evening"][count]))
         }
-        
-        
-        
         var rows =  [("userHeader","Daren David Taylor"),("userSwipe",""),("alertHeader",""),("alert","Well done you did one week."),("alert","Would you like to review the app."),("alert","Your friend is following you"),("createHeader",""),("createSwipe",""),("sessionHeader","")]
         
         if counts[0] > 0 {
-            rows.append(( "session","Backlog - \(counts[0])"))
+            rows.append(( "session","Backlog"))
         }
         if counts[1] > 0 {
-            rows.append(( "session","Morning - \(counts[1])"))
+            rows.append(( "session","Morning"))
         }
         if counts[2] > 0 {
-            rows.append(( "session","Afternoon - \(counts[2])"))
+            rows.append(( "session","Afternoon"))
         }
         if counts[3] > 0 {
-            rows.append(( "session","Evening - \(counts[3])"))
+            rows.append(( "session","Evening"))
         }
         
-        rows.append(contentsOf: [("archiveHeader",""),("archive",""),("preferencesHeader",""),("preferences",""),("companyDetails","") ])
+        rows.append(contentsOf: [("archiveHeader",""),("archiveSession","Friday Morning 23rd October"),("archiveSession","Friday Afternoon 23rd October"),("archiveSession","Afternoon"),("preferencesHeader",""),("preferences",""),("companyDetails","") ])
         
         return rows
     }
     
-    
     func heightWithIdentifier(identifier:String) -> CGFloat {
-        let tupleArray =  [("userHeader",70),("userSwipe",110),("alertHeader",50),("alert",50),("createHeader",50),("createSwipe",80),("sessionHeader",50),("session",50),("archiveHeader",70),("archive",100),("preferencesHeader",70),("preferences",100),("companyDetails",100) ]
+        let tupleArray =  [("userHeader",70),("userSwipe",110),("alertHeader",50),("alert",50),("createHeader",50),("createSwipe",80),("sessionHeader",50),("session",50),("archiveHeader",50),("archiveSession",50),("preferencesHeader",70),("preferences",100),("companyDetails",100) ]
         
         for item in tupleArray {
             if item.0 == identifier {
@@ -47,7 +41,6 @@ class FeedTableViewController: UITableViewController {
         
         return CGFloat(0)
     }
-    
     
     func saveChildMoc() {
         if self.childMoc != nil {
@@ -84,6 +77,9 @@ class FeedTableViewController: UITableViewController {
         case "session":
             let cell = cell as! SessionTableViewCell
             cell.setupWith(name:item.1)
+        case "archiveSession":
+            let cell = cell as! SessionTableViewCell
+            cell.setupWith(name:item.1)
         default:
             break
         }
@@ -103,44 +99,43 @@ class FeedTableViewController: UITableViewController {
         return self.heightWithIdentifier(identifier: identifier)
     }
     
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if self.data()[indexPath.row].0 == "session" {
-            
+        switch self.data()[indexPath.row].0 {
+        case "alert":
             let storyboard = UIStoryboard(name: "Alert", bundle: nil)
-            
-            let vc = storyboard.instantiateInitialViewController() as! UIViewController
-            
-            self.present(vc, animated: true, completion: nil)
-            
-            
-            
+            let vc = storyboard.instantiateInitialViewController()
+            self.present(vc!, animated: true, completion: nil)
+        case "session":
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let nc = storyboard.instantiateViewController(withIdentifier: "MainNavigationController") as! UINavigationController
+            let vc = nc.viewControllers[0] as! BoardTableViewController
+            vc.sectionTitlesToShow = [self.data()[indexPath.row].1]
+            self.navigationController?.pushViewController(vc, animated: true)
+        case "archiveSession":
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let nc = storyboard.instantiateViewController(withIdentifier: "MainNavigationController") as! UINavigationController
+            let vc = nc.viewControllers[0] as! BoardTableViewController
+            vc.sectionTitlesToShow = [self.data()[indexPath.row].1]
+            self.navigationController?.pushViewController(vc, animated: true)
+        default:
+            break
         }
     }
 }
 
-
 extension FeedTableViewController : CreateSwipeTableViewCellDelegate
 {
-    
-    
     func addToBacklog() {
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
         let nc = storyboard.instantiateViewController(withIdentifier: "TicketNavigationViewController") as! UINavigationController
-        
         let vc = nc.viewControllers[0] as! TicketViewController
-        
         vc.setFocusToName = true
-        
-        let row = Ticket.spareRowForSection(0, moc:self.moc)
-        
+        let row = Ticket.spareRowForSection("Backlog", moc:self.moc)
         self.childMoc = CoreDataServices.sharedInstance.childMoc()
         vc.ticket = Ticket.createInMoc(self.childMoc)
         vc.ticket.name = ""
         vc.ticket.row = Int32(row)
-        vc.ticket.section = Int32(0)
+        vc.ticket.section = "Backlog"
         vc.ticket.pomodoroEstimate = 1
         vc.ticket.colorIndex = 2
         vc.delegate = self
@@ -154,18 +149,13 @@ extension FeedTableViewController : CreateSwipeTableViewCellDelegate
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
         if let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? UserHeaderTableViewCell {
-        
-        var size = 26 + -scrollView.contentOffset.y/20
-    
+            var size = 26 + -scrollView.contentOffset.y/20
             print(size)
-        
-        if size < 26 {
-            size = 26
-        }
-        
-       cell.nameLabel.font =  UIFont(name: "Helvetica Neue", size: size)
+            if size < 26 {
+                size = 26
+            }
+            cell.nameLabel.font =  UIFont(name: "Helvetica Neue", size: size)
         }
     }
 }
@@ -174,10 +164,7 @@ extension FeedTableViewController : TicketViewControllerDelegate {
     func ticketViewControllerSave(_ ticketViewController: TicketViewController) {
         self.dismiss(animated: true) {
             self.saveChildMoc()
-            
-            
             self.tableView.reloadData()
-            
         }
     }
     

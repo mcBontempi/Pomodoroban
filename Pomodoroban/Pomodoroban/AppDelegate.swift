@@ -29,12 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         Database.database().isPersistenceEnabled = true
         
-        if Ticket.count(moc) == 0 {
-            Ticket.removeAllEntities(moc)
-            Ticket.createAllAddTickets(moc)
-            try! moc.save()
-        }
-        
         application.isStatusBarHidden = true
         
         return true

@@ -28,13 +28,13 @@ class Ticket: NSManagedObject {
     }
     
     class func createInMoc(_ moc:NSManagedObjectContext) -> Ticket {
-    
+        
         
         let ticket = NSEntityDescription.insertNewObject(forEntityName: Ticket.entityName, into: moc) as! Ticket
         ticket.identifier = UUID().uuidString
         ticket.desc = ""
         
-     
+        
         return ticket
     }
     
@@ -77,8 +77,8 @@ class Ticket: NSManagedObject {
     }
     
     
-    class func countForSection(_ moc:NSManagedObjectContext, section: Int) -> Int {
-      
+    class func countForSection(_ moc:NSManagedObjectContext, section: String) -> Int {
+        
         let tickets = Ticket.allForSection(moc, section: section)
         
         var count = 0
@@ -92,13 +92,13 @@ class Ticket: NSManagedObject {
         return count
         
     }
-    
 
+    
     class func allForToday(_ moc:NSManagedObjectContext) -> [Ticket] {
         
-         let weekday = Date().getDayOfWeek()
+        let weekday = Date().getDayOfWeek()
         
-        return try! moc.fetch(self.fetchRequestForSection(weekday)) as! [Ticket]
+        return try! moc.fetch(self.fetchRequestForSection("Backlog")) as! [Ticket]
     }
     
     class func all(_ moc:NSManagedObjectContext) -> [Ticket] {
@@ -111,17 +111,17 @@ class Ticket: NSManagedObject {
     }
     
     
-    class func fetchRequestForSection(_ section:Int) -> NSFetchRequest<NSFetchRequestResult> {
+    class func fetchRequestForSection(_ section:String) -> NSFetchRequest<NSFetchRequestResult> {
         
         let weekday = section
         
-        let predicate = NSPredicate(format: "section == %d && row != 999999 && pomodoroEstimate > 0 && removed = false", weekday)
+        let predicate = NSPredicate(format: "section == %@ && row != 999999 && pomodoroEstimate > 0 && removed = false", weekday)
         
         return self.fetchRequestWithPredicate(predicate)
         
     }
     
-    class func allForSection(_ moc:NSManagedObjectContext, section:Int) -> [Ticket] {
+    class func allForSection(_ moc:NSManagedObjectContext, section:String) -> [Ticket] {
         
         return try! moc.fetch(self.fetchRequestForSection(section)) as! [Ticket]
     }
@@ -142,16 +142,16 @@ class Ticket: NSManagedObject {
     }
     
     
-    class func insertTicket(_ ticket: Ticket, toIndexPath: IndexPath, moc:NSManagedObjectContext) {
+    class func insertTicket(_ ticket: Ticket, row:Int, section:String, moc:NSManagedObjectContext) {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: Ticket.entityName)
         
         var predicate:NSPredicate?
         
-        if ticket.section == Int32(toIndexPath.section) {
-            predicate = NSPredicate(format: "section == %d && row != %d && removed = false", toIndexPath.section, ticket.row)
+        if ticket.section == section {
+            predicate = NSPredicate(format: "section == %@ && row != %d && removed = false", section, ticket.row)
         }
         else {
-            predicate = NSPredicate(format: "section == %d && removed = false", toIndexPath.section)
+            predicate = NSPredicate(format: "section == %d && removed = false", section)
         }
         
         let primarySortDescriptor = NSSortDescriptor(key: Ticket.attributeRow, ascending: true)
@@ -166,12 +166,12 @@ class Ticket: NSManagedObject {
         for iteratingTicket in tickets {
             
             
-            if toIndexPath.row == newRowIndex {
+            if row == newRowIndex {
                 ticket.row = Int32(newRowIndex)
                 
                 newRowIndex = newRowIndex + 1
                 
-                ticket.section = Int32(toIndexPath.section)
+                ticket.section = section
                 
                 if iteratingTicket.row != addRowControl {
                     iteratingTicket.row = Int32(newRowIndex)
@@ -211,20 +211,9 @@ class Ticket: NSManagedObject {
         }
     }
     
-
     
-    class func createAllAddTickets(_ moc:NSManagedObjectContext) {
-        var ticket: Ticket!
-        
-        for section in 0...8 {
-            
-            ticket = Ticket.createInMoc(moc)
-            ticket.name = ""
-            ticket.section = Int32(section)
-            ticket.row = addRowControl
-            
-        }
-    }
+    
+    
     
     class func delete(_ moc:NSManagedObjectContext, identifier: String) {
         if let entity = self.fetch(moc, identifier: identifier) {
@@ -233,33 +222,26 @@ class Ticket: NSManagedObject {
         }
     }
     
-    class func spareRowForSection(_ section: Int, moc: NSManagedObjectContext) -> Int{
-        
-        
-        
+    class func spareRowForSection(_ section: String, moc: NSManagedObjectContext) -> Int{
         let predicate = NSPredicate(format: "section == %d && removed = false", section)
-        
         let fetchRequest =  Ticket.fetchRequestWithPredicate(predicate)
-        
         let currentSection = try! moc.fetch(fetchRequest)
-        
-        
         var row:Int = 0
-        
         let rowCountForSection = currentSection.count
-        
         if rowCountForSection == 1 {
             row = 0
         }
         else {
-            
             if let objects = currentSection as? [Ticket]{
-                
-                let ticket = objects[rowCountForSection - 2]
-                row = Int(ticket.row) + 1
+                if rowCountForSection > 0 {
+                    let ticket = objects[rowCountForSection-1]
+                    row = Int(ticket.row) + 1
+                }
+                else {
+                    row = 0
+                }
             }
         }
-        
         return Int(row)
     }
 }

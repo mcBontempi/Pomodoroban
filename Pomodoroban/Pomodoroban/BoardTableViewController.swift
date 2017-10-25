@@ -9,6 +9,7 @@ import UserNotifications
 
 class BoardTableViewController: UITableViewController {
     
+    
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var addButton: UIButton!
     
@@ -20,15 +21,11 @@ class BoardTableViewController: UITableViewController {
         
     }
     @IBAction func buyPressed(_ sender: AnyObject) {
-        
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "BuyViewController") as! BuyViewController
-        
         self.present(vc, animated: true, completion: nil)
-        
-        
     }
     
-   @IBOutlet weak var layerButton: UIButton!
+    @IBOutlet weak var layerButton: UIButton!
     
     var showAll = true
     
@@ -47,10 +44,7 @@ class BoardTableViewController: UITableViewController {
     }()
     
     @IBAction func addPressed(_ sender: AnyObject) {
-        
-        let section = self.showAll ? 0 : Date().getDayOfWeek()
-        
-        self.addInSection(section)
+        self.addInSection("Backlog")
     }
     
     @IBAction func layerPressed(_ sender: AnyObject) {
@@ -96,7 +90,6 @@ class BoardTableViewController: UITableViewController {
         
     }
     
-    // lifetime
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -108,8 +101,15 @@ class BoardTableViewController: UITableViewController {
          ])
          */
     }
+    
+    var sectionTitlesToShow:[String]!
+    
     func selectedSectionTitles() -> [String] {
         
+        if self.sectionTitlesToShow != nil {
+            return self.sectionTitlesToShow
+        }
+       
         let defaults = UserDefaults.standard
         
         let key = defaults.value(forKey: "selectedSectionTitles")
@@ -123,10 +123,13 @@ class BoardTableViewController: UITableViewController {
     }
     
     func sectionTitles() -> [String] {
+        if self.sectionTitlesToShow != nil {
+            return self.sectionTitlesToShow
+        }
         return ["BACKLOG", "MORNING", "AFTERNOON", "EVENING"]
     }
     
-    func updateViewForSection(_ view:UIView, section: Int)  {
+    func updateViewForSection(_ view:UIView, section: String)  {
         
         for subview in view.subviews {
             subview.removeFromSuperview()
@@ -149,19 +152,11 @@ class BoardTableViewController: UITableViewController {
         view.backgroundColor = UIColor(hexString: "e9ebd4")
         let label = UILabel(frame:CGRect(x: 10,y: 0,width: self.tableView.frame.size.width - 20,height: 30))
         
-        if (Date().getDayOfWeek() == section) {
-            label.text = "TODAY"
-            label.textColor = UIColor.darkGray
-            
-            label.font = UIFont(name:"HelveticaNeue-Bold", size: 20.0)
-        }
-        else {
-            label.textColor = UIColor.darkGray
-            
-            label.text = self.sectionTitles()[section]
-            
-            label.font = UIFont(name:"HelveticaNeue", size: 18.0)
-        }
+        label.textColor = UIColor.darkGray
+        
+        label.text = section
+        
+        label.font = UIFont(name:"HelveticaNeue", size: 18.0)
         
         view.addSubview(label)
         
@@ -176,15 +171,13 @@ class BoardTableViewController: UITableViewController {
         
         for view in self.sectionHeaders {
             
-            self.updateViewForSection(view, section: index)
+            self.updateViewForSection(view, section: self.sectionTitles()[index])
             
             index = index + 1
             
             
         }
     }
-    
-    
     
     func createSectionHeaders() {
         
@@ -194,7 +187,7 @@ class BoardTableViewController: UITableViewController {
             
             let view = UIView()
             
-            self.updateViewForSection(view, section:index)
+            self.updateViewForSection(view, section:self.sectionTitles()[index])
             
             index = index + 1
             
@@ -204,18 +197,18 @@ class BoardTableViewController: UITableViewController {
     }
     
     /*
-    func updateHeaderOnPurchaseStatus() {
-        let products = Products.instance().productsArray
-        
-        if ((products?.firstObject as AnyObject).purchased)! == true {
-            self.tableView.tableHeaderView = nil
-            
-            UserDefaults.standard.set(true, forKey: "purchased")
-            UserDefaults.standard.synchronize()
-            
-        }
-    }
-    */
+     func updateHeaderOnPurchaseStatus() {
+     let products = Products.instance().productsArray
+     
+     if ((products?.firstObject as AnyObject).purchased)! == true {
+     self.tableView.tableHeaderView = nil
+     
+     UserDefaults.standard.set(true, forKey: "purchased")
+     UserDefaults.standard.synchronize()
+     
+     }
+     }
+     */
     
     @objc func dayChanged(_ notification: Notification){
         self.tableView.reloadData()
@@ -224,7 +217,7 @@ class BoardTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        
         
         NotificationCenter.default.addObserver(self, selector: #selector(BoardTableViewController.dayChanged(_:)), name: NSNotification.Name.UIApplicationSignificantTimeChange, object: nil)
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound]) { (granted:Bool, error:Error?) in
@@ -234,7 +227,7 @@ class BoardTableViewController: UITableViewController {
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "productsRefreshed"), object: nil, queue: nil) { (Notification) in
             
-           // self.updateHeaderOnPurchaseStatus()
+            // self.updateHeaderOnPurchaseStatus()
             
         }
         
@@ -325,7 +318,7 @@ class BoardTableViewController: UITableViewController {
             
             self.present(nc, animated: true, completion: {})
         }))
-
+        
         if  Auth.auth().currentUser?.uid == nil {
             alert.addAction(UIAlertAction(title: "Register for sync", style: .destructive, handler: { (action
                 ) in
@@ -428,7 +421,7 @@ class BoardTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let ticket = fetchedResultsController.object(at: sourceIndexPath) as? Ticket
-        Ticket.insertTicket(ticket!, toIndexPath: destinationIndexPath, moc:self.moc)
+        Ticket.insertTicket(ticket!, row: destinationIndexPath.row,section:"Backlog", moc:self.moc)
     }
     
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
@@ -452,7 +445,10 @@ class BoardTableViewController: UITableViewController {
         return array
     }
     
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 66
         
         if self.hiddenSections().contains(indexPath.section) == true {
             return 0
@@ -475,7 +471,7 @@ class BoardTableViewController: UITableViewController {
             }
         }
         else if editingStyle == .insert {
-            self.addInSection(indexPath.section)
+   //TODO         self.addInSection(indexPath.section)
         }
     }
     
@@ -514,7 +510,11 @@ class BoardTableViewController: UITableViewController {
     }
     
     
-    func spareRowForSection(_ section: Int) -> Int{
+    func spareRowForSection(_ section: String) -> Int{
+        return 0
+        
+        //todo
+        /*
         var row:Int = 0
         if let sections = self.fetchedResultsController.sections {
             let currentSection = sections[section]
@@ -535,10 +535,12 @@ class BoardTableViewController: UITableViewController {
         }
         
         return Int(row)
+ 
+ */
         
     }
     
-    func addInSection(_ section:Int) {
+    func addInSection(_ section:String) {
         let nc = self.storyboard?.instantiateViewController(withIdentifier: "TicketNavigationViewController") as! UINavigationController
         let vc = nc.viewControllers[0] as! TicketViewController
         
@@ -550,13 +552,9 @@ class BoardTableViewController: UITableViewController {
         vc.ticket = Ticket.createInMoc(self.childMoc)
         vc.ticket.name = ""
         vc.ticket.row = Int32(row)
-        vc.ticket.section = Int32(section)
+        vc.ticket.section = section
         vc.ticket.pomodoroEstimate = 1
         vc.ticket.colorIndex = 2
-        
-        
-        
-        
         
         vc.delegate = self
         
@@ -592,7 +590,7 @@ class BoardTableViewController: UITableViewController {
         
         self.present(nc, animated: true) {}
     }
-
+    
     
 }
 

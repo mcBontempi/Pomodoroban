@@ -522,26 +522,10 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="pd0-F2-yTn">
                         <nil key="title"/>
-                        <leftBarButtonItems>
-                            <barButtonItem systemItem="done" id="Xc7-qc-wIT">
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <action selector="donePressed:" destination="lpa-3H-vWj" id="a53-X2-nNR"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem id="fUp-e8-oPa">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VKG-CN-hdn">
-                                    <rect key="frame" x="67.5" y="6" width="32" height="32"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="layers"/>
-                                    <connections>
-                                        <action selector="layerPressed:" destination="lpa-3H-vWj" eventType="touchUpInside" id="mdV-Ih-mTR"/>
-                                    </connections>
-                                </button>
-                            </barButtonItem>
+                        <rightBarButtonItems>
                             <barButtonItem id="FY2-Md-OvX">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BmL-pU-T6A">
-                                    <rect key="frame" x="107.5" y="6" width="32" height="32"/>
+                                    <rect key="frame" x="272" y="6" width="32" height="32"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="play"/>
                                     <connections>
@@ -549,11 +533,9 @@
                                     </connections>
                                 </button>
                             </barButtonItem>
-                        </leftBarButtonItems>
-                        <rightBarButtonItems>
                             <barButtonItem id="Ied-2N-CUn">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="mv0-dK-hTO">
-                                    <rect key="frame" x="272" y="6" width="32" height="32"/>
+                                    <rect key="frame" x="232" y="6" width="32" height="32"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="plus"/>
                                     <connections>
@@ -563,13 +545,29 @@
                             </barButtonItem>
                             <barButtonItem id="A17-iw-rv3">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uLQ-Zy-JtZ">
-                                    <rect key="frame" x="232" y="6" width="32" height="32"/>
+                                    <rect key="frame" x="192" y="6" width="32" height="32"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="settings"/>
                                     <connections>
                                         <action selector="settingsPressed:" destination="lpa-3H-vWj" eventType="touchUpInside" id="G2J-Ed-6dY"/>
                                     </connections>
                                 </button>
+                            </barButtonItem>
+                            <barButtonItem id="fUp-e8-oPa">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VKG-CN-hdn">
+                                    <rect key="frame" x="152" y="6" width="32" height="32"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="layers"/>
+                                    <connections>
+                                        <action selector="layerPressed:" destination="lpa-3H-vWj" eventType="touchUpInside" id="mdV-Ih-mTR"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
+                            <barButtonItem systemItem="done" id="Xc7-qc-wIT">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="donePressed:" destination="lpa-3H-vWj" id="a53-X2-nNR"/>
+                                </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
