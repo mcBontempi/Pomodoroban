@@ -11,10 +11,10 @@
 #import "CALayer+Animations.h"
 #import "StringAndPredicateCollection.h"
 
-const CGFloat SidePadding = 5;
-const CGFloat WordPadding = 5;
+const CGFloat SidePadding = 3;
+const CGFloat WordPadding = 3;
 
-const NSUInteger fontSize = 24;
+const NSUInteger fontSize = 30;
 
 @interface WordsAndQuestionsView () <TagLabelDelegate>
 

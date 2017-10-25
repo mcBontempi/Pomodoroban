@@ -9,272 +9,42 @@ import UserNotifications
 
 class BoardTableViewController: UITableViewController {
     
-    
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var addButton: UIButton!
     
     @IBOutlet weak var playButton: UIButton!
     
-    @IBAction func donePressed(_ sender: Any) {
-        
-        self.dismiss(animated: true, completion: nil)
-        
-    }
-    @IBAction func buyPressed(_ sender: AnyObject) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "BuyViewController") as! BuyViewController
-        self.present(vc, animated: true, completion: nil)
-    }
-    
-    @IBOutlet weak var layerButton: UIButton!
-    
-    var showAll = true
-    
-    var sectionHeaders = [UIView]()
-    
-    var isActuallyEditing = false
-    
     let moc = CoreDataServices.sharedInstance.moc
     
     var childMoc:NSManagedObjectContext!
     
+    var section:String!
+    
     lazy var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult> = {
-        let tempFetchedResultsController = NSFetchedResultsController( fetchRequest: Ticket.fetchRequestAll(), managedObjectContext: self.moc, sectionNameKeyPath: "section", cacheName: nil)
+        let tempFetchedResultsController = NSFetchedResultsController( fetchRequest: Ticket.fetchRequestForSection(self.section), managedObjectContext: self.moc, sectionNameKeyPath: "section", cacheName: nil)
         tempFetchedResultsController.delegate = self
         return tempFetchedResultsController
     }()
     
     @IBAction func addPressed(_ sender: AnyObject) {
-        self.addInSection("Backlog")
-    }
-    
-    @IBAction func layerPressed(_ sender: AnyObject) {
-        
-        if  self.isActuallyEditing == false {
-            
-            
-            self.isActuallyEditing = true
-            self.setPlanMode()
-        }
-        else {
-            self.isActuallyEditing = false
-            self.setWorkMode()
-        }
-    }
-    
-    func showOnboarding() {
-        
-        let firstPage = OnboardingContentViewController(title: "Page Title", body: "Page body goes here.", image: UIImage(named: "icon"), buttonText: "Text For Button") { () -> Void in
-        }
-        
-        let secondPage = OnboardingContentViewController(title: "Page Title", body: "Page body goes here.", image: UIImage(named: "icon"), buttonText: "Text For Button") { () -> Void in
-        }
-        
-        let thirdPage = OnboardingContentViewController(title: "Page Title", body: "Page body goes here.", image: UIImage(named: "icon"), buttonText: "Done") { () -> Void in
-            
-            self.dismiss(animated: true, completion: {
-                
-            })
-        }
-        
-        //       let bundle = NSBundle.mainBundle()
-        //     let moviePath = bundle.pathForResource("IMG_6628", ofType: "MOV")
-        //   let movieURL = NSURL(fileURLWithPath: moviePath!)
-        
-        let onboardingVC = OnboardingViewController(backgroundVideoURL: nil, contents: [firstPage, secondPage, thirdPage])
-        
-        
-        
-        self.present(onboardingVC!, animated: true) {
-            
-        }
-        
-    }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        /*
-         
-         FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
-         kFIRParameterContentType: "Main Screen" as NSObject
-         ])
-         */
-    }
-    
-    var sectionTitlesToShow:[String]!
-    
-    func selectedSectionTitles() -> [String] {
-        
-        if self.sectionTitlesToShow != nil {
-            return self.sectionTitlesToShow
-        }
-       
-        let defaults = UserDefaults.standard
-        
-        let key = defaults.value(forKey: "selectedSectionTitles")
-        
-        if key == nil {
-            defaults.setValue(["BACKLOG", "MORNING", "AFTERNOON", "EVENING"], forKey: "selectedSectionTitles")
-            defaults.synchronize()
-        }
-        
-        return defaults.value(forKey:"selectedSectionTitles") as! [String]
-    }
-    
-    func sectionTitles() -> [String] {
-        if self.sectionTitlesToShow != nil {
-            return self.sectionTitlesToShow
-        }
-        return ["BACKLOG", "MORNING", "AFTERNOON", "EVENING"]
-    }
-    
-    func updateViewForSection(_ view:UIView, section: String)  {
-        
-        for subview in view.subviews {
-            subview.removeFromSuperview()
-        }
-        
-        view.frame = CGRect(x: 0,y: 0,width: self.tableView.frame.size.width,height: 30)
-        
-        let countLabel = UILabel(frame:CGRect(x: self.tableView.frame.size.width-50,y: 0,width: 40,height: 30))
-        countLabel.textColor = UIColor.black
-        countLabel.textAlignment = .right
-        
-        
-        let count = Ticket.countForSection(moc, section:section)
-        
-        
-        if count > 0 {
-            countLabel.text = "\(count)"
-        }
-        
-        view.backgroundColor = UIColor(hexString: "e9ebd4")
-        let label = UILabel(frame:CGRect(x: 10,y: 0,width: self.tableView.frame.size.width - 20,height: 30))
-        
-        label.textColor = UIColor.darkGray
-        
-        label.text = section
-        
-        label.font = UIFont(name:"HelveticaNeue", size: 18.0)
-        
-        view.addSubview(label)
-        
-        view.addSubview(countLabel)
-        
-    }
-    
-    
-    func reloadSectionHeaders() {
-        
-        var index = 0
-        
-        for view in self.sectionHeaders {
-            
-            self.updateViewForSection(view, section: self.sectionTitles()[index])
-            
-            index = index + 1
-            
-            
-        }
-    }
-    
-    func createSectionHeaders() {
-        
-        var index = 0
-        
-        for _ in self.sectionTitles() {
-            
-            let view = UIView()
-            
-            self.updateViewForSection(view, section:self.sectionTitles()[index])
-            
-            index = index + 1
-            
-            self.sectionHeaders.append(view)
-            
-        }
-    }
-    
-    /*
-     func updateHeaderOnPurchaseStatus() {
-     let products = Products.instance().productsArray
-     
-     if ((products?.firstObject as AnyObject).purchased)! == true {
-     self.tableView.tableHeaderView = nil
-     
-     UserDefaults.standard.set(true, forKey: "purchased")
-     UserDefaults.standard.synchronize()
-     
-     }
-     }
-     */
-    
-    @objc func dayChanged(_ notification: Notification){
-        self.tableView.reloadData()
+        self.addInSection(self.section)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(BoardTableViewController.dayChanged(_:)), name: NSNotification.Name.UIApplicationSignificantTimeChange, object: nil)
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound]) { (granted:Bool, error:Error?) in
-            
-        }
-        
+        self.tableView.setEditing(true, animated: true)
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "productsRefreshed"), object: nil, queue: nil) { (Notification) in
             
-            // self.updateHeaderOnPurchaseStatus()
             
         }
-        
-        BuddyBuildSDK.setup()
-        
-        let defaults = UserDefaults.standard
-        
-        if defaults.object(forKey: "shownOnboarding") == nil {
-            
-            //    self.showOnboarding()
-            
-            defaults.set(true, forKey: "shownOnboarding")
-            
-            defaults.synchronize()
-            
-        }
-        
-        self.createSectionHeaders()
-        
         try! self.fetchedResultsController.performFetch()
-        
         self.tableView.allowsSelectionDuringEditing = true
-        self.setWorkMode()
-        
         self.tableView.tableFooterView = UIView()
-        
-        
         self.navigationController!.redWithLogo()
-        
-        if Runtime.all(self.moc).count > 0 {
-            
-            let vc = self.storyboard!.instantiateViewController(withIdentifier: "TimerViewController")
-            
-            self.present(vc, animated: false, completion: {
-                
-            })
-        }
-        
-        self.title = "efficacious"
-        
-        let purchased = UserDefaults.standard.bool(forKey: "purchased")
-        
-        if purchased == true {
-            self.tableView.tableHeaderView = nil
-        }
-        
         self.tableView.tableHeaderView = nil
+        self.title = section
     }
     
     deinit{
@@ -300,68 +70,79 @@ class BoardTableViewController: UITableViewController {
         })
         
     }
-    
-    @IBAction func settingsPressed(_ sender: AnyObject) {
-        
-        let alert = UIAlertController(title: "Settings", message: nil, preferredStyle: .actionSheet)
-        
-        alert.addAction(UIAlertAction(title: "Select Sections", style: .destructive, handler: { (action
-            ) in
-            self.dismiss(animated: true, completion: nil)
-            let nc = UIStoryboard(name:"SectionSelect", bundle:nil).instantiateInitialViewController() as! UINavigationController
-            
-            let vc = nc.viewControllers.first! as! SectionSelectTableViewController
-            
-            vc.sectionTitles = self.sectionTitles()
-            vc.selectedSectionTitles = self.selectedSectionTitles()
-            vc.delegate = self
-            
-            self.present(nc, animated: true, completion: {})
-        }))
-        
-        if  Auth.auth().currentUser?.uid == nil {
-            alert.addAction(UIAlertAction(title: "Register for sync", style: .destructive, handler: { (action
-                ) in
-                self.showLogin(true)
-            }))
-        }
-        else {
-            
-            alert.addAction(UIAlertAction(title: "Sign Out", style: .default, handler: { (action
-                ) in
-                
-                self.dismiss(animated: true, completion: nil)
-                
-                
-                let defaults = UserDefaults.standard
-                
-                defaults.removeObject(forKey: "loggedInWithoutAuth")
-                
-                defaults.synchronize()
-                
-                
-                
-                
-                SyncService.sharedInstance.removeAllForSignOut()
-                try! Auth.auth().signOut()
-                self.showLogin(false)
-                
-                
-            }))
-        }
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action
-            ) in
-        }))
-        
-        alert.popoverPresentationController?.sourceView = self.settingsButton
-        
-        self.present(alert, animated: true, completion: nil)
-        
-        
-    }
+    /*
+     @IBAction func settingsPressed(_ sender: AnyObject) {
+     
+     let alert = UIAlertController(title: "Settings", message: nil, preferredStyle: .actionSheet)
+     
+     alert.addAction(UIAlertAction(title: "Select Sections", style: .destructive, handler: { (action
+     ) in
+     self.dismiss(animated: true, completion: nil)
+     let nc = UIStoryboard(name:"SectionSelect", bundle:nil).instantiateInitialViewController() as! UINavigationController
+     
+     let vc = nc.viewControllers.first! as! SectionSelectTableViewController
+     
+     vc.sectionTitles = self.sectionTitles()
+     vc.selectedSectionTitles = self.selectedSectionTitles()
+     vc.delegate = self
+     
+     self.present(nc, animated: true, completion: {})
+     }))
+     
+     if  Auth.auth().currentUser?.uid == nil {
+     alert.addAction(UIAlertAction(title: "Register for sync", style: .destructive, handler: { (action
+     ) in
+     self.showLogin(true)
+     }))
+     }
+     else {
+     
+     alert.addAction(UIAlertAction(title: "Sign Out", style: .default, handler: { (action
+     ) in
+     
+     self.dismiss(animated: true, completion: nil)
+     
+     
+     let defaults = UserDefaults.standard
+     
+     defaults.removeObject(forKey: "loggedInWithoutAuth")
+     
+     defaults.synchronize()
+     
+     
+     
+     
+     SyncService.sharedInstance.removeAllForSignOut()
+     try! Auth.auth().signOut()
+     self.showLogin(false)
+     
+     
+     }))
+     }
+     
+     alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action
+     ) in
+     }))
+     
+     alert.popoverPresentationController?.sourceView = self.settingsButton
+     
+     self.present(alert, animated: true, completion: nil)
+     
+     
+     }
+     */
     // general
     
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "timerSegue" {
+            let nc = segue.destination as! UINavigationController
+            let vc = nc.viewControllers.first as! NaturalLanguageViewController
+            vc.section = self.section
+            return
+        }
+    }
+
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         
         if identifier == "timerSegue" {
@@ -386,75 +167,33 @@ class BoardTableViewController: UITableViewController {
         return true
     }
     
-    func setWorkMode() {
-        self.tableView.setEditing(false, animated: true)
-        
-        self.layerButton.setImage(UIImage(named:"layers"), for: UIControlState())
-        
-        UIView.animate(withDuration: 0.3, animations: {
-            self.navigationController?.navigationBar.barTintColor = UIColor.red
-        })
-    }
-    
-    func setPlanMode() {
-        self.tableView.setEditing(true, animated: true)
-        self.layerButton.setImage(UIImage(named:"layersOn"), for: UIControlState())
-        
-        
-        UIView.animate(withDuration: 0.3, animations: {
-            self.navigationController?.navigationBar.barTintColor = UIColor.black
-        })
-    }
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         
-        return self.sectionTitles().count
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        
         if let sections = self.fetchedResultsController.sections {
+            if sections.count == 0 {
+                return 0
+            }
+            
             let currentSection = sections[section]
-            return currentSection.numberOfObjects == 1 ? 0 : currentSection.numberOfObjects - 1
+            return currentSection.numberOfObjects
         }
         return 0
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let ticket = fetchedResultsController.object(at: sourceIndexPath) as? Ticket
-        Ticket.insertTicket(ticket!, row: destinationIndexPath.row,section:"Backlog", moc:self.moc)
-    }
-    
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        return SyncService.sharedInstance.connected
-    }
-    
-    func hiddenSections() -> [Int] {
-        
-        var array = [Int]()
-        
-        var index = 0
-        
-        for item in self.sectionTitles() {
-            if !self.selectedSectionTitles().contains(item){
-                array.append(index)
-            }
-            
-            index = index + 1
-        }
-        
-        return array
+        Ticket.insertTicket(ticket!, row: destinationIndexPath.row,section:self.section, moc:self.moc)
     }
     
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        return 66
-        
-        if self.hiddenSections().contains(indexPath.section) == true {
-            return 0
-        }
-        
-        return 66
+        return 100
     }
     
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
@@ -470,9 +209,8 @@ class BoardTableViewController: UITableViewController {
                 try! self.moc.save()
             }
         }
-        else if editingStyle == .insert {
-   //TODO         self.addInSection(indexPath.section)
-        }
+        
+        
     }
     
     
@@ -495,50 +233,7 @@ class BoardTableViewController: UITableViewController {
         return UITableViewCell()
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if self.hiddenSections().contains(section) == true {
-            return 0
-        }
-        return 30
-    }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        let view = self.sectionHeaders[section]
-        
-        return view
-    }
-    
-    
-    func spareRowForSection(_ section: String) -> Int{
-        return 0
-        
-        //todo
-        /*
-        var row:Int = 0
-        if let sections = self.fetchedResultsController.sections {
-            let currentSection = sections[section]
-            
-            let rowCountForSection = currentSection.objects!.count
-            
-            if rowCountForSection == 1 {
-                row = 0
-            }
-            else {
-                
-                if let objects = currentSection.objects as? [Ticket]{
-                    
-                    let ticket = objects[rowCountForSection - 2]
-                    row = Int(ticket.row) + 1
-                }
-            }
-        }
-        
-        return Int(row)
- 
- */
-        
-    }
     
     func addInSection(_ section:String) {
         let nc = self.storyboard?.instantiateViewController(withIdentifier: "TicketNavigationViewController") as! UINavigationController
@@ -582,7 +277,6 @@ class BoardTableViewController: UITableViewController {
         let nc = self.storyboard?.instantiateViewController(withIdentifier: "TicketNavigationViewController") as! UINavigationController
         let vc = nc.viewControllers[0] as! TicketViewController
         
-        
         self.childMoc = CoreDataServices.sharedInstance.childMoc()
         vc.ticket = Ticket.ticketForTicket(self.fetchedResultsController.object(at: indexPath) as! Ticket, moc:self.childMoc)
         
@@ -614,10 +308,6 @@ extension BoardTableViewController : NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         
         
-        if self.isActuallyEditing {
-            return
-        }
-        
         
         self.tableView.beginUpdates()
         
@@ -630,9 +320,7 @@ extension BoardTableViewController : NSFetchedResultsControllerDelegate {
         for type: NSFetchedResultsChangeType,
         newIndexPath: IndexPath?) {
         
-        if self.isActuallyEditing {
-            return
-        }
+        
         
         
         switch type {
@@ -678,11 +366,6 @@ extension BoardTableViewController : NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         
-        if self.isActuallyEditing {
-            self.tableView.reloadData()
-            self.reloadSectionHeaders()
-            return
-        }
         
         tableView.endUpdates()
     }

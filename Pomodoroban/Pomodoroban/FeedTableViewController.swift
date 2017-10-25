@@ -1,14 +1,34 @@
 import UIKit
 import CoreData
+import UserNotifications
 
 class FeedTableViewController: UITableViewController {
     let moc = CoreDataServices.sharedInstance.moc
     var childMoc:NSManagedObjectContext!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+       
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound]) { (granted:Bool, error:Error?) in
+        
+            BuddyBuildSDK.setup()
+            if Runtime.all(self.moc).count > 0 {
+                
+                let vc = self.storyboard!.instantiateViewController(withIdentifier: "TimerViewController")
+                
+                self.present(vc, animated: false, completion: {
+                    
+                })
+            }
+        }
+    }
+    
+    
     func data() -> [(String,String)]
     {
         var counts:[Int] = [Int]()
         for count in 0 ... 3 {
-            counts.append(Ticket.countForSection(self.moc, section: ["Backlog","Morning","Afetrnoon","Evening"][count]))
+            counts.append(Ticket.countForSection(self.moc, section: ["Backlog","Morning","Afternoon","Evening"][count]))
         }
         var rows =  [("userHeader","Daren David Taylor"),("userSwipe",""),("alertHeader",""),("alert","Well done you did one week."),("alert","Would you like to review the app."),("alert","Your friend is following you"),("createHeader",""),("createSwipe",""),("sessionHeader","")]
         
@@ -25,7 +45,7 @@ class FeedTableViewController: UITableViewController {
             rows.append(( "session","Evening"))
         }
         
-        rows.append(contentsOf: [("archiveHeader",""),("archiveSession","Friday Morning 23rd October"),("archiveSession","Friday Afternoon 23rd October"),("archiveSession","Afternoon"),("preferencesHeader",""),("preferences",""),("companyDetails","") ])
+        rows.append(contentsOf: [("archiveHeader",""),("archiveSession","Friday Morning 23rd October"),("archiveSession","Friday Afternoon 23rd October"),("archiveSession","Saturday Afternoon 24rd October"),("preferencesHeader",""),("preferences",""),("companyDetails","") ])
         
         return rows
     }
@@ -109,13 +129,13 @@ class FeedTableViewController: UITableViewController {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let nc = storyboard.instantiateViewController(withIdentifier: "MainNavigationController") as! UINavigationController
             let vc = nc.viewControllers[0] as! BoardTableViewController
-            vc.sectionTitlesToShow = [self.data()[indexPath.row].1]
+            vc.section = self.data()[indexPath.row].1
             self.navigationController?.pushViewController(vc, animated: true)
         case "archiveSession":
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let nc = storyboard.instantiateViewController(withIdentifier: "MainNavigationController") as! UINavigationController
             let vc = nc.viewControllers[0] as! BoardTableViewController
-            vc.sectionTitlesToShow = [self.data()[indexPath.row].1]
+            vc.section = self.data()[indexPath.row].1
             self.navigationController?.pushViewController(vc, animated: true)
         default:
             break
@@ -125,26 +145,20 @@ class FeedTableViewController: UITableViewController {
 
 extension FeedTableViewController : CreateSwipeTableViewCellDelegate
 {
-    func addToBacklog() {
+    func createIn(section:String) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let nc = storyboard.instantiateViewController(withIdentifier: "TicketNavigationViewController") as! UINavigationController
         let vc = nc.viewControllers[0] as! TicketViewController
         vc.setFocusToName = true
-        let row = Ticket.spareRowForSection("Backlog", moc:self.moc)
+        let row = Ticket.spareRowForSection(section, moc:self.moc)
         self.childMoc = CoreDataServices.sharedInstance.childMoc()
         vc.ticket = Ticket.createInMoc(self.childMoc)
         vc.ticket.name = ""
         vc.ticket.row = Int32(row)
-        vc.ticket.section = "Backlog"
+        vc.ticket.section = section
         vc.ticket.pomodoroEstimate = 1
         vc.ticket.colorIndex = 2
         vc.delegate = self
-        self.present(nc, animated: true) {}
-    }
-    
-    func showBoard() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let nc = storyboard.instantiateViewController(withIdentifier: "MainNavigationController") as! UINavigationController
         self.present(nc, animated: true) {}
     }
     

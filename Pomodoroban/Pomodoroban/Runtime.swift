@@ -92,7 +92,7 @@ class Runtime: NSManagedObject {
     }
     
     
-    class func createForSessionLength(_ moc:NSManagedObjectContext, sessionLength:Double, pomodoroLength:Double, shortBreakLength:Double, longBreakLength:Double, shortBreakCount: Int, haveALongBreak:Int) {
+    class func createForSessionLength(section:String,  _ moc:NSManagedObjectContext, sessionLength:Double, pomodoroLength:Double, shortBreakLength:Double, longBreakLength:Double, shortBreakCount: Int, haveALongBreak:Int) {
         
         var shortBreakIndex = 1
         
@@ -101,7 +101,7 @@ class Runtime: NSManagedObject {
             shortBreakIndex = -999
         }
         
-        let tickets = Ticket.allForToday(moc)
+        let tickets = Ticket.allForSection(moc, section: section)
         
         var index:Int32 = 0
         

@@ -315,7 +315,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fLK-rT-egj">
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fLK-rT-egj">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="YGP-Er-eJF">
@@ -333,7 +333,7 @@
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hH-qx-o1e">
-                                                                <rect key="frame" x="22" y="26" width="56" height="55"/>
+                                                                <rect key="frame" x="18" y="22" width="64" height="63"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -342,10 +342,10 @@
                                                     </view>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="0hH-qx-o1e" firstAttribute="leading" secondItem="lxc-fy-j1C" secondAttribute="leadingMargin" constant="6" id="3Wu-QO-mep"/>
-                                                        <constraint firstItem="0hH-qx-o1e" firstAttribute="top" secondItem="lxc-fy-j1C" secondAttribute="topMargin" constant="6" id="PZ8-rh-D9m"/>
-                                                        <constraint firstAttribute="trailingMargin" secondItem="0hH-qx-o1e" secondAttribute="trailing" constant="6" id="Qf0-gh-rbs"/>
-                                                        <constraint firstAttribute="bottomMargin" secondItem="0hH-qx-o1e" secondAttribute="bottom" constant="6" id="rhS-GC-oZa"/>
+                                                        <constraint firstItem="0hH-qx-o1e" firstAttribute="leading" secondItem="lxc-fy-j1C" secondAttribute="leadingMargin" constant="2" id="3Wu-QO-mep"/>
+                                                        <constraint firstItem="0hH-qx-o1e" firstAttribute="top" secondItem="lxc-fy-j1C" secondAttribute="topMargin" constant="2" id="PZ8-rh-D9m"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="0hH-qx-o1e" secondAttribute="trailing" constant="2" id="Qf0-gh-rbs"/>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="0hH-qx-o1e" secondAttribute="bottom" constant="2" id="rhS-GC-oZa"/>
                                                     </constraints>
                                                     <connections>
                                                         <outlet property="title" destination="0hH-qx-o1e" id="O9X-PP-LhD"/>

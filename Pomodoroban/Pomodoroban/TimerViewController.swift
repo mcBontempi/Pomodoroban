@@ -13,6 +13,8 @@ class TimerViewController: UIViewController {
     
     var pixelVC: PixelTestViewController!
     
+    var section:String!
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         self.pixelVC = segue.destination as! PixelTestViewController
     }
@@ -25,7 +27,6 @@ class TimerViewController: UIViewController {
     var shortBreakLength:Double!
     var shortBreakCount:Int!
     var longBreakLength:Double!
-    var sessionLength:Double!
     var haveALongBreak:Int!
     
     var index = 0
@@ -171,7 +172,7 @@ class TimerViewController: UIViewController {
             Runtime.removeAllEntities(self.moc)
             
             
-            Runtime.createForSessionLength(self.moc,sessionLength:self.sessionLength, pomodoroLength: self.pomodoroLength, shortBreakLength: self.shortBreakLength, longBreakLength: self.longBreakLength, shortBreakCount: self.shortBreakCount, haveALongBreak:self.haveALongBreak)
+            Runtime.createForSessionLength(section:self.section,self.moc,sessionLength:10000000, pomodoroLength: self.pomodoroLength, shortBreakLength: self.shortBreakLength, longBreakLength: self.longBreakLength, shortBreakCount: self.shortBreakCount, haveALongBreak:self.haveALongBreak)
             
             
             try! self.moc.save()
@@ -541,10 +542,6 @@ class TimerViewController: UIViewController {
             }))
         }
         
-        alert.addAction(UIAlertAction(title: "Quick Add Story to INBOX", style: .default, handler: { (action) in
-            self.quickAdd()
-        }))
-        
         alert.addAction(UIAlertAction(title: "Exit Current Pomodoro sequence", style: .default, handler: { (action) in
             self.close()
         }))
@@ -558,27 +555,6 @@ class TimerViewController: UIViewController {
     }
     
     var childMoc:NSManagedObjectContext!
-    
-    func quickAdd() {
-        let nc = self.storyboard?.instantiateViewController(withIdentifier: "TicketNavigationViewController") as! UINavigationController
-        let vc = nc.viewControllers[0] as! TicketViewController
-        
-        vc.setFocusToName = true
-        
-        let row = Ticket.spareRowForSection("Backlog", moc:self.moc)
-        
-        self.childMoc = CoreDataServices.sharedInstance.childMoc()
-        vc.ticket = Ticket.createInMoc(self.childMoc)
-        vc.ticket.name = ""
-        vc.ticket.row = Int32(row)
-        vc.ticket.section = "Backlog"
-        vc.ticket.pomodoroEstimate = 1
-        vc.ticket.colorIndex = 2
-        
-        vc.delegate = self
-        
-        self.present(nc, animated: true) {}
-    }
     
     func saveChildMoc() {
         
