@@ -432,7 +432,7 @@
 		F69886AA5919349B8129604B /* Pods_Pomodoroban.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pomodoroban.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD577BDB1DB942C400470457 /* PixelTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PixelTestViewController.swift; sourceTree = "<group>"; };
 		FD577BDE1DB947EB00470457 /* UIView+Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Animations.swift"; sourceTree = "<group>"; };
-		FD5BE9DE1C5BB5CA00535A78 /* efficacious.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = efficacious.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD5BE9DE1C5BB5CA00535A78 /* Calchua.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calchua.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD5BE9E11C5BB5CA00535A78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD5BE9E61C5BB5CA00535A78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FD5BE9EE1C5BB5CA00535A78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -830,7 +830,7 @@
 		FD5BE9DF1C5BB5CA00535A78 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FD5BE9DE1C5BB5CA00535A78 /* efficacious.app */,
+				FD5BE9DE1C5BB5CA00535A78 /* Calchua.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -917,9 +917,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FD5BE9DD1C5BB5CA00535A78 /* efficacious */ = {
+		FD5BE9DD1C5BB5CA00535A78 /* Calchua */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FD5BE9F31C5BB5CA00535A78 /* Build configuration list for PBXNativeTarget "efficacious" */;
+			buildConfigurationList = FD5BE9F31C5BB5CA00535A78 /* Build configuration list for PBXNativeTarget "Calchua" */;
 			buildPhases = (
 				C6E8A73797FC8370CCF0EC6B /* [CP] Check Pods Manifest.lock */,
 				FD5BE9DA1C5BB5CA00535A78 /* Sources */,
@@ -932,9 +932,9 @@
 			);
 			dependencies = (
 			);
-			name = efficacious;
+			name = Calchua;
 			productName = Pomodoroban;
-			productReference = FD5BE9DE1C5BB5CA00535A78 /* efficacious.app */;
+			productReference = FD5BE9DE1C5BB5CA00535A78 /* Calchua.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -979,7 +979,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FD5BE9DD1C5BB5CA00535A78 /* efficacious */,
+				FD5BE9DD1C5BB5CA00535A78 /* Calchua */,
 			);
 		};
 /* End PBXProject section */
@@ -1373,7 +1373,7 @@
 				INFOPLIST_FILE = Pomodoroban/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.LondonSwift.Pomodoroban;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ddt.calchua;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1402,7 +1402,7 @@
 				INFOPLIST_FILE = Pomodoroban/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.LondonSwift.Pomodoroban;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ddt.calchua;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1426,7 +1426,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FD5BE9F31C5BB5CA00535A78 /* Build configuration list for PBXNativeTarget "efficacious" */ = {
+		FD5BE9F31C5BB5CA00535A78 /* Build configuration list for PBXNativeTarget "Calchua" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FD5BE9F41C5BB5CA00535A78 /* Debug */,
