@@ -1356,6 +1356,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B316594EE6ABEB8E27F89A08 /* Pods-Calchua.debug.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Pomodoroban/Pomodoroban.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1384,6 +1385,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 35EA5C4801DE51025378FE42 /* Pods-Calchua.release.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Pomodoroban/Pomodoroban.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
