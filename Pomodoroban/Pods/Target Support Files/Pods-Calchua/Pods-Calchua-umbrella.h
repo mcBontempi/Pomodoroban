@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_efficaciousVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_efficaciousVersionString[];
+FOUNDATION_EXPORT double Pods_CalchuaVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_CalchuaVersionString[];
 

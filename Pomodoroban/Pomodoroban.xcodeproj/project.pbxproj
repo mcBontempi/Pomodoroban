@@ -8,15 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		34DEEBF757B1EF12F4973640 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D7B413C60458E80518CC94 /* CoreVideo.framework */; };
-		3FED86916C5F3EA8341535B6 /* Pods_efficacious.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E02F4BA682A44F3E4AFF27D /* Pods_efficacious.framework */; };
 		45736E9464E17DC019141542 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95BAC38868AE587ED7406011 /* AVFoundation.framework */; };
 		54622054142A841D017CD612 /* BuddyBuildSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E777183DB54B2E29403C9EAE /* BuddyBuildSDK.framework */; };
+		619BB58FCE6A09EB8FD13E25 /* Pods_Calchua.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21D418C45CA1D660634282D5 /* Pods_Calchua.framework */; };
 		74D1C7DBBB8EDECAE50AE6AE /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E23989444A96BCC6942726D /* CoreTelephony.framework */; };
 		80D53AA627AC205F44339658 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 807DAFF1D7C3D1EC9325F533 /* CoreMedia.framework */; };
 		94FA3CEFCE8501B215D73F1E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7BA48914D57A868B512C04 /* SystemConfiguration.framework */; };
 		9AC7EF7838915076DFB73711 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1446438605D528D1F312D7 /* AssetsLibrary.framework */; };
 		A30ED94395DED1E6DF404B7A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E6FEAFFD32F6C345B81C00F /* QuartzCore.framework */; };
-		BD6CF5ACA5954E34F2264889 /* Pods_Life_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7632D487C8AA92DBDC5D4211 /* Pods_Life_Tracker.framework */; };
 		C32D6ED85F18C76A4A2805D0 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DF71CF5892D5657207A2D31 /* CoreText.framework */; };
 		D60099971F9A2037004E5772 /* WebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D60099961F9A2037004E5772 /* WebView.storyboard */; };
 		D60099991F9A238E004E5772 /* IAP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D60099981F9A238E004E5772 /* IAP.storyboard */; };
@@ -181,17 +180,17 @@
 		0E23989444A96BCC6942726D /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		1216A73924A9FD26D180EB29 /* Pods-Life Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Life Tracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Life Tracker/Pods-Life Tracker.release.xcconfig"; sourceTree = "<group>"; };
 		1C7BA48914D57A868B512C04 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		21D418C45CA1D660634282D5 /* Pods_Calchua.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Calchua.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		35EA5C4801DE51025378FE42 /* Pods-Calchua.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calchua.release.xcconfig"; path = "Pods/Target Support Files/Pods-Calchua/Pods-Calchua.release.xcconfig"; sourceTree = "<group>"; };
 		45DBD60D0FA974E1D9099736 /* Pods_Tomatoe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tomatoe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4D8EAFE4FF1627EBEF2C4BB7 /* Pods-efficacious.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-efficacious.debug.xcconfig"; path = "Pods/Target Support Files/Pods-efficacious/Pods-efficacious.debug.xcconfig"; sourceTree = "<group>"; };
 		5583782B316966CAF1A7B61A /* Pods-Life Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Life Tracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Life Tracker/Pods-Life Tracker.debug.xcconfig"; sourceTree = "<group>"; };
 		6B1446438605D528D1F312D7 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
-		7632D487C8AA92DBDC5D4211 /* Pods_Life_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Life_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		807DAFF1D7C3D1EC9325F533 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		8DF71CF5892D5657207A2D31 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		8E6FEAFFD32F6C345B81C00F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		95BAC38868AE587ED7406011 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		99C6C5B414A3CEE32CC9D563 /* Pods-Pomodoroban.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pomodoroban.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pomodoroban/Pods-Pomodoroban.debug.xcconfig"; sourceTree = "<group>"; };
-		9E02F4BA682A44F3E4AFF27D /* Pods_efficacious.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_efficacious.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B316594EE6ABEB8E27F89A08 /* Pods-Calchua.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calchua.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Calchua/Pods-Calchua.debug.xcconfig"; sourceTree = "<group>"; };
 		C4716EC3B166CD8ED04CDCE5 /* Pods-Pomodoroban.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pomodoroban.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pomodoroban/Pods-Pomodoroban.release.xcconfig"; sourceTree = "<group>"; };
 		C74100ACDA9E257AD26B0FE6 /* Pods-Tomatoe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tomatoe.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tomatoe/Pods-Tomatoe.release.xcconfig"; sourceTree = "<group>"; };
 		D486E90F2311F00439EA2681 /* Pods-Tomatoe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tomatoe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tomatoe/Pods-Tomatoe.debug.xcconfig"; sourceTree = "<group>"; };
@@ -428,7 +427,6 @@
 		D6E71D8F1DA3F3480055F2AA /* StringAndPredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringAndPredicate.m; sourceTree = "<group>"; };
 		D6F567EB1EA46081004DAD75 /* Pomodoroban.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pomodoroban.xcdatamodel; sourceTree = "<group>"; };
 		E777183DB54B2E29403C9EAE /* BuddyBuildSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BuddyBuildSDK.framework; sourceTree = "<group>"; };
-		F4520262B3D59A3BF0244D20 /* Pods-efficacious.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-efficacious.release.xcconfig"; path = "Pods/Target Support Files/Pods-efficacious/Pods-efficacious.release.xcconfig"; sourceTree = "<group>"; };
 		F69886AA5919349B8129604B /* Pods_Pomodoroban.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pomodoroban.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD577BDB1DB942C400470457 /* PixelTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PixelTestViewController.swift; sourceTree = "<group>"; };
 		FD577BDE1DB947EB00470457 /* UIView+Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Animations.swift"; sourceTree = "<group>"; };
@@ -456,8 +454,7 @@
 				80D53AA627AC205F44339658 /* CoreMedia.framework in Frameworks */,
 				34DEEBF757B1EF12F4973640 /* CoreVideo.framework in Frameworks */,
 				D6751E761DBE363A00D03BDB /* StoreKit.framework in Frameworks */,
-				BD6CF5ACA5954E34F2264889 /* Pods_Life_Tracker.framework in Frameworks */,
-				3FED86916C5F3EA8341535B6 /* Pods_efficacious.framework in Frameworks */,
+				619BB58FCE6A09EB8FD13E25 /* Pods_Calchua.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,8 +470,8 @@
 				C74100ACDA9E257AD26B0FE6 /* Pods-Tomatoe.release.xcconfig */,
 				5583782B316966CAF1A7B61A /* Pods-Life Tracker.debug.xcconfig */,
 				1216A73924A9FD26D180EB29 /* Pods-Life Tracker.release.xcconfig */,
-				4D8EAFE4FF1627EBEF2C4BB7 /* Pods-efficacious.debug.xcconfig */,
-				F4520262B3D59A3BF0244D20 /* Pods-efficacious.release.xcconfig */,
+				B316594EE6ABEB8E27F89A08 /* Pods-Calchua.debug.xcconfig */,
+				35EA5C4801DE51025378FE42 /* Pods-Calchua.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -811,8 +808,7 @@
 				807DAFF1D7C3D1EC9325F533 /* CoreMedia.framework */,
 				D5D7B413C60458E80518CC94 /* CoreVideo.framework */,
 				45DBD60D0FA974E1D9099736 /* Pods_Tomatoe.framework */,
-				7632D487C8AA92DBDC5D4211 /* Pods_Life_Tracker.framework */,
-				9E02F4BA682A44F3E4AFF27D /* Pods_efficacious.framework */,
+				21D418C45CA1D660634282D5 /* Pods_Calchua.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1020,7 +1016,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-efficacious/Pods-efficacious-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Calchua/Pods-Calchua-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C6E8A73797FC8370CCF0EC6B /* [CP] Check Pods Manifest.lock */ = {
@@ -1034,7 +1030,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-efficacious-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Calchua-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1047,7 +1043,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-efficacious/Pods-efficacious-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Calchua/Pods-Calchua-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/DDTRepeater/DDTRepeater.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
@@ -1078,7 +1074,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-efficacious/Pods-efficacious-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Calchua/Pods-Calchua-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1358,9 +1354,8 @@
 		};
 		FD5BE9F41C5BB5CA00535A78 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4D8EAFE4FF1627EBEF2C4BB7 /* Pods-efficacious.debug.xcconfig */;
+			baseConfigurationReference = B316594EE6ABEB8E27F89A08 /* Pods-Calchua.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Pomodoroban/Pomodoroban.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1387,9 +1382,8 @@
 		};
 		FD5BE9F51C5BB5CA00535A78 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F4520262B3D59A3BF0244D20 /* Pods-efficacious.release.xcconfig */;
+			baseConfigurationReference = 35EA5C4801DE51025378FE42 /* Pods-Calchua.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Pomodoroban/Pomodoroban.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

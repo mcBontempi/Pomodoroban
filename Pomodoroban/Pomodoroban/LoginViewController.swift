@@ -584,7 +584,7 @@ class LoginViewController: UIViewController {
                 }
                 
                 UIView.animate(withDuration: duration, animations: {
-                    self.introLabel.text = "Thanks, please enjoy efficacious"
+                    self.introLabel.text = "Thanks, please enjoy Calchua"
                     self.introLabel.alpha = 1.0
                     
                     let delayTime = DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)

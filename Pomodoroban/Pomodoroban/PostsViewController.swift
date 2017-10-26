@@ -19,8 +19,7 @@ class PostsViewController: UIViewController {
         
         
         self.navigationController?.redWithLogo()
-        
-        self.title = "efficacious"
+
         
     }
 

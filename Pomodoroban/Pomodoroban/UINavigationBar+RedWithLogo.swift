@@ -10,5 +10,11 @@ extension UINavigationController {
         
         self.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
         
+        let imageView = UIImageView(image:UIImage(named:"left-arrow"))
+        
+        imageView.contentMode = .scaleAspectFit
+        
+        self.navigationItem.titleView = imageView
+        
     }
 }

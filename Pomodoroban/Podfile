@@ -3,7 +3,7 @@ platform :ios, 10.0
 use_frameworks!
 inhibit_all_warnings!
 
-target "efficacious" do
+target "Calchua" do
 pod 'SwiftHEXColors' 
 pod 'DDTRepeater'
 pod 'Onboard'

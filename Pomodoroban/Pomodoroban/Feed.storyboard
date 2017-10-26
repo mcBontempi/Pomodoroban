@@ -23,10 +23,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--POMODOROBAN-->
+        <!--Feed Table View Controller-->
         <scene sceneID="cv0-yk-a9J">
             <objects>
-                <tableViewController id="9Qm-lP-PkX" customClass="FeedTableViewController" customModule="efficacious" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="9Qm-lP-PkX" customClass="FeedTableViewController" customModule="Calchua" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="AeY-u2-wSg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -41,7 +41,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userHeader" rowHeight="60" id="32c-tQ-KSO" customClass="UserHeaderTableViewCell" customModule="efficacious" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userHeader" rowHeight="60" id="32c-tQ-KSO" customClass="UserHeaderTableViewCell" customModule="Calchua" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="32c-tQ-KSO" id="StM-ut-tfu">
@@ -66,7 +66,7 @@
                                     <outlet property="nameLabel" destination="OlA-es-wMS" id="TCd-Wo-seg"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userSwipe" rowHeight="440" id="Rht-W2-Mnx" customClass="UserSwipeTableViewCell" customModule="efficacious" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userSwipe" rowHeight="440" id="Rht-W2-Mnx" customClass="UserSwipeTableViewCell" customModule="Calchua" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="132" width="375" height="440"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Rht-W2-Mnx" id="VhX-xy-leb">
@@ -253,7 +253,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="alert" id="wUO-Vz-XLf" customClass="AlertTableViewCell" customModule="efficacious" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="alert" id="wUO-Vz-XLf" customClass="AlertTableViewCell" customModule="Calchua" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="622" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wUO-Vz-XLf" id="5B4-Br-UJH">
@@ -308,7 +308,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="createSwipe" rowHeight="100" id="23X-tJ-AN8" userLabel="createSwipe" customClass="CreateSwipeTableViewCell" customModule="efficacious" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="createSwipe" rowHeight="100" id="23X-tJ-AN8" userLabel="createSwipe" customClass="CreateSwipeTableViewCell" customModule="Calchua" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="710" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="23X-tJ-AN8" id="neb-pW-D43">
@@ -325,7 +325,7 @@
                                                 <inset key="sectionInset" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                             </collectionViewFlowLayout>
                                             <cells>
-                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="addToBacklog" id="lxc-fy-j1C" customClass="CreateCollectionViewCell" customModule="efficacious" customModuleProvider="target">
+                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="addToBacklog" id="lxc-fy-j1C" customClass="CreateCollectionViewCell" customModule="Calchua" customModuleProvider="target">
                                                     <rect key="frame" x="10" y="0.0" width="100" height="87"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -396,7 +396,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="session" id="gDT-Ae-Lig" customClass="SessionTableViewCell" customModule="efficacious" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="session" id="gDT-Ae-Lig" customClass="SessionTableViewCell" customModule="Calchua" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="854" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gDT-Ae-Lig" id="8Hs-7h-8KU">
@@ -462,7 +462,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="archiveSession" id="Yqq-bF-uri" customClass="SessionTableViewCell" customModule="efficacious" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="archiveSession" id="Yqq-bF-uri" customClass="SessionTableViewCell" customModule="Calchua" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="942" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Yqq-bF-uri" id="mC8-5c-LpH">
@@ -615,7 +615,7 @@
                             <outlet property="delegate" destination="9Qm-lP-PkX" id="gbB-Pn-5Jq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="POMODOROBAN" id="fQb-iL-FND"/>
+                    <navigationItem key="navigationItem" id="fQb-iL-FND"/>
                     <size key="freeformSize" width="375" height="1200"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RQT-BK-1Ce" userLabel="First Responder" sceneMemberID="firstResponder"/>

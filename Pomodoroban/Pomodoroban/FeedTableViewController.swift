@@ -3,14 +3,23 @@ import CoreData
 import UserNotifications
 
 class FeedTableViewController: UITableViewController {
+    
     let moc = CoreDataServices.sharedInstance.moc
     var childMoc:NSManagedObjectContext!
+    var lasty = CGFloat(0.0)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound]) { (granted:Bool, error:Error?) in
         
+        // self.navigationController!.redWithLogo()
+        let imageView = UIImageView(image:UIImage(named:"Calchua"))
+        
+        imageView.contentMode = .scaleAspectFit
+        
+        self.navigationItem.titleView = imageView
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound]) { (granted:Bool, error:Error?) in
+            
             BuddyBuildSDK.setup()
             if Runtime.all(self.moc).count > 0 {
                 
@@ -162,7 +171,12 @@ extension FeedTableViewController : CreateSwipeTableViewCellDelegate
         self.present(nc, animated: true) {}
     }
     
+    
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        self.navigationController?.setToolbarHidden(true, animated: true)
+        self.lasty = scrollView.contentOffset.y
+        
         if let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? UserHeaderTableViewCell {
             var size = 26 + -scrollView.contentOffset.y/20
             print(size)

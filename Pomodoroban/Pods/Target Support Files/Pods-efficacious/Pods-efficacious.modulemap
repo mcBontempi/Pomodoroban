@@ -1,6 +1,0 @@
-framework module Pods_efficacious {
-  umbrella header "Pods-efficacious-umbrella.h"
-
-  export *
-  module * { export * }
-}
