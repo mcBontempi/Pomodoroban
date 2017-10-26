@@ -96,7 +96,7 @@ const NSUInteger fontSize = 30;
     
     NSMutableArray *wordsAndQuestionsCopy = [_wordsAndQuestions mutableCopy];
     
-    StringAndPredicateCollection *useLongBreaks = _wordsAndQuestions[27];
+    StringAndPredicateCollection *useLongBreaks = _wordsAndQuestions[17];
     
 //    NSString *val = useLongBreaks.string;
     
