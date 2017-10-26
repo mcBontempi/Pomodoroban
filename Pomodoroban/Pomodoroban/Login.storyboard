@@ -103,13 +103,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calchua" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xfn-1a-Qu8">
-                                <rect key="frame" x="117" y="270" width="86" height="27"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DCS-Hz-ECS">
                                 <rect key="frame" x="60" y="358" width="200" height="40"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
@@ -218,27 +211,34 @@
                                     <action selector="loginPressed:" destination="zxX-HC-5nM" eventType="touchUpInside" id="FHJ-u3-9xw"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CalchuaJustLogo" translatesAutoresizingMaskIntoConstraints="NO" id="PVb-Yp-IhF">
+                                <rect key="frame" x="101.5" y="236" width="117" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="1kP-9S-HcJ"/>
+                                    <constraint firstAttribute="width" secondItem="PVb-Yp-IhF" secondAttribute="height" multiplier="335:86" id="LCG-kL-abo"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.97254901959999995" green="0.98039215690000003" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="iOB-qR-WQE" firstAttribute="top" secondItem="QMj-Qx-W78" secondAttribute="top" constant="10" id="06l-ag-u2f"/>
                             <constraint firstItem="tpF-Ww-CAc" firstAttribute="centerX" secondItem="QMj-Qx-W78" secondAttribute="centerX" id="0ID-cb-OTH"/>
+                            <constraint firstItem="bmS-xm-Y8X" firstAttribute="top" secondItem="PVb-Yp-IhF" secondAttribute="bottom" constant="70" id="13F-36-mue"/>
                             <constraint firstItem="l8e-x8-Kaj" firstAttribute="top" secondItem="DCS-Hz-ECS" secondAttribute="bottom" constant="170" id="58d-Si-yZo"/>
                             <constraint firstItem="iOB-qR-WQE" firstAttribute="leading" secondItem="QMj-Qx-W78" secondAttribute="leading" constant="10" id="7sz-Ga-m2n"/>
                             <constraint firstItem="XbQ-j5-3tW" firstAttribute="top" secondItem="bmS-xm-Y8X" secondAttribute="bottom" constant="39" id="82B-jd-usF"/>
                             <constraint firstItem="bmS-xm-Y8X" firstAttribute="leading" secondItem="QMj-Qx-W78" secondAttribute="leadingMargin" constant="20" id="9jc-oE-j83"/>
                             <constraint firstItem="mdr-Mm-cmr" firstAttribute="centerX" secondItem="QMj-Qx-W78" secondAttribute="centerX" id="BBN-z1-bkz"/>
                             <constraint firstItem="DCS-Hz-ECS" firstAttribute="centerX" secondItem="QMj-Qx-W78" secondAttribute="centerX" id="EBn-BW-Wa0"/>
-                            <constraint firstItem="xfn-1a-Qu8" firstAttribute="top" secondItem="mdr-Mm-cmr" secondAttribute="bottom" constant="50" id="Esn-aO-JDU"/>
                             <constraint firstItem="l8e-x8-Kaj" firstAttribute="top" secondItem="Bq2-2Y-wtV" secondAttribute="bottom" constant="220" id="Gtb-vI-W4P"/>
                             <constraint firstItem="sAP-ic-Pet" firstAttribute="leading" secondItem="QMj-Qx-W78" secondAttribute="leadingMargin" constant="8" id="I9X-pr-ai1"/>
                             <constraint firstItem="ceD-Hd-WG7" firstAttribute="centerX" secondItem="QMj-Qx-W78" secondAttribute="centerX" id="Kcs-Z9-0CB"/>
                             <constraint firstItem="sAP-ic-Pet" firstAttribute="centerY" secondItem="QMj-Qx-W78" secondAttribute="centerY" constant="76" id="NDp-Iu-2qp"/>
-                            <constraint firstItem="xfn-1a-Qu8" firstAttribute="centerX" secondItem="QMj-Qx-W78" secondAttribute="centerX" id="PYm-BB-Hym"/>
                             <constraint firstItem="l8e-x8-Kaj" firstAttribute="top" secondItem="1J6-zz-5lo" secondAttribute="bottom" constant="10" id="QrF-3x-Pde"/>
                             <constraint firstItem="lXZ-re-V7q" firstAttribute="leading" secondItem="QMj-Qx-W78" secondAttribute="leading" constant="10" id="V1s-dD-5oJ"/>
                             <constraint firstItem="l8e-x8-Kaj" firstAttribute="top" secondItem="lXZ-re-V7q" secondAttribute="bottom" constant="10" id="X2s-e8-sFG"/>
                             <constraint firstItem="mdr-Mm-cmr" firstAttribute="top" secondItem="qJ2-Vg-Gjq" secondAttribute="bottom" constant="30" id="XAc-r6-tXS"/>
+                            <constraint firstItem="PVb-Yp-IhF" firstAttribute="centerX" secondItem="JYN-6O-tT1" secondAttribute="centerX" id="aTM-5J-Gc9"/>
                             <constraint firstAttribute="trailing" secondItem="1J6-zz-5lo" secondAttribute="trailing" constant="10" id="aYr-Ze-bhz"/>
                             <constraint firstItem="l8e-x8-Kaj" firstAttribute="top" secondItem="tpF-Ww-CAc" secondAttribute="bottom" constant="70" id="hfI-w5-86i"/>
                             <constraint firstItem="l8e-x8-Kaj" firstAttribute="top" secondItem="ceD-Hd-WG7" secondAttribute="bottom" constant="70" id="kOZ-35-nyl"/>
@@ -246,8 +246,8 @@
                             <constraint firstItem="l8e-x8-Kaj" firstAttribute="top" secondItem="2hX-9o-WiL" secondAttribute="bottom" constant="120" id="r6a-4S-snj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bmS-xm-Y8X" secondAttribute="trailing" constant="20" id="uOL-0R-mWr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="XbQ-j5-3tW" secondAttribute="trailing" constant="20" id="uX6-fa-o4h"/>
-                            <constraint firstItem="bmS-xm-Y8X" firstAttribute="top" secondItem="xfn-1a-Qu8" secondAttribute="bottom" constant="39" id="uZc-nu-Ohg"/>
                             <constraint firstItem="XbQ-j5-3tW" firstAttribute="leading" secondItem="QMj-Qx-W78" secondAttribute="leadingMargin" constant="20" id="yJq-nF-Kng"/>
+                            <constraint firstItem="PVb-Yp-IhF" firstAttribute="top" secondItem="mdr-Mm-cmr" secondAttribute="bottom" constant="16" id="yO7-ET-Kzh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="sAP-ic-Pet" secondAttribute="trailing" constant="8" id="yRl-i6-3Zu"/>
                             <constraint firstItem="2hX-9o-WiL" firstAttribute="centerX" secondItem="QMj-Qx-W78" secondAttribute="centerX" id="zyK-qA-m5S"/>
                         </constraints>
@@ -262,7 +262,6 @@
                         <outlet property="SIGNUPBUTTON" destination="DCS-Hz-ECS" id="5Sn-Xy-6IE"/>
                         <outlet property="backButton" destination="iOB-qR-WQE" id="H4F-tf-v1B"/>
                         <outlet property="email" destination="bmS-xm-Y8X" id="OyB-XE-Piu"/>
-                        <outlet property="emailTextFieldTopSpacingToTomatoe" destination="Esn-aO-JDU" id="1DI-Iv-LXV"/>
                         <outlet property="emailtoPasswordPaddingConastraint" destination="82B-jd-usF" id="be4-vS-go4"/>
                         <outlet property="introLabel" destination="sAP-ic-Pet" id="3Wg-ML-iYj"/>
                         <outlet property="letMeInButton" destination="ceD-Hd-WG7" id="nms-bA-nQc"/>
@@ -275,10 +274,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jgh-ix-86K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1299" y="-1848"/>
+            <point key="canvasLocation" x="-1299.2" y="-1848.5757121439283"/>
         </scene>
     </scenes>
     <resources>
+        <image name="CalchuaJustLogo" width="335" height="86"/>
         <image name="left-arrow" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>

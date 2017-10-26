@@ -48,14 +48,14 @@ class TicketViewController: UITableViewController {
     }
     
     
-    @objc func categoryValueChanged(_ segmentedControl: UISegmentedControl) {
+    func categoryValueChanged(_ segmentedControl: UISegmentedControl) {
         
         
         self.headerColor.backgroundColor = UIColor.colorFrom(Int( segmentedControl.selectedSegmentIndex))
         
     }
     
-    @objc func countValueChanged(_ segmentedControl: UISegmentedControl) {
+    func countValueChanged(_ segmentedControl: UISegmentedControl) {
         self.ticket.pomodoroEstimate = Int32(segmentedControl.selectedSegmentIndex)+1
     }
     

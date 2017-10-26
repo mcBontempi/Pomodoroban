@@ -1,7 +1,7 @@
 import Foundation
 import CoreData
 
-@objc class CoreDataServices : NSObject{
+class CoreDataServices : NSObject{
     
     static let sharedInstance = CoreDataServices()
     

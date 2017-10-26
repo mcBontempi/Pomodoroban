@@ -1,7 +1,7 @@
 import UIKit
 import DDTRepeater
 
-@objc protocol InfoPageViewControllerDelegate {
+protocol InfoPageViewControllerDelegate {
     func infoPageViewController(_ infoPageViewController: InfoPageViewController)
 }
 

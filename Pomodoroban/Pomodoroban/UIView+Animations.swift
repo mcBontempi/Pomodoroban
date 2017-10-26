@@ -45,10 +45,10 @@ extension UIView {
         
         self.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
         
-        UIView.animate(withDuration: 0.5,
+        UIView.animate(withDuration: 1.5,
                                    delay: delay,
                                    usingSpringWithDamping: 0.2,
-                                   initialSpringVelocity: 2.0,
+                                   initialSpringVelocity: 5.0,
                                    options: UIViewAnimationOptions.allowUserInteraction,
                                    animations: {
                                     self.transform = CGAffineTransform.identity

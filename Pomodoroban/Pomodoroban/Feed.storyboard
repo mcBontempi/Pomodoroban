@@ -410,10 +410,10 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="002-chevron-sign-to-right" translatesAutoresizingMaskIntoConstraints="NO" id="rvZ-FT-BCD">
-                                            <rect key="frame" x="335" y="6" width="32" height="32"/>
+                                            <rect key="frame" x="340" y="11" width="22" height="22"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="32" id="uaa-oX-5Uj"/>
-                                                <constraint firstAttribute="width" constant="32" id="xjP-Lx-BOj"/>
+                                                <constraint firstAttribute="height" constant="22" id="uaa-oX-5Uj"/>
+                                                <constraint firstAttribute="width" constant="22" id="xjP-Lx-BOj"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
@@ -422,7 +422,7 @@
                                         <constraint firstItem="7N2-XP-jZv" firstAttribute="top" secondItem="8Hs-7h-8KU" secondAttribute="top" constant="5" id="5f7-d9-S13"/>
                                         <constraint firstItem="7N2-XP-jZv" firstAttribute="leading" secondItem="8Hs-7h-8KU" secondAttribute="leading" constant="8" id="VKi-Hg-J7y"/>
                                         <constraint firstAttribute="bottom" secondItem="7N2-XP-jZv" secondAttribute="bottom" constant="5" id="kkg-MU-bwx"/>
-                                        <constraint firstAttribute="trailing" secondItem="rvZ-FT-BCD" secondAttribute="trailing" constant="8" id="mlU-fl-8lR"/>
+                                        <constraint firstAttribute="trailing" secondItem="rvZ-FT-BCD" secondAttribute="trailing" constant="13" id="mlU-fl-8lR"/>
                                         <constraint firstItem="rvZ-FT-BCD" firstAttribute="centerY" secondItem="7N2-XP-jZv" secondAttribute="centerY" id="rFj-Gv-x6U"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -476,10 +476,10 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="002-chevron-sign-to-right" translatesAutoresizingMaskIntoConstraints="NO" id="J0i-jS-7hO">
-                                            <rect key="frame" x="335" y="6" width="32" height="32"/>
+                                            <rect key="frame" x="340" y="11" width="22" height="22"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="32" id="hiI-Xd-Gen"/>
-                                                <constraint firstAttribute="height" constant="32" id="lln-At-KnT"/>
+                                                <constraint firstAttribute="width" constant="22" id="hiI-Xd-Gen"/>
+                                                <constraint firstAttribute="height" constant="22" id="lln-At-KnT"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
@@ -488,7 +488,7 @@
                                         <constraint firstItem="AoF-YG-Pae" firstAttribute="leading" secondItem="mC8-5c-LpH" secondAttribute="leading" constant="8" id="DYD-vT-u1w"/>
                                         <constraint firstItem="AoF-YG-Pae" firstAttribute="top" secondItem="mC8-5c-LpH" secondAttribute="top" constant="5" id="E0H-my-N13"/>
                                         <constraint firstItem="J0i-jS-7hO" firstAttribute="centerY" secondItem="AoF-YG-Pae" secondAttribute="centerY" id="M3H-1j-fns"/>
-                                        <constraint firstAttribute="trailing" secondItem="J0i-jS-7hO" secondAttribute="trailing" constant="8" id="e1d-Jw-RnT"/>
+                                        <constraint firstAttribute="trailing" secondItem="J0i-jS-7hO" secondAttribute="trailing" constant="13" id="e1d-Jw-RnT"/>
                                         <constraint firstAttribute="bottom" secondItem="AoF-YG-Pae" secondAttribute="bottom" constant="5" id="fhr-7Q-eW2"/>
                                     </constraints>
                                 </tableViewCellContentView>
