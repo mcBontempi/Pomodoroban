@@ -134,20 +134,21 @@ class FeedTableViewController: UITableViewController {
             let storyboard = UIStoryboard(name: "Alert", bundle: nil)
             let vc = storyboard.instantiateInitialViewController()
             self.present(vc!, animated: true, completion: nil)
+            
         case "session":
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let nc = storyboard.instantiateViewController(withIdentifier: "MainNavigationController") as! UINavigationController
             let vc = nc.viewControllers[0] as! BoardTableViewController
             vc.section = self.data()[indexPath.row].1
             self.navigationController?.pushViewController(vc, animated: true)
-             self.navigationController?.setNavigationBarHidden(false, animated:true)
+            self.navigationController?.setNavigationBarHidden(false, animated:(self.navigationController?.navigationBar.isHidden)!)
         case "archiveSession":
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let nc = storyboard.instantiateViewController(withIdentifier: "MainNavigationController") as! UINavigationController
             let vc = nc.viewControllers[0] as! BoardTableViewController
             vc.section = self.data()[indexPath.row].1
             self.navigationController?.pushViewController(vc, animated: true)
-            self.navigationController?.setNavigationBarHidden(false, animated:true)
+            self.navigationController?.setNavigationBarHidden(false, animated:(self.navigationController?.navigationBar.isHidden)!)
         default:
             break
         }
@@ -218,6 +219,8 @@ extension FeedTableViewController : TicketViewControllerDelegate {
     func ticketViewControllerCancel(_ ticketViewController: TicketViewController) {
         self.dismiss(animated: true) {
         }
+    }
+    func delete() {
     }
 }
 

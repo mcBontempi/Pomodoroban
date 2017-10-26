@@ -3,6 +3,7 @@ import UIKit
 protocol TicketViewControllerDelegate {
     func ticketViewControllerSave(_ ticketViewController:TicketViewController)
     func ticketViewControllerCancel(_ ticketViewController:TicketViewController)
+    func delete()
 }
 
 
@@ -151,6 +152,9 @@ class TicketViewController: UITableViewController {
             
         else if indexPath.row == 3 {
             self.notesText.becomeFirstResponder()
+        }
+        else if indexPath.row == 5 {
+            self.delegate.delete()
         }
     }
     

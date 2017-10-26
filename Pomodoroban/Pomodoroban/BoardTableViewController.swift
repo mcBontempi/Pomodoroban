@@ -30,27 +30,41 @@ class BoardTableViewController: UITableViewController {
         self.addInSection(self.section)
     }
     
+    
+    deinit {
+     
+        NotificationCenter.default.removeObserver(self)
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.setEditing(true, animated: true)
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "productsRefreshed"), object: nil, queue: nil) { (Notification) in
-            
-            
         }
+   
         try! self.fetchedResultsController.performFetch()
         self.tableView.allowsSelectionDuringEditing = true
         self.tableView.tableFooterView = UIView()
         self.navigationController!.redWithLogo()
         self.tableView.tableHeaderView = nil
-        self.title = section
+        self.title = section.components(separatedBy: " ").count < 2 ? section :  section.components(separatedBy: " ")[0] + " " + section.components(separatedBy: " ")[1]
     }
     
-    deinit{
-        NotificationCenter.default.removeObserver(self)
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        self.navigationController?.hidesBarsOnSwipe = true
     }
     
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.navigationController?.hidesBarsOnSwipe = false
+    }
     
     func showLogin(_ register:Bool) {
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
@@ -189,16 +203,19 @@ class BoardTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let ticket = fetchedResultsController.object(at: sourceIndexPath) as? Ticket
         Ticket.insertTicket(ticket!, row: destinationIndexPath.row,section:self.section, moc:self.moc)
+        
+        try! self.moc.save()
     }
     
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 50
     }
-    
+ 
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-        return .delete
+        return .none
     }
+ 
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -296,6 +313,17 @@ extension BoardTableViewController : TicketViewControllerDelegate {
         }
     }
     
+    func delete() {
+        
+        let ticket = Ticket.ticketForTicket(self.fetchedResultsController.object(at: self.tableView.indexPathForSelectedRow!) as! Ticket, moc:self.moc)
+        
+        self.moc.delete(ticket)
+        try! self.moc.save()
+        
+        self.dismiss(animated: true) {
+        }
+    }
+    
     func ticketViewControllerCancel(_ ticketViewController: TicketViewController) {
         
         self.dismiss(animated: true) {
@@ -304,72 +332,9 @@ extension BoardTableViewController : TicketViewControllerDelegate {
 }
 
 extension BoardTableViewController : NSFetchedResultsControllerDelegate {
-    
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        
-        
-        
-        self.tableView.beginUpdates()
-        
-    }
-    
-    func controller(
-        _ controller: NSFetchedResultsController<NSFetchRequestResult>,
-        didChange anObject: Any,
-        at indexPath: IndexPath?,
-        for type: NSFetchedResultsChangeType,
-        newIndexPath: IndexPath?) {
-        
-        
-        
-        
-        switch type {
-        case NSFetchedResultsChangeType.insert:
-            if let insertIndexPath = newIndexPath {
-                self.tableView.insertRows(at: [insertIndexPath], with: UITableViewRowAnimation.right)
-            }
-        case NSFetchedResultsChangeType.delete:
-            if let deleteIndexPath = indexPath {
-                self.tableView.deleteRows(at: [deleteIndexPath], with: UITableViewRowAnimation.fade)
-            }
-        case NSFetchedResultsChangeType.update:
-            
-            
-            if let indexPath = indexPath , let newIndexPath = newIndexPath {
-                
-                self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.left)
-                
-                self.tableView.insertRows(at: [newIndexPath], with: UITableViewRowAnimation.right)
-                
-                
-            }
-                
-            else {
-                self.tableView.reloadRows(at: [indexPath!], with: .fade)
-                
-            }
-            
-        case NSFetchedResultsChangeType.move:
-            
-            
-            
-            if let deleteIndexPath = indexPath {
-                self.tableView.deleteRows(at: [deleteIndexPath], with: UITableViewRowAnimation.left)
-            }
-            
-            if let insertIndexPath = newIndexPath {
-                self.tableView.insertRows(at: [insertIndexPath], with: UITableViewRowAnimation.right)
-            }
-        }
-    }
-    
-    
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        
-        
-        tableView.endUpdates()
+        tableView.reloadData()
     }
-    
 }
 
 extension BoardTableViewController : LoginViewControllerDelegate {

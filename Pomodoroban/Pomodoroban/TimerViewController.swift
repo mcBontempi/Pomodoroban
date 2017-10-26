@@ -584,6 +584,15 @@ extension TimerViewController : TicketViewControllerDelegate {
         }
     }
     
+    func delete() {
+        self.dismiss(animated: true) {
+            
+            
+            
+   
+        }
+    }
+    
     func ticketViewControllerCancel(_ ticketViewController: TicketViewController) {
         self.dismiss(animated: true) {
         }
