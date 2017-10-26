@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="29s-Kg-7oV">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Feed-->
+        <scene sceneID="eYe-ws-ibG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Feed" id="oAQ-jc-3WI" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7sz-ky-Lgo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3556" y="-854"/>
+        </scene>
+        <!--Root View Controller-->
+        <scene sceneID="7EI-YM-cu3">
+            <objects>
+                <viewController id="29s-Kg-7oV" customClass="RootViewController" customModule="Calchua" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5zw-Ob-vWH"/>
+                        <viewControllerLayoutGuide type="bottom" id="Vtp-o2-UYc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8ds-ZR-Obe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IVy-nH-nUi">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <connections>
+                                    <segue destination="7jH-4R-0Si" kind="embed" id="ZKV-xI-7C2"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MQC-X3-QQe">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <connections>
+                                    <segue destination="oAQ-jc-3WI" kind="embed" id="73G-XQ-gYb"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="MQC-X3-QQe" secondAttribute="trailing" id="6Ng-3o-LSj"/>
+                            <constraint firstItem="Vtp-o2-UYc" firstAttribute="top" secondItem="MQC-X3-QQe" secondAttribute="bottom" id="7vX-6B-3t2"/>
+                            <constraint firstItem="Vtp-o2-UYc" firstAttribute="top" secondItem="IVy-nH-nUi" secondAttribute="bottom" id="Du4-KE-73c"/>
+                            <constraint firstItem="MQC-X3-QQe" firstAttribute="leading" secondItem="8ds-ZR-Obe" secondAttribute="leading" id="WaN-Ou-jM1"/>
+                            <constraint firstItem="MQC-X3-QQe" firstAttribute="top" secondItem="8ds-ZR-Obe" secondAttribute="top" id="X0W-7X-oMv"/>
+                            <constraint firstAttribute="trailing" secondItem="IVy-nH-nUi" secondAttribute="trailing" id="auJ-V1-bF0"/>
+                            <constraint firstItem="IVy-nH-nUi" firstAttribute="top" secondItem="8ds-ZR-Obe" secondAttribute="top" id="ePv-1n-iOE"/>
+                            <constraint firstItem="IVy-nH-nUi" firstAttribute="leading" secondItem="8ds-ZR-Obe" secondAttribute="leading" id="zBV-vp-Hvs"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ehv-0C-RX6"/>
+                    </view>
+                    <connections>
+                        <outlet property="feedView" destination="MQC-X3-QQe" id="1hV-sv-BUt"/>
+                        <outlet property="loginView" destination="IVy-nH-nUi" id="ooH-eC-FJI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p7h-su-1ve" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4128.75" y="-825"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="uZh-Vl-FJP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" id="7jH-4R-0Si" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2L3-cM-Ub5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4735" y="-822"/>
+        </scene>
+    </scenes>
+</document>

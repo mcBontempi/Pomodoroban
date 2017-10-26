@@ -60,7 +60,7 @@ class FeedTableViewController: UITableViewController {
     }
     
     func heightWithIdentifier(identifier:String) -> CGFloat {
-        let tupleArray =  [("userHeader",70),("userSwipe",110),("alertHeader",50),("alert",50),("createHeader",50),("createSwipe",80),("sessionHeader",50),("session",50),("archiveHeader",50),("archiveSession",50),("preferencesHeader",70),("preferences",100),("companyDetails",100) ]
+        let tupleArray =  [("userHeader",50),("userSwipe",110),("alertHeader",50),("alert",50),("createHeader",50),("createSwipe",80),("sessionHeader",50),("session",50),("archiveHeader",50),("archiveSession",50),("preferencesHeader",70),("preferences",100),("companyDetails",100) ]
         
         for item in tupleArray {
             if item.0 == identifier {
@@ -140,12 +140,14 @@ class FeedTableViewController: UITableViewController {
             let vc = nc.viewControllers[0] as! BoardTableViewController
             vc.section = self.data()[indexPath.row].1
             self.navigationController?.pushViewController(vc, animated: true)
+             self.navigationController?.setNavigationBarHidden(false, animated:true)
         case "archiveSession":
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let nc = storyboard.instantiateViewController(withIdentifier: "MainNavigationController") as! UINavigationController
             let vc = nc.viewControllers[0] as! BoardTableViewController
             vc.section = self.data()[indexPath.row].1
             self.navigationController?.pushViewController(vc, animated: true)
+            self.navigationController?.setNavigationBarHidden(false, animated:true)
         default:
             break
         }
@@ -171,12 +173,29 @@ extension FeedTableViewController : CreateSwipeTableViewCellDelegate
         self.present(nc, animated: true) {}
     }
     
+    /*
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        
+        if(velocity.y>0) {
+            //Code will work without the animation block.I am using animation block incase if you want to set any delay to it.
+            UIView.animate(withDuration: 2.5, delay: 0, options: UIViewAnimationOptions(), animations: {
+                self.navigationController?.setNavigationBarHidden(true, animated: true)
+               // self.navigationController?.setToolbarHidden(true, animated: true)
+                print("Hide")
+            }, completion: nil)
+            
+        } else {
+            UIView.animate(withDuration: 2.5, delay: 0, options: UIViewAnimationOptions(), animations: {
+                self.navigationController?.setNavigationBarHidden(false, animated: true)
+         //       self.navigationController?.setToolbarHidden(false, animated: true)
+                print("Unhide")
+            }, completion: nil)
+        }
+    }
+    */
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        self.navigationController?.setToolbarHidden(true, animated: true)
-        self.lasty = scrollView.contentOffset.y
-        
+     
         if let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? UserHeaderTableViewCell {
             var size = 26 + -scrollView.contentOffset.y/20
             print(size)

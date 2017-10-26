@@ -30,7 +30,7 @@
         <!--Ticket View Controller-->
         <scene sceneID="LDL-Zl-dkO">
             <objects>
-                <tableViewController id="Bao-VS-BAp" customClass="TicketViewController" customModule="efficacious" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Bao-VS-BAp" customClass="TicketViewController" customModule="Calchua" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ofk-z0-eKi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -273,7 +273,7 @@
         <!--Timer View Controller-->
         <scene sceneID="7N6-LM-H0b">
             <objects>
-                <viewController storyboardIdentifier="TimerViewController" id="x3K-CM-2WU" customClass="TimerViewController" customModule="efficacious" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TimerViewController" id="x3K-CM-2WU" customClass="TimerViewController" customModule="Calchua" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="whV-Ze-cZc"/>
                         <viewControllerLayoutGuide type="bottom" id="kbq-8O-Jxf"/>
@@ -396,7 +396,7 @@
         <!--Board Table View Controller-->
         <scene sceneID="Uyy-x0-Vjj">
             <objects>
-                <tableViewController id="lpa-3H-vWj" customClass="BoardTableViewController" customModule="efficacious" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="lpa-3H-vWj" customClass="BoardTableViewController" customModule="Calchua" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="XAM-3g-DbF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -443,7 +443,7 @@
                             </items>
                         </toolbar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TicketTableViewCell" rowHeight="76" id="8QY-gx-r5u" customClass="TicketTableViewCell" customModule="efficacious" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TicketTableViewCell" rowHeight="76" id="8QY-gx-r5u" customClass="TicketTableViewCell" customModule="Calchua" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="105" width="320" height="76"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8QY-gx-r5u" id="snV-hf-C0U">
@@ -586,7 +586,7 @@
         <!--Natural Language View Controller-->
         <scene sceneID="Nh2-8s-m9o">
             <objects>
-                <viewController id="dK8-Uw-zrZ" customClass="NaturalLanguageViewController" customModule="efficacious" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dK8-Uw-zrZ" customClass="NaturalLanguageViewController" customModule="Calchua" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="abt-0Q-FQr"/>
                         <viewControllerLayoutGuide type="bottom" id="0Ug-ZT-J53"/>
@@ -710,7 +710,7 @@
         <!--Pixel Test View Controller-->
         <scene sceneID="LpU-Jb-tFY">
             <objects>
-                <viewController id="xrI-tz-O9j" customClass="PixelTestViewController" customModule="efficacious" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xrI-tz-O9j" customClass="PixelTestViewController" customModule="Calchua" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wVP-2m-djj"/>
                         <viewControllerLayoutGuide type="bottom" id="C7Z-zR-UYZ"/>

@@ -147,6 +147,8 @@
 		D656B36B1DA413630035500A /* NSDate+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D656B36A1DA413630035500A /* NSDate+Utils.swift */; };
 		D65C2FF31EC9955300F4DF0F /* UINavigationBar+RedWithLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65C2FF21EC9955300F4DF0F /* UINavigationBar+RedWithLogo.swift */; };
 		D65C2FF51EC99B4600F4DF0F /* PomodoroTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65C2FF41EC99B4600F4DF0F /* PomodoroTabBarViewController.swift */; };
+		D65E21091FA2044E008EFED7 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65E21081FA2044E008EFED7 /* RootViewController.swift */; };
+		D65E210B1FA20592008EFED7 /* Root.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D65E210A1FA20592008EFED7 /* Root.storyboard */; };
 		D665D2741DB0FD5D0079ED43 /* UIView+Capture.swift in Sources */ = {isa = PBXBuildFile; fileRef = D665D2731DB0FD5D0079ED43 /* UIView+Capture.swift */; };
 		D665D2781DB104F30079ED43 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D665D2771DB104F30079ED43 /* GoogleService-Info.plist */; };
 		D670EA6F1DCCD45A00DF08B4 /* FirebaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D670EA6E1DCCD45A00DF08B4 /* FirebaseUtils.swift */; };
@@ -397,6 +399,8 @@
 		D656B36A1DA413630035500A /* NSDate+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Utils.swift"; sourceTree = "<group>"; };
 		D65C2FF21EC9955300F4DF0F /* UINavigationBar+RedWithLogo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+RedWithLogo.swift"; sourceTree = "<group>"; };
 		D65C2FF41EC99B4600F4DF0F /* PomodoroTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PomodoroTabBarViewController.swift; sourceTree = "<group>"; };
+		D65E21081FA2044E008EFED7 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		D65E210A1FA20592008EFED7 /* Root.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Root.storyboard; sourceTree = "<group>"; };
 		D665D2731DB0FD5D0079ED43 /* UIView+Capture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Capture.swift"; sourceTree = "<group>"; };
 		D665D2771DB104F30079ED43 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D670EA6E1DCCD45A00DF08B4 /* FirebaseUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseUtils.swift; sourceTree = "<group>"; };
@@ -875,6 +879,7 @@
 				D6862BD01DE388E600B52B96 /* BuyViewController.swift */,
 				D641A5FB1EC1A79700D62BCA /* PostsViewController.swift */,
 				D65C2FF41EC99B4600F4DF0F /* PomodoroTabBarViewController.swift */,
+				D65E21081FA2044E008EFED7 /* RootViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -906,6 +911,7 @@
 				D617FB651D9E54C700A4CA53 /* SyncService.swift */,
 				D67CB2C21DBA3B290026E60D /* TSMessagesDefaultDesign.json */,
 				D60099961F9A2037004E5772 /* WebView.storyboard */,
+				D65E210A1FA20592008EFED7 /* Root.storyboard */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -989,6 +995,7 @@
 				D6530DB81F9BCDF300DDB73C /* Feed.storyboard in Resources */,
 				D6177D5C1DC21363008A61CE /* us_pos.tree in Resources */,
 				FD5BE9EF1C5BB5CA00535A78 /* LaunchScreen.storyboard in Resources */,
+				D65E210B1FA20592008EFED7 /* Root.storyboard in Resources */,
 				D665D2781DB104F30079ED43 /* GoogleService-Info.plist in Resources */,
 				D6335ED31F9FB58600571F2A /* Alert.storyboard in Resources */,
 				D60099991F9A238E004E5772 /* IAP.storyboard in Resources */,
@@ -1122,6 +1129,7 @@
 				D65C2FF31EC9955300F4DF0F /* UINavigationBar+RedWithLogo.swift in Sources */,
 				D6177D081DC21363008A61CE /* cst_error.c in Sources */,
 				D6177D171DC21363008A61CE /* cst_string.c in Sources */,
+				D65E21091FA2044E008EFED7 /* RootViewController.swift in Sources */,
 				D6335EC71F9F1DAD00571F2A /* UserHeaderTableViewCell.swift in Sources */,
 				D6177D5D1DC21363008A61CE /* us_pos_cart.c in Sources */,
 				D6177D201DC21363008A61CE /* cst_val_const.c in Sources */,

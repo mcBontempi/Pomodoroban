@@ -597,20 +597,11 @@ class LoginViewController: UIViewController {
         })
     }
     
-    func moveToMainScreen() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateInitialViewController()
-        appDelegate.setRootVC(vc!)
-    }
-    
     
     func moveToFeedScreen() {
+
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let storyboard = UIStoryboard(name: "Feed", bundle: nil)
-        let vc = storyboard.instantiateInitialViewController()
-        appDelegate.setRootVC(vc!)
+        appDelegate.gotoFeed()
     }
     
     var pixelVC: PixelTestViewController!

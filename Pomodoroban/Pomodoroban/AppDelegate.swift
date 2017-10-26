@@ -34,6 +34,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func gotoLogin() {
+        let root = self.window?.rootViewController as! RootViewController
+        root.gotoLogin()
+    }
+    
+    func gotoFeed() {
+        let root = self.window?.rootViewController as! RootViewController
+        root.gotoFeed()
+    }
+    
     func setRootVC(_ vc:UIViewController) {
         self.window?.rootViewController = vc
     }
