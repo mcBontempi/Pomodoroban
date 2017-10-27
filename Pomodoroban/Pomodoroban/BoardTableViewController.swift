@@ -51,6 +51,8 @@ class BoardTableViewController: UITableViewController {
         self.navigationController!.redWithLogo()
         self.tableView.tableHeaderView = nil
         self.title = section.components(separatedBy: " ").count < 2 ? section :  section.components(separatedBy: " ")[0] + " " + section.components(separatedBy: " ")[1]
+        
+        self.playButton.isHidden = !FeedTableViewController.sections().contains(self.section) || self.section == "Backlog"
     }
     
     override func viewWillDisappear(_ animated: Bool) {
