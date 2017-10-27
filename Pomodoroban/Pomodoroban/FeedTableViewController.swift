@@ -30,13 +30,23 @@ class FeedTableViewController: UITableViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.tableView.reloadData()
+    }
+    
     func data() -> [(String,String)]
     {
         var counts:[Int] = [Int]()
         for count in 0 ... 3 {
             counts.append(Ticket.countForSection(self.moc, section: ["Backlog","Morning","Afternoon","Evening"][count]))
         }
-        var rows =  [("userHeader","Daren David Taylor"),("userSwipe",""),("alertHeader",""),("alert","Well done you did one week."),("alert","Would you like to review the app."),("alert","Your friend is following you"),("createHeader",""),("createSwipe",""),("sessionHeader","")]
+        
+        // ("userHeader","Daren David Taylor"),("userSwipe",""),("alertHeader",""),("alert","Well done you did one week."),("alert","Would you like to review the app."),("alert","Your friend is following you"),
+        
+        
+        var rows =  [("createHeader",""),("createSwipe",""),("sessionHeader","")]
         
         if counts[0] > 0 {
             rows.append(( "session","Backlog"))
@@ -51,7 +61,7 @@ class FeedTableViewController: UITableViewController {
             rows.append(( "session","Evening"))
         }
         
-        rows.append(contentsOf: [("archiveHeader",""),("archiveSession","Friday Morning 23rd October"),("archiveSession","Friday Afternoon 23rd October"),("archiveSession","Saturday Afternoon 24rd October"),("preferencesHeader",""),("preferences",""),("companyDetails","") ])
+    //    rows.append(contentsOf: [("archiveHeader",""),("archiveSession","Friday Morning 23rd October"),("archiveSession","Friday Afternoon 23rd October"),("archiveSession","Saturday Afternoon 24rd October"),("preferencesHeader",""),("preferences",""),("companyDetails","") ])
         
         return rows
     }

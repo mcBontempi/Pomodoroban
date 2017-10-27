@@ -38,17 +38,15 @@ class TicketViewController: UITableViewController {
     
         self.tableView.tableFooterView = UIView()
         self.countSegmentedControl.addTarget(self, action: #selector(TicketViewController.countValueChanged(_:)), for: .valueChanged)
-        
-        
         self.countSegmentedControl.selectedSegmentIndex = Int(self.ticket.pomodoroEstimate) - 1
         self.titleField.text = self.ticket.name
         self.notesText.text = self.ticket.desc
         self.navigationController?.navigationBar.isTranslucent = false
-
         
         let indexPath = IndexPath(item: Int(self.ticket.colorIndex), section: 0)
         self.categoryCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .top)
         
+        self.sectionSegmentedControl.selectedSegmentIndex = ["Backlog","Morning","Afternoon","Evening"].index(of: self.ticket.section)!
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -67,6 +65,9 @@ class TicketViewController: UITableViewController {
             self.ticket.name = self.titleField.text
             self.ticket.colorIndex = Int32(self.categoryCollectionView.indexPathsForSelectedItems!.first!.row)
             self.delegate.ticketViewControllerSave(self)
+            
+            self.ticket.section = ["Backlog","Morning","Afternoon","Evening"][self.sectionSegmentedControl.selectedSegmentIndex]
+            
         }
         else {
             let alert = UIAlertController(title: "Oops", message: "Please Enter a Name for the Ticket", preferredStyle: .alert)
