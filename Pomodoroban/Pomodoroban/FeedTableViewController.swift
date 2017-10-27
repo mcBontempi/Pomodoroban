@@ -38,32 +38,39 @@ class FeedTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
+    class func sections() -> [String] {
+        return ["Backlog","Morning","Afternoon","Evening"]
+    }
+    
     func data() -> [(String,String)]
     {
-        var counts:[Int] = [Int]()
-        for count in 0 ... 3 {
-            counts.append(Ticket.countForSection(self.moc, section: ["Backlog","Morning","Afternoon","Evening"][count]))
+        var rows =  [("createHeader",""),("createSwipe",""),("sessionHeader","")]
+        
+        
+        for section in FeedTableViewController.sections() {
+            let count = Ticket.countForSection(self.moc, section: section)
+            
+            if count > 0 {
+                rows.append(( "session",section))
+            }
+            
+            
         }
         
         // ("userHeader","Daren David Taylor"),("userSwipe",""),("alertHeader",""),("alert","Well done you did one week."),("alert","Would you like to review the app."),("alert","Your friend is following you"),
         
         
-        var rows =  [("createHeader",""),("createSwipe",""),("sessionHeader","")]
         
-        if counts[0] > 0 {
-            rows.append(( "session","Backlog"))
-        }
-        if counts[1] > 0 {
-            rows.append(( "session","Morning"))
-        }
-        if counts[2] > 0 {
-            rows.append(( "session","Afternoon"))
-        }
-        if counts[3] > 0 {
-            rows.append(( "session","Evening"))
+        rows.append(contentsOf: [("archiveHeader","")])
+        
+        for section in Ticket.sections(self.moc) {
+            if !FeedTableViewController.sections().contains(section) {
+                rows.append(contentsOf: [("archiveSession",section)])
+            }
         }
         
-    //    rows.append(contentsOf: [("archiveHeader",""),("archiveSession","Friday Morning 23rd October"),("archiveSession","Friday Afternoon 23rd October"),("archiveSession","Saturday Afternoon 24rd October"),("preferencesHeader",""),("preferences",""),("companyDetails","") ])
+        
+        //    rows.append(contentsOf: [("archiveHeader",""),("archiveSession","Friday Morning 23rd October"),("archiveSession","Friday Afternoon 23rd October"),("archiveSession","Saturday Afternoon 24rd October"),("preferencesHeader",""),("preferences",""),("companyDetails","") ])
         
         return rows
     }

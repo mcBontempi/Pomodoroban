@@ -57,7 +57,7 @@ class TimerViewController: UIViewController {
         case ticket
         case none
     }
-
+    
     func updateWithTicket(_ ticket: Ticket) {
         
         self.ticketBackgroundView.isHidden = false
@@ -112,7 +112,7 @@ class TimerViewController: UIViewController {
         }
         self.cancelNotificationsAndAudioPlaybacks()
         
-        self.deleteAllToNow()
+        self.moveAllToNow()
         
         Runtime.removeAllEntities(self.moc)
         
@@ -248,43 +248,11 @@ class TimerViewController: UIViewController {
     
     
     
-    func deleteAllToNow()
-    {
-        let startDatePlusPauses = self.startDatePlusPauses()
-        
-        let dateDiff = Date().timeIntervalSince(startDatePlusPauses)
-        
-        var runningTotal:TimeInterval = 0
-        
-        for runtime in self.runtimes {
-            
-            let runtimeLength = TimeInterval(runtime.length)
-            
-            runningTotal = runningTotal + runtimeLength
-            
-            if dateDiff < runningTotal {
-                
-                
-            }
-            else {
-                if let ticket = runtime.ticket {
-                    ticket.pomodoroEstimate = ticket.pomodoroEstimate - 1
-                    if ticket.pomodoroEstimate == 0 {
-                        ticket.section = "TODO"
-                    }
-                }
-            }
-        }
-        try! self.moc.save()
-        
-    }
-    
-    
     func moveAllToNow()
     {
         
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.dateStyle = .medium
         let dateString = formatter.string(from: Date())
         
         let startDatePlusPauses = self.startDatePlusPauses()
@@ -299,26 +267,15 @@ class TimerViewController: UIViewController {
             
             runningTotal = runningTotal + runtimeLength
             
-            if dateDiff < runningTotal {
-                
-                
-            }
-            else {
-                if let ticket = runtime.ticket {
-                    ticket.pomodoroEstimate = ticket.pomodoroEstimate - 1
-                    if ticket.pomodoroEstimate == 0 {
-                        
-                        
-                        
-                        ticket.section = dateString + self.section
-                    }
-                }
+            
+            if let ticket = runtime.ticket {
+                    ticket.section = dateString + self.section
             }
         }
         try! self.moc.save()
         
     }
-
+    
     
     func update() {
         
@@ -630,7 +587,7 @@ extension TimerViewController : TicketViewControllerDelegate {
             
             
             
-   
+            
         }
     }
     

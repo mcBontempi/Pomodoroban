@@ -76,20 +76,29 @@ class Ticket: NSManagedObject {
     
     
     class func countForSection(_ moc:NSManagedObjectContext, section: String) -> Int {
-        
         let tickets = Ticket.allForSection(moc, section: section)
-        
         var count = 0
+        for ticket in tickets {
+            count = count + Int(ticket.pomodoroEstimate)
+        }
+        return count
+    }
+    
+    class func sections(_ moc:NSManagedObjectContext) -> [String] {
+        let tickets = self.all(moc)
+        
+        var sections = [String]()
         
         for ticket in tickets {
             
-            count = count + Int(ticket.pomodoroEstimate)
-            
+            if !sections.contains(ticket.section) {
+                sections.append(ticket.section)
+            }
         }
         
-        return count
-        
+        return sections
     }
+    
     
     
     class func allForToday(_ moc:NSManagedObjectContext) -> [Ticket] {
@@ -113,7 +122,7 @@ class Ticket: NSManagedObject {
         
         let weekday = section
         
-        let predicate = NSPredicate(format: "section == %@ && row != 999999 && pomodoroEstimate > 0 && removed = false", weekday)
+        let predicate = NSPredicate(format: "section = %@ && row != 999999 && removed = false", weekday)
         
         return self.fetchRequestWithPredicate(predicate)
         
@@ -223,7 +232,7 @@ class Ticket: NSManagedObject {
     }
     
     class func spareRowForSection(_ section: String, moc: NSManagedObjectContext) -> Int{
-        let predicate = NSPredicate(format: "section == %@ && removed = false", section)
+        let predicate = NSPredicate(format: "section = %@ && removed = false", section)
         let fetchRequest =  Ticket.fetchRequestWithPredicate(predicate)
         let currentSection = try! moc.fetch(fetchRequest)
         var row:Int = 0

@@ -35,7 +35,7 @@ class TicketViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.categoryCollectionView.dataSource = self
-    
+        
         self.tableView.tableFooterView = UIView()
         self.countSegmentedControl.addTarget(self, action: #selector(TicketViewController.countValueChanged(_:)), for: .valueChanged)
         self.countSegmentedControl.selectedSegmentIndex = Int(self.ticket.pomodoroEstimate) - 1
@@ -46,7 +46,13 @@ class TicketViewController: UITableViewController {
         let indexPath = IndexPath(item: Int(self.ticket.colorIndex), section: 0)
         self.categoryCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .top)
         
-        self.sectionSegmentedControl.selectedSegmentIndex = ["Backlog","Morning","Afternoon","Evening"].index(of: self.ticket.section)!
+        if let index =  ["Backlog","Morning","Afternoon","Evening"].index(of: self.ticket.section) {
+            
+            self.sectionSegmentedControl.selectedSegmentIndex = index
+        }
+        else {
+            self.sectionSegmentedControl.selectedSegmentIndex = UISegmentedControlNoSegment
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -66,7 +72,13 @@ class TicketViewController: UITableViewController {
             self.ticket.colorIndex = Int32(self.categoryCollectionView.indexPathsForSelectedItems!.first!.row)
             self.delegate.ticketViewControllerSave(self)
             
-            self.ticket.section = ["Backlog","Morning","Afternoon","Evening"][self.sectionSegmentedControl.selectedSegmentIndex]
+            let index = self.sectionSegmentedControl.selectedSegmentIndex
+            
+            if index != UISegmentedControlNoSegment {
+                
+                self.ticket.section = ["Backlog","Morning","Afternoon","Evening"][index]
+            }
+            
             
         }
         else {
