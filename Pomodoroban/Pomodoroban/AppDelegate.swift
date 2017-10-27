@@ -6,6 +6,7 @@ import FirebaseDatabase
 import AVFoundation
 import FirebaseCrash
 import UserNotifications
+import Appsee
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        self.createAlerts()
+        
         UIApplication.shared.isIdleTimerDisabled = true
         
         self.appearance()
@@ -32,7 +35,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         application.isStatusBarHidden = true
         
+        Appsee.start("7474218a1a5e4dce93495b2075d83b4c")
+        
         return true
+    }
+    
+    func createAlerts() {
+        let content = UNMutableNotificationContent()
+        content.title = "Calchua"
+        content.body = "It's about that time of day that you need to think about settign your tasks for tomorrow"
+        content.sound = UNNotificationSound.default()
+        content.categoryIdentifier = "dave"
+        
+        var dateComponents = DateComponents()
+        dateComponents.hour = 11
+        dateComponents.minute = 26
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        
+        let request = UNNotificationRequest.init(identifier: "Daily Remonder", content: content, trigger: trigger)
+        // Schedule the notification.
+        let center = UNUserNotificationCenter.current()
+        center.add(request, withCompletionHandler: nil)
     }
     
     func gotoLogin() {

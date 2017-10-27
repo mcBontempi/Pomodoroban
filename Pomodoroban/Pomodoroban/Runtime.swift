@@ -84,13 +84,9 @@ class Runtime: NSManagedObject {
                     
                     index = index + 1
                 }
-                
             }
-            
-            
         }
     }
-    
     
     class func createForSessionLength(section:String,  _ moc:NSManagedObjectContext, sessionLength:Double, pomodoroLength:Double, shortBreakLength:Double, longBreakLength:Double, shortBreakCount: Int, haveALongBreak:Int) {
         
@@ -135,16 +131,11 @@ class Runtime: NSManagedObject {
                     //tickets are up
                 }
                 else {
-                
                     if shortBreakCount == shortBreakIndex {
                         if runningSessionLength + longBreakLength < sessionLength
                         {
-                            
                             if runningSessionLength + longBreakLength + pomodoroLength < sessionLength
                             {
-                                
-                                
-                                
                                 // add long break
                                 let breakRuntime = Runtime.createInMoc(moc)
                                 breakRuntime.order = index
@@ -154,7 +145,6 @@ class Runtime: NSManagedObject {
                                 breakRuntime.type = 2
                             }
                             runningSessionLength = runningSessionLength + longBreakLength
-                            
                         }
                     }
                     else {
@@ -163,7 +153,6 @@ class Runtime: NSManagedObject {
                         {
                             if runningSessionLength + shortBreakLength + pomodoroLength < sessionLength
                             {
-                                
                                 let breakRuntime = Runtime.createInMoc(moc)
                                 breakRuntime.order = index
                                 breakRuntime.length = Int32(shortBreakLength)
@@ -172,16 +161,11 @@ class Runtime: NSManagedObject {
                                 shortBreakIndex = shortBreakIndex + 1
                             }
                             runningSessionLength = runningSessionLength + shortBreakLength
-                            
                         }
                     }
-                    
                     index = index + 1
                 }
             }
-            
-            
-            
         }
     }
     
