@@ -158,6 +158,8 @@
 		D67CB2C31DBA3B290026E60D /* TSMessagesDefaultDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = D67CB2C21DBA3B290026E60D /* TSMessagesDefaultDesign.json */; };
 		D67FAECF1D95235B0085BF2D /* BoardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67FAECE1D95235B0085BF2D /* BoardTableViewController.swift */; };
 		D67FAED11D952B1C0085BF2D /* TicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67FAED01D952B1C0085BF2D /* TicketTableViewCell.swift */; };
+		D68399F21FA3247E00F42254 /* Alert+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68399F01FA3247E00F42254 /* Alert+CoreDataProperties.swift */; };
+		D68399F31FA3247E00F42254 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68399F11FA3247E00F42254 /* Alert.swift */; };
 		D6862BD11DE388E600B52B96 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6862BD01DE388E600B52B96 /* BuyViewController.swift */; };
 		D686EF911DB4CF3F001431D4 /* UIAlertController + Quick.swift in Sources */ = {isa = PBXBuildFile; fileRef = D686EF901DB4CF3F001431D4 /* UIAlertController + Quick.swift */; };
 		D686EF9A1DB64C1C001431D4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D686EF991DB64C1C001431D4 /* LoginViewController.swift */; };
@@ -412,6 +414,8 @@
 		D67FAECE1D95235B0085BF2D /* BoardTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BoardTableViewController.swift; sourceTree = "<group>"; };
 		D67FAED01D952B1C0085BF2D /* TicketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewCell.swift; sourceTree = "<group>"; };
 		D67FAED21D953B980085BF2D /* Pomodoroban-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pomodoroban-Bridging-Header.h"; sourceTree = "<group>"; };
+		D68399F01FA3247E00F42254 /* Alert+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alert+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D68399F11FA3247E00F42254 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		D6862BD01DE388E600B52B96 /* BuyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
 		D686EF901DB4CF3F001431D4 /* UIAlertController + Quick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController + Quick.swift"; sourceTree = "<group>"; };
 		D686EF921DB4D99D001431D4 /* Pomodoroban.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pomodoroban.entitlements; sourceTree = "<group>"; };
@@ -862,6 +866,8 @@
 				D634BD301DAD1A7B003348D1 /* Runtime+CoreDataProperties.swift */,
 				FD5BEA021C5CF83100535A78 /* Ticket.swift */,
 				FD5BEA011C5CF83100535A78 /* Ticket+CoreDataProperties.swift */,
+				D68399F11FA3247E00F42254 /* Alert.swift */,
+				D68399F01FA3247E00F42254 /* Alert+CoreDataProperties.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1121,6 +1127,7 @@
 				D6177D451DC21363008A61CE /* cmu_us_slt_cg_f0_trees.c in Sources */,
 				D6177D301DC21363008A61CE /* cmu_us_awb_cg_single_params.c in Sources */,
 				D6335ED11F9FA8AE00571F2A /* CreateCollectionViewCell.swift in Sources */,
+				D68399F31FA3247E00F42254 /* Alert.swift in Sources */,
 				D6177D031DC21363008A61CE /* cst_alloc.c in Sources */,
 				D6177D551DC21363008A61CE /* us_ffeatures.c in Sources */,
 				D6177D0D1DC21363008A61CE /* cst_item.c in Sources */,
@@ -1136,6 +1143,7 @@
 				D6335EC71F9F1DAD00571F2A /* UserHeaderTableViewCell.swift in Sources */,
 				D6177D5D1DC21363008A61CE /* us_pos_cart.c in Sources */,
 				D6177D201DC21363008A61CE /* cst_val_const.c in Sources */,
+				D68399F21FA3247E00F42254 /* Alert+CoreDataProperties.swift in Sources */,
 				D6177D4A1DC21363008A61CE /* cmu_lex_data.c in Sources */,
 				D6177D501DC21363008A61CE /* us_dur_stats.c in Sources */,
 				D6177D271DC21363008A61CE /* flite.c in Sources */,

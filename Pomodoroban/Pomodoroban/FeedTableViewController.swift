@@ -44,7 +44,7 @@ class FeedTableViewController: UITableViewController {
     
     func data() -> [(String,String)]
     {
-        var rows =  [("createHeader",""),("createSwipe",""),("sessionHeader","")]
+        var rows =  [("userHeader","Daren David Taylor"),("createHeader",""),("createSwipe",""),("sessionHeader","")]
         
         
         for section in FeedTableViewController.sections() {

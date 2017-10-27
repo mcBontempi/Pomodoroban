@@ -61,8 +61,6 @@ class SyncService : NSObject {
     func setupSync() {
         
      self.setupOfflineWatcher()
-        
-        
         try! self.fetchedResultsController.performFetch()
         
          let auth = Auth.auth()
@@ -70,11 +68,6 @@ class SyncService : NSObject {
                 
                 let uid = currentUser.uid
                 let ticketRef = self.ref.child(uid)
-                
-                
-                
-                
-                
                 
                 ticketRef.observe(.value, with: { (snapshot) in
                     
@@ -147,14 +140,7 @@ extension SyncService : NSFetchedResultsControllerDelegate {
         
         if let ticket = anObject as? Ticket {
             
-            
             let ref = Database.database().reference()
-            
-    
-   
-            
-            
-            
             let auth = Auth.auth()
                 if let currentUser = auth.currentUser {
                     
