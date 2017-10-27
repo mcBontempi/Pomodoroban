@@ -194,6 +194,7 @@ class NaturalLanguageViewController: UIViewController {
         defaults.setValue(defaultLanguageIndexs, forKey: "defaultLanguageIndexs")
         defaults.synchronize()
         
+        vc.launch()
     }
 }
 
