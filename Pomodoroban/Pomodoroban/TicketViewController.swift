@@ -6,112 +6,48 @@ protocol TicketViewControllerDelegate {
     func delete()
 }
 
-
 class TicketViewController: UITableViewController {
+    
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var notes: UIView!
-    @IBOutlet weak var categorySegmentedControl: UISegmentedControl!
-    
+    @IBOutlet weak var categoryCollectionView: UICollectionView!
     @IBOutlet weak var sectionSegmentedControl: UISegmentedControl!
     @IBOutlet weak var leftButton: UIBarButtonItem!
     @IBOutlet weak var rightButton: UIBarButtonItem!
-    @IBOutlet weak var headerColor: UIView!
-    
     @IBOutlet weak var countSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var notesText: UITextView!
+    
+    var setFocusToName = false
+    var delegate: TicketViewControllerDelegate!
+    var ticket:Ticket!
+    
     @IBAction func leftButtonPressed(_ sender: AnyObject) {
         self.delegate.ticketViewControllerCancel(self)
     }
     @IBAction func rightButtonPressed(_ sender: AnyObject) {
         self.save()
     }
-    @IBOutlet weak var notesText: UITextView!
     
-    var setFocusToName = false
-    
-    var delegate: TicketViewControllerDelegate!
-    var ticket:Ticket!
-    
-    func customiseCategorySegmentedControl() {
-        
-        var index = 0
-        
-        let colors = UIColor.colorArray().reversed()
-        for color in colors {
-            
-            print(color)
-            
-            let view = self.categorySegmentedControl.subviews[index]
-            
-            index = index + 1
-            
-            view.backgroundColor = color
-        }
-    }
-    
-    
-    func categoryValueChanged(_ segmentedControl: UISegmentedControl) {
-        
-        
-        self.headerColor.backgroundColor = UIColor.colorFrom(Int( segmentedControl.selectedSegmentIndex))
-        
-    }
-    
-    func countValueChanged(_ segmentedControl: UISegmentedControl) {
+    @objc func countValueChanged(_ segmentedControl: UISegmentedControl) {
         self.ticket.pomodoroEstimate = Int32(segmentedControl.selectedSegmentIndex)+1
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.customiseCategorySegmentedControl()
-        
-        
+        self.categoryCollectionView.dataSource = self
+    
         self.tableView.tableFooterView = UIView()
-        
-        
-        self.categorySegmentedControl.addTarget(self, action: #selector(TicketViewController.categoryValueChanged(_:)), for: .valueChanged)
-        
         self.countSegmentedControl.addTarget(self, action: #selector(TicketViewController.countValueChanged(_:)), for: .valueChanged)
         
         
-        self.categorySegmentedControl.selectedSegmentIndex = Int(self.ticket.colorIndex)
         self.countSegmentedControl.selectedSegmentIndex = Int(self.ticket.pomodoroEstimate) - 1
-        
-        
-        
-      //  self.sectionSegmentedControl.selectedSegmentIndex = self.ticket.section
-        
-        
-        
         self.titleField.text = self.ticket.name
-        
-        
         self.notesText.text = self.ticket.desc
-        
-        
         self.navigationController?.navigationBar.isTranslucent = false
+
         
-        self.headerColor.backgroundColor = UIColor.colorFrom(Int( self.ticket.colorIndex))
-        
-        //    let pomodoroView = UIView.pomodoroRowWith(Int(self.ticket.pomodoroEstimate))
-        
-        
-    }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
-        
-        /*
-         let tracker = GAI.sharedInstance().defaultTracker
-         tracker.set(kGAIScreenName, value: "Story Editor")
-         
-         let builder = GAIDictionaryBuilder.createScreenView()
-         tracker.send(builder.build() as [NSObject : AnyObject])
-         */
+        let indexPath = IndexPath(item: Int(self.ticket.colorIndex), section: 0)
+        self.categoryCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .top)
         
     }
     
@@ -129,7 +65,7 @@ class TicketViewController: UITableViewController {
         if self.titleField.text != "" {
             self.ticket.desc = self.notesText.text
             self.ticket.name = self.titleField.text
-            self.ticket.colorIndex = Int32(self.categorySegmentedControl.selectedSegmentIndex)
+            self.ticket.colorIndex = Int32(self.categoryCollectionView.indexPathsForSelectedItems!.first!.row)
             self.delegate.ticketViewControllerSave(self)
         }
         else {
@@ -141,25 +77,32 @@ class TicketViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
         self.titleField.resignFirstResponder()
         self.notes.resignFirstResponder()
         
-        if indexPath.row == 0 {
+        switch (indexPath.row) {
+        case 0:
             self.titleField.becomeFirstResponder()
-        }
-            
-        else if indexPath.row == 3 {
+        case 3:
             self.notesText.becomeFirstResponder()
-        }
-        else if indexPath.row == 5 {
+        case 5:
             self.delegate.delete()
+        default:
+            break
         }
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
     }
 }
+
+extension TicketViewController : UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return UIColor.colorArray().count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "colorCell", for: indexPath)
+        cell.contentView.backgroundColor = UIColor.colorArray()[indexPath.row]
+        return cell
+    }
+}
+
 

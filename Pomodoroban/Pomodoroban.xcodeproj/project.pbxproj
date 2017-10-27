@@ -149,6 +149,7 @@
 		D65C2FF51EC99B4600F4DF0F /* PomodoroTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65C2FF41EC99B4600F4DF0F /* PomodoroTabBarViewController.swift */; };
 		D65E21091FA2044E008EFED7 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65E21081FA2044E008EFED7 /* RootViewController.swift */; };
 		D65E210B1FA20592008EFED7 /* Root.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D65E210A1FA20592008EFED7 /* Root.storyboard */; };
+		D65E210D1FA2F4E4008EFED7 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65E210C1FA2F4E4008EFED7 /* CategoryCollectionViewCell.swift */; };
 		D665D2741DB0FD5D0079ED43 /* UIView+Capture.swift in Sources */ = {isa = PBXBuildFile; fileRef = D665D2731DB0FD5D0079ED43 /* UIView+Capture.swift */; };
 		D665D2781DB104F30079ED43 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D665D2771DB104F30079ED43 /* GoogleService-Info.plist */; };
 		D670EA6F1DCCD45A00DF08B4 /* FirebaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D670EA6E1DCCD45A00DF08B4 /* FirebaseUtils.swift */; };
@@ -401,6 +402,7 @@
 		D65C2FF41EC99B4600F4DF0F /* PomodoroTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PomodoroTabBarViewController.swift; sourceTree = "<group>"; };
 		D65E21081FA2044E008EFED7 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		D65E210A1FA20592008EFED7 /* Root.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Root.storyboard; sourceTree = "<group>"; };
+		D65E210C1FA2F4E4008EFED7 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		D665D2731DB0FD5D0079ED43 /* UIView+Capture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Capture.swift"; sourceTree = "<group>"; };
 		D665D2771DB104F30079ED43 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D670EA6E1DCCD45A00DF08B4 /* FirebaseUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseUtils.swift; sourceTree = "<group>"; };
@@ -912,6 +914,7 @@
 				D67CB2C21DBA3B290026E60D /* TSMessagesDefaultDesign.json */,
 				D60099961F9A2037004E5772 /* WebView.storyboard */,
 				D65E210A1FA20592008EFED7 /* Root.storyboard */,
+				D65E210C1FA2F4E4008EFED7 /* CategoryCollectionViewCell.swift */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -1212,6 +1215,7 @@
 				D6E71D801DA3EB5C0055F2AA /* WordsAndQuestionsView.m in Sources */,
 				D6F567EC1EA46081004DAD75 /* Pomodoroban.xcdatamodeld in Sources */,
 				D6177D4E1DC21363008A61CE /* cmu_postlex.c in Sources */,
+				D65E210D1FA2F4E4008EFED7 /* CategoryCollectionViewCell.swift in Sources */,
 				D6177D281DC21363008A61CE /* rateconv.c in Sources */,
 				D6177D4C1DC21363008A61CE /* cmu_lts_model.c in Sources */,
 				D6177D351DC21363008A61CE /* cmu_us_kal_residx.c in Sources */,

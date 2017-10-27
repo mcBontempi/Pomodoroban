@@ -24,7 +24,7 @@ class RootViewController: UIViewController {
     }
 
     func gotoLogin() {
-        UIView.animate(withDuration: 2.0) {
+        UIView.animate(withDuration: 0.3) {
             self.feedView.alpha = 0.0
             self.loginView.alpha = 1.0
             
@@ -38,7 +38,7 @@ class RootViewController: UIViewController {
     }
     
     func gotoFeed() {
-        UIView.animate(withDuration: 2.0) {
+        UIView.animate(withDuration: 0.3) {
             self.feedView.alpha = 1.0
             self.loginView.alpha = 0.0
         }

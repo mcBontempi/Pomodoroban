@@ -30,6 +30,9 @@ extension CreateSwipeTableViewCell : UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.delegate?.createIn(section:["Backlog","Morning","Afternoon","Evening"][indexPath.row])
+        
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
   
     }
 }
