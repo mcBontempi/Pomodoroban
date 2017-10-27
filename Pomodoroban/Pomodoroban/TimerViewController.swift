@@ -142,68 +142,73 @@ class TimerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        
-        appDelegate.timerVC = self
-        
-        self.view.layer.cornerRadius = 20
-        self.view.layer.borderWidth = 5
-        self.view.layer.borderColor = UIColor.lightGray.cgColor
-        self.view.clipsToBounds = true
-        
-        self.ticketBackgroundView.layer.cornerRadius = 10
-        self.ticketBackgroundView.layer.borderWidth = 3
-        self.ticketBackgroundView.layer.borderColor = UIColor.darkGray.cgColor
-        self.ticketBackgroundView.clipsToBounds = true
-        
-        if Runtime.all(self.moc).count > 0 {
-            self.startDate = UserDefaults.standard.object(forKey: "startDate") as! Date
-        }
-        else {
-            
-            let defaults = UserDefaults.standard
-            
-            self.startDate = Date()
-            
-            defaults.set(startDate, forKey: "startDate")
-            defaults.synchronize()
-            
-            Runtime.removeAllEntities(self.moc)
-            
-            
-            Runtime.createForSessionLength(section:self.section,self.moc,sessionLength:10000000, pomodoroLength: self.pomodoroLength, shortBreakLength: self.shortBreakLength, longBreakLength: self.longBreakLength, shortBreakCount: self.shortBreakCount, haveALongBreak:self.haveALongBreak)
-            
-            
-            try! self.moc.save()
-            
-        }
-        
-        self.runtimes = Runtime.all(self.moc)
-        
-        
-        self.registerCategory()
-        
-        
-        UNUserNotificationCenter.current().delegate = self
-        
-        
-        self.createNotifications()
-        
-        
-        
-        
-        self.quitButton.layer.cornerRadius = 4
-        self.quitButton.clipsToBounds = true
-        self.quitButton.layer.borderColor = UIColor.white.cgColor
-        self.quitButton.layer.borderWidth = 6
-        
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-        
-        
-        self.repeater = DDTRepeater.repeater(0.1, fireOnceInstantly: true, execute: {
-            self.update()
-        })
+    }
+    
+    
+    func launch() {
+    
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    appDelegate.timerVC = self
+    
+    self.view.layer.cornerRadius = 20
+    self.view.layer.borderWidth = 5
+    self.view.layer.borderColor = UIColor.lightGray.cgColor
+    self.view.clipsToBounds = true
+    
+    self.ticketBackgroundView.layer.cornerRadius = 10
+    self.ticketBackgroundView.layer.borderWidth = 3
+    self.ticketBackgroundView.layer.borderColor = UIColor.darkGray.cgColor
+    self.ticketBackgroundView.clipsToBounds = true
+    
+    if Runtime.all(self.moc).count > 0 {
+    self.startDate = UserDefaults.standard.object(forKey: "startDate") as! Date
+    }
+    else {
+    
+    let defaults = UserDefaults.standard
+    
+    self.startDate = Date()
+    
+    defaults.set(startDate, forKey: "startDate")
+    defaults.synchronize()
+    
+    Runtime.removeAllEntities(self.moc)
+    
+    
+    Runtime.createForSessionLength(section:self.section,self.moc,sessionLength:10000000, pomodoroLength: self.pomodoroLength, shortBreakLength: self.shortBreakLength, longBreakLength: self.longBreakLength, shortBreakCount: self.shortBreakCount, haveALongBreak:self.haveALongBreak)
+    
+    
+    try! self.moc.save()
+    
+    }
+    
+    self.runtimes = Runtime.all(self.moc)
+    
+    
+    self.registerCategory()
+    
+    
+    UNUserNotificationCenter.current().delegate = self
+    
+    
+    self.createNotifications()
+    
+    
+    
+    
+    self.quitButton.layer.cornerRadius = 4
+    self.quitButton.clipsToBounds = true
+    self.quitButton.layer.borderColor = UIColor.white.cgColor
+    self.quitButton.layer.borderWidth = 6
+    
+    self.navigationController?.setNavigationBarHidden(true, animated: true)
+    
+    
+    self.repeater = DDTRepeater.repeater(0.1, fireOnceInstantly: true, execute: {
+    self.update()
+    })
     }
     
     

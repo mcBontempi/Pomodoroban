@@ -10,6 +10,8 @@ import Appsee
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    @IBAction func playPressed(_ sender: Any) {
+    }
     
     var window: UIWindow?
     let moc = CoreDataServices.sharedInstance.moc
@@ -23,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+     
         self.createAlerts()
         
         UIApplication.shared.isIdleTimerDisabled = true
@@ -56,6 +58,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Schedule the notification.
         let center = UNUserNotificationCenter.current()
         center.add(request, withCompletionHandler: nil)
+    }
+    
+    func gotoTimer() -> TimerViewController {
+        let root = self.window?.rootViewController as! RootViewController
+        return root.gotoTimer()
     }
     
     func gotoLogin() {

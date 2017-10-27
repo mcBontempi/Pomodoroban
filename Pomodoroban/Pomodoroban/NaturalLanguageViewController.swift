@@ -11,6 +11,12 @@ import DDTRepeater
 
 class NaturalLanguageViewController: UIViewController {
     
+    @IBAction func playPressed(_ sender: Any) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let vc = appDelegate.gotoTimer()
+        self.startTimer(timerVC: vc)
+    }
+    
     @IBOutlet weak var estimateLabel: UILabel!
     
     var pomodoroLengh:StringAndPredicateCollection!
@@ -163,12 +169,11 @@ class NaturalLanguageViewController: UIViewController {
     var repeater:DDTRepeater!
     
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     func startTimer(timerVC:TimerViewController) {
         
         self.repeater.invalidate()
         
-      //  let factor = 60.0
-        let factor = 0.5
+        let factor = 0.5 // 60.0
         let vc = segue.destination as! TimerViewController
         let length = self.pomodoroLengh.predicate() as! Int
         vc.pomodoroLength = Double(length) * factor

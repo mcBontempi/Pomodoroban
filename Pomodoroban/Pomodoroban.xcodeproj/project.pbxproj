@@ -164,6 +164,7 @@
 		D686EF911DB4CF3F001431D4 /* UIAlertController + Quick.swift in Sources */ = {isa = PBXBuildFile; fileRef = D686EF901DB4CF3F001431D4 /* UIAlertController + Quick.swift */; };
 		D686EF9A1DB64C1C001431D4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D686EF991DB64C1C001431D4 /* LoginViewController.swift */; };
 		D686EF9C1DB64CE2001431D4 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D686EF9B1DB64CE2001431D4 /* SignupViewController.swift */; };
+		D6CFAA171FA38FBF00A9DFC3 /* Timer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6CFAA161FA38FBF00A9DFC3 /* Timer.storyboard */; };
 		D6E5E0F71DCB58B100CDA49F /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E5E0F61DCB58B100CDA49F /* ColorPicker.swift */; };
 		D6E71D801DA3EB5C0055F2AA /* WordsAndQuestionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E71D7E1DA3EB5C0055F2AA /* WordsAndQuestionsView.m */; };
 		D6E71D831DA3ECAE0055F2AA /* TagLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E71D821DA3ECAE0055F2AA /* TagLabel.m */; };
@@ -421,6 +422,7 @@
 		D686EF921DB4D99D001431D4 /* Pomodoroban.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pomodoroban.entitlements; sourceTree = "<group>"; };
 		D686EF991DB64C1C001431D4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D686EF9B1DB64CE2001431D4 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		D6CFAA161FA38FBF00A9DFC3 /* Timer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Timer.storyboard; sourceTree = "<group>"; };
 		D6E5E0F61DCB58B100CDA49F /* ColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
 		D6E71D7D1DA3EB5C0055F2AA /* WordsAndQuestionsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordsAndQuestionsView.h; sourceTree = "<group>"; };
 		D6E71D7E1DA3EB5C0055F2AA /* WordsAndQuestionsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordsAndQuestionsView.m; sourceTree = "<group>"; };
@@ -921,6 +923,7 @@
 				D60099961F9A2037004E5772 /* WebView.storyboard */,
 				D65E210A1FA20592008EFED7 /* Root.storyboard */,
 				D65E210C1FA2F4E4008EFED7 /* CategoryCollectionViewCell.swift */,
+				D6CFAA161FA38FBF00A9DFC3 /* Timer.storyboard */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -1010,6 +1013,7 @@
 				D60099991F9A238E004E5772 /* IAP.storyboard in Resources */,
 				D6372CC61EB050C8009D474D /* SectionSelect.storyboard in Resources */,
 				D670EA731DCCDC3500DF08B4 /* ServiceAccount.json in Resources */,
+				D6CFAA171FA38FBF00A9DFC3 /* Timer.storyboard in Resources */,
 				D67CB2C31DBA3B290026E60D /* TSMessagesDefaultDesign.json in Resources */,
 				D600999B1F9A394C004E5772 /* Login.storyboard in Resources */,
 				FD5BE9E71C5BB5CA00535A78 /* Main.storyboard in Resources */,
