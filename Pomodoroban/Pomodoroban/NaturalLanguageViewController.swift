@@ -14,7 +14,7 @@ class NaturalLanguageViewController: UIViewController {
     @IBAction func playPressed(_ sender: Any) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let vc = appDelegate.gotoTimer()
-        self.startTimer(timerVC: vc)
+        self.startTimer(vc:vc)
     }
     
     @IBOutlet weak var estimateLabel: UILabel!
@@ -169,12 +169,12 @@ class NaturalLanguageViewController: UIViewController {
     var repeater:DDTRepeater!
     
     
-     func startTimer(timerVC:TimerViewController) {
+     func startTimer(vc:TimerViewController) {
         
         self.repeater.invalidate()
         
         let factor = 0.5 // 60.0
-        let vc = segue.destination as! TimerViewController
+      
         let length = self.pomodoroLengh.predicate() as! Int
         vc.pomodoroLength = Double(length) * factor
         vc.shortBreakLength = Double(self.shortBreakLength.predicate() as! Int) * factor
