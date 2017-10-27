@@ -279,6 +279,47 @@ class TimerViewController: UIViewController {
         
     }
     
+    
+    func moveAllToNow()
+    {
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let dateString = formatter.string(from: Date())
+        
+        let startDatePlusPauses = self.startDatePlusPauses()
+        
+        let dateDiff = Date().timeIntervalSince(startDatePlusPauses)
+        
+        var runningTotal:TimeInterval = 0
+        
+        for runtime in self.runtimes {
+            
+            let runtimeLength = TimeInterval(runtime.length)
+            
+            runningTotal = runningTotal + runtimeLength
+            
+            if dateDiff < runningTotal {
+                
+                
+            }
+            else {
+                if let ticket = runtime.ticket {
+                    ticket.pomodoroEstimate = ticket.pomodoroEstimate - 1
+                    if ticket.pomodoroEstimate == 0 {
+                        
+                        
+                        
+                        ticket.section = dateString + self.section
+                    }
+                }
+            }
+        }
+        try! self.moc.save()
+        
+    }
+
+    
     func update() {
         
         let startDatePlusPauses = self.startDatePlusPauses()

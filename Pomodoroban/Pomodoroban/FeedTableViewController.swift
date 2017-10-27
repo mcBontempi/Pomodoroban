@@ -21,12 +21,14 @@ class FeedTableViewController: UITableViewController {
         BuddyBuildSDK.setup()
         if Runtime.all(self.moc).count > 0 {
             
-            let vc = self.storyboard!.instantiateViewController(withIdentifier: "TimerViewController")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            
+            let vc = storyboard.instantiateViewController(withIdentifier: "TimerViewController")
             
             self.present(vc, animated: false, completion: {
                 
             })
-            
         }
     }
     

@@ -160,14 +160,12 @@ class BoardTableViewController: UITableViewController {
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         
         if identifier == "timerSegue" {
-            if Ticket.allForToday(self.moc).count < 1 {
+            if Ticket.allForSection(self.moc, section: self.section).count < 1 {
                 
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "EEEE"
                 
-                let day = dateFormatter.string(from: Date())
-                
-                let alert = UIAlertController(title: "Oops", message: "There need to be some Stories in \(day) for this to work!", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Oops", message: "There need to be some Stories in \(self.section) for this to work!", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
                 
                 self.present(alert, animated: true, completion: nil)
