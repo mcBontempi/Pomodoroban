@@ -53,8 +53,8 @@ class BoardTableViewController: UITableViewController {
         self.title = section.components(separatedBy: " ").count < 2 ? section :  section.components(separatedBy: " ")[0] + " " + section.components(separatedBy: " ")[1]
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         
         self.navigationController?.hidesBarsOnSwipe = true
     }

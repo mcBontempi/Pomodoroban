@@ -1,6 +1,5 @@
 import UIKit
 import CoreData
-import UserNotifications
 
 class FeedTableViewController: UITableViewController {
     
@@ -18,17 +17,16 @@ class FeedTableViewController: UITableViewController {
         imageView.contentMode = .scaleAspectFit
         
         self.navigationItem.titleView = imageView
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound]) { (granted:Bool, error:Error?) in
+        
+        BuddyBuildSDK.setup()
+        if Runtime.all(self.moc).count > 0 {
             
-            BuddyBuildSDK.setup()
-            if Runtime.all(self.moc).count > 0 {
+            let vc = self.storyboard!.instantiateViewController(withIdentifier: "TimerViewController")
+            
+            self.present(vc, animated: false, completion: {
                 
-                let vc = self.storyboard!.instantiateViewController(withIdentifier: "TimerViewController")
-                
-                self.present(vc, animated: false, completion: {
-                    
-                })
-            }
+            })
+            
         }
     }
     
@@ -175,28 +173,28 @@ extension FeedTableViewController : CreateSwipeTableViewCellDelegate
     }
     
     /*
-    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        
-        if(velocity.y>0) {
-            //Code will work without the animation block.I am using animation block incase if you want to set any delay to it.
-            UIView.animate(withDuration: 2.5, delay: 0, options: UIViewAnimationOptions(), animations: {
-                self.navigationController?.setNavigationBarHidden(true, animated: true)
-               // self.navigationController?.setToolbarHidden(true, animated: true)
-                print("Hide")
-            }, completion: nil)
-            
-        } else {
-            UIView.animate(withDuration: 2.5, delay: 0, options: UIViewAnimationOptions(), animations: {
-                self.navigationController?.setNavigationBarHidden(false, animated: true)
-         //       self.navigationController?.setToolbarHidden(false, animated: true)
-                print("Unhide")
-            }, completion: nil)
-        }
-    }
-    */
+     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+     
+     if(velocity.y>0) {
+     //Code will work without the animation block.I am using animation block incase if you want to set any delay to it.
+     UIView.animate(withDuration: 2.5, delay: 0, options: UIViewAnimationOptions(), animations: {
+     self.navigationController?.setNavigationBarHidden(true, animated: true)
+     // self.navigationController?.setToolbarHidden(true, animated: true)
+     print("Hide")
+     }, completion: nil)
+     
+     } else {
+     UIView.animate(withDuration: 2.5, delay: 0, options: UIViewAnimationOptions(), animations: {
+     self.navigationController?.setNavigationBarHidden(false, animated: true)
+     //       self.navigationController?.setToolbarHidden(false, animated: true)
+     print("Unhide")
+     }, completion: nil)
+     }
+     }
+     */
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-     
+        
         if let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? UserHeaderTableViewCell {
             var size = 26 + -scrollView.contentOffset.y/20
             print(size)

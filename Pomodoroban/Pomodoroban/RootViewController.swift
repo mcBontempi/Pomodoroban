@@ -17,13 +17,24 @@ class RootViewController: UIViewController {
 
         self.loginView.alpha = 1.0
         self.feedView.alpha = 0.0
+        
+        
+        self.feedView.isUserInteractionEnabled = false
+        self.loginView.isUserInteractionEnabled = true
     }
 
     func gotoLogin() {
         UIView.animate(withDuration: 2.0) {
             self.feedView.alpha = 0.0
             self.loginView.alpha = 1.0
+            
+            
         }
+        
+        self.feedView.isUserInteractionEnabled = false
+        self.loginView.isUserInteractionEnabled = true
+        
+        
     }
     
     func gotoFeed() {
@@ -31,5 +42,9 @@ class RootViewController: UIViewController {
             self.feedView.alpha = 1.0
             self.loginView.alpha = 0.0
         }
+        
+        
+        self.feedView.isUserInteractionEnabled = true
+        self.loginView.isUserInteractionEnabled = false
     }
 }

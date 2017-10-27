@@ -5,6 +5,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import AVFoundation
 import FirebaseCrash
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -42,6 +43,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func gotoFeed() {
         let root = self.window?.rootViewController as! RootViewController
         root.gotoFeed()
+        
+        let when = DispatchTime.now() + 2
+        
+        DispatchQueue.main.asyncAfter(deadline: when) {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound]) { (granted:Bool, error:Error?) in
+            
+        }
+        }
     }
     
     func setRootVC(_ vc:UIViewController) {
