@@ -12,9 +12,14 @@ import DDTRepeater
 class NaturalLanguageViewController: UIViewController {
     
     @IBAction func playPressed(_ sender: Any) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let vc = appDelegate.gotoTimer()
-        self.startTimer(vc:vc)
+        
+        self.dismiss(animated: true) {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let vc = appDelegate.gotoTimer()
+            self.startTimer(vc:vc)
+            
+        }
+        
     }
     
     @IBOutlet weak var estimateLabel: UILabel!

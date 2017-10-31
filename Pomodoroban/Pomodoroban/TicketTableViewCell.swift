@@ -20,7 +20,7 @@ class TicketTableViewCell: UITableViewCell {
             
             self.backgroundColor =  UIColor.colorFrom(Int( self.ticket!.colorIndex))
             
-            self.titleLabel.text = ticket!.name! + ticket!.section + "\(ticket!.row)"
+            self.titleLabel.text = ticket!.name! //+ ticket!.section + "\(ticket!.row)"
           //  self.titleLabel.textColor = UIColor.darkGray
             
             self.colorView.layer.cornerRadius = self.colorView.frame.size.width / 2
