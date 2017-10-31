@@ -65,6 +65,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return root.gotoTimer()
     }
     
+    func hideTimer() {
+        let root = self.window?.rootViewController as! RootViewController
+        return root.hideTimer()
+    }
+    
     func gotoLogin() {
         let root = self.window?.rootViewController as! RootViewController
         root.gotoLogin()

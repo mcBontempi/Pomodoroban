@@ -100,6 +100,19 @@ class Ticket: NSManagedObject {
     }
     
     
+    class func ticketForIdentifier(identifier:String, moc:NSManagedObjectContext) -> Ticket? {
+        let tickets = Ticket.all(moc)
+        
+        for ticket in tickets {
+            
+            if ticket.identifier == identifier {
+                return ticket
+            }
+        }
+        return nil
+            
+    }
+    
     
     class func allForToday(_ moc:NSManagedObjectContext) -> [Ticket] {
         

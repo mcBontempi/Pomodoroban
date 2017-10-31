@@ -39,7 +39,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MQC-X3-QQe">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <connections>
-                                    <segue destination="oAQ-jc-3WI" kind="embed" id="73G-XQ-gYb"/>
+                                    <segue destination="oAQ-jc-3WI" kind="embed" identifier="feed" id="73G-XQ-gYb"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="As2-m3-LZg">

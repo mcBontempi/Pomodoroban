@@ -7,7 +7,7 @@ class Runtime: NSManagedObject {
     static let attributeOrder = "order"
     static let attributeLength = "length"
     static let attributeType = "type"
-    static let attributeTicket = "ticket"
+    static let attributeTicketIdentifier = "ticketIdentifier"
     
     class func count(_ moc:NSManagedObjectContext) -> Int {
         let objects = try! moc.fetch(Runtime.fetchRequestAll())
@@ -46,7 +46,7 @@ class Runtime: NSManagedObject {
                 // add the task
                 let runtime = Runtime.createInMoc(moc)
                 runtime.length = Int32(pomodoroLength)
-                runtime.ticket = ticket
+                runtime.ticketIdentifier = ticket.identifier!
                 runtime.type = 0
                 runtime.order = index
                 runtime.part = i + 1
@@ -112,7 +112,7 @@ class Runtime: NSManagedObject {
                     // add the task
                     let runtime = Runtime.createInMoc(moc)
                     runtime.length = Int32(pomodoroLength)
-                    runtime.ticket = ticket
+                    runtime.ticketIdentifier = ticket.identifier!
                     runtime.type = 0
                     runtime.order = index
                     runtime.part = i + 1

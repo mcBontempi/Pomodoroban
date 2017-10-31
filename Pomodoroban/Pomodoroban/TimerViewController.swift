@@ -5,15 +5,13 @@ import Firebase
 import UserNotifications
 
 protocol TimerViewControllerDelegate {
-    func timerViewControllerDone(_ timerViewController: TimerViewController)
-    func timerViewControllerQuit(_ timerViewController: TimerViewController)
+    func timerViewControllerEnded(_ timerViewController: TimerViewController)
+    
 }
 
 class TimerViewController: UIViewController {
     
     var pixelVC: PixelTestViewController!
-    
-    var section:String!
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         self.pixelVC = segue.destination as! PixelTestViewController
@@ -35,11 +33,8 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var takeABreakLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var quitButton: UIButton!
-    @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var timerLabel: UILabel!
-    
     @IBOutlet weak var notesTextView: UITextView!
-    @IBOutlet weak var pomodoroCountView: UIView!
     
     var delegate:TimerViewControllerDelegate!
     
@@ -66,12 +61,8 @@ class TimerViewController: UIViewController {
         self.ticketBackgroundView.backgroundColor = UIColor.colorFrom(Int( ticket.colorIndex))
         self.titleLabel.text = ticket.name
         self.notesTextView.text = ticket.desc
-        for view in self.pomodoroCountView.subviews {
-            view.removeFromSuperview()
-        }
-        let pomodoroView = UIView.pomodoroRowWith(Int(ticket.pomodoroEstimate))
-        self.pomodoroCountView.addSubview(pomodoroView)
         
+        let pomodoroView = UIView.pomodoroRowWith(Int(ticket.pomodoroEstimate))
         self.pixelVC.setupAsPomodoro(self.pixelSizeForThisDevice())
     }
     
@@ -123,8 +114,11 @@ class TimerViewController: UIViewController {
         
         userDefaults.synchronize()
         
-        self.dismiss(animated: true) {
-        }
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.hideTimer()
+        
+        self.delegate.timerViewControllerEnded(self)
+        
     }
     
     var runtimes: [Runtime]!
@@ -145,70 +139,73 @@ class TimerViewController: UIViewController {
     }
     
     
-    func launch() {
-    
-    
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    
-    appDelegate.timerVC = self
-    
-    self.view.layer.cornerRadius = 20
-    self.view.layer.borderWidth = 5
-    self.view.layer.borderColor = UIColor.lightGray.cgColor
-    self.view.clipsToBounds = true
-    
-    self.ticketBackgroundView.layer.cornerRadius = 10
-    self.ticketBackgroundView.layer.borderWidth = 3
-    self.ticketBackgroundView.layer.borderColor = UIColor.darkGray.cgColor
-    self.ticketBackgroundView.clipsToBounds = true
-    
-    if Runtime.all(self.moc).count > 0 {
-    self.startDate = UserDefaults.standard.object(forKey: "startDate") as! Date
-    }
-    else {
-    
-    let defaults = UserDefaults.standard
-    
-    self.startDate = Date()
-    
-    defaults.set(startDate, forKey: "startDate")
-    defaults.synchronize()
-    
-    Runtime.removeAllEntities(self.moc)
-    
-    
-    Runtime.createForSessionLength(section:self.section,self.moc,sessionLength:10000000, pomodoroLength: self.pomodoroLength, shortBreakLength: self.shortBreakLength, longBreakLength: self.longBreakLength, shortBreakCount: self.shortBreakCount, haveALongBreak:self.haveALongBreak)
-    
-    
-    try! self.moc.save()
-    
-    }
-    
-    self.runtimes = Runtime.all(self.moc)
-    
-    
-    self.registerCategory()
-    
-    
-    UNUserNotificationCenter.current().delegate = self
-    
-    
-    self.createNotifications()
-    
-    
-    
-    
-    self.quitButton.layer.cornerRadius = 4
-    self.quitButton.clipsToBounds = true
-    self.quitButton.layer.borderColor = UIColor.white.cgColor
-    self.quitButton.layer.borderWidth = 6
-    
-    self.navigationController?.setNavigationBarHidden(true, animated: true)
-    
-    
-    self.repeater = DDTRepeater.repeater(0.1, fireOnceInstantly: true, execute: {
-    self.update()
-    })
+    func launch(section:String) {
+        
+        let defaults = UserDefaults.standard
+        defaults.set(section, forKey: "section")
+        
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        appDelegate.timerVC = self
+        
+        self.view.layer.cornerRadius = 20
+        self.view.layer.borderWidth = 5
+        self.view.layer.borderColor = UIColor.lightGray.cgColor
+        self.view.clipsToBounds = true
+        
+        self.ticketBackgroundView.layer.cornerRadius = 10
+        self.ticketBackgroundView.layer.borderWidth = 3
+        self.ticketBackgroundView.layer.borderColor = UIColor.darkGray.cgColor
+        self.ticketBackgroundView.clipsToBounds = true
+        
+        if Runtime.all(self.moc).count > 0 {
+            self.startDate = UserDefaults.standard.object(forKey: "startDate") as! Date
+        }
+        else {
+            
+            let defaults = UserDefaults.standard
+            
+            self.startDate = Date()
+            
+            defaults.set(startDate, forKey: "startDate")
+            defaults.synchronize()
+            
+            Runtime.removeAllEntities(self.moc)
+            
+            
+            Runtime.createForSessionLength(section:section,self.moc,sessionLength:10000000, pomodoroLength: self.pomodoroLength, shortBreakLength: self.shortBreakLength, longBreakLength: self.longBreakLength, shortBreakCount: self.shortBreakCount, haveALongBreak:self.haveALongBreak)
+            
+            
+            try! self.moc.save()
+            
+        }
+        
+        self.runtimes = Runtime.all(self.moc)
+        
+        
+        self.registerCategory()
+        
+        
+        UNUserNotificationCenter.current().delegate = self
+        
+        
+        self.createNotifications()
+        
+        
+        
+        
+        self.quitButton.layer.cornerRadius = 4
+        self.quitButton.clipsToBounds = true
+        self.quitButton.layer.borderColor = UIColor.white.cgColor
+        self.quitButton.layer.borderWidth = 6
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        
+        self.repeater = DDTRepeater.repeater(0.1, fireOnceInstantly: true, execute: {
+            self.update()
+        })
     }
     
     
@@ -255,32 +252,35 @@ class TimerViewController: UIViewController {
     
     func moveAllToNow()
     {
-        
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        let dateString = formatter.string(from: Date())
-        
-        let startDatePlusPauses = self.startDatePlusPauses()
-        
-        let dateDiff = Date().timeIntervalSince(startDatePlusPauses)
-        
-        var runningTotal:TimeInterval = 0
-        
-        for runtime in self.runtimes {
-            
-            let runtimeLength = TimeInterval(runtime.length)
-            
-            runningTotal = runningTotal + runtimeLength
+        if let section = UserDefaults.standard.string(forKey: "section") {
             
             
-            if let ticket = runtime.ticket {
-                    ticket.section = dateString + self.section
+            let formatter = DateFormatter()
+            formatter.dateStyle = .medium
+            let dateString = formatter.string(from: Date())
+            
+            let startDatePlusPauses = self.startDatePlusPauses()
+            
+            let dateDiff = Date().timeIntervalSince(startDatePlusPauses)
+            
+            var runningTotal:TimeInterval = 0
+            
+            for runtime in self.runtimes {
+                
+                let runtimeLength = TimeInterval(runtime.length)
+                
+                runningTotal = runningTotal + runtimeLength
+                
+                
+                if let ticket = Ticket.ticketForIdentifier(identifier: runtime.ticketIdentifier, moc: self.moc) {
+                    
+                    ticket.section = dateString + section
+                    
+                }
             }
+            try! self.moc.save()
         }
-        try! self.moc.save()
-        
     }
-    
     
     func update() {
         
@@ -313,9 +313,9 @@ class TimerViewController: UIViewController {
                 
                 if runtime.type == 0 {
                     
-                    if let ticket = runtime.ticket {
+                    if let ticket = Ticket.ticketForIdentifier(identifier: runtime.ticketIdentifier, moc: self.moc) {
                         
-                        let partCount = runtime.ticket.pomodoroEstimate
+                        let partCount = ticket.pomodoroEstimate
                         self.timerLabel.text = String(format:"Seconds remaining = %.0f\nPomodoro in Story (%d/%d)",self.currentPartRemaining , part,partCount)
                         
                         self.updateWithTicket(ticket)
@@ -364,7 +364,7 @@ class TimerViewController: UIViewController {
                 var say:String!
                 if runtime.type == 0 {
                     
-                    if let ticket = runtime.ticket {
+                    if let ticket = Ticket.ticketForIdentifier(identifier: runtime.ticketIdentifier, moc: self.moc) {
                         
                         message = "It's time to start the '\(ticket.name!)' task"
                         say = message

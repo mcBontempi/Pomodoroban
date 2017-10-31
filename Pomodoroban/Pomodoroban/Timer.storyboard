@@ -72,14 +72,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rzf-Pw-W0o">
-                                        <rect key="frame" x="44" y="40" width="291" height="36"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="BNh-FS-a6o"/>
-                                        </constraints>
-                                    </view>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EP2-Mq-F1Q">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EP2-Mq-F1Q">
                                         <rect key="frame" x="44" y="76" width="291" height="64"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -90,15 +83,11 @@
                                 <color key="backgroundColor" red="0.01176470588" green="0.60884881189999995" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="EP2-Mq-F1Q" secondAttribute="bottom" id="1KK-rV-yZ7"/>
-                                    <constraint firstAttribute="trailing" secondItem="Rzf-Pw-W0o" secondAttribute="trailing" id="3S2-HN-ki9"/>
                                     <constraint firstItem="EP2-Mq-F1Q" firstAttribute="leading" secondItem="cgl-7V-zlZ" secondAttribute="leading" constant="44" id="3ro-FH-OZx"/>
                                     <constraint firstAttribute="trailing" secondItem="f2W-od-9MF" secondAttribute="trailing" id="4xB-dL-MOe"/>
-                                    <constraint firstItem="Rzf-Pw-W0o" firstAttribute="top" secondItem="f2W-od-9MF" secondAttribute="bottom" id="5j7-IA-mxu"/>
-                                    <constraint firstItem="EP2-Mq-F1Q" firstAttribute="top" secondItem="Rzf-Pw-W0o" secondAttribute="bottom" id="C1Y-av-y3x"/>
                                     <constraint firstItem="f2W-od-9MF" firstAttribute="leading" secondItem="cgl-7V-zlZ" secondAttribute="leading" constant="44" id="RX7-Ez-L4E"/>
                                     <constraint firstItem="f2W-od-9MF" firstAttribute="top" secondItem="cgl-7V-zlZ" secondAttribute="top" id="jbh-vY-X9I"/>
                                     <constraint firstAttribute="trailing" secondItem="EP2-Mq-F1Q" secondAttribute="trailing" id="jxw-QP-3iD"/>
-                                    <constraint firstItem="Rzf-Pw-W0o" firstAttribute="leading" secondItem="cgl-7V-zlZ" secondAttribute="leading" constant="44" id="oWo-9y-9rB"/>
                                     <constraint firstAttribute="height" constant="140" id="riu-Gv-HtZ"/>
                                 </constraints>
                             </view>
@@ -132,7 +121,6 @@
                     </view>
                     <connections>
                         <outlet property="notesTextView" destination="EP2-Mq-F1Q" id="Hmh-Oo-5Mm"/>
-                        <outlet property="pomodoroCountView" destination="Rzf-Pw-W0o" id="NT7-6g-9xR"/>
                         <outlet property="quitButton" destination="ZXi-KJ-TMB" id="hS9-Vo-zuw"/>
                         <outlet property="takeABreakLabel" destination="b4S-q5-pdW" id="iDm-nR-UfJ"/>
                         <outlet property="ticketBackgroundView" destination="cgl-7V-zlZ" id="kI8-d5-f5R"/>

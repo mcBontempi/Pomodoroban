@@ -415,19 +415,9 @@
                     <navigationItem key="navigationItem" id="pd0-F2-yTn">
                         <nil key="title"/>
                         <rightBarButtonItems>
-                            <barButtonItem id="FY2-Md-OvX">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BmL-pU-T6A">
-                                    <rect key="frame" x="272" y="6" width="32" height="32"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="play"/>
-                                    <connections>
-                                        <segue destination="5SE-R3-54R" kind="presentation" identifier="timerSegue" id="9QZ-kb-25H"/>
-                                    </connections>
-                                </button>
-                            </barButtonItem>
                             <barButtonItem id="Ied-2N-CUn">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="mv0-dK-hTO">
-                                    <rect key="frame" x="232" y="6" width="32" height="32"/>
+                                    <rect key="frame" x="272" y="6" width="32" height="32"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="plus"/>
                                     <connections>
@@ -435,13 +425,13 @@
                                     </connections>
                                 </button>
                             </barButtonItem>
-                            <barButtonItem id="A17-iw-rv3">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uLQ-Zy-JtZ">
-                                    <rect key="frame" x="192" y="6" width="32" height="32"/>
+                            <barButtonItem id="FY2-Md-OvX">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BmL-pU-T6A">
+                                    <rect key="frame" x="232" y="6" width="32" height="32"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="settings"/>
+                                    <state key="normal" image="play"/>
                                     <connections>
-                                        <action selector="settingsPressed:" destination="lpa-3H-vWj" eventType="touchUpInside" id="G2J-Ed-6dY"/>
+                                        <segue destination="5SE-R3-54R" kind="presentation" identifier="timerSegue" id="9QZ-kb-25H"/>
                                     </connections>
                                 </button>
                             </barButtonItem>
@@ -451,7 +441,6 @@
                     <connections>
                         <outlet property="addButton" destination="mv0-dK-hTO" id="mJu-dm-tPs"/>
                         <outlet property="playButton" destination="BmL-pU-T6A" id="Q8I-MM-mrs"/>
-                        <outlet property="settingsButton" destination="uLQ-Zy-JtZ" id="o9N-bw-JOS"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="os8-I7-nLU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -605,6 +594,5 @@
         <image name="left-arrow-1" width="128" height="128"/>
         <image name="play" width="32" height="32"/>
         <image name="plus" width="32" height="32"/>
-        <image name="settings" width="32" height="32"/>
     </resources>
 </document>

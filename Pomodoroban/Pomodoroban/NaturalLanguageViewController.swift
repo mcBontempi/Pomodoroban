@@ -178,7 +178,7 @@ class NaturalLanguageViewController: UIViewController {
         
         self.repeater.invalidate()
         
-        let factor = 0.5 // 60.0
+        let factor = 60.0
       
         let length = self.pomodoroLengh.predicate() as! Int
         vc.pomodoroLength = Double(length) * factor
@@ -186,7 +186,7 @@ class NaturalLanguageViewController: UIViewController {
         vc.longBreakLength = Double(self.longBreakLength.predicate() as! Int ) * factor
         vc.shortBreakCount = self.shortBreakCount.predicate() as! Int
         vc.haveALongBreak = self.haveALongBreak.predicate() as! Int
-        vc.section = self.section
+     
         
         let defaults = UserDefaults.standard
         
@@ -199,7 +199,7 @@ class NaturalLanguageViewController: UIViewController {
         defaults.setValue(defaultLanguageIndexs, forKey: "defaultLanguageIndexs")
         defaults.synchronize()
         
-        vc.launch()
+        vc.launch(section:self.section)
     }
 }
 

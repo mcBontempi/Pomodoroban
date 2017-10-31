@@ -7,6 +7,10 @@ class FeedTableViewController: UITableViewController {
     var childMoc:NSManagedObjectContext!
     var lasty = CGFloat(0.0)
     
+    func reloadTable() {
+        self.tableView.reloadData()
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,15 +24,12 @@ class FeedTableViewController: UITableViewController {
         
         BuddyBuildSDK.setup()
         if Runtime.all(self.moc).count > 0 {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let vc = appDelegate.gotoTimer()
             
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            
-            
-            let vc = storyboard.instantiateViewController(withIdentifier: "TimerViewController")
-            
-            self.present(vc, animated: false, completion: {
-                
-            })
+            if let section = UserDefaults.standard.string(forKey: "section") {
+                vc.launch(section:section)
+            }
         }
     }
     
