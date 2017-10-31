@@ -3,7 +3,7 @@ import UIKit
 protocol TicketViewControllerDelegate {
     func ticketViewControllerSave(_ ticketViewController:TicketViewController)
     func ticketViewControllerCancel(_ ticketViewController:TicketViewController)
-    func delete()
+    func delete(ticket:Ticket)
 }
 
 class TicketViewController: UITableViewController {
@@ -99,7 +99,7 @@ class TicketViewController: UITableViewController {
         case 3:
             self.notesText.becomeFirstResponder()
         case 5:
-            self.delegate.delete()
+            self.delegate.delete(ticket:self.ticket)
         default:
             break
         }

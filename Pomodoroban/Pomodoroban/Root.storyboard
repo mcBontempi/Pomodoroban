@@ -37,13 +37,13 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MQC-X3-QQe">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="467"/>
                                 <connections>
                                     <segue destination="oAQ-jc-3WI" kind="embed" id="73G-XQ-gYb"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="As2-m3-LZg">
-                                <rect key="frame" x="175" y="20" width="200" height="200"/>
+                                <rect key="frame" x="0.0" y="467" width="375" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="UVM-eL-nB1"/>
                                     <constraint firstAttribute="height" constant="200" id="Xqc-Qc-OxC"/>
@@ -56,14 +56,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="MQC-X3-QQe" secondAttribute="trailing" id="6Ng-3o-LSj"/>
-                            <constraint firstItem="Vtp-o2-UYc" firstAttribute="top" secondItem="MQC-X3-QQe" secondAttribute="bottom" id="7vX-6B-3t2"/>
+                            <constraint firstItem="Vtp-o2-UYc" firstAttribute="top" secondItem="MQC-X3-QQe" secondAttribute="bottom" constant="200" id="7vX-6B-3t2"/>
                             <constraint firstItem="Vtp-o2-UYc" firstAttribute="top" secondItem="IVy-nH-nUi" secondAttribute="bottom" id="Du4-KE-73c"/>
                             <constraint firstItem="MQC-X3-QQe" firstAttribute="leading" secondItem="8ds-ZR-Obe" secondAttribute="leading" id="WaN-Ou-jM1"/>
                             <constraint firstItem="MQC-X3-QQe" firstAttribute="top" secondItem="8ds-ZR-Obe" secondAttribute="top" id="X0W-7X-oMv"/>
                             <constraint firstAttribute="trailing" secondItem="IVy-nH-nUi" secondAttribute="trailing" id="auJ-V1-bF0"/>
                             <constraint firstItem="IVy-nH-nUi" firstAttribute="top" secondItem="8ds-ZR-Obe" secondAttribute="top" id="ePv-1n-iOE"/>
-                            <constraint firstItem="As2-m3-LZg" firstAttribute="top" secondItem="5zw-Ob-vWH" secondAttribute="bottom" id="h3d-Ft-ne3"/>
+                            <constraint firstItem="As2-m3-LZg" firstAttribute="leading" secondItem="ehv-0C-RX6" secondAttribute="leading" id="jQJ-oR-hc7"/>
                             <constraint firstItem="ehv-0C-RX6" firstAttribute="trailing" secondItem="As2-m3-LZg" secondAttribute="trailing" id="kd1-Lt-ODp"/>
+                            <constraint firstItem="Vtp-o2-UYc" firstAttribute="top" secondItem="As2-m3-LZg" secondAttribute="bottom" id="ycp-8t-uqD"/>
                             <constraint firstItem="IVy-nH-nUi" firstAttribute="leading" secondItem="8ds-ZR-Obe" secondAttribute="leading" id="zBV-vp-Hvs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ehv-0C-RX6"/>

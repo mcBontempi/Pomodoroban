@@ -223,7 +223,7 @@ class BoardTableViewController: UITableViewController {
                 
                 ticket.removed = true
                 
-                try! self.moc.save()
+                self.saveChildMoc()
             }
         }
         
@@ -313,14 +313,12 @@ extension BoardTableViewController : TicketViewControllerDelegate {
         }
     }
     
-    func delete() {
-        
-        let ticket = Ticket.ticketForTicket(self.fetchedResultsController.object(at: self.tableView.indexPathForSelectedRow!) as! Ticket, moc:self.moc)
-        
-        self.moc.delete(ticket)
-        try! self.moc.save()
-        
+    func delete(ticket:Ticket) {
         self.dismiss(animated: true) {
+            ticket.removed = true
+ 
+            
+            self.saveChildMoc()
         }
     }
     

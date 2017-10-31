@@ -215,7 +215,7 @@ extension FeedTableViewController : TicketViewControllerDelegate {
         self.dismiss(animated: true) {
         }
     }
-    func delete() {
+    func delete(ticket:Ticket) {
     }
 }
 
