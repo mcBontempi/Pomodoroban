@@ -73,7 +73,6 @@ class BoardTableViewController: UITableViewController {
         
         let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         
-        vc.delegate = self
         if register == true {
             
             vc.mode = .signupOnly
@@ -332,11 +331,6 @@ extension BoardTableViewController : TicketViewControllerDelegate {
 extension BoardTableViewController : NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.reloadData()
-    }
-}
-
-extension BoardTableViewController : LoginViewControllerDelegate {
-    func loginViewControllerDidSignIn(_ loginViewController: LoginViewController) {
     }
 }
 

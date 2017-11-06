@@ -25,9 +25,12 @@ class SyncService : NSObject {
     func removeAllForSignOut() {
         
         
-        let uid = Auth.auth().currentUser?.uid
-        let ticketRef = self.ref.child(uid!)
-        ticketRef.removeAllObservers()
+        if let user = Auth.auth().currentUser {
+            let uid = user.uid
+            
+            let ticketRef = self.ref.child(uid)
+            ticketRef.removeAllObservers()
+        }
         
         Ticket.removeAllEntities(self.moc)
         

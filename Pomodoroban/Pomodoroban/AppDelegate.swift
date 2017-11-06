@@ -75,6 +75,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         root.gotoLogin()
     }
     
+    func gotoSignUp() {
+        let root = self.window?.rootViewController as! RootViewController
+        root.gotoSignUp()
+    }
+    
+    
     func gotoFeed() {
         let root = self.window?.rootViewController as! RootViewController
         root.gotoFeed()

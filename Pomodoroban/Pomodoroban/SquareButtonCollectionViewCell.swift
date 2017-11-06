@@ -1,6 +1,6 @@
 import UIKit
 
-class CreateCollectionViewCell: UICollectionViewCell {
+class SquareButtonCollectionViewCell: UICollectionViewCell {
    
     @IBOutlet weak var title: UILabel!
     func setupWith(title:String){
@@ -15,7 +15,7 @@ class CreateCollectionViewCell: UICollectionViewCell {
             super.isHighlighted = newValue
             self.contentView.backgroundColor = newValue ? UIColor.red : UIColor.white
             
-            self.title.textColor = newValue ? UIColor.white : UIColor.red
+            self.title.textColor = newValue ? UIColor.white : UIColor.darkGray
         }
     }
 }

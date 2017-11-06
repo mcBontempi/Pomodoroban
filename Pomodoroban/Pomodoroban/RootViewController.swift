@@ -7,7 +7,7 @@ class RootViewController: UIViewController {
 
     var timerVC: TimerViewController!
     var feedVC: FeedTableViewController!
-    
+    var loginVC: LoginViewController!
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "timer" {
@@ -17,6 +17,9 @@ class RootViewController: UIViewController {
             let nc = segue.destination as! UINavigationController
             
             self.feedVC = nc.viewControllers.first as! FeedTableViewController
+        }
+        else if segue.identifier == "login" {
+            self.loginVC = segue.destination as! LoginViewController
         }
         
     }
@@ -33,6 +36,8 @@ class RootViewController: UIViewController {
         self.feedView.isUserInteractionEnabled = false
         self.timerView.isUserInteractionEnabled = false
         self.loginView.isUserInteractionEnabled = true
+        
+        self.loginVC.start()
     }
 
     func gotoLogin() {
@@ -43,6 +48,26 @@ class RootViewController: UIViewController {
         
         self.feedView.isUserInteractionEnabled = false
         self.loginView.isUserInteractionEnabled = true
+        
+        self.loginVC.mode = .login
+        
+        self.loginVC.start()
+    }
+    
+    
+    
+    func gotoSignUp() {
+        UIView.animate(withDuration: 0.3) {
+            self.feedView.alpha = 0.0
+            self.loginView.alpha = 1.0
+        }
+        
+        self.feedView.isUserInteractionEnabled = false
+        self.loginView.isUserInteractionEnabled = true
+        
+        self.loginVC.mode = .signupOnly
+        
+        self.loginVC.start()
     }
     
     func gotoTimer() -> TimerViewController{
@@ -72,6 +97,8 @@ class RootViewController: UIViewController {
         
         self.feedView.isUserInteractionEnabled = true
         self.loginView.isUserInteractionEnabled = false
+        
+        self.feedVC.reloadTable()
     }
 }
 

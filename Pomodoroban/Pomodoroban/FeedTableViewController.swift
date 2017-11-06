@@ -1,5 +1,6 @@
 import UIKit
 import CoreData
+import FirebaseAuth
 
 class FeedTableViewController: UITableViewController {
     
@@ -69,7 +70,7 @@ class FeedTableViewController: UITableViewController {
                 rows.append(contentsOf: [("archiveSession",section)])
             }
         }
-        
+        rows.append(contentsOf: [("preferencesHeader",""),("preferences","")])
         
         //    rows.append(contentsOf: [("archiveHeader",""),("archiveSession","Friday Morning 23rd October"),("archiveSession","Friday Afternoon 23rd October"),("archiveSession","Saturday Afternoon 24rd October"),("preferencesHeader",""),("preferences",""),("companyDetails","") ])
         
@@ -77,7 +78,7 @@ class FeedTableViewController: UITableViewController {
     }
     
     func heightWithIdentifier(identifier:String) -> CGFloat {
-        let tupleArray =  [("userHeader",50),("userSwipe",110),("alertHeader",50),("alert",50),("createHeader",50),("createSwipe",80),("sessionHeader",50),("session",50),("archiveHeader",50),("archiveSession",50),("preferencesHeader",70),("preferences",100),("companyDetails",100) ]
+        let tupleArray =  [("userHeader",50),("userSwipe",110),("alertHeader",50),("alert",50),("createHeader",50),("createSwipe",80),("sessionHeader",50),("session",50),("archiveHeader",50),("archiveSession",50),("preferencesHeader",50),("preferences",100),("companyDetails",100) ]
         
         for item in tupleArray {
             if item.0 == identifier {
@@ -126,6 +127,9 @@ class FeedTableViewController: UITableViewController {
         case "archiveSession":
             let cell = cell as! SessionTableViewCell
             cell.setupWith(name:item.1)
+        case "preferences":
+                let cell = cell as! PreferencesSwipeTableViewCell
+                cell.setupWith(delegate:self)
         default:
             break
         }
@@ -220,3 +224,24 @@ extension FeedTableViewController : TicketViewControllerDelegate {
     }
 }
 
+
+extension FeedTableViewController : PreferencesSwipeTableViewCellDelegate
+{
+    func signOut() {
+        self.dismiss(animated: true, completion: nil)
+        let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: "loggedInWithoutAuth")
+        defaults.synchronize()
+        SyncService.sharedInstance.removeAllForSignOut()
+        try! Auth.auth().signOut()
+     
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.gotoLogin()
+    }
+    
+    func registerForSync() {
+    
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.gotoSignUp()
+    }
+}

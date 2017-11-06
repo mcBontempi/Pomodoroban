@@ -1,18 +1,22 @@
 import UIKit
+import FirebaseAuth
 
-protocol CreateSwipeTableViewCellDelegate {
-    func createIn(section:String)
+protocol PreferencesSwipeTableViewCellDelegate {
+    func signOut()
+    func registerForSync()
 }
 
-class CreateSwipeTableViewCell: UITableViewCell {
+class PreferencesSwipeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var delegate: CreateSwipeTableViewCellDelegate?
+    var delegate: PreferencesSwipeTableViewCellDelegate?
     
     
-    func setupWith(delegate: CreateSwipeTableViewCellDelegate) {
+    func setupWith(delegate: PreferencesSwipeTableViewCellDelegate) {
         self.delegate = delegate
+        
+        self.collectionView.reloadData()
     }
     
     var selectedItem = 0
@@ -22,30 +26,40 @@ class CreateSwipeTableViewCell: UITableViewCell {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
-  
+        
+    }
+    
+    func isLoggedIn() -> Bool {
+        return  Auth.auth().currentUser?.uid != nil
     }
 }
 
-extension CreateSwipeTableViewCell : UICollectionViewDelegate {
+extension PreferencesSwipeTableViewCell : UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.delegate?.createIn(section:["Backlog","Morning","Afternoon","Evening"][indexPath.row])
-        
+        switch (indexPath.row) {
+        case 0:
+            self.delegate?.signOut()
+        case 1:
+            self.delegate?.registerForSync()
+        default:
+            break
+            
+        }
         collectionView.deselectItem(at: indexPath, animated: true)
         
-  
+        
     }
 }
-extension CreateSwipeTableViewCell : UICollectionViewDataSource {
+extension PreferencesSwipeTableViewCell : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"addToBacklog", for: indexPath) as! SquareButtonCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "prefsCell", for: indexPath) as! SquareButtonCollectionViewCell
         
-        cell.setupWith(title: ["Add task to Backlog","Add Task To Morning", "Add Task To Afternoon", "Add Task To Evening"][indexPath.row])
-        
+        cell.setupWith(title: ["Sign Out"][indexPath.row])
         cell.contentView.layer.cornerRadius = 10
         cell.contentView.layer.borderWidth = 3
         cell.contentView.layer.borderColor = UIColor.red.cgColor
@@ -54,7 +68,7 @@ extension CreateSwipeTableViewCell : UICollectionViewDataSource {
     }
 }
 
-extension CreateSwipeTableViewCell : UICollectionViewDelegateFlowLayout {
+extension PreferencesSwipeTableViewCell : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         var width = UIScreen.main.bounds.width
@@ -66,4 +80,6 @@ extension CreateSwipeTableViewCell : UICollectionViewDelegateFlowLayout {
         return CGSize(width:width,height:70)
     }
 }
+
+
 
