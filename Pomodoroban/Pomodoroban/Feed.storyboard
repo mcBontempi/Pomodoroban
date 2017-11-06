@@ -220,7 +220,7 @@
                                     <outlet property="collectionView" destination="V8m-39-8Iu" id="W8O-zH-r2i"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="alertHeader" rowHeight="50" id="gYP-VZ-02F">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="alertHeader" rowHeight="50" id="gYP-VZ-02F">
                                 <rect key="frame" x="0.0" y="572" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gYP-VZ-02F" id="89K-dV-GXy">
@@ -284,7 +284,7 @@
                                     <outlet property="titleLabel" destination="bPm-GT-VZC" id="hem-Yo-l2p"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="createHeader" id="ya0-Ci-Maw">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="createHeader" id="ya0-Ci-Maw">
                                 <rect key="frame" x="0.0" y="666" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ya0-Ci-Maw" id="OQa-lf-siJ">
@@ -305,7 +305,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="createSwipe" rowHeight="100" id="23X-tJ-AN8" userLabel="createSwipe" customClass="CreateSwipeTableViewCell" customModule="Calchua" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="createSwipe" rowHeight="100" id="23X-tJ-AN8" userLabel="createSwipe" customClass="CreateSwipeTableViewCell" customModule="Calchua" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="710" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="23X-tJ-AN8" id="neb-pW-D43">
@@ -330,8 +330,8 @@
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hH-qx-o1e">
-                                                                <rect key="frame" x="9" y="9" width="82" height="69"/>
-                                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="11"/>
+                                                                <rect key="frame" x="4" y="4" width="92" height="79"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -339,10 +339,10 @@
                                                     </view>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="0hH-qx-o1e" firstAttribute="leading" secondItem="lxc-fy-j1C" secondAttribute="leadingMargin" constant="1" id="3Wu-QO-mep"/>
-                                                        <constraint firstItem="0hH-qx-o1e" firstAttribute="top" secondItem="lxc-fy-j1C" secondAttribute="topMargin" constant="1" id="PZ8-rh-D9m"/>
-                                                        <constraint firstAttribute="trailingMargin" secondItem="0hH-qx-o1e" secondAttribute="trailing" constant="1" id="Qf0-gh-rbs"/>
-                                                        <constraint firstAttribute="bottomMargin" secondItem="0hH-qx-o1e" secondAttribute="bottom" constant="1" id="rhS-GC-oZa"/>
+                                                        <constraint firstItem="0hH-qx-o1e" firstAttribute="leading" secondItem="lxc-fy-j1C" secondAttribute="leadingMargin" constant="-4" id="3Wu-QO-mep"/>
+                                                        <constraint firstItem="0hH-qx-o1e" firstAttribute="top" secondItem="lxc-fy-j1C" secondAttribute="topMargin" constant="-4" id="PZ8-rh-D9m"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="0hH-qx-o1e" secondAttribute="trailing" constant="-4" id="Qf0-gh-rbs"/>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="0hH-qx-o1e" secondAttribute="bottom" constant="-4" id="rhS-GC-oZa"/>
                                                     </constraints>
                                                     <connections>
                                                         <outlet property="title" destination="0hH-qx-o1e" id="O9X-PP-LhD"/>
@@ -362,7 +362,7 @@
                                     <outlet property="collectionView" destination="fLK-rT-egj" id="cd5-6O-lzh"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="sessionHeader" id="WMB-X2-nej">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="sessionHeader" id="WMB-X2-nej">
                                 <rect key="frame" x="0.0" y="810" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WMB-X2-nej" id="H2T-dw-6no">
@@ -428,7 +428,7 @@
                                     <outlet property="name" destination="7N2-XP-jZv" id="vQr-Uf-Dhs"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="archiveHeader" id="Uvl-wB-Jrt">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="archiveHeader" id="Uvl-wB-Jrt">
                                 <rect key="frame" x="0.0" y="898" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Uvl-wB-Jrt" id="i0G-lg-5Ns">
@@ -493,7 +493,7 @@
                                     <outlet property="name" destination="AoF-YG-Pae" id="lYz-Vv-d2o"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="preferencesHeader" id="X4H-pK-Ves">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="preferencesHeader" id="X4H-pK-Ves">
                                 <rect key="frame" x="0.0" y="986" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="X4H-pK-Ves" id="grY-hW-7Gm">
@@ -524,7 +524,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="preferences" rowHeight="100" id="d8M-kd-jZX" customClass="PreferencesSwipeTableViewCell" customModule="Calchua" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="preferences" rowHeight="100" id="d8M-kd-jZX" customClass="PreferencesSwipeTableViewCell" customModule="Calchua" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="1030" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d8M-kd-jZX" id="l2d-1O-flh">
@@ -549,8 +549,9 @@
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DkZ-VO-rEO">
-                                                                <rect key="frame" x="9" y="9" width="82" height="69"/>
-                                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="11"/>
+                                                                <rect key="frame" x="2" y="2" width="96" height="83"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -558,10 +559,10 @@
                                                     </view>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="DkZ-VO-rEO" firstAttribute="leading" secondItem="RZV-NK-Ok2" secondAttribute="leadingMargin" constant="1" id="DGW-TI-AMu"/>
-                                                        <constraint firstAttribute="trailingMargin" secondItem="DkZ-VO-rEO" secondAttribute="trailing" constant="1" id="OIi-JF-YSj"/>
-                                                        <constraint firstAttribute="bottomMargin" secondItem="DkZ-VO-rEO" secondAttribute="bottom" constant="1" id="a0A-wd-2HS"/>
-                                                        <constraint firstItem="DkZ-VO-rEO" firstAttribute="top" secondItem="RZV-NK-Ok2" secondAttribute="topMargin" constant="1" id="uyf-H0-UWi"/>
+                                                        <constraint firstItem="DkZ-VO-rEO" firstAttribute="leading" secondItem="RZV-NK-Ok2" secondAttribute="leadingMargin" constant="-6" id="DGW-TI-AMu"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="DkZ-VO-rEO" secondAttribute="trailing" constant="-6" id="OIi-JF-YSj"/>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="DkZ-VO-rEO" secondAttribute="bottom" constant="-6" id="a0A-wd-2HS"/>
+                                                        <constraint firstItem="DkZ-VO-rEO" firstAttribute="top" secondItem="RZV-NK-Ok2" secondAttribute="topMargin" constant="-6" id="uyf-H0-UWi"/>
                                                     </constraints>
                                                     <connections>
                                                         <outlet property="title" destination="DkZ-VO-rEO" id="Mnb-DJ-SUO"/>
@@ -581,7 +582,7 @@
                                     <outlet property="collectionView" destination="c9S-RK-aaH" id="ajz-7B-XRD"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="companyDetails" rowHeight="70" id="zhe-i3-Du9">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="companyDetails" rowHeight="70" id="zhe-i3-Du9">
                                 <rect key="frame" x="0.0" y="1130" width="375" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zhe-i3-Du9" id="GJO-Jg-gX8">

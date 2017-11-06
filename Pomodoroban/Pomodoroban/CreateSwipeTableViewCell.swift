@@ -44,7 +44,7 @@ extension CreateSwipeTableViewCell : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"addToBacklog", for: indexPath) as! SquareButtonCollectionViewCell
         
-        cell.setupWith(title: ["Add task to Backlog","Add Task To Morning", "Add Task To Afternoon", "Add Task To Evening"][indexPath.row])
+        cell.setupWith(title: ["Add to Backlog","Add to Morning", "Add to Afternoon", "Add to Evening"][indexPath.row])
         
         cell.contentView.layer.cornerRadius = 10
         cell.contentView.layer.borderWidth = 3

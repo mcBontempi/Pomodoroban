@@ -274,7 +274,7 @@ class TimerViewController: UIViewController {
                 
                 if let ticket = Ticket.ticketForIdentifier(identifier: runtime.ticketIdentifier, moc: self.moc) {
                     
-                    ticket.section = dateString + section
+                    ticket.section = dateString + " " + section
                     
                 }
             }
