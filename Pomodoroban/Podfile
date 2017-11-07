@@ -16,5 +16,9 @@ pod 'TSMessages'
 pod 'HELargeCenterTabBarController'
 pod 'Appsee'
 
+pod 'FBSDKCoreKit'
+pod 'FBSDKLoginKit'
+pod 'FBSDKShareKit'
+
 end
 

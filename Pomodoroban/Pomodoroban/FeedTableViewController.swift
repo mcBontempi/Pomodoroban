@@ -12,9 +12,17 @@ class FeedTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
+    func dayChanged(notification: Notification) {
+        
+        self.tableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        NotificationCenter.default.addObserver(self, selector: Selector("dayChanged:"), name: NSNotification.Name.UIApplicationSignificantTimeChange, object: nil)
+
         
         // self.navigationController!.redWithLogo()
         let imageView = UIImageView(image:UIImage(named:"Calchua"))
@@ -46,8 +54,26 @@ class FeedTableViewController: UITableViewController {
     
     func data() -> [(String,String)]
     {
-        var rows =  [("userHeader","Daren David Taylor"),("createHeader",""),("createSwipe",""),("sessionHeader","")]
+        let formatter = DateFormatter()
+        formatter.dateStyle = .full
         
+        let dateString = formatter.string(from: Date())
+        
+        
+        var rows =  [("userHeader",dateString)]
+        
+        let alerts = Alert.all(self.moc)
+        
+        if alerts.count > 0 {
+            rows.append(contentsOf:[("alertHeader","")])
+            
+            for alert in alerts {
+                rows.append(contentsOf:[("alert",alert.message)])
+            }
+            
+        }
+        
+        rows.append(contentsOf:[("createHeader",""),("createSwipe",""),("sessionHeader","")])
         
         for section in FeedTableViewController.sections() {
             let count = Ticket.countForSection(self.moc, section: section)
@@ -128,8 +154,8 @@ class FeedTableViewController: UITableViewController {
             let cell = cell as! SessionTableViewCell
             cell.setupWith(name:item.1)
         case "preferences":
-                let cell = cell as! PreferencesSwipeTableViewCell
-                cell.setupWith(delegate:self)
+            let cell = cell as! PreferencesSwipeTableViewCell
+            cell.setupWith(delegate:self)
         default:
             break
         }
@@ -153,8 +179,13 @@ class FeedTableViewController: UITableViewController {
         switch self.data()[indexPath.row].0 {
         case "alert":
             let storyboard = UIStoryboard(name: "Alert", bundle: nil)
-            let vc = storyboard.instantiateInitialViewController()
-            self.present(vc!, animated: true, completion: nil)
+            let vc = storyboard.instantiateInitialViewController() as! AlertViewController
+            
+            vc.setupWith(alert: Alert.all(self.moc)[0], delegate: self)
+            
+            vc.modalTransitionStyle = .crossDissolve
+            
+            self.present(vc, animated: true, completion: nil)
             
         case "session":
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -198,7 +229,7 @@ extension FeedTableViewController : CreateSwipeTableViewCellDelegate
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         if let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? UserHeaderTableViewCell {
-            var size = 26 + -scrollView.contentOffset.y/20
+            var size = 26 + -scrollView.contentOffset.y/40
             print(size)
             if size < 26 {
                 size = 26
@@ -234,14 +265,20 @@ extension FeedTableViewController : PreferencesSwipeTableViewCellDelegate
         defaults.synchronize()
         SyncService.sharedInstance.removeAllForSignOut()
         try! Auth.auth().signOut()
-     
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.gotoLogin()
     }
     
     func registerForSync() {
-    
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.gotoSignUp()
+    }
+}
+
+extension FeedTableViewController : AlertViewControllerDelegate {
+    func done() {
+        
     }
 }

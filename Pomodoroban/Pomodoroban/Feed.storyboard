@@ -46,8 +46,8 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daren David Taylor" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OlA-es-wMS">
-                                            <rect key="frame" x="16" y="15" width="327" height="31"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="26"/>
+                                            <rect key="frame" x="16" y="15" width="335" height="31"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="26"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -55,7 +55,7 @@
                                     <constraints>
                                         <constraint firstItem="OlA-es-wMS" firstAttribute="centerY" secondItem="StM-ut-tfu" secondAttribute="centerY" id="EEZ-hz-IaN"/>
                                         <constraint firstItem="OlA-es-wMS" firstAttribute="leading" secondItem="StM-ut-tfu" secondAttribute="leadingMargin" id="NbE-4V-waE"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="OlA-es-wMS" secondAttribute="trailing" constant="16" id="TqT-VB-fUz"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="OlA-es-wMS" secondAttribute="trailing" constant="8" id="TqT-VB-fUz"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -257,30 +257,23 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cs0-5T-M0e">
-                                            <rect key="frame" x="11" y="3" width="353" height="38"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Well Done geezer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPm-GT-VZC">
-                                            <rect key="frame" x="16" y="8" width="343" height="28"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Well Done geezer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPm-GT-VZC">
+                                            <rect key="frame" x="8" y="8" width="359" height="28"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstItem="bPm-GT-VZC" firstAttribute="leading" secondItem="5B4-Br-UJH" secondAttribute="leading" constant="16" id="1WU-sQ-G33"/>
-                                        <constraint firstItem="Cs0-5T-M0e" firstAttribute="top" secondItem="bPm-GT-VZC" secondAttribute="top" constant="-5" id="4Kh-SC-1D8"/>
+                                        <constraint firstItem="bPm-GT-VZC" firstAttribute="leading" secondItem="5B4-Br-UJH" secondAttribute="leading" constant="8" id="1WU-sQ-G33"/>
                                         <constraint firstItem="bPm-GT-VZC" firstAttribute="top" secondItem="5B4-Br-UJH" secondAttribute="top" constant="8" id="98Y-Tt-TeL"/>
-                                        <constraint firstItem="Cs0-5T-M0e" firstAttribute="leading" secondItem="bPm-GT-VZC" secondAttribute="leading" constant="-5" id="Mfd-oI-2az"/>
-                                        <constraint firstItem="Cs0-5T-M0e" firstAttribute="bottom" secondItem="bPm-GT-VZC" secondAttribute="bottom" constant="5" id="Oqx-3X-w5I"/>
-                                        <constraint firstItem="Cs0-5T-M0e" firstAttribute="trailing" secondItem="bPm-GT-VZC" secondAttribute="trailing" constant="5" id="Z5Q-6W-rn1"/>
-                                        <constraint firstAttribute="trailing" secondItem="bPm-GT-VZC" secondAttribute="trailing" constant="16" id="cIj-bH-XWs"/>
+                                        <constraint firstAttribute="trailing" secondItem="bPm-GT-VZC" secondAttribute="trailing" constant="8" id="cIj-bH-XWs"/>
                                         <constraint firstAttribute="bottom" secondItem="bPm-GT-VZC" secondAttribute="bottom" constant="8" id="ssO-lg-SXV"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="border" destination="Cs0-5T-M0e" id="fCE-wG-2ls"/>
                                     <outlet property="titleLabel" destination="bPm-GT-VZC" id="hem-Yo-l2p"/>
                                 </connections>
                             </tableViewCell>

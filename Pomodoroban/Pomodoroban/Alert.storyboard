@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dd8-SV-6HJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dd8-SV-6HJ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,53 +19,105 @@
         <!--Alert View Controller-->
         <scene sceneID="2TM-Fl-mDf">
             <objects>
-                <viewController id="dd8-SV-6HJ" customClass="AlertViewController" customModule="efficacious" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dd8-SV-6HJ" customClass="AlertViewController" customModule="Calchua" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5hJ-2v-D2E">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JtO-R3-3nU">
-                                <rect key="frame" x="164" y="507" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JtO-R3-3nU" customClass="FBSDKShareButton">
+                                <rect key="frame" x="37" y="549" width="300" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="QcL-Ni-iU1"/>
+                                    <constraint firstAttribute="width" constant="300" id="fbf-ob-qqa"/>
+                                </constraints>
                                 <state key="normal" title="Share"/>
                                 <connections>
                                     <action selector="sharePressed:" destination="dd8-SV-6HJ" eventType="touchUpInside" id="Sdn-rh-PKb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eL3-ra-40p">
-                                <rect key="frame" x="322" y="16" width="37" height="30"/>
-                                <state key="normal" title="Done"/>
-                                <connections>
-                                    <action selector="donePressed:" destination="dd8-SV-6HJ" eventType="touchUpInside" id="I5f-PX-Qrb"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wicked" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3z-i5-7rk">
-                                <rect key="frame" x="87.5" y="141" width="200" height="200"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wicked" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3z-i5-7rk">
+                                <rect key="frame" x="20" y="329" width="335" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="Drc-1Q-4gq"/>
                                     <constraint firstAttribute="height" constant="200" id="xRt-GJ-Qpa"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iy9-et-Jvv">
+                                <rect key="frame" x="102" y="70" width="170" height="170"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="170" id="GLy-CJ-vQh"/>
+                                    <constraint firstAttribute="width" secondItem="iy9-et-Jvv" secondAttribute="height" multiplier="1:1" id="hek-C7-O9g"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="Bpm-gW-a0n" kind="embed" identifier="pixelSegue" id="169-p8-ls8"/>
+                                </connections>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iIX-Wd-31m">
+                                <rect key="frame" x="11" y="10" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="GNX-mZ-csm"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="S0g-5f-8Vr"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="32" id="dgh-GO-9vG"/>
+                                    <constraint firstAttribute="width" constant="50" id="uX9-px-TWQ"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="left-arrow"/>
+                                <connections>
+                                    <action selector="donePressed:" destination="dd8-SV-6HJ" eventType="touchUpInside" id="lbS-Nq-Auq"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CalchuaJustLogo" translatesAutoresizingMaskIntoConstraints="NO" id="4VR-k7-313">
+                                <rect key="frame" x="129" y="256" width="117" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="4VR-k7-313" secondAttribute="height" multiplier="335:86" id="B52-Cg-ewY"/>
+                                    <constraint firstAttribute="height" constant="30" id="SfD-vF-thO"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="f3z-i5-7rk" firstAttribute="top" secondItem="skP-79-lPf" secondAttribute="top" constant="121" id="7Cs-NT-Emx"/>
-                            <constraint firstItem="f3z-i5-7rk" firstAttribute="centerX" secondItem="skP-79-lPf" secondAttribute="centerX" id="KSQ-up-fff"/>
-                            <constraint firstItem="skP-79-lPf" firstAttribute="trailing" secondItem="eL3-ra-40p" secondAttribute="trailing" constant="16" id="MB8-yB-Bl8"/>
-                            <constraint firstItem="eL3-ra-40p" firstAttribute="top" secondItem="5hJ-2v-D2E" secondAttribute="top" constant="16" id="Z7L-cg-y58"/>
+                            <constraint firstItem="iIX-Wd-31m" firstAttribute="top" secondItem="5hJ-2v-D2E" secondAttribute="top" constant="10" id="2VJ-ls-mqc"/>
+                            <constraint firstItem="4VR-k7-313" firstAttribute="top" secondItem="iy9-et-Jvv" secondAttribute="bottom" constant="16" id="45w-IQ-Gsq"/>
+                            <constraint firstItem="4VR-k7-313" firstAttribute="centerX" secondItem="iy9-et-Jvv" secondAttribute="centerX" id="6hO-kf-9KF"/>
+                            <constraint firstItem="iy9-et-Jvv" firstAttribute="centerX" secondItem="skP-79-lPf" secondAttribute="centerX" id="86U-az-ePT"/>
+                            <constraint firstItem="f3z-i5-7rk" firstAttribute="leading" secondItem="skP-79-lPf" secondAttribute="leading" constant="20" id="QQi-yV-znA"/>
+                            <constraint firstItem="JtO-R3-3nU" firstAttribute="centerX" secondItem="skP-79-lPf" secondAttribute="centerX" id="YLF-rU-6AH"/>
+                            <constraint firstItem="f3z-i5-7rk" firstAttribute="top" secondItem="4VR-k7-313" secondAttribute="bottom" constant="43" id="YXA-qu-uXZ"/>
+                            <constraint firstItem="skP-79-lPf" firstAttribute="trailing" secondItem="f3z-i5-7rk" secondAttribute="trailing" constant="20" id="dzd-Lk-FWG"/>
+                            <constraint firstItem="JtO-R3-3nU" firstAttribute="top" secondItem="f3z-i5-7rk" secondAttribute="bottom" constant="20" id="fZp-py-h5C"/>
+                            <constraint firstItem="iy9-et-Jvv" firstAttribute="top" secondItem="skP-79-lPf" secondAttribute="top" constant="50" id="msO-DX-Zwg"/>
+                            <constraint firstItem="iIX-Wd-31m" firstAttribute="leading" secondItem="skP-79-lPf" secondAttribute="leading" constant="10" id="pdw-iX-1Qe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="skP-79-lPf"/>
                     </view>
                     <connections>
-                        <outlet property="titleMessage" destination="f3z-i5-7rk" id="ABb-Il-L6s"/>
+                        <outlet property="calchuaLogo" destination="4VR-k7-313" id="7px-d2-zhI"/>
+                        <outlet property="shareButton" destination="JtO-R3-3nU" id="zqr-UA-NLZ"/>
+                        <outlet property="titleMessage" destination="f3z-i5-7rk" id="KQS-1b-dTN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eY7-3T-H0Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="60" y="66.11694152923539"/>
         </scene>
+        <!--Pixel Test View Controller-->
+        <scene sceneID="iOu-aa-gDb">
+            <objects>
+                <viewController id="Bpm-gW-a0n" customClass="PixelTestViewController" customModule="Calchua" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Pwp-lI-mca">
+                        <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qbt-yg-6yy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="672" y="-9"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="CalchuaJustLogo" width="335" height="86"/>
+        <image name="left-arrow" width="128" height="128"/>
+    </resources>
 </document>

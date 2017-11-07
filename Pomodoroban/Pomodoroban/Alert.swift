@@ -3,8 +3,13 @@ import CoreData
 
 class Alert: NSManagedObject {
     
+    enum AlertType : Int32 {
+        case AlertTypeFirstSessionCreated = 0
+    }
+    
     static let entityName = "Alert"
     static let alertMessage = "message"
+    static let alertType = "type"
     
     static let attributeOrder = "message"
     
@@ -49,10 +54,7 @@ class Alert: NSManagedObject {
         }
         
         try! moc.save()
-        
-        
     }
-    
     
     class func removeAllAlerts(_ moc:NSManagedObjectContext) {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: Alert.entityName)
@@ -64,9 +66,4 @@ class Alert: NSManagedObject {
             moc.delete(object)
         }
     }
-    
-    
-    
-    
-    
 }

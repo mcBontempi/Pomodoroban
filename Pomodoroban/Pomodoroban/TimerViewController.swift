@@ -254,6 +254,22 @@ class TimerViewController: UIViewController {
     {
         if let section = UserDefaults.standard.string(forKey: "section") {
             
+            let defaults = UserDefaults.standard
+            
+            let createdFirstMotivationAlert = defaults.bool(forKey: "createdFirstMotivationAlert")
+            
+            if createdFirstMotivationAlert == false {
+                
+                defaults.set(true, forKey: "createdFirstMotivationAlert")
+                defaults.synchronize()
+           
+                let alert = Alert.createInMoc(self.moc)
+                
+                alert.message = "Well done you completed your first session. Try and use Calchua each day to move forward on your most important tasks."
+                alert.type = Alert.AlertType.AlertTypeFirstSessionCreated.rawValue
+                    
+                try! self.moc.save()
+            }
             
             let formatter = DateFormatter()
             formatter.dateStyle = .medium

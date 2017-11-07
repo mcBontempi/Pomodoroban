@@ -45,16 +45,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func createAlerts() {
         let content = UNMutableNotificationContent()
         content.title = "Calchua"
-        content.body = "It's about that time of day that you need to think about settign your tasks for tomorrow"
+        content.body = "It's that time of day that you need to think about planning your tasks for tomorrow. Start Calchua and get the productivity ball rolling."
         content.sound = UNNotificationSound.default()
-        content.categoryIdentifier = "dave"
+        content.categoryIdentifier = "dailyreminder"
         
         var dateComponents = DateComponents()
-        dateComponents.hour = 11
-        dateComponents.minute = 26
+        dateComponents.hour = 21
+        dateComponents.minute = 30
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         
-        let request = UNNotificationRequest.init(identifier: "Daily Remonder", content: content, trigger: trigger)
+        let request = UNNotificationRequest.init(identifier: "Daily Reminder", content: content, trigger: trigger)
         // Schedule the notification.
         let center = UNUserNotificationCenter.current()
         center.add(request, withCompletionHandler: nil)
