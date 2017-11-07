@@ -258,18 +258,27 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Well Done geezer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPm-GT-VZC">
-                                            <rect key="frame" x="8" y="8" width="359" height="28"/>
+                                            <rect key="frame" x="8" y="8" width="317" height="28"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="002-chevron-sign-to-right" translatesAutoresizingMaskIntoConstraints="NO" id="Eb0-Bo-q7N">
+                                            <rect key="frame" x="340" y="11" width="22" height="22"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="22" id="BN0-0D-Ehg"/>
+                                                <constraint firstAttribute="width" constant="22" id="x9d-OB-3e3"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="bPm-GT-VZC" firstAttribute="leading" secondItem="5B4-Br-UJH" secondAttribute="leading" constant="8" id="1WU-sQ-G33"/>
                                         <constraint firstItem="bPm-GT-VZC" firstAttribute="top" secondItem="5B4-Br-UJH" secondAttribute="top" constant="8" id="98Y-Tt-TeL"/>
-                                        <constraint firstAttribute="trailing" secondItem="bPm-GT-VZC" secondAttribute="trailing" constant="8" id="cIj-bH-XWs"/>
+                                        <constraint firstItem="Eb0-Bo-q7N" firstAttribute="centerY" secondItem="5B4-Br-UJH" secondAttribute="centerY" id="a3j-OL-aJL"/>
+                                        <constraint firstAttribute="trailing" secondItem="bPm-GT-VZC" secondAttribute="trailing" constant="50" id="cIj-bH-XWs"/>
+                                        <constraint firstAttribute="trailing" secondItem="Eb0-Bo-q7N" secondAttribute="trailing" constant="13" id="enS-Qc-iRW"/>
                                         <constraint firstAttribute="bottom" secondItem="bPm-GT-VZC" secondAttribute="bottom" constant="8" id="ssO-lg-SXV"/>
                                     </constraints>
                                 </tableViewCellContentView>
