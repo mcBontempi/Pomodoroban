@@ -365,8 +365,7 @@ extension BoardTableViewController : UICollectionViewDelegate
         
        MBProgressHUD.showAdded(to: self.tableView, animated: true)
         
-        let time = dispatch_time(DISPATCH_TIME_NOW, (ino64_t)(1.0 * NSEC_PER_SEC));
-        dispatch_after(time, dispatch_get_main_queue(), {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                   MBProgressHUD.hide(for: self.tableView, animated: true)
             
         });
