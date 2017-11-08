@@ -364,7 +364,15 @@ extension BoardTableViewController : UICollectionViewDelegate
         try! self.moc.save()
         
        MBProgressHUD.showAdded(to: self.tableView, animated: true)
-        MBProgressHUD.hide(for: self.tableView, animated: true)
+        
+        let time = dispatch_time(DISPATCH_TIME_NOW, (ino64_t)(1.0 * NSEC_PER_SEC));
+        dispatch_after(time, dispatch_get_main_queue(), {
+                  MBProgressHUD.hide(for: self.tableView, animated: true)
+            
+        });
+        
+        
+ 
         self.selectedIdentifiers.removeAll()
         self.tableView.reloadData()
         self.collectionView.reloadData()
