@@ -8,13 +8,56 @@
 
 import UIKit
 
+protocol TicketTableViewCellDelegate {
+    func didSelectTicketWithIdentifier(identifier:String)
+}
+
 class TicketTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var checkImageView: UIImageView!
+    var delegate:TicketTableViewCellDelegate!
+    
+    @IBAction func didPressCheckbox(_ sender: Any) {
+        
+        self.setSelected(!self.isSelected, animated: true)
+        
+        self.delegate.didSelectTicketWithIdentifier(identifier: (self.ticket?.identifier)!)
+        
+    }
+    
+    func updateCheckbox() {
+               self.checkImageView.image = self.isSelected ? UIImage(named:"checked") : UIImage(named:"unchecked")
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.updateCheckbox()
+   }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+              super.setSelected(selected, animated: animated)
+        
+         self.updateCheckbox()
+        
+    }
+    
+    @IBOutlet weak var checkboxButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var colorView: UIView!
     @IBOutlet weak var dlabel: UILabel!
+    
+    var showsCheckbox:Bool! {
+        didSet {
+            self.checkboxButton.isHidden = !showsCheckbox
+            self.checkImageView.isHidden = !showsCheckbox
+        }
+    }
 
     @IBOutlet weak var pomodoroCountLabel: UILabel!
+    
+    
+    
+    
     var ticket: Ticket? {
         didSet {
             

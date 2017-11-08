@@ -5,10 +5,23 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 import UserNotifications
+import MBProgressHUD
 //import EasyTipView
 
 class BoardTableViewController: UIViewController {
+    var selectedIdentifiers = [String]() {
+        didSet {
+            
+            self.buttonsEnabled = selectedIdentifiers.count > 0
+            self.collectionView.isUserInteractionEnabled = buttonsEnabled
+            self.collectionView.reloadData()
+        }
+    }
     
+    var buttonsEnabled = false
+    
+    @IBOutlet weak var movePanelHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
@@ -33,17 +46,30 @@ class BoardTableViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
+    func editMode() -> Bool {
+        return ["Morning","Afternoon","Evening"].contains(self.section)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if self.editMode(){
+            self.movePanelHeightConstraint.constant = 0
+            self.tableView.setEditing(true, animated: true)
+        }
+        
+        self.collectionView.delegate = self
+        
+        self.collectionView.dataSource = self
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        self.tableView.setEditing(true, animated: true)
+        
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "productsRefreshed"), object: nil, queue: nil) { (Notification) in
         }
-   
+        
         try! self.fetchedResultsController.performFetch()
         self.tableView.allowsSelectionDuringEditing = true
         self.tableView.tableFooterView = UIView()
@@ -83,69 +109,6 @@ class BoardTableViewController: UIViewController {
         })
         
     }
-    /*
-     @IBAction func settingsPressed(_ sender: AnyObject) {
-     
-     let alert = UIAlertController(title: "Settings", message: nil, preferredStyle: .actionSheet)
-     
-     alert.addAction(UIAlertAction(title: "Select Sections", style: .destructive, handler: { (action
-     ) in
-     self.dismiss(animated: true, completion: nil)
-     let nc = UIStoryboard(name:"SectionSelect", bundle:nil).instantiateInitialViewController() as! UINavigationController
-     
-     let vc = nc.viewControllers.first! as! SectionSelectTableViewController
-     
-     vc.sectionTitles = self.sectionTitles()
-     vc.selectedSectionTitles = self.selectedSectionTitles()
-     vc.delegate = self
-     
-     self.present(nc, animated: true, completion: {})
-     }))
-     
-     if  Auth.auth().currentUser?.uid == nil {
-     alert.addAction(UIAlertAction(title: "Register for sync", style: .destructive, handler: { (action
-     ) in
-     self.showLogin(true)
-     }))
-     }
-     else {
-     
-     alert.addAction(UIAlertAction(title: "Sign Out", style: .default, handler: { (action
-     ) in
-     
-     self.dismiss(animated: true, completion: nil)
-     
-     
-     let defaults = UserDefaults.standard
-     
-     defaults.removeObject(forKey: "loggedInWithoutAuth")
-     
-     defaults.synchronize()
-     
-     
-     
-     
-     SyncService.sharedInstance.removeAllForSignOut()
-     try! Auth.auth().signOut()
-     self.showLogin(false)
-     
-     
-     }))
-     }
-     
-     alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action
-     ) in
-     }))
-     
-     alert.popoverPresentationController?.sourceView = self.settingsButton
-     
-     self.present(alert, animated: true, completion: nil)
-     
-     
-     }
-     */
-    // general
-    
     
     func addInSection(_ section:String) {
         let nc = self.storyboard?.instantiateViewController(withIdentifier: "TicketNavigationViewController") as! UINavigationController
@@ -190,7 +153,7 @@ class BoardTableViewController: UIViewController {
             return
         }
     }
-
+    
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         
         if identifier == "timerSegue" {
@@ -213,7 +176,7 @@ class BoardTableViewController: UIViewController {
         return true
     }
     
-  }
+}
 
 extension BoardTableViewController : TicketViewControllerDelegate {
     func ticketViewControllerSave(_ ticketViewController: TicketViewController) {
@@ -226,7 +189,7 @@ extension BoardTableViewController : TicketViewControllerDelegate {
     func delete(ticket:Ticket) {
         self.dismiss(animated: true) {
             ticket.removed = true
- 
+            
             
             self.saveChildMoc()
         }
@@ -265,7 +228,7 @@ extension BoardTableViewController : SectionSelectTableViewControllerDelegate
 
 
 extension BoardTableViewController : UITableViewDelegate {
-     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let nc = self.storyboard?.instantiateViewController(withIdentifier: "TicketNavigationViewController") as! UINavigationController
         let vc = nc.viewControllers[0] as! TicketViewController
@@ -280,12 +243,12 @@ extension BoardTableViewController : UITableViewDelegate {
 }
 
 extension BoardTableViewController : UITableViewDataSource {
-     func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1
     }
     
-     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         
         if let sections = self.fetchedResultsController.sections {
@@ -299,7 +262,7 @@ extension BoardTableViewController : UITableViewDataSource {
         return 0
     }
     
-     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let ticket = fetchedResultsController.object(at: sourceIndexPath) as? Ticket
         Ticket.insertTicket(ticket!, row: destinationIndexPath.row,section:self.section, moc:self.moc)
         
@@ -307,16 +270,16 @@ extension BoardTableViewController : UITableViewDataSource {
     }
     
     
-     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
     
-     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         return .none
     }
     
     
-     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             if let ticket = fetchedResultsController.object(at: indexPath) as? Ticket {
                 
@@ -330,7 +293,7 @@ extension BoardTableViewController : UITableViewDataSource {
     }
     
     
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let sections = self.fetchedResultsController.sections {
             let currentSection = sections[indexPath.section]
@@ -340,8 +303,10 @@ extension BoardTableViewController : UITableViewDataSource {
                 let ticket = fetchedResultsController.object(at: indexPath) as? Ticket
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TicketTableViewCell") as! TicketTableViewCell
                 cell.ticket =  ticket
+                cell.showsCheckbox = !self.editMode()
+                cell.delegate = self
                 
-                //         cell.dlabel.text = "s:\(cell.ticket!.section) - r:\(cell.ticket!.row)"
+                
                 return cell
             }
         }
@@ -350,10 +315,119 @@ extension BoardTableViewController : UITableViewDataSource {
     }
     
     
-
     
-
-
+    
+    
+    
 }
+
+
+extension BoardTableViewController : UICollectionViewDelegate
+{
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        var newSection:String!
+        
+        if self.section == "Backlog" {
+         newSection = ["Morning", "Afternoon","Evening"][indexPath.row]
+        }
+        else
+        {
+            newSection = ["Backlog", "Morning", "Afternoon","Evening"][indexPath.row]
+        }
+      
+        for ticket in self.fetchedResultsController.fetchedObjects! as! [Ticket] {
+            if self.selectedIdentifiers.contains(ticket.identifier!) {
+                
+                let maxRow = Ticket.spareRowForSection(self.section, moc: self.moc)
+                
+                if self.section == "Backlog" {
+                   ticket.section = newSection
+                    
+                    ticket.row = Int32(maxRow)
+                }
+                else {
+                    //copy
+                    let newTicket = Ticket.createInMoc(self.moc)
+                    newTicket.desc = ticket.desc
+                    newTicket.name = ticket.name
+                    newTicket.pomodoroEstimate = ticket.pomodoroEstimate
+                    newTicket.section = newSection
+                    newTicket.row = Int32(maxRow)
+                    newTicket.colorIndex = ticket.colorIndex
+                    newTicket.removed = ticket.removed
+                }
+            }
+            
+        }
+        
+        try! self.moc.save()
+        
+       MBProgressHUD.showAdded(to: self.tableView, animated: true)
+        MBProgressHUD.hide(for: self.tableView, animated: true)
+        self.selectedIdentifiers.removeAll()
+        self.tableView.reloadData()
+        self.collectionView.reloadData()
+        
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
+        
+    }
+}
+
+extension BoardTableViewController : UICollectionViewDataSource
+{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.section != "Backlog" ? 4 : 3
+    }
     
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"moveCell", for: indexPath) as! SquareButtonCollectionViewCell
+        
+        if self.section != "Backlog" {
+            
+            cell.setupWith(title: ["Copy to Backlog","Copy to Morning", "Copy to Afternoon", "Copy to Evening"][indexPath.row])
+        }
+        else {
+            cell.setupWith(title: ["Move to Morning", "Move to Afternoon", "Move to Evening"][indexPath.row])
+        }
+        
+        cell.contentView.layer.cornerRadius = 10
+        cell.contentView.layer.borderWidth = 3
+        cell.contentView.layer.borderColor = self.buttonsEnabled == true ? UIColor.red.cgColor : UIColor.darkGray.cgColor
+        
+        
+        
+        
+        return cell
+    }
+    
+}
+
+extension BoardTableViewController : UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        var width = UIScreen.main.bounds.width
+        
+        width = width - 50
+        
+        width = width / 4
+        
+        return CGSize(width:width,height:70)
+    }
+}
+
+
+extension BoardTableViewController : TicketTableViewCellDelegate {
+    func didSelectTicketWithIdentifier(identifier: String) {
+        if self.selectedIdentifiers.contains(identifier) {
+            self.selectedIdentifiers.remove(at: self.selectedIdentifiers.index(of: identifier)!)
+        }
+        else {
+            self.selectedIdentifiers.append(identifier)
+        }
+        
+    }
+    
+}
 
