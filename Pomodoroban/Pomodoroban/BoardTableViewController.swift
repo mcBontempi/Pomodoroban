@@ -7,11 +7,10 @@ import FirebaseAuth
 import UserNotifications
 //import EasyTipView
 
-class BoardTableViewController: UITableViewController {
+class BoardTableViewController: UIViewController {
     
-    @IBOutlet weak var settingsButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addButton: UIButton!
-    
     @IBOutlet weak var playButton: UIButton!
     
     let moc = CoreDataServices.sharedInstance.moc
@@ -30,15 +29,15 @@ class BoardTableViewController: UITableViewController {
         self.addInSection(self.section)
     }
     
-    
     deinit {
-     
         NotificationCenter.default.removeObserver(self)
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
         
         self.tableView.setEditing(true, animated: true)
         
@@ -60,7 +59,6 @@ class BoardTableViewController: UITableViewController {
         
         self.navigationController?.hidesBarsOnSwipe = true
     }
-    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -148,7 +146,42 @@ class BoardTableViewController: UITableViewController {
      */
     // general
     
-
+    
+    func addInSection(_ section:String) {
+        let nc = self.storyboard?.instantiateViewController(withIdentifier: "TicketNavigationViewController") as! UINavigationController
+        let vc = nc.viewControllers[0] as! TicketViewController
+        
+        vc.setFocusToName = true
+        
+        let row = Ticket.spareRowForSection(section, moc:self.moc)
+        
+        self.childMoc = CoreDataServices.sharedInstance.childMoc()
+        vc.ticket = Ticket.createInMoc(self.childMoc)
+        vc.ticket.name = ""
+        vc.ticket.row = Int32(row)
+        vc.ticket.section = section
+        vc.ticket.pomodoroEstimate = 1
+        vc.ticket.colorIndex = 2
+        
+        vc.delegate = self
+        
+        self.present(nc, animated: true) {}
+        
+    }
+    
+    func saveChildMoc() {
+        if self.childMoc != nil {
+            self.moc.performAndWait({
+                try! self.childMoc.save()
+                self.childMoc = nil
+                
+                self.moc.performAndWait({
+                    try! self.moc.save()
+                })
+            })
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "timerSegue" {
             let nc = segue.destination as! UINavigationController
@@ -180,129 +213,7 @@ class BoardTableViewController: UITableViewController {
         return true
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        
-        if let sections = self.fetchedResultsController.sections {
-            if sections.count == 0 {
-                return 0
-            }
-            
-            let currentSection = sections[section]
-            return currentSection.numberOfObjects
-        }
-        return 0
-    }
-    
-    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let ticket = fetchedResultsController.object(at: sourceIndexPath) as? Ticket
-        Ticket.insertTicket(ticket!, row: destinationIndexPath.row,section:self.section, moc:self.moc)
-        
-        try! self.moc.save()
-    }
-    
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
-    }
- 
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-        return .none
-    }
- 
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            if let ticket = fetchedResultsController.object(at: indexPath) as? Ticket {
-                
-                ticket.removed = true
-                
-                self.saveChildMoc()
-            }
-        }
-        
-        
-    }
-    
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if let sections = self.fetchedResultsController.sections {
-            let currentSection = sections[indexPath.section]
-            if indexPath.row < currentSection.numberOfObjects {
-                
-                
-                let ticket = fetchedResultsController.object(at: indexPath) as? Ticket
-                let cell = tableView.dequeueReusableCell(withIdentifier: "TicketTableViewCell") as! TicketTableViewCell
-                cell.ticket =  ticket
-                
-                //         cell.dlabel.text = "s:\(cell.ticket!.section) - r:\(cell.ticket!.row)"
-                return cell
-            }
-        }
-        
-        return UITableViewCell()
-    }
-    
-    
-    
-    func addInSection(_ section:String) {
-        let nc = self.storyboard?.instantiateViewController(withIdentifier: "TicketNavigationViewController") as! UINavigationController
-        let vc = nc.viewControllers[0] as! TicketViewController
-        
-        vc.setFocusToName = true
-        
-        let row = Ticket.spareRowForSection(section, moc:self.moc)
-        
-        self.childMoc = CoreDataServices.sharedInstance.childMoc()
-        vc.ticket = Ticket.createInMoc(self.childMoc)
-        vc.ticket.name = ""
-        vc.ticket.row = Int32(row)
-        vc.ticket.section = section
-        vc.ticket.pomodoroEstimate = 1
-        vc.ticket.colorIndex = 2
-        
-        vc.delegate = self
-        
-        self.present(nc, animated: true) {}
-        
-    }
-    
-    
-    
-    func saveChildMoc() {
-        if self.childMoc != nil {
-            self.moc.performAndWait({
-                try! self.childMoc.save()
-                self.childMoc = nil
-                
-                self.moc.performAndWait({
-                    try! self.moc.save()
-                })
-            })
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let nc = self.storyboard?.instantiateViewController(withIdentifier: "TicketNavigationViewController") as! UINavigationController
-        let vc = nc.viewControllers[0] as! TicketViewController
-        
-        self.childMoc = CoreDataServices.sharedInstance.childMoc()
-        vc.ticket = Ticket.ticketForTicket(self.fetchedResultsController.object(at: indexPath) as! Ticket, moc:self.childMoc)
-        
-        vc.delegate = self
-        
-        self.present(nc, animated: true) {}
-    }
-    
-    
-}
+  }
 
 extension BoardTableViewController : TicketViewControllerDelegate {
     func ticketViewControllerSave(_ ticketViewController: TicketViewController) {
@@ -348,4 +259,101 @@ extension BoardTableViewController : SectionSelectTableViewControllerDelegate
         defaults.synchronize()
         self.dismiss(animated: true) {self.tableView.reloadData()}
     }
+    
 }
+
+
+
+extension BoardTableViewController : UITableViewDelegate {
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let nc = self.storyboard?.instantiateViewController(withIdentifier: "TicketNavigationViewController") as! UINavigationController
+        let vc = nc.viewControllers[0] as! TicketViewController
+        
+        self.childMoc = CoreDataServices.sharedInstance.childMoc()
+        vc.ticket = Ticket.ticketForTicket(self.fetchedResultsController.object(at: indexPath) as! Ticket, moc:self.childMoc)
+        
+        vc.delegate = self
+        
+        self.present(nc, animated: true) {}
+    }
+}
+
+extension BoardTableViewController : UITableViewDataSource {
+     func numberOfSections(in tableView: UITableView) -> Int {
+        
+        return 1
+    }
+    
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        
+        if let sections = self.fetchedResultsController.sections {
+            if sections.count == 0 {
+                return 0
+            }
+            
+            let currentSection = sections[section]
+            return currentSection.numberOfObjects
+        }
+        return 0
+    }
+    
+     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let ticket = fetchedResultsController.object(at: sourceIndexPath) as? Ticket
+        Ticket.insertTicket(ticket!, row: destinationIndexPath.row,section:self.section, moc:self.moc)
+        
+        try! self.moc.save()
+    }
+    
+    
+     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+    
+     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .none
+    }
+    
+    
+     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            if let ticket = fetchedResultsController.object(at: indexPath) as? Ticket {
+                
+                ticket.removed = true
+                
+                self.saveChildMoc()
+            }
+        }
+        
+        
+    }
+    
+    
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if let sections = self.fetchedResultsController.sections {
+            let currentSection = sections[indexPath.section]
+            if indexPath.row < currentSection.numberOfObjects {
+                
+                
+                let ticket = fetchedResultsController.object(at: indexPath) as? Ticket
+                let cell = tableView.dequeueReusableCell(withIdentifier: "TicketTableViewCell") as! TicketTableViewCell
+                cell.ticket =  ticket
+                
+                //         cell.dlabel.text = "s:\(cell.ticket!.section) - r:\(cell.ticket!.row)"
+                return cell
+            }
+        }
+        
+        return UITableViewCell()
+    }
+    
+    
+
+    
+
+
+}
+    
+
