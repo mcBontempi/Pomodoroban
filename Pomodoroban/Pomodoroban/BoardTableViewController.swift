@@ -368,7 +368,7 @@ extension BoardTableViewController : UICollectionViewDelegate
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                   MBProgressHUD.hide(for: self.tableView, animated: true)
             
-        });
+        }
         
         
  
