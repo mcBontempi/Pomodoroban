@@ -12,6 +12,7 @@ class TicketViewController: UITableViewController {
     @IBOutlet weak var notes: UIView!
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     @IBOutlet weak var sectionSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var sectionLabel: UILabel!
     @IBOutlet weak var leftButton: UIBarButtonItem!
     @IBOutlet weak var rightButton: UIBarButtonItem!
     @IBOutlet weak var countSegmentedControl: UISegmentedControl!
@@ -46,12 +47,16 @@ class TicketViewController: UITableViewController {
         let indexPath = IndexPath(item: Int(self.ticket.colorIndex), section: 0)
         self.categoryCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .top)
         
+        
         if let index =  ["Backlog","Morning","Afternoon","Evening"].index(of: self.ticket.section) {
-            
             self.sectionSegmentedControl.selectedSegmentIndex = index
+            self.sectionSegmentedControl.isHidden = false
+            self.sectionLabel.isHidden = true
         }
         else {
-            self.sectionSegmentedControl.selectedSegmentIndex = UISegmentedControlNoSegment
+            self.sectionSegmentedControl.isHidden = true
+            self.sectionLabel.isHidden = false
+            self.sectionLabel.text = self.ticket.section
         }
     }
     
@@ -62,6 +67,11 @@ class TicketViewController: UITableViewController {
             self.titleField.becomeFirstResponder()
             self.setFocusToName = false
         }
+        
+        
+        
+        
+        
     }
     
     func save() {
@@ -72,9 +82,10 @@ class TicketViewController: UITableViewController {
             self.ticket.colorIndex = Int32(self.categoryCollectionView.indexPathsForSelectedItems!.first!.row)
             self.delegate.ticketViewControllerSave(self)
             
-            let index = self.sectionSegmentedControl.selectedSegmentIndex
             
-            if index != UISegmentedControlNoSegment {
+            
+            if let _ =  ["Backlog","Morning","Afternoon","Evening"].index(of: self.ticket.section) {
+                let index = self.sectionSegmentedControl.selectedSegmentIndex
                 
                 self.ticket.section = ["Backlog","Morning","Afternoon","Evening"][index]
             }

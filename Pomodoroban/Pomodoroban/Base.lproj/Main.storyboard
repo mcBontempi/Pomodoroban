@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qvh-2M-BY9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qvh-2M-BY9">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -92,13 +92,23 @@
                                                     </segments>
                                                     <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 </segmentedControl>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Glb-DV-eGh">
+                                                    <rect key="frame" x="10" y="54.5" width="300" height="28"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="Glb-DV-eGh" firstAttribute="bottom" secondItem="AmB-1X-X5G" secondAttribute="bottom" id="AmY-GQ-0s4"/>
+                                                <constraint firstItem="Glb-DV-eGh" firstAttribute="top" secondItem="AmB-1X-X5G" secondAttribute="top" id="Eot-wX-Dih"/>
+                                                <constraint firstItem="Glb-DV-eGh" firstAttribute="trailing" secondItem="AmB-1X-X5G" secondAttribute="trailing" id="NH4-SU-1gF"/>
                                                 <constraint firstItem="h6L-aI-25f" firstAttribute="leading" secondItem="yUV-l2-E3w" secondAttribute="leadingMargin" constant="5" id="UJ4-1l-RC7"/>
                                                 <constraint firstItem="AmB-1X-X5G" firstAttribute="leading" secondItem="yUV-l2-E3w" secondAttribute="leading" constant="10" id="VOE-gq-rD2"/>
                                                 <constraint firstAttribute="trailing" secondItem="AmB-1X-X5G" secondAttribute="trailing" constant="10" id="ZX5-p8-JrB"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="h6L-aI-25f" secondAttribute="trailing" constant="5" id="bwe-UH-6f5"/>
                                                 <constraint firstItem="h6L-aI-25f" firstAttribute="top" secondItem="yUV-l2-E3w" secondAttribute="topMargin" constant="5" id="deq-JU-pAx"/>
+                                                <constraint firstItem="Glb-DV-eGh" firstAttribute="leading" secondItem="AmB-1X-X5G" secondAttribute="leading" id="hpG-pj-3vK"/>
                                                 <constraint firstAttribute="bottom" secondItem="AmB-1X-X5G" secondAttribute="bottom" constant="5" id="mnc-tT-3FC"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -279,6 +289,7 @@
                         <outlet property="notes" destination="AAg-BY-Mmp" id="ONo-rE-t0w"/>
                         <outlet property="notesText" destination="QzL-RF-973" id="JFb-5B-fla"/>
                         <outlet property="rightButton" destination="ele-6Q-V4e" id="2dJ-rd-OYN"/>
+                        <outlet property="sectionLabel" destination="Glb-DV-eGh" id="Gyv-JU-O9K"/>
                         <outlet property="sectionSegmentedControl" destination="AmB-1X-X5G" id="BKh-0M-zuK"/>
                         <outlet property="titleField" destination="4Ty-pf-QQp" id="scX-PN-q4B"/>
                     </connections>

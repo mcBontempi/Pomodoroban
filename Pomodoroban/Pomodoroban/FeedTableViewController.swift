@@ -229,10 +229,10 @@ extension FeedTableViewController : CreateSwipeTableViewCellDelegate
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         if let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? UserHeaderTableViewCell {
-            var size = 26 + -scrollView.contentOffset.y/40
+            var size = 24 + -scrollView.contentOffset.y/40
             print(size)
-            if size < 26 {
-                size = 26
+            if size < 24 {
+                size = 24
             }
             cell.nameLabel.font =  UIFont(name: "Helvetica Neue", size: size)
         }
