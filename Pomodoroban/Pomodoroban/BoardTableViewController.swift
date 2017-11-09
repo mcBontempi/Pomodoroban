@@ -306,6 +306,8 @@ extension BoardTableViewController : UITableViewDataSource {
                 cell.showsCheckbox = !self.editMode()
                 cell.delegate = self
                 
+                cell.checked =  self.selectedIdentifiers.contains(ticket!.identifier!)
+                
                 
                 return cell
             }
@@ -329,20 +331,20 @@ extension BoardTableViewController : UICollectionViewDelegate
         var newSection:String!
         
         if self.section == "Backlog" {
-         newSection = ["Morning", "Afternoon","Evening"][indexPath.row]
+            newSection = ["Morning", "Afternoon","Evening"][indexPath.row]
         }
         else
         {
             newSection = ["Backlog", "Morning", "Afternoon","Evening"][indexPath.row]
         }
-      
+        
         for ticket in self.fetchedResultsController.fetchedObjects! as! [Ticket] {
             if self.selectedIdentifiers.contains(ticket.identifier!) {
                 
                 let maxRow = Ticket.spareRowForSection(self.section, moc: self.moc)
                 
                 if self.section == "Backlog" {
-                   ticket.section = newSection
+                    ticket.section = newSection
                     
                     ticket.row = Int32(maxRow)
                 }
@@ -363,15 +365,15 @@ extension BoardTableViewController : UICollectionViewDelegate
         
         try! self.moc.save()
         
-       MBProgressHUD.showAdded(to: self.tableView, animated: true)
+        MBProgressHUD.showAdded(to: self.tableView, animated: true)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                  MBProgressHUD.hide(for: self.tableView, animated: true)
+            MBProgressHUD.hide(for: self.tableView, animated: true)
             
         }
         
         
- 
+        
         self.selectedIdentifiers.removeAll()
         self.tableView.reloadData()
         self.collectionView.reloadData()
@@ -402,9 +404,6 @@ extension BoardTableViewController : UICollectionViewDataSource
         cell.contentView.layer.cornerRadius = 10
         cell.contentView.layer.borderWidth = 3
         cell.contentView.layer.borderColor = self.buttonsEnabled == true ? UIColor.red.cgColor : UIColor.darkGray.cgColor
-        
-        
-        
         
         return cell
     }
