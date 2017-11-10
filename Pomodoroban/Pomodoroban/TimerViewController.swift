@@ -11,7 +11,41 @@ protocol TimerViewControllerDelegate {
 
 class TimerViewController: UIViewController {
     
+    @IBOutlet weak var collectionView: UICollectionView!
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        let width = UIScreen.main.bounds.width
+        let height = UIScreen.main.bounds.height
+        
+        let collectionHeight:CGFloat = 100.0
+        
+        self.collectionX.constant = 0
+        self.collectionY.constant = height - collectionHeight
+        self.collectionHeight.constant = collectionHeight
+        self.collectionWidth.constant = width
+        
+        self.collectionView.setNeedsUpdateConstraints()
+    }
+    
+    
     var pixelVC: PixelTestViewController!
+    
+    @IBOutlet weak var pixelX: NSLayoutConstraint!
+    
+    @IBOutlet weak var pixelY: NSLayoutConstraint!
+    
+    @IBOutlet weak var pixelWidth: NSLayoutConstraint!
+    
+    @IBOutlet weak var pixelHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var collectionHeight: NSLayoutConstraint!
+    @IBOutlet weak var collectionWidth: NSLayoutConstraint!
+    
+    @IBOutlet weak var collectionX: NSLayoutConstraint!
+    
+    
+    @IBOutlet weak var collectionY: NSLayoutConstraint!
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         self.pixelVC = segue.destination as! PixelTestViewController
@@ -63,7 +97,7 @@ class TimerViewController: UIViewController {
         self.notesTextView.text = ticket.desc
         
         let pomodoroView = UIView.pomodoroRowWith(Int(ticket.pomodoroEstimate))
-        self.pixelVC.setupAsPomodoro(self.pixelSizeForThisDevice())
+        self.pixelVC.setupAsPomodoro(2)
     }
     
     
@@ -135,7 +169,7 @@ class TimerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
     }
     
     
@@ -148,17 +182,19 @@ class TimerViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         appDelegate.timerVC = self
-        
+    /*
         self.view.layer.cornerRadius = 20
         self.view.layer.borderWidth = 5
         self.view.layer.borderColor = UIColor.lightGray.cgColor
         self.view.clipsToBounds = true
         
-        self.ticketBackgroundView.layer.cornerRadius = 10
-        self.ticketBackgroundView.layer.borderWidth = 3
-        self.ticketBackgroundView.layer.borderColor = UIColor.darkGray.cgColor
-        self.ticketBackgroundView.clipsToBounds = true
+        self.ticketBackgroundView.layer.cornerRadius = self.ticketBackgroundView.frame.size.width / 2
         
+        self.ticketBackgroundView.layer.borderColor = UIColor.darkGray.cgColor
+        self.ticketBackgroundView.layer.borderWidth = 3
+   
+        self.ticketBackgroundView.clipsToBounds = true
+        */
         if Runtime.all(self.moc).count > 0 {
             self.startDate = UserDefaults.standard.object(forKey: "startDate") as! Date
         }
@@ -332,7 +368,7 @@ class TimerViewController: UIViewController {
                     if let ticket = Ticket.ticketForIdentifier(identifier: runtime.ticketIdentifier, moc: self.moc) {
                         
                         let partCount = ticket.pomodoroEstimate
-                        self.timerLabel.text = String(format:"Seconds remaining = %.0f\nPomodoro in Story (%d/%d)",self.currentPartRemaining , part,partCount)
+                        self.timerLabel.text = String(format:"%d/%d",self.currentPartRemaining , part,partCount)
                         
                         self.updateWithTicket(ticket)
                     }

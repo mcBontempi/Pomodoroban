@@ -1,10 +1,13 @@
 import UIKit
 
 class RootViewController: UIViewController {
+    @IBOutlet weak var draggingView: UIView!
     @IBOutlet weak var loginView: UIView!
     @IBOutlet weak var timerView: UIView!
     @IBOutlet weak var feedView: UIView!
 
+    @IBOutlet weak var draggingViewY: NSLayoutConstraint!
+    
     var timerVC: TimerViewController!
     var feedVC: FeedTableViewController!
     var loginVC: LoginViewController!
@@ -38,6 +41,22 @@ class RootViewController: UIViewController {
         self.loginView.isUserInteractionEnabled = true
         
         self.loginVC.start()
+        
+        
+        
+        self.draggingView.isUserInteractionEnabled = true
+        self.draggingView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePan(recognizer:))))
+    }
+    
+    @objc func handlePan(recognizer:UIGestureRecognizer) {
+        let locationInView = recognizer.location(in: self.view)
+      
+        let navigationBarHeight: CGFloat = self.feedVC.navigationController!.navigationBar.frame.height + 20
+
+        
+        let y = max(locationInView.y,navigationBarHeight)
+        
+     self.draggingViewY.constant = y
     }
 
     func gotoLogin() {
