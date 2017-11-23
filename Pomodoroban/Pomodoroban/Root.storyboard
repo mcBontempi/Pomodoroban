@@ -16,7 +16,7 @@
                 <viewControllerPlaceholder storyboardName="Feed" id="oAQ-jc-3WI" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7sz-ky-Lgo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3556" y="-854"/>
+            <point key="canvasLocation" x="4672" y="-554"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="7EI-YM-cu3">
@@ -37,37 +37,31 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MQC-X3-QQe">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="103"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="567"/>
+                                <color key="backgroundColor" red="0.58507767290000001" green="1" blue="0.41177004150000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <segue destination="oAQ-jc-3WI" kind="embed" identifier="feed" id="73G-XQ-gYb"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="As2-m3-LZg">
-                                <rect key="frame" x="0.0" y="142" width="375" height="525"/>
+                                <rect key="frame" x="0.0" y="567" width="375" height="100"/>
+                                <color key="backgroundColor" red="0.37254901959999998" green="0.83921568629999999" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="azt-Nj-bTe"/>
+                                </constraints>
                                 <connections>
                                     <segue destination="FwH-hM-y5d" kind="embed" identifier="timer" id="AbH-ne-L8W"/>
                                 </connections>
                             </containerView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YQ3-Kn-2Le">
-                                <rect key="frame" x="0.0" y="100" width="375" height="50"/>
-                                <color key="backgroundColor" red="0.58507767285915058" green="1" blue="0.41177004149619045" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Fdp-Nj-YEw"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="YQ3-Kn-2Le" firstAttribute="top" secondItem="8ds-ZR-Obe" secondAttribute="top" constant="100" id="4WH-qs-lE9"/>
-                            <constraint firstItem="YQ3-Kn-2Le" firstAttribute="leading" secondItem="ehv-0C-RX6" secondAttribute="leading" id="4xL-Qa-51I"/>
                             <constraint firstAttribute="trailing" secondItem="MQC-X3-QQe" secondAttribute="trailing" id="6Ng-3o-LSj"/>
+                            <constraint firstItem="ehv-0C-RX6" firstAttribute="bottom" secondItem="MQC-X3-QQe" secondAttribute="bottom" constant="100" id="BWr-68-yE5"/>
                             <constraint firstItem="Vtp-o2-UYc" firstAttribute="top" secondItem="IVy-nH-nUi" secondAttribute="bottom" id="Du4-KE-73c"/>
-                            <constraint firstItem="As2-m3-LZg" firstAttribute="top" secondItem="YQ3-Kn-2Le" secondAttribute="bottom" constant="-8" id="KuX-pd-AgH"/>
-                            <constraint firstItem="YQ3-Kn-2Le" firstAttribute="trailing" secondItem="ehv-0C-RX6" secondAttribute="trailing" id="USK-Ka-TLh"/>
                             <constraint firstItem="MQC-X3-QQe" firstAttribute="leading" secondItem="8ds-ZR-Obe" secondAttribute="leading" id="WaN-Ou-jM1"/>
                             <constraint firstItem="MQC-X3-QQe" firstAttribute="top" secondItem="8ds-ZR-Obe" secondAttribute="top" id="X0W-7X-oMv"/>
                             <constraint firstAttribute="trailing" secondItem="IVy-nH-nUi" secondAttribute="trailing" id="auJ-V1-bF0"/>
-                            <constraint firstItem="YQ3-Kn-2Le" firstAttribute="top" secondItem="MQC-X3-QQe" secondAttribute="bottom" constant="-3" id="c4x-Ps-C8d"/>
                             <constraint firstItem="IVy-nH-nUi" firstAttribute="top" secondItem="8ds-ZR-Obe" secondAttribute="top" id="ePv-1n-iOE"/>
                             <constraint firstItem="As2-m3-LZg" firstAttribute="leading" secondItem="ehv-0C-RX6" secondAttribute="leading" id="jQJ-oR-hc7"/>
                             <constraint firstItem="ehv-0C-RX6" firstAttribute="trailing" secondItem="As2-m3-LZg" secondAttribute="trailing" id="kd1-Lt-ODp"/>
@@ -77,11 +71,10 @@
                         <viewLayoutGuide key="safeArea" id="ehv-0C-RX6"/>
                     </view>
                     <connections>
-                        <outlet property="draggingView" destination="YQ3-Kn-2Le" id="whr-T2-ueX"/>
-                        <outlet property="draggingViewY" destination="4WH-qs-lE9" id="ypO-U1-TXh"/>
                         <outlet property="feedView" destination="MQC-X3-QQe" id="1hV-sv-BUt"/>
                         <outlet property="loginView" destination="IVy-nH-nUi" id="ooH-eC-FJI"/>
                         <outlet property="timerView" destination="As2-m3-LZg" id="GBC-cS-tes"/>
+                        <outlet property="timerViewHeight" destination="azt-Nj-bTe" id="xTs-54-Yvf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p7h-su-1ve" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -18,6 +18,8 @@ class TicketViewController: UITableViewController {
     @IBOutlet weak var countSegmentedControl: UISegmentedControl!
     @IBOutlet weak var notesText: UITextView!
     
+    var newTicket = false
+    
     var setFocusToName = false
     var delegate: TicketViewControllerDelegate!
     var ticket:Ticket!
@@ -114,6 +116,13 @@ class TicketViewController: UITableViewController {
         default:
             break
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 5 && self.newTicket == true {
+            return 0
+        }
+        return super.tableView(tableView, heightForRowAt: indexPath)
     }
 }
 

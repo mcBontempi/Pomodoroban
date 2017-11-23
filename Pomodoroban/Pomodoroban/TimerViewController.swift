@@ -6,77 +6,51 @@ import UserNotifications
 
 protocol TimerViewControllerDelegate {
     func timerViewControllerEnded(_ timerViewController: TimerViewController)
-    
+    func timerViewControllerDidPressResize(_ timerViewController: TimerViewController)
 }
 
 class TimerViewController: UIViewController {
     
-    @IBOutlet weak var collectionView: UICollectionView!
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        let width = UIScreen.main.bounds.width
-        let height = UIScreen.main.bounds.height
-        
-        let collectionHeight:CGFloat = 100.0
-        
-        self.collectionX.constant = 0
-        self.collectionY.constant = height - collectionHeight
-        self.collectionHeight.constant = collectionHeight
-        self.collectionWidth.constant = width
-        
-        self.collectionView.setNeedsUpdateConstraints()
+    
+    
+    
+    
+    
+    
+    
+    @IBOutlet weak var resizeButton: UIButton!
+    
+    @IBAction func didPressResizeButton(_ sender: Any) {
+        self.delegate.timerViewControllerDidPressResize(self)
     }
-    
-    
+
+    let storage = Storage.storage()
     var pixelVC: PixelTestViewController!
     
     @IBOutlet weak var pixelX: NSLayoutConstraint!
-    
     @IBOutlet weak var pixelY: NSLayoutConstraint!
-    
     @IBOutlet weak var pixelWidth: NSLayoutConstraint!
-    
     @IBOutlet weak var pixelHeight: NSLayoutConstraint!
-    
-    @IBOutlet weak var collectionHeight: NSLayoutConstraint!
-    @IBOutlet weak var collectionWidth: NSLayoutConstraint!
-    
-    @IBOutlet weak var collectionX: NSLayoutConstraint!
-    
-    
-    @IBOutlet weak var collectionY: NSLayoutConstraint!
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        self.pixelVC = segue.destination as! PixelTestViewController
-    }
-    
     @IBOutlet weak var ticketBackgroundView: UIView!
-    
-    let storage = Storage.storage()
-    
-    var pomodoroLength:Double!
-    var shortBreakLength:Double!
-    var shortBreakCount:Int!
-    var longBreakLength:Double!
-    var haveALongBreak:Int!
-    
-    var index = 0
-    var shortBreaks = 0
-    
     @IBOutlet weak var takeABreakLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var quitButton: UIButton!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var notesTextView: UITextView!
     
+    var pomodoroLength:Double!
+    var shortBreakLength:Double!
+    var shortBreakCount:Int!
+    var longBreakLength:Double!
+    var haveALongBreak:Int!
+    var index = 0
+    var shortBreaks = 0
+   
     var delegate:TimerViewControllerDelegate!
-    
     let moc = CoreDataServices.sharedInstance.moc
     
     let darkBackgroundColor = UIColor(hexString: "555555")!
     let darkBackgroundColorForMask = UIColor(hexString: "505050")!
-    
     let veryDarkBackgroundColor = UIColor(hexString: "333333")!
     let veryDarkBackgroundColorForMask = UIColor(hexString: "2e2e2e")!
     
@@ -85,6 +59,10 @@ class TimerViewController: UIViewController {
         case long
         case ticket
         case none
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        self.pixelVC = segue.destination as! PixelTestViewController
     }
     
     func updateWithTicket(_ ticket: Ticket) {
@@ -218,26 +196,14 @@ class TimerViewController: UIViewController {
         }
         
         self.runtimes = Runtime.all(self.moc)
-        
-        
         self.registerCategory()
-        
-        
         UNUserNotificationCenter.current().delegate = self
-        
-        
         self.createNotifications()
-        
-        
-        
-        
         self.quitButton.layer.cornerRadius = 4
         self.quitButton.clipsToBounds = true
         self.quitButton.layer.borderColor = UIColor.white.cgColor
         self.quitButton.layer.borderWidth = 6
-        
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        
         
         self.repeater = DDTRepeater.repeater(0.1, fireOnceInstantly: true, execute: {
             self.update()
@@ -400,7 +366,7 @@ class TimerViewController: UIViewController {
     
     func createNotifications() {
         
-        DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+        DispatchQueue.main.async {
             // ensure we only have one
             self.cancelNotificationsAndAudioPlaybacks()
             

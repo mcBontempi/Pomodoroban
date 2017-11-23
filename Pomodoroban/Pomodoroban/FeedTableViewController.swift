@@ -213,6 +213,7 @@ extension FeedTableViewController : CreateSwipeTableViewCellDelegate
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let nc = storyboard.instantiateViewController(withIdentifier: "TicketNavigationViewController") as! UINavigationController
         let vc = nc.viewControllers[0] as! TicketViewController
+        vc.newTicket = true
         vc.setFocusToName = true
         let row = Ticket.spareRowForSection(section, moc:self.moc)
         self.childMoc = CoreDataServices.sharedInstance.childMoc()

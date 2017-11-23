@@ -169,50 +169,34 @@ class LoginViewController: UIViewController {
                     defaults.set(true, forKey: "shownRegisterToolTips")
                     defaults.synchronize()
                 }
-                
-                
-                
             })
-            
         })
-        
-        
     }
     
     func goBack() {
         
         self.mode = .menu
-        
         self.tomatoeHeightConstraint.constant = 170
-        
         self.pixelVC.setAlternateRowSize(6)
         
         UIView.animate(withDuration: 0.6, animations: {
             
             self.view.layoutIfNeeded()
-            
+ 
             self.email.alpha = 0.0
             self.password.alpha = 0.0
-            
             self.backButton.alpha = 0.0
-            
             self.email.resignFirstResponder()
             self.password.resignFirstResponder()
-            
             
         }, completion: { (completed) in
             
             UIView.animate(withDuration: 0.3, animations: {
-                
-                
                 self.SIGNUPBUTTON.alpha = 1.0
                 self.LOGINBUTTON.alpha = 1.0
                 self.JUSTLETMEINBUTTON.alpha = 1.0
                 self.FORGOTPASSWORDBUTTON.alpha = 1.0
-                
-                
             })
-            
         })
     }
     

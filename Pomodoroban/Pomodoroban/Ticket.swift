@@ -115,9 +115,6 @@ class Ticket: NSManagedObject {
     
     
     class func allForToday(_ moc:NSManagedObjectContext) -> [Ticket] {
-        
-        let weekday = Date().getDayOfWeek()
-        
         return try! moc.fetch(self.fetchRequestForSection("Backlog")) as! [Ticket]
     }
     
