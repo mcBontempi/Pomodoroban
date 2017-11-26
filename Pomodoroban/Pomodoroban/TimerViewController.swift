@@ -104,18 +104,12 @@ class TimerViewController: UIViewController {
         self.notesTextView.text = ticket.desc
         
         let pomodoroView = UIView.pomodoroRowWith(Int(ticket.pomodoroEstimate))
-        self.pixelVC.setupAsPomodoro(6)
+        self.pixelVC.setupAsPomodoro(self.pixelSizeForThisDevice())
     }
     
     
     func pixelSizeForThisDevice() -> CGFloat{
-        let height = UIScreen.main.bounds.height
-        if height == 568 {
-            return 6
-        }
-        else if height >= 768 {
-            return 12
-        }
+  
         return 6
     }
     
@@ -375,9 +369,7 @@ class TimerViewController: UIViewController {
                 self.buttonArrowTop()
                 UIView.animate(withDuration: wait, animations: {
                     self.view.layoutIfNeeded()
-                    
                     self.view.isUserInteractionEnabled = true
-                    
                 })
             }
             
