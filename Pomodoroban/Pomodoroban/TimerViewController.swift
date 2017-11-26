@@ -29,15 +29,18 @@ class TimerViewController: UIViewController {
     let storage = Storage.storage()
     var pixelVC: PixelTestViewController!
     
-    
-    
-    
     @IBOutlet weak var pomodoroLeadingConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var pomodoroBottomConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var pomodoroHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var pomodoroWidthConstraint: NSLayoutConstraint!
+  
+    @IBOutlet weak var labelHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var labelWidth: NSLayoutConstraint!
+    
+    @IBOutlet weak var labelLeading: NSLayoutConstraint!
+    
+    @IBOutlet weak var labelBottom: NSLayoutConstraint!
     
     
     
@@ -169,6 +172,10 @@ class TimerViewController: UIViewController {
         super.viewDidLoad()
         let layer = self.resizeButton.layer
         layer.cornerRadius = 6
+        
+        
+        
+        self.titleLabel.layer.cornerRadius = 10.0
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -213,7 +220,7 @@ class TimerViewController: UIViewController {
         self.pomodoroWidthConstraint.constant = 100
         self.pomodoroHeightConstraint.constant = 100
         self.pomodoroBottomConstraint.constant = 0
-        self.pomodoroLeadingConstraint.constant = 0
+        self.pomodoroLeadingConstraint.constant = 10
     }
     
     func buttonArrowBottom() {
@@ -231,6 +238,61 @@ class TimerViewController: UIViewController {
             }
         })
     }
+    
+    
+    func labelTopOffScreen() {
+        let screenSize = UIScreen.main.bounds.size
+        let width = screenSize.width
+        let height = screenSize.height
+        let labelWidth = width * 0.8
+         let pomodoroHeight = width * 0.8
+        let padding = width * 0.1
+        self.labelWidth.constant = labelWidth
+        
+        self.labelHeight.constant = height - (padding + pomodoroHeight + padding + 100)
+       
+        self.labelBottom.constant = 100.0
+        self.labelLeading.constant = width
+    }
+    
+    func labelTop() {
+        let screenSize = UIScreen.main.bounds.size
+        let width = screenSize.width
+        let height = screenSize.height
+        let labelWidth = width * 0.8
+        let pomodoroHeight = width * 0.8
+        let padding = width * 0.1
+        self.labelWidth.constant = labelWidth
+        
+        self.labelHeight.constant = height - (padding + pomodoroHeight + padding + 100)
+        
+        self.labelBottom.constant = 100.0
+        self.labelLeading.constant = padding
+    }
+    
+    func labelBottomOffScreen() {
+        let screenSize = UIScreen.main.bounds.size
+        let width = screenSize.width
+        self.labelWidth.constant = width - 220
+        
+        self.labelHeight.constant = 80
+        
+        self.labelBottom.constant = -100
+        self.labelLeading.constant = 120
+    }
+    
+    func labelCenterBottom() {
+        let screenSize = UIScreen.main.bounds.size
+        let width = screenSize.width
+        self.labelWidth.constant = width - 220
+        
+        self.labelHeight.constant = 80
+        
+        self.labelBottom.constant = 10
+        self.labelLeading.constant = 120
+    }
+    
+    
     
     /*
      
@@ -277,6 +339,7 @@ class TimerViewController: UIViewController {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
              self.pomodoroBottomOffScreen()
+                self.labelBottomOffScreen()
                 self.pixelVC.setAlternateRowSize(6, animate:true)
                 
                 delay = delay + wait
@@ -288,7 +351,10 @@ class TimerViewController: UIViewController {
         
             delay = delay + wait
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                
+                self.titleLabel.isHidden = true
                 self.pomodoroTopOffScreen()
+                self.labelTopOffScreen()
                 UIView.animate(withDuration: wait, animations: {
                     self.view.layoutIfNeeded()
                 })
@@ -296,6 +362,9 @@ class TimerViewController: UIViewController {
               delay = delay + wait
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                 self.pomodoroTop()
+                
+                    self.titleLabel.isHidden = false
+                self.labelTop()
                 
                 UIView.animate(withDuration: wait, animations: {
                     self.view.layoutIfNeeded()
@@ -341,20 +410,25 @@ class TimerViewController: UIViewController {
         else {
             self.view.isUserInteractionEnabled = false
             
-            let wait = 0.1
+            let wait = 0.2
             
             var delay = 0.1
             
                 self.pixelVC.setAlternateRowSize(0, animate:true)
             
                 self.pomodoroTopOffScreen()
+                self.labelTopOffScreen()
+            
                 UIView.animate(withDuration: wait, animations: {
                     self.view.layoutIfNeeded()
                 })
             
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+            
+                  self.titleLabel.isHidden = true
                 self.delegate.moveToBottom(animated: animated)
                 self.pomodoroBottomOffScreen()
+                self.labelBottomOffScreen()
                 UIView.animate(withDuration: wait, animations: {
                     self.view.layoutIfNeeded()
                 })
@@ -362,6 +436,8 @@ class TimerViewController: UIViewController {
             delay = delay + wait
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                 self.pomodoroBottom()
+                self.labelCenterBottom()
+                  self.titleLabel.isHidden = false
                 UIView.animate(withDuration: wait, animations: {
                     self.view.layoutIfNeeded()
                 })
