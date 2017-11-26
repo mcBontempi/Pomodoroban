@@ -170,8 +170,6 @@ class PixelTestViewController: UIViewController {
         
     }
     
-    
-    
     func setupWithPixels(_ pixels:[[Int]], size:CGFloat) {
         
         var delay:Double = 0.0
@@ -293,14 +291,16 @@ class PixelTestViewController: UIViewController {
     
     
     
-    func setAlternateRowSize(_ size:CGFloat) {
+    func setAlternateRowSize(_ size:CGFloat, animate:Bool = true) {
+        
         for constraint in self.widthAndHeightConstraints {
             constraint.constant = size
         }
-        
+        if animate == true {
         UIView.animate(withDuration: 1.0, animations: { 
             self.view.layoutIfNeeded()
-        }) 
+        })
+        }
         
     }
     

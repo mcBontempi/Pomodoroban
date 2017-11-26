@@ -3,18 +3,20 @@ import CoreData
 import DDTRepeater
 import Firebase
 import UserNotifications
+import RZViewActions
 
 protocol TimerViewControllerDelegate {
     func timerViewControllerEnded(_ timerViewController: TimerViewController)
     func timerViewControllerDidPressResize(_ timerViewController: TimerViewController)
+    
+    func moveToTop(animated:Bool)
+    func moveToBottom(animated:Bool)
+    
 }
 
 class TimerViewController: UIViewController {
     
-    
-    
-    
-    
+    @IBOutlet var arrows: [UIImageView]!
     
     
     
@@ -23,14 +25,22 @@ class TimerViewController: UIViewController {
     @IBAction func didPressResizeButton(_ sender: Any) {
         self.delegate.timerViewControllerDidPressResize(self)
     }
-
+    
     let storage = Storage.storage()
     var pixelVC: PixelTestViewController!
     
-    @IBOutlet weak var pixelX: NSLayoutConstraint!
-    @IBOutlet weak var pixelY: NSLayoutConstraint!
-    @IBOutlet weak var pixelWidth: NSLayoutConstraint!
-    @IBOutlet weak var pixelHeight: NSLayoutConstraint!
+    
+    
+    
+    @IBOutlet weak var pomodoroLeadingConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var pomodoroBottomConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var pomodoroHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var pomodoroWidthConstraint: NSLayoutConstraint!
+    
+    
+    
     @IBOutlet weak var ticketBackgroundView: UIView!
     @IBOutlet weak var takeABreakLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -45,7 +55,7 @@ class TimerViewController: UIViewController {
     var haveALongBreak:Int!
     var index = 0
     var shortBreaks = 0
-   
+    
     var delegate:TimerViewControllerDelegate!
     let moc = CoreDataServices.sharedInstance.moc
     
@@ -61,13 +71,29 @@ class TimerViewController: UIViewController {
         case none
     }
     
+    var timerHeight:TimerHeight! {
+        get {
+            return self.timerHeight
+        }
+        set (newValue) {
+            switch (newValue) {
+            case .TimerHeightFullScreen:
+                self.moveToTop(animated: true)
+            default:
+                self.moveToBottom(animated: true)
+            }
+            
+            
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         self.pixelVC = segue.destination as! PixelTestViewController
     }
     
     func updateWithTicket(_ ticket: Ticket) {
         
-        self.ticketBackgroundView.isHidden = false
+        self.ticketBackgroundView.isHidden = true
         self.view.backgroundColor = self.veryDarkBackgroundColor
         self.timerLabel.textColor = UIColor.lightGray
         self.ticketBackgroundView.backgroundColor = UIColor.colorFrom(Int( ticket.colorIndex))
@@ -75,7 +101,7 @@ class TimerViewController: UIViewController {
         self.notesTextView.text = ticket.desc
         
         let pomodoroView = UIView.pomodoroRowWith(Int(ticket.pomodoroEstimate))
-        self.pixelVC.setupAsPomodoro(2)
+        self.pixelVC.setupAsPomodoro(6)
     }
     
     
@@ -85,9 +111,9 @@ class TimerViewController: UIViewController {
             return 6
         }
         else if height >= 768 {
-            return 20
+            return 12
         }
-        return 10
+        return 6
     }
     
     func updateWithBreak() {
@@ -128,26 +154,243 @@ class TimerViewController: UIViewController {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.hideTimer()
-        
         self.delegate.timerViewControllerEnded(self)
-        
     }
     
     var runtimes: [Runtime]!
-    
     var startDate: Date!
     
     deinit {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        
         appDelegate.timerVC = nil
-        
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let layer = self.resizeButton.layer
+        layer.cornerRadius = 6
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.moveToTop(animated: false)
+    }
+    
+    
+    
+    func pomodoroTop() {
+        let screenSize = UIScreen.main.bounds.size
+        let width = screenSize.width
+        let height = screenSize.height
+        let pomodoroSize = width * 0.8
+        self.pomodoroWidthConstraint.constant = pomodoroSize
+        let padding = width * 0.1
+        self.pomodoroHeightConstraint.constant = pomodoroSize
+        self.pomodoroBottomConstraint.constant = height - pomodoroSize - padding
+        self.pomodoroLeadingConstraint.constant = padding
+    }
+    
+    func pomodoroTopOffScreen() {
+        let screenSize = UIScreen.main.bounds.size
+        let width = screenSize.width
+        let height = screenSize.height
+        let pomodoroSize = width * 0.8
+        self.pomodoroWidthConstraint.constant = pomodoroSize
+        let padding = width * 0.1
+        self.pomodoroHeightConstraint.constant = pomodoroSize
+        self.pomodoroBottomConstraint.constant = height - pomodoroSize - padding
+        self.pomodoroLeadingConstraint.constant = -width
+    }
+    
+    func pomodoroBottomOffScreen() {
+        self.pomodoroWidthConstraint.constant = 100
+        self.pomodoroHeightConstraint.constant = 100
+        self.pomodoroBottomConstraint.constant = 0
+        self.pomodoroLeadingConstraint.constant = -100
+    }
+    func pomodoroBottom() {
+        self.pomodoroWidthConstraint.constant = 100
+        self.pomodoroHeightConstraint.constant = 100
+        self.pomodoroBottomConstraint.constant = 0
+        self.pomodoroLeadingConstraint.constant = 0
+    }
+    
+    func buttonArrowBottom() {
+        UIView.animate(withDuration: 0.3, animations: { () -> Void in
+            for arrow in self.arrows {
+                arrow.transform = CGAffineTransform(rotationAngle: 0)
+            }
+        })
+    }
+    
+    func buttonArrowTop() {
+        UIView.animate(withDuration: 0.3, animations: { () -> Void in
+            for arrow in self.arrows {
+                arrow.transform = CGAffineTransform(rotationAngle: 3.142)
+            }
+        })
+    }
+    
+    /*
+     
+     RZViewAction *scaleUp = [RZViewAction action:^{
+     self.titleLabel.transform = CGAffineTransformScale(self.titleLabel.transform, 1.3f, 1.3f);
+     } withOptions:UIViewAnimationOptionCurveEaseOut duration:0.2];
+     
+     RZViewAction *scaleDown = [RZViewAction action:^{
+     self.titleLabel.transform = CGAffineTransformIdentity;
+     } withDuration:0.15];
+     
+     RZViewAction *wait = [RZViewAction waitForDuration:0.7];
+     
+     RZViewAction *pulse = [RZViewAction sequence:@[scaleUp, scaleDown]];
+     RZViewAction *heartbeat = [RZViewAction sequence:@[pulse, wait, pulse, wait, pulse]];
+     
+     [UIView rz_runAction:heartbeat withCompletion:^(BOOL finished) {
+     NSLog(@"Animation complete!");
+     }];
+     
+     */
+    
+    func moveToTop(animated:Bool) {
+        
+        if animated == false {
+            if self.delegate != nil {
+                self.delegate.moveToTop(animated: animated)
+            }
+            self.buttonArrowTop()
+            self.pomodoroTop()
+            self.view.setNeedsLayout()
+        }
+        else {
+            
+            
+            self.view.isUserInteractionEnabled = false
+            
+            self.delegate.moveToTop(animated: true)
+            
+            let wait = 0.2
+            
+            var delay = 0.1
+            
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+             self.pomodoroBottomOffScreen()
+                self.pixelVC.setAlternateRowSize(6, animate:true)
+                
+                delay = delay + wait
+                
+                UIView.animate(withDuration: wait, animations: {
+                    self.view.layoutIfNeeded()
+                })
+            }
+        
+            delay = delay + wait
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                self.pomodoroTopOffScreen()
+                UIView.animate(withDuration: wait, animations: {
+                    self.view.layoutIfNeeded()
+                })
+            }
+              delay = delay + wait
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                self.pomodoroTop()
+                
+                UIView.animate(withDuration: wait, animations: {
+                    self.view.layoutIfNeeded()
+                })
+            }
+            delay = delay + wait
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                self.buttonArrowTop()
+                UIView.animate(withDuration: wait, animations: {
+                    self.view.layoutIfNeeded()
+                    
+                    self.view.isUserInteractionEnabled = true
+                    
+                })
+            }
+            
+        
+            
+            
+            
+            
+            
+        }
+        
+        
+    }
+    
+    func moveToBottom(animated:Bool) {
+        
+        
+        if animated == false {
+        if self.delegate != nil {
+            self.delegate.moveToBottom(animated: animated)
+        }
+        
+        self.pomodoroTopOffScreen()
+        self.pomodoroBottomOffScreen()
+        self.pomodoroBottom()
+        
+        self.buttonArrowBottom()
+        
+        }
+        else {
+            self.view.isUserInteractionEnabled = false
+            
+            let wait = 0.1
+            
+            var delay = 0.1
+            
+                self.pixelVC.setAlternateRowSize(0, animate:true)
+            
+                self.pomodoroTopOffScreen()
+                UIView.animate(withDuration: wait, animations: {
+                    self.view.layoutIfNeeded()
+                })
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                self.delegate.moveToBottom(animated: animated)
+                self.pomodoroBottomOffScreen()
+                UIView.animate(withDuration: wait, animations: {
+                    self.view.layoutIfNeeded()
+                })
+            }
+            delay = delay + wait
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                self.pomodoroBottom()
+                UIView.animate(withDuration: wait, animations: {
+                    self.view.layoutIfNeeded()
+                })
+            }
+            delay = delay + wait
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                self.buttonArrowBottom()
+            
+                
+                UIView.animate(withDuration: wait, animations: {
+                    self.view.layoutIfNeeded()
+                })
+            }
+            
+            delay = delay + wait
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                
+            self.delegate.moveToBottom(animated: true)
+                UIView.animate(withDuration: wait, animations: {
+                    self.view.layoutIfNeeded()
+                    
+                    self.view.isUserInteractionEnabled = true
+                    
+                })
+            }
+            
+        }
     }
     
     
@@ -160,19 +403,19 @@ class TimerViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         appDelegate.timerVC = self
-    /*
-        self.view.layer.cornerRadius = 20
-        self.view.layer.borderWidth = 5
-        self.view.layer.borderColor = UIColor.lightGray.cgColor
-        self.view.clipsToBounds = true
-        
-        self.ticketBackgroundView.layer.cornerRadius = self.ticketBackgroundView.frame.size.width / 2
-        
-        self.ticketBackgroundView.layer.borderColor = UIColor.darkGray.cgColor
-        self.ticketBackgroundView.layer.borderWidth = 3
-   
-        self.ticketBackgroundView.clipsToBounds = true
-        */
+        /*
+         self.view.layer.cornerRadius = 20
+         self.view.layer.borderWidth = 5
+         self.view.layer.borderColor = UIColor.lightGray.cgColor
+         self.view.clipsToBounds = true
+         
+         self.ticketBackgroundView.layer.cornerRadius = self.ticketBackgroundView.frame.size.width / 2
+         
+         self.ticketBackgroundView.layer.borderColor = UIColor.darkGray.cgColor
+         self.ticketBackgroundView.layer.borderWidth = 3
+         
+         self.ticketBackgroundView.clipsToBounds = true
+         */
         if Runtime.all(self.moc).count > 0 {
             self.startDate = UserDefaults.standard.object(forKey: "startDate") as! Date
         }
@@ -186,8 +429,6 @@ class TimerViewController: UIViewController {
             defaults.synchronize()
             
             Runtime.removeAllEntities(self.moc)
-            
-            
             Runtime.createForSessionLength(section:section,self.moc,sessionLength:10000000, pomodoroLength: self.pomodoroLength, shortBreakLength: self.shortBreakLength, longBreakLength: self.longBreakLength, shortBreakCount: self.shortBreakCount, haveALongBreak:self.haveALongBreak)
             
             
@@ -264,12 +505,12 @@ class TimerViewController: UIViewController {
                 
                 defaults.set(true, forKey: "createdFirstMotivationAlert")
                 defaults.synchronize()
-           
+                
                 let alert = Alert.createInMoc(self.moc)
                 
                 alert.message = "Well done you completed your first session. Try and use Calchua each day to move forward on your most important tasks."
                 alert.type = Alert.AlertType.AlertTypeFirstSessionCreated.rawValue
-                    
+                
                 try! self.moc.save()
             }
             
@@ -433,9 +674,6 @@ class TimerViewController: UIViewController {
         
         
         if seconds > 0 {
-            
-            
-            
             let content = UNMutableNotificationContent()
             content.title = "Calchua"
             content.body = message
@@ -607,9 +845,6 @@ extension TimerViewController : TicketViewControllerDelegate {
     
     func delete(ticket:Ticket) {
         self.dismiss(animated: true) {
-            
-            
-            
             
         }
     }

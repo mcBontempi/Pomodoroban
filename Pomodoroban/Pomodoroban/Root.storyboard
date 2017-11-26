@@ -54,7 +54,7 @@
                                 </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="MQC-X3-QQe" secondAttribute="trailing" id="6Ng-3o-LSj"/>
                             <constraint firstItem="ehv-0C-RX6" firstAttribute="bottom" secondItem="MQC-X3-QQe" secondAttribute="bottom" constant="100" id="BWr-68-yE5"/>
@@ -63,9 +63,9 @@
                             <constraint firstItem="MQC-X3-QQe" firstAttribute="top" secondItem="8ds-ZR-Obe" secondAttribute="top" id="X0W-7X-oMv"/>
                             <constraint firstAttribute="trailing" secondItem="IVy-nH-nUi" secondAttribute="trailing" id="auJ-V1-bF0"/>
                             <constraint firstItem="IVy-nH-nUi" firstAttribute="top" secondItem="8ds-ZR-Obe" secondAttribute="top" id="ePv-1n-iOE"/>
+                            <constraint firstItem="ehv-0C-RX6" firstAttribute="bottom" secondItem="As2-m3-LZg" secondAttribute="bottom" id="jJA-YM-qvW"/>
                             <constraint firstItem="As2-m3-LZg" firstAttribute="leading" secondItem="ehv-0C-RX6" secondAttribute="leading" id="jQJ-oR-hc7"/>
                             <constraint firstItem="ehv-0C-RX6" firstAttribute="trailing" secondItem="As2-m3-LZg" secondAttribute="trailing" id="kd1-Lt-ODp"/>
-                            <constraint firstItem="Vtp-o2-UYc" firstAttribute="top" secondItem="As2-m3-LZg" secondAttribute="bottom" id="ycp-8t-uqD"/>
                             <constraint firstItem="IVy-nH-nUi" firstAttribute="leading" secondItem="8ds-ZR-Obe" secondAttribute="leading" id="zBV-vp-Hvs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ehv-0C-RX6"/>

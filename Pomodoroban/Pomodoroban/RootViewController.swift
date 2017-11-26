@@ -1,13 +1,11 @@
 import UIKit
 
+enum TimerHeight : Int {
+    case TimerHeightFullScreen = 0
+    case TimerHeightMini = 1
+}
+
 class RootViewController: UIViewController {
-    
-    
-    
-    
-    
-    
-    
     
     @IBOutlet weak var loginView: UIView!
     @IBOutlet weak var timerView: UIView!
@@ -40,6 +38,8 @@ class RootViewController: UIViewController {
         super.viewDidLoad()
         
         self.timerVC.delegate = self
+        
+        self.timerHeight = .TimerHeightFullScreen
         
         self.loginView.alpha = 1.0
         self.feedView.alpha = 0.0
@@ -85,16 +85,12 @@ class RootViewController: UIViewController {
     }
     
     
-    
-    
-    
     func gotoTimer() -> TimerViewController{
         
-        self.updateTimerHeight()
+        self.moveToTop(animated: false)
         
         UIView.animate(withDuration: 0.3, animations: {
             self.timerView.alpha = 1.0
-            
             self.timerView.layoutIfNeeded()
         }) { (bool) in
             self.feedVC.navigationController?.popToRootViewController(animated: false)
@@ -120,49 +116,11 @@ class RootViewController: UIViewController {
         
         self.feedView.isUserInteractionEnabled = true
         self.loginView.isUserInteractionEnabled = false
-        
         self.feedVC.reloadTable()
     }
     
-    var timerHeight:TimerHeight {
-        get {
-            let defaults = UserDefaults.standard
-            if let _ = defaults.object(forKey: "timerHeight")  {
-                let value = defaults.value(forKey: "timerHeight") as! Int
-                defaults.synchronize()
-                return TimerHeight(rawValue:value)!
-            }
-            return .TimerHeightFullScreen
-        }
-        set (newTimerHeight){
-            let defaults = UserDefaults.standard
-            let value = newTimerHeight.rawValue
-            defaults.set(value, forKey: "timerHeight")
-            defaults.synchronize()
-        }
-    }
-    
-    func updateTimerHeight() {
-        switch (self.timerHeight) {
-        case .TimerHeightFullScreen:
-            self.timerViewHeight.constant = UIScreen.main.bounds.size.height
-        default:
-            self.timerViewHeight.constant = 100
-        }
-        
-        UIView.animate(withDuration: 3.0, animations: {
-            self.view.layoutIfNeeded()
-        })
-        
-    }
-    
-    enum TimerHeight : Int {
-        case TimerHeightFullScreen = 0
-        case TimerHeightMini = 1
-    }
-
+    var timerHeight:TimerHeight!
 }
-
 
 extension RootViewController : TimerViewControllerDelegate {
     func timerViewControllerEnded(_ timerViewController: TimerViewController) {
@@ -172,6 +130,30 @@ extension RootViewController : TimerViewControllerDelegate {
     func timerViewControllerDidPressResize(_ timerViewController: TimerViewController) {
         self.timerHeight = [.TimerHeightMini, .TimerHeightFullScreen][self.timerHeight.rawValue]
         
-        self.updateTimerHeight()
+        self.timerVC.timerHeight = self.timerHeight
+    }
+    
+    func moveToTop(animated: Bool) {
+        self.timerViewHeight.constant = UIScreen.main.bounds.size.height
+        if animated == true {
+            UIView.animate(withDuration: 0.1, animations: {
+                self.view.layoutIfNeeded()
+            })
+        }
+        else {
+            self.view.setNeedsLayout()
+        }
+    }
+    
+    func moveToBottom(animated: Bool) {
+        self.timerViewHeight.constant = 100
+        if animated == true {
+            UIView.animate(withDuration: 0.1, animations: {
+                self.view.layoutIfNeeded()
+            })
+        }
+        else {
+            self.view.setNeedsLayout()
+        }
     }
 }

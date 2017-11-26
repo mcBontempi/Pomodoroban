@@ -881,18 +881,18 @@
 			isa = PBXGroup;
 			children = (
 				D67FAECE1D95235B0085BF2D /* BoardTableViewController.swift */,
-				D67FAED01D952B1C0085BF2D /* TicketTableViewCell.swift */,
-				D61085361D960601001A203A /* TimerViewController.swift */,
-				D6E71D881DA3EFC10055F2AA /* NaturalLanguageViewController.swift */,
-				D6456A5A1DA5013A0002FDA2 /* TicketViewController.swift */,
-				D686EF991DB64C1C001431D4 /* LoginViewController.swift */,
-				FD577BDB1DB942C400470457 /* PixelTestViewController.swift */,
-				D686EF9B1DB64CE2001431D4 /* SignupViewController.swift */,
-				D637C3AF1DE3792E00A21FE7 /* WebViewController.swift */,
 				D6862BD01DE388E600B52B96 /* BuyViewController.swift */,
-				D641A5FB1EC1A79700D62BCA /* PostsViewController.swift */,
+				D686EF991DB64C1C001431D4 /* LoginViewController.swift */,
+				D6E71D881DA3EFC10055F2AA /* NaturalLanguageViewController.swift */,
+				FD577BDB1DB942C400470457 /* PixelTestViewController.swift */,
 				D65C2FF41EC99B4600F4DF0F /* PomodoroTabBarViewController.swift */,
+				D641A5FB1EC1A79700D62BCA /* PostsViewController.swift */,
 				D65E21081FA2044E008EFED7 /* RootViewController.swift */,
+				D686EF9B1DB64CE2001431D4 /* SignupViewController.swift */,
+				D67FAED01D952B1C0085BF2D /* TicketTableViewCell.swift */,
+				D6456A5A1DA5013A0002FDA2 /* TicketViewController.swift */,
+				D61085361D960601001A203A /* TimerViewController.swift */,
+				D637C3AF1DE3792E00A21FE7 /* WebViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1079,6 +1079,7 @@
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Onboard/Onboard.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/RZViewActions/RZViewActions.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftHEXColors/SwiftHEXColors.framework",
 				"${BUILT_PRODUCTS_DIR}/TSMessages/TSMessages.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -1098,6 +1099,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Onboard.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RZViewActions.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHEXColors.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TSMessages.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
