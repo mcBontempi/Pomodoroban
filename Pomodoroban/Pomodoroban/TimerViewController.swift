@@ -407,12 +407,7 @@ class TimerViewController: UIViewController {
                 }, completion: { (completed) in
                     self.view.isUserInteractionEnabled = true
                 })
-                
-                
-                
-            }
-         
-            
+           }
         }
     }
     
