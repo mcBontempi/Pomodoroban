@@ -77,7 +77,7 @@ class BoardTableViewController: UIViewController {
         self.tableView.tableHeaderView = nil
         self.title = section.components(separatedBy: " ").count < 2 ? section :  section.components(separatedBy: " ")[0] + " " + section.components(separatedBy: " ")[1]
         
-        self.playButton.isHidden = !FeedTableViewController.sections().contains(self.section) || self.section == "Backlog"
+        self.playButton.isHidden = !FeedTableViewController.sections().contains(self.section) || self.section == "Backlog" || Runtime.all(self.moc).count > 0
     }
     
     override func viewWillDisappear(_ animated: Bool) {

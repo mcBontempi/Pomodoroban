@@ -24,7 +24,7 @@ class PixelTestViewController: UIViewController {
     
     var viewIndex = 0
     
-    func setupAsCup(_ size:CGFloat) {
+    func setupAsCup(_ size:CGFloat, small:Bool = false) {
         
         
         if mode != .cup {
@@ -63,13 +63,13 @@ class PixelTestViewController: UIViewController {
                           [0,0,0,0,0,0,0,11,9,9,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                           [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]
             
-            self.setupWithPixels(pixels, size:size)
+            self.setupWithPixels(pixels, size:size , small:small)
             
         }
         
     }
     
-    func setupAsFood(_ size:CGFloat) {
+    func setupAsFood(_ size:CGFloat, small:Bool = false) {
         
         if self.mode != .food {
             self.mode = .food
@@ -110,7 +110,7 @@ class PixelTestViewController: UIViewController {
                 [0,0,0,0,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,0,0,0,0],
                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]
             
-            self.setupWithPixels(pixels, size:size)
+            self.setupWithPixels(pixels,size:size, small:small)
             
         }
     }
@@ -125,7 +125,7 @@ class PixelTestViewController: UIViewController {
     }
     
     
-    func setupAsPomodoro(_ size:CGFloat) {
+    func setupAsPomodoro(_ size:CGFloat, small:Bool = false) {
         
         if self.mode != .pomodoro {
             
@@ -157,7 +157,7 @@ class PixelTestViewController: UIViewController {
                           [0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0],
                           [0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0]]
             
-            self.setupWithPixels(pixels, size:size)
+            self.setupWithPixels(pixels, size:size, small:small)
             
         }
     }
@@ -170,7 +170,7 @@ class PixelTestViewController: UIViewController {
         
     }
     
-    func setupWithPixels(_ pixels:[[Int]], size:CGFloat) {
+    func setupWithPixels(_ pixels:[[Int]], size:CGFloat, small:Bool) {
         
         var delay:Double = 0.0
         
@@ -247,7 +247,9 @@ class PixelTestViewController: UIViewController {
             y = y + 1
         }
         
-    
+        if small == true {
+            self.setAlternateRowSize(0, animate:false)
+        }
         
     }
     

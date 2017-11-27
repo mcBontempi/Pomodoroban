@@ -31,15 +31,7 @@ class FeedTableViewController: UITableViewController {
         
         self.navigationItem.titleView = imageView
         
-        BuddyBuildSDK.setup()
-        if Runtime.all(self.moc).count > 0 {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let vc = appDelegate.gotoTimer()
-            
-            if let section = UserDefaults.standard.string(forKey: "section") {
-                vc.launch(section:section)
-            }
-        }
+   
     }
     
     override func viewWillAppear(_ animated: Bool) {

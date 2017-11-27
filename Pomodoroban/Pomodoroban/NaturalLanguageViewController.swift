@@ -178,7 +178,7 @@ class NaturalLanguageViewController: UIViewController {
         
         self.repeater.invalidate()
         
-        let factor = 60000.0
+        let factor = 0.1
       
         let length = self.pomodoroLengh.predicate() as! Int
         vc.pomodoroLength = Double(length) * factor

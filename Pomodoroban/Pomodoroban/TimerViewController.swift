@@ -8,42 +8,21 @@ import RZViewActions
 protocol TimerViewControllerDelegate {
     func timerViewControllerEnded(_ timerViewController: TimerViewController)
     func timerViewControllerDidPressResize(_ timerViewController: TimerViewController)
-    
     func moveToTop(animated:Bool)
     func moveToBottom(animated:Bool)
-    
 }
 
 class TimerViewController: UIViewController {
-    
     @IBOutlet var arrows: [UIImageView]!
-    
-    
-    
     @IBOutlet weak var resizeButton: UIButton!
-    
-    @IBAction func didPressResizeButton(_ sender: Any) {
-        self.delegate.timerViewControllerDidPressResize(self)
-    }
-    
-    let storage = Storage.storage()
-    var pixelVC: PixelTestViewController!
-    
     @IBOutlet weak var pomodoroLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var pomodoroBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var pomodoroHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var pomodoroWidthConstraint: NSLayoutConstraint!
-  
     @IBOutlet weak var labelHeight: NSLayoutConstraint!
-    
     @IBOutlet weak var labelWidth: NSLayoutConstraint!
-    
     @IBOutlet weak var labelLeading: NSLayoutConstraint!
-    
     @IBOutlet weak var labelBottom: NSLayoutConstraint!
-    
-    
-    
     @IBOutlet weak var ticketBackgroundView: UIView!
     @IBOutlet weak var takeABreakLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -51,6 +30,10 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var notesTextView: UITextView!
     
+    let storage = Storage.storage()
+    let moc = CoreDataServices.sharedInstance.moc
+    let speechEngine = FliteTTS()
+    var pixelVC: PixelTestViewController!
     var pomodoroLength:Double!
     var shortBreakLength:Double!
     var shortBreakCount:Int!
@@ -58,9 +41,13 @@ class TimerViewController: UIViewController {
     var haveALongBreak:Int!
     var index = 0
     var shortBreaks = 0
-    
+    var runtimes: [Runtime]!
+    var startDate: Date!
     var delegate:TimerViewControllerDelegate!
-    let moc = CoreDataServices.sharedInstance.moc
+    var repeater:DDTRepeater!
+    
+    var currentPartRemaining = 0.0
+    var currentPartLength = 0.0
     
     let darkBackgroundColor = UIColor(hexString: "555555")!
     let darkBackgroundColorForMask = UIColor(hexString: "505050")!
@@ -74,20 +61,15 @@ class TimerViewController: UIViewController {
         case none
     }
     
-    var timerHeight:TimerHeight! {
-        get {
-            return self.timerHeight
-        }
-        set (newValue) {
-            switch (newValue) {
+    var timerHeight:TimerHeight = .TimerHeightFullScreen
+    
+    func updateTimerHeight() {
+            switch (self.timerHeight) {
             case .TimerHeightFullScreen:
                 self.moveToTop(animated: true)
             default:
                 self.moveToBottom(animated: true)
             }
-            
-            
-        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -95,21 +77,17 @@ class TimerViewController: UIViewController {
     }
     
     func updateWithTicket(_ ticket: Ticket) {
-        
         self.ticketBackgroundView.isHidden = true
         self.view.backgroundColor = self.veryDarkBackgroundColor
         self.timerLabel.textColor = UIColor.lightGray
         self.ticketBackgroundView.backgroundColor = UIColor.colorFrom(Int( ticket.colorIndex))
         self.titleLabel.text = ticket.name
         self.notesTextView.text = ticket.desc
-        
         let pomodoroView = UIView.pomodoroRowWith(Int(ticket.pomodoroEstimate))
-        self.pixelVC.setupAsPomodoro(self.pixelSizeForThisDevice())
+        self.pixelVC.setupAsPomodoro(self.pixelSizeForThisDevice(), small:self.timerHeight == .TimerHeightMini)
     }
     
-    
     func pixelSizeForThisDevice() -> CGFloat{
-  
         return 6
     }
     
@@ -117,45 +95,35 @@ class TimerViewController: UIViewController {
         self.timerLabel.textColor = UIColor.white
         self.ticketBackgroundView.isHidden = true
         self.view.backgroundColor = self.darkBackgroundColor
-        
-        self.pixelVC.setupAsCup(self.pixelSizeForThisDevice())
+        self.pixelVC.setupAsCup(self.pixelSizeForThisDevice(), small:self.timerHeight == .TimerHeightMini)
     }
     
     func updateWithLongBreak() {
         self.timerLabel.textColor = UIColor.white
         self.ticketBackgroundView.isHidden = true
         self.timerLabel.textColor = UIColor.lightGray
-        
         self.view.backgroundColor = self.darkBackgroundColor
-        
-        self.pixelVC.setupAsFood(self.pixelSizeForThisDevice())
+        self.pixelVC.setupAsFood(self.pixelSizeForThisDevice(), small:self.timerHeight == .TimerHeightMini)
     }
     
     func close() {
-        
         if let repeater = self.repeater {
             repeater.invalidate()
         }
         self.cancelNotificationsAndAudioPlaybacks()
-        
         self.moveAllToNow()
         
         Runtime.removeAllEntities(self.moc)
         
         let userDefaults = UserDefaults.standard
-        
         userDefaults.removeObject(forKey: "startPausedDate")
         userDefaults.removeObject(forKey: "totalPausedTime")
-        
         userDefaults.synchronize()
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.hideTimer()
         self.delegate.timerViewControllerEnded(self)
     }
-    
-    var runtimes: [Runtime]!
-    var startDate: Date!
     
     deinit {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -164,21 +132,8 @@ class TimerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let layer = self.resizeButton.layer
-        layer.cornerRadius = 6
-        
-        
-        
-        self.titleLabel.layer.cornerRadius = 10.0
+    
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        self.moveToTop(animated: false)
-    }
-    
-    
     
     func pomodoroTop() {
         let screenSize = UIScreen.main.bounds.size
@@ -187,8 +142,9 @@ class TimerViewController: UIViewController {
         let pomodoroSize = width * 0.8
         self.pomodoroWidthConstraint.constant = pomodoroSize
         let padding = width * 0.1
+        let topPadding = width * 0.2
         self.pomodoroHeightConstraint.constant = pomodoroSize
-        self.pomodoroBottomConstraint.constant = height - pomodoroSize - padding
+        self.pomodoroBottomConstraint.constant = height - pomodoroSize - topPadding
         self.pomodoroLeadingConstraint.constant = padding
     }
     
@@ -197,23 +153,23 @@ class TimerViewController: UIViewController {
         let width = screenSize.width
         let height = screenSize.height
         let pomodoroSize = width * 0.8
+         let topPadding = width * 0.2
         self.pomodoroWidthConstraint.constant = pomodoroSize
-        let padding = width * 0.1
         self.pomodoroHeightConstraint.constant = pomodoroSize
-        self.pomodoroBottomConstraint.constant = height - pomodoroSize - padding
+        self.pomodoroBottomConstraint.constant = height - pomodoroSize - topPadding
         self.pomodoroLeadingConstraint.constant = -width
     }
     
     func pomodoroBottomOffScreen() {
-        self.pomodoroWidthConstraint.constant = 100
-        self.pomodoroHeightConstraint.constant = 100
-        self.pomodoroBottomConstraint.constant = 0
+        self.pomodoroWidthConstraint.constant = 80
+        self.pomodoroHeightConstraint.constant = 80
+        self.pomodoroBottomConstraint.constant = 10
         self.pomodoroLeadingConstraint.constant = -100
     }
     func pomodoroBottom() {
-        self.pomodoroWidthConstraint.constant = 100
-        self.pomodoroHeightConstraint.constant = 100
-        self.pomodoroBottomConstraint.constant = 0
+        self.pomodoroWidthConstraint.constant = 80
+        self.pomodoroHeightConstraint.constant = 80
+        self.pomodoroBottomConstraint.constant = 10
         self.pomodoroLeadingConstraint.constant = 10
     }
     
@@ -239,12 +195,13 @@ class TimerViewController: UIViewController {
         let width = screenSize.width
         let height = screenSize.height
         let labelWidth = width * 0.8
-         let pomodoroHeight = width * 0.8
+        let pomodoroHeight = width * 0.8
         let padding = width * 0.1
+        let topPadding = width * 0.2
         self.labelWidth.constant = labelWidth
         
-        self.labelHeight.constant = height - (padding + pomodoroHeight + padding + 100)
-       
+        self.labelHeight.constant = height - (padding + pomodoroHeight + topPadding + 100)
+        
         self.labelBottom.constant = 100.0
         self.labelLeading.constant = width
     }
@@ -256,9 +213,10 @@ class TimerViewController: UIViewController {
         let labelWidth = width * 0.8
         let pomodoroHeight = width * 0.8
         let padding = width * 0.1
+         let topPadding = width * 0.2
         self.labelWidth.constant = labelWidth
         
-        self.labelHeight.constant = height - (padding + pomodoroHeight + padding + 100)
+        self.labelHeight.constant = height - (padding + pomodoroHeight + topPadding + 100)
         
         self.labelBottom.constant = 100.0
         self.labelLeading.constant = padding
@@ -310,42 +268,33 @@ class TimerViewController: UIViewController {
      */
     
     func moveToTop(animated:Bool) {
-        
         if animated == false {
             if self.delegate != nil {
                 self.delegate.moveToTop(animated: animated)
             }
             self.buttonArrowTop()
             self.pomodoroTop()
+            self.labelTop()
             self.view.setNeedsLayout()
         }
         else {
-            
-            
             self.view.isUserInteractionEnabled = false
-            
             self.delegate.moveToTop(animated: true)
-            
             let wait = 0.2
-            
             var delay = 0.1
             
-            
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-             self.pomodoroBottomOffScreen()
+                self.pomodoroBottomOffScreen()
                 self.labelBottomOffScreen()
                 self.pixelVC.setAlternateRowSize(6, animate:true)
-                
                 delay = delay + wait
-                
                 UIView.animate(withDuration: wait, animations: {
                     self.view.layoutIfNeeded()
                 })
             }
-        
+            
             delay = delay + wait
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-                
                 self.titleLabel.isHidden = true
                 self.pomodoroTopOffScreen()
                 self.labelTopOffScreen()
@@ -353,13 +302,11 @@ class TimerViewController: UIViewController {
                     self.view.layoutIfNeeded()
                 })
             }
-              delay = delay + wait
+            delay = delay + wait
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                 self.pomodoroTop()
-                
-                    self.titleLabel.isHidden = false
+                self.titleLabel.isHidden = false
                 self.labelTop()
-                
                 UIView.animate(withDuration: wait, animations: {
                     self.view.layoutIfNeeded()
                 })
@@ -372,52 +319,32 @@ class TimerViewController: UIViewController {
                     self.view.isUserInteractionEnabled = true
                 })
             }
-            
-        
-            
-            
-            
-            
-            
         }
-        
-        
     }
     
     func moveToBottom(animated:Bool) {
-        
-        
         if animated == false {
-        if self.delegate != nil {
-            self.delegate.moveToBottom(animated: animated)
-        }
-        
-        self.pomodoroTopOffScreen()
-        self.pomodoroBottomOffScreen()
-        self.pomodoroBottom()
-        
-        self.buttonArrowBottom()
-        
+            if self.delegate != nil {
+                self.delegate.moveToBottom(animated: animated)
+            }
+            self.pomodoroTopOffScreen()
+            self.pomodoroBottomOffScreen()
+            self.pomodoroBottom()
+            self.labelCenterBottom()
+            self.buttonArrowBottom()
         }
         else {
             self.view.isUserInteractionEnabled = false
-            
             let wait = 0.2
-            
             var delay = 0.1
-            
-                self.pixelVC.setAlternateRowSize(0, animate:true)
-            
-                self.pomodoroTopOffScreen()
-                self.labelTopOffScreen()
-            
-                UIView.animate(withDuration: wait, animations: {
-                    self.view.layoutIfNeeded()
-                })
-            
+            self.pixelVC.setAlternateRowSize(0, animate:true)
+            self.pomodoroTopOffScreen()
+            self.labelTopOffScreen()
+            UIView.animate(withDuration: wait, animations: {
+                self.view.layoutIfNeeded()
+            })
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-            
-                  self.titleLabel.isHidden = true
+                self.titleLabel.isHidden = true
                 self.delegate.moveToBottom(animated: animated)
                 self.pomodoroBottomOffScreen()
                 self.labelBottomOffScreen()
@@ -429,7 +356,7 @@ class TimerViewController: UIViewController {
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                 self.pomodoroBottom()
                 self.labelCenterBottom()
-                  self.titleLabel.isHidden = false
+                self.titleLabel.isHidden = false
                 UIView.animate(withDuration: wait, animations: {
                     self.view.layoutIfNeeded()
                 })
@@ -438,7 +365,7 @@ class TimerViewController: UIViewController {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                 self.buttonArrowBottom()
-            
+                
                 
                 UIView.animate(withDuration: wait, animations: {
                     self.view.layoutIfNeeded()
@@ -449,7 +376,7 @@ class TimerViewController: UIViewController {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                 
-            self.delegate.moveToBottom(animated: true)
+                self.delegate.moveToBottom(animated: true)
                 UIView.animate(withDuration: wait, animations: {
                     self.view.layoutIfNeeded()
                     
@@ -461,12 +388,12 @@ class TimerViewController: UIViewController {
         }
     }
     
-    
     func launch(section:String) {
+        
+        self.timerHeight = .TimerHeightFullScreen
         
         let defaults = UserDefaults.standard
         defaults.set(section, forKey: "section")
-        
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
@@ -512,11 +439,23 @@ class TimerViewController: UIViewController {
         self.quitButton.clipsToBounds = true
         self.quitButton.layer.borderColor = UIColor.white.cgColor
         self.quitButton.layer.borderWidth = 6
+        
+        let layer = self.resizeButton.layer
+        layer.cornerRadius = 6
+        self.titleLabel.layer.cornerRadius = 10.0
+        self.titleLabel.backgroundColor = UIColor.red
+        self.titleLabel.layer.borderColor = UIColor.white.cgColor
+        self.titleLabel.layer.borderWidth = 3.0
+        self.titleLabel.clipsToBounds = true
+        
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
         self.repeater = DDTRepeater.repeater(0.1, fireOnceInstantly: true, execute: {
             self.update()
         })
+    
+        
+        self.moveToTop(animated: false)
     }
     
     
@@ -530,8 +469,6 @@ class TimerViewController: UIViewController {
         center.setNotificationCategories([category])
         
     }
-    
-    var repeater:DDTRepeater!
     
     func startDatePlusPauses() -> Date {
         var startDatePlusPauses = self.startDate
@@ -549,17 +486,11 @@ class TimerViewController: UIViewController {
         
     }
     
-    var currentPartRemaining = 0.0
-    var currentPartLength = 0.0
-    
-    
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentsDirectory = paths[0]
         return documentsDirectory
     }
-    
-    
     
     func moveAllToNow()
     {
@@ -720,8 +651,6 @@ class TimerViewController: UIViewController {
             }
             
             self.createNotification(dateNow, date:self.startDatePlusPauses(), secondsFrom: Int(runningTotal)-1 ,message:"End Of Work, well done", index:index, say:"End Of Work, well done")
-            
-            
         }
     }
     
@@ -729,32 +658,30 @@ class TimerViewController: UIViewController {
     
     func createNotification(_ dateNow:Date, date:Date, secondsFrom:Int, message: String, index: Int, say:String) {
         
-        
-        self.createAudioFromMessage(say,index:index)
+    ///////    self.createAudioFromMessage(say,index:index)
         
         let fireDate = date.addingTimeInterval(TimeInterval(secondsFrom))
         var seconds = fireDate.timeIntervalSince(dateNow)
-        
         
         if seconds > -1 && seconds <= 0 {
             seconds = 0.01
         }
         
-        
         if seconds > 0 {
             let content = UNMutableNotificationContent()
             content.title = "Calchua"
             content.body = message
-            content.sound = UNNotificationSound(named:"\(index).wav")
-            content.categoryIdentifier = "dave"
+         //   content.sound =     UNNotificationSound(named:"\(index).wav")
+          
+            content.sound = UNNotificationSound(named:"alert.wav")
+            
+            content.categoryIdentifier = "Calchua"
             let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: seconds , repeats: false)
             let request = UNNotificationRequest.init(identifier: "\(index)", content: content, trigger: trigger)
             // Schedule the notification.
             let center = UNUserNotificationCenter.current()
             center.add(request, withCompletionHandler: nil)
         }
-        
-        
     }
     
     func createAudioFromMessage(_ message:String, index:Int){
@@ -775,16 +702,12 @@ class TimerViewController: UIViewController {
         self.speechEngine.writeMessage(message,toPath: filePath)
     }
     
-    
-    let speechEngine = FliteTTS()
-    
-    
+    @IBAction func didPressResizeButton(_ sender: Any) {
+        self.delegate.timerViewControllerDidPressResize(self)
+    }
     
     @IBAction func quitPressed(_ sender: AnyObject) {
-        
-        
         let alert = UIAlertController(title: "Menu", message: "", preferredStyle: .actionSheet)
-        
         
         let userDefaults = UserDefaults.standard
         if let startPausedDate = userDefaults.object(forKey: "startPausedDate") as? Date {
@@ -797,15 +720,10 @@ class TimerViewController: UIViewController {
                 }
                 
                 let timeDiff = Date().timeIntervalSince(startPausedDate)
-                
                 totalPausedTime = totalPausedTime + timeDiff
-                
                 userDefaults.removeObject(forKey: "startPausedDate")
-                
                 userDefaults.set(totalPausedTime, forKey: "totalPausedTime")
-                
                 userDefaults.synchronize()
-                
                 self.createNotifications()
             }))
         }
@@ -813,12 +731,8 @@ class TimerViewController: UIViewController {
             
             alert.addAction(UIAlertAction(title: "Pause", style: .default, handler: { (action) in
                 userDefaults.set(Date(), forKey: "startPausedDate" )
-                
                 userDefaults.synchronize()
-                
                 self.cancelNotificationsAndAudioPlaybacks()
-                
-                
             }))
             
             alert.addAction(UIAlertAction(title: "Skip this pomodoro", style: .default, handler: { (action) in
@@ -906,14 +820,12 @@ class TimerViewController: UIViewController {
 extension TimerViewController : TicketViewControllerDelegate {
     func ticketViewControllerSave(_ ticketViewController: TicketViewController) {
         self.dismiss(animated: true) {
-            
             self.saveChildMoc()
         }
     }
     
     func delete(ticket:Ticket) {
         self.dismiss(animated: true) {
-            
         }
     }
     
@@ -923,12 +835,7 @@ extension TimerViewController : TicketViewControllerDelegate {
     }
 }
 
-
 extension TimerViewController : UNUserNotificationCenterDelegate {
-    
-    
-    
-    
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         print("willPresent")
         completionHandler([.sound])

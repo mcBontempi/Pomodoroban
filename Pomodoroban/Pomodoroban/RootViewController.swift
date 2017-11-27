@@ -7,11 +7,13 @@ enum TimerHeight : Int {
 
 class RootViewController: UIViewController {
     
+    let moc = CoreDataServices.sharedInstance.moc
+    
     @IBOutlet weak var loginView: UIView!
     @IBOutlet weak var timerView: UIView!
     @IBOutlet weak var feedView: UIView!
     
-    @IBOutlet weak var timerVCTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var feedViewBottomConstraint: NSLayoutConstraint!
     
     var timerVC: TimerViewController!
     var feedVC: FeedTableViewController!
@@ -49,6 +51,17 @@ class RootViewController: UIViewController {
         self.timerView.isUserInteractionEnabled = false
         self.loginView.isUserInteractionEnabled = true
         self.loginVC.start()
+        
+        
+        BuddyBuildSDK.setup()
+        if Runtime.all(self.moc).count > 0 {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let vc = appDelegate.gotoTimer()
+            
+            if let section = UserDefaults.standard.string(forKey: "section") {
+                vc.launch(section:section)
+            }
+        }
     }
     
     func gotoLogin() {
@@ -120,21 +133,38 @@ class RootViewController: UIViewController {
     }
     
     var timerHeight:TimerHeight!
+    
+    func noTimer(animated: Bool) {
+        self.feedViewBottomConstraint.constant = 0
+        if animated == true {
+            UIView.animate(withDuration: 0.1, animations: {
+                self.view.layoutIfNeeded()
+            })
+        }
+        else {
+            self.view.setNeedsLayout()
+        }
+        
+    }
 }
 
 extension RootViewController : TimerViewControllerDelegate {
     func timerViewControllerEnded(_ timerViewController: TimerViewController) {
         self.feedVC.reloadTable()
+        self.noTimer(animated: true)
     }
     
     func timerViewControllerDidPressResize(_ timerViewController: TimerViewController) {
         self.timerHeight = [.TimerHeightMini, .TimerHeightFullScreen][self.timerHeight.rawValue]
         
         self.timerVC.timerHeight = self.timerHeight
+        
+        self.timerVC.updateTimerHeight()
     }
     
     func moveToTop(animated: Bool) {
         self.timerViewHeight.constant = UIScreen.main.bounds.size.height
+          self.feedViewBottomConstraint.constant = 100
         if animated == true {
             UIView.animate(withDuration: 0.1, animations: {
                 self.view.layoutIfNeeded()
@@ -147,6 +177,7 @@ extension RootViewController : TimerViewControllerDelegate {
     
     func moveToBottom(animated: Bool) {
         self.timerViewHeight.constant = 100
+          self.feedViewBottomConstraint.constant = 100
         if animated == true {
             UIView.animate(withDuration: 0.1, animations: {
                 self.view.layoutIfNeeded()
@@ -156,4 +187,6 @@ extension RootViewController : TimerViewControllerDelegate {
             self.view.setNeedsLayout()
         }
     }
+    
+   
 }

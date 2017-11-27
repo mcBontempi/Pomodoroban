@@ -18,7 +18,7 @@ class AlertViewController: UIViewController {
         super.viewDidLoad()
         let delayTime = DispatchTime.now() + Double(Int64(0.3 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
         DispatchQueue.main.asyncAfter(deadline: delayTime) {
-        self.pixelVC.setupAsPomodoro(6)
+            self.pixelVC.setupAsPomodoro(6)
             
             UIView.animate(withDuration: 0.3, animations: {
                 self.calchuaLogo.alpha = 1.0
