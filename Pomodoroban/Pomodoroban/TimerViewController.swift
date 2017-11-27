@@ -310,8 +310,8 @@ class TimerViewController: UIViewController {
         }
         else {
             self.view.isUserInteractionEnabled = false
-            let wait = 0.5
-            var delay = 0.3
+            let wait = 0.2
+            var delay = 0.1
                 self.pomodoroBottomOffScreen()
                 self.labelBottomOffScreen()
                 self.pixelVC.setAlternateRowSize(6, animate:true)
@@ -327,7 +327,7 @@ class TimerViewController: UIViewController {
                     self.view.layoutIfNeeded()
                 })
             }
-            delay = delay + wait
+            delay = delay + wait + delay
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                 self.delegate.moveToTop(animated: true)
                 self.pomodoroTop()
@@ -360,8 +360,8 @@ class TimerViewController: UIViewController {
         }
         else {
             self.view.isUserInteractionEnabled = false
-            let wait = 0.5
-            var delay = 0.3
+            let wait = 0.2
+            var delay = 0.1
             self.pixelVC.setAlternateRowSize(0, animate:true)
             self.pomodoroTopOffScreen()
             self.labelTopOffScreen()
@@ -372,15 +372,16 @@ class TimerViewController: UIViewController {
             })
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                 self.titleLabel.isHidden = true
-                self.delegate.moveToBottom(animated: animated)
                 self.pomodoroBottomOffScreen()
                 self.labelBottomOffScreen()
                 UIView.animate(withDuration: wait, animations: {
                     self.view.layoutIfNeeded()
                 })
             }
-            delay = delay + wait
+            delay = delay + wait + delay
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                self.delegate.moveToBottom(animated: animated)
+                
                 self.pomodoroBottom()
                 self.labelCenterBottom()
                    self.buttonArrowBottom()
@@ -449,11 +450,10 @@ class TimerViewController: UIViewController {
         self.quitButton.clipsToBounds = true
         let layer = self.resizeButton.layer
         layer.cornerRadius = 6
-        self.titleLabel.layer.cornerRadius = 10.0
-        self.titleLabel.backgroundColor = UIColor.red
+        self.titleLabel.layer.cornerRadius = 0.0
         self.titleLabel.layer.borderColor = UIColor.white.cgColor
         self.titleLabel.layer.borderWidth = 3.0
-        self.titleLabel.clipsToBounds = true
+        self.titleLabel.layer.masksToBounds = true
         
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
