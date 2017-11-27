@@ -233,7 +233,7 @@ class TimerViewController: UIViewController {
         
         self.labelHeight.constant = 80
         
-        self.labelBottom.constant = -100
+        self.labelBottom.constant = -150
         self.labelLeading.constant = 110
     }
     
@@ -310,21 +310,15 @@ class TimerViewController: UIViewController {
         }
         else {
             self.view.isUserInteractionEnabled = false
-            self.delegate.moveToTop(animated: true)
-            let wait = 0.2
-            var delay = 0.1
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+            let wait = 0.5
+            var delay = 0.3
                 self.pomodoroBottomOffScreen()
                 self.labelBottomOffScreen()
                 self.pixelVC.setAlternateRowSize(6, animate:true)
-                delay = delay + wait
                 UIView.animate(withDuration: wait, animations: {
                     self.view.layoutIfNeeded()
                 })
-            }
             
-            delay = delay + wait
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                 self.titleLabel.isHidden = true
                 self.pomodoroTopOffScreen()
@@ -335,23 +329,19 @@ class TimerViewController: UIViewController {
             }
             delay = delay + wait
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                self.delegate.moveToTop(animated: true)
                 self.pomodoroTop()
                 self.titleLabel.isHidden = false
                 self.labelTop()
                 self.quitButtonToBottomLeft()
                 self.timerLabelToCentreBottom()
-                UIView.animate(withDuration: wait, animations: {
-                    self.view.layoutIfNeeded()
-                })
-            }
-            delay = delay + wait
-            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                 self.buttonArrowTop()
                 UIView.animate(withDuration: wait, animations: {
                     self.view.layoutIfNeeded()
-                    self.view.isUserInteractionEnabled = true
+                     self.view.isUserInteractionEnabled = true
                 })
             }
+    
         }
     }
     
@@ -370,8 +360,8 @@ class TimerViewController: UIViewController {
         }
         else {
             self.view.isUserInteractionEnabled = false
-            let wait = 0.2
-            var delay = 0.1
+            let wait = 0.5
+            var delay = 0.3
             self.pixelVC.setAlternateRowSize(0, animate:true)
             self.pomodoroTopOffScreen()
             self.labelTopOffScreen()
@@ -393,35 +383,17 @@ class TimerViewController: UIViewController {
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                 self.pomodoroBottom()
                 self.labelCenterBottom()
+                   self.buttonArrowBottom()
      
                 self.titleLabel.isHidden = false
                 UIView.animate(withDuration: wait, animations: {
                     self.view.layoutIfNeeded()
-                })
-            }
-            delay = delay + wait
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-                self.buttonArrowBottom()
-                
-                
-                UIView.animate(withDuration: wait, animations: {
-                    self.view.layoutIfNeeded()
-                })
-            }
-            
-            delay = delay + wait
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-                
-                self.delegate.moveToBottom(animated: true)
-                UIView.animate(withDuration: wait, animations: {
-                    self.view.layoutIfNeeded()
                     
-                    self.view.isUserInteractionEnabled = true
-                    
+                    self.delegate.moveToBottom(animated: true)
+                        self.view.isUserInteractionEnabled = true
                 })
             }
+         
             
         }
     }

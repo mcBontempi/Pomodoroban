@@ -270,7 +270,7 @@ class PixelTestViewController: UIViewController {
                     
                     UIView.animate(withDuration: 2.0, animations: {
                         
-                        view.alpha = 0
+                        view.alpha = 0.1
                     })
                 }
             }
