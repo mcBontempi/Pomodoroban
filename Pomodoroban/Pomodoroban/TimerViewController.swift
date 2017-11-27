@@ -17,7 +17,11 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var resizeButton: UIButton!
     @IBOutlet weak var pomodoroLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var pomodoroBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var timerLabelBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var pomodoroHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var timerLabelLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var timerLabelWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var quitButtonLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var pomodoroWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var labelHeight: NSLayoutConstraint!
     @IBOutlet weak var labelWidth: NSLayoutConstraint!
@@ -79,8 +83,8 @@ class TimerViewController: UIViewController {
     func updateWithTicket(_ ticket: Ticket) {
         self.ticketBackgroundView.isHidden = true
         self.view.backgroundColor = self.veryDarkBackgroundColor
-        self.timerLabel.textColor = UIColor.lightGray
-        self.ticketBackgroundView.backgroundColor = UIColor.colorFrom(Int( ticket.colorIndex))
+        self.timerLabel.textColor = UIColor.white
+        self.titleLabel.backgroundColor = UIColor.colorFrom(Int( ticket.colorIndex))
         self.titleLabel.text = ticket.name
         self.notesTextView.text = ticket.desc
         let pomodoroView = UIView.pomodoroRowWith(Int(ticket.pomodoroEstimate))
@@ -200,9 +204,9 @@ class TimerViewController: UIViewController {
         let topPadding = width * 0.2
         self.labelWidth.constant = labelWidth
         
-        self.labelHeight.constant = height - (padding + pomodoroHeight + topPadding + 100)
+        self.labelHeight.constant = height - (padding + pomodoroHeight + topPadding + 100 + padding)
         
-        self.labelBottom.constant = 100.0
+        self.labelBottom.constant = 100.0 + padding
         self.labelLeading.constant = width
     }
     
@@ -216,9 +220,9 @@ class TimerViewController: UIViewController {
          let topPadding = width * 0.2
         self.labelWidth.constant = labelWidth
         
-        self.labelHeight.constant = height - (padding + pomodoroHeight + topPadding + 100)
+        self.labelHeight.constant = height - (padding + pomodoroHeight + topPadding + 100 + padding)
         
-        self.labelBottom.constant = 100.0
+        self.labelBottom.constant = 100.0 + padding
         self.labelLeading.constant = padding
     }
     
@@ -230,7 +234,7 @@ class TimerViewController: UIViewController {
         self.labelHeight.constant = 80
         
         self.labelBottom.constant = -100
-        self.labelLeading.constant = 120
+        self.labelLeading.constant = 110
     }
     
     func labelCenterBottom() {
@@ -241,7 +245,32 @@ class TimerViewController: UIViewController {
         self.labelHeight.constant = 80
         
         self.labelBottom.constant = 10
-        self.labelLeading.constant = 120
+        self.labelLeading.constant = 110
+    }
+    
+    
+    func quitButtonToBottomLeft() {
+        self.quitButtonLeadingConstraint.constant = 18
+    }
+    
+    func quitButtonOffScreen() {
+        self.quitButtonLeadingConstraint.constant = -100
+    }
+    
+    func timerLabelToCentreBottom() {
+        let screenSize = UIScreen.main.bounds.size
+        let width = screenSize.width
+        self.timerLabelBottomConstraint.constant = 5
+        self.timerLabelLeadingConstraint.constant = 110
+        self.timerLabelWidthConstraint.constant = width - 220
+    }
+    
+    func tiemrLabelToOffScreen() {
+        let screenSize = UIScreen.main.bounds.size
+        let width = screenSize.width
+        self.timerLabelBottomConstraint.constant = -200
+        self.timerLabelLeadingConstraint.constant = 110
+        self.timerLabelWidthConstraint.constant = width - 220
     }
     
     
@@ -275,6 +304,8 @@ class TimerViewController: UIViewController {
             self.buttonArrowTop()
             self.pomodoroTop()
             self.labelTop()
+            self.quitButtonToBottomLeft()
+            self.timerLabelToCentreBottom()
             self.view.setNeedsLayout()
         }
         else {
@@ -307,6 +338,8 @@ class TimerViewController: UIViewController {
                 self.pomodoroTop()
                 self.titleLabel.isHidden = false
                 self.labelTop()
+                self.quitButtonToBottomLeft()
+                self.timerLabelToCentreBottom()
                 UIView.animate(withDuration: wait, animations: {
                     self.view.layoutIfNeeded()
                 })
@@ -332,6 +365,8 @@ class TimerViewController: UIViewController {
             self.pomodoroBottom()
             self.labelCenterBottom()
             self.buttonArrowBottom()
+            self.quitButtonOffScreen()
+            self.tiemrLabelToOffScreen()
         }
         else {
             self.view.isUserInteractionEnabled = false
@@ -340,6 +375,8 @@ class TimerViewController: UIViewController {
             self.pixelVC.setAlternateRowSize(0, animate:true)
             self.pomodoroTopOffScreen()
             self.labelTopOffScreen()
+            self.quitButtonOffScreen()
+            self.tiemrLabelToOffScreen()
             UIView.animate(withDuration: wait, animations: {
                 self.view.layoutIfNeeded()
             })
@@ -356,6 +393,7 @@ class TimerViewController: UIViewController {
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                 self.pomodoroBottom()
                 self.labelCenterBottom()
+     
                 self.titleLabel.isHidden = false
                 UIView.animate(withDuration: wait, animations: {
                     self.view.layoutIfNeeded()
@@ -437,9 +475,6 @@ class TimerViewController: UIViewController {
         self.createNotifications()
         self.quitButton.layer.cornerRadius = 4
         self.quitButton.clipsToBounds = true
-        self.quitButton.layer.borderColor = UIColor.white.cgColor
-        self.quitButton.layer.borderWidth = 6
-        
         let layer = self.resizeButton.layer
         layer.cornerRadius = 6
         self.titleLabel.layer.cornerRadius = 10.0
@@ -574,22 +609,22 @@ class TimerViewController: UIViewController {
                     if let ticket = Ticket.ticketForIdentifier(identifier: runtime.ticketIdentifier, moc: self.moc) {
                         
                         let partCount = ticket.pomodoroEstimate
-                        self.timerLabel.text = String(format:"%d/%d",self.currentPartRemaining , part,partCount)
+                        self.timerLabel.text = String(format:"%d of %d", part,partCount)
                         
                         self.updateWithTicket(ticket)
                     }
                 }
                 else if runtime.type == 1 {
-                    self.timerLabel.text = String(format:"Seconds remaining = %.0f", self.currentPartRemaining)
+                    self.timerLabel.text = "Take a short break"
                     
-                    self.takeABreakLabel.text = "Take a short break"
+                    self.takeABreakLabel.text = ""
                     
                     self.updateWithBreak()
                 }
                 else if runtime.type == 2 {
-                    self.timerLabel.text = String(format:"Seconds remaining = %.0f", self.currentPartRemaining)
+                    self.timerLabel.text = "Take a long break"
                     
-                    self.takeABreakLabel.text = "Take a long break"
+                    self.takeABreakLabel.text = ""
                     
                     self.updateWithLongBreak()
                 }
