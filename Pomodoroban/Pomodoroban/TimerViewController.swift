@@ -34,6 +34,9 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var notesTextView: UITextView!
     
+    let wait = 0.4
+    let delay = 0.00
+    
     let storage = Storage.storage()
     let moc = CoreDataServices.sharedInstance.moc
     let speechEngine = FliteTTS()
@@ -310,8 +313,10 @@ class TimerViewController: UIViewController {
         }
         else {
             self.view.isUserInteractionEnabled = false
-            let wait = 0.2
-            var delay = 0.1
+        
+            
+            var ongoing = 0.0
+            
                 self.pomodoroBottomOffScreen()
                 self.labelBottomOffScreen()
                 self.pixelVC.setAlternateRowSize(6, animate:true)
@@ -319,16 +324,18 @@ class TimerViewController: UIViewController {
                     self.view.layoutIfNeeded()
                 })
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+            ongoing = ongoing + self.wait + self.delay
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + ongoing) {
                 self.titleLabel.isHidden = true
                 self.pomodoroTopOffScreen()
                 self.labelTopOffScreen()
-                UIView.animate(withDuration: wait, animations: {
+                UIView.animate(withDuration: self.wait, animations: {
                     self.view.layoutIfNeeded()
                 })
             }
-            delay = delay + wait + delay
-            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+            ongoing = ongoing + wait + delay
+            DispatchQueue.main.asyncAfter(deadline: .now() + ongoing) {
                 self.delegate.moveToTop(animated: true)
                 self.pomodoroTop()
                 self.titleLabel.isHidden = false
@@ -336,10 +343,12 @@ class TimerViewController: UIViewController {
                 self.quitButtonToBottomLeft()
                 self.timerLabelToCentreBottom()
                 self.buttonArrowTop()
-                UIView.animate(withDuration: wait, animations: {
-                    self.view.layoutIfNeeded()
-                     self.view.isUserInteractionEnabled = true
-                })
+                    UIView.animate(withDuration: self.wait, animations: {
+                         self.view.layoutIfNeeded()
+                    }, completion: { (completed) in
+                         self.view.isUserInteractionEnabled = true
+                    })
+            
             }
     
         }
@@ -360,26 +369,29 @@ class TimerViewController: UIViewController {
         }
         else {
             self.view.isUserInteractionEnabled = false
-            let wait = 0.2
-            var delay = 0.1
+  
+            var ongoing = 0.0
             self.pixelVC.setAlternateRowSize(0, animate:true)
             self.pomodoroTopOffScreen()
             self.labelTopOffScreen()
             self.quitButtonOffScreen()
             self.tiemrLabelToOffScreen()
-            UIView.animate(withDuration: wait, animations: {
+            UIView.animate(withDuration: self.wait, animations: {
                 self.view.layoutIfNeeded()
             })
-            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+            
+            ongoing = ongoing + self.wait + self.delay
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + ongoing) {
                 self.titleLabel.isHidden = true
                 self.pomodoroBottomOffScreen()
                 self.labelBottomOffScreen()
-                UIView.animate(withDuration: wait, animations: {
+                UIView.animate(withDuration: self.wait, animations: {
                     self.view.layoutIfNeeded()
                 })
             }
-            delay = delay + wait + delay
-            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+            ongoing = ongoing + wait + delay
+            DispatchQueue.main.asyncAfter(deadline: .now() + ongoing) {
                 self.delegate.moveToBottom(animated: animated)
                 
                 self.pomodoroBottom()
@@ -387,12 +399,17 @@ class TimerViewController: UIViewController {
                    self.buttonArrowBottom()
      
                 self.titleLabel.isHidden = false
-                UIView.animate(withDuration: wait, animations: {
+                
+                UIView.animate(withDuration: self.wait, animations: {
                     self.view.layoutIfNeeded()
                     
                     self.delegate.moveToBottom(animated: true)
-                        self.view.isUserInteractionEnabled = true
+                }, completion: { (completed) in
+                    self.view.isUserInteractionEnabled = true
                 })
+                
+                
+                
             }
          
             
