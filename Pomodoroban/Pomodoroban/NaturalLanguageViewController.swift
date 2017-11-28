@@ -43,9 +43,7 @@ class NaturalLanguageViewController: UIViewController {
         
         
         if let length = self.shortBreakLength.predicate() {
-            
             print(length)
-            
         }
         
         let pomodoroLength =  self.pomodoroLengh.predicate() as! Int

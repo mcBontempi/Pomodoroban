@@ -38,7 +38,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userHeader" rowHeight="60" id="32c-tQ-KSO" customClass="UserHeaderTableViewCell" customModule="Calchua" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="userHeader" rowHeight="60" id="32c-tQ-KSO" customClass="UserHeaderTableViewCell" customModule="Calchua" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="32c-tQ-KSO" id="StM-ut-tfu">
@@ -63,7 +63,7 @@
                                     <outlet property="nameLabel" destination="OlA-es-wMS" id="TCd-Wo-seg"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userSwipe" rowHeight="440" id="Rht-W2-Mnx" customClass="UserSwipeTableViewCell" customModule="Calchua" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="userSwipe" rowHeight="440" id="Rht-W2-Mnx" customClass="UserSwipeTableViewCell" customModule="Calchua" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="132" width="375" height="440"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Rht-W2-Mnx" id="VhX-xy-leb">

@@ -319,6 +319,7 @@ class LoginViewController: UIViewController {
     
     func start() {
         
+        self.introLabel.alpha = 0.0
         
         let delayTime = DispatchTime.now() + Double(Int64(0.3 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
         DispatchQueue.main.asyncAfter(deadline: delayTime) {
@@ -368,7 +369,7 @@ class LoginViewController: UIViewController {
                     if Auth.auth().currentUser == nil && defaults.object(forKey: "loggedInWithoutAuth") == nil  {
                         
                         UIView.animate(withDuration: 1.0, animations: {
-                            self.introLabel.alpha = 1.0
+                        //    self.introLabel.alpha = 1.0
                             self.letMeInButton.alpha = 1.0
                         })
                         

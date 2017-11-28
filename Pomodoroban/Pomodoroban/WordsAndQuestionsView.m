@@ -106,7 +106,7 @@ const NSUInteger fontSize = 30;
         
         NSUInteger count = wordsAndQuestionsCopy.count;
         
-        for (NSInteger i = 28 ; i < count ; i ++)
+        for (NSInteger i = 18 ; i < count ; i ++)
         {
             [wordsAndQuestionsCopy removeLastObject];
         }
