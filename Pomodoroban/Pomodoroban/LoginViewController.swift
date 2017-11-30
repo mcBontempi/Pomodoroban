@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
             
             popoverViewController.preferredContentSize = UIScreen.main.bounds.insetBy(dx: 0,dy: 40).size
             
-            popoverViewController.url = segue.identifier == "privacySegue" ? URL(string:"http://www.pomodoroban.com/privacy.html") : URL(string:"htxxtp://www.pomodoroban.com/skeptics_faq.html")
+            popoverViewController.url = segue.identifier == "privacySegue" ? URL(string:"http://www.calchua.com/privacy.html") : URL(string:"htxxtp://www.calchua.com/skeptics_faq.html")
             
         }
         else if segue.identifier == "pixelSegue" {
@@ -182,7 +182,7 @@ class LoginViewController: UIViewController {
         UIView.animate(withDuration: 0.6, animations: {
             
             self.view.layoutIfNeeded()
- 
+            
             self.email.alpha = 0.0
             self.password.alpha = 0.0
             self.backButton.alpha = 0.0
@@ -330,13 +330,15 @@ class LoginViewController: UIViewController {
             
             let height = UIScreen.main.bounds.height
             if height == 568 {
-          //      self.emailTextFieldTopSpacingToTomatoe.constant = 10
-            //    self.emailtoPasswordPaddingConastraint.constant = 10
-                
+                self.emailTextFieldTopSpacingToTomatoe.constant = 18
+                self.emailtoPasswordPaddingConastraint.constant = 18
+            }
+            else if height == 667 {
+                self.emailTextFieldTopSpacingToTomatoe.constant = 55
+                self.emailtoPasswordPaddingConastraint.constant = 55
             }
             
             self.tomatoeTopSpaceConstraint.constant = 30
-            
             
             print (ProcessInfo.processInfo.environment)
             
@@ -369,7 +371,7 @@ class LoginViewController: UIViewController {
                     if Auth.auth().currentUser == nil && defaults.object(forKey: "loggedInWithoutAuth") == nil  {
                         
                         UIView.animate(withDuration: 1.0, animations: {
-                        //    self.introLabel.alpha = 1.0
+                            //    self.introLabel.alpha = 1.0
                             self.letMeInButton.alpha = 1.0
                         })
                         

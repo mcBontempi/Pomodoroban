@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         content.categoryIdentifier = "dailyreminder"
         
         var dateComponents = DateComponents()
-        dateComponents.hour = 21
+        dateComponents.hour = 20
         dateComponents.minute = 30
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         
@@ -78,6 +78,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func gotoSignUp() {
         let root = self.window?.rootViewController as! RootViewController
         root.gotoSignUp()
+    }
+    func signOut() {
+    
+        self.timerVC?.close()
     }
     
     

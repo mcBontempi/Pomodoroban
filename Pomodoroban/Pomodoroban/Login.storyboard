@@ -57,26 +57,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bmS-xm-Y8X">
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bmS-xm-Y8X">
                                 <rect key="frame" x="36" y="336" width="248" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="GrI-VG-veI"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" keyboardAppearance="alert" returnKeyType="next"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" keyboardAppearance="alert" returnKeyType="next" textContentType="email"/>
                                 <connections>
                                     <outlet property="delegate" destination="zxX-HC-5nM" id="fOq-rH-r8z"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XbQ-j5-3tW">
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XbQ-j5-3tW">
                                 <rect key="frame" x="36" y="425" width="248" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="hbE-Mq-9Rh"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="go" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="alert" returnKeyType="go" secureTextEntry="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="zxX-HC-5nM" id="gzh-m2-LAl"/>
                                 </connections>
@@ -96,9 +96,8 @@
                                     <action selector="letMeInPressed:" destination="zxX-HC-5nM" eventType="touchUpInside" id="MPa-Wx-zAh"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sAP-ic-Pet">
-                                <rect key="frame" x="24" y="287" width="272" height="147"/>
-                                <string key="text">An easy way to slice your day into manageable bite-sized tasks. A mashup of the best features of Pomodoro and Kanban. Work,rest &amp; focus.</string>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sAP-ic-Pet">
+                                <rect key="frame" x="24" y="348.5" width="272" height="24.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -262,6 +261,7 @@
                         <outlet property="SIGNUPBUTTON" destination="DCS-Hz-ECS" id="5Sn-Xy-6IE"/>
                         <outlet property="backButton" destination="iOB-qR-WQE" id="H4F-tf-v1B"/>
                         <outlet property="email" destination="bmS-xm-Y8X" id="OyB-XE-Piu"/>
+                        <outlet property="emailTextFieldTopSpacingToTomatoe" destination="13F-36-mue" id="zvh-2R-ijw"/>
                         <outlet property="emailtoPasswordPaddingConastraint" destination="82B-jd-usF" id="be4-vS-go4"/>
                         <outlet property="introLabel" destination="sAP-ic-Pet" id="3Wg-ML-iYj"/>
                         <outlet property="letMeInButton" destination="ceD-Hd-WG7" id="nms-bA-nQc"/>

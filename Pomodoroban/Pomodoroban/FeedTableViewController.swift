@@ -261,6 +261,10 @@ extension FeedTableViewController : PreferencesSwipeTableViewCellDelegate
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.gotoLogin()
+        appDelegate.signOut()
+        
+        
+        
     }
     
     func registerForSync() {
