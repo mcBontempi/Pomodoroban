@@ -83,6 +83,7 @@ PODS:
   - SwiftHEXColors (1.1.0)
   - TSMessages (0.9.12):
     - HexColors (~> 2.2.0)
+  - youtube-ios-player-helper (0.1.6)
 
 DEPENDENCIES:
   - Appsee
@@ -100,6 +101,7 @@ DEPENDENCIES:
   - RZViewActions
   - SwiftHEXColors
   - TSMessages
+  - youtube-ios-player-helper
 
 SPEC CHECKSUMS:
   Appsee: 8b3eab549f4701befe537cab4aefd175421f6328
@@ -128,7 +130,8 @@ SPEC CHECKSUMS:
   RZViewActions: 31c231845e6a7dd8a0c7cd463203e509635cc06b
   SwiftHEXColors: 8f7e364df7929e32cff9f9eeb044bb215167d6be
   TSMessages: c8cc7b80f2a833af533872cd02010cac061532cc
+  youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: 6df5eb0ac9d2019e28dcce48c798ab50e9d68180
+PODFILE CHECKSUM: 9710e7ecb93b635f3aafff502053b30d79fc22cb
 
 COCOAPODS: 1.3.1

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -72,7 +73,7 @@
                                     <subviews>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="V8m-39-8Iu">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="440"/>
-                                            <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Oo5-dY-bms">
                                                 <size key="itemSize" width="300" height="114"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -185,7 +186,7 @@
                                                     </constraints>
                                                 </collectionViewCell>
                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="graph" id="7dv-fP-R0O" customClass="TimeButtonCollectionViewCell">
-                                                    <rect key="frame" x="0.0" y="326" width="300" height="114"/>
+                                                    <rect key="frame" x="300" y="0.0" width="300" height="114"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                         <rect key="frame" x="0.0" y="0.0" width="300" height="114"/>
@@ -204,6 +205,54 @@
                                                         <constraint firstAttribute="bottom" secondItem="vt1-ax-M9x" secondAttribute="bottom" id="qjM-Nz-OG7"/>
                                                         <constraint firstItem="vt1-ax-M9x" firstAttribute="leading" secondItem="7dv-fP-R0O" secondAttribute="leading" id="rV1-TH-g2r"/>
                                                     </constraints>
+                                                </collectionViewCell>
+                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="daren" id="OLA-Lt-psn" customClass="TimeButtonCollectionViewCell">
+                                                    <rect key="frame" x="0.0" y="326" width="300" height="114"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                        <rect key="frame" x="0.0" y="0.0" width="300" height="114"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <subviews>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ddtred" translatesAutoresizingMaskIntoConstraints="NO" id="tFn-ed-cmT">
+                                                                <rect key="frame" x="8" y="8" width="55.5" height="98"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="tFn-ed-cmT" secondAttribute="height" multiplier="691:1221" id="rJe-LO-5hB"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daren David Taylor" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6g-Oc-BvP">
+                                                                <rect key="frame" x="143.5" y="8" width="136.5" height="21"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                                                <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="darendavidtaylor.com" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xa7-v8-cIF">
+                                                                <rect key="frame" x="156.5" y="91.5" width="123.5" height="14.5"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                                                                <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Stack Mobile App Guru - UX, Development and Strategy" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wOa-zC-xNb">
+                                                                <rect key="frame" x="80" y="41.5" width="200" height="31"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
+                                                                <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </view>
+                                                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="r6g-Oc-BvP" firstAttribute="top" secondItem="tFn-ed-cmT" secondAttribute="top" id="1P8-nG-jeV"/>
+                                                        <constraint firstItem="wOa-zC-xNb" firstAttribute="leading" secondItem="tFn-ed-cmT" secondAttribute="trailing" constant="16.5" id="1YV-a2-836"/>
+                                                        <constraint firstItem="ovl-Kn-WYt" firstAttribute="trailing" secondItem="wOa-zC-xNb" secondAttribute="trailing" constant="20" id="POI-uY-haP"/>
+                                                        <constraint firstItem="ovl-Kn-WYt" firstAttribute="trailing" secondItem="r6g-Oc-BvP" secondAttribute="trailing" constant="20" id="SgN-Pa-6fd"/>
+                                                        <constraint firstItem="ovl-Kn-WYt" firstAttribute="trailing" secondItem="Xa7-v8-cIF" secondAttribute="trailing" constant="20" id="WMD-c1-K4K"/>
+                                                        <constraint firstItem="tFn-ed-cmT" firstAttribute="top" secondItem="ovl-Kn-WYt" secondAttribute="top" constant="8" id="lR4-vZ-BQC"/>
+                                                        <constraint firstItem="wOa-zC-xNb" firstAttribute="centerY" secondItem="ovl-Kn-WYt" secondAttribute="centerY" id="lSR-IH-u4V"/>
+                                                        <constraint firstItem="ovl-Kn-WYt" firstAttribute="bottom" secondItem="tFn-ed-cmT" secondAttribute="bottom" constant="8" id="sIv-oc-Uhf"/>
+                                                        <constraint firstItem="Xa7-v8-cIF" firstAttribute="bottom" secondItem="tFn-ed-cmT" secondAttribute="bottom" id="wYI-4t-onE"/>
+                                                        <constraint firstItem="tFn-ed-cmT" firstAttribute="leading" secondItem="ovl-Kn-WYt" secondAttribute="leading" constant="8" id="ynH-Ed-AZk"/>
+                                                    </constraints>
+                                                    <viewLayoutGuide key="safeArea" id="ovl-Kn-WYt"/>
                                                 </collectionViewCell>
                                             </cells>
                                         </collectionView>
@@ -651,6 +700,7 @@
         <image name="002-chevron-sign-to-right" width="512" height="512"/>
         <image name="003-network" width="512" height="512"/>
         <image name="004-bell" width="256" height="256"/>
+        <image name="ddtred" width="691" height="1221"/>
         <image name="how-to-fix-youtube-videos-that-wont-play_thumb800" width="800" height="450"/>
         <image name="specificity-graph-1" width="750" height="469"/>
     </resources>

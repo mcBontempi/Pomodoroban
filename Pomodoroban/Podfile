@@ -21,6 +21,7 @@ pod 'FBSDKLoginKit'
 pod 'FBSDKShareKit'
 
 pod 'RZViewActions'
+pod "youtube-ios-player-helper"
 
 end
 

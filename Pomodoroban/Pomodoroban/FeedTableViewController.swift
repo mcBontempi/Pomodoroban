@@ -54,6 +54,9 @@ class FeedTableViewController: UITableViewController {
         
         var rows =  [("userHeader",dateString)]
         
+        
+        rows.append(("userSwipe",""))
+        
         let alerts = Alert.all(self.moc)
         
         if alerts.count > 0 {

@@ -14,7 +14,7 @@ class UserSwipeTableViewCell: UITableViewCell {
         self.collectionView.dataSource = self
         
         self.repeater?.invalidate()
-        self.repeater = DDTRepeater.repeater(10.0, fireOnceInstantly: false) {
+        self.repeater = DDTRepeater.repeater(2.0, fireOnceInstantly: false) {
             self.showNextPage(animated: true)
         }
     }
@@ -25,7 +25,7 @@ class UserSwipeTableViewCell: UITableViewCell {
         
         self.selectedItem = self.selectedItem + 1
         
-        if self.selectedItem == 3 {
+        if self.selectedItem == 2 {
             self.selectedItem = 0
         }
         
@@ -35,17 +35,21 @@ class UserSwipeTableViewCell: UITableViewCell {
 }
 
 extension UserSwipeTableViewCell : UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        
+        
+    }
     
     
 }
 extension UserSwipeTableViewCell : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ["youTube","streak","graph"][indexPath.row], for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ["youTube","daren"][indexPath.row], for: indexPath)
         
         cell.contentView.layer.cornerRadius = 10
         
