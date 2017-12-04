@@ -88,29 +88,29 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="300" height="114"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to the pomodoroban technique, watch the introductionary video if you dont know about the pomodoroban tachnique." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aL1-OE-baL">
-                                                                <rect key="frame" x="152" y="6" width="142" height="102"/>
-                                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Watch the tutorial video to grasp the concepts!" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aL1-OE-baL">
+                                                                <rect key="frame" x="122" y="6" width="162" height="102"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="how-to-fix-youtube-videos-that-wont-play_thumb800" translatesAutoresizingMaskIntoConstraints="NO" id="SQ7-7P-yoV">
-                                                                <rect key="frame" x="6" y="6" width="140" height="102"/>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playwhite" translatesAutoresizingMaskIntoConstraints="NO" id="SQ7-7P-yoV">
+                                                                <rect key="frame" x="8" y="8" width="98" height="98"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="140" id="pfW-3I-lq1"/>
+                                                                    <constraint firstAttribute="width" secondItem="SQ7-7P-yoV" secondAttribute="height" multiplier="1:1" id="R3W-Wk-seG"/>
                                                                 </constraints>
                                                             </imageView>
                                                         </subviews>
                                                     </view>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="SQ7-7P-yoV" secondAttribute="bottom" constant="6" id="BpE-dZ-Xmn"/>
-                                                        <constraint firstItem="SQ7-7P-yoV" firstAttribute="top" secondItem="pEM-oX-z9z" secondAttribute="top" constant="6" id="IhH-3N-qfi"/>
+                                                        <constraint firstAttribute="bottom" secondItem="SQ7-7P-yoV" secondAttribute="bottom" constant="8" id="Dzr-pY-Du9"/>
                                                         <constraint firstItem="aL1-OE-baL" firstAttribute="top" secondItem="pEM-oX-z9z" secondAttribute="top" constant="6" id="JAj-uE-rFc"/>
-                                                        <constraint firstAttribute="trailing" secondItem="aL1-OE-baL" secondAttribute="trailing" constant="6" id="Lqp-pZ-9YU"/>
-                                                        <constraint firstItem="SQ7-7P-yoV" firstAttribute="leading" secondItem="pEM-oX-z9z" secondAttribute="leading" constant="6" id="ZeM-OP-E9i"/>
+                                                        <constraint firstAttribute="trailing" secondItem="aL1-OE-baL" secondAttribute="trailing" constant="16" id="Lqp-pZ-9YU"/>
                                                         <constraint firstAttribute="bottom" secondItem="aL1-OE-baL" secondAttribute="bottom" constant="6" id="big-Wp-tbO"/>
-                                                        <constraint firstItem="aL1-OE-baL" firstAttribute="leading" secondItem="SQ7-7P-yoV" secondAttribute="trailing" constant="6" id="oDK-Eb-GsN"/>
+                                                        <constraint firstItem="SQ7-7P-yoV" firstAttribute="top" secondItem="pEM-oX-z9z" secondAttribute="top" constant="8" id="gTd-Qf-3v6"/>
+                                                        <constraint firstItem="SQ7-7P-yoV" firstAttribute="leading" secondItem="pEM-oX-z9z" secondAttribute="leading" constant="8" id="i38-AQ-PYO"/>
+                                                        <constraint firstItem="aL1-OE-baL" firstAttribute="leading" secondItem="SQ7-7P-yoV" secondAttribute="trailing" constant="16" id="oDK-Eb-GsN"/>
                                                     </constraints>
                                                     <viewLayoutGuide key="safeArea" id="Jxv-fc-Kje"/>
                                                 </collectionViewCell>
@@ -701,7 +701,7 @@
         <image name="003-network" width="512" height="512"/>
         <image name="004-bell" width="256" height="256"/>
         <image name="ddtred" width="691" height="1221"/>
-        <image name="how-to-fix-youtube-videos-that-wont-play_thumb800" width="800" height="450"/>
+        <image name="playwhite" width="512" height="512"/>
         <image name="specificity-graph-1" width="750" height="469"/>
     </resources>
 </document>

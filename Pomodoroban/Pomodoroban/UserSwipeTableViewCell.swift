@@ -1,5 +1,7 @@
 import UIKit
 import DDTRepeater
+import AVKit
+import AVFoundation
 
 class UserSwipeTableViewCell: UITableViewCell {
     
@@ -14,7 +16,7 @@ class UserSwipeTableViewCell: UITableViewCell {
         self.collectionView.dataSource = self
         
         self.repeater?.invalidate()
-        self.repeater = DDTRepeater.repeater(2.0, fireOnceInstantly: false) {
+        self.repeater = DDTRepeater.repeater(8.0, fireOnceInstantly: false) {
             self.showNextPage(animated: true)
         }
     }
@@ -37,6 +39,16 @@ class UserSwipeTableViewCell: UITableViewCell {
 extension UserSwipeTableViewCell : UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        switch indexPath.row {
+        case 0:
+            
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.playVideo(path:"Calchua Walk Through (1920 x 1080).m4v" )
+        default:
+        
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.showDDT()
+        }
         
         
     }

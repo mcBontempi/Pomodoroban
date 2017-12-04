@@ -153,6 +153,10 @@
 		D65E210D1FA2F4E4008EFED7 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65E210C1FA2F4E4008EFED7 /* CategoryCollectionViewCell.swift */; };
 		D665D2741DB0FD5D0079ED43 /* UIView+Capture.swift in Sources */ = {isa = PBXBuildFile; fileRef = D665D2731DB0FD5D0079ED43 /* UIView+Capture.swift */; };
 		D665D2781DB104F30079ED43 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D665D2771DB104F30079ED43 /* GoogleService-Info.plist */; };
+		D66EDF531FD552E100665F5A /* YouTube.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D66EDF521FD552E100665F5A /* YouTube.storyboard */; };
+		D66EDF551FD5544900665F5A /* YouTubeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66EDF541FD5544900665F5A /* YouTubeViewController.swift */; };
+		D66EDF571FD5650200665F5A /* Calchua Walk Through (1920 x 1080).m4v in Resources */ = {isa = PBXBuildFile; fileRef = D66EDF561FD5625000665F5A /* Calchua Walk Through (1920 x 1080).m4v */; };
+		D66EDF591FD566A700665F5A /* LandscapeAVPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66EDF581FD566A700665F5A /* LandscapeAVPlayerController.swift */; };
 		D670EA6F1DCCD45A00DF08B4 /* FirebaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D670EA6E1DCCD45A00DF08B4 /* FirebaseUtils.swift */; };
 		D670EA731DCCDC3500DF08B4 /* ServiceAccount.json in Resources */ = {isa = PBXBuildFile; fileRef = D670EA721DCCDC3500DF08B4 /* ServiceAccount.json */; };
 		D6751E761DBE363A00D03BDB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6751E751DBE363A00D03BDB /* StoreKit.framework */; };
@@ -411,6 +415,10 @@
 		D65E210C1FA2F4E4008EFED7 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		D665D2731DB0FD5D0079ED43 /* UIView+Capture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Capture.swift"; sourceTree = "<group>"; };
 		D665D2771DB104F30079ED43 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D66EDF521FD552E100665F5A /* YouTube.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = YouTube.storyboard; sourceTree = "<group>"; };
+		D66EDF541FD5544900665F5A /* YouTubeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeViewController.swift; sourceTree = "<group>"; };
+		D66EDF561FD5625000665F5A /* Calchua Walk Through (1920 x 1080).m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Calchua Walk Through (1920 x 1080).m4v"; sourceTree = "<group>"; };
+		D66EDF581FD566A700665F5A /* LandscapeAVPlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandscapeAVPlayerController.swift; sourceTree = "<group>"; };
 		D670EA6E1DCCD45A00DF08B4 /* FirebaseUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseUtils.swift; sourceTree = "<group>"; };
 		D670EA721DCCDC3500DF08B4 /* ServiceAccount.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ServiceAccount.json; sourceTree = "<group>"; };
 		D6751E751DBE363A00D03BDB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -765,6 +773,9 @@
 				D6335ED01F9FA8AE00571F2A /* SquareButtonCollectionViewCell.swift */,
 				D6335ED21F9FB58600571F2A /* Alert.storyboard */,
 				D6335ED41F9FB5F000571F2A /* AlertViewController.swift */,
+				D66EDF521FD552E100665F5A /* YouTube.storyboard */,
+				D66EDF541FD5544900665F5A /* YouTubeViewController.swift */,
+				D66EDF581FD566A700665F5A /* LandscapeAVPlayerController.swift */,
 			);
 			name = Feed;
 			sourceTree = "<group>";
@@ -902,6 +913,7 @@
 		FD5BEA051C5CF86B00535A78 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				D66EDF561FD5625000665F5A /* Calchua Walk Through (1920 x 1080).m4v */,
 				D62925591FCC0C4C00685C3A /* alert.wav */,
 				FD5BE9E11C5BB5CA00535A78 /* AppDelegate.swift */,
 				D60AD7691DAE40840011F429 /* Assets.xcassets */,
@@ -1009,6 +1021,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D66EDF571FD5650200665F5A /* Calchua Walk Through (1920 x 1080).m4v in Resources */,
 				D60099971F9A2037004E5772 /* WebView.storyboard in Resources */,
 				D6530DB81F9BCDF300DDB73C /* Feed.storyboard in Resources */,
 				D6177D5C1DC21363008A61CE /* us_pos.tree in Resources */,
@@ -1022,6 +1035,7 @@
 				D6CFAA171FA38FBF00A9DFC3 /* Timer.storyboard in Resources */,
 				D67CB2C31DBA3B290026E60D /* TSMessagesDefaultDesign.json in Resources */,
 				D600999B1F9A394C004E5772 /* Login.storyboard in Resources */,
+				D66EDF531FD552E100665F5A /* YouTube.storyboard in Resources */,
 				D629255A1FCC0C4C00685C3A /* alert.wav in Resources */,
 				FD5BE9E71C5BB5CA00535A78 /* Main.storyboard in Resources */,
 				D60AD76A1DAE40840011F429 /* Assets.xcassets in Resources */,
@@ -1233,6 +1247,7 @@
 				D6177D1E1DC21363008A61CE /* cst_utterance.c in Sources */,
 				D6177D561DC21363008A61CE /* us_gpos.c in Sources */,
 				D6177D341DC21363008A61CE /* cmu_us_kal_res.c in Sources */,
+				D66EDF591FD566A700665F5A /* LandscapeAVPlayerController.swift in Sources */,
 				D61085371D960601001A203A /* TimerViewController.swift in Sources */,
 				D6177D4F1DC21363008A61CE /* us_aswd.c in Sources */,
 				D6E71D831DA3ECAE0055F2AA /* TagLabel.m in Sources */,
@@ -1243,6 +1258,7 @@
 				D6177D411DC21363008A61CE /* cmu_us_rms_cg_single_params.c in Sources */,
 				D6177D571DC21363008A61CE /* us_int_accent_cart.c in Sources */,
 				D6177D431DC21363008A61CE /* cmu_us_slt_cg.c in Sources */,
+				D66EDF551FD5544900665F5A /* YouTubeViewController.swift in Sources */,
 				D6E71D801DA3EB5C0055F2AA /* WordsAndQuestionsView.m in Sources */,
 				D6F567EC1EA46081004DAD75 /* Pomodoroban.xcdatamodeld in Sources */,
 				D6177D4E1DC21363008A61CE /* cmu_postlex.c in Sources */,

@@ -1,4 +1,6 @@
 import UIKit
+import AVKit
+import AVFoundation
 
 enum TimerHeight : Int {
     case TimerHeightFullScreen = 0
@@ -62,6 +64,18 @@ class RootViewController: UIViewController {
                 vc.launch(section:section)
             }
         }
+    }
+    
+    
+    func playVideo(path:String) {
+            let videoURL = Bundle.main.url(forResource: "Calchua Walk Through (1920 x 1080)", withExtension: "m4v")
+            let player = AVPlayer(url: videoURL!)
+            let playerViewController = LandscapeAVPlayerController()
+            playerViewController.player = player
+        
+            self.present(playerViewController, animated: true) {
+                  playerViewController.player!.play()
+               }
     }
     
     func gotoLogin() {
@@ -187,6 +201,4 @@ extension RootViewController : TimerViewControllerDelegate {
             self.view.setNeedsLayout()
         }
     }
-    
-   
 }

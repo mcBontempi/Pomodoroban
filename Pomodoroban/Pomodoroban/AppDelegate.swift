@@ -8,10 +8,18 @@ import FirebaseCrash
 import UserNotifications
 import Appsee
 
+
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    @IBAction func playPressed(_ sender: Any) {
+    
+    var orientationLock = UIInterfaceOrientationMask.portrait
+    var myOrientation: UIInterfaceOrientationMask = .portrait
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return myOrientation
     }
+
     
     var window: UIWindow?
     let moc = CoreDataServices.sharedInstance.moc
@@ -82,6 +90,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func signOut() {
     
         self.timerVC?.close()
+    }
+    
+    func playVideo(path:String) {
+        let root = self.window?.rootViewController as! RootViewController
+        root.playVideo(path:path)
+    }
+    
+    func showDDT() {
+        UIApplication.shared.open(URL(string:"http://www.darendavidtaylor.com")!, options: [:], completionHandler: nil)
+        
     }
     
     
