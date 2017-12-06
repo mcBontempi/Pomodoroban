@@ -109,13 +109,23 @@ class NaturalLanguageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         self.pomodoroLengh = StringAndPredicateCollection(wIthStringAndPredicateArray: [
-            StringAndPredicate(string: "30 minutes", predicate: 30),
-            StringAndPredicate(string: "1 hour", predicate: 60),
-            StringAndPredicate(string: "90 minutes", predicate: 90),
-            StringAndPredicate(string: "2 hours", predicate: 120)]
+            StringAndPredicate(string: "25 minutes", predicate: 25), //25
+            StringAndPredicate(string: "20 minutes", predicate: 20),
+            StringAndPredicate(string: "15 minutes", predicate: 15),
+            StringAndPredicate(string: "60 minutes", predicate: 60),
+            StringAndPredicate(string: "55 minutes", predicate: 55),
+            StringAndPredicate(string: "50 minutes", predicate: 50),
+            StringAndPredicate(string: "45 minutes", predicate: 45),
+            StringAndPredicate(string: "40 minutes", predicate: 40),
+            StringAndPredicate(string: "35 minutes", predicate: 35),
+            StringAndPredicate(string: "30 minutes", predicate: 30)])
         
         self.shortBreakLength = StringAndPredicateCollection(wIthStringAndPredicateArray: [
-            StringAndPredicate(string: "5 minutes", predicate: 5),
+            StringAndPredicate(string: "5 minutes", predicate: 5), //5
+            StringAndPredicate(string: "6 minutes", predicate: 6),
+            StringAndPredicate(string: "7 minutes", predicate: 7),
+            StringAndPredicate(string: "8 minutes", predicate: 8),
+            StringAndPredicate(string: "9 minutes", predicate: 9),
             StringAndPredicate(string: "10 minutes", predicate: 10)])
         
         self.shortBreakCount = StringAndPredicateCollection(wIthStringAndPredicateArray: [
@@ -124,12 +134,16 @@ class NaturalLanguageViewController: UIViewController {
             StringAndPredicate(string: "2nd", predicate: 1)])
         
         self.longBreakLength = StringAndPredicateCollection(wIthStringAndPredicateArray: [
+            StringAndPredicate(string: "25 minutes", predicate: 25), //20
+            StringAndPredicate(string: "20 minutes", predicate: 20),
             StringAndPredicate(string: "15 minutes", predicate: 15),
-            StringAndPredicate(string: "30 minutes", predicate: 30)])
+            StringAndPredicate(string: "10 minutes", predicate: 10),
+            StringAndPredicate(string: "5 minutes", predicate: 5)])
         
         self.haveALongBreak = StringAndPredicateCollection(wIthStringAndPredicateArray: [
             StringAndPredicate(string: "Have A Long Break", predicate: 0),
             StringAndPredicate(string: "Not use long Breaks", predicate: 1)])
+        
         
         let defaults = UserDefaults.standard
         
@@ -140,7 +154,8 @@ class NaturalLanguageViewController: UIViewController {
             self.longBreakLength.index = defaultLanguageIndexs[3]
             self.haveALongBreak.index = defaultLanguageIndexs[4]
         }
-      
+        
+        
         wordsAndQuestionsView.wordsAndQuestions = ["each","pomodoro","lasting","for",self.pomodoroLengh,"after","each","pomodoro","you","will","have", "a","short","break","of",self.shortBreakLength,"and",self.haveALongBreak,"every",self.shortBreakCount,"pomodoro","of",self.longBreakLength]
         
         print (wordsAndQuestionsView.frame)
@@ -148,24 +163,28 @@ class NaturalLanguageViewController: UIViewController {
         self.repeater = DDTRepeater.repeater(1, fireOnceInstantly: true
             , execute: {
                 self.updateEstimateLabel()
+                
+                
         })
+        
     }
     
     var repeater:DDTRepeater!
     
-     func startTimer(vc:TimerViewController) {
+    
+    func startTimer(vc:TimerViewController) {
         
         self.repeater.invalidate()
         
         let factor = 60.0
-      
+        
         let length = self.pomodoroLengh.predicate() as! Int
         vc.pomodoroLength = Double(length) * factor
         vc.shortBreakLength = Double(self.shortBreakLength.predicate() as! Int) * factor
         vc.longBreakLength = Double(self.longBreakLength.predicate() as! Int ) * factor
         vc.shortBreakCount = self.shortBreakCount.predicate() as! Int
         vc.haveALongBreak = self.haveALongBreak.predicate() as! Int
-     
+        
         
         let defaults = UserDefaults.standard
         

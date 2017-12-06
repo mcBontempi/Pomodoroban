@@ -14,7 +14,7 @@
 const CGFloat SidePadding = 3;
 const CGFloat WordPadding = 3;
 
-const NSUInteger fontSize = 27;
+const NSUInteger fontSize = 30;
 
 @interface WordsAndQuestionsView () <TagLabelDelegate>
 
@@ -98,7 +98,7 @@ const NSUInteger fontSize = 27;
     
     StringAndPredicateCollection *useLongBreaks = _wordsAndQuestions[17];
     
-//    NSString *val = useLongBreaks.string;
+    //    NSString *val = useLongBreaks.string;
     
     NSNumber *remove = (NSNumber*)useLongBreaks.predicate;
     
@@ -212,3 +212,4 @@ const NSUInteger fontSize = 27;
 
 
 @end
+
