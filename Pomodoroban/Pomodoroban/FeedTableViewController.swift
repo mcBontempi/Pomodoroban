@@ -19,9 +19,24 @@ class FeedTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         NotificationCenter.default.addObserver(self, selector: Selector("dayChanged:"), name: NSNotification.Name.UIApplicationSignificantTimeChange, object: nil)
+        
+        
+        self.navigationController?.navigationBar.isTranslucent = false
+        
+        
+        
+        var frame = self.tableView.bounds
+        frame.origin.y = -frame.size.height
+        let view = UIView(frame: frame)
+        view.backgroundColor = .red
+        self.tableView.addSubview(view)
+        
+        
+        self.tableView.backgroundColor = UIColor.white
+        
 
         
         // self.navigationController!.redWithLogo()

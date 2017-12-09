@@ -63,6 +63,7 @@ extension PreferencesSwipeTableViewCell : UICollectionViewDataSource {
         cell.contentView.layer.cornerRadius = 10
         cell.contentView.layer.borderWidth = 3
         cell.contentView.layer.borderColor = UIColor.red.cgColor
+        cell.contentView.layer.masksToBounds = true
         
         return cell
     }
