@@ -317,37 +317,8 @@
                                 <color key="separatorColor" red="0.70980392160000005" green="0.70196078429999997" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <color key="sectionIndexBackgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <view key="tableHeaderView" contentMode="scaleToFill" id="uB2-Ox-Aob">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="77"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="POMODOROBAN PREMIUM is an optional yearly subscription that removes ads and supports future development." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1OQ-6u-x2y">
-                                            <rect key="frame" x="8" y="8" width="234" height="61"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ys0-Yu-MGi">
-                                            <rect key="frame" x="242" y="23.5" width="70" height="30"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <state key="normal" title="Upgrade">
-                                                <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                        </button>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="1OQ-6u-x2y" secondAttribute="trailing" constant="70" id="0qb-2i-vG2"/>
-                                        <constraint firstItem="ys0-Yu-MGi" firstAttribute="centerY" secondItem="1OQ-6u-x2y" secondAttribute="centerY" id="DCg-zU-9zc"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="ys0-Yu-MGi" secondAttribute="trailing" id="EPM-Gl-VQc"/>
-                                        <constraint firstItem="1OQ-6u-x2y" firstAttribute="leading" secondItem="uB2-Ox-Aob" secondAttribute="leadingMargin" id="TKH-Wr-dGB"/>
-                                        <constraint firstItem="ys0-Yu-MGi" firstAttribute="leading" secondItem="1OQ-6u-x2y" secondAttribute="trailing" id="TW3-uK-7J7"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="1OQ-6u-x2y" secondAttribute="bottom" id="hbj-Wm-1km"/>
-                                        <constraint firstItem="1OQ-6u-x2y" firstAttribute="top" secondItem="uB2-Ox-Aob" secondAttribute="topMargin" id="yRb-xB-J0Z"/>
-                                    </constraints>
-                                </view>
                                 <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="aYb-OH-kFK">
-                                    <rect key="frame" x="0.0" y="225" width="320" height="44"/>
+                                    <rect key="frame" x="0.0" y="148" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                     <items>
                                         <barButtonItem title="Item" id="RvP-bV-QWl"/>
@@ -355,7 +326,7 @@
                                 </toolbar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TicketTableViewCell" rowHeight="76" id="1gM-kL-o8K" customClass="TicketTableViewCell" customModule="Calchua" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="105" width="320" height="76"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1gM-kL-o8K" id="l1c-Eh-eR1">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="76"/>
@@ -444,7 +415,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="5Ng-Ku-Igm">
-                                        <rect key="frame" x="0.0" y="181" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="104" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Ng-Ku-Igm" id="ji1-a1-XjL">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
