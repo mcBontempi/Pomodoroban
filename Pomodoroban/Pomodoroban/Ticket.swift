@@ -29,12 +29,10 @@ class Ticket: NSManagedObject {
     
     class func createInMoc(moc:NSManagedObjectContext) -> Ticket {
     
-        
         let ticket = NSEntityDescription.insertNewObjectForEntityForName(Ticket.entityName, inManagedObjectContext: moc) as! Ticket
         ticket.identifier = NSUUID().UUIDString
         ticket.desc = ""
         
-     
         return ticket
     }
     
